@@ -11,6 +11,7 @@
 | Файл | Версия | Описание |
 |------|--------|----------|
 | [`CONTENT_GUIDE.md`](CONTENT_GUIDE.md) | v20.0 | **Основной SEO Guide** — Meta Tags, Keywords, Content Structure |
+| [`WORKFLOW_SEMANTICS.md`](WORKFLOW_SEMANTICS.md) | v1.0 | **Воркфлоу Семантики** — CSV as Source of Truth, парсинг, валидация |
 | [`RESEARCH_GUIDE.md`](RESEARCH_GUIDE.md) | v1.0 | Гайд по research перед написанием контента |
 | [`../scripts/README.md`](../scripts/README.md) | v1.1 | Описание всех скриптов (60+ файлов) |
 | [`../deploy/README.md`](../deploy/README.md) | v1.0 | Инструкция деплоя SQL |

@@ -11,10 +11,12 @@
 
 | Скрипт | Назначение | Использование |
 |--------|------------|---------------|
-| `parse_semantics_to_json.py` | Парсинг CSV в raw JSON | `python3 scripts/parse_semantics_to_json.py` |
-| `compare_raw_clean.py` | Сравнение CSV с _clean.json | `python3 scripts/compare_raw_clean.py [--fix]` |
+| `csv_to_readable_md.py` | **Генератор STRUCTURE.md** (с валидацией 100%) | `python3 scripts/csv_to_readable_md.py` |
+| `fix_csv_structure.py` | **Чистка CSV** от ложных заголовков | `python3 scripts/fix_csv_structure.py` |
+| `parse_semantics_to_json.py` | Парсинг CSV в raw JSON (Legacy) | `python3 scripts/parse_semantics_to_json.py` |
+| `compare_raw_clean.py` | Сравнение CSV с _clean.json (Legacy) | `python3 scripts/compare_raw_clean.py` |
 | `restore_from_csv.py` | Восстановление _clean.json из CSV | `python3 scripts/restore_from_csv.py` |
-| `find_orphan_keywords.py` | Поиск и распределение "сирот" | `python3 scripts/find_orphan_keywords.py [--distribute] [--apply]` |
+| `find_orphan_keywords.py` | Поиск и распределение "сирот" | `python3 scripts/find_orphan_keywords.py` |
 | `batch_synonym_cleanup.py` | Массовая чистка синонимов | `python3 scripts/batch_synonym_cleanup.py` |
 | `cleanup_misplaced.py` | Очистка неправильно размещенных ключей | `python3 scripts/cleanup_misplaced.py` |
 
