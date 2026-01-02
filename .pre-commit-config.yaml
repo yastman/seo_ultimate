@@ -1,0 +1,49 @@
+# Pre-commit hooks для автоматической проверки кода
+# Установка: pip install pre-commit && pre-commit install
+# Использование: git commit (автоматически) или pre-commit run --all-files (вручную)
+
+repos:
+  # Ruff - быстрый линтер и форматтер
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      # Линтер
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      # Форматтер
+      - id: ruff-format
+
+  # MyPy - проверка типов
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.13.0
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-requests]
+        args: [--config-file=pyproject.toml]
+
+  # Bandit - security checks
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.10
+    hooks:
+      - id: bandit
+        args: ['-c', 'pyproject.toml', '-r', 'scripts/']
+        additional_dependencies: ["bandit[toml]"]
+
+  # Базовые проверки
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace    # удаляет пробелы в конце строк
+      - id: end-of-file-fixer      # добавляет перевод строки в конец файла
+      - id: check-yaml             # проверяет YAML синтаксис
+      - id: check-added-large-files
+        args: ['--maxkb=1000']     # блокирует файлы >1MB
+      - id: check-case-conflict    # проверяет конфликты регистра в именах
+      - id: mixed-line-ending      # проверяет смешанные переводы строк
+
+# Конфигурация по умолчанию
+default_language_version:
+  python: python3
+
+# Запускать только на изменённых файлах
+default_stages: [commit]

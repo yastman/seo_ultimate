@@ -1,0 +1,297 @@
+{
+  "slug": "shchetki-i-kisti",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "щетка для мойки авто",
+        "volume": 480,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "щетка для автомобиля",
+        "volume": 390,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "щетка для мытья машины",
+        "volume": 390,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "щетка для детейлинга",
+        "volume": 210,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "мягкие щетки для мытья машины",
+        "volume": 110,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "щетка для мытья автомобиля",
+        "volume": 90,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "щетка автомобильная",
+        "volume": 90,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "щетка скребок для авто",
+        "volume": 90,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "щетки для мойки машины",
+        "volume": 70,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "щетка для чистки салона автомобиля",
+        "volume": 70,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "щетка для чистки салона авто",
+        "volume": 70,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "щетки для химчистки авто",
+        "volume": 50,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "щетка для дисков авто",
+        "volume": 50,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "набор щеток для детейлинга",
+        "volume": 40,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "щетка для салона авто",
+        "volume": 40,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "щетка для чистки авто",
+        "volume": 30,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "щетка для чистки сидений авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "щетка для кожи авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "кисточка для чистки салона авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "кисточки для химчистки авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "кисточка для авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "кисточка для автомобилей",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "щетки для детейлинга авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "щетка для мытья дисков авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "кисти для детейлинга",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "кисти для мойки авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "кисточки для детейлинга",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "кисточки для мойки авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "кисточки для мытья машины",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить щетку для мойки авто",
+        "volume": 210,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить щетку для мойки автомобиля",
+        "volume": 210,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить щетку для мытья машины",
+        "volume": 90,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить кисточки для детейлинга",
+        "volume": 40,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить щетку для мытья автомобиля",
+        "volume": 30,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить скребок для автомобиля",
+        "volume": 30,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить щетку для машины",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "щетка для мытья машины цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить щетки для детейлинга",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить кисти для детейлинга",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 48,
+    "after": 39,
+    "total_volume": 3120
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (виды: для кузова, салона, дисков)",
+    "secondary": "H2 (как выбрать, материалы щетины)",
+    "supporting": "FAQ, таблица по применению",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_washing": [
+      "купить щетку для мойки автомобиля (210)",
+      "щетки для мойки машины (70)",
+      "купить щетку для мытья машины (90)"
+    ],
+    "merged_detailing": [
+      "набор щеток для детейлинга (40)",
+      "щетки для детейлинга авто (10)",
+      "купить кисти для детейлинга (10)"
+    ],
+    "merged_interior": [
+      "щетка для чистки салона автомобиля (70)",
+      "щетка для чистки салона (20)",
+      "щетка для чистки сидений авто (20)",
+      "щетка для чистки кожи авто (20)"
+    ],
+    "proposed_changes": [
+      "Kept 'щетка для мытья машины' (390). Dropped: 'щетка для мытья авто' (140)",
+      "Kept 'щетка для чистки салона авто' (70). Dropped: 'щетка для чистки салона' (20)",
+      "Kept 'кисточка для авто' (20). Dropped: 'кисточка для машины' (10)",
+      "Kept 'кисточки для детейлинга' (10). Dropped: 'кисточки для детейлинга авто' (10)",
+      "Kept 'купить щетку для мойки авто' (210). Dropped: 'купить щетку для мойки машины' (10)",
+      "Kept 'купить щетку для мытья машины' (90). Dropped: 'купить щетку для мытья авто' (30)"
+    ]
+  },
+  "restored_from": "CSV block 'Щетки и кисти' (48 raw keywords)"
+}

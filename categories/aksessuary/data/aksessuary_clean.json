@@ -1,0 +1,74 @@
+{
+  "slug": "aksessuary",
+  "language": "ru",
+  "clustered_at": "2025-12-31",
+  "type": "L1",
+  "note": "Главный раздел аксессуаров. Содержит L2: mikrofibra-i-tryapki, shchetki-i-kisti, gubki-i-varezhki, raspyliteli-i-penniki, aksessuary-dlya-naneseniya, vedra-i-emkosti, malyarnyy-skotch, nabory-dlya-deteylinga",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "аксессуары для мойки авто",
+        "volume": 50,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "аксессуары для детейлинга",
+        "volume": 20,
+        "cluster": "detailing"
+      },
+      {
+        "keyword": "аксессуары для автомоек",
+        "volume": 20,
+        "cluster": "B2B"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "аксессуары по уходу за автомобилем",
+        "volume": 10,
+        "cluster": "care"
+      },
+      {
+        "keyword": "инвентарь для мойки авто",
+        "volume": 10,
+        "cluster": "synonym"
+      },
+      {
+        "keyword": "принадлежности для мойки авто",
+        "volume": 10,
+        "cluster": "synonym"
+      }
+    ],
+    "commercial": []
+  },
+  "stats": {
+    "before": 9,
+    "after": 7,
+    "total_volume": 220
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (обзор всех типов аксессуаров)",
+    "secondary": "Ссылки на L2 подкатегории",
+    "supporting": "Общее описание",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "l2_categories": [
+    "mikrofibra-i-tryapki",
+    "shchetki-i-kisti",
+    "gubki-i-varezhki",
+    "raspyliteli-i-penniki",
+    "aksessuary-dlya-naneseniya",
+    "vedra-i-emkosti",
+    "malyarnyy-skotch",
+    "nabory-dlya-deteylinga"
+  ],
+  "clustering_notes": {
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "все для мойки автомобилей/все для мойки машины -> все для мойки авто",
+      "все для мойки авто -> аксессуары для мойки авто"
+    ]
+  }
+}

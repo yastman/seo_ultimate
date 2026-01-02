@@ -1,0 +1,51 @@
+{
+  "slug": "antimoshka",
+  "language": "uk",
+  "category_name_uk": "Антимошка",
+  "clustered_at": "2025-12-19",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "антимошка",
+        "keyword_ru": "антимошка",
+        "volume": 260,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "антимошка для авто",
+        "keyword_ru": "антимошка для авто",
+        "volume": 210,
+        "cluster": "synonym"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "концентрат антимошка",
+        "keyword_ru": "концентрат антимошка",
+        "volume": 10,
+        "cluster": "format"
+      }
+    ],
+    "commercial": []
+  },
+  "seo_titles": {
+    "h1": "Антимошка",
+    "main_keyword": "антимошка",
+    "h1_ru": "антимошка",
+    "main_keyword_ru": "антимошка"
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      "мойке→мійці"
+    ],
+    "kept_original": [
+      "антимошка",
+      "авто",
+      "концентрат",
+      "спрей"
+    ],
+    "intent_preserved": true
+  }
+}

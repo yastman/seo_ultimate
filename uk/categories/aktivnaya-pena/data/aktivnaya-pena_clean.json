@@ -1,0 +1,80 @@
+{
+  "slug": "aktivnaya-pena",
+  "language": "uk",
+  "category_name_uk": "Активна піна",
+  "clustered_at": "2025-12-19",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "піна для миття автомобіля",
+        "keyword_ru": "пена для мойки автомобиля",
+        "volume": 1300,
+        "cluster": "main"
+      },
+      {
+        "keyword": "активна піна",
+        "keyword_ru": "активная пена",
+        "volume": 1000,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [],
+    "supporting": [
+      {
+        "keyword": "піна для автомийки",
+        "keyword_ru": "пена для автомойки",
+        "volume": 90,
+        "cluster": "B2B"
+      },
+      {
+        "keyword": "безконтактна піна",
+        "keyword_ru": "бесконтактная пена",
+        "volume": 20,
+        "cluster": "synonym"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити піну для миття авто",
+        "keyword_ru": "купить пену для мойки авто",
+        "volume": 260,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купити активну піну",
+        "keyword_ru": "купить активную пену",
+        "volume": 210,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "seo_titles": {
+    "h1": "Піна для миття автомобіля",
+    "main_keyword": "піна для миття автомобіля",
+    "h1_ru": "Пена для мойки автомобиля",
+    "main_keyword_ru": "пена для мойки автомобиля"
+  },
+  "stats": {
+    "before": 52,
+    "after": 6,
+    "source": "translated_from_ru"
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      "мойка→миття",
+      "бесконтактная→безконтактна",
+      "минимойка→мінімийка",
+      "профессиональная→професійна"
+    ],
+    "kept_original": [],
+    "intent_preserved": true
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (перші 150 слів)",
+    "secondary": "розділи buying guide (вибір, види, застосування)",
+    "supporting": "FAQ, таблиці, природні згадки",
+    "commercial": "ТІЛЬКИ meta title/description, НЕ в текст"
+  }
+}

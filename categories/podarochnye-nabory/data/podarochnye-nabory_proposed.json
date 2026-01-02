@@ -1,0 +1,116 @@
+{
+  "slug": "podarochnye-nabory",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Аксессуары",
+    "l2": "Наборы для детейлинга",
+    "l3": "Подарочные наборы"
+  },
+  "keywords": {
+    "secondary": [
+      {
+        "keyword": "набор для химчистки автомобиля",
+        "volume": 170,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "набор для химчистки салона",
+        "volume": 140,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "набор для химчистки авто",
+        "volume": 140,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "подарочные наборы для мужчин в машину",
+        "volume": 140,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "набор для чистки салона автомобиля",
+        "volume": 110,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "подарочные наборы в машину",
+        "volume": 90,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "подарочные наборы для автомобилиста",
+        "volume": 90,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "набор для автомобилиста подарок",
+        "volume": 30,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "подарочный набор для авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "авто набор в машину",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "набор для чистки машины",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "подарочные наборы для автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "подарочный набор для ухода за автомобилем",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ]
+  },
+  "stats": {
+    "before": 13,
+    "after": 13,
+    "total_volume": 990
+  },
+  "usage_rules": {
+    "primary": "H1 + intro",
+    "secondary": "H2 заголовки",
+    "supporting": "FAQ, таблицы",
+    "commercial": "ТОЛЬКО meta, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "подарочные наборы для мужчин в машину (140)",
+      "подарочные наборы в машину (90)",
+      "подарочные наборы для автомобилиста (90)"
+    ],
+    "proposed_changes": [
+      "Kept 'набор для химчистки салона' (140). Dropped: 'набор для химчистки салона авто' (20)"
+    ]
+  },
+  "restored_from": "sub-blocks ['подарочный набор для авто', 'подарочные наборы для мужчин в машину'] (13 raw keywords)"
+}

@@ -1,0 +1,61 @@
+{
+  "slug": "dlya-ruchnoy-moyki",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "автошампунь для ручной мойки",
+        "volume": 390,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "автомобильный шампунь для ручной мойки",
+        "volume": 70,
+        "cluster": "synonym",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "ручной распылитель для мойки авто",
+        "volume": 30,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить автошампунь для ручной мойки",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 7,
+    "after": 4,
+    "total_volume": 510
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "разделы buying guide (выбор, виды, применение)",
+    "supporting": "FAQ, таблицы, естественные упоминания",
+    "commercial": "ТОЛЬКО meta title/description, НЕ в текст"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "автошампунь для ручной мойки (390)"
+    ],
+    "merged_acidic": [
+      "кислотный шампунь для авто (70)",
+      "кислотный автошампунь (20)"
+    ],
+    "proposed_changes": [
+      "Kept 'автошампунь для ручной мойки' (390). Dropped: 'шампунь для ручной мойки' (10)"
+    ]
+  }
+}

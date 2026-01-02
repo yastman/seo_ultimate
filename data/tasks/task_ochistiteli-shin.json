@@ -1,0 +1,18 @@
+{
+  "slug": "ochistiteli-shin",
+  "tier": "C",
+  "keywords_count": 6,
+  "created_at": "2025-12-13T12:43:39.317978",
+  "current_stage": "prepare",
+  "stages": {
+    "prepare": "completed",
+    "produce": "pending",
+    "deliver": "pending"
+  },
+  "paths": {
+    "data": "categories/ochistiteli-shin/data/ochistiteli-shin.json",
+    "content_ru": "categories/ochistiteli-shin/content/ochistiteli-shin_ru.md",
+    "meta": "categories/ochistiteli-shin/meta/ochistiteli-shin_meta.json",
+    "deliverables": "categories/ochistiteli-shin/deliverables/"
+  }
+}

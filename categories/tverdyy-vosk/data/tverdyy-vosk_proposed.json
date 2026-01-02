@@ -1,0 +1,92 @@
+{
+  "slug": "tverdyy-vosk",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Защитные покрытия",
+    "l2": "Воски"
+  },
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "твердый воск для авто",
+        "volume": 1000,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "твердый воск для полировки авто",
+        "volume": 0,
+        "cluster": "method",
+        "original_section": "secondary"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить твердый воск для авто",
+        "volume": 210,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить воск для машины",
+        "volume": 30,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "твердый воск цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить твердый воск для авто в украине",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "твердый воск для автомобиля цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 12,
+    "after": 7,
+    "total_volume": 1270
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "H2 заголовки, buying guide (выбор, виды, применение)",
+    "supporting": "FAQ, таблицы, естественные упоминания в тексте",
+    "commercial": "ТОЛЬКО meta title/description, НЕ в текст статьи!"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "твердый воск для авто (1000)",
+      "твердый воск (390)"
+    ],
+    "merged_commercial": [
+      "купить твердый воск для авто (210)",
+      "купить твердый воск для авто в украине (10)",
+      "купить твердый воск для машины (10)",
+      "твердый воск для автомобиля цена (10)"
+    ],
+    "proposed_changes": [
+      "Kept 'твердый воск для авто' (1000). Dropped: 'твердый воск' (390), 'твердый воск для машины' (10)",
+      "Kept 'купить твердый воск для авто' (210). Dropped: 'твердый воск купить' (10), 'купить твердый воск для машины' (10)",
+      "Kept 'твердый воск цена' (10). Dropped: 'твердый воск для авто цена' (10)"
+    ]
+  }
+}

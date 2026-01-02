@@ -1,0 +1,25 @@
+{
+  "slug": "voski",
+  "language": "uk",
+  "category_name_uk": "Віск для авто",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "віск для авто", "keyword_ru": "воск для авто", "volume": 1600, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "твердий віск для авто", "keyword_ru": "твердый воск для авто", "volume": 1000, "cluster": "type"},
+      {"keyword": "рідкий віск для авто", "keyword_ru": "жидкий воск для авто", "volume": 480, "cluster": "type"},
+      {"keyword": "віск для машини", "keyword_ru": "воск для машины", "volume": 210, "cluster": "synonym"}
+    ],
+    "supporting": [
+      {"keyword": "віск для полірування авто", "keyword_ru": "воск для полировки авто", "volume": 90, "cluster": "application"},
+      {"keyword": "віск для кузова авто", "keyword_ru": "воск для кузова авто", "volume": 50, "cluster": "application"}
+    ],
+    "commercial": [
+      {"keyword": "купити віск для авто", "keyword_ru": "купить воск для авто", "volume": 320, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Віск для авто", "main_keyword": "віск для авто"},
+  "translation_notes": {"adapted_terms": ["воск→віск", "твердый→твердий", "жидкий→рідкий", "полировки→полірування"], "kept_original": ["авто"], "intent_preserved": true}
+}

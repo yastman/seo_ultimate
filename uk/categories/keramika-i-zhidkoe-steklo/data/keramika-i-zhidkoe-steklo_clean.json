@@ -1,0 +1,103 @@
+{
+  "slug": "keramika-i-zhidkoe-steklo",
+  "language": "uk",
+  "category_name_uk": "Нанокераміка та рідке скло",
+  "translated_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "рідке скло для автомобілів",
+        "keyword_ru": "жидкое стекло для автомобилей",
+        "volume": 480,
+        "cluster": "main"
+      },
+      {
+        "keyword": "нанокераміка для авто",
+        "keyword_ru": "нанокерамика для авто",
+        "volume": 390,
+        "cluster": "main"
+      },
+      {
+        "keyword": "кераміка для авто",
+        "keyword_ru": "керамика для авто",
+        "volume": 20,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "нанокераміка",
+        "keyword_ru": "нанокерамика",
+        "volume": 480,
+        "cluster": "product_type",
+        "note": "Окремий тип продукту, НЕ синонім рідкого скла"
+      },
+      {
+        "keyword": "рідке скло для полірування авто",
+        "keyword_ru": "жидкое стекло для полировки авто",
+        "volume": 20,
+        "cluster": "usage"
+      },
+      {
+        "keyword": "кераміка для кузова",
+        "keyword_ru": "керамика для кузова",
+        "volume": 20,
+        "cluster": "target"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "нано кераміка на авто",
+        "keyword_ru": "нано керамика на авто",
+        "volume": 50,
+        "cluster": "spelling_variant"
+      },
+      {
+        "keyword": "керамічне покриття",
+        "keyword_ru": "керамическое покрытие",
+        "volume": 10,
+        "cluster": "product_type"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити рідке скло для авто",
+        "keyword_ru": "купить жидкое стекло для авто",
+        "volume": 140,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "нанокераміка купити",
+        "keyword_ru": "нанокерамика купить",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "нанокераміка для авто ціна",
+        "keyword_ru": "нанокерамика для авто цена",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      "стекло → скло",
+      "жидкое → рідке",
+      "полировка → полірування",
+      "покрытие → покриття",
+      "цена → ціна"
+    ],
+    "kept_original": ["нанокераміка", "кераміка", "авто"],
+    "intent_preserved": true
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (пояснити різницю між склом і керамікою)",
+    "secondary": "H2 (як наносити, скільки тримається)",
+    "supporting": "FAQ, таблиці",
+    "commercial": "ТІЛЬКИ meta title/description"
+  }
+}

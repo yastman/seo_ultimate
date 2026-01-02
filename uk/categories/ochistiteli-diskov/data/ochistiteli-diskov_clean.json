@@ -1,0 +1,64 @@
+{
+  "slug": "ochistiteli-diskov",
+  "language": "uk",
+  "category_name_uk": "Очищувачі дисків",
+  "clustered_at": "2025-12-19",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "очищувач дисків",
+        "keyword_ru": "очиститель дисков",
+        "volume": 90,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "хімія для дисків",
+        "keyword_ru": "химия для дисков",
+        "volume": 40,
+        "cluster": "synonym"
+      },
+      {
+        "keyword": "засіб для миття дисків",
+        "keyword_ru": "средство для мойки дисков",
+        "volume": 30,
+        "cluster": "washing"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "засіб для дисків",
+        "keyword_ru": "средство для дисков",
+        "volume": 10,
+        "cluster": "general"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити очищувач дисків",
+        "keyword_ru": "купить очиститель дисков",
+        "volume": 10,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "seo_titles": {
+    "h1": "Очищувач дисків",
+    "main_keyword": "очищувач дисків",
+    "h1_ru": "очиститель дисков",
+    "main_keyword_ru": "очиститель дисков"
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      "химия→хімія",
+      "средства→засоби",
+      "очиститель→очищувач",
+      "мойки→миття",
+      "жидкость→рідина",
+      "колесных→колісних"
+    ],
+    "kept_original": ["дисків", "чистки", "литих"],
+    "intent_preserved": true
+  }
+}

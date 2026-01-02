@@ -1,0 +1,25 @@
+{
+  "slug": "silanty",
+  "language": "uk",
+  "category_name_uk": "Силанти для авто",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "силант", "keyword_ru": "силант", "volume": 50, "cluster": "main"},
+      {"keyword": "силанти для авто", "keyword_ru": "силанты для авто", "volume": 40, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "силант для авто", "keyword_ru": "силант для авто", "volume": 30, "cluster": "synonym"},
+      {"keyword": "силант для кузова", "keyword_ru": "силант для кузова", "volume": 10, "cluster": "application"}
+    ],
+    "supporting": [
+      {"keyword": "силант покриття", "keyword_ru": "силант покрытие", "volume": 10, "cluster": "synonym"}
+    ],
+    "commercial": [
+      {"keyword": "купити силант", "keyword_ru": "купить силант", "volume": 10, "cluster": "commercial", "use_in": "meta_only"},
+      {"keyword": "силант ціна", "keyword_ru": "силант цена", "volume": 10, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Силанти для авто", "main_keyword": "силант"},
+  "translation_notes": {"adapted_terms": ["покрытие→покриття", "цена→ціна"], "kept_original": ["силант"], "intent_preserved": true}
+}

@@ -1,0 +1,69 @@
+{
+  "slug": "kvik-deteylery",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "полимер для авто",
+        "volume": 140,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "полимер для автомобиля",
+        "volume": 140,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "быстрый блеск для авто",
+        "volume": 10,
+        "cluster": "feature",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "воск для авто на автомойке",
+        "volume": 20,
+        "cluster": "application",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "холодный воск для сушки автомобиля",
+        "volume": 10,
+        "cluster": "application",
+        "original_section": "supporting"
+      }
+    ]
+  },
+  "stats": {
+    "before": 18,
+    "after": 5,
+    "total_volume": 320
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (что такое квик-детейлер, назначение)",
+    "secondary": "H2 (виды: холодный/горячий воск, полимер)",
+    "supporting": "FAQ",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_cold": [
+      "холодный воск для автомобиля (110)",
+      "купить холодный воск для автомобиля (30)",
+      "холодный воск для авто цена (10)"
+    ],
+    "merged_hot": [
+      "горячий воск для авто цена (10)",
+      "горячий воск для автомобиля (0)"
+    ],
+    "merged_polymer": [
+      "полимер для автомобиля (140)"
+    ],
+    "proposed_changes": []
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "mikrofibra-i-tryapki",
+  "language": "uk",
+  "category_name_uk": "Мікрофібра та серветки для авто",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "серветки для авто", "keyword_ru": "тряпки для авто", "volume": 1300, "cluster": "main"},
+      {"keyword": "мікрофібра для авто", "keyword_ru": "микрофибра для авто", "volume": 1300, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "серветки для сушіння авто", "keyword_ru": "тряпки для сушки авто", "volume": 170, "cluster": "use_case"},
+      {"keyword": "серветка для миття авто", "keyword_ru": "тряпка для мойки авто", "volume": 90, "cluster": "use_case"},
+      {"keyword": "серветка для авто без розводів", "keyword_ru": "тряпка для авто без разводов", "volume": 260, "cluster": "feature"}
+    ],
+    "supporting": [
+      {"keyword": "вологопоглинальна серветка", "keyword_ru": "влаговпитывающая тряпка", "volume": 110, "cluster": "feature"},
+      {"keyword": "серветка для салону авто", "keyword_ru": "тряпка для салона авто", "volume": 20, "cluster": "use_case"}
+    ],
+    "commercial": [
+      {"keyword": "купити серветку для авто", "keyword_ru": "купить тряпку для авто", "volume": 70, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {
+    "h1": "Мікрофібра та серветки для авто",
+    "main_keyword": "мікрофібра для авто",
+    "h1_ru": "Микрофибра и тряпки для авто",
+    "main_keyword_ru": "микрофибра для авто"
+  },
+  "translation_notes": {
+    "adapted_terms": ["тряпка→серветка", "сушки→сушіння", "мойки→миття", "разводов→розводів", "влаговпитывающая→вологопоглинальна"],
+    "kept_original": ["авто", "мікрофібра"],
+    "intent_preserved": true
+  }
+}

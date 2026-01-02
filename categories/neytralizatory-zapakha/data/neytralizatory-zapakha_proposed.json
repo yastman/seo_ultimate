@@ -1,0 +1,208 @@
+{
+  "slug": "neytralizatory-zapakha",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "нейтрализаторы запаха",
+        "volume": 2400,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "поглотитель запаха",
+        "volume": 260,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "поглотитель запаха в машину",
+        "volume": 10,
+        "cluster": "product_type",
+        "note": "Поглотитель ≠ нейтрализатор: адсорбция vs химическое разрушение",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "профессиональный нейтрализатор запаха",
+        "volume": 170,
+        "cluster": "pro",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "нейтрализатор запаха в автомобиле",
+        "volume": 170,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "нейтрализатор запаха в авто",
+        "volume": 140,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "устранитель запаха",
+        "volume": 90,
+        "cluster": "synonym",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "нейтрализатор для авто",
+        "volume": 70,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "нейтрализатор запахов в салоне авто",
+        "volume": 50,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "нейтрализатор запаха автомобильный",
+        "volume": 40,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "средство для удаления запаха в салоне автомобиля",
+        "volume": 30,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "нейтрализатор запаха в машину",
+        "volume": 30,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "устранение запаха в автомобиле",
+        "volume": 30,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "устранитель запахов в авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "поглотитель запаха для автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "поглотитель запаха автомобильный",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "удаление запахов в автомобиле",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "удалить запах в салоне автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "устранение запаха в салоне автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "устранение неприятных запахов в автомобиле",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "устранитель запаха в автомобиле",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "устранитель запаха в машине",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "удаление запаха в машине",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить нейтрализатор запахов",
+        "volume": 90,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "устранитель запаха купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "поглотитель запахов купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "нейтрализатор запаха для автомобиля купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 29,
+    "after": 27,
+    "total_volume": 3720
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (принцип действия)",
+    "secondary": "H2 (виды: спреи, шашки, сухой туман)",
+    "supporting": "FAQ",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "нейтрализатор запаха в автомобиле (170)",
+      "нейтрализатор запаха в авто (140)",
+      "нейтрализатор для авто (70)",
+      "нейтрализатор запахов в салоне авто (50)"
+    ],
+    "merged_commercial": [
+      "поглотитель запахов купить (10)"
+    ],
+    "proposed_changes": [
+      "Kept 'поглотитель запаха' (260). Dropped: 'поглотитель запаха для авто' (10)",
+      "Kept 'нейтрализатор запахов в салоне авто' (50). Dropped: 'нейтрализатор запахов в салоне' (10)"
+    ]
+  }
+}

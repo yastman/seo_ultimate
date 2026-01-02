@@ -1,0 +1,99 @@
+{
+  "slug": "antidozhd",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "антидождь для автомобиля",
+        "volume": 320,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "антидождь для авто",
+        "volume": 80,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "антидождь для зеркал авто",
+        "volume": 20,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "антидождь на лобовое стекло",
+        "volume": 10,
+        "cluster": "application",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "покрытие для лобового стекла",
+        "volume": 10,
+        "cluster": "synonym",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "антидождь для авто украина",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "средство антидождь купить",
+        "volume": 1000,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "антидождь авто купить",
+        "volume": 700,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "антидождь цена",
+        "volume": 200,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить антидождь для стекол авто",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 11,
+    "after": 10,
+    "total_volume": 2360
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (принцип работы антидождя)",
+    "secondary": "H2 (применение: стекла, зеркала)",
+    "supporting": "FAQ",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_commercial": [
+      "купить антидождь для стекол авто (10)",
+      "антидождь для авто украина (10)"
+    ],
+    "proposed_changes": [
+      "Kept 'антидождь авто купить' (700). Dropped: 'купить антидождь' (110)"
+    ]
+  }
+}

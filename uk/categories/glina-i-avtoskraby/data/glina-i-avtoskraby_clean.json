@@ -1,0 +1,32 @@
+{
+  "slug": "glina-i-avtoskraby",
+  "language": "uk",
+  "category_name_uk": "Глина і автоскраби",
+  "clustered_at": "2025-12-19",
+  "keywords": {
+    "primary": [
+      {"keyword": "глина для авто", "keyword_ru": "глина для авто", "volume": 260, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "синя глина для авто", "keyword_ru": "синяя глина для авто", "volume": 110, "cluster": "color_type"},
+      {"keyword": "автоскраб", "keyword_ru": "автоскраб", "volume": 70, "cluster": "product_type"}
+    ],
+    "supporting": [
+      {"keyword": "автомобільна глина", "keyword_ru": "автомобильная глина", "volume": 40, "cluster": "synonym"},
+      {"keyword": "глина для кузова авто", "keyword_ru": "глина для кузова авто", "volume": 20, "cluster": "body"},
+      {"keyword": "глина для полірування авто", "keyword_ru": "глина для полировки авто", "volume": 20, "cluster": "polishing"}
+    ],
+    "commercial": []
+  },
+  "seo_titles": {
+    "h1": "Глина для авто",
+    "main_keyword": "глина для авто",
+    "h1_ru": "глина для авто",
+    "main_keyword_ru": "глина для авто"
+  },
+  "translation_notes": {
+    "adapted_terms": ["синяя→синя", "автомобильная→автомобільна", "полировки→полірування", "мойки→миття", "очищающая→очищувальна", "автомобиля→автомобіля"],
+    "kept_original": ["глина", "авто", "автоскраб", "кузова"],
+    "intent_preserved": true
+  }
+}

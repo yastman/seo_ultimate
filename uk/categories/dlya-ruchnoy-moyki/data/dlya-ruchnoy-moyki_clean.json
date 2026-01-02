@@ -1,0 +1,29 @@
+{
+  "slug": "dlya-ruchnoy-moyki",
+  "language": "uk",
+  "category_name_uk": "Для ручного миття",
+  "clustered_at": "2025-12-19",
+  "keywords": {
+    "primary": [
+      {"keyword": "автошампунь для ручного миття", "keyword_ru": "автошампунь для ручной мойки", "volume": 580, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "кислотний шампунь для авто", "keyword_ru": "кислотный шампунь для авто", "volume": 40, "cluster": "types"}
+    ],
+    "supporting": [],
+    "commercial": [
+      {"keyword": "купити автошампунь для ручного миття", "keyword_ru": "купить автошампунь для ручной мойки", "volume": 10, "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {
+    "h1": "Автошампунь для ручного миття",
+    "main_keyword": "автошампунь для ручного миття",
+    "h1_ru": "автошампунь для ручной мойки",
+    "main_keyword_ru": "автошампунь для ручной мойки"
+  },
+  "translation_notes": {
+    "adapted_terms": ["мойки→миття", "кислотный→кислотний", "автомобильный→автомобільний"],
+    "kept_original": ["автошампунь", "авто", "кузова"],
+    "intent_preserved": true
+  }
+}

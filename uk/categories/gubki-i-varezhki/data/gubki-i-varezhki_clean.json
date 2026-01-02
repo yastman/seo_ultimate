@@ -1,0 +1,88 @@
+{
+  "slug": "gubki-i-varezhki",
+  "language": "uk",
+  "category_name_uk": "Губки та рукавиці для миття авто",
+  "translated_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "губка для миття авто",
+        "keyword_ru": "губка для мойки авто",
+        "volume": 110,
+        "cluster": "main"
+      },
+      {
+        "keyword": "рукавиця для миття авто",
+        "keyword_ru": "варежка для мойки авто",
+        "volume": 40,
+        "cluster": "method"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "губки для автомобіля",
+        "keyword_ru": "губки для автомобиля",
+        "volume": 110,
+        "cluster": "synonym"
+      },
+      {
+        "keyword": "губка для машини",
+        "keyword_ru": "губка для машины",
+        "volume": 50,
+        "cluster": "synonym"
+      },
+      {
+        "keyword": "рукавиця для миття автомобіля",
+        "keyword_ru": "варежка для мойки автомобиля",
+        "volume": 40,
+        "cluster": "method"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "великопориста губка",
+        "keyword_ru": "крупнопористая губка",
+        "volume": 10,
+        "cluster": "type"
+      },
+      {
+        "keyword": "мікрофіброва рукавиця",
+        "keyword_ru": "микрофибровая варежка",
+        "volume": 10,
+        "cluster": "type"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити губку для миття авто",
+        "keyword_ru": "купить губку для мойки авто",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "губка для миття машини купити",
+        "keyword_ru": "губка для мытья машины купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      "варежка → рукавиця",
+      "мойка → миття",
+      "крупнопористая → великопориста",
+      "микрофибровая → мікрофіброва"
+    ],
+    "kept_original": ["губка", "авто", "автомобіль"],
+    "intent_preserved": true
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (порівняння губки і рукавиці)",
+    "secondary": "H2 (види матеріалів: поролон, мікрофібра, вовна)",
+    "supporting": "FAQ",
+    "commercial": "ТІЛЬКИ meta title/description"
+  }
+}

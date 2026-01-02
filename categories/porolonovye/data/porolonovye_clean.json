@@ -1,0 +1,74 @@
+{
+  "slug": "porolonovye",
+  "language": "ru",
+  "clustered_at": "2025-12-31",
+  "type": "L3",
+  "parent": "polirovalnye-krugi",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "поролоновые круги для полировки авто",
+        "volume": 20,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "круг поролоновый на липучке",
+        "volume": 10,
+        "cluster": "feature"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "мягкий поролоновый круг",
+        "volume": 10,
+        "cluster": "hardness"
+      },
+      {
+        "keyword": "жёсткий поролоновый круг",
+        "volume": 10,
+        "cluster": "hardness"
+      },
+      {
+        "keyword": "финишный поролоновый круг",
+        "volume": 10,
+        "cluster": "purpose"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "поролоновый круг для полировки купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить поролоновые круги для полировки",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 3,
+    "after": 8,
+    "total_volume": 100
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (назначение поролоновых кругов: финишная полировка)",
+    "secondary": "H2 (жёсткость: жёсткий, средний, мягкий, финишный)",
+    "supporting": "FAQ, таблица жёсткости",
+    "commercial": "ТОЛЬКО meta, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "from_parent": [
+      "поролоновые полировальные круги (20)"
+    ],
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "поролоновый полировальный круг -> поролоновый круг для полировки"
+    ]
+  }
+}

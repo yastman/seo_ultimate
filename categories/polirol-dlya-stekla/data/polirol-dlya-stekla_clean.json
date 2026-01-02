@@ -1,0 +1,51 @@
+{
+  "slug": "polirol-dlya-stekla",
+  "language": "ru",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "полироль для стекла",
+        "volume": 590,
+        "cluster": "main"
+      },
+      {
+        "keyword": "полироль для стекла авто",
+        "volume": 70,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [],
+    "supporting": [
+      {
+        "keyword": "средство для полировки лобового стекла",
+        "volume": 30,
+        "cluster": "windshield",
+        "migrated_from": "ochistiteli-stekol"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить полироль для стекла авто",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 7,
+    "after": 7,
+    "total_volume": 810
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (назначение: удаление царапин, водного камня)",
+    "secondary": "H2 (ручная vs машинная полировка)",
+    "supporting": "FAQ",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "cleaned_at": "2026-01-01",
+    "merged": []
+  }
+}

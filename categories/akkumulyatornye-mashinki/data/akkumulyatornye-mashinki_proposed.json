@@ -1,0 +1,66 @@
+{
+  "slug": "akkumulyatornye-mashinki",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Полировка",
+    "l2": "Полировальные машинки"
+  },
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "аккумуляторная полировальная машина",
+        "volume": 260,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "полировальная машинка на аккумуляторе",
+        "volume": 260,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "полировальная машина на аккумуляторе",
+        "volume": 260,
+        "cluster": "synonym",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить аккумуляторную полировальную машинку",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 8,
+    "after": 4,
+    "total_volume": 800
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "H2 заголовки, buying guide",
+    "supporting": "FAQ, таблицы, естественные упоминания",
+    "commercial": "ТОЛЬКО meta title/description, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "аккумуляторная полировальная машина (260)",
+      "полировальная машина на аккумуляторе (260)",
+      "полировальная машинка на аккумуляторе (260)"
+    ],
+    "note": "Три варианта одного запроса с одинаковым volume — SEO-фильтр в polirovalnye-mashinki",
+    "proposed_changes": [
+      "Kept 'аккумуляторная полировальная машина' (260). Dropped: 'аккумуляторная полировальная машина для авто' (90)",
+      "Kept 'полировальная машинка на аккумуляторе' (260). Dropped: 'полировочная машинка на аккумуляторе' (10), 'машинка для полировки авто на аккумуляторе' (10)",
+      "Kept 'полировальная машина на аккумуляторе' (260). Dropped: 'полировальная машина для авто на аккумуляторе' (20)"
+    ]
+  }
+}

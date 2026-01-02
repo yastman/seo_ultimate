@@ -1,0 +1,80 @@
+{
+  "schema_version": "3.0.0",
+  "generated_at": "2025-12-17T16:30:59.982538Z",
+  "generator_script": "parse_semantics_to_json.py",
+  "slug": "antibitum",
+  "category_name_ru": "Антибитум",
+  "tier": "B",
+  "language": "ru",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "купить антибитум для авто",
+        "volume": 10,
+        "intent": "commercial",
+        "density_target": "0.20%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "купить антибитум для авто"
+          ],
+          "partial": [
+            "антибитум",
+            "авто"
+          ]
+        }
+      }
+    ],
+    "secondary": [],
+    "supporting": [
+      {
+        "keyword": "антибитум купить",
+        "volume": 10,
+        "intent": "commercial",
+        "density_target": "0.20%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "антибитум купить",
+            "купить антибитум для авто"
+          ],
+          "partial": [
+            "антибитум"
+          ]
+        }
+      },
+      {
+        "keyword": "антибитум цена",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.20%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "антибитум цена"
+          ],
+          "partial": [
+            "антибитум",
+            "цена"
+          ]
+        }
+      }
+    ]
+  },
+  "semantic_entities": [],
+  "content_targets": {
+    "char_count_no_spaces": "3600-4200",
+    "h2_count": "2-4",
+    "faq_count": "2-3",
+    "coverage_target": 50,
+    "density_target": "1-2%",
+    "lsi_ratio": ">=5:1"
+  },
+  "stats": {
+    "total_keywords": 3,
+    "total_volume": 30,
+    "primary_count": 1,
+    "secondary_count": 0,
+    "supporting_count": 2
+  }
+}

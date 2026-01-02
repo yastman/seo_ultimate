@@ -1,0 +1,252 @@
+{
+  "slug": "mikrofibra-i-tryapki",
+  "language": "ru",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "тряпка для авто",
+        "volume": 1300,
+        "cluster": "main"
+      },
+      {
+        "keyword": "микрофибра для авто",
+        "volume": 1300,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "тряпка для авто без разводов",
+        "volume": 260,
+        "cluster": "related"
+      },
+      {
+        "keyword": "тряпки для сушки авто",
+        "volume": 170,
+        "cluster": "related"
+      },
+      {
+        "keyword": "микрофибра для сушки авто",
+        "volume": 170,
+        "cluster": "related"
+      },
+      {
+        "keyword": "влаговпитывающая тряпка для авто",
+        "volume": 110,
+        "cluster": "related"
+      },
+      {
+        "keyword": "тряпка для мойки авто",
+        "volume": 90,
+        "cluster": "related"
+      },
+      {
+        "keyword": "тряпка микрофибра для авто",
+        "volume": 90,
+        "cluster": "related"
+      },
+      {
+        "keyword": "тряпка для машины после мойки",
+        "volume": 50,
+        "cluster": "related"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "профессиональная тряпка для авто",
+        "volume": 40,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "тряпки для автомойки",
+        "volume": 40,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "полотенце микрофибра для авто",
+        "volume": 40,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "супер впитывающая тряпка для авто",
+        "volume": 40,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "тряпка для кузова авто",
+        "volume": 30,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "тряпка для салона авто",
+        "volume": 30,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "тряпка для вытирания авто после мойки",
+        "volume": 30,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "тряпка для протирки авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "профессиональные тряпки для мытья машины",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "салфетка из микрофибры для авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "микрофибра для мойки авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "тряпка для панели авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "супер тряпка для авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "впитывающая тряпка для авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "тряпка для мытья авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "лучшие тряпки для авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "микрофибра для протирки авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "тряпка для мытья машины без воды",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "салфетки для протирки авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "фибра для авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить тряпку для мойки авто",
+        "volume": 90,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить тряпку для авто",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить тряпку для сушки авто",
+        "volume": 50,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "тряпка для протирки авто после мойки купить",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+            {
+        "keyword": "купить микрофибру для авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+            {
+        "keyword": "купить тряпки для автомойки",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить салфетку для авто",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 82,
+    "after": 39,
+    "total_volume": 6540
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (виды микрофибры: для сушки, мойки, полировки)",
+    "secondary": "H2 (как выбрать по GSM и плетению)",
+    "supporting": "FAQ, сравнительная таблица",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "тряпка для авто (1300)",
+      "тряпки для автомобиля (1300)",
+      "тряпки для машины (260)"
+    ],
+    "merged_drying": [
+      "тряпки для сушки автомобиля (170)",
+      "тряпка для сушки машины (10)"
+    ],
+    "merged_washing": [
+      "тряпки для мойки автомобиля (40)",
+      "тряпки для мойки машин (30)",
+      "тряпка для мытья машины цена (10)"
+    ],
+    "merged_commercial": [
+      "купить тряпку для мойки автомобиля (90)",
+      "тряпка для автомобиля купить (10)",
+      "купити тряпку для авто (10)",
+      "купить тряпку для мытья машины (10)"
+    ],
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "тряпки для мойки автомобиля (40) -> удалено",
+      "тряпка для салона автомобиля -> для салона авто",
+      "тряпка из микрофибры для автомобиля (20) -> удалено",
+      "тряпка для вытирания машины (20) -> удалено",
+      "тряпка для сушки машины (10) -> удалено",
+      "микрофибра для мытья машины (10) -> удалено",
+      "тряпка мыть машину (10) -> удалено",
+      "микрофибра для автомобиля купить (20) -> удалено",
+      "тряпка для мытья машины цена (10) -> удалено",
+      "тряпка для автомобиля купить (10) -> удалено",
+      "тряпка для машины цена (10) -> удалено",
+      "купить тряпку для мытья машины (10) -> удалено",
+      "купити тряпку для авто (10) -> удалено (украинский)"
+    ]
+  },
+  "restored_from": "CSV block 'Микрофибра и тряпки' (82 raw keywords)"
+}

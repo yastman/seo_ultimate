@@ -1,0 +1,25 @@
+{
+  "slug": "neytralizatory-zapakha",
+  "language": "uk",
+  "category_name_uk": "Нейтралізатори запаху",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "нейтралізатори запаху", "keyword_ru": "нейтрализаторы запаха", "volume": 2400, "cluster": "main"},
+      {"keyword": "поглинач запаху в машину", "keyword_ru": "поглотитель запаха в машину", "volume": 260, "cluster": "product_type"}
+    ],
+    "secondary": [
+      {"keyword": "професійний нейтралізатор запаху", "keyword_ru": "профессиональный нейтрализатор запаха", "volume": 170, "cluster": "pro"},
+      {"keyword": "усувач запаху", "keyword_ru": "устранитель запаха", "volume": 90, "cluster": "synonym"},
+      {"keyword": "спрей від запаху в авто", "keyword_ru": "спрей от запаха в авто", "volume": 50, "cluster": "type"}
+    ],
+    "supporting": [
+      {"keyword": "сухий туман для авто", "keyword_ru": "сухой туман для авто", "volume": 20, "cluster": "type"}
+    ],
+    "commercial": [
+      {"keyword": "купити нейтралізатор запахів", "keyword_ru": "купить нейтрализатор запахов", "volume": 90, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Нейтралізатори запаху", "main_keyword": "нейтралізатори запаху"},
+  "translation_notes": {"adapted_terms": ["нейтрализатор→нейтралізатор", "поглотитель→поглинач", "устранитель→усувач", "сухой→сухий"], "intent_preserved": true}
+}

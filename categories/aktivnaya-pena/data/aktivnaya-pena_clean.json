@@ -1,0 +1,105 @@
+{
+  "slug": "aktivnaya-pena",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "пена для мойки авто",
+        "volume": 1300,
+        "cluster": "main",
+        "note": "Основной ВЧ ключ"
+      },
+      {
+        "keyword": "активная пена",
+        "volume": 720,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "активная пена для бесконтактной мойки",
+        "volume": 320,
+        "cluster": "method",
+        "note": "Уточнение метода (бесконтактная)"
+      },
+      {
+        "keyword": "шампунь для бесконтактной мойки",
+        "volume": 110,
+        "cluster": "synonym",
+        "note": "Синоним: Шампунь = Пена"
+      },
+      {
+        "keyword": "химия для бесконтактной мойки",
+        "volume": 30,
+        "cluster": "synonym",
+        "note": "Синоним: Химия"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "пена для минимойки",
+        "volume": 70,
+        "cluster": "equipment"
+      },
+      {
+        "keyword": "профессиональная пена для мойки авто",
+        "volume": 10,
+        "cluster": "pro"
+      },
+      {
+        "keyword": "шампунь для моек высокого давления",
+        "volume": 50,
+        "cluster": "equipment",
+        "migrated_from": "avtoshampuni"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить пену для мойки авто",
+        "volume": 590,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить активная пена",
+        "volume": 260,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "активная пена цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 52,
+    "after": 12,
+    "total_volume": 9100
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (Суть: активная пена смывает грязь без контакта)",
+    "secondary": "H2 (Методы: бесконтактной мойка, отличия от ручного шампуня)",
+    "supporting": "FAQ, контекст (оборудование: минимойки, пенокомплекты)",
+    "commercial": "ТОЛЬКО meta title/description, НЕ использовать в тексте статьи"
+  },
+  "clustering_notes": {
+    "cleaned_synonyms": [
+      "Removed variants: 'автомобиля', 'машины', 'авто' (merged into 'авто')",
+      "Removed duplicate word order: 'активная пена для мойки' -> 'активная пена'",
+      "Removed generic commercial tails"
+    ],
+    "merged_main": [
+      "пена для мойки авто (1300) + пена для мойки автомобиля (1300) + пена для мытья машины",
+      "активная пена (720) + активная пена для мойки авто (1000) + активная пена для мойки автомобиля (880)"
+    ],
+    "merged_commercial": [
+      "купить пену для мойки авто (590) + все хвосты 'купить...'"
+    ],
+    "cleaned_at": "2026-01-01",
+    "merged": []
+  }
+}

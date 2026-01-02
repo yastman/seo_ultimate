@@ -1,0 +1,28 @@
+{
+  "slug": "omyvatel",
+  "language": "uk",
+  "category_name_uk": "Омивач скла",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "омивач скла", "keyword_ru": "омыватель стекла", "volume": 720, "cluster": "main"},
+      {"keyword": "омивач скла зимовий", "keyword_ru": "омыватель стекла зимний", "volume": 1000, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "зимовий омивач", "keyword_ru": "зимний омыватель", "volume": 320, "cluster": "season"},
+      {"keyword": "омивач скла літній", "keyword_ru": "омыватель стекла летний", "volume": 140, "cluster": "season"},
+      {"keyword": "склоомивач", "keyword_ru": "стеклоомыватель", "volume": 110, "cluster": "synonym"}
+    ],
+    "supporting": [
+      {"keyword": "омивач лобового скла", "keyword_ru": "омыватель лобового стекла", "volume": 110, "cluster": "application"},
+      {"keyword": "омивач для скла", "keyword_ru": "омыватель для стекол", "volume": 50, "cluster": "short_form"},
+      {"keyword": "омивач для машини", "keyword_ru": "омыватель для машины", "volume": 30, "cluster": "short_form"}
+    ],
+    "commercial": [
+      {"keyword": "купити омивач скла зимовий", "keyword_ru": "купить омыватель стекла зимний", "volume": 170, "cluster": "commercial", "use_in": "meta_only"},
+      {"keyword": "купити омивач скла", "keyword_ru": "купить омыватель стекла", "volume": 50, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Омивач скла", "main_keyword": "омивач скла"},
+  "translation_notes": {"adapted_terms": ["омыватель→омивач", "стекла→скла", "зимний→зимовий", "летний→літній", "лобового→лобового", "машины→машини"], "intent_preserved": true}
+}

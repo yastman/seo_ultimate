@@ -1,0 +1,96 @@
+{
+  "slug": "nabory-dlya-moyki",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Аксессуары",
+    "l2": "Наборы для детейлинга",
+    "l3": "Наборы для мойки"
+  },
+  "keywords": {
+    "secondary": [
+      {
+        "keyword": "набор для мойки авто",
+        "volume": 210,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "набор для мойки автомобиля",
+        "volume": 30,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "набор для салона автомобиля",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "набор для мытья автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "набор тряпок для машины",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "набор салфеток для автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "набор щеток для химчистки авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "набор тряпок для мойки авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить набор для мойки автомобиля",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 11,
+    "after": 9,
+    "total_volume": 320
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "H2 заголовки, buying guide",
+    "supporting": "FAQ, таблицы",
+    "commercial": "ТОЛЬКО meta title/description, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "note": "Малое количество ключей в CSV, кластеризация минимальна",
+    "merged_main": [
+      "набор для мойки авто (210)",
+      "набор для мойки автомобиля (30)",
+      "набор для мойки машины (30)"
+    ],
+    "proposed_changes": [
+      "Kept 'набор для мойки авто' (210). Dropped: 'набор для мойки машины' (30)"
+    ]
+  },
+  "restored_from": "sub-blocks ['набор для мойки авто', 'набор тряпок для машины'] (11 raw keywords)"
+}

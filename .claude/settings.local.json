@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /b \"c:\\Users\\user\\Documents\\Сайты\\Ultimate.net.ua\\сео_для_категорий_ультимейт\\uk\")",
+      "Bash(dir /b \"c:\\Users\\user\\Documents\\Сайты\\Ultimate.net.ua\\сео_для_категорий_ультимейт\\scripts\")",
+      "Bash(python scripts/analyze_category.py:*)",
+      "Bash(python scripts/validate_content.py:*)",
+      "Bash(PYTHONIOENCODING=utf-8 python:*)",
+      "Bash(for category in cherniteli-shin dlya-ruchnoy-moyki antibitum antimoshka)",
+      "Bash(do echo \"=== $category ===\")",
+      "Bash(done)",
+      "Bash(dir /b \"c:\\Users\\user\\Documents\\Сайты\\Ultimate.net.ua\\сео_для_категорий_ультимейт\\uk\\categories\")",
+      "Bash(python scripts/validate_meta.py:*)",
+      "Bash(powershell -Command \"$PSVersionTable.PSVersion\")"
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "slug": "raspyliteli-i-penniki",
+  "language": "ru",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "помповый распылитель для мойки авто",
+        "volume": 260,
+        "cluster": "main"
+      },
+      {
+        "keyword": "распылитель для мойки авто",
+        "volume": 50,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "распылитель пены для мойки",
+        "volume": 30,
+        "cluster": "foamer"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "авто триггер",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "пенники для моек высокого давления",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "распылитель для воды",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "пенник для минимойки",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "распылитель пены для автомойки",
+        "volume": 10,
+        "cluster": "long_tail"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить распылитель для воды",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 25,
+    "after": 14,
+    "total_volume": 470
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (виды: курковые, помповые, накачные)",
+    "secondary": "H2 (отличия обычных от кислотостойких/щелочестойких)",
+    "supporting": "FAQ, Таблица устойчивости к химии",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "помповый распылитель для мойки авто (260)",
+      "распылитель пены для автомойки (10)"
+    ],
+    "merged_commercial": [
+      "купить распылитель для воды (20)"
+    ],
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "распылитель для машины -> авто распылитель",
+      "распылитель для мойки машины -> распылитель для мойки авто"
+    ]
+  }
+}

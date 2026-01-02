@@ -1,0 +1,160 @@
+{
+  "slug": "polirovalnye-krugi",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "type": "L2",
+  "note": "Hub-категория. Детальные ключи в L3: mekhovye, porolonovye",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "круг для полировки авто",
+        "volume": 720,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "круги для полировки автомобиля",
+        "volume": 590,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "круги для полировки",
+        "volume": 480,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "круг полировальный на липучке",
+        "volume": 40,
+        "cluster": "feature",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "полировальные круги для полировки автомобиля",
+        "volume": 40,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "круг для полировки кузова",
+        "volume": 30,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "полировальные круги для полировки авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "круг для полировки на машинку",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "полировочные круги на липучке",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "диск полировочный",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "диск для полировки автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить круг для полировки авто",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить круг для полировки автомобиля",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полировальные круги",
+        "volume": 30,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полировальный круг в украине",
+        "volume": 30,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "круг для полировки авто цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить в украине круги для полировки",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 34,
+    "after": 17,
+    "total_volume": 2170
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (обзор всех типов кругов)",
+    "secondary": "Ссылки на L3 подкатегории",
+    "supporting": "НЕ дублировать ключи L3 (мех, поролон)",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "l3_categories": {
+    "mekhovye": "меховой круг, шерстяной круг",
+    "porolonovye": "поролоновый круг, поролоновые полировальные круги"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "круг для полировки авто (720)",
+      "круги для полировки автомобиля (590)",
+      "полировальные круги для автомобиля (40)"
+    ],
+    "moved_to_mekhovye": [
+      "шерстяной круг для полировки (50)",
+      "меховой круг для полировки (20)"
+    ],
+    "moved_to_porolonovye": [
+      "поролоновые полировальные круги (20)"
+    ],
+    "proposed_changes": [
+      "Kept 'круги для полировки автомобиля' (590). Dropped: 'полировальные круги для автомобиля' (40)",
+      "Kept 'круги для полировки' (480). Dropped: 'полировальные круги' (390), 'круги для полировальной машины' (90), 'полировальные круги для авто' (30), 'полировочные круги' (10), 'круги для полировки машины' (10), 'полировочные круги для авто' (10)",
+      "Kept 'диск полировочный' (10). Dropped: 'диск для полировки авто' (10)",
+      "Kept 'купить круг для полировки авто' (70). Dropped: 'купить полировальный круг для авто' (30), 'купить круг для полировки' (20)"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "ochistiteli-diskov",
+  "tier": "B",
+  "keywords_count": 27,
+  "created_at": "2025-12-13T12:43:39.293364",
+  "current_stage": "prepare",
+  "stages": {
+    "prepare": "completed",
+    "produce": "pending",
+    "deliver": "pending"
+  },
+  "paths": {
+    "data": "categories/ochistiteli-diskov/data/ochistiteli-diskov.json",
+    "content_ru": "categories/ochistiteli-diskov/content/ochistiteli-diskov_ru.md",
+    "meta": "categories/ochistiteli-diskov/meta/ochistiteli-diskov_meta.json",
+    "deliverables": "categories/ochistiteli-diskov/deliverables/"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "poliroli-dlya-plastika",
+  "language": "uk",
+  "category_name_uk": "Поліроль для пластику",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "поліроль для пластику автомобіля", "keyword_ru": "полироль для пластика автомобиля", "volume": 320, "cluster": "main"},
+      {"keyword": "поліроль для салону автомобіля", "keyword_ru": "полироль для салона автомобиля", "volume": 390, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "поліроль для торпеди", "keyword_ru": "полироль для торпеды", "volume": 260, "cluster": "application"},
+      {"keyword": "поліроль для панелі авто", "keyword_ru": "полироль для панели авто", "volume": 170, "cluster": "application"}
+    ],
+    "supporting": [
+      {"keyword": "засіб для догляду за пластиком авто", "keyword_ru": "средство для ухода за пластиком авто", "volume": 20, "cluster": "care"}
+    ],
+    "commercial": [
+      {"keyword": "купити поліроль для пластику", "keyword_ru": "купить полироль для пластика", "volume": 10, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Поліроль для пластику", "main_keyword": "поліроль для пластику"},
+  "translation_notes": {"adapted_terms": ["полироль→поліроль", "пластика→пластику", "салона→салону", "торпеды→торпеди", "панели→панелі", "средство→засіб", "ухода→догляду"], "intent_preserved": true}
+}

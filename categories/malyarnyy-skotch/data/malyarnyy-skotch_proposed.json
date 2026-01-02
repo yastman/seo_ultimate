@@ -1,0 +1,151 @@
+{
+  "slug": "malyarnyy-skotch",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "малярный скотч",
+        "volume": 4400,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "малярные скотчи",
+        "volume": 4400,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "скотч малярний",
+        "volume": 1000,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "малярная лента",
+        "volume": 50,
+        "cluster": "product_type",
+        "note": "Лента = скотч, но другое название продукта",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "малярный скотч 10 мм",
+        "volume": 30,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "скотч малярный автомобильный",
+        "volume": 20,
+        "cluster": "auto_specific",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "малярный скотч 10мм",
+        "volume": 40,
+        "cluster": "size",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "малярный скотч широкий",
+        "volume": 10,
+        "cluster": "size",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "малярский скотч",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить малярный скотч",
+        "volume": 210,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "малярный скотч цена",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "малярная лента купить",
+        "volume": 50,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "малярный скотч 1 см купить",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "малярный скотч стоимость",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "скотч малярный купить в украине",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить малярную клейкую ленту",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 18,
+    "after": 16,
+    "total_volume": 10340
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (применение в детейлинге, оклейке)",
+    "secondary": "H2 (автомобильный vs строительный)",
+    "supporting": "FAQ, таблица размеров",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "малярные скотчи (4400)",
+      "скотч малярний (1000)"
+    ],
+    "merged_sizes": [
+      "малярный скотч 10 мм (30)",
+      "малярный скотч 1 см купить (20)"
+    ],
+    "merged_commercial": [
+      "малярский скотч (10)",
+      "малярный скотч стоимость (10)",
+      "скотч малярный купить в украине (10)",
+      "купить малярную клейкую ленту (10)",
+      "купить малярный скотч для авто (10)"
+    ],
+    "proposed_changes": [
+      "Kept 'малярный скотч' (4400). Dropped: 'малярный скотч для авто' (10)",
+      "Kept 'купить малярный скотч' (210). Dropped: 'купить малярный скотч для авто' (10)"
+    ]
+  }
+}

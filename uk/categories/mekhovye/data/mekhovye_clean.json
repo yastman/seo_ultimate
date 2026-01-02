@@ -1,0 +1,17 @@
+{
+  "slug": "mekhovye",
+  "language": "uk",
+  "category_name_uk": "Хутрові круги для полірування",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "хутровий круг для полірування", "keyword_ru": "меховой круг для полировки", "volume": 20, "cluster": "main"},
+      {"keyword": "вовняний круг для полірування", "keyword_ru": "шерстяной круг для полировки", "volume": 50, "cluster": "main"}
+    ],
+    "secondary": [],
+    "supporting": [],
+    "commercial": []
+  },
+  "seo_titles": {"h1": "Хутрові круги для полірування", "main_keyword": "хутровий круг для полірування"},
+  "translation_notes": {"adapted_terms": ["меховой→хутровий", "шерстяной→вовняний", "полировки→полірування"], "intent_preserved": true}
+}

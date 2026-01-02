@@ -1,0 +1,132 @@
+{
+  "slug": "ukhod-za-kozhey",
+  "language": "ru",
+  "clustered_at": "2025-12-31",
+  "parent": {
+    "l1": "Уход за интерьером",
+    "l2": "Средства для кожи",
+    "l3": "Уход за кожей"
+  },
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "уход за кожей автомобиля",
+        "volume": 210,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "полироль для кожи",
+        "volume": 170,
+        "cluster": "product_type"
+      },
+      {
+        "keyword": "лучшее средство по уходу за кожей авто",
+        "volume": 140,
+        "cluster": "best"
+      },
+      {
+        "keyword": "средство по уходу за кожей авто",
+        "volume": 90,
+        "cluster": "main"
+      },
+      {
+        "keyword": "крем для кожи авто",
+        "volume": 70,
+        "cluster": "product_type"
+      },
+      {
+        "keyword": "набор для ухода за кожей авто",
+        "volume": 30,
+        "cluster": "related"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "уход за кожей салона авто",
+        "volume": 20,
+        "cluster": "salon"
+      },
+      {
+        "keyword": "средство за уходом кожаного салона",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "лосьон для кожи авто",
+        "volume": 10,
+        "cluster": "product_type"
+      },
+      {
+        "keyword": "средство для ухода за кожей салона",
+        "volume": 10,
+        "cluster": "salon"
+      },
+      {
+        "keyword": "уход за кожей салона",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средства для ухода за кожей салона авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "лучшее средство для ухода за кожей автомобиля",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средство для кожи салона",
+        "volume": 10,
+        "cluster": "long_tail"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить средство для ухода за кожей авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "уход за кожей автомобиля купить",
+        "volume": 0,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 19,
+    "after": 18,
+    "total_volume": 1560
+  },
+  "usage_rules": {
+    "primary": "H1 + intro",
+    "secondary": "H2 заголовки, buying guide",
+    "supporting": "FAQ, таблицы",
+    "commercial": "ТОЛЬКО meta, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "уход за кожей авто (210)",
+      "уход за кожей автомобиля (210)"
+    ],
+    "product_types": [
+      "полироль",
+      "крем",
+      "лосьон"
+    ],
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "крем для кожи автомобиля -> крем для кожи авто",
+      "полироль для кожи автомобиля -> полироль для кожи авто",
+      "средства для ухода за кожей салона автомобиля -> средства для ухода за кожей салона авто",
+      "уход за кожей в машине -> уход за кожей автомобиля",
+      "уход за кожей салона автомобиля -> уход за кожей салона авто"
+    ]
+  }
+}

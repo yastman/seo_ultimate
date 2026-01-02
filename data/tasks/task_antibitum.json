@@ -1,0 +1,18 @@
+{
+  "slug": "antibitum",
+  "tier": "C",
+  "keywords_count": 3,
+  "created_at": "2025-12-13T12:43:39.245154",
+  "current_stage": "prepare",
+  "stages": {
+    "prepare": "completed",
+    "produce": "pending",
+    "deliver": "pending"
+  },
+  "paths": {
+    "data": "categories/antibitum/data/antibitum.json",
+    "content_ru": "categories/antibitum/content/antibitum_ru.md",
+    "meta": "categories/antibitum/meta/antibitum_meta.json",
+    "deliverables": "categories/antibitum/deliverables/"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "slug": "pyatnovyvoditeli",
+  "language": "ru",
+  "clustered_at": "2025-12-31",
+  "parent": {
+    "l1": "Уход за интерьером",
+    "l2": null
+  },
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "пятновыводитель",
+        "volume": 2400,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "пятновыводитель для салона авто",
+        "volume": 10,
+        "cluster": "application"
+      },
+      {
+        "keyword": "пятновыводитель для сидений авто",
+        "volume": 10,
+        "cluster": "application"
+      }
+    ],
+    "supporting": [],
+    "commercial": [
+      {
+        "keyword": "купить пятновыводитель",
+        "volume": 110,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 8,
+    "after": 5,
+    "total_volume": 2570
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "H2 заголовки, buying guide",
+    "supporting": "FAQ, таблицы, естественные упоминания",
+    "commercial": "ТОЛЬКО meta title/description, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "пятновыводитель (2400) — общий запрос, высокий volume"
+    ],
+    "note": "Категория с одним доминирующим ключом (2400), остальные — long-tail",
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "пятновыводитель для автомобиля/пятновыводитель для машины -> пятновыводитель для авто",
+      "пятновыводитель для салона автомобиля -> пятновыводитель для салона авто"
+    ]
+  }
+}

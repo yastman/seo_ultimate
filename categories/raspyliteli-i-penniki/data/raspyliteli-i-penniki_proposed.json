@@ -1,0 +1,114 @@
+{
+  "slug": "raspyliteli-i-penniki",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "помповый распылитель для мойки авто",
+        "volume": 260,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "распылитель для мойки авто",
+        "volume": 50,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "помповый распылитель для авто",
+        "volume": 20,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "распылитель пены для мойки",
+        "volume": 30,
+        "cluster": "foamer",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "авто триггер",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "пенники для моек высокого давления",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "распылитель для воды",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "распылитель воды для мойки авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "авто распылитель",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "распылитель для мытья машины",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "пенник для минимойки",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить распылитель для воды",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 25,
+    "after": 12,
+    "total_volume": 450
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (виды: курковые, помповые, накачные)",
+    "secondary": "H2 (отличия обычных от кислотостойких/щелочестойких)",
+    "supporting": "FAQ, Таблица устойчивости к химии",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "помповый распылитель для мойки авто (260)",
+      "распылитель пены для автомойки (10)"
+    ],
+    "merged_commercial": [
+      "купить распылитель для воды (20)"
+    ],
+    "proposed_changes": [
+      "Kept 'распылитель для мойки авто' (50). Dropped: 'распылитель для мойки машины' (10)",
+      "Kept 'распылитель пены для мойки' (30). Dropped: 'распылитель пены для автомойки' (10)",
+      "Kept 'распылитель для воды' (10). Dropped: 'распылитель воды для авто' (10)",
+      "Kept 'авто распылитель' (10). Dropped: 'распылитель для машины' (10)"
+    ]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "slug": "polirovalnye-pasty",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "полировочная паста",
+        "volume": 1600,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "паста для полировки кузова",
+        "volume": 40,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "полировочная паста для авто от царапин",
+        "volume": 260,
+        "cluster": "problem",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "полировочная паста для автомобиля",
+        "volume": 170,
+        "cluster": "synonym",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "паста для автомобиля",
+        "volume": 50,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "полироль паста для авто",
+        "volume": 30,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "паста для полировки авто машинкой",
+        "volume": 10,
+        "cluster": "method",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "паста для полировки кузова автомобиля",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "пасты для полировки авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "набор паст для полировки авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "паста авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить пасту для полировки авто",
+        "volume": 260,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полировочную пасту для автомобиля",
+        "volume": 110,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "полировальная паста купить",
+        "volume": 60,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "полировочная паста для авто цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 32,
+    "after": 15,
+    "total_volume": 2670
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (что такое паста, принцип работы)",
+    "secondary": "H2 (виды: абразивные, финишные, одношаговые)",
+    "supporting": "FAQ + Таблица зернистости",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "полировочная паста (1600)",
+      "паста для полировки (320)",
+      "полировальная паста для автомобиля (20)"
+    ],
+    "merged_commercial": [
+      "полировочная паста для авто цена (10)"
+    ],
+    "proposed_changes": [
+      "Kept 'полировочная паста' (1600). Dropped: 'полировочная паста для авто' (590), 'паста для полировки' (320), 'полировальная паста' (20), 'паста для полировки машины' (20), 'полировочная паста для машины' (10)",
+      "Kept 'паста для полировки кузова' (40). Dropped: 'полировочная паста для кузова' (20), 'паста для полировки кузова авто' (20), 'полировочная паста для кузова авто' (20)",
+      "Kept 'полировочная паста для автомобиля' (170). Dropped: 'полировальная паста для автомобиля' (20), 'паста для полировки автомобиля' (10)",
+      "Kept 'паста для полировки кузова автомобиля' (20). Dropped: 'полировочная паста для кузова автомобиля' (20), 'полировальная паста для кузова автомобиля' (20)",
+      "Kept 'пасты для полировки авто' (20). Dropped: 'пасты полировальные для авто' (20)",
+      "Kept 'купить пасту для полировки авто' (260). Dropped: 'купить полировочную пасту' (140), 'купить полировочную пасту для авто' (110), 'купить полировальную пасту для авто' (50)",
+      "Kept 'купить полировочную пасту для автомобиля' (110). Dropped: 'купить полировальную пасту для автомобиля' (80), 'купить пасту для полировки автомобиля' (20)"
+    ]
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "slug": "chistka-kozhi",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Уход за интерьером",
+    "l2": "Средства для кожи",
+    "l3": "Чистка кожи"
+  },
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "средства для чистки кожи автомобиля",
+        "volume": 70,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "средство для чистки кожи авто",
+        "volume": 70,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "средства для чистки кожаного салона автомобиля",
+        "volume": 40,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "химия для чистки кожи авто",
+        "volume": 20,
+        "cluster": "chemistry",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "средство для очистки кожи авто",
+        "volume": 20,
+        "cluster": "main",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "средства для чистки кожаного салона",
+        "volume": 20,
+        "cluster": "salon",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "щетка для чистки кожи авто",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "очиститель кожи авто",
+        "volume": 10,
+        "cluster": "cleaner",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "очиститель кожи салона автомобиля",
+        "volume": 10,
+        "cluster": "cleaner",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для чистки кожи салона автомобиля",
+        "volume": 10,
+        "cluster": "salon",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "лучшее средство для чистки кожи авто",
+        "volume": 10,
+        "cluster": "best",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средства для очистки кожи салона авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "очиститель кожи автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "химия для чистки кожаного салона",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "автохимия для кожаного салона",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для очистки кожи салона",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для химчистки кожаного салона",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для чистки кожаного салона авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "чистящее средство для кожи авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средства для чистки кожи салона авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для химчистки кожи автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить очиститель кожи авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить щетки для чистки кожи в авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить средство для чистки кожи авто",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 19,
+    "after": 24,
+    "total_volume": 450
+  },
+  "usage_rules": {
+    "primary": "H1 + intro",
+    "secondary": "H2 заголовки, buying guide",
+    "supporting": "FAQ, таблицы",
+    "commercial": "ТОЛЬКО meta, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "средства для чистки кожи автомобиля (70)",
+      "средство для чистки кожи авто (70)"
+    ],
+    "proposed_changes": []
+  }
+}
