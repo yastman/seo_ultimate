@@ -1,0 +1,132 @@
+{
+  "schema_version": "3.0.0",
+  "generated_at": "2025-12-17T16:30:58.251079Z",
+  "generator_script": "parse_semantics_to_json.py",
+  "slug": "ochistiteli-shin",
+  "category_name_ru": "Очистители шин",
+  "tier": "B",
+  "language": "ru",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "очиститель шин",
+        "volume": 70,
+        "intent": "informational",
+        "density_target": "0.20%",
+        "occurrences_target": 2,
+        "variations": {
+          "exact": [
+            "очиститель шин"
+          ],
+          "partial": [
+            "очиститель"
+          ]
+        }
+      }
+    ],
+    "secondary": [],
+    "supporting": [
+      {
+        "keyword": "очиститель резины",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.15%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "очиститель резины"
+          ],
+          "partial": [
+            "очиститель",
+            "резины"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для чистки шин",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.15%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для чистки шин"
+          ],
+          "partial": [
+            "средство",
+            "чист"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для очистки резины",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.15%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для очистки резины"
+          ],
+          "partial": [
+            "средство",
+            "очист",
+            "резины"
+          ]
+        }
+      },
+      {
+        "keyword": "защитное покрытие для дисков",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.15%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "защитное покрытие для дисков",
+            "защитное покрытие для литых дисков"
+          ],
+          "partial": [
+            "защитн",
+            "покрытие",
+            "диск"
+          ]
+        }
+      },
+      {
+        "keyword": "защитное покрытие для литых дисков",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.15%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "защитное покрытие для литых дисков",
+            "защитное покрытие для дисков"
+          ],
+          "partial": [
+            "защитн",
+            "покрытие",
+            "диск"
+          ]
+        }
+      }
+    ]
+  },
+  "semantic_entities": [],
+  "content_targets": {
+    "char_count_no_spaces": "3600-4200",
+    "h2_count": "2-4",
+    "faq_count": "2-3",
+    "coverage_target": 50,
+    "density_target": "1-2%",
+    "lsi_ratio": ">=5:1"
+  },
+  "stats": {
+    "total_keywords": 6,
+    "total_volume": 120,
+    "primary_count": 1,
+    "secondary_count": 0,
+    "supporting_count": 5
+  }
+}

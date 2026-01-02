@@ -1,0 +1,82 @@
+{
+  "slug": "moyka-i-eksteryer",
+  "language": "ru",
+  "clustered_at": "2025-12-31",
+  "type": "L1",
+  "note": "Главный раздел. Содержит L2: avtoshampuni, sredstva-dlya-stekol, ochistiteli-kuzova, sredstva-dlya-diskov-i-shin, ochistiteli-dvigatelya, obezzhirivateli",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "химия для мойки авто",
+        "volume": 590,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [],
+    "supporting": [
+      {
+        "keyword": "жидкость для мойки авто",
+        "volume": 10,
+        "cluster": "format"
+      },
+      {
+        "keyword": "профессиональная химия для мойки авто",
+        "volume": 10,
+        "cluster": "pro"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить химию для мойки авто",
+        "volume": 260,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить автохимию для мойки авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "химия для мойки авто цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 22,
+    "after": 10,
+    "total_volume": 1330
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (обзор всех категорий мойки)",
+    "secondary": "Ссылки на L2 подкатегории",
+    "supporting": "Общее описание преимуществ автохимии",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "l2_categories": [
+    "avtoshampuni",
+    "sredstva-dlya-stekol",
+    "ochistiteli-kuzova",
+    "sredstva-dlya-diskov-i-shin",
+    "ochistiteli-dvigatelya",
+    "obezzhirivateli",
+    "dlya-vneshnego-plastika"
+  ],
+  "clustering_notes": {
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "автохимия для мойки автомобиля -> автохимия для мойки авто",
+      "жидкость для мойки автомобиля -> жидкость для мойки авто",
+      "средство для мойки автомобиля/средство для мойки машин -> средство для мойки авто",
+      "химия для мойки автомобиля/химия для мойки машины -> химия для мойки авто",
+      "автохимия для мойки -> химия для мойки авто",
+      "средство для мойки авто -> химия для мойки авто",
+      "химия для мойки -> химия для мойки авто",
+      "автохимия для мойки авто -> химия для мойки авто"
+    ]
+  }
+}

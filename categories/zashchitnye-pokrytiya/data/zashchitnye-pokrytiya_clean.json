@@ -1,0 +1,55 @@
+{
+  "slug": "zashchitnye-pokrytiya",
+  "language": "ru",
+  "clustered_at": "2025-12-31",
+  "type": "L1",
+  "note": "Главный раздел защитных покрытий. Содержит L2: voski, keramika-i-zhidkoe-steklo, kvik-deteylery, silanty, oborudovanie",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "защитные покрытия для авто",
+        "volume": 70,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "покрытие для автомобиля",
+        "volume": 10,
+        "cluster": "short"
+      }
+    ],
+    "supporting": [],
+    "commercial": [
+      {
+        "keyword": "купить защитное покрытие для авто",
+        "volume": 10,
+        "cluster": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 5,
+    "after": 3,
+    "total_volume": 110
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (обзор типов защитных покрытий: воски, керамика, силанты)",
+    "secondary": "Ссылки на L2 подкатегории",
+    "supporting": "Сравнение типов покрытий",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "l2_categories": [
+    "voski",
+    "keramika-i-zhidkoe-steklo",
+    "kvik-deteylery",
+    "silanty",
+    "oborudovanie"
+  ],
+  "clustering_notes": {
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "защитные покрытия автомобиля -> защитные покрытия для авто"
+    ]
+  }
+}

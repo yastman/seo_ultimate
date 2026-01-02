@@ -1,0 +1,83 @@
+{
+  "slug": "nabory",
+  "language": "ru",
+  "clustered_at": "2025-12-31",
+  "type": "L1",
+  "note": "Главный раздел наборов. Содержит L2: nabory-dlya-deteylinga, которая содержит L3: nabory-dlya-moyki, nabory-dlya-polirovki, nabory-dlya-kozhi, nabory-dlya-khimchistki, podarochnye-nabory",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "наборы для авто",
+        "volume": 390,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "наборы для ухода за авто",
+        "volume": 170,
+        "cluster": "related"
+      },
+      {
+        "keyword": "набор для ухода за салоном авто",
+        "volume": 50,
+        "cluster": "related"
+      },
+      {
+        "keyword": "наборы автокосметики",
+        "volume": 40,
+        "cluster": "related"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "набор для уборки авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "набор химии для авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить набор для авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 46,
+    "after": 9,
+    "total_volume": 1040
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (обзор всех типов наборов)",
+    "secondary": "Ссылки на L3 подкатегории наборов",
+    "supporting": "Преимущества готовых наборов",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "l3_categories": [
+    "nabory-dlya-moyki",
+    "nabory-dlya-polirovki",
+    "nabory-dlya-kozhi",
+    "nabory-dlya-khimchistki",
+    "podarochnye-nabory"
+  ],
+  "clustering_notes": {
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "набор для уборки автомобиля -> набор для уборки машины",
+      "набор для ухода за машиной -> набор для ухода за авто",
+      "набор тряпок для автомобиля -> набор тряпок для авто",
+      "наборы для ухода за автомобилем -> наборы для ухода за авто",
+      "набор для ухода за салоном автомобиля -> набор для ухода за салоном авто",
+      "набор для уборки машины -> набор для уборки авто",
+      "набор химии для автомобиля -> набор химии для авто"
+    ]
+  }
+}

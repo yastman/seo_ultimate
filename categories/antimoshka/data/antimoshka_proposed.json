@@ -1,0 +1,68 @@
+{
+  "slug": "antimoshka",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "антимошка",
+        "volume": 320,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "антимошка на мойке",
+        "volume": 30,
+        "cluster": "usage",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "концентрат антимошка",
+        "volume": 20,
+        "cluster": "format",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "антимошка на мойке самообслуживания",
+        "volume": 20,
+        "cluster": "usage",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "антимошка спрей",
+        "volume": 10,
+        "cluster": "format",
+        "original_section": "supporting"
+      }
+    ]
+  },
+  "seo_titles": {
+    "h1": "Антимошка для авто",
+    "main_keyword": "антимошка"
+  },
+  "stats": {
+    "before": 6,
+    "after": 5,
+    "total_volume": 400
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "разделы buying guide (выбор, виды, применение)",
+    "supporting": "FAQ, таблицы, естественные упоминания",
+    "commercial": "ТОЛЬКО meta title/description, НЕ в текст"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "антимошка (320)",
+      "антимошка для авто (320)"
+    ],
+    "note": "Удалён дубликат 'антимошка' из secondary (был в raw)",
+    "proposed_changes": [
+      "Kept 'антимошка' (320). Dropped: 'антимошка для авто' (320)"
+    ]
+  }
+}

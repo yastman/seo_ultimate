@@ -1,0 +1,26 @@
+{
+  "slug": "shchetki-i-kisti",
+  "language": "uk",
+  "category_name_uk": "Щітки та пензлі для авто",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "щітка для миття авто", "keyword_ru": "щетка для мойки авто", "volume": 480, "cluster": "main"},
+      {"keyword": "щітка для автомобіля", "keyword_ru": "щетка для автомобиля", "volume": 390, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "щітка для миття машини", "keyword_ru": "щетка для мытья машины", "volume": 390, "cluster": "synonym"},
+      {"keyword": "щітка для детейлінгу", "keyword_ru": "щетка для детейлинга", "volume": 210, "cluster": "detailing"}
+    ],
+    "supporting": [
+      {"keyword": "щітки для хімчистки авто", "keyword_ru": "щетки для химчистки авто", "volume": 50, "cluster": "interior"},
+      {"keyword": "щітка для дисків авто", "keyword_ru": "щетка для дисков авто", "volume": 50, "cluster": "wheels"},
+      {"keyword": "пензлик для чистки салону авто", "keyword_ru": "кисточка для чистки салона авто", "volume": 20, "cluster": "detailing"}
+    ],
+    "commercial": [
+      {"keyword": "купити щітку для миття авто", "keyword_ru": "купить щетку для мойки авто", "volume": 210, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Щітки та пензлі для авто", "main_keyword": "щітка для миття авто"},
+  "translation_notes": {"adapted_terms": ["щетка→щітка", "кисточка→пензлик", "мойки→миття", "мытья→миття", "химчистки→хімчистки", "дисков→дисків", "салона→салону"], "intent_preserved": true}
+}

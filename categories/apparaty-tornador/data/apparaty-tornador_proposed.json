@@ -1,0 +1,180 @@
+{
+  "slug": "apparaty-tornador",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "торнадор",
+        "volume": 3600,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "торнадор для химчистки авто",
+        "volume": 260,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "торнадор химчистка",
+        "volume": 210,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "tornador",
+        "volume": 140,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "торнадор для химчистки салона",
+        "volume": 30,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "tornador химчистка",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "чистка салона tornador",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "аппарат для химчистки tornador",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "торнадор для чистки салона автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "торнадо для чистки салона",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "торнадо для химчистки",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "торнадо для химчистки салона",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить торнадор",
+        "volume": 390,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить торнадор для химчистки",
+        "volume": 90,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить торнадор для химчистки салона",
+        "volume": 50,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "торнадор профессиональный купить",
+        "volume": 50,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить tornador",
+        "volume": 40,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "торнадор цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "цена торнадор для химчистки",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "tornador купить в украине",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "tornador цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "торнадор купить в украине",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 25,
+    "after": 22,
+    "total_volume": 4980
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (принцип работы: вихревой поток)",
+    "secondary": "H2 (как выбрать компрессор для торнадора)",
+    "supporting": "FAQ, Таблица характеристик",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "торнадор (3600)"
+    ],
+    "merged_commercial": [
+      "торнадор профессиональный купить (50)",
+      "купить торнадор для химчистки салона (50)"
+    ],
+    "proposed_changes": [
+      "Kept 'купить торнадор для химчистки' (90). Dropped: 'торнадор для химчистки авто купить' (10)"
+    ]
+  }
+}

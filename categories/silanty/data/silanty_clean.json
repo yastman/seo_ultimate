@@ -1,0 +1,75 @@
+{
+  "slug": "silanty",
+  "language": "ru",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "силант",
+        "volume": 50,
+        "cluster": "main"
+      },
+      {
+        "keyword": "силанты для авто",
+        "volume": 70,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "силант для кузова",
+        "volume": 10,
+        "cluster": "application"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "силант покрытие",
+        "volume": 10,
+        "cluster": "synonym"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить силант",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "силант цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "автомобиль силант цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 9,
+    "after": 8,
+    "total_volume": 180
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (что такое силант, отличие от воска)",
+    "secondary": "H2 (преимущества синтетических покрытий)",
+    "supporting": "FAQ, сравнение с воском и керамикой",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "силант автомобиль (10)",
+      "автомобиль силант цена (10)"
+    ],
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "силант автомобиль -> силант для авто",
+      "силант для авто -> силанты для авто"
+    ]
+  }
+}

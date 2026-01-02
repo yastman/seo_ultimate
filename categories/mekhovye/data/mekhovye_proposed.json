@@ -1,0 +1,44 @@
+{
+  "slug": "mekhovye",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "type": "L3",
+  "parent": "polirovalnye-krugi",
+  "keywords": {
+    "secondary": [
+      {
+        "keyword": "шерстяной круг для полировки",
+        "volume": 50,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "меховой круг для полировки",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ]
+  },
+  "stats": {
+    "before": 2,
+    "after": 2,
+    "total_volume": 70
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (назначение меховых кругов: агрессивная полировка)",
+    "secondary": "H2 (виды: натуральная шерсть, синтетика)",
+    "supporting": "FAQ, сравнение с поролоновыми",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "from_parent": [
+      "шерстяной круг для полировки (50)",
+      "меховой круг для полировки (20)"
+    ],
+    "proposed_changes": []
+  },
+  "restored_from": "CSV block 'Меховые' (2 raw keywords)"
+}

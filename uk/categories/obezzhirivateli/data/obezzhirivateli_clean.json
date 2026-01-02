@@ -1,0 +1,23 @@
+{
+  "slug": "obezzhirivateli",
+  "language": "uk",
+  "category_name_uk": "Знежирювач для авто",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "знежирювач для авто", "keyword_ru": "обезжириватель для авто", "volume": 590, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "знежирювач для кузова авто", "keyword_ru": "обезжириватель для кузова авто", "volume": 30, "cluster": "application"},
+      {"keyword": "знежирювач для авто перед поліруванням", "keyword_ru": "обезжириватель для авто перед полировкой", "volume": 20, "cluster": "application"}
+    ],
+    "supporting": [
+      {"keyword": "знежирювач для машини", "keyword_ru": "обезжириватель для машины", "volume": 10, "cluster": "short_form"}
+    ],
+    "commercial": [
+      {"keyword": "купити знежирювач для авто", "keyword_ru": "купить обезжириватель для авто", "volume": 70, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Знежирювач для авто", "main_keyword": "знежирювач для авто"},
+  "translation_notes": {"adapted_terms": ["обезжириватель→знежирювач", "полировкой→поліруванням", "кузова→кузова"], "kept_original": ["авто"], "intent_preserved": true}
+}

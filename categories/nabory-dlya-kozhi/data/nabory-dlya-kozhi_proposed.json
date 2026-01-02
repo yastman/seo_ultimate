@@ -1,0 +1,26 @@
+{
+  "slug": "nabory-dlya-kozhi",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Аксессуары",
+    "l2": "Наборы для детейлинга",
+    "l3": "Наборы для ухода за кожей"
+  },
+  "keywords": {},
+  "stats": {
+    "before": 1,
+    "after": 0,
+    "total_volume": 0
+  },
+  "usage_rules": {
+    "primary": "H1 + intro",
+    "secondary": "H2 заголовки",
+    "supporting": "FAQ, таблицы",
+    "commercial": "ТОЛЬКО meta, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "note": "Мало ключей в CSV, категория узкая",
+    "proposed_changes": []
+  }
+}

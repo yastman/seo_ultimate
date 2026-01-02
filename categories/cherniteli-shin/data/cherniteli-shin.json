@@ -1,0 +1,454 @@
+{
+  "schema_version": "3.0.0",
+  "generated_at": "2025-12-17T16:30:49.918372Z",
+  "generator_script": "parse_semantics_to_json.py",
+  "slug": "cherniteli-shin",
+  "category_name_ru": "Чернители шин",
+  "tier": "B",
+  "language": "ru",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "чернитель резины",
+        "volume": 1000,
+        "intent": "informational",
+        "density_target": "0.20%",
+        "occurrences_target": 4,
+        "variations": {
+          "exact": [
+            "чернитель резины",
+            "купить чернитель резины"
+          ],
+          "partial": [
+            "чернитель",
+            "резины"
+          ]
+        }
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "чернение резины",
+        "volume": 390,
+        "intent": "informational",
+        "density_target": "0.20%",
+        "occurrences_target": 3,
+        "variations": {
+          "exact": [
+            "чернение резины"
+          ],
+          "partial": [
+            "чернение",
+            "резины"
+          ]
+        }
+      },
+      {
+        "keyword": "полироль для колес",
+        "volume": 170,
+        "intent": "informational",
+        "density_target": "0.15%",
+        "occurrences_target": 3,
+        "variations": {
+          "exact": [
+            "полироль для колес"
+          ],
+          "partial": [
+            "полироль",
+            "колес"
+          ]
+        }
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "полироль для шин",
+        "volume": 90,
+        "intent": "informational",
+        "density_target": "0.10%",
+        "occurrences_target": 2,
+        "variations": {
+          "exact": [
+            "полироль для шин"
+          ],
+          "partial": [
+            "полироль"
+          ]
+        }
+      },
+      {
+        "keyword": "средства для чернения шин",
+        "volume": 90,
+        "intent": "informational",
+        "density_target": "0.10%",
+        "occurrences_target": 2,
+        "variations": {
+          "exact": [
+            "средства для чернения шин",
+            "средства для чернения резины",
+            "средства для шин",
+            "купить средство для чернения шин"
+          ],
+          "partial": [
+            "средства",
+            "чернен"
+          ]
+        }
+      },
+      {
+        "keyword": "купить чернитель резины",
+        "volume": 70,
+        "intent": "commercial",
+        "density_target": "0.10%",
+        "occurrences_target": 2,
+        "variations": {
+          "exact": [
+            "купить чернитель резины"
+          ],
+          "partial": [
+            "чернитель",
+            "резины"
+          ]
+        }
+      },
+      {
+        "keyword": "чернитель колёс",
+        "volume": 50,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "чернитель колёс"
+          ],
+          "partial": [
+            "чернитель",
+            "колёс"
+          ]
+        }
+      },
+      {
+        "keyword": "чернение колес",
+        "volume": 40,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "чернение колес"
+          ],
+          "partial": [
+            "чернение",
+            "колес"
+          ]
+        }
+      },
+      {
+        "keyword": "полироль для резины",
+        "volume": 30,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "полироль для резины",
+            "полироль для резины автомобиля"
+          ],
+          "partial": [
+            "полироль",
+            "резины"
+          ]
+        }
+      },
+      {
+        "keyword": "чернитель шин купить",
+        "volume": 20,
+        "intent": "commercial",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "чернитель шин купить"
+          ],
+          "partial": [
+            "чернитель"
+          ]
+        }
+      },
+      {
+        "keyword": "полироль для резины автомобиля",
+        "volume": 20,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "полироль для резины автомобиля",
+            "полироль для резины"
+          ],
+          "partial": [
+            "полироль",
+            "резины",
+            "автомобиля"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для резины",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для резины",
+            "средство для чернения резины купить"
+          ],
+          "partial": [
+            "средство",
+            "резины"
+          ]
+        }
+      },
+      {
+        "keyword": "средства для чернения резины",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средства для чернения резины",
+            "средства для чернения шин",
+            "средство для чернения резины купить"
+          ],
+          "partial": [
+            "средства",
+            "чернен",
+            "резины"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для чернения резины купить",
+        "volume": 10,
+        "intent": "commercial",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для чернения резины купить",
+            "купить средство для чернения шин"
+          ],
+          "partial": [
+            "средство",
+            "чернен",
+            "резины"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для ухода за шинами",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для ухода за шинами",
+            "средство для ухода за резиной"
+          ],
+          "partial": [
+            "средство",
+            "ухода",
+            "шинами"
+          ]
+        }
+      },
+      {
+        "keyword": "средства для ухода за резиной автомобиля",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средства для ухода за резиной автомобиля"
+          ],
+          "partial": [
+            "средства",
+            "ухода",
+            "резин",
+            "автомобиля"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для ухода за резиной",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для ухода за резиной",
+            "средство для ухода за шинами",
+            "средства для ухода за резиной автомобиля"
+          ],
+          "partial": [
+            "средство",
+            "ухода",
+            "резин"
+          ]
+        }
+      },
+      {
+        "keyword": "средства для шин",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средства для шин",
+            "средства для чернения шин"
+          ],
+          "partial": [
+            "средства"
+          ]
+        }
+      },
+      {
+        "keyword": "купить средство для чернения шин",
+        "volume": 10,
+        "intent": "commercial",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "купить средство для чернения шин",
+            "средство для чернения резины купить",
+            "купить средство для шин машины"
+          ],
+          "partial": [
+            "средство",
+            "чернен"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для обработки шин",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для обработки шин",
+            "купить средство для чернения шин",
+            "средство для шин авто",
+            "средство для натирания шин",
+            "купить средство для шин машины"
+          ],
+          "partial": [
+            "средство",
+            "обработ"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для шин авто",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для шин авто",
+            "купить средство для чернения шин",
+            "средство для обработки шин",
+            "средство для натирания шин",
+            "купить средство для шин машины"
+          ],
+          "partial": [
+            "средство",
+            "авто"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для натирания шин",
+        "volume": 10,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для натирания шин",
+            "купить средство для чернения шин",
+            "средство для обработки шин",
+            "средство для шин авто",
+            "купить средство для шин машины"
+          ],
+          "partial": [
+            "средство",
+            "натиран"
+          ]
+        }
+      },
+      {
+        "keyword": "купить средство для шин машины",
+        "volume": 0,
+        "intent": "commercial",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "купить средство для шин машины",
+            "купить средство для чернения шин"
+          ],
+          "partial": [
+            "средство",
+            "машины"
+          ]
+        }
+      },
+      {
+        "keyword": "средство для блеска шин",
+        "volume": 0,
+        "intent": "informational",
+        "density_target": "0.05%",
+        "occurrences_target": 1,
+        "variations": {
+          "exact": [
+            "средство для блеска шин",
+            "купить средство для чернения шин",
+            "средство для обработки шин",
+            "средство для шин авто",
+            "средство для натирания шин"
+          ],
+          "partial": [
+            "средство",
+            "блес"
+          ]
+        }
+      }
+    ]
+  },
+  "semantic_entities": [],
+  "content_targets": {
+    "char_count_no_spaces": "3600-4200",
+    "h2_count": "2-4",
+    "faq_count": "2-3",
+    "coverage_target": 50,
+    "density_target": "1-2%",
+    "lsi_ratio": ">=5:1"
+  },
+  "stats": {
+    "total_keywords": 24,
+    "total_volume": 2080,
+    "primary_count": 1,
+    "secondary_count": 2,
+    "supporting_count": 21
+  }
+}

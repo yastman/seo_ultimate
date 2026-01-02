@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+output/reports/*.json
+output/reports/*.txt
+*.log
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# Large files
+ultimate_net_ua_backup.sql
+nul
+*.db
+*.sqlite
+
+# Cache
+.cache/
+.ruff_cache/
+
+# Coverage
+.coverage
+coverage.json
+htmlcov/
+artifacts/
+
+# Pytest
+.pytest_cache/

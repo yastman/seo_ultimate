@@ -1,0 +1,106 @@
+{
+  "slug": "ochistiteli-kuzova",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Мойка и Экстерьер",
+    "l2": "Очистители кузова"
+  },
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "очиститель кузова авто",
+        "volume": 70,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "автохимия для кузова",
+        "volume": 50,
+        "cluster": "product_type",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "средство для очистки кузова авто",
+        "volume": 20,
+        "cluster": "synonym",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "универсальный очиститель кузова",
+        "volume": 10,
+        "cluster": "feature",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "очиститель кузова автомобиля",
+        "volume": 70,
+        "cluster": "synonym",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "автокосметика для кузова",
+        "volume": 10,
+        "cluster": "product_type",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для очистки кузова автомобиля",
+        "volume": 10,
+        "cluster": "synonym",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "автохимия очиститель кузова",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить очиститель кузова",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить очиститель кузова автомобиля",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 16,
+    "after": 10,
+    "total_volume": 270
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "H2 заголовки, buying guide",
+    "supporting": "FAQ, таблицы, естественные упоминания",
+    "commercial": "ТОЛЬКО meta title/description, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "очиститель кузова авто (70)",
+      "очиститель кузова автомобиля (70)",
+      "очиститель кузова (40)"
+    ],
+    "excluded": [
+      "химия для мойки авто (590) — слишком общий, не про очистители кузова"
+    ],
+    "proposed_changes": [
+      "Kept 'очиститель кузова авто' (70). Dropped: 'очиститель кузова' (40)",
+      "Kept 'автохимия для кузова' (50). Dropped: 'химия для кузова авто' (10)"
+    ]
+  }
+}

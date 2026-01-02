@@ -1,0 +1,112 @@
+{
+  "slug": "dlya-khimchistki-salona",
+  "language": "uk",
+  "category_name_uk": "Хімія для хімчистки салону",
+  "translated_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "хімія для хімчистки салону",
+        "keyword_ru": "химия для химчистки салона",
+        "volume": 590,
+        "cluster": "main"
+      },
+      {
+        "keyword": "засіб для чистки салону автомобіля",
+        "keyword_ru": "средство для чистки салона автомобиля",
+        "volume": 390,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "професійна хімія для чистки салону",
+        "keyword_ru": "профессиональная химия для чистки салона",
+        "volume": 210,
+        "cluster": "pro"
+      },
+      {
+        "keyword": "засіб для хімчистки салону",
+        "keyword_ru": "средство для химчистки салона",
+        "volume": 260,
+        "cluster": "synonym"
+      },
+      {
+        "keyword": "автохімія для салону",
+        "keyword_ru": "автохимия для салона",
+        "volume": 210,
+        "cluster": "synonym"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "хімія для чистки сидінь",
+        "keyword_ru": "химия для чистки сидений",
+        "volume": 50,
+        "cluster": "target_seats"
+      },
+      {
+        "keyword": "засіб для чистки тканини салону",
+        "keyword_ru": "средство для чистки ткани салона",
+        "volume": 20,
+        "cluster": "target_fabric"
+      },
+      {
+        "keyword": "чистка стелі автомобіля",
+        "keyword_ru": "чистка потолка автомобиля",
+        "volume": 20,
+        "cluster": "target_ceiling"
+      },
+      {
+        "keyword": "очищувач салону",
+        "keyword_ru": "очиститель салона",
+        "volume": 20,
+        "cluster": "type"
+      },
+      {
+        "keyword": "універсальний очищувач салону",
+        "keyword_ru": "универсальный очиститель салона",
+        "volume": 10,
+        "cluster": "type"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити хімію для хімчистки салону",
+        "keyword_ru": "купить химию для химчистки салона",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "засоби для хімчистки салону ціна",
+        "keyword_ru": "средства для химчистки салона цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      "средство → засіб",
+      "очиститель → очищувач",
+      "потолок → стеля",
+      "ткань → тканина",
+      "купить → купити",
+      "цена → ціна"
+    ],
+    "kept_original": [
+      "салон",
+      "хімія",
+      "авто"
+    ],
+    "intent_preserved": true
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (перші 150 слів)",
+    "secondary": "H2 розділи (види, вибір, застосування)",
+    "supporting": "FAQ, таблиці, context",
+    "commercial": "ТІЛЬКИ meta title/description"
+  }
+}

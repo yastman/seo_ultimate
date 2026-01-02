@@ -1,0 +1,28 @@
+{
+  "slug": "s-voskom",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Мойка и Экстерьер",
+    "l2": "Автошампуни",
+    "l3": "Для ручной мойки"
+  },
+  "type": "SEO-filter",
+  "keywords": {},
+  "stats": {
+    "before": 5,
+    "after": 0,
+    "total_volume": 0
+  },
+  "usage_rules": {
+    "primary": "H1 + intro",
+    "secondary": "H2 заголовки",
+    "supporting": "FAQ, таблицы",
+    "commercial": "ТОЛЬКО meta, НЕ в текст!"
+  },
+  "note": "SEO-фильтр в dlya-ruchnoy-moyki",
+  "restored_from": "CSV block 'С воском' (5 raw keywords)",
+  "clustering_notes": {
+    "proposed_changes": []
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "slug": "ochistiteli-stekol",
+  "language": "uk",
+  "category_name_uk": "Очищувачі скла",
+  "clustered_at": "2025-12-19",
+  "keywords": {
+    "primary": [
+      {"keyword": "очищувач скла автомобіля", "keyword_ru": "очиститель стекол автомобиля", "volume": 40, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "засіб для скла авто", "keyword_ru": "средство для стекол авто", "volume": 20, "cluster": "product_type"}
+    ],
+    "supporting": [
+      {"keyword": "очищувач лобового скла", "keyword_ru": "очиститель лобового стекла", "volume": 10, "cluster": "windshield"}
+    ],
+    "commercial": []
+  },
+  "seo_titles": {
+    "h1": "Очищувач скла авто",
+    "main_keyword": "очищувач скла авто",
+    "h1_ru": "очиститель стекла авто",
+    "main_keyword_ru": "очиститель стекла авто"
+  },
+  "translation_notes": {
+    "adapted_terms": ["стекла→скла", "очиститель→очищувач", "средство→засіб", "жидкость→рідина", "очистки→очищення", "заднего→заднього", "автомобиля→автомобіля"],
+    "kept_original": ["авто", "лобового"],
+    "intent_preserved": true
+  }
+}

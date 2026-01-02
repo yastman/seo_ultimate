@@ -1,0 +1,276 @@
+{
+  "slug": "dlya-khimchistki-salona",
+  "language": "ru",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "химия для чистки салона",
+        "volume": 590,
+        "cluster": "main"
+      },
+      {
+        "keyword": "средство для чистки салона авто",
+        "volume": 390,
+        "cluster": "main"
+      },
+      {
+        "keyword": "химия для салона авто",
+        "volume": 320,
+        "cluster": "main"
+      },
+      {
+        "keyword": "химия для химчистки салона",
+        "volume": 170,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "средство для химчистки салона авто",
+        "volume": 380,
+        "cluster": "related"
+      },
+      {
+        "keyword": "автохимия для салона",
+        "volume": 210,
+        "cluster": "synonym"
+      },
+      {
+        "keyword": "профессиональная химия для чистки салона авто",
+        "volume": 210,
+        "cluster": "related"
+      },
+      {
+        "keyword": "профессиональные средства для химчистки салона",
+        "volume": 110,
+        "cluster": "related"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "химия для химчистки авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "очиститель для салона авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средство для чистки тканевого салона авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "химия для мойки салона авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "химия для очистки салона",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средства для чистки потолка автомобиля",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "автохимия для салона авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "химчистка для салона авто",
+        "volume": 20,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средство для чистки ткани салона",
+        "volume": 10,
+        "cluster": "target_fabric"
+      },
+      {
+        "keyword": "очиститель салона",
+        "volume": 10,
+        "cluster": "type"
+      },
+      {
+        "keyword": "автохимия для химчистки салона",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "средство для чистки обивки салона",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средство для чистки сидений авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "автохимия для чистки салона",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "жидкость для химчистки салона авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средство для очистки салона авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средство для чистки автосалона",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средство для чистки обивки салона",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "чистящее средство для салона авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "очиститель сидений авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средство для химчистки салона украина",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+      {
+        "keyword": "средства для химчистки",
+        "volume": 10,
+        "cluster": "long_tail"
+      },
+            {
+        "keyword": "химия для текстиля авто",
+        "volume": 10,
+        "cluster": "long_tail"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить химию для чистки салона авто",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить средство для чистки салона автомобиля",
+        "volume": 50,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "химия для чистки салона автомобиля купить",
+        "volume": 50,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "химчистка для салона авто купить",
+        "volume": 30,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить средство для химчистки салона авто",
+        "volume": 30,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить химию для химчистки салона автомобиля",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить химию для химчистки салона",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить химию для чистки салона",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "автохимия для салона купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "купить очиститель салона авто",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "средство для химчистки салона купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      },
+      {
+        "keyword": "химия для салона авто купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "stats": {
+    "before": 80,
+    "after": 53,
+    "total_volume": 4890
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "H2 разделы (виды, выбор, применение)",
+    "supporting": "FAQ, таблицы, context",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "химия для чистки салона (590)",
+      "средство для чистки салона авто (390)",
+      "химия для салона авто (320)",
+      "химия для чистки салона автомобиля (260)"
+    ],
+    "merged_commercial": [
+      "купить химию для чистки салона авто (70)",
+      "купить средство для чистки салона автомобиля (50)",
+      "химия для чистки салона автомобиля купить (50)"
+    ],
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "профессиональные средства для химчистки салона автомобиля -> салона",
+      "автохимия для химчистки салона автомобиля -> удалено (дубль)",
+      "автохимия для чистки салона автомобиля -> удалено (дубль)",
+      "средство для чистки обивки салона автомобиля -> обивки салона",
+      "средства для химической чистки салона автомобиля -> удалено",
+      "все для химчистки салона автомобиля -> удалено",
+      "средства для чистки салона машины -> удалено"
+    ]
+  }
+}

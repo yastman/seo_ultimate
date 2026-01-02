@@ -1,0 +1,272 @@
+{
+  "slug": "keramika-i-zhidkoe-steklo",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "жидкое стекло для автомобилей",
+        "volume": 480,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "нанокерамика для автомобиля",
+        "volume": 390,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "керамика для авто",
+        "volume": 20,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "нанокерамика",
+        "volume": 480,
+        "cluster": "product_type",
+        "note": "Отдельный тип продукта, НЕ синоним жидкого стекла",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "керамическое покрытие авто",
+        "volume": 170,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "жидкое стекло для полировки авто",
+        "volume": 20,
+        "cluster": "usage",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "керамика для кузова",
+        "volume": 20,
+        "cluster": "target",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "нано керамика на авто",
+        "volume": 50,
+        "cluster": "spelling_variant",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "жидкое стекло для полировки автомобиля",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "жидкое стекло на машину",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "жидке стекло для авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "покрытие жидкое стекло для авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "покрытие для автомобиля жидкое стекло",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "жидкое стекло для кузова авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "жидкое стекло на лобовое",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "жидкое стекло на кузов",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "жидкое стекло полироль для автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "нанокерамика для кузова автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить жидкое стекло для авто",
+        "volume": 140,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "жидкий стекло цена",
+        "volume": 90,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "нанокерамика купить",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "нанокерамика для авто цена",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить жидкое стекло для автомобиля",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить жидкое стекло для полировки авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить жидкое стекло для полировки автомобиля",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить керамика для авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить керамику для авто в украине",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "цена на жидкое стекло для авто",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить жидкое стекло для покрытия автомобиля",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полироль жидкое стекло",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить жидкое стекло для кузова",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "жидкое стекло на машину цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "нанокерамика стоимость",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 39,
+    "after": 33,
+    "total_volume": 2180
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (объяснить разницу между стеклом и керамикой)",
+    "secondary": "H2 (как наносить, сколько держится)",
+    "supporting": "FAQ, таблицы",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "product_distinction": {
+    "note": "Жидкое стекло и нанокерамика — это РАЗНЫЕ продукты, НЕ синонимы!",
+    "жидкое_стекло": {
+      "состав": "Силикаты (SiO2 до 15%)",
+      "срок": "3-6 месяцев",
+      "сложность": "Легко нанести самому",
+      "цена": "Доступная"
+    },
+    "нанокерамика": {
+      "состав": "SiO2 до 90% + связующие полимеры",
+      "срок": "1-3 года",
+      "сложность": "Требует подготовки и навыков",
+      "цена": "Дорогая"
+    }
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "жидкое стекло для автомобилей (480)",
+      "нанокерамика для авто (390)",
+      "нанокерамика для автомобиля (390)"
+    ],
+    "merged_commercial": [
+      "купить жидкое стекло для авто (140)",
+      "нанокерамика купить (20)"
+    ],
+    "proposed_changes": [
+      "Kept 'нанокерамика' (480). Dropped: 'нанокерамика для авто' (390)",
+      "Kept 'купить жидкое стекло для авто' (140). Dropped: 'купить жидкое стекло для машины' (10)",
+      "Kept 'нанокерамика купить' (20). Dropped: 'нанокерамика на авто купить' (10)",
+      "Kept 'нанокерамика для авто цена' (20). Dropped: 'нанокерамика цена' (10)"
+    ]
+  }
+}

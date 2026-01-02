@@ -1,0 +1,163 @@
+{
+  "slug": "zhidkiy-vosk",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Защитные покрытия",
+    "l2": "Воски"
+  },
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "жидкий воск для авто",
+        "volume": 480,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "холодный воск для автомобиля",
+        "volume": 110,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "горячий воск для авто",
+        "volume": 90,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "холодный воск для авто",
+        "volume": 90,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "быстрый воск для авто",
+        "volume": 40,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "жидкий воск для автомобиля",
+        "volume": 20,
+        "cluster": "synonym",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "жидкий воск для кузова",
+        "volume": 10,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "жидкий воск для автомойки",
+        "volume": 10,
+        "cluster": "B2B",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "жидкий воск для машин",
+        "volume": 10,
+        "cluster": "synonym",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "жидкий воск для кузова автомобиля",
+        "volume": 10,
+        "cluster": "application",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить жидкий воск для авто",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить холодный воск для автомобиля",
+        "volume": 30,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить холодный воск для авто",
+        "volume": 30,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить жидкий воск для автомобиля",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "жидкий воск цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "холодный воск для авто цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "горячий воск для авто цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить горячий воск для авто",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 13,
+    "after": 18,
+    "total_volume": 1060
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "H2 заголовки, buying guide",
+    "supporting": "FAQ, таблицы, естественные упоминания",
+    "commercial": "ТОЛЬКО meta title/description, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "жидкий воск для авто (480)",
+      "жидкий воск (320)"
+    ],
+    "merged_commercial": [
+      "купить жидкий воск для авто (70)",
+      "купить жидкий воск для автомобиля (20)",
+      "купить жидкий воск для машины (10)"
+    ],
+    "proposed_changes": [
+      "Kept 'жидкий воск для авто' (480). Dropped: 'жидкий воск' (320)",
+      "Kept 'жидкий воск для автомойки' (10). Dropped: 'жидкий воск для мойки авто' (10)",
+      "Kept 'купить жидкий воск для авто' (70). Dropped: 'купить жидкий воск' (40), 'купить жидкий воск для машины' (10)",
+      "Kept 'жидкий воск цена' (10). Dropped: 'жидкий воск для авто цена' (10)"
+    ]
+  }
+}

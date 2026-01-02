@@ -1,0 +1,21 @@
+{
+  "slug": "vedra-i-emkosti",
+  "language": "uk",
+  "category_name_uk": "Відра для миття авто",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "відро для миття автомобіля", "keyword_ru": "ведро для мойки автомобиля", "volume": 90, "cluster": "main"},
+      {"keyword": "відра для миття авто", "keyword_ru": "ведра для мойки авто", "volume": 90, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "відро для миття машини", "keyword_ru": "ведро для мытья машины", "volume": 10, "cluster": "synonym"}
+    ],
+    "supporting": [],
+    "commercial": [
+      {"keyword": "купити відро для миття авто", "keyword_ru": "купить ведро для мойки авто", "volume": 10, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Відра для миття авто", "main_keyword": "відро для миття автомобіля"},
+  "translation_notes": {"adapted_terms": ["ведро→відро", "мойки→миття", "мытья→миття", "машины→машини"], "intent_preserved": true}
+}

@@ -1,0 +1,118 @@
+{
+  "slug": "obezzhirivateli",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "обезжириватель для авто",
+        "volume": 590,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "обезжириватель для кузова авто",
+        "volume": 30,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "обезжириватель для авто перед полировкой",
+        "volume": 20,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "обезжириватель автомобильный",
+        "volume": 10,
+        "cluster": "short_form",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "обезжириватель кузова перед полировкой",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "обезжириватель кузова перед мойкой",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "обезжириватель для полировки авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "обезжириватель кузова автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить обезжириватель для авто",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить обезжириватель для автомобиля",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "обезжириватель для авто цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "обезжириватель автомобильный купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 14,
+    "after": 12,
+    "total_volume": 850
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (зачем нужен обезжириватель)",
+    "secondary": "H2 (применение: перед полировкой, перед нанесением защиты)",
+    "supporting": "FAQ",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "купить обезжириватель для автомобиля (70)",
+      "обезжириватель автомобильный купить (10)"
+    ],
+    "merged_application": [
+      "обезжириватель кузова перед полировкой (10)",
+      "обезжириватель кузова перед мойкой (10)",
+      "обезжириватель для полировки авто (10)",
+      "обезжириватель кузова автомобиля (10)"
+    ],
+    "proposed_changes": [
+      "Kept 'обезжириватель для авто' (590). Dropped: 'обезжириватель для машины' (10)",
+      "Kept 'обезжириватель для кузова авто' (30). Dropped: 'обезжириватель для кузова' (10)"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+# Минимальные зависимости для проекта SEO-текстов v2.0
+# Установка: pip install -r requirements_minimal.txt
+# Обновлено: Ноябрь 2025 (Google 2025 Compatible)
+
+# HTML парсинг
+beautifulsoup4>=4.12.0
+lxml==4.9.3  # Зафиксировано для совместимости
+
+# CSV анализ (Screaming Frog)
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# YAML конфиги
+pyyaml>=6.0.0
+
+# Линтеры и форматтеры (для разработки)
+ruff>=0.8.0           # Быстрый линтер + форматтер (заменяет flake8, isort, pyupgrade)
+black>=24.0.0         # Резервный форматтер (опционально)
+pre-commit>=3.5.0     # Git hooks для автопроверки
+
+# SEO качество контента (Google 2025)
+langcheck>=0.7.0      # Проверка E-E-A-T, естественности, связности
+extruct>=0.16.0       # Извлечение Schema.org разметки
+
+# Опционально (для Schema.org валидации)
+# npm install -g structured-data-testing-tool

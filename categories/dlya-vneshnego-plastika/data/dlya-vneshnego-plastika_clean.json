@@ -1,0 +1,38 @@
+{
+  "slug": "dlya-vneshnego-plastika",
+  "language": "ru",
+  "clustered_at": "2025-12-31",
+  "parent": {
+    "l1": "Мойка и Экстерьер"
+  },
+  "type": "category",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "полироль для наружного пластика авто",
+        "volume": 40,
+        "cluster": "main"
+      }
+    ],
+    "secondary": [],
+    "supporting": [],
+    "commercial": []
+  },
+  "stats": {
+    "before": 3,
+    "after": 2,
+    "total_volume": 90
+  },
+  "usage_rules": {
+    "primary": "H1 + intro",
+    "secondary": "H2 заголовки",
+    "supporting": "FAQ, таблицы",
+    "commercial": "ТОЛЬКО meta, НЕ в текст!"
+  },
+  "clustering_notes": {
+    "cleaned_at": "2026-01-01",
+    "merged": [
+      "полироль для наружного пластика автомобиля -> полироль для наружного пластика авто"
+    ]
+  }
+}

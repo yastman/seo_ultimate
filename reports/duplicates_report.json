@@ -1,0 +1,130 @@
+{
+  "duplicates": [
+    {
+      "keyword": "аккумуляторная полировальная машина",
+      "locations": [
+        {
+          "category": "akkumulyatornye-mashinki",
+          "type": "primary",
+          "volume": 260
+        },
+        {
+          "category": "polirovalnye-mashinki",
+          "type": "secondary",
+          "volume": 260
+        }
+      ]
+    },
+    {
+      "keyword": "средства для шин",
+      "locations": [
+        {
+          "category": "cherniteli-shin",
+          "type": "supporting",
+          "volume": 10
+        },
+        {
+          "category": "sredstva-dlya-diskov-i-shin",
+          "type": "primary",
+          "volume": 10
+        }
+      ]
+    },
+    {
+      "keyword": "косметика для автомобиля",
+      "locations": [
+        {
+          "category": "glavnaya",
+          "type": "secondary",
+          "volume": 140
+        },
+        {
+          "category": "glavnaya",
+          "type": "secondary",
+          "volume": 50
+        }
+      ]
+    },
+    {
+      "keyword": "средство для стекол авто",
+      "locations": [
+        {
+          "category": "ochistiteli-stekol",
+          "type": "secondary",
+          "volume": 20
+        },
+        {
+          "category": "sredstva-dlya-stekol",
+          "type": "primary",
+          "volume": 20
+        },
+        {
+          "category": "sredstva-dlya-stekol",
+          "type": "secondary",
+          "volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "средство для автомобильных стекол",
+      "locations": [
+        {
+          "category": "ochistiteli-stekol",
+          "type": "secondary",
+          "volume": 20
+        },
+        {
+          "category": "sredstva-dlya-stekol",
+          "type": "primary",
+          "volume": 20
+        }
+      ]
+    },
+    {
+      "keyword": "средство для кожи салона",
+      "locations": [
+        {
+          "category": "sredstva-dlya-kozhi",
+          "type": "supporting",
+          "volume": 10
+        },
+        {
+          "category": "ukhod-za-kozhey",
+          "type": "supporting",
+          "volume": 10
+        }
+      ]
+    }
+  ],
+  "hierarchy_conflicts": [
+    {
+      "keyword": "средство для кожи салона",
+      "volume": 10,
+      "parent": "sredstva-dlya-kozhi",
+      "child": "ukhod-za-kozhey",
+      "type": "supporting"
+    },
+    {
+      "keyword": "средство для стекол авто",
+      "volume": 20,
+      "parent": "sredstva-dlya-stekol",
+      "child": "ochistiteli-stekol",
+      "type": "secondary"
+    },
+    {
+      "keyword": "средство для автомобильных стекол",
+      "volume": 20,
+      "parent": "sredstva-dlya-stekol",
+      "child": "ochistiteli-stekol",
+      "type": "secondary"
+    },
+    {
+      "keyword": "средства для шин",
+      "volume": 10,
+      "parent": "sredstva-dlya-diskov-i-shin",
+      "child": "cherniteli-shin",
+      "type": "supporting"
+    }
+  ],
+  "misplaced": []
+}

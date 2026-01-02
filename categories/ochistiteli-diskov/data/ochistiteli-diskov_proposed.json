@@ -1,0 +1,167 @@
+{
+  "slug": "ochistiteli-diskov",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "химия для дисков",
+        "volume": 70,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "средства для чистки дисков",
+        "volume": 50,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "очиститель дисков",
+        "volume": 20,
+        "cluster": "product_type",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "средство для дисков",
+        "volume": 20,
+        "cluster": "general",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "химия для чистки дисков",
+        "volume": 20,
+        "cluster": "cleaning",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "химия для мойки дисков",
+        "volume": 20,
+        "cluster": "washing",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "средство для мойки дисков",
+        "volume": 20,
+        "cluster": "washing",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для чистки дисков автомобиля",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "химия для дисков автомобиля",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для мытья дисков автомобиля",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "очиститель колесных дисков",
+        "volume": 10,
+        "cluster": "wheel_cleaner",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "жидкость для чистки дисков",
+        "volume": 10,
+        "cluster": "format",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для очистки дисков",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для чистки дисков авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для очистки дисков автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "химия для чистки колесных дисков",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для мойки литых дисков",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для чистки автомобильных дисков",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средства для чистки колесных дисков",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для чистки литых дисков",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ]
+  },
+  "seo_titles": {
+    "h1": "Очистители дисков",
+    "main_keyword": "химия для дисков"
+  },
+  "stats": {
+    "before": 27,
+    "after": 20,
+    "total_volume": 380
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (первые 150 слов)",
+    "secondary": "разделы buying guide (выбор, виды, применение)",
+    "supporting": "FAQ, таблицы, естественные упоминания",
+    "commercial": "ТОЛЬКО meta title/description, НЕ в текст"
+  },
+  "clustering_notes": {
+    "merged_chemistry": [
+      "химия для дисков (70)",
+      "химия для чистки дисков (20)",
+      "химия для мойки дисков (20)",
+      "химия для дисков авто (20)"
+    ],
+    "merged_means": [
+      "средства для чистки дисков (50)",
+      "средство для дисков (20)",
+      "средство для мойки дисков (20)"
+    ],
+    "proposed_changes": [
+      "Kept 'химия для дисков' (70). Dropped: 'химия для дисков авто' (20)",
+      "Kept 'очиститель дисков' (20). Dropped: 'очиститель дисков авто' (10)",
+      "Kept 'средство для очистки дисков' (10). Dropped: 'средство для очистки дисков авто' (10)"
+    ]
+  },
+  "note": "В raw все commercial ключи имеют volume=0, поэтому не включены"
+}

@@ -1,0 +1,157 @@
+{
+  "slug": "poliroli-dlya-plastika",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "полироль для салона автомобиля",
+        "volume": 390,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "полироль для пластика автомобиля",
+        "volume": 320,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "полироль для пластику авто",
+        "volume": 320,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "полироль для торпеды",
+        "volume": 260,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "полироль для панели авто",
+        "volume": 170,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "полироль для торпеды автомобиля",
+        "volume": 170,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "полироль для торпедо авто",
+        "volume": 140,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "полироль для панели автомобиля",
+        "volume": 70,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "полироль для салона",
+        "volume": 40,
+        "cluster": "short_form",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "полироль для пластика салона",
+        "volume": 20,
+        "cluster": "location",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для ухода за пластиком авто",
+        "volume": 20,
+        "cluster": "care",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "полироль для автомобильного пластика",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "полироль для пластика",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "средство для полировки салона автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить полироль для пластика",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полироль для панели авто",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полироль для торпеды автомобиля",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полироль для салона автомобиля",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 22,
+    "after": 18,
+    "total_volume": 1990
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (виды: матовый vs глянцевый эффект)",
+    "secondary": "H2 (как наносить, какие поверхности)",
+    "supporting": "FAQ, сравнение с силиконом",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_torpedo": [
+      "полироль для торпеды автомобиля (170)",
+      "полироль для торпеды авто (140)"
+    ],
+    "merged_panel": [
+      "полироль для панели автомобиля (70)"
+    ],
+    "merged_commercial": [
+      "купить полироль для пластика авто (10)",
+      "купить полироль для салона автомобиля (10)",
+      "купить полироль для торпеды автомобиля (10)"
+    ],
+    "proposed_changes": [
+      "Kept 'полироль для торпеды' (260). Dropped: 'полироль для торпеды авто' (140)",
+      "Kept 'средство для ухода за пластиком авто' (20). Dropped: 'средство для ухода за пластиком' (10)",
+      "Kept 'купить полироль для пластика' (10). Dropped: 'купить полироль для пластика авто' (10)"
+    ]
+  }
+}

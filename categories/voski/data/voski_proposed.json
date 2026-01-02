@@ -1,0 +1,111 @@
+{
+  "slug": "voski",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "type": "L2",
+  "note": "Hub-категория. Детальные ключи в L3: tverdyy-vosk, zhidkiy-vosk",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "воск для авто",
+        "volume": 1600,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "воск автомобильный",
+        "volume": 90,
+        "cluster": "short_form",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "воск для полировки авто",
+        "volume": 90,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "воск для кузова авто",
+        "volume": 50,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "восковый полироль для авто",
+        "volume": 50,
+        "cluster": "related",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "воск для мойки авто",
+        "volume": 70,
+        "cluster": "application",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить воск для авто",
+        "volume": 320,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить воск для автомобиля",
+        "volume": 320,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить воск для полировки авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить воск для мойки авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 38,
+    "after": 10,
+    "total_volume": 2630
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (зачем воск: защита, блеск, гидрофобность)",
+    "secondary": "Ссылки на L3 подкатегории",
+    "supporting": "НЕ дублировать ключи L3 (твердый, жидкий)",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "l3_categories": {
+    "tverdyy-vosk": "твердый воск для авто",
+    "zhidkiy-vosk": "жидкий воск для авто"
+  },
+  "clustering_notes": {
+    "moved_to_tverdyy": [
+      "твердый воск для авто (1000)",
+      "твердый воск (390)",
+      "купить твердый воск для авто (210)"
+    ],
+    "moved_to_zhidkiy": [
+      "жидкий воск для авто (480)",
+      "жидкий воск (320)",
+      "купить жидкий воск для авто (70)"
+    ],
+    "proposed_changes": [
+      "Kept 'воск для авто' (1600). Dropped: 'воск для машины' (210)"
+    ]
+  }
+}

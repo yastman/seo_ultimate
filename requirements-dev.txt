@@ -1,0 +1,13 @@
+# Development dependencies
+# Install: pip install -r requirements-dev.txt
+
+# Testing
+pytest>=9.0
+pytest-cov>=7.0
+
+# Code quality
+ruff>=0.8.0
+mypy>=1.0
+
+# Pre-commit hooks
+pre-commit>=4.0

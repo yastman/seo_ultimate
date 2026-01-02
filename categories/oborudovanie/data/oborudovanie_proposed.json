@@ -1,0 +1,104 @@
+{
+  "slug": "oborudovanie",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "parent": {
+    "l1": "Защитные покрытия"
+  },
+  "type": "L2",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "оборудование для химчистки авто",
+        "volume": 90,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "оборудование для мойки автомобилей",
+        "volume": 10,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "оборудование для химчистки салонов авто",
+        "volume": 10,
+        "cluster": "application",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "оборудование для чистки салона автомобиля",
+        "volume": 10,
+        "cluster": "application",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "оборудование для мойки автомобилей цены",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "оборудование для мойки машин цены",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "оборудование для полировки автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "оборудование для моек авто",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "оборудование химчистки автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "оборудование для химчистки авто купить",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "оборудование для химчистки авто цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 11,
+    "after": 11,
+    "total_volume": 190
+  },
+  "usage_rules": {
+    "primary": "H1 + intro",
+    "secondary": "H2 заголовки",
+    "supporting": "FAQ, таблицы",
+    "commercial": "ТОЛЬКО meta, НЕ в текст!"
+  },
+  "note": "L2 родительская, содержит: apparaty-tornador",
+  "clustering_notes": {
+    "proposed_changes": [
+      "Kept 'оборудование для химчистки авто' (90). Dropped: 'оборудование для химчистки машины' (10)"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "antidozhd",
+  "language": "uk",
+  "category_name_uk": "Антидощ для авто",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "антидощ для авто", "keyword_ru": "антидождь для авто", "volume": 80, "cluster": "main"},
+      {"keyword": "антидощ для автомобіля", "keyword_ru": "антидождь для автомобиля", "volume": 320, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "антидощ для дзеркал авто", "keyword_ru": "антидождь для зеркал авто", "volume": 20, "cluster": "application"},
+      {"keyword": "антидощ на лобове скло", "keyword_ru": "антидождь на лобовое стекло", "volume": 10, "cluster": "application"}
+    ],
+    "supporting": [
+      {"keyword": "покриття для лобового скла", "keyword_ru": "покрытие для лобового стекла", "volume": 10, "cluster": "synonym"}
+    ],
+    "commercial": [
+      {"keyword": "купити антидощ", "keyword_ru": "купить антидождь", "volume": 110, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Антидощ для авто", "main_keyword": "антидощ для авто"},
+  "translation_notes": {"adapted_terms": ["антидождь→антидощ", "зеркал→дзеркал", "стекло→скло", "лобовое→лобове"], "kept_original": ["авто"], "intent_preserved": true}
+}

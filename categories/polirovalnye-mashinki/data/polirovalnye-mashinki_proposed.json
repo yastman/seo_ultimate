@@ -1,0 +1,223 @@
+{
+  "slug": "polirovalnye-mashinki",
+  "language": "ru",
+  "clustered_at": "2026-01-01",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "полировочная машинка",
+        "volume": 8100,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "полировальная машина для полировки авто",
+        "volume": 260,
+        "cluster": "main",
+        "original_section": "primary"
+      },
+      {
+        "keyword": "полировочная машинка для полировки авто",
+        "volume": 260,
+        "cluster": "main",
+        "original_section": "primary"
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "машина для полировки авто",
+        "volume": 90,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "машина для полировки автомобиля",
+        "volume": 90,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "полировочные машинки для авто",
+        "volume": 40,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "полировальные машинки для автомобиля",
+        "volume": 40,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "круги для полировальной машинки",
+        "volume": 40,
+        "cluster": "related",
+        "original_section": "secondary"
+      },
+      {
+        "keyword": "машинка для полировки кузова",
+        "volume": 30,
+        "cluster": "application",
+        "original_section": "secondary"
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "полироль машинка",
+        "volume": 20,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "полировочная машинка для автомобиля",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "машинка для полировки автомобилей",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "полировочные машинки для авто цены",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "полировочная машинка для детейлинга",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "полировочный круг для машины",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      },
+      {
+        "keyword": "круги на полировочную машинку",
+        "volume": 10,
+        "cluster": "long_tail",
+        "original_section": "supporting"
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купить полировочную машинку",
+        "volume": 880,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полировочную машину",
+        "volume": 110,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полировочную машинку для автомобиля",
+        "volume": 70,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полировальную машинку для авто в украине",
+        "volume": 50,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "полировочная машинка цена",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить машинку для полировки кузова авто",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить машинку для полировки кузова автомобиля",
+        "volume": 20,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "полировочная машинка для автомобиля цена",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полировочная машинка в украине",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      },
+      {
+        "keyword": "купить полировочную машину для автомобиля",
+        "volume": 10,
+        "cluster": "commercial",
+        "use_in": "meta_only",
+        "original_section": "commercial"
+      }
+    ]
+  },
+  "stats": {
+    "before": 27,
+    "after": 26,
+    "total_volume": 10230
+  },
+  "usage_rules": {
+    "primary": "H1 + intro (виды: роторные, эксцентриковые)",
+    "secondary": "H2 (как выбрать, аккумуляторные vs сетевые)",
+    "supporting": "FAQ, характеристики",
+    "commercial": "ТОЛЬКО meta title/description"
+  },
+  "clustering_notes": {
+    "merged_main": [
+      "полировальная машина для полировки авто (260)",
+      "полировочная машинка для полировки авто (260)",
+      "машина для полировки авто (90)",
+      "машина для полировки автомобиля (90)"
+    ],
+    "merged_battery": [
+      "полировальная машина на аккумуляторе (260)",
+      "полировальная машинка на аккумуляторе (260)",
+      "аккумуляторная полировальная машина для авто (90)",
+      "машинка для полировки авто на аккумуляторе (10)"
+    ],
+    "merged_commercial": [
+      "купить аккумуляторную полировальную машинку (20)",
+      "купить машинку для полировки кузова авто (20)",
+      "купить машинку для полировки кузова автомобиля (20)",
+      "купить машинку для полировки автомобиля (10)"
+    ],
+    "proposed_changes": [
+      "Kept 'полировочная машинка' (8100). Dropped: 'машинка для полировки авто' (260), 'полировальная машинка для авто' (260), 'машинка для полировки машины' (30), 'машинка для полировки' (10), 'полировочная машинка для машины' (10)",
+      "Kept 'машина для полировки авто' (90). Dropped: 'машина для полировки' (40), 'полировальная машина для авто' (20), 'полировочные машины' (10)",
+      "Kept 'машина для полировки автомобиля' (90). Dropped: 'полировальная машина для автомобиля' (20)",
+      "Kept 'полировочные машинки для авто' (40). Dropped: 'полировальные машинки для авто' (40)",
+      "Kept 'машинка для полировки кузова' (30). Dropped: 'машинка для полировки кузова авто' (30)",
+      "Kept 'купить полировочную машинку' (880). Dropped: 'купить полировочную машинку для авто' (320), 'купить машинку для полировки авто' (210), 'купить полировальную машинку для авто' (50)",
+      "Kept 'купить полировочную машину' (110). Dropped: 'купить полировочную машину для авто' (10)",
+      "Kept 'купить полировочную машинку для автомобиля' (70). Dropped: 'купить машинку для полировки автомобиля' (10)",
+      "Kept 'купить полировальную машинку для авто в украине' (50). Dropped: 'купить полировочную машинку для авто в украине' (10)"
+    ]
+  }
+}

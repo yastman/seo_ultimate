@@ -1,0 +1,91 @@
+{
+  "status": "FAIL",
+  "exit_code": 2,
+  "validator": "stage-minus-4-mega-url-validator",
+  "validated_at": "2025-11-17T11:46:00Z",
+  "files": {
+    "raw": "data/mega/mega_urls_raw.txt",
+    "filtered": "data/mega/mega_urls.txt"
+  },
+
+  "checks": {
+    "files_exist": {
+      "raw_file": false,
+      "filtered_file": true,
+      "status": "WARNING",
+      "note": "Raw file missing - cannot analyze filter effectiveness"
+    },
+
+    "url_counts": {
+      "raw_urls_count": null,
+      "filtered_urls_count": 24,
+      "removed_by_filters": null,
+      "removal_rate": null,
+      "filtered_threshold": "FAIL",
+      "status": "FAIL",
+      "message": "24 URLs < 30 minimum threshold"
+    },
+
+    "filter_effectiveness": {
+      "removal_rate": null,
+      "sanity_check": "SKIPPED",
+      "warnings": ["Raw file missing - cannot calculate removal rate"],
+      "status": "WARNING"
+    },
+
+    "format_validation": {
+      "https_urls": 24,
+      "http_urls": 0,
+      "invalid_urls": 0,
+      "status": "PASS",
+      "message": "All URLs are HTTPS"
+    },
+
+    "blacklist_check": {
+      "blacklisted_count": 0,
+      "blacklisted_domains": [],
+      "status": "PASS",
+      "message": "No blacklisted domains found"
+    },
+
+    "diversity_check": {
+      "unique_domains": 20,
+      "diversity_threshold": "PASS",
+      "status": "PASS",
+      "message": "Excellent domain diversity (20 unique domains)"
+    },
+
+    "deduplication_check": {
+      "total_urls": 24,
+      "unique_urls": 24,
+      "duplicates": 0,
+      "status": "PASS",
+      "message": "Perfect deduplication"
+    },
+
+    "readme_check": {
+      "exists": true,
+      "status": "PASS"
+    }
+  },
+
+  "errors": [
+    "CRITICAL: Filtered URLs count (24) < 30 minimum threshold - insufficient data for MEGA batch processing",
+    "Raw file missing (mega_urls_raw.txt) - cannot validate filter effectiveness"
+  ],
+
+  "warnings": [
+    "Only 24 URLs extracted - recommend adding more categories or adjusting extraction parameters",
+    "Cannot analyze filter effectiveness without mega_urls_raw.txt"
+  ],
+
+  "summary": {
+    "total_urls": 24,
+    "https_compliance": "100%",
+    "domain_diversity": 20,
+    "quality_score": "INSUFFICIENT",
+    "recommendation": "Re-run mega-url-extraction-agent with more categories or relaxed filters"
+  },
+
+  "next_step": "BLOCKED - Cannot proceed to Screaming Frog with <30 URLs. Re-run Stage -4 with adjusted parameters."
+}

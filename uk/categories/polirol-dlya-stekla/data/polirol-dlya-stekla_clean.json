@@ -1,0 +1,25 @@
+{
+  "slug": "polirol-dlya-stekla",
+  "language": "uk",
+  "category_name_uk": "Поліроль для скла",
+  "clustered_at": "2025-12-30",
+  "keywords": {
+    "primary": [
+      {"keyword": "поліроль для скла", "keyword_ru": "полироль для стекла", "volume": 590, "cluster": "main"},
+      {"keyword": "поліроль для скла авто", "keyword_ru": "полироль для стекла авто", "volume": 70, "cluster": "main"}
+    ],
+    "secondary": [
+      {"keyword": "поліроль для скла автомобіля", "keyword_ru": "полироль для стекол автомобиля", "volume": 70, "cluster": "synonym"},
+      {"keyword": "поліроль для автоскла", "keyword_ru": "полироль для автостекла", "volume": 60, "cluster": "synonym"}
+    ],
+    "supporting": [
+      {"keyword": "засіб для полірування лобового скла", "keyword_ru": "средство для полировки лобового стекла", "volume": 30, "cluster": "application"},
+      {"keyword": "засіб для полірування скла автомобіля", "keyword_ru": "средство для полировки стекол автомобиля", "volume": 10, "cluster": "application"}
+    ],
+    "commercial": [
+      {"keyword": "купити поліроль для скла авто", "keyword_ru": "купить полироль для стекла авто", "volume": 10, "cluster": "commercial", "use_in": "meta_only"}
+    ]
+  },
+  "seo_titles": {"h1": "Поліроль для скла", "main_keyword": "поліроль для скла"},
+  "translation_notes": {"adapted_terms": ["полироль→поліроль", "стекла→скла", "автостекла→автоскла", "средство→засіб", "полировки→полірування"], "intent_preserved": true}
+}
