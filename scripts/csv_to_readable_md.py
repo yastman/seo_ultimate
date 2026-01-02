@@ -155,8 +155,8 @@ class SemanticsParser:
                     continue
 
                 # SEO-Filter
-                if col1.startswith("SEO-Фильтр:"):
-                    name = col1.replace("SEO-Фильтр:", "").strip()
+                if col1.lower().startswith("seo-фильтр:") or col1.lower().startswith("seo-filter:"):
+                    name = col1.split(":", 1)[1].strip()
                     filter_node = Node(name, "Filter")
 
                     if current_l3:
@@ -191,14 +191,20 @@ class SemanticsParser:
                     last_header = f"Block: Category ({parent_name})"
                     continue
 
-                # --- 2. Detect Implicit Clusters ---
-                # Pattern: Name in Col1, Count in Col2 (digit), Col3 is empty or 0.
-                is_header = False
+                # --- 2. Detect Implicit Clusters (Smart Heuristic) ---
+                # Pattern: Name in Col1, Count in Col2.
+                # Must be a header if:
+                # A) Col2 contains '/' (e.g., 3/15)
+                # B) Col2 is a digit >= 5 (smaller blocks are assumed to be lists inside a larger block, unless explicitly marked)
+                
+                is_valid_header_count = False
                 if col2 and (not col3 or col3 == "0"):
-                    if any(char.isdigit() for char in col2):
-                        is_header = True
-
-                if is_header:
+                     if "/" in col2:
+                         is_valid_header_count = True
+                     elif col2.isdigit() and int(col2) >= 5:
+                         is_valid_header_count = True
+                
+                if is_valid_header_count:
                     name = col1.strip()
                     # Normalize name (Capitalize first letter to match L3 style)
                     if name and name[0].islower():
@@ -206,8 +212,7 @@ class SemanticsParser:
 
                     cluster_node = Node(name, "Cluster")
 
-                    # LOGIC CHANGE: Implicit clusters are siblings to L3, children of L2.
-                    # They break the current L3 scope.
+                    # Implicit clusters are siblings to L3, children of L2.
                     if current_l2:
                         current_l2.add_child(cluster_node)
                     elif current_l1:
@@ -229,35 +234,40 @@ class SemanticsParser:
                     volume = int(col3)
                     self.parsed_count += 1
 
-                    # IMPACT: Auto-create General cluster if we are under a header but have no container
+                    # Ensure we have a container. If not, create one.
                     if not active_container:
                         if current_l3:
                             active_container = current_l3
-                        elif current_l2:
-                            # Keywords directly under L2 -> "Direct Keywords"
-                            cluster_name = f"🔑 Direct Keywords ({current_l2.name})"
-                            if current_l2.children and current_l2.children[-1].name == cluster_name:
-                                active_container = current_l2.children[-1]
-                            else:
-                                active_container = Node(cluster_name, "Cluster")
-                                current_l2.add_child(active_container)
-                        elif current_l1:
-                            # Keywords directly under L1
-                            cluster_name = f"🔑 Direct Keywords ({current_l1.name})"
-                            if current_l1.children and current_l1.children[-1].name == cluster_name:
-                                active_container = current_l1.children[-1]
-                            else:
-                                active_container = Node(cluster_name, "Cluster")
-                                current_l1.add_child(active_container)
-
+                        else:
+                             active_container = self._ensure_direct_keywords_container(current_l1, current_l2)
+                    
                     if active_container:
                         active_container.add_keyword(col1, volume)
                         self._track_keyword(col1, volume, active_container.name)
                     else:
+                        # Should technically be handled by _ensure_direct_keywords_container, 
+                        # but if no L1 exists at all:
                         self.orphans.append(
                             {"keyword": col1, "volume": volume, "context": last_header}
                         )
                     continue
+    
+    def _ensure_direct_keywords_container(self, l1: Node | None, l2: Node | None) -> Node | None:
+        """Helper to get or create a 'Direct Keywords' cluster under the lowest available parent."""
+        parent = l2 if l2 else l1
+        if not parent:
+            return None
+        
+        cluster_name = f"🔑 Direct Keywords ({parent.name})"
+        
+        # Check if last child is already this container
+        if parent.children and parent.children[-1].name == cluster_name:
+            return parent.children[-1]
+        
+        # Create new
+        container = Node(cluster_name, "Cluster")
+        parent.add_child(container)
+        return container
 
     def _count_raw_csv_keywords(self, csv_path: Path) -> int:
         """Count lines that look like keywords (col3 is digits)"""
@@ -276,15 +286,18 @@ class SemanticsParser:
             print(
                 f"⚠️ VALIDATION FAILED: CSV={self.csv_total_count}, Parsed={self.parsed_count}, Lost={lost}"
             )
-            return False
-        print(f"✅ Validation OK: Parsed {self.parsed_count}/{self.csv_total_count} (100%)")
+            # Allow script to proceed but Warn heavily, maybe return False
+            return False 
+        print(
+            f"✅ Validation OK: Parsed {self.parsed_count}/{self.csv_total_count} (100%)"
+        )
         return True
 
     def _track_keyword(self, keyword: str, volume: int, category_name: str) -> None:
         kw_norm = keyword.lower().strip()
         self.keyword_map[kw_norm].add(category_name)
 
-    def analyze_duplicates(self):
+    def analyze_duplicates(self) -> None:
         """Find duplicates based on collected map"""
         for kw, categories in self.keyword_map.items():
             if len(categories) > 1:
@@ -293,33 +306,23 @@ class SemanticsParser:
     def generate_markdown(self, output_path: Path) -> None:
         self.analyze_duplicates()
 
-        # Calculate Stats (re-traversal for accuracy)
-        total_clusters = 0
-        total_volume = 0
         all_keywords_flat: list[dict[str, Any]] = []
 
-        # Recursively collect stats and flatten keyword list for Top-10
+        # Recursively collect stats
         for l1 in self.tree:
             self._collect_stats_recursive(l1, all_keywords_flat)
-
+        
+        # Determine stats
         total_keywords = len(all_keywords_flat)
         total_volume = sum(k["volume"] for k in all_keywords_flat)
         orphan_count = len(self.orphans)
-
-        # Including Orphans in "Parsed" stats for the report?
-        # Typically Orphans are parsed but just not categorized.
-        # But if total_keywords + orphan_count != parsed_count, logic error.
-        # total_keywords comes from tree. Orphans NOT in tree.
-        # So "Total Parsed" = total_keywords (tree) + orphan_count.
-
-        real_parsed = total_keywords + orphan_count
-
-        # Count clusters (L3 + Cluster nodes)
-        total_clusters = self._count_clusters(self.tree)
+        
+        # Counters
+        total_clusters, total_filters = self._count_structural_nodes(self.tree)
         duplicate_count = len(self.duplicates)
 
         print(
-            f"Stats: TreeKWs={total_keywords}, StructOrphans={orphan_count}, TotalParsed={real_parsed}"
+            f"Stats: TreeKWs={total_keywords}, StructOrphans={orphan_count}"
         )
         print(f"Writing Markdown to: {output_path}")
 
@@ -331,23 +334,34 @@ class SemanticsParser:
             )
 
             validation_icon = "✅" if self.csv_total_count == self.parsed_count else "⚠️"
+            if self.csv_total_count != self.parsed_count:
+                 f.write(f"> ⚠️ **ВНИМАНИЕ**: Обнаружено расхождение в {self.csv_total_count - self.parsed_count} ключей. Проверьте лог консоли.\n\n")
 
             f.write("## 📊 Сводка\n\n")
             f.write(
-                f"- **Валидация**: {validation_icon} Найдено в CSV: {self.csv_total_count} | Спарсено: {self.parsed_count}\n"
+                f"- **Валидация**: {validation_icon} CSV: {self.csv_total_count} | Парсер: {self.parsed_count}\n"
             )
-            f.write(f"- **Структура**: L1: {len(self.tree)} | Кластеров (L3+): {total_clusters}\n")
-            f.write(f"- **Ключей в Дереве**: {total_keywords} | **Volume**: {total_volume}\n")
-            f.write(f"- **🔄 Дублей в CSV**: {duplicate_count}\n")
-            f.write(f"- **⚠️ Ошибки парсинга**: {orphan_count}\n\n")
+            f.write(
+                f"- **Структура**: L1: {len(self.tree)} | Кластеров: {total_clusters} | Фильтров: {total_filters}\n"
+            )
+            f.write(
+                f"- **Ключей**: {total_keywords} | **Volume**: {total_volume}\n"
+            )
+            f.write(f"- **🔄 Дублей**: {duplicate_count}\n")
+            if orphan_count > 0:
+                 f.write(f"- **⚠️ Ошибки парсинга (Orphans)**: {orphan_count}\n")
+            f.write("\n")
 
             # Top 10
-            top_10 = sorted(all_keywords_flat, key=lambda x: x["volume"], reverse=True)[:10]
+            top_10 = sorted(
+                all_keywords_flat, key=lambda x: x["volume"], reverse=True
+            )[:10]
             f.write("## 🔥 Топ-10 по Volume\n\n")
             f.write("| Keyword | Volume | Block |\n")
             f.write("|---|---|---|\n")
             for kw in top_10:
-                f.write(f"| {kw['keyword']} | {kw['volume']} | _(поиск)_ |\n")
+                block_name = kw.get('block', 'Unknown')
+                f.write(f"| {kw['keyword']} | {kw['volume']} | {block_name} |\n")
             f.write("\n")
 
             f.write("---\n\n")
@@ -373,9 +387,13 @@ class SemanticsParser:
                 f.write("## ⚠️ Ошибки Структуры (Без категории)\n\n")
                 f.write("| Keyword | Volume | Контекст |\n")
                 f.write("|---|---|---|\n")
-                sorted_orphans = sorted(self.orphans, key=lambda x: x["volume"], reverse=True)
+                sorted_orphans = sorted(
+                    self.orphans, key=lambda x: x["volume"], reverse=True
+                )
                 for o in sorted_orphans:
-                    f.write(f"| {o['keyword']} | {o['volume']} | {o['context']} |\n")
+                    f.write(
+                        f"| {o['keyword']} | {o['volume']} | {o['context']} |\n"
+                    )
 
             f.write("\n## 🔄 Дубли (внутри CSV)\n\n")
             if self.duplicates:
@@ -389,17 +407,29 @@ class SemanticsParser:
 
     def _collect_stats_recursive(self, node: Node, sink: list[dict[str, Any]]) -> None:
         for kw in node.keywords:
-            sink.append(kw)
+            # Capture block name for Top-10
+            entry = kw.copy()
+            entry['block'] = node.name 
+            sink.append(entry)
+            
         for child in node.children:
             self._collect_stats_recursive(child, sink)
 
-    def _count_clusters(self, nodes: list[Node]) -> int:
-        count = 0
+    def _count_structural_nodes(self, nodes: list[Node]) -> tuple[int, int]:
+        """Returns (n_clusters, n_filters)"""
+        n_clusters = 0
+        n_filters = 0
         for node in nodes:
             if node.level in ["L3", "Cluster"]:
-                count += 1
-            count += self._count_clusters(node.children)
-        return count
+                n_clusters += 1
+            elif node.level == "Filter":
+                n_filters += 1
+            
+            sub_c, sub_f = self._count_structural_nodes(node.children)
+            n_clusters += sub_c
+            n_filters += sub_f
+            
+        return n_clusters, n_filters
 
     def _get_node_stats(self, node: Node) -> dict[str, int]:
         kws = node.keyword_count
