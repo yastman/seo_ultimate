@@ -18,7 +18,7 @@ import csv
 import sys
 from collections import defaultdict
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
+from typing import Any
 
 
 # Add scripts dir to path to allow importing config
@@ -39,8 +39,8 @@ class Node:
     def __init__(self, name: str, level: str):
         self.name = name
         self.level = level  # 'L1', 'L2', 'L3', 'Cluster', 'Filter'
-        self.children: List[Node] = []
-        self.keywords: List[Dict[str, Any]] = []
+        self.children: list[Node] = []
+        self.keywords: list[dict[str, Any]] = []
         self.total_volume = 0
         self.keyword_count = 0
 
@@ -55,10 +55,10 @@ class Node:
 
 class SemanticsParser:
     def __init__(self):
-        self.tree: List[Node] = []
-        self.orphans: List[Dict[str, Any]] = []  # CSV Parsing orphans (structure errors)
-        self.keyword_map: Dict[str, Set[str]] = defaultdict(set)
-        self.duplicates: List[Dict[str, Any]] = []
+        self.tree: list[Node] = []
+        self.orphans: list[dict[str, Any]] = []  # CSV Parsing orphans (structure errors)
+        self.keyword_map: dict[str, set[str]] = defaultdict(set)
+        self.duplicates: list[dict[str, Any]] = []
         self.csv_total_count: int = 0  # Total keyword lines found in CSV pre-scan
         self.parsed_count: int = 0  # Total keyword lines successfully parsed into tree/orphans
 
@@ -74,12 +74,12 @@ class SemanticsParser:
         print(f"Pre-scan: Found {self.csv_total_count} keyword lines in CSV.")
 
         # State mapping
-        current_l1: Optional[Node] = None
-        current_l2: Optional[Node] = None
-        current_l3: Optional[Node] = None
+        current_l1: Node | None = None
+        current_l2: Node | None = None
+        current_l3: Node | None = None
 
         # The active container for keywords (could be L3, Cluster, or Filter)
-        active_container: Optional[Node] = None
+        active_container: Node | None = None
 
         # Context for orphans (LAST recognized header)
         last_header = "Start of File"
@@ -236,10 +236,7 @@ class SemanticsParser:
                         elif current_l2:
                             # Keywords directly under L2 -> "Direct Keywords"
                             cluster_name = f"🔑 Direct Keywords ({current_l2.name})"
-                            if (
-                                current_l2.children
-                                and current_l2.children[-1].name == cluster_name
-                            ):
+                            if current_l2.children and current_l2.children[-1].name == cluster_name:
                                 active_container = current_l2.children[-1]
                             else:
                                 active_container = Node(cluster_name, "Cluster")
@@ -247,10 +244,7 @@ class SemanticsParser:
                         elif current_l1:
                             # Keywords directly under L1
                             cluster_name = f"🔑 Direct Keywords ({current_l1.name})"
-                            if (
-                                current_l1.children
-                                and current_l1.children[-1].name == cluster_name
-                            ):
+                            if current_l1.children and current_l1.children[-1].name == cluster_name:
                                 active_container = current_l1.children[-1]
                             else:
                                 active_container = Node(cluster_name, "Cluster")
@@ -283,9 +277,7 @@ class SemanticsParser:
                 f"⚠️ VALIDATION FAILED: CSV={self.csv_total_count}, Parsed={self.parsed_count}, Lost={lost}"
             )
             return False
-        print(
-            f"✅ Validation OK: Parsed {self.parsed_count}/{self.csv_total_count} (100%)"
-        )
+        print(f"✅ Validation OK: Parsed {self.parsed_count}/{self.csv_total_count} (100%)")
         return True
 
     def _track_keyword(self, keyword: str, volume: int, category_name: str) -> None:
@@ -304,7 +296,7 @@ class SemanticsParser:
         # Calculate Stats (re-traversal for accuracy)
         total_clusters = 0
         total_volume = 0
-        all_keywords_flat: List[Dict[str, Any]] = []
+        all_keywords_flat: list[dict[str, Any]] = []
 
         # Recursively collect stats and flatten keyword list for Top-10
         for l1 in self.tree:
@@ -313,13 +305,13 @@ class SemanticsParser:
         total_keywords = len(all_keywords_flat)
         total_volume = sum(k["volume"] for k in all_keywords_flat)
         orphan_count = len(self.orphans)
-        
+
         # Including Orphans in "Parsed" stats for the report?
         # Typically Orphans are parsed but just not categorized.
         # But if total_keywords + orphan_count != parsed_count, logic error.
         # total_keywords comes from tree. Orphans NOT in tree.
         # So "Total Parsed" = total_keywords (tree) + orphan_count.
-        
+
         real_parsed = total_keywords + orphan_count
 
         # Count clusters (L3 + Cluster nodes)
@@ -344,19 +336,13 @@ class SemanticsParser:
             f.write(
                 f"- **Валидация**: {validation_icon} Найдено в CSV: {self.csv_total_count} | Спарсено: {self.parsed_count}\n"
             )
-            f.write(
-                f"- **Структура**: L1: {len(self.tree)} | Кластеров (L3+): {total_clusters}\n"
-            )
-            f.write(
-                f"- **Ключей в Дереве**: {total_keywords} | **Volume**: {total_volume}\n"
-            )
+            f.write(f"- **Структура**: L1: {len(self.tree)} | Кластеров (L3+): {total_clusters}\n")
+            f.write(f"- **Ключей в Дереве**: {total_keywords} | **Volume**: {total_volume}\n")
             f.write(f"- **🔄 Дублей в CSV**: {duplicate_count}\n")
             f.write(f"- **⚠️ Ошибки парсинга**: {orphan_count}\n\n")
 
             # Top 10
-            top_10 = sorted(
-                all_keywords_flat, key=lambda x: x["volume"], reverse=True
-            )[:10]
+            top_10 = sorted(all_keywords_flat, key=lambda x: x["volume"], reverse=True)[:10]
             f.write("## 🔥 Топ-10 по Volume\n\n")
             f.write("| Keyword | Volume | Block |\n")
             f.write("|---|---|---|\n")
@@ -387,13 +373,9 @@ class SemanticsParser:
                 f.write("## ⚠️ Ошибки Структуры (Без категории)\n\n")
                 f.write("| Keyword | Volume | Контекст |\n")
                 f.write("|---|---|---|\n")
-                sorted_orphans = sorted(
-                    self.orphans, key=lambda x: x["volume"], reverse=True
-                )
+                sorted_orphans = sorted(self.orphans, key=lambda x: x["volume"], reverse=True)
                 for o in sorted_orphans:
-                    f.write(
-                        f"| {o['keyword']} | {o['volume']} | {o['context']} |\n"
-                    )
+                    f.write(f"| {o['keyword']} | {o['volume']} | {o['context']} |\n")
 
             f.write("\n## 🔄 Дубли (внутри CSV)\n\n")
             if self.duplicates:
@@ -405,13 +387,13 @@ class SemanticsParser:
             else:
                 f.write("_Дублей нет._\n")
 
-    def _collect_stats_recursive(self, node: Node, sink: List[Dict[str, Any]]) -> None:
+    def _collect_stats_recursive(self, node: Node, sink: list[dict[str, Any]]) -> None:
         for kw in node.keywords:
             sink.append(kw)
         for child in node.children:
             self._collect_stats_recursive(child, sink)
 
-    def _count_clusters(self, nodes: List[Node]) -> int:
+    def _count_clusters(self, nodes: list[Node]) -> int:
         count = 0
         for node in nodes:
             if node.level in ["L3", "Cluster"]:
@@ -419,7 +401,7 @@ class SemanticsParser:
             count += self._count_clusters(node.children)
         return count
 
-    def _get_node_stats(self, node: Node) -> Dict[str, int]:
+    def _get_node_stats(self, node: Node) -> dict[str, int]:
         kws = node.keyword_count
         vol = node.total_volume
         for child in node.children:
@@ -459,11 +441,11 @@ if __name__ == "__main__":
 
     parser = SemanticsParser()
     parser.parse(SEMANTICS_CSV)
-    
+
     # 2. Strict Validation Check
     if not parser.validate():
         print("❌ Script aborted due to validation failure.")
         sys.exit(1)
-        
+
     parser.generate_markdown(OUTPUT_FILE)
     print("Done!")
