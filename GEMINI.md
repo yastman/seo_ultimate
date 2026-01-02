@@ -12,8 +12,10 @@
     *   Контент для сайта — **на украинском или русском** (согласно задаче).
 
 3.  **SOURCE OF TRUTH**:
-    *   Никогда не придумывай правила SEO. Всегда сверяйся с `docs/CONTENT_GUIDE.md`.
-    *   Статус задач всегда в `tasks/PIPELINE_STATUS.md`.
+    *   **Semantics**: `Структура _Ultimate.csv`. JSON файлы вторичны.
+    *   **SEO Rules**: `docs/CONTENT_GUIDE.md`.
+    *   **Workflow**: `docs/WORKFLOW_SEMANTICS.md` и `docs/README.md`.
+    *   **Status**: `tasks/PIPELINE_STATUS.md`.
 
 ## 2. 🧩 Coding Principles (Best Practices)
 
@@ -41,12 +43,15 @@
 ## 3. 🛠️ Environment & Scripts
 
 **Python**: Используй `.venv`. Если нужно, активируй или указывай путь к python из venv.
+В Windows всегда используй команду `python` или `python3` явно.
 
 ### ⚡ Quick Script Reference
 Запомни эти команды наизусть. Используй их для проверки своей работы.
 
 | Задача | Скрипт | Пример вызова |
 |---|---|---|
+| **Структура (Audit)** | `csv_to_readable_md.py` | `python scripts/csv_to_readable_md.py` |
+| **Чистка CSV** | `fix_csv_structure.py` | `python scripts/fix_csv_structure.py` |
 | **Валидация Meta** | `validate_meta.py` | `python scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json` |
 | **Валидация Content** | `validate_content.py` | `python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{keyword}" --mode seo` |
 | **Анализ Категории** | `analyze_category.py` | `python scripts/analyze_category.py {slug}` |
@@ -57,10 +62,17 @@
 
 Когда пользователь просит выполнить этап пайплайна, выполняй соответствующую последовательность:
 
+### 🔹 `/semantic-update` (Новая Семантика)
+1.  Убедись, что изменения внесены в `Структура _Ultimate.csv`.
+2.  Запусти чистку: `python scripts/fix_csv_structure.py`.
+3.  Сгенерируй отчет: `python scripts/csv_to_readable_md.py`.
+4.  Проверь `data/STRUCTURE.md` на наличие ошибок (Orphans).
+5.  **COMMIT**.
+
 ### 🔹 `/category-init {slug}`
 1.  Проверь, есть ли папка `categories/{slug}`.
 2.  Если нет — создай структуру: `data/`, `meta/`, `content/`, `research/`.
-3.  Создай `_clean.json` (ключевые слова).
+3.  Создай `_clean.json` (ПОКА ручной перенос, скоро — авто из CSV).
 4.  **COMMIT**.
 
 ### 🔹 `/generate-meta {slug}`
