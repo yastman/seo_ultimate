@@ -10,7 +10,7 @@ requires-python = ">=3.8"
 # Ruff - быстрый линтер и форматтер
 [tool.ruff]
 line-length = 100
-target-version = "py38"
+target-version = "py312"
 exclude = [
     ".git",
     ".venv",
@@ -19,6 +19,9 @@ exclude = [
     "__pycache__",
     "archive",
     "*.egg-info",
+    ".claude",
+    ".agent",
+    ".github_repos",
 ]
 
 # Выбор правил линтера
@@ -76,10 +79,18 @@ exclude = '''
 
 # MyPy - проверка типов
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.12"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = false  # Включать постепенно
+exclude = [
+    ".claude",
+    ".agent",
+    ".github_repos",
+    "\\.venv",
+    "venv",
+    "archive",
+]
 check_untyped_defs = true
 warn_redundant_casts = true
 warn_unused_ignores = true
@@ -88,13 +99,6 @@ strict_equality = true
 
 # Игнорировать отсутствующие импорты для сторонних библиотек
 ignore_missing_imports = true
-
-# Исключить директории
-exclude = [
-    '^\.venv/',
-    '^venv/',
-    '^archive/',
-]
 
 # Bandit - security checks
 [tool.bandit]

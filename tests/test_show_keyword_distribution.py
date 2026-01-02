@@ -15,7 +15,12 @@ from pathlib import Path
 
 import pytest
 
-from scripts.show_keyword_distribution import _parse_density_percent, format_stats, load_keywords, main
+from scripts.show_keyword_distribution import (
+    _parse_density_percent,
+    format_stats,
+    load_keywords,
+    main,
+)
 
 
 class TestShowKeywordDistributionCli:
@@ -37,9 +42,24 @@ class TestOldStructureHandling:
             "category_name_ru": "Активная пена",
             "tier": "B",
             "keywords_detailed": [
-                {"phrase": "активная пена", "volume": 1000, "relative_freq": 25.0, "role": "primary"},
-                {"phrase": "пена для мойки", "volume": 500, "relative_freq": 12.5, "role": "secondary"},
-                {"phrase": "бесконтактная мойка", "volume": 300, "relative_freq": 7.5, "role": "supporting"},
+                {
+                    "phrase": "активная пена",
+                    "volume": 1000,
+                    "relative_freq": 25.0,
+                    "role": "primary",
+                },
+                {
+                    "phrase": "пена для мойки",
+                    "volume": 500,
+                    "relative_freq": 12.5,
+                    "role": "secondary",
+                },
+                {
+                    "phrase": "бесконтактная мойка",
+                    "volume": 300,
+                    "relative_freq": 7.5,
+                    "role": "supporting",
+                },
             ],
         }
         json_file = tmp_path / "test_old.json"
@@ -52,7 +72,9 @@ class TestOldStructureHandling:
         assert "активная пена" in out
         assert "primary" in out.lower()
 
-    def test_old_structure_shows_statistics(self, tmp_path: Path, capsys: pytest.CaptureFixture[str]):
+    def test_old_structure_shows_statistics(
+        self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+    ):
         data = {
             "category_name_ru": "Test",
             "tier": "B",
@@ -79,9 +101,19 @@ class TestNewStructureHandling:
             "category_name_ru": "Активная пена",
             "tier": "A",
             "keywords": {
-                "primary": [{"keyword": "активная пена", "occurrences_target": 15, "density_target": "2.5%"}],
-                "secondary": [{"keyword": "пена для мойки", "occurrences_target": 8, "density_target": "1.2%"}],
-                "supporting": [{"keyword": "бесконтактная мойка", "occurrences_target": 4, "density_target": "0.6%"}],
+                "primary": [
+                    {"keyword": "активная пена", "occurrences_target": 15, "density_target": "2.5%"}
+                ],
+                "secondary": [
+                    {"keyword": "пена для мойки", "occurrences_target": 8, "density_target": "1.2%"}
+                ],
+                "supporting": [
+                    {
+                        "keyword": "бесконтактная мойка",
+                        "occurrences_target": 4,
+                        "density_target": "0.6%",
+                    }
+                ],
             },
         }
         json_file = tmp_path / "test_new.json"
@@ -93,11 +125,17 @@ class TestNewStructureHandling:
         assert "Detected NEW structure" in out
         assert "активная пена" in out
 
-    def test_new_structure_converts_density(self, tmp_path: Path, capsys: pytest.CaptureFixture[str]):
+    def test_new_structure_converts_density(
+        self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+    ):
         data = {
             "category": "Test",
             "tier": "B",
-            "keywords": {"primary": [{"keyword": "test keyword", "occurrences_target": 10, "density_target": "2.5%"}]},
+            "keywords": {
+                "primary": [
+                    {"keyword": "test keyword", "occurrences_target": 10, "density_target": "2.5%"}
+                ]
+            },
         }
         json_file = tmp_path / "test_density.json"
         json_file.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")

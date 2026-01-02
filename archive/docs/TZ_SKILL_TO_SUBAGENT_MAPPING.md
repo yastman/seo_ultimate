@@ -9,6 +9,7 @@
 **Существующие Sub-агенты** (из системы) — это GENERIC SEO агенты.
 
 Они **НЕ знают** про:
+
 - SEO 2025 v7.3 Shop Mode
 - Наши скрипты (quality_runner.py, check_water_natasha.py)
 - Адвего-калибровку (Water 40-60%, Nausea ≤3.5)
@@ -44,10 +45,12 @@
 ### 1. seo-init → general-purpose (haiku)
 
 **Skill функционал:**
+
 - Создать папки: categories/{slug}/, content/, meta/, deliverables/, .logs/, competitors/scraped/, research/, data/
 - Создать task_{slug}.json с начальным состоянием
 
 **Prompt шаблон:**
+
 ```markdown
 ## Задача: Init категории
 
@@ -58,6 +61,7 @@
 
 ### Папки (создать):
 ```
+
 categories/{slug}/
 ├── .logs/
 ├── competitors/scraped/
@@ -66,6 +70,7 @@ categories/{slug}/
 ├── content/
 ├── meta/
 └── deliverables/
+
 ```
 
 ### Task file (создать): task_{slug}.json
@@ -109,6 +114,7 @@ categories/{slug}/
 ```
 
 Верни JSON с созданными путями.
+
 ```
 
 **GAP:** Нет. Полный функционал передаётся в prompt.
@@ -131,11 +137,13 @@ categories/{slug}/
    ```
 
 2. Запусти скрипт:
+
    ```bash
    python3 scripts/parse_semantics_to_json.py {slug} {tier}
    ```
 
 3. Проверь output:
+
    ```bash
    python3 -c "
    import json
@@ -147,8 +155,10 @@ categories/{slug}/
    ```
 
 Верни:
+
 - Путь к созданному JSON
 - Статистику keywords
+
 ```
 
 **GAP:** Нет. Скрипт делает всю работу.
@@ -176,6 +186,7 @@ python3 scripts/extract_competitor_urls_v2.py \
 ```
 
 ### Stage 2: Валидация
+
 ```bash
 python3 scripts/url_preparation_filter_and_validate.py \
   --task task_{slug}.json \
@@ -187,6 +198,7 @@ python3 scripts/url_preparation_filter_and_validate.py \
 ```
 
 Правила:
+
 - Минимум 8 URLs raw
 - Минимум 5 validated
 - HTTPS only
@@ -194,9 +206,11 @@ python3 scripts/url_preparation_filter_and_validate.py \
 - Max 2 per domain
 
 Верни:
+
 - Количество raw URLs
 - Количество validated URLs
 - Путь к urls.txt
+
 ```
 
 **GAP:** Нет. Скрипты делают работу.
@@ -220,17 +234,20 @@ ls -la data/mega/mega_competitors.csv
 ```
 
 ### Шаг 2: Запустить анализ
+
 ```bash
 source venv/bin/activate
 python3 scripts/filter_mega_competitors.py {slug}
 ```
 
 ### Шаг 3: Проверить output
+
 ```bash
 cat categories/{slug}/competitors/meta_patterns.json
 ```
 
-### Output формат:
+### Output формат
+
 ```json
 {
   "competitors_count": N,
@@ -242,11 +259,13 @@ cat categories/{slug}/competitors/meta_patterns.json
 ```
 
 Exit codes:
+
 - 0 = OK (≥5 competitors, ≥3 H2 themes)
 - 1 = WARNING
 - 2 = FAIL
 
 Верни meta_patterns.json содержимое.
+
 ```
 
 **GAP:** Небольшой. Агент `seo-content-planner` ориентирован на планирование, а не анализ конкурентов. Но с правильным prompt справится.
@@ -326,9 +345,11 @@ A: 1:60-1:80
 ```
 
 Quality:
+
 - Sources 2024-2025
 - Concrete numbers
 - URL citations
+
 ```
 
 **GAP:** Средний. `search-specialist` знает как искать, но НЕ знает формат output и Tier coverage. Нужен полный prompt.
@@ -393,8 +414,10 @@ Quality:
 ### Synonym Rotation (КРИТИЧНО)
 **Максимум 2 повтора одного слова в параграфе!**
 ```
+
 ❌ Пена очищает. Пена создаёт шапку. Пена безопасна.
 ✅ Пена очищает. Состав создаёт шапку. Средство безопасно.
+
 ```
 
 ### Anti-Fluff (ЗАПРЕЩЕНО)
@@ -432,6 +455,7 @@ Markdown файл. ТОЛЬКО контент, без мета-коммента
 **GAP:** КРИТИЧНЫЙ!
 
 `seo-content-writer` — generic агент. Он НЕ знает:
+
 - v7.3 Shop Mode
 - Synonym Rotation правило (max 2x)
 - Commercial Markers (конкретный список)
@@ -446,12 +470,14 @@ Markdown файл. ТОЛЬКО контент, без мета-коммента
 ### 7. seo-translator → general-purpose (sonnet)
 
 **Skill функционал:**
+
 - Перевод RU→UK
 - Сохранение Markdown
 - Терминология авто-детейлинга
 - ±5% длины
 
 **Prompt шаблон:**
+
 ```markdown
 ## Задача: Перевод RU → UK
 
@@ -493,11 +519,13 @@ Markdown файл. ТОЛЬКО контент, без мета-коммента
 ### 8. seo-validate → seo-content-auditor (sonnet) ⭐⭐
 
 **Skill функционал:**
+
 - 5 checks через скрипты
 - Water/Nausea v7.3 targets
 - NER/Blacklist
 
 **Prompt шаблон:**
+
 ```markdown
 ## Задача: Validation (5 Checks)
 
@@ -515,7 +543,8 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
   {tier}
 ```
 
-### 5 Checks:
+### 5 Checks
+
 1. **Markdown structure** (pymarkdownlnt)
 2. **Grammar** (language_tool_python)
 3. **Water/Nausea v7.3** (check_water_natasha.py)
@@ -532,6 +561,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 | Density | {density_min}-{density_max}% | >3% |
 
 ### Exit Codes
+
 - 0 = ALL PASS
 - 1 = WARNINGS
 - 2 = ERRORS (stop)
@@ -539,18 +569,22 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 ### Troubleshooting
 
 **Water too low (<40%):**
+
 - Добавить connector words (и, или, для)
 - Longer sentences
 
 **Water too high (>60%):**
+
 - Добавить technical terms
 - Убрать filler phrases
 
 **Nausea too high (>3.5):**
+
 - Synonym rotation (max 2x per paragraph)
 - Distribute keywords evenly
 
 ### Output Format
+
 ```json
 {
   "status": "PASS/WARNING/FAIL",
@@ -564,6 +598,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
   "issues": []
 }
 ```
+
 ```
 
 **GAP:** Средний. `seo-content-auditor` знает E-E-A-T, но НЕ знает наши скрипты и Адвего-калибровку. Нужен полный prompt с командами.
@@ -621,11 +656,13 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 ```
 
 ### Validation
+
 - Title length: 50-70 chars ✓
 - Title ≠ H1 ✓
 - Description length: 140-170 chars ✓
 - PRIMARY in title ✓
 - Starts with "Купить" ✓
+
 ```
 
 **GAP:** Минимальный. `seo-meta-optimizer` хорошо подходит, нужен только формат output.
@@ -646,11 +683,13 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 ### Собрать файлы в: categories/{slug}/deliverables/
 
 ```
+
 ├── README.md
 ├── QUALITY_REPORT.md
 ├── {slug}_ru.md (copy)
 ├── {slug}_uk.md (copy)
 └── {slug}_meta.json (copy)
+
 ```
 
 ### README.md Template
@@ -673,6 +712,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 ```
 
 ### QUALITY_REPORT.md Template
+
 ```markdown
 # Quality Report: {category_name}
 
@@ -697,8 +737,10 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 ```
 
 ### Update task file
+
 - stages.packaging = "completed"
 - status = "completed"
+
 ```
 
 **GAP:** Нет. Чистая file operations.
@@ -728,6 +770,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 
 Создать файлы промптов:
 ```
+
 prompts/
 ├── init.md
 ├── data.md
@@ -739,6 +782,7 @@ prompts/
 ├── validate.md
 ├── meta.md
 └── package.md
+
 ```
 
 Оркестратор читает prompt template → подставляет переменные → отправляет агенту.

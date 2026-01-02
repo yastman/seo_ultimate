@@ -96,6 +96,7 @@ PYTHONPATH=. python3 scripts/parse_semantics_to_json.py {slug} {tier}
 **D+E Pattern:** Все скрипты автоматически используют `_clean.json` если существует.
 
 **Преимущества:**
+
 - 100% coverage вместо ~40%
 - Оптимальная density ~4%
 - Без дубликатов ключей
@@ -141,7 +142,7 @@ URLs (optional):
 
 ## Error Handling
 
-### Если CSV не найден:
+### Если CSV не найден
 
 ```
 ❌ ERROR: CSV file not found
@@ -149,7 +150,7 @@ Path: data/Структура Ultimate финал - Лист2.csv
 Action: Check file path or download CSV
 ```
 
-### Если venv не активирован:
+### Если venv не активирован
 
 ```
 ❌ ERROR: venv not activated
@@ -171,6 +172,6 @@ Action: Run "source venv/bin/activate"
 
 **Version:** 5.1
 **Spec:** SEO_MASTER.md v7.3
-**D+E Pattern:** Includes CLEAN step for _clean.json
+**D+E Pattern:** Includes CLEAN step for_clean.json
 **Model:** haiku (fast init)
 **Updated:** 2025-12-12

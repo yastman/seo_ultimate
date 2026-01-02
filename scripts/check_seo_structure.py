@@ -16,16 +16,17 @@ Exit codes:
     2 - FAIL (стоп)
 """
 
-import sys
 import re
+import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
+
 
 def normalize_keyword(keyword: str) -> str:
     """Нормализация keyword для поиска (lowercase, убрать лишние пробелы)"""
-    return ' '.join(keyword.lower().split())
+    return " ".join(keyword.lower().split())
 
-def get_keyword_variations(keyword: str) -> List[str]:
+
+def get_keyword_variations(keyword: str) -> list[str]:
     """
     Генерирует вариации keyword для поиска.
 
@@ -47,7 +48,8 @@ def get_keyword_variations(keyword: str) -> List[str]:
 
     return variations
 
-def check_keyword_in_intro(text: str, keyword: str, limit: int = 150) -> Dict:
+
+def check_keyword_in_intro(text: str, keyword: str, limit: int = 150) -> dict:
     """
     Проверка 1: Main keyword в первых N символах (INTRO)
 
@@ -60,12 +62,12 @@ def check_keyword_in_intro(text: str, keyword: str, limit: int = 150) -> Dict:
         Dict с результатами
     """
     # Убираем H1 заголовок, берём только текст после него
-    lines = text.split('\n')
+    lines = text.split("\n")
     intro_text = ""
     found_h1 = False
 
     for line in lines:
-        if line.startswith('# '):
+        if line.startswith("# "):
             found_h1 = True
             continue
         if found_h1 and line.strip():
@@ -75,8 +77,8 @@ def check_keyword_in_intro(text: str, keyword: str, limit: int = 150) -> Dict:
     # Если не нашли структуру с H1, берём первые N символов
     if not intro_text:
         # Убираем markdown разметку
-        clean_text = re.sub(r'^#+\s+.*$', '', text, flags=re.MULTILINE)
-        clean_text = re.sub(r'\*\*(.+?)\*\*', r'\1', clean_text)
+        clean_text = re.sub(r"^#+\s+.*$", "", text, flags=re.MULTILINE)
+        clean_text = re.sub(r"\*\*(.+?)\*\*", r"\1", clean_text)
         intro_text = clean_text.strip()[:limit]
 
     intro_lower = intro_text.lower()
@@ -86,19 +88,20 @@ def check_keyword_in_intro(text: str, keyword: str, limit: int = 150) -> Dict:
     found = keyword_lower in intro_lower
 
     # Проверяем позицию (в первом предложении)
-    first_sentence = intro_text.split('.')[0] if '.' in intro_text else intro_text
+    first_sentence = intro_text.split(".")[0] if "." in intro_text else intro_text
     in_first_sentence = keyword_lower in first_sentence.lower()
 
     return {
-        'passed': found,
-        'in_first_sentence': in_first_sentence,
-        'intro_preview': intro_text[:100] + '...' if len(intro_text) > 100 else intro_text,
-        'keyword': keyword,
-        'message': f"Keyword {'найден' if found else 'НЕ НАЙДЕН'} в INTRO" +
-                   (f" (в первом предложении: {'да' if in_first_sentence else 'нет'})" if found else "")
+        "passed": found,
+        "in_first_sentence": in_first_sentence,
+        "intro_preview": intro_text[:100] + "..." if len(intro_text) > 100 else intro_text,
+        "keyword": keyword,
+        "message": f"Keyword {'найден' if found else 'НЕ НАЙДЕН'} в INTRO"
+        + (f" (в первом предложении: {'да' if in_first_sentence else 'нет'})" if found else ""),
     }
 
-def get_russian_word_stems(keyword: str) -> List[str]:
+
+def get_russian_word_stems(keyword: str) -> list[str]:
     """
     Получает основы слов для поиска с учётом русских падежей.
 
@@ -118,7 +121,8 @@ def get_russian_word_stems(keyword: str) -> List[str]:
 
     return stems
 
-def check_keywords_in_h2(text: str, keyword: str) -> Dict:
+
+def check_keywords_in_h2(text: str, keyword: str) -> dict:
     """
     Проверка 2: Keywords в H2 заголовках
 
@@ -133,7 +137,7 @@ def check_keywords_in_h2(text: str, keyword: str) -> Dict:
         Dict с результатами
     """
     # Находим все H2
-    h2_pattern = r'^##\s+(.+)$'
+    h2_pattern = r"^##\s+(.+)$"
     h2_matches = re.findall(h2_pattern, text, re.MULTILINE)
 
     keyword_lower = normalize_keyword(keyword)
@@ -168,17 +172,18 @@ def check_keywords_in_h2(text: str, keyword: str) -> Dict:
     passed = with_keyword >= min_required
 
     return {
-        'passed': passed,
-        'total_h2': total_h2,
-        'with_keyword': with_keyword,
-        'min_required': min_required,
-        'h2_list': h2_matches,
-        'h2_with_keyword': h2_with_keyword,
-        'h2_without_keyword': h2_without_keyword,
-        'message': f"H2 с keywords: {with_keyword}/{total_h2} (мин. {min_required})"
+        "passed": passed,
+        "total_h2": total_h2,
+        "with_keyword": with_keyword,
+        "min_required": min_required,
+        "h2_list": h2_matches,
+        "h2_with_keyword": h2_with_keyword,
+        "h2_without_keyword": h2_without_keyword,
+        "message": f"H2 с keywords: {with_keyword}/{total_h2} (мин. {min_required})",
     }
 
-def check_keyword_frequency(text: str, keyword: str) -> Dict:
+
+def check_keyword_frequency(text: str, keyword: str) -> dict:
     """
     Проверка 3: Частота main keyword (антиспам)
 
@@ -203,30 +208,31 @@ def check_keyword_frequency(text: str, keyword: str) -> Dict:
     spam_threshold = 10
 
     if count < min_freq:
-        status = 'LOW'
+        status = "LOW"
         message = f"Keyword '{keyword}' встречается {count} раз (мало, нужно {min_freq}-{max_freq})"
     elif count > spam_threshold:
-        status = 'SPAM'
+        status = "SPAM"
         message = f"Keyword '{keyword}' встречается {count} раз (СПАМ! макс. {max_freq})"
     elif count > max_freq:
-        status = 'HIGH'
+        status = "HIGH"
         message = f"Keyword '{keyword}' встречается {count} раз (многовато, оптимум {min_freq}-{max_freq})"
     else:
-        status = 'OK'
+        status = "OK"
         message = f"Keyword '{keyword}' встречается {count} раз (оптимально)"
 
     return {
-        'passed': status in ['OK', 'HIGH'],  # HIGH = предупреждение, но не блокер
-        'count': count,
-        'min_freq': min_freq,
-        'max_freq': max_freq,
-        'spam_threshold': spam_threshold,
-        'status': status,
-        'is_spam': status == 'SPAM',
-        'message': message
+        "passed": status in ["OK", "HIGH"],  # HIGH = предупреждение, но не блокер
+        "count": count,
+        "min_freq": min_freq,
+        "max_freq": max_freq,
+        "spam_threshold": spam_threshold,
+        "status": status,
+        "is_spam": status == "SPAM",
+        "message": message,
     }
 
-def check_seo_structure(file_path: str, keyword: str) -> Tuple[str, Dict]:
+
+def check_seo_structure(file_path: str, keyword: str) -> tuple[str, dict]:
     """
     Полная проверка SEO-структуры
 
@@ -238,7 +244,7 @@ def check_seo_structure(file_path: str, keyword: str) -> Tuple[str, Dict]:
         (status, results) где status = 'PASS'/'WARN'/'FAIL'
     """
     # Читаем файл
-    with open(file_path, 'r', encoding='utf-8') as f:
+    with open(file_path, encoding="utf-8") as f:
         text = f.read()
 
     # Запускаем проверки
@@ -246,35 +252,32 @@ def check_seo_structure(file_path: str, keyword: str) -> Tuple[str, Dict]:
     h2_check = check_keywords_in_h2(text, keyword)
     freq_check = check_keyword_frequency(text, keyword)
 
-    results = {
-        'intro': intro_check,
-        'h2': h2_check,
-        'frequency': freq_check
-    }
+    results = {"intro": intro_check, "h2": h2_check, "frequency": freq_check}
 
     # Определяем общий статус
-    if freq_check['is_spam']:
-        status = 'FAIL'  # Спам = блокер
-    elif not intro_check['passed']:
-        status = 'FAIL'  # Keyword не в INTRO = блокер
-    elif not h2_check['passed']:
-        status = 'WARN'  # H2 без keywords = предупреждение
-    elif freq_check['status'] == 'LOW':
-        status = 'WARN'  # Мало keywords = предупреждение
+    if freq_check["is_spam"]:
+        status = "FAIL"  # Спам = блокер
+    elif not intro_check["passed"]:
+        status = "FAIL"  # Keyword не в INTRO = блокер
+    elif not h2_check["passed"]:
+        status = "WARN"  # H2 без keywords = предупреждение
+    elif freq_check["status"] == "LOW":
+        status = "WARN"  # Мало keywords = предупреждение
     else:
-        status = 'PASS'
+        status = "PASS"
 
-    results['overall_status'] = status
+    results["overall_status"] = status
 
     return status, results
+
 
 def main(argv: list[str] | None = None) -> int:
     """CLI entry point (returns exit code)."""
     argv = sys.argv[1:] if argv is None else argv
 
     if len(argv) < 2:
-        print("Usage: python3 check_seo_structure.py <file.md> \"<main_keyword>\"")
-        print("Example: python3 check_seo_structure.py content.md \"активная пена\"")
+        print('Usage: python3 check_seo_structure.py <file.md> "<main_keyword>"')
+        print('Example: python3 check_seo_structure.py content.md "активная пена"')
         return 2
 
     file_path = argv[0]
@@ -284,12 +287,12 @@ def main(argv: list[str] | None = None) -> int:
         print(f"❌ File not found: {file_path}")
         return 2
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("SEO Structure Check")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"File: {file_path}")
     print(f"Keyword: {keyword}")
-    print(f"{'='*60}\n")
+    print(f"{'=' * 60}\n")
 
     status, results = check_seo_structure(file_path, keyword)
 
@@ -302,7 +305,7 @@ def main(argv: list[str] | None = None) -> int:
         print("   ✅ В первом предложении: да")
     elif intro["passed"]:
         print("   ⚠️  В первом предложении: нет (лучше переместить)")
-    print(f"   Preview: \"{intro['intro_preview']}\"")
+    print(f'   Preview: "{intro["intro_preview"]}"')
 
     print("\n2. KEYWORDS В H2:")
     h2 = results["h2"]
@@ -323,7 +326,7 @@ def main(argv: list[str] | None = None) -> int:
         icon = "⚠️"
     print(f"   {icon} {freq['message']}")
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     if status == "PASS":
         print("✅ SEO STRUCTURE: PASS")
         exit_code = 0
@@ -333,7 +336,7 @@ def main(argv: list[str] | None = None) -> int:
     else:
         print("❌ SEO STRUCTURE: FAIL")
         exit_code = 2
-    print(f"{'='*60}\n")
+    print(f"{'=' * 60}\n")
 
     return exit_code
 

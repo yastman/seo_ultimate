@@ -54,8 +54,10 @@ class TestMdToHtml:
             ]
         )
         _h1, html = gen.md_to_html(md)
-        assert "<ul>" in html and "</ul>" in html
-        assert "<ol>" in html and "</ol>" in html
+        assert "<ul>" in html
+        assert "</ul>" in html
+        assert "<ol>" in html
+        assert "</ol>" in html
         assert "<li>a</li>" in html
         assert "<li>d</li>" in html
 
@@ -85,7 +87,7 @@ class TestMdToHtml:
         out = gen.convert_tables(content)
         assert "<table>" in out
         assert "after" in out
-    
+
     def test_build_html_table_returns_original_for_short_input(self):
         # build_html_table() returns input if there isn't a real table.
         assert gen.build_html_table(["| A | B |"]) == "| A | B |"
@@ -139,7 +141,7 @@ class TestMdToHtml:
 
 class TestEscapeSql:
     @pytest.mark.parametrize(
-        "raw,expected",
+        ("raw", "expected"),
         [
             ("", ""),
             ("a'b", "a\\'b"),
@@ -152,7 +154,9 @@ class TestEscapeSql:
 
 
 class TestGenerateUpdateSql:
-    def test_generate_update_sql_missing_content_returns_warning_comment(self, tmp_path: Path, monkeypatch):
+    def test_generate_update_sql_missing_content_returns_warning_comment(
+        self, tmp_path: Path, monkeypatch
+    ):
         slug = "missing"
         project_dir = tmp_path
         monkeypatch.setattr(gen, "PROJECT_DIR", project_dir)
@@ -193,9 +197,12 @@ class TestGenerateUpdateSql:
 
         # Assert
         assert f"category_id: {cat_id}" in sql
-        assert "`meta_title`" in sql and "Title text" in sql
-        assert "`meta_description`" in sql and "Description text" in sql
-        assert "`meta_h1`" in sql and "H1" in sql
+        assert "`meta_title`" in sql
+        assert "Title text" in sql
+        assert "`meta_description`" in sql
+        assert "Description text" in sql
+        assert "`meta_h1`" in sql
+        assert "H1" in sql
         assert "<h2>H2</h2>" in sql
 
     def test_generate_update_sql_handles_missing_meta_file(self, tmp_path: Path, monkeypatch):
@@ -229,7 +236,9 @@ class TestTableHelpers:
 
 
 class TestMain:
-    def test_main_writes_output_file(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
+    def test_main_writes_output_file(
+        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
+    ):
         slug = "test-slug"
         cat_id = 1
 

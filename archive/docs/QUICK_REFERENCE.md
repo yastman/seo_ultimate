@@ -13,6 +13,7 @@
 | **2** | ❌ FAIL | ОСТАНОВИТЬ workflow | URLs: 3/5 (минимум 5) |
 
 **Использование в агентах:**
+
 ```bash
 # Валидатор вернул exit code
 if [ $? -eq 0 ]; then
@@ -30,34 +31,40 @@ fi
 ## 📊 Критерии по Stages
 
 ### Stage -3: URL Extraction
+
 - ✅ URLs: ≥8 (рекомендовано 10-15)
 - ✅ Домены: ≥6 уникальных
 - ✅ Протокол: 100% HTTPS
 - ✅ Формат: Валидные URL (no spaces, no fragments)
 
 ### Stage -2: URL Preparation
+
 - ✅ URLs: ≥5 категорийных страниц
 - ✅ Префиксы: Zero `/ua/` (только RU версии)
 - ✅ HTTP Status: 200 OK для всех
 - ✅ Content-Type: text/html
 
 ### Stage 3: MANUAL
+
 - ✅ meta_competitors.csv: ≥5 конкурентов с Title + H1 + Description
 - ✅ perplexity_research.md: ≥3 H2 темы, ≥4 FAQ вопроса
 
 ### Stage 4: Data Preparation
+
 - ✅ JSON: Valid structure
 - ✅ Tier: A/B/C (правильно определён)
 - ✅ Keywords: ≥10 для tier A/B, ≥5 для tier C
 - ✅ Обязательные поля: `tier`, `keywords`, `meta_patterns`
 
 ### Stage 6: Keyword Distribution
+
 - ✅ Coverage: ≥70% keywords распределены по зонам
 - ✅ Density targets: PRIMARY 0.11-0.2%, SECONDARY 0.07-0.13%, SUPPORTING 0.02-0.07% (total ≤2%)
 - ✅ Distribution map: Все keywords назначены в зоны (H1, Title, H2, intro, body, FAQ)
 - ✅ Semantic entities: ≥6 related phrases (НЕ "LSI keywords")
 
 ### Stage 8: Content Generation (RU)
+
 - ✅ Длина: 4000-5000 символов БЕЗ пробелов (все tier)
 - ✅ Coverage: ≥70% keywords упомянуто
 - ✅ H2: tier A (3-4), tier B (2-3), tier C (2)
@@ -65,12 +72,14 @@ fi
 - ✅ Структура: intro → H2 sections → FAQ → conclusion
 
 ### Stage 9: Translation (UK)
+
 - ✅ Длина: ±5% от RU версии
 - ✅ Язык: Натуральный украинский (не калька)
 - ✅ HTML: Все теги закрыты
 - ✅ Структура: Сохранены H2, FAQ, links
 
 ### Stage 10: Meta Tags
+
 - ✅ Title: 50-70 символов
 - ✅ Description: 140-170 символов
 - ✅ Уникальность: Title ≠ H1
@@ -78,6 +87,7 @@ fi
 - ✅ Оба языка: RU + UK в одном JSON
 
 ### Stage 11: Packaging
+
 - ✅ 5 файлов: README.md, {slug}_ru.md, {slug}_uk.md, {slug}_meta.json, QUALITY_REPORT.md
 - ✅ README: Инструкции по использованию
 - ✅ QUALITY_REPORT: Метрики + статус
@@ -87,6 +97,7 @@ fi
 ## 🧮 Формулы
 
 ### Keyword Coverage
+
 ```python
 coverage = (keywords_found / total_keywords) * 100
 # Цель: ≥70%
@@ -94,6 +105,7 @@ coverage = (keywords_found / total_keywords) * 100
 ```
 
 ### Keyword Density (by words)
+
 ```python
 density = (occurrences / total_words) * 100
 
@@ -107,6 +119,7 @@ density = (occurrences / total_words) * 100
 ```
 
 ### Водность (Natasha)
+
 ```python
 water = (stop_words / total_words) * 100
 # Норма: 55-75% (адекватная водность)
@@ -114,6 +127,7 @@ water = (stop_words / total_words) * 100
 ```
 
 ### Тошнота (Natasha, формула Адвего)
+
 ```python
 nausea = sqrt(most_frequent_word_count)
 # Норма: 5-7 (классическая тошнота)
@@ -121,6 +135,7 @@ nausea = sqrt(most_frequent_word_count)
 ```
 
 ### Readability (TextDescriptives)
+
 ```python
 # Flesch Reading Ease (Russian adapted)
 readability_score = 206.835 - 1.015 * (words/sentences) - 84.6 * (syllables/words)

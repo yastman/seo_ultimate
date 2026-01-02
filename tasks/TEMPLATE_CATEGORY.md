@@ -30,6 +30,7 @@
 - [ ] `research/RESEARCH_DATA.md` template
 
 **Validation:**
+
 ```bash
 python3 -c "import json; json.load(open('categories/{slug}/data/{slug}_clean.json')); print('PASS')"
 ```
@@ -39,24 +40,29 @@ python3 -c "import json; json.load(open('categories/{slug}/data/{slug}_clean.jso
 ## Stage 02: Meta ⬜
 
 ### Inputs
+
 - [ ] Прочитать `data/{slug}_clean.json`
 - [ ] Определить primary keyword
 - [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
+
 - [ ] title_ru: 50-60 chars, содержит primary keyword
 - [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
 - [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
+
 - [ ] title_uk: 50-60 chars
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
 ### Output
+
 - [ ] Записать в `meta/{slug}_meta.json`
 
 ### Validation
+
 ```bash
 python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 ```
@@ -66,43 +72,53 @@ python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 ## Stage 03: Research ⬜
 
 ### Block 1: Product Analysis
+
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
 - [ ] Особенности товаров
 
 ### Block 2: Competitors
+
 - [ ] WebSearch: "{primary keyword} купить украина"
 - [ ] Найти 3-5 конкурентов
 - [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
+
 - [ ] Для кого?
 - [ ] Какие задачи решает?
 - [ ] Где применяется?
 
 ### Block 4: Buying Guide
+
 - [ ] Критерии выбора
 - [ ] На что обратить внимание
 
 ### Block 5: FAQ
+
 - [ ] Собрать 5-7 вопросов
 
 ### Block 6: Comparison Table
+
 - [ ] Определить критерии
 - [ ] 3-5 брендов/продуктов
 
 ### Block 7: How-To
+
 - [ ] Пошаговая инструкция
 - [ ] Необходимое оборудование
 
 ### Block 8: Interlink
+
 - [ ] Связанные категории
 - [ ] Дополняющие товары
 
 ### Output
+
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
 ### Validation
+
 ```bash
 grep -c "^## Block" categories/{slug}/research/RESEARCH_DATA.md
 ```
@@ -112,6 +128,7 @@ grep -c "^## Block" categories/{slug}/research/RESEARCH_DATA.md
 ## Stage 04: Content ⬜
 
 ### Structure
+
 - [ ] H1: primary keyword
 - [ ] Intro: 150-200 слов
 - [ ] H2: Buying Guide
@@ -121,12 +138,14 @@ grep -c "^## Block" categories/{slug}/research/RESEARCH_DATA.md
 - [ ] Conclusion + CTA
 
 ### SEO Requirements
+
 - [ ] Primary keyword: 3-5 раз
 - [ ] Word count: 1500-2500
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
 ### Validation
+
 ```bash
 python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{keyword}" --mode seo
 ```
@@ -136,16 +155,19 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{key
 ## Stage 05: UK ⬜
 
 ### Create Structure
+
 - [ ] `uk/categories/{slug}/data/`
 - [ ] `uk/categories/{slug}/meta/`
 - [ ] `uk/categories/{slug}/content/`
 
 ### Translate
+
 - [ ] Keywords
 - [ ] Meta tags
 - [ ] Content
 
 ### Quality Check
+
 - [ ] Перевод (не транслитерация)
 - [ ] Терминология
 - [ ] CTA на украинском
@@ -155,6 +177,7 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{key
 ## Stage 06: Quality Gate ⬜
 
 ### Checklist
+
 - [ ] Data JSON valid (RU + UK)
 - [ ] Meta valid (RU + UK)
 - [ ] Content valid (RU + UK)
@@ -162,6 +185,7 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{key
 - [ ] SEO compliant
 
 ### Output
+
 - [ ] Создать `QUALITY_REPORT.md`
 
 ---
@@ -169,10 +193,12 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{key
 ## Stage 07: Deploy ⬜
 
 ### Pre-Deploy
+
 - [ ] Quality Gate = PASS
 - [ ] Backup DB
 
 ### Deploy
+
 - [ ] Find category_id
 - [ ] UPDATE meta RU
 - [ ] UPDATE content RU
@@ -180,6 +206,7 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{key
 - [ ] UPDATE content UK
 
 ### Post-Deploy
+
 - [ ] Clear cache
 - [ ] Visual check
 - [ ] Verify both languages

@@ -6,15 +6,14 @@ import sys
 import types
 from pathlib import Path
 
-import pytest
-
 import scripts.seo_utils as su
 
 
 def test_import_fallback_from_config_module(monkeypatch):
     module_path = Path(__file__).parent.parent / "scripts" / "seo_utils.py"
     spec = importlib.util.spec_from_file_location("seo_utils_import_fallback", module_path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
 
     dummy = types.ModuleType("config")
     dummy.QUALITY_THRESHOLDS = {"x": 1}
@@ -71,7 +70,9 @@ def test_get_l3_name_returns_none_when_missing():
 
 
 def test_check_url_accessibility_generic_exception_returns_false(monkeypatch):
-    monkeypatch.setattr(su.requests, "head", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("boom")))
+    monkeypatch.setattr(
+        su.requests, "head", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("boom"))
+    )
     assert su.check_url_accessibility("https://example.com") is False
 
 

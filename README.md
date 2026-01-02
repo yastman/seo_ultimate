@@ -192,6 +192,7 @@ CSV → /category-init → /generate-meta → /seo-research → /content-generat
 ## Changelog
 
 ### v8.0 (2025-12-31)
+
 - Task system: PIPELINE_STATUS, MASTER_CHECKLIST, MAINTENANCE
 - 58 категорий (13 готовы к deploy)
 - 8 skills (добавлен batch-content)
@@ -199,6 +200,7 @@ CSV → /category-init → /generate-meta → /seo-research → /content-generat
 - validate_uk.py
 
 ### v7.0 (2025-12-30)
+
 - Skills-based pipeline architecture
 - 7 specialized skills with validation
 - Cloned Anthropic skills examples
@@ -206,10 +208,12 @@ CSV → /category-init → /generate-meta → /seo-research → /content-generat
 - Input/output validation at each step
 
 ### v6.1 (2025-12-16)
+
 - SSOT: CONTENT_GUIDE.md v4.4
 - Two-mode validation (quality/seo)
 
 ### v6.0 (2025-12-15)
+
 - v8.5 SEO Standard
 - 4 basic skills
 

@@ -9,6 +9,7 @@ Supporting file for generate-meta skill.
 ### aktivnaya-pena
 
 **RU:**
+
 ```json
 {
   "slug": "aktivnaya-pena",
@@ -25,6 +26,7 @@ Supporting file for generate-meta skill.
 ```
 
 **UK:**
+
 ```json
 {
   "language": "uk",
@@ -43,6 +45,7 @@ Supporting file for generate-meta skill.
 ### antimoshka
 
 **RU:**
+
 ```json
 {
   "slug": "antimoshka",
@@ -59,6 +62,7 @@ Supporting file for generate-meta skill.
 ```
 
 **UK:**
+
 ```json
 {
   "language": "uk",
@@ -77,6 +81,7 @@ Supporting file for generate-meta skill.
 ### ochistiteli-diskov
 
 **RU:**
+
 ```json
 {
   "slug": "ochistiteli-diskov",
@@ -93,6 +98,7 @@ Supporting file for generate-meta skill.
 ```
 
 **UK:**
+
 ```json
 {
   "language": "uk",
@@ -111,6 +117,7 @@ Supporting file for generate-meta skill.
 ### ochistiteli-shin (ЧЕРНИТЕЛИ шин!)
 
 **RU:**
+
 ```json
 {
   "slug": "ochistiteli-shin",
@@ -128,6 +135,7 @@ Supporting file for generate-meta skill.
 ```
 
 **UK:**
+
 ```json
 {
   "language": "uk",
@@ -161,6 +169,7 @@ Supporting file for generate-meta skill.
 | antimoshka | Антимошка | щелочная, нейтральная | лужна, нейтральна | 0.5, 1, 5л |
 
 **ВАЖНО:**
+
 - омыватели — ОТДЕЛЬНАЯ категория, НЕ часть ochistiteli-stekol
 - антидождь — защитный состав, НЕ очиститель стёкол
 

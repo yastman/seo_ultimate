@@ -27,13 +27,13 @@ from __future__ import annotations
 
 import argparse
 import csv as csv_module
-import sys
 from pathlib import Path
-from collections import defaultdict
+
 
 # ============================================================================
 # FUNCTIONS
 # ============================================================================
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="MEGA URL Aggregation (V3.1 Cluster-First)")
@@ -100,7 +100,7 @@ def find_cluster_files(categories_dir: Path) -> dict[str, dict[str, Path | None]
             cluster_files[slug] = {
                 "raw": raw_file if raw_file.exists() else None,
                 "clean": clean_file,
-                "map": map_file if map_file.exists() else None
+                "map": map_file if map_file.exists() else None,
             }
 
     return cluster_files
@@ -170,8 +170,9 @@ def aggregate_clean_urls(cluster_files: dict[str, dict[str, Path | None]]) -> tu
         print(f"   {slug}: {len(urls)} clean URLs")
 
     unique_urls = list(url_map.values())
-    duplicates_removed = sum(len(read_urls_from_file(f["clean"]))
-                            for f in cluster_files.values()) - len(unique_urls)
+    duplicates_removed = sum(
+        len(read_urls_from_file(f["clean"])) for f in cluster_files.values()
+    ) - len(unique_urls)
 
     return unique_urls, duplicates_removed
 
@@ -204,7 +205,9 @@ def aggregate_url_maps(cluster_files: dict[str, dict[str, Path | None]]) -> list
     return all_mappings
 
 
-def save_mega_files(output_dir: Path, raw_urls: list[str], clean_urls: list[str], url_mappings: list[dict]) -> None:
+def save_mega_files(
+    output_dir: Path, raw_urls: list[str], clean_urls: list[str], url_mappings: list[dict]
+) -> None:
     """Сохраняет MEGA файлы."""
     # Создать output dir
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -232,7 +235,7 @@ def save_mega_files(output_dir: Path, raw_urls: list[str], clean_urls: list[str]
             writer.writeheader()
             writer.writerows(url_mappings)
 
-    print(f"\n✅ Saved MEGA files:")
+    print("\n✅ Saved MEGA files:")
     print(f"   - {mega_urls_raw} ({len(raw_urls)} URLs)")
     print(f"   - {mega_urls} ({len(clean_urls)} URLs)")
     print(f"   - {mega_urls_map} ({len(url_mappings)} mappings)")
@@ -241,6 +244,7 @@ def save_mega_files(output_dir: Path, raw_urls: list[str], clean_urls: list[str]
 # ============================================================================
 # MAIN
 # ============================================================================
+
 
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
@@ -264,37 +268,37 @@ def main(argv: list[str] | None = None) -> int:
     cluster_files = find_cluster_files(categories_dir)
 
     if not cluster_files:
-        print(f"\n❌ ERROR: No cluster files found!")
-        print(f"   Expected: categories/*/competitors/cluster_urls.txt")
-        print(f"   Run cluster_url_selection.py for each category first")
+        print("\n❌ ERROR: No cluster files found!")
+        print("   Expected: categories/*/competitors/cluster_urls.txt")
+        print("   Run cluster_url_selection.py for each category first")
         return 2
 
     print(f"   ✅ Found cluster files for {len(cluster_files)} categories:")
-    for slug in cluster_files.keys():
+    for slug in cluster_files:
         print(f"      - {slug}")
 
     # 2. Aggregate RAW URLs (диагностика)
-    print(f"\n📊 Aggregating RAW URLs (cluster_urls_raw.txt)...")
+    print("\n📊 Aggregating RAW URLs (cluster_urls_raw.txt)...")
     raw_urls = aggregate_raw_urls(cluster_files)
     print(f"   ✅ Total RAW URLs: {len(raw_urls)}")
 
     # 3. Aggregate CLEAN URLs (для Screaming Frog)
-    print(f"\n🔄 Aggregating CLEAN URLs (cluster_urls.txt) with dedup...")
+    print("\n🔄 Aggregating CLEAN URLs (cluster_urls.txt) with dedup...")
     clean_urls, duplicates = aggregate_clean_urls(cluster_files)
     print(f"   ✅ Total CLEAN URLs: {len(clean_urls)}")
     print(f"   ✅ Duplicates removed: {duplicates}")
 
     # 4. Aggregate URL mappings
-    print(f"\n🗺️  Aggregating URL mappings (cluster_urls_map.csv)...")
+    print("\n🗺️  Aggregating URL mappings (cluster_urls_map.csv)...")
     url_mappings = aggregate_url_maps(cluster_files)
     print(f"   ✅ Total mappings: {len(url_mappings)}")
 
     # 5. Save MEGA files
-    print(f"\n💾 Saving MEGA files...")
+    print("\n💾 Saving MEGA files...")
     save_mega_files(output_dir, raw_urls, clean_urls, url_mappings)
 
     # 6. Validation
-    print(f"\n📊 Summary:")
+    print("\n📊 Summary:")
     print(f"   Categories: {len(cluster_files)}")
     print(f"   RAW URLs: {len(raw_urls)}")
     print(f"   CLEAN URLs (deduped): {len(clean_urls)}")

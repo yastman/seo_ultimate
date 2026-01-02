@@ -1,6 +1,8 @@
-import pandas as pd
-import sys
 import platform
+import sys
+
+import pandas as pd
+
 
 print("-" * 30)
 print(f"Python Version: {platform.python_version()}")

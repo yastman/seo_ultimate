@@ -2,12 +2,12 @@ from __future__ import annotations
 
 import builtins
 import importlib.util
-import runpy
 import sys
 import types
 from pathlib import Path
 
 import pytest
+
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
@@ -17,9 +17,11 @@ def test_script_standalone_inserts_project_root(monkeypatch):
     monkeypatch.setattr(sys, "argv", ["check_water_natasha.py"])
     monkeypatch.setattr(sys, "path", ["__sentinel__"])
 
+    code = script_path.read_text(encoding="utf-8")
+    compiled = compile(code, str(script_path), "exec")
+    globals_dict = {"__name__": "__main__", "__package__": None, "__file__": str(script_path)}
     with pytest.raises(SystemExit):
-        code = script_path.read_text(encoding="utf-8")
-        exec(compile(code, str(script_path), "exec"), {"__name__": "__main__", "__package__": None, "__file__": str(script_path)})
+        exec(compiled, globals_dict)  # noqa: S102
 
     assert sys.path[0] == str(script_path.resolve().parent.parent)
 
@@ -37,7 +39,8 @@ def test_import_error_when_natasha_missing_exits_1(monkeypatch, capsys):
     sys.modules.pop("natasha", None)
 
     spec = importlib.util.spec_from_file_location("_water_no_natasha", script_path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
     mod = importlib.util.module_from_spec(spec)
     with pytest.raises(SystemExit) as exc:
         spec.loader.exec_module(mod)  # type: ignore[union-attr]
@@ -69,7 +72,8 @@ def test_partial_natasha_import_sets_natasha_full_false(monkeypatch):
     monkeypatch.setitem(sys.modules, "natasha", fake_natasha)
 
     spec = importlib.util.spec_from_file_location("_water_partial_natasha", script_path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)  # type: ignore[union-attr]
 
@@ -152,7 +156,11 @@ def test_calculate_metrics_from_text_uses_token_text_when_lemma_missing(monkeypa
     monkeypatch.setattr(mod, "Doc", FakeDoc)
     monkeypatch.setattr(mod, "clean_markdown", lambda t: t)
     monkeypatch.setattr(mod, "load_stopwords", lambda _lang="ru": set())
-    monkeypatch.setattr(mod, "get_nlp_pipeline", lambda: {"segmenter": object(), "morph_vocab": object(), "morph_tagger": object()})
+    monkeypatch.setattr(
+        mod,
+        "get_nlp_pipeline",
+        lambda: {"segmenter": object(), "morph_vocab": object(), "morph_tagger": object()},
+    )
 
     metrics = mod.calculate_metrics_from_text("тест", lang="ru")
     assert metrics is not None

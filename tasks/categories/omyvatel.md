@@ -1,7 +1,7 @@
-# omyvatel — Omyvatel
+# omyvatel — Омыватель
 
-**Priority:** HIGH (volume 1000)
-**Type:** L3
+**Priority:** HIGH (volume 3460)
+**Type:** Cluster
 **Parent:** sredstva-dlya-stekol
 
 ---
@@ -10,13 +10,57 @@
 
 | Stage | RU | UK |
 |-------|----|----|
-| 01-Init | ✅ | ✅ |
-| 02-Meta | ✅ | ✅ |
+| 01-Init | ✅ | ⬜ |
+| 02-Meta | ✅ | ⬜ |
 | 03-Research | ⬜ | — |
 | 04-Content | ⬜ | ⬜ |
-| 05-UK | — | ✅ |
+| 05-UK | — | ⬜ |
 | 06-Quality | ⬜ | ⬜ |
 | 07-Deploy | ⬜ | ⬜ |
+
+---
+
+## Keywords (из CSV)
+
+| Keyword | Volume |
+|---------|--------|
+| омыватель стекла зимний | 1000 |
+| омыватель стекла | 720 |
+| зимний омыватель | 320 |
+| омыватель | 260 |
+| купить омыватель стекла зимний | 170 |
+| купить омыватель стекол зимний | 170 |
+| омыватель стекла летний | 140 |
+| омыватель лобового стекла | 110 |
+| стеклоомыватель | 110 |
+| купить омыватель стекла | 50 |
+| омыватель для стекол | 50 |
+| купить зимний омыватель | 40 |
+| омыватель летний | 40 |
+| стеклоомыватель зимний | 40 |
+| омыватель для машины | 30 |
+| омыватель заднего стекла | 20 |
+| купить омыватель | 20 |
+| омыватель стекол купить | 20 |
+| зимние омыватели стекол | 10 |
+| жидкость стеклоомыватель для автомобиля | 10 |
+| омыватели стекла цена | 10 |
+| купить омыватель стекла авто | 10 |
+| стеклоомыватель цена | 10 |
+| стеклоомыватель в машине | 10 |
+| купить стеклоомыватель для авто | 10 |
+| стеклоомыватель для автомобиля | 10 |
+| летний омыватель купить | 10 |
+| летний стеклоомыватель | 10 |
+| зимний стеклоомыватель купить | 10 |
+| купить стеклоомыватель | 10 |
+| омыватель стекла антимошка | 10 |
+| омывайка антимошка | 10 |
+| стеклоомыватель зимний цена | 10 |
+| стеклоомыватель украина | 0 |
+| купить стеклоомыватель цены | 0 |
+
+**Total:** 35
 
 ---
 
@@ -29,7 +73,8 @@
 - [x] `content/omyvatel_ru.md` placeholder
 - [x] `research/RESEARCH_DATA.md` template
 
-**Validation:**
+**Init Validation:**
+
 ```bash
 python3 -c "import json; json.load(open('categories/omyvatel/data/omyvatel_clean.json')); print('PASS')"
 ```
@@ -39,24 +84,28 @@ python3 -c "import json; json.load(open('categories/omyvatel/data/omyvatel_clean
 ## Stage 02: Meta ✅
 
 ### Inputs
+
 - [ ] Прочитать `data/omyvatel_clean.json`
 - [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
+
 - [ ] title_ru: 50-60 chars, содержит primary keyword
 - [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
 - [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
+
 - [ ] title_uk: 50-60 chars
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
-### Output
+### Meta Output
+
 - [ ] Записать в `meta/omyvatel_meta.json`
 
-### Validation
+### Meta Validation
+
 ```bash
 python3 scripts/validate_meta.py categories/omyvatel/meta/omyvatel_meta.json
 ```
@@ -66,43 +115,25 @@ python3 scripts/validate_meta.py categories/omyvatel/meta/omyvatel_meta.json
 ## Stage 03: Research ⬜
 
 ### Block 1: Product Analysis
+
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
-- [ ] Особенности товаров
 
 ### Block 2: Competitors
+
 - [ ] WebSearch: "{primary keyword} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
+
 - [ ] Для кого?
 - [ ] Какие задачи решает?
-- [ ] Где применяется?
 
-### Block 4: Buying Guide
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
+### Research Output
 
-### Block 5: FAQ
-- [ ] Собрать 5-7 вопросов
-
-### Block 6: Comparison Table
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
-
-### Block 7: How-To
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
-
-### Block 8: Interlink
-- [ ] Связанные категории
-- [ ] Дополняющие товары
-
-### Output
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
-### Validation
+### Research Validation
+
 ```bash
 grep -c "^## Block" categories/omyvatel/research/RESEARCH_DATA.md
 ```
@@ -112,6 +143,7 @@ grep -c "^## Block" categories/omyvatel/research/RESEARCH_DATA.md
 ## Stage 04: Content ⬜
 
 ### Structure
+
 - [ ] H1: primary keyword
 - [ ] Intro: 150-200 слов
 - [ ] H2: Buying Guide
@@ -121,77 +153,43 @@ grep -c "^## Block" categories/omyvatel/research/RESEARCH_DATA.md
 - [ ] Conclusion + CTA
 
 ### SEO Requirements
+
 - [ ] Primary keyword: 3-5 раз
 - [ ] Word count: 1500-2500
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
-### Validation
+### Content Validation
+
 ```bash
 python3 scripts/validate_content.py categories/omyvatel/content/omyvatel_ru.md "{keyword}" --mode seo
 ```
 
 ---
 
-## Stage 05: UK ✅
+## Stage 05: UK ⬜
 
-### Create Structure
-- [ ] `uk/categories/omyvatel/data/`
-- [ ] `uk/categories/omyvatel/meta/`
-- [ ] `uk/categories/omyvatel/content/`
-
-### Translate
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
-
-### Quality Check
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
 
 ---
 
 ## Stage 06: Quality Gate ⬜
 
-### Checklist
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
 - [ ] Research complete
 - [ ] SEO compliant
-
-### Output
-- [ ] Создать `QUALITY_REPORT.md`
 
 ---
 
 ## Stage 07: Deploy ⬜
 
-### Pre-Deploy
-- [ ] Quality Gate = PASS
 - [ ] Backup DB
-
-### Deploy
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
-
-### Post-Deploy
+- [ ] Update Meta/Content RU/UK
 - [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
 
 ---
 
-## Notes
-
-- Parent: sredstva-dlya-stekol
-- Type: L3
-- Volume: 1000
-
----
-
-**Last Updated:** 2025-12-31
+**Last Updated:** 2026-01-02

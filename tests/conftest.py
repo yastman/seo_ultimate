@@ -7,16 +7,16 @@ Provides shared fixtures for:
 - Temporary directories
 """
 
-import pytest
-from pathlib import Path
-import tempfile
 import shutil
+from pathlib import Path
+
+import pytest
 
 
 @pytest.fixture
 def test_data_dir():
     """Returns path to test fixtures directory"""
-    return Path(__file__).parent / 'fixtures'
+    return Path(__file__).parent / "fixtures"
 
 
 @pytest.fixture
@@ -39,7 +39,7 @@ def valid_markdown_file(tmp_path):
 Ответ 2.
 """
     file_path = tmp_path / "test_valid.md"
-    file_path.write_text(content, encoding='utf-8')
+    file_path.write_text(content, encoding="utf-8")
     return file_path
 
 
@@ -51,7 +51,7 @@ def invalid_markdown_file(tmp_path):
 This is a very long line that exceeds the MD013 limit of 80 characters and should trigger a markdown lint warning during testing.
 """
     file_path = tmp_path / "test_invalid.md"
-    file_path.write_text(content, encoding='utf-8')
+    file_path.write_text(content, encoding="utf-8")
     return file_path
 
 
@@ -78,7 +78,7 @@ def keyword_test_file(tmp_path):
 Активную пену наносят на поверхность автомобиля перед мойкой.
 """
     file_path = tmp_path / "test_keywords.md"
-    file_path.write_text(content, encoding='utf-8')
+    file_path.write_text(content, encoding="utf-8")
     return file_path
 
 
@@ -99,10 +99,10 @@ def mock_json_data():
         "tier": "B",
         "keywords": [
             {"keyword": "активная пена", "exact_target": 0.8, "total_target": 1.5},
-            {"keyword": "бесконтактная мойка", "exact_target": 0.3, "total_target": 0.6}
+            {"keyword": "бесконтактная мойка", "exact_target": 0.3, "total_target": 0.6},
         ],
         "density_limit": 2.0,
-        "coverage_target": 70
+        "coverage_target": 70,
     }
 
 

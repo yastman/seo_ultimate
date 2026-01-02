@@ -4,10 +4,7 @@ Extra TDD tests for setup_all.py to improve coverage.
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
-
-import pytest
 
 import scripts.setup_all as mod
 
@@ -32,7 +29,9 @@ def test_setup_category_force_overwrites(tmp_path: Path, monkeypatch):
     (mod.CATEGORIES_DIR / slug).mkdir(parents=True, exist_ok=True)
 
     # Avoid depending on parse_semantics_to_json internals.
-    monkeypatch.setattr(mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}})
+    monkeypatch.setattr(
+        mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}}
+    )
 
     result = mod.setup_category(slug, [{"keyword": "x", "volume": 1}], force=True)
     assert result["status"] == "created"
@@ -44,7 +43,9 @@ def test_setup_all_aggregates_results(tmp_path: Path, monkeypatch):
     monkeypatch.setattr(mod, "CATEGORIES_DIR", tmp_path / "categories")
     monkeypatch.setattr(mod, "PROJECT_ROOT", tmp_path)
 
-    monkeypatch.setattr(mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}})
+    monkeypatch.setattr(
+        mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}}
+    )
     monkeypatch.setattr(
         mod,
         "get_all_categories_with_keywords",
@@ -76,7 +77,10 @@ def test_main_list_mode(tmp_path: Path, monkeypatch, capsys):
     monkeypatch.setattr(
         mod,
         "get_all_categories_with_keywords",
-        lambda: {"a": [{"keyword": "x", "volume": 1}] * 31, "b": [{"keyword": "x", "volume": 1}] * 5},
+        lambda: {
+            "a": [{"keyword": "x", "volume": 1}] * 31,
+            "b": [{"keyword": "x", "volume": 1}] * 5,
+        },
     )
     rc = mod.main(["--list"])
     out = capsys.readouterr().out
@@ -88,8 +92,12 @@ def test_main_list_mode(tmp_path: Path, monkeypatch, capsys):
 def test_main_dry_run(tmp_path: Path, monkeypatch, capsys):
     monkeypatch.setattr(mod, "CATEGORIES_DIR", tmp_path / "categories")
     monkeypatch.setattr(mod, "PROJECT_ROOT", tmp_path)
-    monkeypatch.setattr(mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}})
-    monkeypatch.setattr(mod, "get_all_categories_with_keywords", lambda: {"a": [{"keyword": "x", "volume": 1}]})
+    monkeypatch.setattr(
+        mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}}
+    )
+    monkeypatch.setattr(
+        mod, "get_all_categories_with_keywords", lambda: {"a": [{"keyword": "x", "volume": 1}]}
+    )
 
     rc = mod.main(["--dry-run"])
     out = capsys.readouterr().out
@@ -113,7 +121,11 @@ def test_print_summary_non_dry_run_prints_created_and_skipped(capsys):
 
 
 def test_main_non_dry_run_prints_next_step(monkeypatch, capsys):
-    monkeypatch.setattr(mod, "setup_all", lambda **_kw: [{"slug": "a", "status": "created", "tier": "B", "keywords": 10}])
+    monkeypatch.setattr(
+        mod,
+        "setup_all",
+        lambda **_kw: [{"slug": "a", "status": "created", "tier": "B", "keywords": 10}],
+    )
     monkeypatch.setattr(mod, "print_summary", lambda *_a, **_kw: None)
     rc = mod.main([])
     out = capsys.readouterr().out

@@ -42,6 +42,7 @@
 **Что делает:** 6 проверок контента (Markdown, Grammar, Water/Nausea, Keywords, NER/Blacklist, Commercial)
 
 **Архитектура:**
+
 ```python
 class QualityCheck:
     def __init__(self, file_path, keyword, tier, skip_grammar, skip_water, skip_ner):
@@ -58,12 +59,14 @@ class QualityCheck:
 ```
 
 **Плюсы:**
+
 - Чёткая структура (6 методов = 6 checks)
 - Exit codes (0/1/2) для automation
 - JSON report для машинного чтения
 - Skip-флаги для отдельных проверок
 
 **Минусы:**
+
 - check_simple_v2_md.py вызывается через subprocess (inconsistent)
 - Coverage 10% — почти нет тестов
 - Tight coupling с другими скриптами
@@ -77,6 +80,7 @@ class QualityCheck:
 **Что делает:** Рассчитывает метрики качества текста по формулам Адвего
 
 **Ключевая формула:**
+
 ```python
 ADVEGO_MULTIPLIER = 2.4  # Natasha ~22% → Адвего ~52%
 water_percent = (water_count / total_words) * 100 * ADVEGO_MULTIPLIER
@@ -85,11 +89,13 @@ academic_nausea = (max_freq / total_significant) * 100
 ```
 
 **Плюсы:**
+
 - Единая точка калибровки (ADVEGO_MULTIPLIER)
 - Использует normalize_text из seo_utils (SSOT)
 - Хорошо документирован
 
 **Минусы:**
+
 - ADVEGO_MULTIPLIER hardcoded (лучше в config)
 - Fallback на локальную normalize_text (дублирование)
 
@@ -102,6 +108,7 @@ academic_nausea = (max_freq / total_significant) * 100
 **Что делает:** Проверка плотности и распределения keywords
 
 **Ключевая логика:**
+
 ```python
 def check_keyword_density_and_distribution(md_content, data_json_path, word_count):
     # Читает keywords из JSON
@@ -111,11 +118,13 @@ def check_keyword_density_and_distribution(md_content, data_json_path, word_coun
 ```
 
 **Плюсы:**
+
 - Детальный JSON report (_validation.json)
 - Поддержка YAML front matter
 - Zone-based coverage
 
 **Минусы:**
+
 - Зависит от корректного keywords JSON (который сломан!)
 - Большой файл (977 строк) — можно разбить
 
@@ -128,6 +137,7 @@ def check_keyword_density_and_distribution(md_content, data_json_path, word_coun
 **Что делает:** Находит запрещённые сущности (бренды, города, AI-fluff)
 
 **Blacklists:**
+
 ```python
 BRAND_BLACKLIST = {'koch chemie', 'grass', 'karcher', ...}  # 36 брендов
 CITY_BLACKLIST = {'київ', 'киев', 'харків', ...}  # 30+ городов
@@ -136,11 +146,13 @@ STRICT_PHRASES = ["в современном мире", ...]  # FAIL trigger
 ```
 
 **Плюсы:**
+
 - Coverage 89% — лучший покрытый скрипт
 - NER через Natasha (опционально)
 - Чёткое разделение WARNING vs FAIL
 
 **Минусы:**
+
 - Blacklists hardcoded (лучше в external file)
 - NER медленный (но опциональный)
 
@@ -153,6 +165,7 @@ STRICT_PHRASES = ["в современном мире", ...]  # FAIL trigger
 **Что делает:** Единый источник правды для SEO функций
 
 **Ключевые функции:**
+
 ```python
 def normalize_text(md: str) -> str  # Единая нормализация
 def count_chars_no_spaces(content: str) -> int  # Символы без пробелов
@@ -162,12 +175,14 @@ def check_commercial_markers(text: str) -> Dict  # Коммерческие сл
 ```
 
 **Плюсы:**
+
 - SSOT для tier requirements
 - Единая normalize_text для всех скриптов
 - URL validation utilities
 - Хорошо документирован
 
 **Минусы:**
+
 - 799 строк — можно разбить на модули
 - Некоторые функции не используются (URL validation)
 
@@ -180,6 +195,7 @@ def check_commercial_markers(text: str) -> Dict  # Коммерческие сл
 **Что делает:** Парсит CSV семантики → JSON для валидатора
 
 **Проблема #1 — Hardcoded mapping:**
+
 ```python
 L3_TO_SLUG = {
     "Активная пена": "aktivnaya-pena",
@@ -189,6 +205,7 @@ L3_TO_SLUG = {
 ```
 
 **Проблема #2 — Неправильный CSV parsing:**
+
 ```
 CSV структура:
 L3: Для ручной мойки,5,    ← только 5 keywords
@@ -199,11 +216,13 @@ L2: Средства для стекол,59,  ← это L2, НЕ L3!
 ```
 
 **Результат:**
+
 - `dlya-ruchnoy-moyki.json` содержит keywords про омыватели (WRONG!)
 - `ochistiteli-shin.json` содержит keywords про обезжириватели (WRONG!)
 - Только `aktivnaya-pena.json` корректен
 
 **Рекомендация:** Это BLOCKER. Нужно либо:
+
 1. Исправить парсер (сложно — CSV структура нестандартная)
 2. Ручной ввод keywords (быстро для 9 категорий)
 3. Новый чистый CSV (идеально для ~50 категорий)
@@ -215,6 +234,7 @@ L2: Средства для стекол,59,  ← это L2, НЕ L3!
 **Что делает:** Инициализирует все категории из CSV
 
 **Логика:**
+
 ```python
 def auto_detect_tier(keywords_count: int) -> str:
     if keywords_count > 30: return "A"
@@ -223,11 +243,13 @@ def auto_detect_tier(keywords_count: int) -> str:
 ```
 
 **Плюсы:**
+
 - Auto-tier detection
 - Dry-run mode
 - Force overwrite
 
 **Минусы:**
+
 - Зависит от parse_semantics_to_json (который сломан)
 - Дублирует L3_TO_SLUG mapping
 
@@ -240,11 +262,13 @@ def auto_detect_tier(keywords_count: int) -> str:
 **Что делает:** SERP топ-10 → URLs для Screaming Frog
 
 **Плюсы:**
+
 - CLI с параметрами (--slug, --top-n, --max-urls)
 - Blacklist доменов
 - Score ranking (частота × позиция)
 
 **Минусы:**
+
 - 0% coverage — НЕТ ТЕСТОВ ВООБЩЕ
 - Зависит от CSV файлов с SERP данными
 - Не используется в основном workflow
@@ -278,6 +302,7 @@ def auto_detect_tier(keywords_count: int) -> str:
 **Риск:** Регрессии при изменениях, нет уверенности в корректности.
 
 **Решение:**
+
 1. Написать тесты для quality_runner.py (target: 50%)
 2. Написать базовые тесты для extract_competitor_urls_v2.py (target: 30%)
 3. Общий target: 60%
@@ -285,11 +310,13 @@ def auto_detect_tier(keywords_count: int) -> str:
 ### P3: Дублирование кода
 
 **Симптом:**
+
 - normalize_text() — 3 места (seo_utils + fallbacks в 2 скриптах)
 - tier_requirements — разные значения в разных файлах
 - ADVEGO_MULTIPLIER — hardcoded в check_water_natasha.py
 
 **Решение:**
+
 1. Убрать fallbacks — обязательный import из seo_utils
 2. Добавить constants в seo_utils (ADVEGO_MULTIPLIER, etc.)
 3. Единый config.json для параметров
@@ -458,22 +485,26 @@ User: "контент для {slug}"
 ## Вывод
 
 **Что хорошо:**
+
 - SEO_MASTER.md — отличная спецификация
 - seo_utils.py — хороший SSOT
 - Skills работают — используйте их
 - Валидация (5 checks) — полная и корректная
 
 **Что нужно исправить:**
+
 1. Keywords JSON (BLOCKER)
 2. Test coverage (35% → 60%)
 3. Дублирование кода (minor)
 
 **Что НЕ нужно:**
+
 - Удалять skills (они работают)
 - Переписывать всё с нуля
 - Создавать новые файлы документации
 
 **Следующий шаг:**
+
 1. Проверить и исправить keywords для 7 категорий
 2. Сгенерировать контент для dlya-ruchnoy-moyki
 3. Валидировать до PASS

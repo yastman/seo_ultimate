@@ -21,7 +21,7 @@ import argparse
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -57,7 +57,7 @@ def _deepcopy_json(data: Any) -> Any:
     return json.loads(json.dumps(data, ensure_ascii=False))
 
 
-def build_uk_clean_json(ru: Dict[str, Any]) -> Dict[str, Any]:
+def build_uk_clean_json(ru: dict[str, Any]) -> dict[str, Any]:
     """
     Build UK skeleton JSON from RU clean.json.
 
@@ -79,7 +79,9 @@ def build_uk_clean_json(ru: Dict[str, Any]) -> Dict[str, Any]:
             seo_titles["main_keyword_ru"] = seo_titles.get("main_keyword", "")
         seo_titles["h1"] = ""
         seo_titles["main_keyword"] = ""
-        seo_titles.setdefault("note", "UK seed: fill h1/main_keyword in Ukrainian; keep *_ru for traceability.")
+        seo_titles.setdefault(
+            "note", "UK seed: fill h1/main_keyword in Ukrainian; keep *_ru for traceability."
+        )
         # meta is optional; keep, but encourage UK rewrite
         if "meta" in seo_titles and "meta_ru" not in seo_titles:
             seo_titles["meta_ru"] = _deepcopy_json(seo_titles.get("meta", {}))
@@ -93,7 +95,7 @@ def build_uk_clean_json(ru: Dict[str, Any]) -> Dict[str, Any]:
     keywords = uk.get("keywords") or {}
     for bucket in ("primary", "secondary", "supporting"):
         items = keywords.get(bucket) or []
-        normalized: List[Dict[str, Any]] = []
+        normalized: list[dict[str, Any]] = []
         for item in items:
             if isinstance(item, str):
                 normalized.append({"keyword": "", "keyword_ru": item})
@@ -113,7 +115,7 @@ def build_uk_clean_json(ru: Dict[str, Any]) -> Dict[str, Any]:
     if entity and "entity_dictionary_ru" not in uk:
         uk["entity_dictionary_ru"] = _deepcopy_json(entity)
         # Create empty containers of the same shape (lists only), so LLM can fill.
-        empty_entity: Dict[str, Any] = {}
+        empty_entity: dict[str, Any] = {}
         for k, v in entity.items():
             empty_entity[k] = [] if isinstance(v, list) else {}
         uk["entity_dictionary"] = empty_entity
@@ -127,12 +129,16 @@ def build_uk_clean_json(ru: Dict[str, Any]) -> Dict[str, Any]:
     return uk
 
 
-def build_translation_prompt(slug: str, uk: Dict[str, Any]) -> str:
-    seo = uk.get("seo_titles") or {}
+def build_translation_prompt(slug: str, uk: dict[str, Any]) -> str:
+    # seo = uk.get("seo_titles") or {}
     kw = uk.get("keywords") or {}
     primary_ru = [x.get("keyword_ru", "") for x in (kw.get("primary") or []) if isinstance(x, dict)]
-    secondary_ru = [x.get("keyword_ru", "") for x in (kw.get("secondary") or []) if isinstance(x, dict)]
-    supporting_ru = [x.get("keyword_ru", "") for x in (kw.get("supporting") or []) if isinstance(x, dict)]
+    secondary_ru = [
+        x.get("keyword_ru", "") for x in (kw.get("secondary") or []) if isinstance(x, dict)
+    ]
+    supporting_ru = [
+        x.get("keyword_ru", "") for x in (kw.get("supporting") or []) if isinstance(x, dict)
+    ]
 
     entity_ru = uk.get("entity_dictionary_ru") or {}
 
@@ -166,11 +172,11 @@ def build_translation_prompt(slug: str, uk: Dict[str, Any]) -> str:
     )
 
 
-def read_json(path: Path) -> Dict[str, Any]:
+def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def write_json(path: Path, data: Dict[str, Any]) -> None:
+def write_json(path: Path, data: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -209,4 +215,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

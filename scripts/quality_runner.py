@@ -35,67 +35,78 @@ Exit codes:
     2 - ERRORS (stop workflow)
 """
 
-import sys
-import subprocess
-from pathlib import Path
-from typing import Tuple, Dict, List
+import argparse
 import json
+import subprocess
+import sys
+from pathlib import Path
+from typing import Any
+
 
 # Allow running as `python3 scripts/quality_runner.py` without PYTHONPATH=.
 if __name__ == "__main__" and __package__ is None:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 # Color codes for terminal output
-RED = '\033[0;31m'
-GREEN = '\033[0;32m'
-YELLOW = '\033[1;33m'
-BLUE = '\033[0;34m'
-NC = '\033[0m'  # No Color
+RED = "\033[0;31m"
+GREEN = "\033[0;32m"
+YELLOW = "\033[1;33m"
+BLUE = "\033[0;34m"
+NC = "\033[0m"  # No Color
+
 
 class QualityCheck:
-    def __init__(self, file_path: str, keyword: str, tier: str, skip_grammar: bool = False, skip_water: bool = False, skip_ner: bool = False):
+    def __init__(
+        self,
+        file_path: str,
+        keyword: str,
+        tier: str,
+        skip_grammar: bool = False,
+        skip_water: bool = False,
+        skip_ner: bool = False,
+    ):
         self.file_path = Path(file_path)
         self.keyword = keyword
         self.tier = tier
         self.skip_grammar = skip_grammar
         self.skip_water = skip_water
         self.skip_ner = skip_ner
-        self.results = {
-            'markdown': {'status': 'pending', 'errors': []},
-            'grammar': {'status': 'skipped' if skip_grammar else 'pending', 'errors': []},
-            'water': {'status': 'skipped' if skip_water else 'pending', 'metrics': {}},
-            'keywords': {'status': 'pending', 'metrics': {}},
-            'ner': {'status': 'skipped' if skip_ner else 'pending', 'findings': {}},
-            'commercial': {'status': 'pending', 'markers': {}},
-            'seo_structure': {'status': 'pending', 'checks': {}}
+        self.results: dict[str, Any] = {
+            "markdown": {"status": "pending", "errors": []},
+            "grammar": {"status": "skipped" if skip_grammar else "pending", "errors": []},
+            "water": {"status": "skipped" if skip_water else "pending", "metrics": {}},
+            "keywords": {"status": "pending", "metrics": {}},
+            "ner": {"status": "skipped" if skip_ner else "pending", "findings": {}},
+            "commercial": {"status": "pending", "markers": {}},
+            "seo_structure": {"status": "pending", "checks": {}},
         }
 
         # Validate inputs
         if not self.file_path.exists():
             raise FileNotFoundError(f"File not found: {self.file_path}")
 
-        if tier not in ['A', 'B', 'C']:
+        if tier not in ["A", "B", "C"]:
             raise ValueError(f"Invalid tier: {tier}. Must be A, B, or C")
 
     def print_header(self, title: str):
         """Print section header"""
-        print(f"\n{BLUE}{'='*70}{NC}")
+        print(f"\n{BLUE}{'=' * 70}{NC}")
         print(f"{BLUE}{title:^70}{NC}")
-        print(f"{BLUE}{'='*70}{NC}\n")
+        print(f"{BLUE}{'=' * 70}{NC}\n")
 
     def print_result(self, check_name: str, status: str, message: str = ""):
         """Print check result with color"""
-        if status == 'PASS':
+        if status == "PASS":
             print(f"✅ {GREEN}{check_name}: PASS{NC}")
-        elif status == 'WARN':
+        elif status == "WARN":
             print(f"⚠️  {YELLOW}{check_name}: WARNING{NC}")
-        elif status == 'FAIL':
+        elif status == "FAIL":
             print(f"❌ {RED}{check_name}: FAIL{NC}")
 
         if message:
             print(f"   {message}")
 
-    def check_markdown_structure(self) -> Tuple[str, List[str]]:
+    def check_markdown_structure(self) -> tuple[str, list[str]]:
         """
         Check 1: Markdown structure using pymarkdownlnt
 
@@ -114,17 +125,19 @@ class QualityCheck:
 
             # Check if scan was successful
             if not scan_result or not scan_result.scan_failures:
-                self.results['markdown']['status'] = 'PASS'
+                self.results["markdown"]["status"] = "PASS"
                 self.print_result("Markdown structure", "PASS")
-                return ('PASS', [])
+                return ("PASS", [])
 
             # Parse errors from scan_failures
             errors = []
             for failure in scan_result.scan_failures:
-                errors.append(f"{failure.scan_file}:{failure.line_number}:{failure.column_number}: {failure.rule_id} - {failure.rule_description}")
+                errors.append(
+                    f"{failure.scan_file}:{failure.line_number}:{failure.column_number}: {failure.rule_id} - {failure.rule_description}"
+                )
 
-            self.results['markdown']['status'] = 'WARN'
-            self.results['markdown']['errors'] = errors
+            self.results["markdown"]["status"] = "WARN"
+            self.results["markdown"]["errors"] = errors
 
             self.print_result("Markdown structure", "WARN", f"Found {len(errors)} issues")
             for error in errors[:5]:  # Show first 5
@@ -132,48 +145,48 @@ class QualityCheck:
             if len(errors) > 5:
                 print(f"   ... and {len(errors) - 5} more")
 
-            return ('WARN', errors)
+            return ("WARN", errors)
 
         except ImportError:
             # Fallback to markdownlint CLI
             print(f"{YELLOW}pymarkdownlnt not installed, using markdownlint CLI{NC}")
 
             try:
-                result = subprocess.run(
-                    ['markdownlint', str(self.file_path)],
+                result = subprocess.run(  # noqa: S603, S607
+                    ["markdownlint", str(self.file_path)],  # noqa: S607
                     capture_output=True,
                     text=True,
-                    timeout=30
+                    timeout=30,
                 )
 
                 if result.returncode == 0:
-                    self.results['markdown']['status'] = 'PASS'
+                    self.results["markdown"]["status"] = "PASS"
                     self.print_result("Markdown structure", "PASS")
-                    return ('PASS', [])
+                    return ("PASS", [])
 
-                errors = result.stdout.strip().split('\n') if result.stdout else []
-                self.results['markdown']['status'] = 'WARN'
-                self.results['markdown']['errors'] = errors
+                errors = result.stdout.strip().split("\n") if result.stdout else []
+                self.results["markdown"]["status"] = "WARN"
+                self.results["markdown"]["errors"] = errors
 
                 self.print_result("Markdown structure", "WARN", f"Found {len(errors)} issues")
-                return ('WARN', errors)
+                return ("WARN", errors)
 
             except FileNotFoundError:
                 error_msg = "Neither pymarkdownlnt nor markdownlint CLI found"
-                self.results['markdown']['status'] = 'FAIL'
-                self.results['markdown']['errors'] = [error_msg]
+                self.results["markdown"]["status"] = "FAIL"
+                self.results["markdown"]["errors"] = [error_msg]
                 self.print_result("Markdown structure", "FAIL", error_msg)
-                return ('FAIL', [error_msg])
+                return ("FAIL", [error_msg])
 
-    def check_grammar(self) -> Tuple[str, List[str]]:
+    def check_grammar(self) -> tuple[str, list[str]]:
         """
         Check 2: Grammar using language_tool_python
         """
         if self.skip_grammar:
-            print(f"\n{BLUE}{'='*70}{NC}")
+            print(f"\n{BLUE}{'=' * 70}{NC}")
             print(f"{BLUE}CHECK 2: Grammar & Spelling (SKIPPED){NC}")
-            print(f"{BLUE}{'='*70}{NC}\n")
-            return ('PASS', [])
+            print(f"{BLUE}{'=' * 70}{NC}\n")
+            return ("PASS", [])
 
         self.print_header("CHECK 2: Grammar & Spelling")
 
@@ -181,38 +194,41 @@ class QualityCheck:
             import language_tool_python
 
             # Initialize LanguageTool for Russian
-            tool = language_tool_python.LanguageTool('ru-RU')
+            tool = language_tool_python.LanguageTool("ru-RU")
 
             # Read file content
-            with open(self.file_path, 'r', encoding='utf-8') as f:
+            with open(self.file_path, encoding="utf-8") as f:
                 text = f.read()
 
             # Remove markdown syntax (basic cleanup)
             import re
-            text_clean = re.sub(r'#+\s+', '', text)  # Remove headers
-            text_clean = re.sub(r'\*\*(.+?)\*\*', r'\1', text_clean)  # Remove bold
-            text_clean = re.sub(r'\[(.+?)\]\(.+?\)', r'\1', text_clean)  # Remove links
+
+            text_clean = re.sub(r"#+\s+", "", text)  # Remove headers
+            text_clean = re.sub(r"\*\*(.+?)\*\*", r"\1", text_clean)  # Remove bold
+            text_clean = re.sub(r"\[(.+?)\]\(.+?\)", r"\1", text_clean)  # Remove links
 
             # Check grammar
             matches = tool.check(text_clean)
 
             if not matches:
-                self.results['grammar']['status'] = 'PASS'
+                self.results["grammar"]["status"] = "PASS"
                 self.print_result("Grammar", "PASS", "No errors found")
-                return ('PASS', [])
+                return ("PASS", [])
 
             # Parse errors
             errors = []
             for match in matches:
-                errors.append({
-                    'line': match.context,
-                    'message': match.message,
-                    'rule': match.ruleId,
-                    'suggestions': match.replacements[:3]  # Top 3 suggestions
-                })
+                errors.append(
+                    {
+                        "line": match.context,
+                        "message": match.message,
+                        "rule": match.ruleId,
+                        "suggestions": match.replacements[:3],  # Top 3 suggestions
+                    }
+                )
 
-            self.results['grammar']['status'] = 'WARN'
-            self.results['grammar']['errors'] = errors
+            self.results["grammar"]["status"] = "WARN"
+            self.results["grammar"]["errors"] = errors
 
             self.print_result("Grammar", "WARN", f"Found {len(errors)} potential issues")
 
@@ -220,36 +236,36 @@ class QualityCheck:
             for i, error in enumerate(errors[:5], 1):
                 print(f"   {i}. {error['message']}")
                 print(f"      Context: {error['line']}")
-                if error['suggestions']:
+                if error["suggestions"]:
                     print(f"      Suggestions: {', '.join(error['suggestions'])}")
 
             if len(errors) > 5:
                 print(f"   ... and {len(errors) - 5} more")
 
-            return ('WARN', errors)
+            return ("WARN", errors)
 
         except ImportError:
             error_msg = "language_tool_python not installed (pip install language-tool-python)"
-            self.results['grammar']['status'] = 'WARN'
-            self.results['grammar']['errors'] = [error_msg]
+            self.results["grammar"]["status"] = "WARN"
+            self.results["grammar"]["errors"] = [error_msg]
             self.print_result("Grammar", "WARN", error_msg)
-            return ('WARN', [error_msg])
+            return ("WARN", [error_msg])
         except Exception as e:
             error_msg = f"Grammar check failed: {str(e)}"
-            self.results['grammar']['status'] = 'FAIL'
-            self.results['grammar']['errors'] = [error_msg]
+            self.results["grammar"]["status"] = "FAIL"
+            self.results["grammar"]["errors"] = [error_msg]
             self.print_result("Grammar", "FAIL", error_msg)
-            return ('FAIL', [error_msg])
+            return ("FAIL", [error_msg])
 
-    def check_water_nausea(self) -> Tuple[str, Dict]:
+    def check_water_nausea(self) -> tuple[str, dict]:
         """
         Check 3: Water & Nausea using Natasha (direct import)
         """
         if self.skip_water:
-            print(f"\n{BLUE}{'='*70}{NC}")
+            print(f"\n{BLUE}{'=' * 70}{NC}")
             print(f"{BLUE}CHECK 3: Water & Nausea (SKIPPED){NC}")
-            print(f"{BLUE}{'='*70}{NC}\n")
-            return ('PASS', {})
+            print(f"{BLUE}{'=' * 70}{NC}\n")
+            return ("PASS", {})
 
         self.print_header("CHECK 3: Water & Nausea (Natasha)")
 
@@ -258,7 +274,7 @@ class QualityCheck:
             from scripts.check_water_natasha import calculate_metrics_from_text
 
             # Read file content
-            with open(self.file_path, 'r', encoding='utf-8') as f:
+            with open(self.file_path, encoding="utf-8") as f:
                 text = f.read()
 
             # Call function directly
@@ -266,87 +282,93 @@ class QualityCheck:
 
             if not result:
                 error_msg = "No metrics calculated (empty text or no Russian words)"
-                self.results['water']['status'] = 'FAIL'
+                self.results["water"]["status"] = "FAIL"
                 self.print_result("Water/Nausea", "FAIL", error_msg)
-                return ('FAIL', {})
+                return ("FAIL", {})
 
             # Extract metrics
             metrics = {
-                'water': result['water_percent'],
-                'classic_nausea': result['classic_nausea'],
-                'academic_nausea': result['academic_nausea'],
-                'lemma_repetition': result['lemma_repetition_index']
+                "water": result["water_percent"],
+                "classic_nausea": result["classic_nausea"],
+                "academic_nausea": result["academic_nausea"],
+                "lemma_repetition": result["lemma_repetition_index"],
             }
 
-            self.results['water']['metrics'] = metrics
+            self.results["water"]["metrics"] = metrics
 
             # Tier-aware thresholds (v7.3 Shop Mode) via seo_utils (SSOT)
             from scripts.seo_utils import get_tier_requirements
 
             tier_req = get_tier_requirements(self.tier)
-            water_min = float(tier_req.get('water_min', 40.0))
-            water_max = float(tier_req.get('water_max', 60.0))
-            water_blocker_low = float(tier_req.get('water_blocker_low', 30.0))
-            water_blocker_high = float(tier_req.get('water_blocker_high', water_max + 1.0))
+            water_min = float(tier_req.get("water_min", 40.0))
+            water_max = float(tier_req.get("water_max", 60.0))
+            water_blocker_low = float(tier_req.get("water_blocker_low", 30.0))
+            water_blocker_high = float(tier_req.get("water_blocker_high", water_max + 1.0))
 
-            classic_max = float(tier_req.get('nausea_classic_max', 3.5))
-            classic_blocker = float(tier_req.get('nausea_classic_blocker', classic_max + 0.1))
+            classic_max = float(tier_req.get("nausea_classic_max", 3.5))
+            classic_blocker = float(tier_req.get("nausea_classic_blocker", classic_max + 0.1))
 
-            academic_min = float(tier_req.get('nausea_academic_min', 7.0))
-            academic_max = float(tier_req.get('nausea_academic_max', 9.5))
+            academic_min = float(tier_req.get("nausea_academic_min", 7.0))
+            academic_max = float(tier_req.get("nausea_academic_max", 9.5))
 
-            water_ok = water_min <= metrics['water'] <= water_max
-            classic_ok = metrics['classic_nausea'] <= classic_max
+            water_ok = water_min <= metrics["water"] <= water_max
+            classic_ok = metrics["classic_nausea"] <= classic_max
 
             # Academic nausea: < min = INFO (не блокирует), min-max = OK, > 12 = FAIL (по текущей спецификации)
-            academic_nausea_fail = metrics['academic_nausea'] > 12.0
+            academic_nausea_fail = metrics["academic_nausea"] > 12.0
 
             # Blockers (останавливают workflow)
-            water_blocker = metrics['water'] < water_blocker_low or metrics['water'] >= water_blocker_high
-            classic_blocker_hit = metrics['classic_nausea'] >= classic_blocker
+            water_blocker = (
+                metrics["water"] < water_blocker_low or metrics["water"] >= water_blocker_high
+            )
+            classic_blocker_hit = metrics["classic_nausea"] >= classic_blocker
 
             if academic_nausea_fail or water_blocker or classic_blocker_hit:
-                self.results['water']['status'] = 'FAIL'
+                self.results["water"]["status"] = "FAIL"
                 self.print_result(
                     "Water/Nausea",
                     "FAIL",
                     f"Water: {metrics['water']:.1f}%, "
                     f"Classic Nausea: {metrics['classic_nausea']:.2f}, "
-                    f"Academic Nausea: {metrics['academic_nausea']:.1f}%"
+                    f"Academic Nausea: {metrics['academic_nausea']:.1f}%",
                 )
             elif water_ok and classic_ok:
-                self.results['water']['status'] = 'PASS'
+                self.results["water"]["status"] = "PASS"
                 self.print_result("Water/Nausea", "PASS")
             else:
-                self.results['water']['status'] = 'WARN'
+                self.results["water"]["status"] = "WARN"
                 self.print_result(
                     "Water/Nausea",
                     "WARN",
                     f"Water: {metrics['water']:.1f}%, "
                     f"Classic Nausea: {metrics['classic_nausea']:.2f}, "
-                    f"Academic Nausea: {metrics['academic_nausea']:.1f}%"
+                    f"Academic Nausea: {metrics['academic_nausea']:.1f}%",
                 )
 
             # Print metrics
             print(f"   Water: {metrics['water']:.1f}% (target: {water_min:.0f}-{water_max:.0f}%)")
-            print(f"   Classic Nausea: {metrics['classic_nausea']:.2f} (target: ≤{classic_max:.1f})")
-            print(f"   Academic Nausea: {metrics['academic_nausea']:.1f}% (target: {academic_min:.1f}-{academic_max:.1f}%)")
+            print(
+                f"   Classic Nausea: {metrics['classic_nausea']:.2f} (target: ≤{classic_max:.1f})"
+            )
+            print(
+                f"   Academic Nausea: {metrics['academic_nausea']:.1f}% (target: {academic_min:.1f}-{academic_max:.1f}%)"
+            )
             print(f"   Lemma Repetition: {metrics['lemma_repetition']:.1f}% (internal)")
 
-            return (self.results['water']['status'], metrics)
+            return (self.results["water"]["status"], metrics)
 
         except ImportError as e:
             error_msg = f"Cannot import check_water_natasha: {str(e)}"
-            self.results['water']['status'] = 'FAIL'
+            self.results["water"]["status"] = "FAIL"
             self.print_result("Water/Nausea", "FAIL", error_msg)
-            return ('FAIL', {})
+            return ("FAIL", {})
         except Exception as e:
             error_msg = f"Water/nausea check failed: {str(e)}"
-            self.results['water']['status'] = 'FAIL'
+            self.results["water"]["status"] = "FAIL"
             self.print_result("Water/Nausea", "FAIL", error_msg)
-            return ('FAIL', {})
+            return ("FAIL", {})
 
-    def check_keyword_density(self) -> Tuple[str, Dict]:
+    def check_keyword_density(self) -> tuple[str, dict]:
         """
         Check 4: Keyword density using check_simple_v2_md.py
 
@@ -358,22 +380,30 @@ class QualityCheck:
         self.print_header("CHECK 4: Keyword Density")
 
         # Call check_simple_v2_md.py script with --json flag
-        script_path = Path(__file__).parent / 'check_simple_v2_md.py'
+        script_path = Path(__file__).parent / "check_simple_v2_md.py"
 
         if not script_path.exists():
             error_msg = f"Script not found: {script_path}"
-            self.results['keywords']['status'] = 'FAIL'
+            self.results["keywords"]["status"] = "FAIL"
             self.print_result("Keyword Density", "FAIL", error_msg)
-            return ('FAIL', {})
+            return ("FAIL", {})
 
         try:
             # Run with --json flag for machine-readable output
-            result = subprocess.run(
-                [sys.executable, str(script_path), str(self.file_path), self.keyword, self.tier, '--json'],
+            result = subprocess.run(  # noqa: S603
+                [
+                    sys.executable,
+                    str(self.file_path.parent.parent.parent / "scripts" / "validate_content.py"),
+                    str(self.file_path),
+                    self.keyword,
+                    "--json",
+                    "--mode",
+                    "quality",
+                ],
                 capture_output=True,
                 text=True,
-                timeout=30
-            )
+                timeout=30,
+            )  # noqa: S603
 
             # Parse JSON report (more reliable than text parsing)
             json_path = self.file_path.parent / f"{self.file_path.stem}_validation.json"
@@ -381,63 +411,66 @@ class QualityCheck:
 
             if json_path.exists():
                 try:
-                    with open(json_path, 'r', encoding='utf-8') as f:
+                    with open(json_path, encoding="utf-8") as f:
                         json_data = json.load(f)
 
                     # Extract density/coverage from JSON
-                    density_check = json_data.get('checks', {}).get('density_distribution', {})
-                    density_metrics = density_check.get('metrics', {})
+                    density_check = json_data.get("checks", {}).get("density_distribution", {})
+                    density_metrics = density_check.get("metrics", {})
 
-                    metrics['density'] = density_metrics.get('total_density', 0.0)
-                    metrics['coverage'] = density_metrics.get('coverage', 0.0)
-                    metrics['keywords_found'] = density_metrics.get('keywords_found', 0)
-                    metrics['keywords_total'] = density_metrics.get('keywords_total', 0)
-                    metrics['warnings_count'] = density_metrics.get('warnings_count', 0)
-                    metrics['errors_count'] = density_metrics.get('errors_count', 0)
+                    metrics["density"] = density_metrics.get("total_density", 0.0)
+                    metrics["coverage"] = density_metrics.get("coverage", 0.0)
+                    metrics["keywords_found"] = density_metrics.get("keywords_found", 0)
+                    metrics["keywords_total"] = density_metrics.get("keywords_total", 0)
+                    metrics["warnings_count"] = density_metrics.get("warnings_count", 0)
+                    metrics["errors_count"] = density_metrics.get("errors_count", 0)
 
                 except (json.JSONDecodeError, KeyError) as e:
                     # JSON parsing failed - treat as no data
                     print(f"{YELLOW}⚠️  Warning: Could not parse JSON report: {e}{NC}")
-                    self.results['keywords']['status'] = 'WARN'
+                    self.results["keywords"]["status"] = "WARN"
 
             else:
                 # JSON not generated
                 print(f"{RED}❌ JSON report not found: {json_path}{NC}")
-                self.results['keywords']['status'] = 'FAIL'
-                return ('FAIL', {})
+                self.results["keywords"]["status"] = "FAIL"
+                return ("FAIL", {})
 
-            self.results['keywords']['metrics'] = metrics
+            self.results["keywords"]["metrics"] = metrics
 
             # Check exit code
             if result.returncode == 0:
-                self.results['keywords']['status'] = 'PASS'
+                self.results["keywords"]["status"] = "PASS"
                 self.print_result("Keyword Density", "PASS")
             elif result.returncode == 1:
-                self.results['keywords']['status'] = 'WARN'
-                self.print_result("Keyword Density", "WARN",
-                                f"Density: {metrics.get('density', 'N/A')}%, "
-                                f"Coverage: {metrics.get('coverage', 'N/A')}%")
+                self.results["keywords"]["status"] = "WARN"
+                self.print_result(
+                    "Keyword Density",
+                    "WARN",
+                    f"Density: {metrics.get('density', 'N/A')}%, "
+                    f"Coverage: {metrics.get('coverage', 'N/A')}%",
+                )
             else:
-                self.results['keywords']['status'] = 'FAIL'
+                self.results["keywords"]["status"] = "FAIL"
                 self.print_result("Keyword Density", "FAIL", result.stdout)
 
             # Print metrics
             print(f"   Density: {metrics.get('density', 'N/A')}% (target: ≤2%)")
             print(f"   Coverage: {metrics.get('coverage', 'N/A')}% (target: 50-60%)")
-            if 'keywords_found' in metrics:
+            if "keywords_found" in metrics:
                 print(f"   Keywords: {metrics['keywords_found']}/{metrics['keywords_total']} found")
-            if 'warnings_count' in metrics and metrics['warnings_count'] > 0:
+            if "warnings_count" in metrics and metrics["warnings_count"] > 0:
                 print(f"   Warnings: {metrics['warnings_count']}")
 
-            return (self.results['keywords']['status'], metrics)
+            return (self.results["keywords"]["status"], metrics)
 
         except Exception as e:
             error_msg = f"Keyword density check failed: {str(e)}"
-            self.results['keywords']['status'] = 'FAIL'
+            self.results["keywords"]["status"] = "FAIL"
             self.print_result("Keyword Density", "FAIL", error_msg)
-            return ('FAIL', {})
+            return ("FAIL", {})
 
-    def check_ner_blacklist(self) -> Tuple[str, Dict]:
+    def check_ner_blacklist(self) -> tuple[str, dict]:
         """
         Check 5: NER & Blacklist — проверка брендов, городов, AI-fluff
 
@@ -448,10 +481,10 @@ class QualityCheck:
         - NER entities (ORG, LOC, PER) via Natasha
         """
         if self.skip_ner:
-            print(f"\n{BLUE}{'='*70}{NC}")
+            print(f"\n{BLUE}{'=' * 70}{NC}")
             print(f"{BLUE}CHECK 5: NER & Blacklist (SKIPPED){NC}")
-            print(f"{BLUE}{'='*70}{NC}\n")
-            return ('PASS', {})
+            print(f"{BLUE}{'=' * 70}{NC}\n")
+            return ("PASS", {})
 
         self.print_header("CHECK 5: NER & Blacklist (Brands/Cities/AI-fluff)")
 
@@ -460,7 +493,7 @@ class QualityCheck:
             from scripts.check_ner_brands import check_blacklist, check_ner
 
             # Read file content
-            with open(self.file_path, 'r', encoding='utf-8') as f:
+            with open(self.file_path, encoding="utf-8") as f:
                 text = f.read()
 
             # Run blacklist check (fast)
@@ -471,84 +504,89 @@ class QualityCheck:
 
             # Combine findings
             findings = {
-                'brands': blacklist_results.get('brands', []),
-                'cities': blacklist_results.get('cities', []),
-                'ai_fluff': blacklist_results.get('ai_fluff', []),
-                'strict_phrases': blacklist_results.get('strict_phrases', []),
-                'ner_entities': ner_results.get('ner_entities', [])
+                "brands": blacklist_results.get("brands", []),
+                "cities": blacklist_results.get("cities", []),
+                "ai_fluff": blacklist_results.get("ai_fluff", []),
+                "strict_phrases": blacklist_results.get("strict_phrases", []),
+                "ner_entities": ner_results.get("ner_entities", []),
             }
 
-            self.results['ner']['findings'] = findings
+            self.results["ner"]["findings"] = findings
 
             # Count issues
-            brands_count = len(findings['brands'])
-            cities_count = len(findings['cities'])
-            ai_fluff_count = len(findings['ai_fluff'])
-            strict_count = len(findings['strict_phrases'])
-            
+            brands_count = len(findings["brands"])
+            cities_count = len(findings["cities"])
+            ai_fluff_count = len(findings["ai_fluff"])
+            strict_count = len(findings["strict_phrases"])
+
             total_issues = brands_count + cities_count + ai_fluff_count + strict_count
 
             # Print findings
-            if findings['strict_phrases']:
+            if findings["strict_phrases"]:
                 print(f"   ❌ STRICT BLACKLIST (CRITICAL): {strict_count}")
-                for item in findings['strict_phrases']:
+                for item in findings["strict_phrases"]:
                     print(f"      • {RED}{item['entity']}{NC}")
 
-            if findings['brands']:
+            if findings["brands"]:
                 print(f"   ⚠️  Бренды найдены: {brands_count}")
-                for item in findings['brands'][:3]:
+                for item in findings["brands"][:3]:
                     print(f"      • {item['entity']}")
                 if brands_count > 3:
                     print(f"      ... и ещё {brands_count - 3}")
 
-            if findings['cities']:
+            if findings["cities"]:
                 print(f"   ⚠️  Города найдены: {cities_count}")
-                for item in findings['cities'][:3]:
+                for item in findings["cities"][:3]:
                     print(f"      • {item['entity']}")
                 if cities_count > 3:
                     print(f"      ... и ещё {cities_count - 3}")
 
-            if findings['ai_fluff']:
+            if findings["ai_fluff"]:
                 print(f"   ⚠️  AI-fluff фразы: {ai_fluff_count}")
-                for item in findings['ai_fluff'][:3]:
-                    print(f"      • \"{item['entity']}\"")
+                for item in findings["ai_fluff"][:3]:
+                    print(f'      • "{item["entity"]}"')
                 if ai_fluff_count > 3:
                     print(f"      ... и ещё {ai_fluff_count - 3}")
 
             # NER info (informational only)
-            ner_orgs = [e for e in findings['ner_entities'] if e.get('type') == 'ORG']
-            ner_locs = [e for e in findings['ner_entities'] if e.get('type') == 'LOC']
+            ner_orgs = [e for e in findings["ner_entities"] if e.get("type") == "ORG"]
+            ner_locs = [e for e in findings["ner_entities"] if e.get("type") == "LOC"]
             if ner_orgs or ner_locs:
                 print(f"   ℹ️  NER обнаружил: {len(ner_orgs)} ORG, {len(ner_locs)} LOC")
 
             # Determine status
             if strict_count > 0:
-                self.results['ner']['status'] = 'FAIL'
-                self.print_result("NER & Blacklist", "FAIL", f"Found {strict_count} CRITICAL blacklist phrases")
-                return ('FAIL', findings)
+                self.results["ner"]["status"] = "FAIL"
+                self.print_result(
+                    "NER & Blacklist", "FAIL", f"Found {strict_count} CRITICAL blacklist phrases"
+                )
+                return ("FAIL", findings)
             elif total_issues == 0:
-                self.results['ner']['status'] = 'PASS'
+                self.results["ner"]["status"] = "PASS"
                 self.print_result("NER & Blacklist", "PASS", "Запрещённые сущности не найдены")
-                return ('PASS', findings)
+                return ("PASS", findings)
             else:
-                self.results['ner']['status'] = 'WARN'
-                self.print_result("NER & Blacklist", "WARN",
-                                f"Найдено {total_issues} проблем: {brands_count} брендов, "
-                                f"{cities_count} городов, {ai_fluff_count} AI-фраз")
-                return ('WARN', findings)
+                self.results["ner"]["status"] = "WARN"
+                self.print_result(
+                    "NER & Blacklist",
+                    "WARN",
+                    f"Найдено {total_issues} проблем: {brands_count} брендов, "
+                    f"{cities_count} городов, {ai_fluff_count} AI-фраз",
+                )
+                return ("WARN", findings)
 
         except ImportError as e:
             error_msg = f"Cannot import check_ner_brands: {str(e)}"
-            self.results['ner']['status'] = 'WARN'
+            self.results["ner"]["status"] = "WARN"
             self.print_result("NER & Blacklist", "WARN", error_msg)
-            return ('WARN', {})
+            return ("WARN", {})
         except Exception as e:
             error_msg = f"NER check failed: {str(e)}"
-            self.results['ner']['status'] = 'WARN'
+            self.results["ner"]["status"] = "WARN"
             self.print_result("NER & Blacklist", "WARN", error_msg)
-            return ('WARN', {})
+            return ("WARN", {})
 
-    def _parse_density_text_fallback(self, output: str) -> Dict:
+    def _parse_density_text_fallback(self, output: str) -> dict:
         """
         Fallback text parsing for density/coverage (more robust)
 
@@ -564,24 +602,24 @@ class QualityCheck:
         import re
 
         # Split по строкам для точного парсинга
-        lines = output.strip().split('\n')
+        lines = output.strip().split("\n")
 
         for line in lines:
             # Density: ищем строку с "Density:" или "Плотность:"
-            if 'Density:' in line or 'Плотность:' in line:
-                match = re.search(r'(\d+\.?\d*)%', line)
+            if "Density:" in line or "Плотность:" in line:
+                match = re.search(r"(\d+\.?\d*)%", line)
                 if match:
-                    metrics['density'] = float(match.group(1))
+                    metrics["density"] = float(match.group(1))
 
             # Coverage: ищем строку с "Coverage:" или "Покрытие:"
-            if 'Coverage:' in line or 'Покрытие:' in line:
-                match = re.search(r'(\d+\.?\d*)%', line)
+            if "Coverage:" in line or "Покрытие:" in line:
+                match = re.search(r"(\d+\.?\d*)%", line)
                 if match:
-                    metrics['coverage'] = float(match.group(1))
+                    metrics["coverage"] = float(match.group(1))
 
         return metrics
 
-    def check_commercial_markers(self) -> Tuple[str, Dict]:
+    def check_commercial_markers(self) -> tuple[str, dict]:
         """
         Check 6: Commercial Markers — проверка коммерческих слов для E-commerce
 
@@ -596,49 +634,52 @@ class QualityCheck:
 
             # Get tier requirements
             tier_req = get_tier_requirements(self.tier)
-            min_required = tier_req.get('commercial_min', 3)
+            min_required = tier_req.get("commercial_min", 3)
 
             # Read file content
-            with open(self.file_path, 'r', encoding='utf-8') as f:
+            with open(self.file_path, encoding="utf-8") as f:
                 text = f.read()
 
             # Run commercial markers check
             result = check_commercial_markers(text, min_required)
 
-            self.results['commercial']['markers'] = result
+            self.results["commercial"]["markers"] = result
 
             # Print details
             print(f"   Tier {self.tier} требует: минимум {min_required} маркеров")
             print(f"   Найдено: {result['found_count']} маркеров")
 
-            if result['found_markers']:
+            if result["found_markers"]:
                 print(f"   ✓ Маркеры: {', '.join(result['found_markers'][:6])}")
-                if len(result['found_markers']) > 6:
+                if len(result["found_markers"]) > 6:
                     print(f"      ... и ещё {len(result['found_markers']) - 6}")
 
             # Determine status
-            if result['passed']:
-                self.results['commercial']['status'] = 'PASS'
-                self.print_result("Commercial Markers", "PASS", result['message'])
-                return ('PASS', result)
+            if result["passed"]:
+                self.results["commercial"]["status"] = "PASS"
+                self.print_result("Commercial Markers", "PASS", result["message"])
+                return ("PASS", result)
             else:
-                self.results['commercial']['status'] = 'FAIL'
-                self.print_result("Commercial Markers", "FAIL",
-                                 f"Найдено {result['found_count']}/{min_required} — добавьте коммерческие слова!")
-                return ('FAIL', result)
+                self.results["commercial"]["status"] = "FAIL"
+                self.print_result(
+                    "Commercial Markers",
+                    "FAIL",
+                    f"Найдено {result['found_count']}/{min_required} — добавьте коммерческие слова!",
+                )
+                return ("FAIL", result)
 
         except ImportError as e:
             error_msg = f"Cannot import seo_utils: {str(e)}"
-            self.results['commercial']['status'] = 'WARN'
+            self.results["commercial"]["status"] = "WARN"
             self.print_result("Commercial Markers", "WARN", error_msg)
-            return ('WARN', {})
+            return ("WARN", {})
         except Exception as e:
             error_msg = f"Commercial markers check failed: {str(e)}"
-            self.results['commercial']['status'] = 'FAIL'
+            self.results["commercial"]["status"] = "FAIL"
             self.print_result("Commercial Markers", "FAIL", error_msg)
-            return ('FAIL', {})
+            return ("FAIL", {})
 
-    def check_seo_structure(self) -> Tuple[str, Dict]:
+    def check_seo_structure(self) -> tuple[str, dict]:
         """
         Check 7: SEO Structure — проверка структурных SEO-требований
 
@@ -654,41 +695,41 @@ class QualityCheck:
 
             status, results = check_seo_structure(str(self.file_path), self.keyword)
 
-            self.results['seo_structure']['status'] = status
-            self.results['seo_structure']['checks'] = results
+            self.results["seo_structure"]["status"] = status
+            self.results["seo_structure"]["checks"] = results
 
             # Print results
-            intro = results['intro']
-            h2 = results['h2']
-            freq = results['frequency']
+            intro = results["intro"]
+            h2 = results["h2"]
+            freq = results["frequency"]
 
             # 1. INTRO check
-            icon = "✅" if intro['passed'] else "❌"
+            icon = "✅" if intro["passed"] else "❌"
             print(f"   {icon} INTRO: {intro['message']}")
-            if intro['passed'] and not intro['in_first_sentence']:
-                print(f"      ⚠️  Лучше переместить keyword в первое предложение")
+            if intro["passed"] and not intro["in_first_sentence"]:
+                print("      ⚠️  Лучше переместить keyword в первое предложение")
 
             # 2. H2 check
-            icon = "✅" if h2['passed'] else "⚠️"
+            icon = "✅" if h2["passed"] else "⚠️"
             print(f"   {icon} H2: {h2['message']}")
-            if h2['h2_with_keyword']:
+            if h2["h2_with_keyword"]:
                 print(f"      ✓ С keyword: {', '.join(h2['h2_with_keyword'][:2])}")
-            if h2['h2_without_keyword'] and not h2['passed']:
+            if h2["h2_without_keyword"] and not h2["passed"]:
                 print(f"      ⚠️  Без keyword: {', '.join(h2['h2_without_keyword'][:2])}")
 
             # 3. Frequency check
-            if freq['status'] == 'OK':
+            if freq["status"] == "OK":
                 icon = "✅"
-            elif freq['is_spam']:
+            elif freq["is_spam"]:
                 icon = "❌"
             else:
                 icon = "⚠️"
             print(f"   {icon} Частота: {freq['message']}")
 
             # Overall result
-            if status == 'PASS':
+            if status == "PASS":
                 self.print_result("SEO Structure", "PASS", "Все структурные требования выполнены")
-            elif status == 'WARN':
+            elif status == "WARN":
                 self.print_result("SEO Structure", "WARN", "Есть замечания по структуре")
             else:
                 self.print_result("SEO Structure", "FAIL", "Критические проблемы со структурой")
@@ -697,14 +738,14 @@ class QualityCheck:
 
         except ImportError as e:
             error_msg = f"Cannot import check_seo_structure: {str(e)}"
-            self.results['seo_structure']['status'] = 'FAIL'
+            self.results["seo_structure"]["status"] = "FAIL"
             self.print_result("SEO Structure", "FAIL", error_msg)
-            return ('FAIL', {})
+            return ("FAIL", {})
         except Exception as e:
             error_msg = f"SEO structure check failed: {str(e)}"
-            self.results['seo_structure']['status'] = 'FAIL'
+            self.results["seo_structure"]["status"] = "FAIL"
             self.print_result("SEO Structure", "FAIL", error_msg)
-            return ('FAIL', {})
+            return ("FAIL", {})
 
     def run_all_checks(self) -> int:
         """
@@ -716,7 +757,7 @@ class QualityCheck:
         print(f"\n{GREEN}Starting Quality Checks for: {self.file_path.name}{NC}")
         print(f"Keyword: {self.keyword}")
         print(f"Tier: {self.tier}")
-        print(f"SEO Standard: v7.4 (Shop Mode + Structure)")
+        print("SEO Standard: v7.4 (Shop Mode + Structure)")
 
         # Run checks (7 total — v7.4)
         md_status, _ = self.check_markdown_structure()
@@ -730,25 +771,41 @@ class QualityCheck:
         # Summary
         self.print_header("SUMMARY")
 
-        statuses = [md_status, grammar_status, water_status, keyword_status, ner_status, commercial_status, seo_structure_status]
-        check_names = ['Markdown', 'Grammar', 'Water/Nausea', 'Keywords', 'NER/Blacklist', 'Commercial', 'SEO Structure']
+        statuses = [
+            md_status,
+            grammar_status,
+            water_status,
+            keyword_status,
+            ner_status,
+            commercial_status,
+            seo_structure_status,
+        ]
+        check_names = [
+            "Markdown",
+            "Grammar",
+            "Water/Nausea",
+            "Keywords",
+            "NER/Blacklist",
+            "Commercial",
+            "SEO Structure",
+        ]
 
         # Print individual results
-        for name, status in zip(check_names, statuses):
-            if status == 'PASS':
+        for name, status in zip(check_names, statuses, strict=True):
+            if status == "PASS":
                 print(f"   ✅ {name}: PASS")
-            elif status == 'WARN':
+            elif status == "WARN":
                 print(f"   ⚠️  {name}: WARNING")
             else:
                 print(f"   ❌ {name}: FAIL")
 
         print()
 
-        if all(s == 'PASS' for s in statuses):
+        if all(s == "PASS" for s in statuses):
             print(f"{GREEN}✅ ALL 7 CHECKS PASSED{NC}")
             return 0
 
-        if any(s == 'FAIL' for s in statuses):
+        if any(s == "FAIL" for s in statuses):
             print(f"{RED}❌ SOME CHECKS FAILED{NC}")
             return 2
 
@@ -759,7 +816,9 @@ class QualityCheck:
 def build_parser() -> "argparse.ArgumentParser":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Quality Runner — Python Orchestrator (7 checks — v7.4 Hybrid)")
+    parser = argparse.ArgumentParser(
+        description="Quality Runner — Python Orchestrator (7 checks — v7.4 Hybrid)"
+    )
     parser.add_argument("file_path", help="Path to Markdown file")
     parser.add_argument("keyword", help="Main keyword")
     parser.add_argument("tier", choices=["A", "B", "C"], help="Content Tier (A, B, C)")
@@ -774,7 +833,7 @@ def build_parser() -> "argparse.ArgumentParser":
     return parser
 
 
-def main(argv: List[str] | None = None) -> int:
+def main(argv: list[str] | None = None) -> int:
     """Main entry point (returns exit code instead of sys.exit)."""
     parser = build_parser()
     args = parser.parse_args(argv)

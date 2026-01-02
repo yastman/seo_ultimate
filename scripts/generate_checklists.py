@@ -1,86 +1,297 @@
 #!/usr/bin/env python3
 """
-Generate individual checklist files for all categories.
+generate_checklists.py
+
+Generates tasks/categories/*.md tasks from data/STRUCTURE.md.
+Dynamically parses the structure and keywords.
+
+Modes:
+  --reset: Regenerate all task files (overwrites content, useful for structure updates).
+  --sync:  Update status in existing task files and summary files without overwriting instructions.
+           (Note: Currently --sync logic re-generates MASTER and PIPELINE stats, but for task files,
+            it respects existing [x] if we implemented parsing, but for now specific instruction is:
+            # Только обновить статусы (проверить реальные файлы) -> update MASTER/PIPELINE, maybe leave tasks alone or update status table header?
+            For simplicity and based on "Aktualizatsiya tasks", --reset is the primary "rebuild" mode.
+            I will implement --sync to mostly update MASTER/PIPELINE and console output).
 """
 
+import argparse
 import os
-import json
+import re
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent.parent
-CATEGORIES_DIR = BASE_DIR / "categories"
-TASKS_DIR = BASE_DIR / "tasks" / "categories"
 
-# Category data with status and priority
-CATEGORIES = {
-    # COMPLETED (13) - all stages done except deploy
-    "aktivnaya-pena": {"priority": "HIGH", "type": "L3", "parent": "avtoshampuni", "volume": "1000+", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "dlya-ruchnoy-moyki": {"priority": "MEDIUM", "type": "L3", "parent": "avtoshampuni", "volume": "390", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "ochistiteli-stekol": {"priority": "MEDIUM", "type": "L3", "parent": "sredstva-dlya-stekol", "volume": "170", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "glina-i-avtoskraby": {"priority": "MEDIUM", "type": "L3", "parent": "ochistiteli-kuzova", "volume": "390", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "antimoshka": {"priority": "MEDIUM", "type": "L3", "parent": "ochistiteli-kuzova", "volume": "320", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "antibitum": {"priority": "LOW", "type": "L3", "parent": "ochistiteli-kuzova", "volume": "20", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "cherniteli-shin": {"priority": "HIGH", "type": "L3", "parent": "sredstva-dlya-diskov-i-shin", "volume": "1000", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "ochistiteli-diskov": {"priority": "MEDIUM", "type": "L3", "parent": "sredstva-dlya-diskov-i-shin", "volume": "70", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "ochistiteli-shin": {"priority": "LOW", "type": "L3", "parent": "sredstva-dlya-diskov-i-shin", "volume": "70", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "dlya-khimchistki-salona": {"priority": "HIGH", "type": "L2", "parent": "ukhod-za-interierom", "volume": "590", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "ochistiteli-dvigatelya": {"priority": "MEDIUM", "type": "L2", "parent": "moyka-i-eksterior", "volume": "480", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "keramika-i-zhidkoe-steklo": {"priority": "MEDIUM", "type": "L2", "parent": "zashchitnye-pokrytiya", "volume": "480", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-    "gubki-i-varezhki": {"priority": "MEDIUM", "type": "L2", "parent": "aksessuary", "volume": "320", "status": {"init": True, "meta": True, "research": True, "content": True, "uk": True, "quality": True, "deploy": False}},
-
-    # INIT+META done, need Research+Content (21)
-    "polirovalnye-mashinki": {"priority": "HIGH", "type": "L2", "parent": "polirovka", "volume": "8100", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "malyarnyy-skotch": {"priority": "HIGH", "type": "L2", "parent": "aksessuary", "volume": "4400", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "mikrofibra-i-tryapki": {"priority": "HIGH", "type": "L2", "parent": "aksessuary", "volume": "1300", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "polirovalnye-pasty": {"priority": "HIGH", "type": "L2", "parent": "polirovka", "volume": "1600", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "polirovalnye-krugi": {"priority": "MEDIUM", "type": "L2", "parent": "polirovka", "volume": "720", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "neytralizatory-zapakha": {"priority": "HIGH", "type": "L2", "parent": "ukhod-za-interierom", "volume": "2400", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "apparaty-tornador": {"priority": "HIGH", "type": "L3", "parent": "oborudovanie", "volume": "3600", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "raspyliteli-i-penniki": {"priority": "MEDIUM", "type": "L2", "parent": "aksessuary", "volume": "260", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "poliroli-dlya-plastika": {"priority": "MEDIUM", "type": "L2", "parent": "ukhod-za-interierom", "volume": "390", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "kvik-deteylery": {"priority": "MEDIUM", "type": "L2", "parent": "zashchitnye-pokrytiya", "volume": "140", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "obezzhirivateli": {"priority": "MEDIUM", "type": "L2", "parent": "moyka-i-eksterior", "volume": "590", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "voski": {"priority": "HIGH", "type": "L2", "parent": "zashchitnye-pokrytiya", "volume": "1600", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "antidozhd": {"priority": "HIGH", "type": "L3", "parent": "sredstva-dlya-stekol", "volume": "1000", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "aksessuary-dlya-naneseniya": {"priority": "MEDIUM", "type": "L2", "parent": "aksessuary", "volume": "170", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "sredstva-dlya-kozhi": {"priority": "MEDIUM", "type": "L2", "parent": "ukhod-za-interierom", "volume": "210", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "shchetki-i-kisti": {"priority": "MEDIUM", "type": "L2", "parent": "aksessuary", "volume": "480", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "omyvatel": {"priority": "HIGH", "type": "L3", "parent": "sredstva-dlya-stekol", "volume": "1000", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "polirol-dlya-stekla": {"priority": "MEDIUM", "type": "L3", "parent": "polirovka", "volume": "590", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "vedra-i-emkosti": {"priority": "LOW", "type": "L2", "parent": "aksessuary", "volume": "90", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "silanty": {"priority": "LOW", "type": "L3", "parent": "zashchitnye-pokrytiya", "volume": "50", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-    "mekhovye": {"priority": "LOW", "type": "L3", "parent": "polirovalnye-krugi", "volume": "50", "status": {"init": True, "meta": True, "research": False, "content": False, "uk": True, "quality": False, "deploy": False}},
-
-    # INIT done, need META (17)
-    "tverdyy-vosk": {"priority": "HIGH", "type": "SEO-filter", "parent": "voski", "volume": "1000", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "zhidkiy-vosk": {"priority": "MEDIUM", "type": "SEO-filter", "parent": "voski", "volume": "480", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "pyatnovyvoditeli": {"priority": "HIGH", "type": "L3", "parent": "ukhod-za-interierom", "volume": "2400", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "ochistiteli-kuzova": {"priority": "MEDIUM", "type": "L2", "parent": "moyka-i-eksterior", "volume": "590", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "akkumulyatornye-mashinki": {"priority": "MEDIUM", "type": "SEO-filter", "parent": "polirovalnye-mashinki", "volume": "260", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "avtoshampuni": {"priority": "MEDIUM", "type": "L2", "parent": "moyka-i-eksterior", "volume": "480", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "sredstva-dlya-stekol": {"priority": "MEDIUM", "type": "L2", "parent": "moyka-i-eksterior", "volume": "L2", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "sredstva-dlya-diskov-i-shin": {"priority": "MEDIUM", "type": "L2", "parent": "moyka-i-eksterior", "volume": "L2", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "s-voskom": {"priority": "LOW", "type": "SEO-filter", "parent": "dlya-ruchnoy-moyki", "volume": "SEO", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "kislotnyy-shampun": {"priority": "LOW", "type": "SEO-filter", "parent": "avtoshampuni", "volume": "70", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "zashchitnoe-pokrytie-dlya-koles": {"priority": "LOW", "type": "L3", "parent": "sredstva-dlya-diskov-i-shin", "volume": "10", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "dlya-vneshnego-plastika": {"priority": "LOW", "type": "L3", "parent": "ochistiteli-kuzova", "volume": "40", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "mikrofibra-dlya-polirovki": {"priority": "LOW", "type": "SEO-filter", "parent": "mikrofibra-i-tryapki", "volume": "50", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "mikrofibra-dlya-stekol": {"priority": "LOW", "type": "SEO-filter", "parent": "mikrofibra-i-tryapki", "volume": "50", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "nabory-dlya-deteylinga": {"priority": "MEDIUM", "type": "L2", "parent": "aksessuary", "volume": "260", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "porolonovye": {"priority": "LOW", "type": "L3", "parent": "polirovalnye-krugi", "volume": "L3", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "oborudovanie": {"priority": "LOW", "type": "L2", "parent": "zashchitnye-pokrytiya", "volume": "90", "status": {"init": True, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-
-    # NOT CREATED (7)
-    "nabory-dlya-moyki": {"priority": "MEDIUM", "type": "L3", "parent": "nabory-dlya-deteylinga", "volume": "210", "status": {"init": False, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "nabory-dlya-polirovki": {"priority": "MEDIUM", "type": "L3", "parent": "nabory-dlya-deteylinga", "volume": "480", "status": {"init": False, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "nabory-dlya-khimchistki": {"priority": "MEDIUM", "type": "L3", "parent": "nabory-dlya-deteylinga", "volume": "170", "status": {"init": False, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "nabory-dlya-kozhi": {"priority": "LOW", "type": "L3", "parent": "nabory-dlya-deteylinga", "volume": "30", "status": {"init": False, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "podarochnye-nabory": {"priority": "MEDIUM", "type": "L3", "parent": "nabory-dlya-deteylinga", "volume": "140", "status": {"init": False, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "ukhod-za-kozhey": {"priority": "MEDIUM", "type": "L3", "parent": "sredstva-dlya-kozhi", "volume": "210", "status": {"init": False, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
-    "chistka-kozhi": {"priority": "LOW", "type": "L3", "parent": "sredstva-dlya-kozhi", "volume": "70", "status": {"init": False, "meta": False, "research": False, "content": False, "uk": False, "quality": False, "deploy": False}},
+# ============================================================================
+# Transliteration (SSOT)
+# ============================================================================
+CYRILLIC_TO_LATIN = {
+    "а": "a",
+    "б": "b",
+    "в": "v",
+    "г": "g",
+    "д": "d",
+    "е": "e",
+    "ё": "yo",
+    "ж": "zh",
+    "з": "z",
+    "и": "i",
+    "й": "y",
+    "к": "k",
+    "л": "l",
+    "м": "m",
+    "н": "n",
+    "о": "o",
+    "п": "p",
+    "р": "r",
+    "с": "s",
+    "т": "t",
+    "у": "u",
+    "ф": "f",
+    "х": "kh",
+    "ц": "ts",
+    "ч": "ch",
+    "ш": "sh",
+    "щ": "shch",
+    "ъ": "",
+    "ы": "y",
+    "ь": "",
+    "э": "e",
+    "ю": "yu",
+    "я": "ya",
+    "і": "i",
+    "ї": "yi",
+    "є": "ye",
+    "ґ": "g",
 }
 
-TEMPLATE = '''# {slug} — {title}
+
+def slugify(text):
+    text = text.lower().strip()
+    result = []
+    for char in text:
+        if char in CYRILLIC_TO_LATIN:
+            result.append(CYRILLIC_TO_LATIN[char])
+        elif char.isalnum() or char == " " or char == "-":
+            result.append(char)
+        else:
+            result.append(" ")
+    slug = "".join(result)
+    slug = re.sub(r"[\s_]+", "-", slug)
+    slug = re.sub(r"-+", "-", slug)
+    return slug.strip("-")
+
+
+# ============================================================================
+# Paths
+# ============================================================================
+BASE_DIR = Path(__file__).resolve().parent.parent
+STRUCTURE_FILE = BASE_DIR / "data/STRUCTURE.md"
+TASKS_DIR = BASE_DIR / "tasks/categories"
+MASTER_CHECKLIST_FILE = BASE_DIR / "tasks/MASTER_CHECKLIST.md"
+PIPELINE_STATUS_FILE = BASE_DIR / "tasks/PIPELINE_STATUS.md"
+
+
+# ============================================================================
+# Parsing Logic
+# ============================================================================
+def parse_structure(file_path):
+    with open(file_path, encoding="utf-8") as f:
+        lines = f.readlines()
+
+    nodes = []
+    current_l1 = None
+    current_l2 = None
+    current_l3 = None
+    current_node = None
+
+    # Regex - using greedy (.+) to ensure full name capture
+    re_l1 = re.compile(r"^### 📂 L1: (.+) \(Vol: (\d+)\)")
+    re_l2 = re.compile(r"^#### 📁 L2: (.+) \(Vol: (\d+)\)")
+    re_l3 = re.compile(r"^##### 🏷️ L3: (.+) \(Vol: (\d+)\)")
+    re_cluster = re.compile(r"^#{5,6} 📦 Cluster: (.+) \(Vol: (\d+)\)")
+    re_filter = re.compile(r"^###### ⚡ Filter: (.+) \(Vol: (\d+)\)")
+    re_table_row = re.compile(r"^\| (.+?) \| (\d+) \|")
+
+    for line in lines:
+        line = line.strip()
+
+        m_l1 = re_l1.match(line)
+        if m_l1:
+            name, vol = m_l1.groups()
+            slug = slugify(name)
+            node = {
+                "type": "L1",
+                "name": name,
+                "slug": slug,
+                "volume": int(vol),
+                "parent": "Homepage",
+                "keywords": [],
+            }
+            nodes.append(node)
+            current_l1 = node
+            current_l2 = None
+            current_l3 = None
+            current_node = node
+            continue
+
+        m_l2 = re_l2.match(line)
+        if m_l2:
+            name, vol = m_l2.groups()
+            slug = slugify(name)
+            parent = current_l1["slug"] if current_l1 else "root"
+            node = {
+                "type": "L2",
+                "name": name,
+                "slug": slug,
+                "volume": int(vol),
+                "parent": parent,
+                "keywords": [],
+            }
+            nodes.append(node)
+            current_l2 = node
+            current_l3 = None
+            current_node = node
+            continue
+
+        m_l3 = re_l3.match(line)
+        if m_l3:
+            name, vol = m_l3.groups()
+            slug = slugify(name)
+            parent = (
+                current_l2["slug"] if current_l2 else (current_l1["slug"] if current_l1 else "root")
+            )
+            node = {
+                "type": "L3",
+                "name": name,
+                "slug": slug,
+                "volume": int(vol),
+                "parent": parent,
+                "keywords": [],
+            }
+            nodes.append(node)
+            current_l3 = node
+            current_node = node
+            continue
+
+        m_cluster = re_cluster.match(line)
+        if m_cluster:
+            name, vol = m_cluster.groups()
+            clean_name = name
+            if "General (" in name:
+                m = re.search(r"General \((.+?)\)", name)
+                if m:
+                    clean_name = m.group(1)
+            elif "Direct Keywords (" in name:
+                m = re.search(r"Direct Keywords \((.+?)\)", name)
+                if m:
+                    clean_name = m.group(1)
+
+            slug = slugify(clean_name)
+            parent = (
+                current_l3["slug"] if current_l3 else (current_l2["slug"] if current_l2 else "root")
+            )
+            node = {
+                "type": "Cluster",
+                "name": clean_name,
+                "slug": slug,
+                "volume": int(vol),
+                "parent": parent,
+                "keywords": [],
+            }
+            nodes.append(node)
+            current_node = node
+            continue
+
+        m_filter = re_filter.match(line)
+        if m_filter:
+            name, vol = m_filter.groups()
+            slug = slugify(name)
+            parent = current_l3["slug"] if current_l3 else "root"
+            node = {
+                "type": "Filter",
+                "name": name,
+                "slug": slug,
+                "volume": int(vol),
+                "parent": parent,
+                "keywords": [],
+            }
+            nodes.append(node)
+            current_node = node
+            continue
+
+        if current_node:
+            m_table = re_table_row.match(line)
+            if m_table:
+                kw, vol = m_table.groups()
+                if kw != "Keyword" and kw != "---":
+                    current_node["keywords"].append({"keyword": kw, "volume": int(vol)})
+
+    return nodes
+
+
+# ============================================================================
+# Status Checking
+# ============================================================================
+def check_real_status(slug):
+    """
+    Check file system for existence of artifacts.
+    Returns flags: init, meta, research, content, uk, quality, deploy
+    """
+    root = BASE_DIR
+    cat_dir = root / f"categories/{slug}"
+
+    # 1. Init
+    exists_dir = cat_dir.exists()
+    exists_data = (cat_dir / f"data/{slug}_clean.json").exists()
+    status_init = exists_dir and exists_data
+
+    # 2. Meta
+    status_meta = (cat_dir / f"meta/{slug}_meta.json").exists()
+
+    # 3. Research
+    # Check if research file exists AND has content
+    res_file = cat_dir / "research/RESEARCH_DATA.md"
+    status_research = False
+    if res_file.exists() and res_file.stat().st_size > 500:  # Heuristic
+        status_research = False
+        status_research = True
+
+    # 4. Content
+    content_file_ru = cat_dir / f"content/{slug}_ru.md"
+    status_content = False
+    if content_file_ru.exists() and content_file_ru.stat().st_size > 1000:
+        status_content = True
+
+    # 5. UK
+    # Check parallel structure
+    uk_dir = root / f"uk/categories/{slug}"
+    status_uk = False
+    if uk_dir.exists() and (uk_dir / f"content/{slug}_uk.md").exists():
+        status_uk = True
+
+    # 6. Quality
+    # Usually manual flag, but let's check if report exists
+    status_quality = (cat_dir / "QUALITY_REPORT.md").exists()
+
+    # 7. Deploy
+    # Hard to check automatically without DB access, default False
+    status_deploy = False
+
+    return {
+        "init": status_init,
+        "meta": status_meta,
+        "research": status_research,
+        "content": status_content,
+        "uk": status_uk,
+        "quality": status_quality,
+        "deploy": status_deploy,
+    }
+
+
+# ============================================================================
+# Template & Generation
+# ============================================================================
+TEMPLATE = """# {slug} — {name}
 
 **Priority:** {priority} (volume {volume})
 **Type:** {type}
@@ -92,38 +303,47 @@ TEMPLATE = '''# {slug} — {title}
 
 | Stage | RU | UK |
 |-------|----|----|
-| 01-Init | {init} | {init_uk} |
-| 02-Meta | {meta} | {meta_uk} |
-| 03-Research | {research} | — |
-| 04-Content | {content} | {content_uk} |
-| 05-UK | — | {uk} |
-| 06-Quality | {quality} | {quality_uk} |
-| 07-Deploy | {deploy} | {deploy_uk} |
+| 01-Init | {s_init} | {s_init_uk} |
+| 02-Meta | {s_meta} | {s_meta_uk} |
+| 03-Research | {s_research} | — |
+| 04-Content | {s_content} | {s_content_uk} |
+| 05-UK | — | {s_uk} |
+| 06-Quality | {s_quality} | {s_quality_uk} |
+| 07-Deploy | {s_deploy} | {s_deploy_uk} |
 
 ---
 
-## Stage 01: Init {init}
+## Keywords (из CSV)
 
-- [{init_check}] Папка создана: `categories/{slug}/`
-- [{init_check}] `data/{slug}_clean.json` создан
-- [{init_check}] Keywords кластеризованы
-- [{init_check}] `meta/{slug}_meta.json` template
-- [{init_check}] `content/{slug}_ru.md` placeholder
-- [{init_check}] `research/RESEARCH_DATA.md` template
+| Keyword | Volume |
+|---------|--------|
+{keywords_table}
 
-**Validation:**
+**Total:** {k_count}
+
+---
+
+## Stage 01: Init {s_init}
+
+- [{c_init}] Папка создана: `categories/{slug}/`
+- [{c_init}] `data/{slug}_clean.json` создан
+- [{c_init}] Keywords кластеризованы
+- [{c_init}] `meta/{slug}_meta.json` template
+- [{c_init}] `content/{slug}_ru.md` placeholder
+- [{c_init}] `research/RESEARCH_DATA.md` template
+
+**Init Validation:**
 ```bash
 python3 -c "import json; json.load(open('categories/{slug}/data/{slug}_clean.json')); print('PASS')"
 ```
 
 ---
 
-## Stage 02: Meta {meta}
+## Stage 02: Meta {s_meta}
 
 ### Inputs
 - [ ] Прочитать `data/{slug}_clean.json`
 - [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
 - [ ] title_ru: 50-60 chars, содержит primary keyword
@@ -135,63 +355,40 @@ python3 -c "import json; json.load(open('categories/{slug}/data/{slug}_clean.jso
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
-### Output
+### Meta Output
 - [ ] Записать в `meta/{slug}_meta.json`
 
-### Validation
+### Meta Validation
 ```bash
 python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 ```
 
 ---
 
-## Stage 03: Research {research}
+## Stage 03: Research {s_research}
 
 ### Block 1: Product Analysis
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
-- [ ] Особенности товаров
 
 ### Block 2: Competitors
 - [ ] WebSearch: "{{primary keyword}} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
 - [ ] Для кого?
 - [ ] Какие задачи решает?
-- [ ] Где применяется?
 
-### Block 4: Buying Guide
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
-
-### Block 5: FAQ
-- [ ] Собрать 5-7 вопросов
-
-### Block 6: Comparison Table
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
-
-### Block 7: How-To
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
-
-### Block 8: Interlink
-- [ ] Связанные категории
-- [ ] Дополняющие товары
-
-### Output
+### Research Output
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
-### Validation
+### Research Validation
 ```bash
 grep -c "^## Block" categories/{slug}/research/RESEARCH_DATA.md
 ```
 
 ---
 
-## Stage 04: Content {content}
+## Stage 04: Content {s_content}
 
 ### Structure
 - [ ] H1: primary keyword
@@ -208,128 +405,245 @@ grep -c "^## Block" categories/{slug}/research/RESEARCH_DATA.md
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
-### Validation
+### Content Validation
 ```bash
 python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{{keyword}}" --mode seo
 ```
 
 ---
 
-## Stage 05: UK {uk}
+## Stage 05: UK {s_uk}
 
-### Create Structure
-- [ ] `uk/categories/{slug}/data/`
-- [ ] `uk/categories/{slug}/meta/`
-- [ ] `uk/categories/{slug}/content/`
-
-### Translate
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
-
-### Quality Check
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
 
 ---
 
-## Stage 06: Quality Gate {quality}
+## Stage 06: Quality Gate {s_quality}
 
-### Checklist
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
 - [ ] Research complete
 - [ ] SEO compliant
 
-### Output
-- [ ] Создать `QUALITY_REPORT.md`
-
 ---
 
-## Stage 07: Deploy {deploy}
+## Stage 07: Deploy {s_deploy}
 
-### Pre-Deploy
-- [ ] Quality Gate = PASS
 - [ ] Backup DB
-
-### Deploy
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
-
-### Post-Deploy
+- [ ] Update Meta/Content RU/UK
 - [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
 
 ---
 
-## Notes
+**Last Updated:** 2026-01-02
+"""
 
-- Parent: {parent}
-- Type: {type}
-- Volume: {volume}
 
----
+def generate_task_file(node, status):
+    slug = node["slug"]
 
-**Last Updated:** 2025-12-31
-'''
+    # Priority
+    vol = node["volume"]
+    if vol >= 1000:
+        priority = "HIGH"
+    elif vol >= 300:
+        priority = "MEDIUM"
+    else:
+        priority = "LOW"
 
-def get_status_icon(done):
-    return "✅" if done else "⬜"
+    # Keywords table
+    keywords_table = ""
+    # Sort by volume desc
+    sorted_kws = sorted(node["keywords"], key=lambda x: x["volume"], reverse=True)
+    for k in sorted_kws:
+        keywords_table += f"| {k['keyword']} | {k['volume']} |\n"
 
-def get_check(done):
-    return "x" if done else " "
+    def icon(b):
+        return "✅" if b else "⬜"
 
-def slug_to_title(slug):
-    """Convert slug to readable title."""
-    return slug.replace("-", " ").title()
+    def check(b):
+        return "x" if b else " "
 
-def generate_checklist(slug, data):
-    """Generate checklist markdown for a category."""
-    status = data["status"]
-
-    return TEMPLATE.format(
+    content = TEMPLATE.format(
         slug=slug,
-        title=slug_to_title(slug),
-        priority=data["priority"],
-        volume=data["volume"],
-        type=data["type"],
-        parent=data["parent"],
-        init=get_status_icon(status["init"]),
-        init_uk=get_status_icon(status["init"]) if status["uk"] else "⬜",
-        meta=get_status_icon(status["meta"]),
-        meta_uk=get_status_icon(status["meta"]) if status["uk"] else "⬜",
-        research=get_status_icon(status["research"]),
-        content=get_status_icon(status["content"]),
-        content_uk=get_status_icon(status["content"]) if status["uk"] else "⬜",
-        uk=get_status_icon(status["uk"]),
-        quality=get_status_icon(status["quality"]),
-        quality_uk=get_status_icon(status["quality"]) if status["uk"] else "⬜",
-        deploy=get_status_icon(status["deploy"]),
-        deploy_uk=get_status_icon(status["deploy"]) if status["uk"] else "⬜",
-        init_check=get_check(status["init"]),
+        name=node["name"],
+        priority=priority,
+        volume=vol,
+        type=node["type"],
+        parent=node["parent"],
+        s_init=icon(status["init"]),
+        s_init_uk=icon(status["init"]) if status["uk"] else "⬜",
+        c_init=check(status["init"]),
+        s_meta=icon(status["meta"]),
+        s_meta_uk=icon(status["meta"]) if status["uk"] else "⬜",
+        s_research=icon(status["research"]),
+        s_content=icon(status["content"]),
+        s_content_uk=icon(status["content"]) if status["uk"] else "⬜",
+        s_uk=icon(status["uk"]),
+        s_quality=icon(status["quality"]),
+        s_quality_uk=icon(status["quality"]) if status["uk"] else "⬜",
+        s_deploy=icon(status["deploy"]),
+        s_deploy_uk=icon(status["deploy"]) if status["uk"] else "⬜",
+        keywords_table=keywords_table,
+        k_count=len(node["keywords"]),
     )
 
+    # Write
+    out_path = TASKS_DIR / f"{slug}.md"
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+# ============================================================================
+# Master Checklist
+# ============================================================================
+def update_master_checklist(nodes, statuses):
+    header = """# Master Checklist — Ultimate.net.ua
+
+| # | Slug | Name | Type | Parent | Vol | Keys | Init | Meta | Research | Content | UK | Quality | Deploy |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+"""
+    rows = []
+
+    def icon(b):
+        return "✅" if b else "⬜"
+
+    for i, node in enumerate(nodes, 1):
+        s = statuses.get(node["slug"], {})
+        # Safety fallback
+        if not s:
+            s = dict.fromkeys(
+                ["init", "meta", "research", "content", "uk", "quality", "deploy"], False
+            )
+
+        row = f"| {i} | `{node['slug']}` | {node['name']} | {node['type']} | {node['parent']} | {node['volume']} | {len(node['keywords'])} | {icon(s['init'])} | {icon(s['meta'])} | {icon(s['research'])} | {icon(s['content'])} | {icon(s['uk'])} | {icon(s['quality'])} | {icon(s['deploy'])} |"
+        rows.append(row)
+
+    with open(MASTER_CHECKLIST_FILE, "w", encoding="utf-8") as f:
+        f.write(header + "\n".join(rows))
+
+
+# ============================================================================
+# Pipeline Status
+# ============================================================================
+def update_pipeline_status(nodes, statuses):
+    total = len(nodes)
+
+    # Counts
+    c_init = sum(1 for s in statuses.values() if s["init"])
+    c_meta = sum(1 for s in statuses.values() if s["meta"])
+    c_research = sum(1 for s in statuses.values() if s["research"])
+    c_content = sum(1 for s in statuses.values() if s["content"])
+    c_uk = sum(1 for s in statuses.values() if s["uk"])
+    c_quality = sum(1 for s in statuses.values() if s["quality"])
+    c_deploy = sum(1 for s in statuses.values() if s["deploy"])
+
+    content = f"""# Pipeline Status — Ultimate.net.ua SEO
+
+**Total Categories:** {total}
+**Updated:** 2026-01-02
+
+---
+
+## Progress Overview
+
+| Stage | Skill | RU | UK | Pending |
+|-------|-------|----|----|---------|
+| 01-init | /category-init | {c_init}/{total} | {c_init}/{total} | {total - c_init} |
+| 02-meta | /generate-meta | {c_meta}/{total} | {c_meta}/{total} | {total - c_meta} |
+| 03-research | /seo-research | {c_research}/{total} | — | {total - c_research} |
+| 04-content | /content-generator | {c_content}/{total} | {c_content}/{total} | {total - c_content} |
+| 05-uk | /uk-content-init | — | {c_uk}/{total} | {total - c_uk} |
+| 06-quality | /quality-gate | {c_quality}/{total} | {c_quality}/{total} | {total - c_quality} |
+| 07-deploy | /deploy-to-opencart | {c_deploy}/{total} | {c_deploy}/{total} | {total - c_deploy} |
+
+---
+
+## Next Steps needed (Top 5 Priority)
+
+"""
+
+    # Find next things to do
+    # Priority: High volume categories that are not done
+
+    todo = []
+    seen = set()
+    for node in nodes:
+        slug = node["slug"]
+        if slug in seen:
+            continue
+        seen.add(slug)
+
+        s = statuses.get(slug, {})
+        if not s["meta"]:
+            todo.append(f"- {slug} (Meta)")
+        elif not s["research"]:
+            todo.append(f"- {slug} (Research)")
+        elif not s["content"]:
+            todo.append(f"- {slug} (Content)")
+
+    content += "\n".join(todo[:10])
+
+    with open(PIPELINE_STATUS_FILE, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+# ============================================================================
+# Main
+# ============================================================================
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--reset", action="store_true", help="Regenerate all task files")
+    parser.add_argument(
+        "--sync", action="store_true", help="Sync statuses without overwriting task files"
+    )
+    args = parser.parse_args()
+
+    # Default behavior if no args? The user prompt implies we should support these modes.
+    # If no args, maybe just print stats? Or default to sync?
+    # Let's default to sync if nothing specified, safer.
+    mode = "sync"
+    if args.reset:
+        mode = "reset"
+
+    print(f"Parsing {STRUCTURE_FILE}...")
+    nodes = parse_structure(STRUCTURE_FILE)
+    print(f"Found {len(nodes)} nodes.")
+
+    # Build statuses
+    statuses = {}
+    print("Checking statuses...")
+    for node in nodes:
+        statuses[node["slug"]] = check_real_status(node["slug"])
+
     TASKS_DIR.mkdir(parents=True, exist_ok=True)
 
-    count = 0
-    for slug, data in CATEGORIES.items():
-        filepath = TASKS_DIR / f"{slug}.md"
-        content = generate_checklist(slug, data)
+    if mode == "reset":
+        print("Regenerating task files...")
+        valid_slugs = set()
+        for node in nodes:
+            generate_task_file(node, statuses[node["slug"]])
+            valid_slugs.add(node["slug"])
 
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(content)
+        # Cleanup
+        for f in TASKS_DIR.glob("*.md"):
+            if f.stem not in valid_slugs:
+                print(f"Removing orphan task: {f.name}")
+                os.remove(f)
 
-        count += 1
-        print(f"Generated: {slug}.md")
+    else:
+        print("Sync mode: Skipping task file regeneration (only updating stats).")
 
-    print(f"\nTotal: {count} checklists generated")
+    print("Updating MASTER_CHECKLIST.md...")
+    update_master_checklist(nodes, statuses)
+
+    print("Updating PIPELINE_STATUS.md...")
+    update_pipeline_status(nodes, statuses)
+
+    print("Done!")
+
 
 if __name__ == "__main__":
     main()

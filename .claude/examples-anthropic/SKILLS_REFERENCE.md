@@ -2,7 +2,7 @@
 
 Официальные примеры скиллов от Anthropic для изучения паттернов и best practices.
 
-**Источник:** https://github.com/anthropics/skills
+**Источник:** <https://github.com/anthropics/skills>
 
 ---
 
@@ -122,14 +122,14 @@ description: Что делает И когда использовать. Вкл�
 
 ## Применение для SEO Pipeline
 
-### Что взять из примеров:
+### Что взять из примеров
 
 1. **skill-creator** — паттерны создания скиллов
 2. **pdf** — progressive disclosure (SKILL.md → forms.md → reference.md)
 3. **mcp-builder** — фазовый workflow (Research → Implementation → Test → Evaluate)
 4. **internal-comms** — domain-specific examples
 
-### Структура для наших скиллов:
+### Структура для наших скиллов
 
 ```
 .claude/skills/

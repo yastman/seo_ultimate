@@ -9,27 +9,28 @@ Tests cover:
 5. CLI functionality
 """
 
-import pytest
 import json
 import sys
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
+
+import pytest
+
 
 # Add scripts directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
+sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 from analyze_category import (
-    load_keywords_for_slug,
-    analyze_keywords,
-    generate_content_guidelines,
-    analyze_category,
-    read_semantics_csv,
-    split_keywords_by_intent,
-    is_commercial_keyword,
     COMMERCIAL_MODIFIERS,
     L3_TO_SLUG,
     SLUG_TO_L3,
-    CATEGORIES_DIR
+    analyze_category,
+    analyze_keywords,
+    generate_content_guidelines,
+    is_commercial_keyword,
+    load_keywords_for_slug,
+    read_semantics_csv,
+    split_keywords_by_intent,
 )
 
 
@@ -52,8 +53,6 @@ class TestLoadKeywordsForSlug:
     def test_load_from_raw_json_fallback(self, tmp_path: Path):
         """Should fallback to raw .json when _clean.json not available"""
         # Use isolated temp category so the test doesn't depend on repo state.
-        from analyze_category import CATEGORIES_DIR as real_categories_dir
-        import analyze_category as ac
 
         # Build minimal raw.json-only category folder.
         tmp_categories = tmp_path / "categories"
@@ -85,7 +84,7 @@ class TestLoadKeywordsForSlug:
         """Should fallback to CSV when no JSON available"""
         # Create a mock slug that has CSV but no JSON
         # This tests the CSV fallback path
-        with patch.object(Path, 'exists', return_value=False):
+        with patch.object(Path, "exists", return_value=False):
             # Mock the CSV reader to return test data
             keywords, source, extra_data = load_keywords_for_slug("antibitum")
             # antibitum should have JSON, so this tests the actual file
@@ -138,7 +137,7 @@ class TestAnalyzeKeywords:
 
     def test_medium_semantic_depth(self):
         """Should classify 6-15 keywords as medium"""
-        keywords = [{"keyword": f"test{i}", "volume": 100 - i*5} for i in range(10)]
+        keywords = [{"keyword": f"test{i}", "volume": 100 - i * 5} for i in range(10)]
         result = analyze_keywords(keywords)
 
         assert result["count"] == 10
@@ -148,7 +147,7 @@ class TestAnalyzeKeywords:
 
     def test_deep_semantic_depth(self):
         """Should classify 16+ keywords as deep"""
-        keywords = [{"keyword": f"test{i}", "volume": 100 - i*2} for i in range(20)]
+        keywords = [{"keyword": f"test{i}", "volume": 100 - i * 2} for i in range(20)]
         result = analyze_keywords(keywords)
 
         assert result["count"] == 20
@@ -290,8 +289,15 @@ class TestSplitKeywordsByIntent:
 
     def test_commercial_modifiers_complete(self):
         """All commercial modifiers should be defined"""
-        expected_modifiers = ['купить', 'цена', 'заказать', 'стоимость',
-                              'в наличии', 'доставка', 'недорого']
+        expected_modifiers = [
+            "купить",
+            "цена",
+            "заказать",
+            "стоимость",
+            "в наличии",
+            "доставка",
+            "недорого",
+        ]
         for mod in expected_modifiers:
             assert mod in COMMERCIAL_MODIFIERS
 
@@ -301,10 +307,7 @@ class TestGenerateContentGuidelines:
 
     def test_shallow_guidelines(self):
         """Should generate minimal guidelines for shallow depth"""
-        analysis = {
-            "semantic_depth": "shallow",
-            "count": 3
-        }
+        analysis = {"semantic_depth": "shallow", "count": 3}
         guidelines = generate_content_guidelines(analysis)
 
         assert guidelines["structure"]["faq"]["required"] is False
@@ -313,10 +316,7 @@ class TestGenerateContentGuidelines:
 
     def test_medium_guidelines(self):
         """Should generate standard guidelines for medium depth"""
-        analysis = {
-            "semantic_depth": "medium",
-            "count": 10
-        }
+        analysis = {"semantic_depth": "medium", "count": 10}
         guidelines = generate_content_guidelines(analysis)
 
         assert guidelines["structure"]["faq"]["required"] is True
@@ -324,10 +324,7 @@ class TestGenerateContentGuidelines:
 
     def test_deep_guidelines(self):
         """Should generate comprehensive guidelines for deep depth"""
-        analysis = {
-            "semantic_depth": "deep",
-            "count": 25
-        }
+        analysis = {"semantic_depth": "deep", "count": 25}
         guidelines = generate_content_guidelines(analysis)
 
         assert guidelines["structure"]["faq"]["required"] is True
@@ -473,7 +470,7 @@ class TestReadSemanticsCSV:
             categories = read_semantics_csv(str(SEMANTICS_CSV))
             assert len(categories) > 0
             # Check that at least some L3 categories exist
-            assert any(l3 in categories for l3 in L3_TO_SLUG.keys())
+            assert any(l3 in categories for l3 in L3_TO_SLUG)
 
     def test_csv_keywords_have_structure(self):
         """Keywords from CSV should have keyword and volume"""
@@ -481,7 +478,7 @@ class TestReadSemanticsCSV:
 
         if SEMANTICS_CSV.exists():
             categories = read_semantics_csv(str(SEMANTICS_CSV))
-            for l3_name, keywords in categories.items():
+            for _l3_name, keywords in categories.items():
                 for kw in keywords:
                     assert "keyword" in kw
                     assert "volume" in kw
@@ -493,7 +490,7 @@ class TestIntegration:
 
     def test_all_slugs_analyzable(self):
         """All known slugs should be analyzable"""
-        for slug in SLUG_TO_L3.keys():
+        for slug in SLUG_TO_L3:
             result = analyze_category(slug)
             # Should either succeed or have meaningful error
             if "error" in result:
@@ -503,7 +500,7 @@ class TestIntegration:
     def test_semantic_depth_distribution(self):
         """Depth should be consistent with keywords count boundaries"""
         analyzed = 0
-        for slug in SLUG_TO_L3.keys():
+        for slug in SLUG_TO_L3:
             result = analyze_category(slug)
             if "error" not in result:
                 analyzed += 1
@@ -520,9 +517,10 @@ class TestIntegration:
 
     def test_list_all_categories_runs(self):
         """list_all_categories should run without errors"""
-        from analyze_category import list_all_categories
         import io
         import sys
+
+        from analyze_category import list_all_categories
 
         # Capture stdout
         captured = io.StringIO()
@@ -545,9 +543,7 @@ def test_read_semantics_csv_skips_rows_with_empty_first_cell(tmp_path: Path):
     """
     csv_path = tmp_path / "sem.csv"
     csv_path.write_text(
-        "L3: Cat,,\n"
-        ",1,100\n"
-        "kw,,50\n",
+        "L3: Cat,,\n,1,100\nkw,,50\n",
         encoding="utf-8",
     )
 
@@ -559,9 +555,8 @@ def test_read_semantics_csv_skips_rows_with_empty_first_cell(tmp_path: Path):
 def test_main_prints_usage_and_exits_when_no_args(capsys):
     import analyze_category as ac
 
-    with patch.object(sys, "argv", ["analyze_category.py"]):
-        with pytest.raises(SystemExit) as exc:
-            ac.main()
+    with patch.object(sys, "argv", ["analyze_category.py"]), pytest.raises(SystemExit) as exc:
+        ac.main()
     assert exc.value.code == 1
     out = capsys.readouterr().out
     assert "Usage:" in out
@@ -570,10 +565,12 @@ def test_main_prints_usage_and_exits_when_no_args(capsys):
 def test_main_list_calls_list_all_categories_and_exits(capsys):
     import analyze_category as ac
 
-    with patch.object(sys, "argv", ["analyze_category.py", "--list"]):
-        with patch.object(ac, "list_all_categories") as mock_list:
-            with pytest.raises(SystemExit) as exc:
-                ac.main()
+    with (
+        patch.object(sys, "argv", ["analyze_category.py", "--list"]),
+        patch.object(ac, "list_all_categories") as mock_list,
+        pytest.raises(SystemExit) as exc,
+    ):
+        ac.main()
     assert exc.value.code == 0
     mock_list.assert_called_once()
     _ = capsys.readouterr()
@@ -611,14 +608,21 @@ def test_main_human_readable_prints_all_optional_sections(capsys):
             },
             "length_note": "note",
         },
-        "clustering_stats": {"before": 10, "after": 3, "reduction_percent": 70, "clusters_count": 2},
+        "clustering_stats": {
+            "before": 10,
+            "after": 3,
+            "reduction_percent": 70,
+            "clusters_count": 2,
+        },
         "seo_titles": {"h1": "H1", "h1_volume": 10, "main_keyword": "mk", "main_keyword_volume": 5},
         "entity_dictionary": {"BRANDS": ["a", "b", "c", "d"]},
     }
 
-    with patch.object(sys, "argv", ["analyze_category.py", "x"]):
-        with patch.object(ac, "analyze_category", return_value=fake):
-            ac.main()
+    with (
+        patch.object(sys, "argv", ["analyze_category.py", "x"]),
+        patch.object(ac, "analyze_category", return_value=fake),
+    ):
+        ac.main()
     out = capsys.readouterr().out
     assert "АНАЛИЗ КАТЕГОРИИ" in out
     assert "SOURCE:" in out
@@ -630,10 +634,16 @@ def test_main_human_readable_prints_all_optional_sections(capsys):
 def test_main_json_output(capsys):
     import analyze_category as ac
 
-    fake = {"meta": {"slug": "x"}, "keywords": {"count": 0}, "content": {"structure": {"intro": {"length": ""}}}}
-    with patch.object(sys, "argv", ["analyze_category.py", "x", "--json"]):
-        with patch.object(ac, "analyze_category", return_value=fake):
-            ac.main()
+    fake = {
+        "meta": {"slug": "x"},
+        "keywords": {"count": 0},
+        "content": {"structure": {"intro": {"length": ""}}},
+    }
+    with (
+        patch.object(sys, "argv", ["analyze_category.py", "x", "--json"]),
+        patch.object(ac, "analyze_category", return_value=fake),
+    ):
+        ac.main()
     out = capsys.readouterr().out
     assert '"slug": "x"' in out
 
@@ -641,10 +651,12 @@ def test_main_json_output(capsys):
 def test_main_error_prints_and_exits_1(capsys):
     import analyze_category as ac
 
-    with patch.object(sys, "argv", ["analyze_category.py", "x"]):
-        with patch.object(ac, "analyze_category", return_value={"error": "bad x"}):
-            with pytest.raises(SystemExit) as exc:
-                ac.main()
+    with (
+        patch.object(sys, "argv", ["analyze_category.py", "x"]),
+        patch.object(ac, "analyze_category", return_value={"error": "bad x"}),
+        pytest.raises(SystemExit) as exc,
+    ):
+        ac.main()
     assert exc.value.code == 1
     assert "bad x" in capsys.readouterr().out
 
@@ -657,7 +669,7 @@ def test_get_categories_dir_uk():
 
 
 def test_get_commercial_modifiers_uk():
-    from analyze_category import get_commercial_modifiers, COMMERCIAL_MODIFIERS_UK
+    from analyze_category import COMMERCIAL_MODIFIERS_UK, get_commercial_modifiers
 
     assert get_commercial_modifiers("uk") == COMMERCIAL_MODIFIERS_UK
 
@@ -666,7 +678,15 @@ def test_main_parses_lang_flag(monkeypatch, capsys):
     import analyze_category as ac
 
     monkeypatch.setattr(sys, "argv", ["analyze_category.py", "x", "--lang", "uk", "--json"])
-    monkeypatch.setattr(ac, "analyze_category", lambda slug, lang: {"meta": {"slug": slug, "lang": lang}, "keywords": {"count": 0}, "content": {"structure": {"intro": {"length": ""}}}})
+    monkeypatch.setattr(
+        ac,
+        "analyze_category",
+        lambda slug, lang: {
+            "meta": {"slug": slug, "lang": lang},
+            "keywords": {"count": 0},
+            "content": {"structure": {"intro": {"length": ""}}},
+        },
+    )
     ac.main()
     assert '"lang": "uk"' in capsys.readouterr().out
 
@@ -682,7 +702,8 @@ def test_module_import_fallback_mapping_executes(monkeypatch):
 
     module_path = Path(__file__).parent.parent / "scripts" / "analyze_category.py"
     spec = importlib.util.spec_from_file_location("analyze_category_import_fallback", module_path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
 
     blocked = {"scripts.seo_utils", "seo_utils"}
     real_import = builtins.__import__

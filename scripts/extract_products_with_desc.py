@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Extract products with descriptions by category from SQL backup."""
 
-import re
 import html
+import re
 import sys
+
 
 SQL_FILE = "ultimate_net_ua_backup.sql"
 
@@ -20,16 +21,18 @@ CATEGORIES = {
     453: ("gubki-i-varezhki", "Губки та рукавиці"),
 }
 
+
 def clean_html(text):
     """Remove HTML tags and decode entities."""
     text = html.unescape(text)
-    text = re.sub(r'<[^>]+>', ' ', text)
-    text = re.sub(r'\s+', ' ', text)
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = re.sub(r"\s+", " ", text)
     return text.strip()
+
 
 def extract_product_to_category(sql_content):
     """Extract product_id -> category_id mapping."""
-    pattern = r'\((\d+),(\d+),[01]\)'
+    pattern = r"\((\d+),(\d+),[01]\)"
     matches = re.findall(pattern, sql_content)
 
     cat_products = {}
@@ -42,6 +45,7 @@ def extract_product_to_category(sql_content):
             cat_products[cat_id].append(prod_id)
 
     return cat_products
+
 
 def extract_product_data(sql_content, product_ids):
     """Extract product name and description for given IDs (UK language_id=1)."""
@@ -58,17 +62,18 @@ def extract_product_data(sql_content, product_ids):
             desc = match.group(2).replace("''", "'")
 
             # Skip URLs and short names
-            if not name.startswith('http') and len(name) > 10:
+            if not name.startswith("http") and len(name) > 10:
                 products[pid] = {
-                    'name': name,
-                    'description': clean_html(desc)[:500] if desc else ''
+                    "name": name,
+                    "description": clean_html(desc)[:500] if desc else "",
                 }
 
     return products
 
+
 def main():
     print("Loading SQL backup...", file=sys.stderr)
-    with open(SQL_FILE, 'r', encoding='utf-8', errors='ignore') as f:
+    with open(SQL_FILE, encoding="utf-8", errors="ignore") as f:
         sql_content = f.read()
 
     print("Extracting product categories...", file=sys.stderr)
@@ -85,15 +90,16 @@ def main():
             products = extract_product_data(sql_content, product_ids)
 
             if products:
-                for pid, data in sorted(products.items(), key=lambda x: x[1]['name']):
+                for _pid, data in sorted(products.items(), key=lambda x: x[1]["name"]):
                     print(f"### {data['name']}")
-                    if data['description']:
+                    if data["description"]:
                         print(f"{data['description'][:300]}...")
                     print()
             else:
                 print("*Товари не знайдено*\n")
         else:
             print("*Товари не знайдено*\n")
+
 
 if __name__ == "__main__":
     main()

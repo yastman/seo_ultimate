@@ -8,6 +8,7 @@ description: Deploy SEO meta tags and content to Ultimate.net.ua OpenCart databa
 Deploy meta tags and content to OpenCart database.
 
 **Supporting files:**
+
 - [DB_REFERENCE.md](DB_REFERENCE.md) — Category mapping, schema details
 
 **Connection:** `ult` (SSH alias)
@@ -84,6 +85,7 @@ See [DB_REFERENCE.md](DB_REFERENCE.md) for known category IDs.
 | Table | `<table class="table table-bordered">` |
 
 Use script:
+
 ```bash
 python scripts/md_to_html.py categories/{slug}/content/{slug}_ru.md
 ```
@@ -143,6 +145,7 @@ ult 'sudo mysql -u root -pfr1daYTw1st yastman_test -e \
 | glina-i-avtoskraby | 423 | Глина и автоскрабы | Глина та автоскраби |
 
 **Language IDs:**
+
 - `language_id=1` → Українська (UK)
 - `language_id=3` → Русский (RU)
 

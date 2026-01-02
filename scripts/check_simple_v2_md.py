@@ -20,18 +20,14 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
 
 import yaml
 
+
 # Импортируем из seo_utils.py для унификации
 try:
-    from seo_utils import (
-        count_chars_no_spaces,
-        normalize_text,
-        count_words,
-        get_tier_requirements
-    )
+    from seo_utils import count_chars_no_spaces, count_words, get_tier_requirements, normalize_text
+
     UTILS_AVAILABLE = True
 except ImportError:
     # Fallback если seo_utils.py не в пути
@@ -41,12 +37,13 @@ except ImportError:
 # Импортируем Nausea calculator (v7.1)
 try:
     from check_water_natasha import calculate_metrics_from_text
+
     NAUSEA_AVAILABLE = True
 except ImportError:
     NAUSEA_AVAILABLE = False
 
 
-def parse_markdown_file(md_file: str) -> Tuple[Dict, str]:
+def parse_markdown_file(md_file: str) -> tuple[dict, str]:
     """
     Парсинг MD файла с YAML front matter
 
@@ -104,17 +101,18 @@ def extract_text_content(md: str) -> str:
 # NOTE: count_chars_no_spaces импортирован из seo_utils.py
 # Если импорт не удался, используем fallback
 if not UTILS_AVAILABLE:
+
     def count_chars_no_spaces(content: str) -> int:
         """
         Fallback: Подсчёт символов БЕЗ пробелов, переносов строк и табов
 
         EXACT FORMULA - совпадает с seo_utils.py
         """
-        no_spaces = content.replace(' ', '').replace('\n', '').replace('\t', '').replace('\r', '')
+        no_spaces = content.replace(" ", "").replace("\n", "").replace("\t", "").replace("\r", "")
         return len(no_spaces)
 
 
-def find_matches_longest_first(text: str, keywords_data: Dict) -> Dict:
+def find_matches_longest_first(text: str, keywords_data: dict) -> dict:
     """
     Алгоритм Longest Match First для подсчёта keyword density.
 
@@ -143,11 +141,9 @@ def find_matches_longest_first(text: str, keywords_data: Dict) -> Dict:
                 all_phrases.add(keyword)
                 if keyword not in phrase_to_keywords:
                     phrase_to_keywords[keyword] = []
-                phrase_to_keywords[keyword].append({
-                    "keyword": kw_obj.get("keyword"),
-                    "type": kw_type,
-                    "is_exact": True
-                })
+                phrase_to_keywords[keyword].append(
+                    {"keyword": kw_obj.get("keyword"), "type": kw_type, "is_exact": True}
+                )
 
             # Добавляем exact variations
             for form in exact_forms:
@@ -155,11 +151,9 @@ def find_matches_longest_first(text: str, keywords_data: Dict) -> Dict:
                 all_phrases.add(form_lower)
                 if form_lower not in phrase_to_keywords:
                     phrase_to_keywords[form_lower] = []
-                phrase_to_keywords[form_lower].append({
-                    "keyword": kw_obj.get("keyword"),
-                    "type": kw_type,
-                    "is_exact": True
-                })
+                phrase_to_keywords[form_lower].append(
+                    {"keyword": kw_obj.get("keyword"), "type": kw_type, "is_exact": True}
+                )
 
     # 2. Сортируем по длине (longest first)
     sorted_phrases = sorted(all_phrases, key=len, reverse=True)
@@ -180,7 +174,7 @@ def find_matches_longest_first(text: str, keywords_data: Dict) -> Dict:
         if len(phrase) < 3:  # Пропускаем слишком короткие
             continue
 
-        pattern = r'\b' + re.escape(phrase) + r'\b'
+        pattern = r"\b" + re.escape(phrase) + r"\b"
 
         for match in re.finditer(pattern, text_lower):
             start, end = match.start(), match.end()
@@ -188,23 +182,25 @@ def find_matches_longest_first(text: str, keywords_data: Dict) -> Dict:
             # Проверяем, не пересекается ли с уже найденными
             if not is_overlapping(start, end):
                 used_ranges.append((start, end))
-                unique_matches.append({
-                    "phrase": phrase,
-                    "start": start,
-                    "end": end,
-                    "keywords": phrase_to_keywords.get(phrase, [])
-                })
+                unique_matches.append(
+                    {
+                        "phrase": phrase,
+                        "start": start,
+                        "end": end,
+                        "keywords": phrase_to_keywords.get(phrase, []),
+                    }
+                )
 
     return {
         "unique_matches": unique_matches,
         "total_unique": len(unique_matches),
-        "used_ranges": used_ranges
+        "used_ranges": used_ranges,
     }
 
 
 def check_keyword_density_and_distribution(
-    md_content: str, data_json_path: str, word_count: int, requirements: Dict = None
-) -> Dict:
+    md_content: str, data_json_path: str, word_count: int, requirements: dict = None
+) -> dict:
     """
     Проверка плотности и распределения keywords — v7.4 Longest Match First
 
@@ -236,7 +232,7 @@ def check_keyword_density_and_distribution(
         "keywords_total": 0,
         "warnings": [],
         "errors": [],
-        "details": []
+        "details": [],
     }
 
     # Проверка существования JSON
@@ -246,7 +242,7 @@ def check_keyword_density_and_distribution(
 
     # Чтение keywords из JSON
     try:
-        with open(data_json_path, 'r', encoding='utf-8') as f:
+        with open(data_json_path, encoding="utf-8") as f:
             data = json.load(f)
     except Exception as e:
         result["errors"].append(f"❌ Ошибка чтения JSON: {e}")
@@ -257,7 +253,7 @@ def check_keyword_density_and_distribution(
         result["errors"].append("❌ Нет keywords в JSON")
         return result
 
-    md_lower = md_content.lower()
+    # md_lower = md_content.lower()  # Unused
 
     # === LONGEST MATCH FIRST ===
     lmf_result = find_matches_longest_first(md_content, keywords_dict)
@@ -279,15 +275,11 @@ def check_keyword_density_and_distribution(
 
             # Считаем сколько раз этот keyword найден в unique matches
             kw_count = sum(
-                1 for m in unique_matches
-                if any(k["keyword"] == keyword for k in m["keywords"])
+                1 for m in unique_matches if any(k["keyword"] == keyword for k in m["keywords"])
             )
 
             # Density для информации (не для блокировки)
-            if word_count > 0:
-                actual_density = (kw_count / word_count) * 100
-            else:
-                actual_density = 0.0
+            actual_density = (kw_count / word_count) * 100 if word_count > 0 else 0.0
 
             # Coverage: keyword найден хотя бы раз?
             is_found = keyword in keywords_found_set
@@ -297,22 +289,24 @@ def check_keyword_density_and_distribution(
             # Статус для отображения
             kw_status = "✅" if is_found else "⚠️"
 
-            result["details"].append({
-                "keyword": keyword,
-                "type": kw_type,
-                "exact": kw_count,  # В новой логике всё считается как "exact"
-                "partial": 0,
-                "total": kw_count,
-                "target": kw_obj.get("occurrences_target", 0),
-                "density_actual": f"{actual_density:.2f}%",
-                "density_target": density_target_str,
-                "status": kw_status
-            })
+            result["details"].append(
+                {
+                    "keyword": keyword,
+                    "type": kw_type,
+                    "exact": kw_count,  # В новой логике всё считается как "exact"
+                    "partial": 0,
+                    "total": kw_count,
+                    "target": kw_obj.get("occurrences_target", 0),
+                    "density_actual": f"{actual_density:.2f}%",
+                    "density_target": density_target_str,
+                    "status": kw_status,
+                }
+            )
 
     result["keywords_total"] = (
-        len(keywords_dict.get("primary", [])) +
-        len(keywords_dict.get("secondary", [])) +
-        len(keywords_dict.get("supporting", []))
+        len(keywords_dict.get("primary", []))
+        + len(keywords_dict.get("secondary", []))
+        + len(keywords_dict.get("supporting", []))
     )
 
     # === Coverage (с учётом overlapping keywords) ===
@@ -358,18 +352,14 @@ def check_keyword_density_and_distribution(
         coverage_min = requirements.get("coverage", 0.40) * 100
 
     if coverage < coverage_min:
-        result["warnings"].append(
-            f"⚠️ Coverage {coverage:.1f}% (target ≥{coverage_min:.0f}%)"
-        )
+        result["warnings"].append(f"⚠️ Coverage {coverage:.1f}% (target ≥{coverage_min:.0f}%)")
     elif coverage > coverage_max:
-        result["warnings"].append(
-            f"⚠️ Coverage {coverage:.1f}% (>80% — проверьте на переспам)"
-        )
+        result["warnings"].append(f"⚠️ Coverage {coverage:.1f}% (>80% — проверьте на переспам)")
 
     return result
 
 
-def check_intro_structure(md: str, words: List[str]) -> Tuple[bool, str]:
+def check_intro_structure(md: str, words: list[str]) -> tuple[bool, str]:
     """
     Проверка структуры интро (первые 100-150 слов)
     """
@@ -403,7 +393,7 @@ def check_intro_structure(md: str, words: List[str]) -> Tuple[bool, str]:
     return True, f"✅ Интро: {word_count} слов, естественный язык"
 
 
-def check_h2_intent_structure(md: str) -> Tuple[bool, str]:
+def check_h2_intent_structure(md: str) -> tuple[bool, str]:
     """
     Проверка H2 в Markdown (## заголовок)
     """
@@ -449,7 +439,7 @@ def check_h2_intent_structure(md: str) -> Tuple[bool, str]:
     return True, f"✅ H2: {h2_count} шт, {intent_h2_count} под намерения пользователя"
 
 
-def check_faq(md: str) -> Tuple[bool, str]:
+def check_faq(md: str) -> tuple[bool, str]:
     """
     Проверка FAQ (вопросы в ### с ? в конце)
     """
@@ -469,7 +459,7 @@ def check_faq(md: str) -> Tuple[bool, str]:
     return True, f"✅ FAQ: {total_questions} вопросов"
 
 
-def check_keyword_stuffing(text: str, keyword: str) -> Tuple[bool, str]:
+def check_keyword_stuffing(text: str, keyword: str) -> tuple[bool, str]:
     """
     Проверка на keyword stuffing
     """
@@ -504,7 +494,7 @@ def check_keyword_stuffing(text: str, keyword: str) -> Tuple[bool, str]:
     return True, f"✅ Ключевое слово: {count} упоминаний, естественно распределено"
 
 
-def check_nausea_metrics(md_content: str, tier: str = "B") -> Dict:
+def check_nausea_metrics(md_content: str, tier: str = "B") -> dict:
     """
     Проверка метрик тошноты и воды (SEO 2025 v7.1 Адвего-калибровка).
 
@@ -524,23 +514,19 @@ def check_nausea_metrics(md_content: str, tier: str = "B") -> Dict:
         return {
             "pass": True,
             "blocker": False,
-            "message": "⚠️  Nausea check недоступен (natasha не установлена)"
+            "message": "⚠️  Nausea check недоступен (natasha не установлена)",
         }
 
     try:
         metrics = calculate_metrics_from_text(md_content)
     except Exception as e:
-        return {
-            "pass": True,
-            "blocker": False,
-            "message": f"⚠️  Nausea check ошибка: {e}"
-        }
+        return {"pass": True, "blocker": False, "message": f"⚠️  Nausea check ошибка: {e}"}
 
     if not metrics:
         return {
             "pass": True,
             "blocker": False,
-            "message": "⚠️  Nausea check: текст слишком короткий"
+            "message": "⚠️  Nausea check: текст слишком короткий",
         }
 
     # Получаем пороги из seo_utils (v7.1)
@@ -558,9 +544,9 @@ def check_nausea_metrics(md_content: str, tier: str = "B") -> Dict:
         nausea_classic_max, nausea_classic_blocker = 3.5, 4.0
         nausea_academic_min, nausea_academic_max = 7.0, 9.5
 
-    water = metrics['water_percent']
-    classic = metrics['classic_nausea']
-    academic = metrics['academic_nausea']
+    water = metrics["water_percent"]
+    classic = metrics["classic_nausea"]
+    academic = metrics["academic_nausea"]
 
     issues = []
     is_blocker = False
@@ -606,13 +592,13 @@ def check_nausea_metrics(md_content: str, tier: str = "B") -> Dict:
             "water_percent": water,
             "classic_nausea": classic,
             "academic_nausea": academic,
-            "most_common_lemma": metrics.get('most_common_lemma', ''),
-            "max_frequency": metrics.get('max_frequency', 0)
-        }
+            "most_common_lemma": metrics.get("most_common_lemma", ""),
+            "max_frequency": metrics.get("max_frequency", 0),
+        },
     }
 
 
-def check_internal_links(md: str) -> Tuple[bool, str]:
+def check_internal_links(md: str) -> tuple[bool, str]:
     """
     Проверка внутренних ссылок [text](url)
     """
@@ -628,13 +614,13 @@ def check_internal_links(md: str) -> Tuple[bool, str]:
 
     if link_count < 2:
         return (
-            True, # CHANGED to True (PASS with warning) for v7.3
+            True,  # CHANGED to True (PASS with warning) for v7.3
             f"⚠️  Внутренние ссылки: {link_count} (нужно 2-5) [WARNING only]",
         )
 
     if link_count > 5:
         return (
-            True, # CHANGED to True (PASS with warning)
+            True,  # CHANGED to True (PASS with warning)
             f"⚠️  Внутренние ссылки: {link_count} (рекомендуется 2-5)",
         )
 
@@ -655,7 +641,7 @@ def check_internal_links(md: str) -> Tuple[bool, str]:
     return True, f"✅ Внутренние ссылки: {link_count} шт, описательные анкоры"
 
 
-def check_content(md_file: str, keyword: str, tier: str = "B") -> Dict:
+def check_content(md_file: str, keyword: str, tier: str = "B") -> dict:
     """
     Основная проверка Markdown контента
     """
@@ -666,10 +652,10 @@ def check_content(md_file: str, keyword: str, tier: str = "B") -> Dict:
 
     # Извлекаем текст
     text = extract_text_content(md_content)
-    
+
     if UTILS_AVAILABLE:
         word_count = count_words(text)
-        words = text.split() # Keep for other checks that need list of words
+        words = text.split()  # Keep for other checks that need list of words
     else:
         words = text.split()
         word_count = len(words)
@@ -684,7 +670,6 @@ def check_content(md_file: str, keyword: str, tier: str = "B") -> Dict:
         # Critical Error: seo_utils MUST be available for v7.3 validation
         print("❌ CRITICAL ERROR: seo_utils.py not found. Validation cannot proceed reliably.")
         return {"status": "ERROR", "message": "seo_utils.py dependency missing"}
-
 
     results = {
         "file": Path(md_file).name,
@@ -757,10 +742,7 @@ def check_content(md_file: str, keyword: str, tier: str = "B") -> Dict:
             clean_json_path = md_path.parent.parent / "data" / f"{slug}_clean.json"
             raw_json_path = md_path.parent.parent / "data" / f"{slug}.json"
 
-            if clean_json_path.exists():
-                data_json_path = clean_json_path
-            else:
-                data_json_path = raw_json_path
+            data_json_path = clean_json_path if clean_json_path.exists() else raw_json_path
 
             if data_json_path.exists():
                 density_result = check_keyword_density_and_distribution(
@@ -792,16 +774,9 @@ def check_content(md_file: str, keyword: str, tier: str = "B") -> Dict:
 
                 density_pass = severity != "FAIL"
 
-                status_icon = (
-                    "✅" if severity == "PASS"
-                    else "⚠️" if severity == "REVIEW"
-                    else "❌"
-                )
+                status_icon = "✅" if severity == "PASS" else "⚠️" if severity == "REVIEW" else "❌"
 
-                status_msg = (
-                    f"{status_icon} Density: {density:.2f}% | "
-                    f"Coverage: {coverage:.0f}%"
-                )
+                status_msg = f"{status_icon} Density: {density:.2f}% | Coverage: {coverage:.0f}%"
 
                 if density_result.get("warnings"):
                     status_msg += f" | {len(density_result['warnings'])} предупреждений"
@@ -814,19 +789,19 @@ def check_content(md_file: str, keyword: str, tier: str = "B") -> Dict:
                     "blocker": True,
                     "severity": severity,
                     "message": status_msg,
-                    "details": density_result
+                    "details": density_result,
                 }
             else:
                 results["checks"]["density_distribution"] = {
                     "pass": True,
                     "blocker": False,
-                    "message": f"⚠️  JSON не найден: {data_json_path.name}"
+                    "message": f"⚠️  JSON не найден: {data_json_path.name}",
                 }
     else:
         results["checks"]["density_distribution"] = {
             "pass": True,
             "blocker": False,
-            "message": "⚠️  Путь не содержит 'categories/', пропуск проверки density"
+            "message": "⚠️  Путь не содержит 'categories/', пропуск проверки density",
         }
 
     # 7. Первые 100 слов
@@ -878,19 +853,13 @@ def check_content(md_file: str, keyword: str, tier: str = "B") -> Dict:
     critical_checks = ["h1", "intro", "h2_intent", "keyword_natural", "internal_links"]
 
     all_blocker_pass = all(
-        results["checks"][check]["pass"]
-        for check in blocker_checks
-        if check in results["checks"]
+        results["checks"][check]["pass"] for check in blocker_checks if check in results["checks"]
     )
     all_critical_pass = all(
-        results["checks"][check]["pass"]
-        for check in critical_checks
-        if check in results["checks"]
+        results["checks"][check]["pass"] for check in critical_checks if check in results["checks"]
     )
 
-    density_severity = results["checks"].get(
-        "density_distribution", {}
-    ).get("severity", "PASS")
+    density_severity = results["checks"].get("density_distribution", {}).get("severity", "PASS")
 
     if not all_blocker_pass or not all_critical_pass or density_severity == "FAIL":
         results["status"] = "FAIL"
@@ -910,12 +879,14 @@ def check_content(md_file: str, keyword: str, tier: str = "B") -> Dict:
     return results
 
 
-def print_report(results: Dict):
+def print_report(results: dict):
     """Вывод отчёта"""
     print(f"\n{'=' * 70}")
     print(f"📄 ПРОВЕРКА: {results['file']}")
     print(f"🎯 TIER: {results['tier']}")
-    print(f"📊 Слов: {results['word_count']} | Символов (без пробелов): {results.get('char_count_no_spaces', 'N/A')}")
+    print(
+        f"📊 Слов: {results['word_count']} | Символов (без пробелов): {results.get('char_count_no_spaces', 'N/A')}"
+    )
     print(f"{'=' * 70}\n")
 
     for check_name, check_data in results["checks"].items():
@@ -927,14 +898,18 @@ def print_report(results: Dict):
         if check_name == "density_distribution" and "details" in check_data:
             density_details = check_data["details"]
             if density_details.get("details"):
-                print(f"\n   📊 ДЕТАЛИЗАЦИЯ KEYWORDS (Top 10):")
-                print(f"   {'Keyword':<40} {'Type':<10} {'Exact':<6} {'Partial':<7} {'Total':<6} {'Density':<8} {'Target'}")
+                print("\n   📊 ДЕТАЛИЗАЦИЯ KEYWORDS (Top 10):")
+                print(
+                    f"   {'Keyword':<40} {'Type':<10} {'Exact':<6} {'Partial':<7} {'Total':<6} {'Density':<8} {'Target'}"
+                )
                 print(f"   {'-' * 100}")
 
                 # Показываем первые 10 keywords
-                for i, kw in enumerate(density_details["details"][:10]):
+                for kw in density_details["details"][:10]:
                     status = kw["status"]
-                    print(f"   {status} {kw['keyword']:<38} {kw['type']:<10} {kw['exact']:<6} {kw['partial']:<7} {kw['total']:<6} {kw['density_actual']:<8} {kw['density_target']}")
+                    print(
+                        f"   {status} {kw['keyword']:<38} {kw['type']:<10} {kw['exact']:<6} {kw['partial']:<7} {kw['total']:<6} {kw['density_actual']:<8} {kw['density_target']}"
+                    )
 
                 total_kw = len(density_details["details"])
                 if total_kw > 10:
@@ -946,7 +921,7 @@ def print_report(results: Dict):
                 print(f"\n   ⚠️  ПРЕДУПРЕЖДЕНИЯ ({len(density_details['warnings'])}):")
                 for warning in density_details["warnings"][:5]:  # Первые 5
                     print(f"      • {warning}")
-                if len(density_details['warnings']) > 5:
+                if len(density_details["warnings"]) > 5:
                     print(f"      ... и ещё {len(density_details['warnings']) - 5} предупреждений")
                 print()
 
@@ -971,7 +946,7 @@ def print_report(results: Dict):
     print(f"{'=' * 70}\n")
 
 
-def save_json_report(results: Dict, md_file: str):
+def save_json_report(results: dict, md_file: str):
     """
     Сохранение результатов в JSON для машинного чтения
 
@@ -991,14 +966,14 @@ def save_json_report(results: Dict, md_file: str):
         "word_count": results["word_count"],
         "char_count_no_spaces": results.get("char_count_no_spaces", 0),
         "status": results["status"],
-        "checks": {}
+        "checks": {},
     }
 
     # Упрощаем checks для JSON
     for check_name, check_data in results["checks"].items():
         json_output["checks"][check_name] = {
             "pass": check_data["pass"],
-            "blocker": check_data.get("blocker", False)
+            "blocker": check_data.get("blocker", False),
         }
 
         # Добавляем density детали если есть
@@ -1011,11 +986,11 @@ def save_json_report(results: Dict, md_file: str):
                 "keywords_total": density_details.get("keywords_total", 0),
                 "warnings_count": len(density_details.get("warnings", [])),
                 "errors_count": len(density_details.get("errors", [])),
-                "details": density_details.get("details", [])
+                "details": density_details.get("details", []),
             }
 
     # Сохраняем JSON
-    with open(json_path, 'w', encoding='utf-8') as f:
+    with open(json_path, "w", encoding="utf-8") as f:
         json.dump(json_output, f, ensure_ascii=False, indent=2)
 
     print(f"\n✅ JSON report сохранён: {json_path}")
@@ -1034,12 +1009,12 @@ def main():
   python check_simple_v2_md.py content.md "активная пена" B --json
 
 Tier: A (премиум) / B (стандарт) / C (минимум)
-        """
+        """,
     )
 
     parser.add_argument("md_file", help="Путь к Markdown файлу")
     parser.add_argument("keyword", help="Ключевое слово для проверки")
-    parser.add_argument("tier", nargs='?', default="B", help="Tier контента (A/B/C)")
+    parser.add_argument("tier", nargs="?", default="B", help="Tier контента (A/B/C)")
     parser.add_argument("--json", action="store_true", help="Сохранить результаты в JSON")
 
     args = parser.parse_args()

@@ -8,6 +8,7 @@
 ## Checklist per Category
 
 ### Pre-flight
+
 - [ ] Quality Gate пройден (Stage 06 PASS)
 - [ ] QUALITY_REPORT.md существует со статусом PASS
 - [ ] VPS доступен
@@ -16,22 +17,26 @@
 ### Execution
 
 #### 1. Подготовка данных
+
 - [ ] Прочитать `meta/{slug}_meta.json`
 - [ ] Прочитать `content/{slug}_ru.md`
 - [ ] Конвертировать MD → HTML
 - [ ] Подготовить SQL запросы
 
 #### 2. Найти category_id
+
 ```sql
 SELECT category_id
 FROM oc_category_description
 WHERE name LIKE '%{category_name}%'
 AND language_id = 1;
 ```
+
 - [ ] category_id найден для RU
 - [ ] category_id найден для UK (language_id = 3)
 
 #### 3. Обновить Meta Tags (RU)
+
 ```sql
 UPDATE oc_category_description
 SET
@@ -40,9 +45,11 @@ SET
   meta_h1 = '{h1_ru}'
 WHERE category_id = {id} AND language_id = 1;
 ```
+
 - [ ] Meta RU обновлены
 
 #### 4. Обновить Meta Tags (UK)
+
 ```sql
 UPDATE oc_category_description
 SET
@@ -51,9 +58,11 @@ SET
   meta_h1 = '{h1_uk}'
 WHERE category_id = {id} AND language_id = 3;
 ```
+
 - [ ] Meta UK обновлены
 
 #### 5. Обновить Description (HTML Content)
+
 ```sql
 UPDATE oc_category_description
 SET description = '{html_content_ru}'
@@ -63,21 +72,25 @@ UPDATE oc_category_description
 SET description = '{html_content_uk}'
 WHERE category_id = {id} AND language_id = 3;
 ```
+
 - [ ] Content RU обновлён
 - [ ] Content UK обновлён
 
 #### 6. Очистить кэш OpenCart
+
 ```bash
 # SSH to VPS
 ssh user@vps
 cd /var/www/ultimate.net.ua
 rm -rf system/storage/cache/*
 ```
+
 - [ ] Кэш очищен
 
 ### Validation — Post-Deploy Check
 
 #### 1. Визуальная проверка
+
 - [ ] Открыть категорию на сайте
 - [ ] H1 отображается корректно
 - [ ] Текст форматирован правильно
@@ -85,16 +98,19 @@ rm -rf system/storage/cache/*
 - [ ] FAQ отображается
 
 #### 2. SEO проверка
+
 - [ ] View Source → <title> корректен
 - [ ] View Source → <meta description> корректен
 - [ ] H1 на странице = meta_h1
 
 #### 3. Проверка UK версии
+
 - [ ] Переключить язык на UK
 - [ ] Контент на украинском
 - [ ] Meta tags на украинском
 
 ### Rollback Plan
+
 ```sql
 -- Если что-то пошло не так, восстановить из бэкапа
 -- Перед деплоем всегда делать:
@@ -102,6 +118,7 @@ mysqldump -u user -p ultimate oc_category_description > backup_$(date +%Y%m%d).s
 ```
 
 ### Acceptance Criteria
+
 - [ ] Meta tags видны на сайте
 - [ ] Контент отображается корректно
 - [ ] Обе языковые версии работают
@@ -109,6 +126,7 @@ mysqldump -u user -p ultimate oc_category_description > backup_$(date +%Y%m%d).s
 - [ ] Кэш очищен
 
 ### Post-action
+
 - [ ] Переместить из `pending/` в `completed/`
 - [ ] Обновить счётчик в `PIPELINE_STATUS.md`
 - [ ] Записать дату деплоя

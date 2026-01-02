@@ -15,8 +15,8 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -24,7 +24,7 @@ SEMANTICS_CSV = ROOT / "data" / "Структура  Ultimate финал - Ли�
 UK_CATEGORIES_DIR = ROOT / "uk" / "categories"
 
 
-def _load_json(path: Path) -> Dict:
+def _load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -57,8 +57,8 @@ def iter_slugs_from_semantics_csv(csv_path: Path) -> Iterable[str]:
                     yield _slugify_l3(l3)
 
 
-def get_slugs_in_order() -> List[str]:
-    slugs: List[str] = []
+def get_slugs_in_order() -> list[str]:
+    slugs: list[str] = []
     seen = set()
 
     for slug in iter_slugs_from_semantics_csv(SEMANTICS_CSV):
@@ -77,8 +77,8 @@ def get_slugs_in_order() -> List[str]:
     return slugs
 
 
-def build_rows(slugs: List[str]) -> List[Dict[str, str]]:
-    rows: List[Dict[str, str]] = []
+def build_rows(slugs: list[str]) -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
     for slug in slugs:
         json_path = UK_CATEGORIES_DIR / slug / "data" / f"{slug}_clean.json"
         md_path = UK_CATEGORIES_DIR / slug / "content" / f"{slug}_uk.md"
@@ -107,7 +107,7 @@ def build_rows(slugs: List[str]) -> List[Dict[str, str]]:
     return rows
 
 
-def write_csv_file(path: Path, rows: List[Dict[str, str]]) -> None:
+def write_csv_file(path: Path, rows: list[dict[str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
 
     fieldnames = [
@@ -127,7 +127,7 @@ def write_csv_file(path: Path, rows: List[Dict[str, str]]) -> None:
         writer.writerows(rows)
 
 
-def main(argv: Optional[List[str]] = None) -> int:
+def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--output",
@@ -148,4 +148,3 @@ def main(argv: Optional[List[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

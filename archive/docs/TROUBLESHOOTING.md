@@ -78,18 +78,21 @@ categories/{slug}/deliverables/
 **A:** Проверьте:
 
 1. **Правильный slug?**
+
    ```bash
    ls categories/
    # Должна быть папка categories/{slug}/
    ```
 
 2. **Логи есть?**
+
    ```bash
    ls categories/{slug}/.logs/
    # Должны быть файлы *.log
    ```
 
 3. **На какой stage застрял?**
+
    ```bash
    cat task_{slug}.json | grep "current_stage"
    ```
@@ -115,6 +118,7 @@ categories/{slug}/deliverables/
 **A:** Требование: 4000–5000 символов (без пробелов).
 
 **Решение:**
+
 1. Проверьте `QUALITY_REPORT.md` → секция "Content Length"
 2. Расширьте контент H2 блоками или FAQ
 3. Запустите: `"сгенерируй контент для {slug}"`
@@ -126,11 +130,13 @@ categories/{slug}/deliverables/
 **A:** Проверьте:
 
 1. **Файл с keywords:**
+
    ```bash
    cat categories/{slug}/data/{slug}_keywords_distributed.json
    ```
 
 2. **Есть ли keywords в контенте?**
+
    ```bash
    grep -o "keyword" categories/{slug}/content/{slug}_ru.md | wc -l
    ```
@@ -147,16 +153,20 @@ categories/{slug}/deliverables/
 ### Q: Meta title/description имеет неправильную длину
 
 **A:** Требования:
+
 - **Meta Title:** 50–70 символов
 - **Meta Description:** 140–170 символов
 
 **Решение:**
+
 1. Проверьте файл:
+
    ```bash
    cat categories/{slug}/meta/{slug}_meta.json
    ```
 
 2. Запустите:
+
    ```
    "сгенерируй контент для {slug}"
    ```
@@ -170,6 +180,7 @@ categories/{slug}/deliverables/
 **A:** Перевод должен быть **натуральным украинским**, не калькой с русского.
 
 **Проверка:**
+
 ```bash
 # Сравните RU и UK версии
 diff -u categories/{slug}/content/{slug}_ru.md \
@@ -179,6 +190,7 @@ diff -u categories/{slug}/content/{slug}_ru.md \
 **Если проблема остается:**
 
 1. Запустите перевод заново:
+
    ```
    "сгенерируй контент для {slug}"
    ```
@@ -196,6 +208,7 @@ diff -u categories/{slug}/content/{slug}_ru.md \
 **Причина:** Файл `data/input/поисковая_выдача_топ_10.csv` не найден
 
 **Решение:**
+
 ```bash
 # Проверьте файл
 ls -la data/input/поисковая_выдача_топ_10.csv
@@ -209,6 +222,7 @@ ls -la data/input/поисковая_выдача_топ_10.csv
 **Причина:** CSV файл не содержит URLs
 
 **Проверка:**
+
 ```bash
 head data/input/поисковая_выдача_топ_10.csv
 # Должны быть URLs в первом столбце
@@ -219,6 +233,7 @@ head data/input/поисковая_выдача_топ_10.csv
 **Причина:** Извлекли < 8 URLs
 
 **Решение:**
+
 ```bash
 # Посмотрите логи
 cat categories/{slug}/.logs/url-extraction-agent.log
@@ -236,6 +251,7 @@ cat categories/{slug}/.logs/url-extraction-agent.log
 **Причина:** После фильтрации осталось < 5 URLs
 
 **Проверка:**
+
 ```bash
 # Сколько URLs в urls_raw.txt?
 wc -l categories/{slug}/urls_raw.txt
@@ -249,6 +265,7 @@ cat categories/{slug}/.logs/url-preparation-agent.log
 **Причина:** URLs содержат `/ua/` (украинская версия)
 
 **Решение:**
+
 ```bash
 # Проверьте файл
 grep "/ua/" categories/{slug}/urls.txt
@@ -262,6 +279,7 @@ grep "/ua/" categories/{slug}/urls.txt
 **Причина:** URLs используют `http://` вместо `https://`
 
 **Решение:**
+
 ```bash
 # Замените все http на https
 sed -i 's/http:\/\//https:\/\//g' categories/{slug}/urls.txt
@@ -289,6 +307,7 @@ sed -i 's/http:\/\//https:\/\//g' categories/{slug}/urls.txt
 4. Сохраните CSV: `categories/{slug}/competitors/meta_competitors.csv`
 
 **Проверка формата:**
+
 ```bash
 head -5 categories/{slug}/competitors/meta_competitors.csv
 # Должны быть 4 столбца: URL, Title, H1, Meta Description
@@ -298,6 +317,7 @@ head -5 categories/{slug}/competitors/meta_competitors.csv
 
 1. Откройте [Perplexity.ai](https://perplexity.ai)
 2. Создайте ТЗ:
+
    ```
    Проанализируй top-10 конкурентов для "{slug}".
    Предложи структуру контента:
@@ -307,9 +327,11 @@ head -5 categories/{slug}/competitors/meta_competitors.csv
 
    Результат: markdown формат с разделами
    ```
+
 3. Сохраните: `categories/{slug}/research/perplexity_research.md`
 
 **Проверка:**
+
 ```bash
 # Файл должен содержать H2, FAQ, другие структурные элементы
 wc -l categories/{slug}/research/perplexity_research.md
@@ -321,6 +343,7 @@ wc -l categories/{slug}/research/perplexity_research.md
 **Решение:**
 
 1. Проверьте столбцы:
+
    ```bash
    head -1 categories/{slug}/competitors/meta_competitors.csv
    # Должны быть: URL,Title,H1,Meta Description (без пробелов)
@@ -343,12 +366,14 @@ wc -l categories/{slug}/research/perplexity_research.md
 **Причина:** `data/{slug}.json` имеет неправильный формат
 
 **Проверка:**
+
 ```bash
 python -m json.tool categories/{slug}/data/{slug}.json
 # Если ошибка, файл поврежден
 ```
 
 **Решение:** Удалите JSON и пересоздайте:
+
 ```bash
 rm categories/{slug}/data/{slug}.json
 "продолжи для {slug}"
@@ -363,11 +388,13 @@ rm categories/{slug}/data/{slug}.json
 **Причина:** Keywords недостаточно распределены по контенту
 
 **Проверка:**
+
 ```bash
 cat categories/{slug}/data/{slug}_keywords_distributed.json | grep coverage
 ```
 
 **Решение:**
+
 1. Проверьте ТЗ от Perplexity (может быть неправильно)
 2. Пересоздайте ТЗ с более релевантными keywords
 3. Запустите stage 8 заново
@@ -377,6 +404,7 @@ cat categories/{slug}/data/{slug}_keywords_distributed.json | grep coverage
 **Причина:** Ключевое слово повторяется слишком часто (спам)
 
 **Проверка:**
+
 ```bash
 python scripts/show_keyword_distribution.py \
     categories/{slug}/data/{slug}_keywords_distributed.json
@@ -393,12 +421,14 @@ python scripts/show_keyword_distribution.py \
 **Причина:** Контент слишком короткий
 
 **Проверка:**
+
 ```bash
 wc -c categories/{slug}/content/{slug}_ru.md
 # Минимум 4000 символов (без пробелов)
 ```
 
 **Решение:**
+
 ```
 "сгенерируй контент для {slug}"
 ```
@@ -410,6 +440,7 @@ wc -c categories/{slug}/content/{slug}_ru.md
 **Причина:** Контент не имеет заголовков
 
 **Проверка:**
+
 ```bash
 grep "^#" categories/{slug}/content/{slug}_ru.md
 ```
@@ -423,6 +454,7 @@ grep "^#" categories/{slug}/content/{slug}_ru.md
 #### ❌ Ошибка: "Translation quality issues"
 
 **Проверка:**
+
 ```bash
 # Сравните длины
 wc -c categories/{slug}/content/{slug}_ru.md
@@ -438,6 +470,7 @@ wc -c categories/{slug}/content/{slug}_uk.md
 **Причина:** Markdown содержит неправильные теги
 
 **Проверка:**
+
 ```bash
 grep "<" categories/{slug}/content/{slug}_uk.md
 # Проверьте, что все теги закрыты
@@ -452,6 +485,7 @@ grep "<" categories/{slug}/content/{slug}_uk.md
 **Требование:** 50–70 символов
 
 **Решение:**
+
 ```
 "сгенерируй контент для {slug}"
 ```
@@ -471,12 +505,14 @@ grep "<" categories/{slug}/content/{slug}_uk.md
 **Причина:** Stage 11 не завершена
 
 **Проверка:**
+
 ```bash
 ls -la categories/{slug}/deliverables/
 # Должны быть 5 файлов
 ```
 
 **Решение:**
+
 ```
 "упакуй deliverables для {slug}"
 ```
@@ -532,11 +568,13 @@ cat categories/{slug}/content/*_quality_report.json
 ### Workflow работает медленно
 
 **Причины:**
+
 1. Большой JSON файл (>50 МБ)
 2. Много URLs (>100)
 3. Длинный контент (>10000 символов)
 
 **Решение:**
+
 ```bash
 # Для больших файлов используйте потоковую обработку
 python scripts/check_simple_v2_md.py \
@@ -549,12 +587,14 @@ python scripts/check_simple_v2_md.py \
 ### Memory issues
 
 **Проверка:**
+
 ```bash
 free -h
 # Должно быть достаточно памяти
 ```
 
 **Решение:**
+
 - Обработайте категории по одной
 - Остановите другие процессы
 - Используйте `--no-cache` флаг
@@ -567,9 +607,11 @@ free -h
 
 1. **Прочитайте FAQ выше** — в 90% случаев ответ есть
 2. **Проверьте логи:**
+
    ```bash
    tail -100 categories/{slug}/.logs/*.log
    ```
+
 3. **Смотрите QUICK_START:**
    [`QUICK_START.md`](QUICK_START.md)
 
@@ -578,27 +620,32 @@ free -h
 Если ошибка не решена, предоставьте:
 
 1. **Команду, которую вы выполнили:**
+
    ```
    "активная пена полный workflow"
    ```
 
 2. **Лог из категории:**
+
    ```bash
    tar -czf logs.tar.gz categories/{slug}/.logs/
    ```
 
 3. **Task файл:**
+
    ```bash
    cat task_{slug}.json
    ```
 
 4. **На каком stage ошибка:**
+
    ```
    Stage X: Agent Y
    Error: [сообщение об ошибке]
    ```
 
 5. **Что вы пытались:**
+
    ```
    Попробовал [действие], получил [ошибка]
    ```
@@ -614,4 +661,3 @@ free -h
 ---
 
 **Версия:** 1.0 | **Updated:** 2025-11-17
-

@@ -4,33 +4,36 @@ TDD Tests for check_ner_brands.py
 Tests NER entity detection and blacklist checking functionality.
 """
 
-import pytest
 import json
 import sys
 import types
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
+import pytest
+
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from scripts.check_ner_brands import (
-    clean_markdown,
-    check_blacklist,
-    check_ner,
-    analyze_file,
-    is_false_positive_location,
+from scripts.check_ner_brands import (  # noqa: E402
+    AI_FLUFF_PATTERNS,
     BRAND_BLACKLIST,
     CITY_BLACKLIST,
     STRICT_PHRASES,
-    AI_FLUFF_PATTERNS
+    analyze_file,
+    check_blacklist,
+    check_ner,
+    clean_markdown,
+    is_false_positive_location,
 )
 
 
 # ============================================================================
 # Fixtures
 # ============================================================================
+
 
 @pytest.fixture
 def clean_text():
@@ -114,16 +117,19 @@ def text_with_markdown():
 @pytest.fixture
 def temp_test_file(tmp_path):
     """Create temporary test file."""
+
     def _create_file(content: str) -> Path:
         test_file = tmp_path / "test_content.md"
-        test_file.write_text(content, encoding='utf-8')
+        test_file.write_text(content, encoding="utf-8")
         return test_file
+
     return _create_file
 
 
 # ============================================================================
 # Test clean_markdown()
 # ============================================================================
+
 
 def test_clean_markdown_removes_headers(text_with_markdown):
     """Test that markdown headers are cleaned."""
@@ -164,7 +170,8 @@ def test_clean_markdown_removes_code():
     # seo_utils.clean_markdown removes inline code blocks
     assert "`" not in result
     # After removing `кодом`, text becomes "Текст с внутри"
-    assert "Текст" in result and "внутри" in result
+    assert "Текст" in result
+    assert "внутри" in result
 
 
 def test_clean_markdown_removes_lists():
@@ -191,175 +198,180 @@ def test_clean_markdown_preserves_text():
 # Test check_blacklist() - Brands
 # ============================================================================
 
+
 def test_check_blacklist_no_violations(clean_text):
     """Test that clean text passes blacklist check."""
     result = check_blacklist(clean_text)
-    assert result['brands'] == []
-    assert result['cities'] == []
-    assert result['ai_fluff'] == []
-    assert result['strict_phrases'] == []  # Fixed: 'strict_phrases' not 'strict_blockers'
+    assert result["brands"] == []
+    assert result["cities"] == []
+    assert result["ai_fluff"] == []
+    assert result["strict_phrases"] == []  # Fixed: 'strict_phrases' not 'strict_blockers'
 
 
 def test_check_blacklist_detects_koch_chemie(text_with_brands):
     """Test detection of Koch Chemie brand."""
     result = check_blacklist(text_with_brands)
-    brands = [item['entity'].lower() for item in result['brands']]
-    assert any('koch' in brand for brand in brands)  # Matches 'koch chemie' or 'koch'
+    brands = [item["entity"].lower() for item in result["brands"]]
+    assert any("koch" in brand for brand in brands)  # Matches 'koch chemie' or 'koch'
 
 
 def test_check_blacklist_detects_grass(text_with_brands):
     """Test detection of Grass brand."""
     result = check_blacklist(text_with_brands)
-    brands = [item['entity'].lower() for item in result['brands']]
-    assert any('grass' in brand for brand in brands)
+    brands = [item["entity"].lower() for item in result["brands"]]
+    assert any("grass" in brand for brand in brands)
 
 
 def test_check_blacklist_detects_karcher(text_with_brands):
     """Test detection of Karcher brand."""
     result = check_blacklist(text_with_brands)
-    brands = [item['entity'].lower() for item in result['brands']]
-    assert any('karcher' in brand for brand in brands)
+    brands = [item["entity"].lower() for item in result["brands"]]
+    assert any("karcher" in brand for brand in brands)
 
 
 def test_check_blacklist_multiple_brands(text_with_brands):
     """Test that multiple brands are detected."""
     result = check_blacklist(text_with_brands)
-    assert len(result['brands']) >= 3
+    assert len(result["brands"]) >= 3
 
 
 def test_check_blacklist_brand_context():
     """Test that brand context is extracted correctly."""
     text = "Средство Koch Chemie отлично очищает"
     result = check_blacklist(text)
-    assert len(result['brands']) > 0
+    assert len(result["brands"]) > 0
     # Context should include surrounding text
-    context = result['brands'][0]['context']
-    assert 'Koch Chemie' in context
+    context = result["brands"][0]["context"]
+    assert "Koch Chemie" in context
 
 
 # ============================================================================
 # Test check_blacklist() - Cities
 # ============================================================================
 
+
 def test_check_blacklist_detects_kiev(text_with_cities):
     """Test detection of Kyiv/Kiev."""
     result = check_blacklist(text_with_cities)
-    cities = [item['entity'] for item in result['cities']]
-    assert any('Киев' in city or 'киев' in city.lower() for city in cities)
+    cities = [item["entity"] for item in result["cities"]]
+    assert any("Киев" in city or "киев" in city.lower() for city in cities)
 
 
 def test_check_blacklist_detects_kharkiv(text_with_cities):
     """Test detection of Kharkiv."""
     result = check_blacklist(text_with_cities)
-    cities = [item['entity'] for item in result['cities']]
-    assert any('Харьков' in city or 'харьков' in city.lower() for city in cities)
+    cities = [item["entity"] for item in result["cities"]]
+    assert any("Харьков" in city or "харьков" in city.lower() for city in cities)
 
 
 def test_check_blacklist_detects_odessa(text_with_cities):
     """Test detection of Odessa."""
     result = check_blacklist(text_with_cities)
-    cities = [item['entity'].lower() for item in result['cities']]
-    assert any('одесс' in city for city in cities)
+    cities = [item["entity"].lower() for item in result["cities"]]
+    assert any("одесс" in city for city in cities)
 
 
 def test_check_blacklist_detects_dnipro(text_with_cities):
     """Test detection of Dnipro."""
     result = check_blacklist(text_with_cities)
-    cities = [item['entity'].lower() for item in result['cities']]
-    assert any('днепр' in city for city in cities)
+    cities = [item["entity"].lower() for item in result["cities"]]
+    assert any("днепр" in city for city in cities)
 
 
 def test_check_blacklist_multiple_cities(text_with_cities):
     """Test that multiple cities are detected."""
     result = check_blacklist(text_with_cities)
-    assert len(result['cities']) >= 3
+    assert len(result["cities"]) >= 3
 
 
 # ============================================================================
 # Test check_blacklist() - AI Fluff
 # ============================================================================
 
+
 def test_check_blacklist_detects_v_etoy_statye(text_with_ai_fluff):
     """Test detection of 'в этой статье'."""
     result = check_blacklist(text_with_ai_fluff)
-    fluff = [item['entity'] for item in result['ai_fluff']]
-    assert any('в этой статье' in f.lower() for f in fluff)
+    fluff = [item["entity"] for item in result["ai_fluff"]]
+    assert any("в этой статье" in f.lower() for f in fluff)
 
 
 def test_check_blacklist_detects_davayte_razberyomsya(text_with_ai_fluff):
     """Test detection of 'давайте разберёмся'."""
     result = check_blacklist(text_with_ai_fluff)
-    fluff = [item['entity'] for item in result['ai_fluff']]
-    assert any('давайте раз' in f.lower() for f in fluff)
+    fluff = [item["entity"] for item in result["ai_fluff"]]
+    assert any("давайте раз" in f.lower() for f in fluff)
 
 
 def test_check_blacklist_detects_v_zaklyuchenie(text_with_ai_fluff):
     """Test detection of 'в заключение'."""
     result = check_blacklist(text_with_ai_fluff)
-    fluff = [item['entity'] for item in result['ai_fluff']]
-    assert any('в заключени' in f.lower() for f in fluff)
+    fluff = [item["entity"] for item in result["ai_fluff"]]
+    assert any("в заключени" in f.lower() for f in fluff)
 
 
 def test_check_blacklist_detects_nesomneno(text_with_ai_fluff):
     """Test detection of 'несомненно'."""
     result = check_blacklist(text_with_ai_fluff)
-    fluff = [item['entity'] for item in result['ai_fluff']]
-    assert any('несомненно' in f.lower() for f in fluff)
+    fluff = [item["entity"] for item in result["ai_fluff"]]
+    assert any("несомненно" in f.lower() for f in fluff)
 
 
 def test_check_blacklist_multiple_ai_fluff(text_with_ai_fluff):
     """Test that multiple AI-fluff patterns are detected."""
     result = check_blacklist(text_with_ai_fluff)
-    assert len(result['ai_fluff']) >= 4
+    assert len(result["ai_fluff"]) >= 4
 
 
 # ============================================================================
 # Test check_blacklist() - Strict Blockers
 # ============================================================================
 
+
 def test_check_blacklist_detects_v_sovremennom_mire(text_with_strict_phrases):
     """Test detection of 'в современном мире' blocker."""
     result = check_blacklist(text_with_strict_phrases)
-    blockers = [item['entity'] for item in result['strict_phrases']]  # Fixed: 'strict_phrases'
-    assert any('в современном мире' in b.lower() for b in blockers)
+    blockers = [item["entity"] for item in result["strict_phrases"]]  # Fixed: 'strict_phrases'
+    assert any("в современном мире" in b.lower() for b in blockers)
 
 
 def test_check_blacklist_detects_shirokiy_assortiment(text_with_strict_phrases):
     """Test detection of 'широкий ассортимент' blocker."""
     result = check_blacklist(text_with_strict_phrases)
-    blockers = [item['entity'] for item in result['strict_phrases']]  # Fixed
-    assert any('широкий ассортимент' in b.lower() for b in blockers)
+    blockers = [item["entity"] for item in result["strict_phrases"]]  # Fixed
+    assert any("широкий ассортимент" in b.lower() for b in blockers)
 
 
 def test_check_blacklist_detects_ni_dlya_kogo_ne_sekret(text_with_strict_phrases):
     """Test detection of 'ни для кого не секрет' AI-fluff."""
     result = check_blacklist(text_with_strict_phrases)
     # This is in AI_FLUFF_PATTERNS, not STRICT_PHRASES
-    fluff = [item['entity'] for item in result['ai_fluff']]
-    assert any('ни для кого не секрет' in f.lower() for f in fluff)
+    fluff = [item["entity"] for item in result["ai_fluff"]]
+    assert any("ни для кого не секрет" in f.lower() for f in fluff)
 
 
 def test_check_blacklist_strict_blockers_are_critical(text_with_strict_phrases):
     """Test that strict blockers are detected as critical."""
     result = check_blacklist(text_with_strict_phrases)
-    assert len(result['strict_phrases']) >= 2  # Fixed
+    assert len(result["strict_phrases"]) >= 2  # Fixed
 
 
 # ============================================================================
 # Test check_ner()
 # ============================================================================
 
-@patch('scripts.check_ner_brands.NATASHA_FULL', False)
+
+@patch("scripts.check_ner_brands.NATASHA_FULL", False)
 def test_check_ner_when_disabled():
     """Test that check_ner returns warning when NATASHA_FULL is False."""
     result = check_ner("Любой текст")
     # When disabled, returns ner_entities and warning
-    assert 'ner_entities' in result
-    assert result['ner_entities'] == []
-    assert 'warning' in result
+    assert "ner_entities" in result
+    assert result["ner_entities"] == []
+    assert "warning" in result
 
 
-@patch('scripts.check_ner_brands.NATASHA_FULL', True)
+@patch("scripts.check_ner_brands.NATASHA_FULL", True)
 def test_check_ner_detects_organizations():
     """Test NER detection of organizations."""
     # This test requires Natasha to be installed
@@ -368,13 +380,13 @@ def test_check_ner_detects_organizations():
         result = check_ner(text)
         assert isinstance(result, dict)
         # check_ner returns {'ner_entities': [...]} not separate keys
-        assert 'ner_entities' in result
-        assert isinstance(result['ner_entities'], list)
+        assert "ner_entities" in result
+        assert isinstance(result["ner_entities"], list)
     except ImportError:
         pytest.skip("Natasha not installed")
 
 
-@patch('scripts.check_ner_brands.NATASHA_FULL', True)
+@patch("scripts.check_ner_brands.NATASHA_FULL", True)
 def test_check_ner_detects_locations():
     """Test NER detection of locations."""
     try:
@@ -386,7 +398,7 @@ def test_check_ner_detects_locations():
         pytest.skip("Natasha not installed")
 
 
-@patch('scripts.check_ner_brands.NATASHA_FULL', True)
+@patch("scripts.check_ner_brands.NATASHA_FULL", True)
 def test_check_ner_detects_persons():
     """Test NER detection of persons."""
     try:
@@ -401,13 +413,14 @@ def test_check_ner_empty_text():
     """Test check_ner with empty text."""
     result = check_ner("")
     # Returns {'ner_entities': []} or {'ner_entities': [], 'warning': '...'}
-    assert 'ner_entities' in result
-    assert isinstance(result['ner_entities'], list)
+    assert "ner_entities" in result
+    assert isinstance(result["ner_entities"], list)
 
 
 # ============================================================================
 # Test analyze_file()
 # ============================================================================
+
 
 def test_analyze_file_clean_text_returns_zero(temp_test_file, clean_text):
     """Test that clean file returns exit code 0."""
@@ -458,10 +471,10 @@ def test_analyze_file_json_output(temp_test_file, clean_text, capsys):
 
     # Parse JSON output
     output = json.loads(captured.out)
-    assert 'blacklist' in output
-    assert 'ner' in output
-    assert 'summary' in output  # Fixed: 'summary' not 'has_issues'
-    assert 'status' in output['summary']
+    assert "blacklist" in output
+    assert "ner" in output
+    assert "summary" in output  # Fixed: 'summary' not 'has_issues'
+    assert "status" in output["summary"]
 
 
 def test_analyze_file_json_output_structure(temp_test_file, text_with_brands, capsys):
@@ -471,14 +484,15 @@ def test_analyze_file_json_output_structure(temp_test_file, text_with_brands, ca
     captured = capsys.readouterr()
 
     output = json.loads(captured.out)
-    assert output['summary']['status'] == 'WARNING'  # Fixed
-    assert 'brands' in output['blacklist']
-    assert len(output['blacklist']['brands']) > 0
+    assert output["summary"]["status"] == "WARNING"  # Fixed
+    assert "brands" in output["blacklist"]
+    assert len(output["blacklist"]["brands"]) > 0
 
 
 # ============================================================================
 # Integration Tests
 # ============================================================================
+
 
 def test_full_workflow_clean_content(temp_test_file, clean_text):
     """Test full workflow with clean content."""
@@ -518,14 +532,14 @@ def test_blacklist_constants_are_populated():
 
 def test_brand_blacklist_contains_expected_brands():
     """Test that brand blacklist contains expected brands."""
-    expected_brands = ['Koch Chemie', 'Grass', 'Karcher', 'Sonax']
+    expected_brands = ["Koch Chemie", "Grass", "Karcher", "Sonax"]
     for brand in expected_brands:
         assert any(brand.lower() in b.lower() for b in BRAND_BLACKLIST)
 
 
 def test_city_blacklist_contains_expected_cities():
     """Test that city blacklist contains expected cities."""
-    expected_cities = ['Киев', 'Харьков', 'Одесса', 'Днепр']
+    expected_cities = ["Киев", "Харьков", "Одесса", "Днепр"]
     city_blacklist_lower = [c.lower() for c in CITY_BLACKLIST]
     for city in expected_cities:
         assert any(city.lower() in c for c in city_blacklist_lower)
@@ -534,6 +548,7 @@ def test_city_blacklist_contains_expected_cities():
 # ============================================================================
 # Edge Cases
 # ============================================================================
+
 
 def test_analyze_file_with_unicode_content(temp_test_file):
     """Test handling of Unicode content."""
@@ -591,43 +606,34 @@ def test_context_extraction_length():
     text = "A" * 100 + "Koch Chemie" + "B" * 100
     result = check_blacklist(text)
 
-    if result['brands']:
-        context = result['brands'][0]['context']
+    if result["brands"]:
+        context = result["brands"][0]["context"]
         # Context should be reasonable length (not entire text)
         assert len(context) < len(text)
 
 
 def test_case_insensitive_brand_detection():
     """Test that brand detection is case-insensitive."""
-    text_variants = [
-        "koch chemie",
-        "KOCH CHEMIE",
-        "Koch Chemie",
-        "kOcH cHeMiE"
-    ]
+    text_variants = ["koch chemie", "KOCH CHEMIE", "Koch Chemie", "kOcH cHeMiE"]
 
     for variant in text_variants:
         result = check_blacklist(f"Продукт {variant} хорош")
-        assert len(result['brands']) > 0, f"Failed to detect: {variant}"
+        assert len(result["brands"]) > 0, f"Failed to detect: {variant}"
 
 
 def test_case_insensitive_city_detection():
     """Test that city detection is case-insensitive."""
-    text_variants = [
-        "киев",
-        "КИЕВ",
-        "Киев",
-        "КиЕв"
-    ]
+    text_variants = ["киев", "КИЕВ", "Киев", "КиЕв"]
 
     for variant in text_variants:
         result = check_blacklist(f"Доставка в {variant}")
-        assert len(result['cities']) > 0, f"Failed to detect: {variant}"
+        assert len(result["cities"]) > 0, f"Failed to detect: {variant}"
 
 
 # ============================================================================
 # Performance Tests
 # ============================================================================
+
 
 def test_analyze_file_performance(temp_test_file, clean_text):
     """Test that analysis completes in reasonable time."""
@@ -647,8 +653,8 @@ def test_analyze_file_performance(temp_test_file, clean_text):
 # Run tests
 # ============================================================================
 
-if __name__ == '__main__':
-    pytest.main([__file__, '-v', '--tb=short'])
+if __name__ == "__main__":
+    pytest.main([__file__, "-v", "--tb=short"])
 
 
 def test_is_false_positive_location_adverb_vs_city():
@@ -733,7 +739,8 @@ def test_import_fallback_branch_when_natasha_missing(monkeypatch, capsys):
     sys.modules.pop("natasha", None)
 
     spec = importlib.util.spec_from_file_location("_check_ner_no_natasha", path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
     mod = importlib.util.module_from_spec(spec)
     with pytest.raises(SystemExit) as exc:
         spec.loader.exec_module(mod)  # type: ignore[union-attr]
@@ -759,7 +766,8 @@ def test_import_sets_natasha_full_false_when_news_models_unavailable(monkeypatch
     monkeypatch.setattr(builtins, "__import__", fail_news_models)
 
     spec = importlib.util.spec_from_file_location("_check_ner_basic_natasha", path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
     mod = importlib.util.module_from_spec(spec)
     sys_mod.modules[spec.name] = mod
     try:

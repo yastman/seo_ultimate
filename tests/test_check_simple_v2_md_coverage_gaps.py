@@ -8,16 +8,16 @@ from types import ModuleType
 
 import pytest
 
+
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 
-def _load_module_from_scripts(
-    module_name: str, filename: str, import_guard
-) -> ModuleType:
+def _load_module_from_scripts(module_name: str, filename: str, import_guard) -> ModuleType:
     scripts_dir = Path(__file__).parent.parent / "scripts"
     module_path = scripts_dir / filename
     spec = importlib.util.spec_from_file_location(module_name, module_path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
 
     real_import = builtins.__import__
 
@@ -79,8 +79,7 @@ def test_check_keyword_density_distribution_raw_thresholds_adds_warning(tmp_path
             "primary": [{"keyword": "key0", "variations": {"exact": ["key0"]}}],
             "secondary": [{"keyword": "key1", "variations": {"exact": ["key1"]}}],
             "supporting": [
-                {"keyword": f"key{i}", "variations": {"exact": [f"key{i}"]}}
-                for i in range(2, 23)
+                {"keyword": f"key{i}", "variations": {"exact": [f"key{i}"]}} for i in range(2, 23)
             ],
         }
     }
@@ -88,7 +87,9 @@ def test_check_keyword_density_distribution_raw_thresholds_adds_warning(tmp_path
     json_path.write_text(__import__("json").dumps(data, ensure_ascii=False), encoding="utf-8")
 
     md_content = "key0 key1 key2 " + ("word " * 97)
-    result = mod.check_keyword_density_and_distribution(md_content, str(json_path), word_count=100, requirements=None)
+    result = mod.check_keyword_density_and_distribution(
+        md_content, str(json_path), word_count=100, requirements=None
+    )
     assert result["warnings"]
     assert result["total_density"] > 2.5
 
@@ -209,7 +210,9 @@ def test_check_content_returns_error_when_utils_missing(tmp_path: Path, capsys):
     assert "CRITICAL ERROR" in capsys.readouterr().out
 
 
-def test_check_content_density_distribution_uses_clean_json_and_sets_review_status(tmp_path: Path, monkeypatch):
+def test_check_content_density_distribution_uses_clean_json_and_sets_review_status(
+    tmp_path: Path, monkeypatch
+):
     import check_simple_v2_md as mod
 
     slug = "s"
@@ -261,10 +264,27 @@ def test_check_content_density_distribution_uses_clean_json_and_sets_review_stat
             "keywords_total": 30,
             "warnings": ["w"] * 6,
             "errors": [],
-            "details": [{"keyword": f"k{i}", "type": "supporting", "exact": 1, "partial": 0, "total": 1, "target": 0, "density_actual": "0.10%", "density_target": "0.00%", "status": "✓"} for i in range(11)],
+            "details": [
+                {
+                    "keyword": f"k{i}",
+                    "type": "supporting",
+                    "exact": 1,
+                    "partial": 0,
+                    "total": 1,
+                    "target": 0,
+                    "density_actual": "0.10%",
+                    "density_target": "0.00%",
+                    "status": "✓",
+                }
+                for i in range(11)
+            ],
         },
     )
-    monkeypatch.setattr(mod, "check_nausea_metrics", lambda *_a, **_k: {"pass": True, "blocker": False, "message": "ok"})
+    monkeypatch.setattr(
+        mod,
+        "check_nausea_metrics",
+        lambda *_a, **_k: {"pass": True, "blocker": False, "message": "ok"},
+    )
 
     res = mod.check_content(str(md_file), slug, tier="B")
     assert res["status"] == "REVIEW"
@@ -285,7 +305,9 @@ def test_check_content_density_distribution_json_missing_sets_warning_message(tm
     assert "JSON не найден" in msg
 
 
-@pytest.mark.parametrize("status,expected", [("PASS", "соответствует"), ("REVIEW", "требует доработки")])
+@pytest.mark.parametrize(
+    ("status", "expected"), [("PASS", "соответствует"), ("REVIEW", "требует доработки")]
+)
 def test_print_report_truncation_and_status_lines(status: str, expected: str, capsys):
     import check_simple_v2_md as mod
 
@@ -300,7 +322,19 @@ def test_print_report_truncation_and_status_lines(status: str, expected: str, ca
                 "pass": True,
                 "message": "Density ok",
                 "details": {
-                    "details": [{"keyword": f"k{i}", "type": "t", "exact": 1, "partial": 0, "total": 1, "density_actual": "0.10%", "density_target": "0.00%", "status": "✓"} for i in range(11)],
+                    "details": [
+                        {
+                            "keyword": f"k{i}",
+                            "type": "t",
+                            "exact": 1,
+                            "partial": 0,
+                            "total": 1,
+                            "density_actual": "0.10%",
+                            "density_target": "0.00%",
+                            "status": "✓",
+                        }
+                        for i in range(11)
+                    ],
                     "warnings": [f"w{i}" for i in range(6)],
                     "errors": [],
                 },
@@ -314,14 +348,27 @@ def test_print_report_truncation_and_status_lines(status: str, expected: str, ca
     assert expected in out
 
 
-@pytest.mark.parametrize("status,exit_code", [("PASS", 0), ("REVIEW", 1)])
-def test_main_exit_codes_for_pass_and_review(tmp_path: Path, monkeypatch, status: str, exit_code: int):
+@pytest.mark.parametrize(("status", "exit_code"), [("PASS", 0), ("REVIEW", 1)])
+def test_main_exit_codes_for_pass_and_review(
+    tmp_path: Path, monkeypatch, status: str, exit_code: int
+):
     import check_simple_v2_md as mod
 
     md = tmp_path / "x.md"
     md.write_text("# H1\n", encoding="utf-8")
 
-    monkeypatch.setattr(mod, "check_content", lambda *_a, **_k: {"file": "x.md", "tier": "B", "word_count": 1, "checks": {}, "status": status, "metadata": {}})
+    monkeypatch.setattr(
+        mod,
+        "check_content",
+        lambda *_a, **_k: {
+            "file": "x.md",
+            "tier": "B",
+            "word_count": 1,
+            "checks": {},
+            "status": status,
+            "metadata": {},
+        },
+    )
     monkeypatch.setattr(mod, "print_report", lambda *_a, **_k: None)
 
     monkeypatch.setattr(sys, "argv", ["check_simple_v2_md.py", str(md), "kw", "B"])

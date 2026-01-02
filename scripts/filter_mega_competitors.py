@@ -24,18 +24,14 @@ import statistics
 import sys
 from collections import Counter
 from pathlib import Path
-from urllib.parse import urlparse
+
 
 # Allow running as `python3 scripts/filter_mega_competitors.py` without PYTHONPATH=.
 if __name__ == "__main__" and __package__ is None:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 # Import shared utilities
-from scripts.seo_utils import (
-    is_blacklisted_domain,
-    fix_ua_in_url,
-    is_category_page
-)
+from scripts.seo_utils import fix_ua_in_url, is_blacklisted_domain, is_category_page
 
 
 # Note: is_category_page() from seo_utils returns (bool, str)
@@ -102,10 +98,7 @@ def load_url_mapping(map_file: Path, slug: str) -> set[str]:
 
 
 def filter_rows_by_mapping_and_keywords(
-    rows: list[dict],
-    category_urls: set[str],
-    keywords: list[str],
-    use_mapping: bool = True
+    rows: list[dict], category_urls: set[str], keywords: list[str], use_mapping: bool = True
 ) -> list[dict]:
     """
     Filter rows by URL mapping (hard filter) + keywords (soft filter).
@@ -175,7 +168,9 @@ def filter_rows_by_mapping_and_keywords(
             filtered.append(row)
 
     if keyword_mismatches:
-        print(f"⚠️  WARNING: {len(keyword_mismatches)} URLs in mapping but no keyword match in Title/H1")
+        print(
+            f"⚠️  WARNING: {len(keyword_mismatches)} URLs in mapping but no keyword match in Title/H1"
+        )
 
     return filtered
 
@@ -211,9 +206,7 @@ def calculate_meta_patterns(rows: list[dict], h2_themes: list[str]) -> dict:
             if title != h1:
                 title_ne_h1_count += 1
 
-    title_ne_h1_rate = (
-        title_ne_h1_count / total_with_h1 if total_with_h1 > 0 else 0.0
-    )
+    title_ne_h1_rate = title_ne_h1_count / total_with_h1 if total_with_h1 > 0 else 0.0
 
     counter = Counter(h2_themes)
     top_h2 = [theme for theme, _count in counter.most_common(10)]
@@ -239,13 +232,11 @@ def main() -> int:
     )
     parser.add_argument(
         "--data-json",
-        help="Path to category data JSON; "
-        "default: categories/{slug}/data/{slug}.json",
+        help="Path to category data JSON; default: categories/{slug}/data/{slug}.json",
     )
     parser.add_argument(
         "--output-dir",
-        help="Output directory for competitors; "
-        "default: categories/{slug}/competitors",
+        help="Output directory for competitors; default: categories/{slug}/competitors",
     )
     parser.add_argument(
         "--min-competitors",
@@ -319,7 +310,7 @@ def main() -> int:
         use_mapping = True
     else:
         print(f"⚠️  WARNING: mega_urls_map.csv not found or no URLs for {slug}")
-        print(f"   Falling back to keyword-only filtering")
+        print("   Falling back to keyword-only filtering")
         use_mapping = False
 
     # Load MEGA CSV rows
@@ -332,9 +323,7 @@ def main() -> int:
     print(f"📊 MEGA CSV rows (incl. non-200): {len(rows)}")
 
     # Filter using mapping + keywords
-    filtered_rows = filter_rows_by_mapping_and_keywords(
-        rows, category_urls, keywords, use_mapping
-    )
+    filtered_rows = filter_rows_by_mapping_and_keywords(rows, category_urls, keywords, use_mapping)
     print(f"✅ Competitors matched for {slug}: {len(filtered_rows)}")
 
     if not filtered_rows:
@@ -378,8 +367,10 @@ def main() -> int:
                 tier = data.get("tier", "B")
                 tier_minimums = {"A": 5, "B": 4, "C": 3}
                 min_competitors = tier_minimums.get(tier, 4)
-                print(f"ℹ️  Auto-detected tier from JSON: Tier {tier} = {min_competitors} competitors")
-        except:
+                print(
+                    f"ℹ️  Auto-detected tier from JSON: Tier {tier} = {min_competitors} competitors"
+                )
+        except Exception:
             min_competitors = 4  # Default fallback
             print(f"ℹ️  Using default minimum: {min_competitors} competitors")
 
@@ -398,7 +389,7 @@ def main() -> int:
         print("🎯 GOOD: 5-7 competitors (solid coverage)")
     elif competitors_count >= min_competitors:
         print(f"⚠️  ACCEPTABLE: {competitors_count} competitors (minimum met)")
-        print(f"   💡 Recommendation: Add 1-2 more competitors for better H2/FAQ coverage")
+        print("   💡 Recommendation: Add 1-2 more competitors for better H2/FAQ coverage")
 
     if competitors_fail or h2_fail:
         print("\n❌ FAIL: Minimum thresholds not met")

@@ -10,7 +10,7 @@ Updated: 2025-12-15
 """
 
 from pathlib import Path
-from typing import Dict, List
+
 
 # =============================================================================
 # Project Paths
@@ -34,21 +34,17 @@ QUALITY_THRESHOLDS = {
     "water_target_max": 65.0,
     "water_blocker_low": 30.0,
     "water_blocker_high": 70.0,
-
     # Classic Nausea (√freq)
     "nausea_classic_target": 3.5,
     "nausea_classic_blocker": 4.0,
-
     # Academic Nausea (%)
     "nausea_academic_min": 7.0,
     "nausea_academic_max": 9.5,
     "nausea_academic_blocker": 12.0,
-
     # Coverage (%) - adaptive by keywords count
     "coverage_shallow": 70,  # ≤5 keywords
-    "coverage_medium": 60,   # 6-15 keywords
-    "coverage_deep": 50,     # 16+ keywords
-
+    "coverage_medium": 60,  # 6-15 keywords
+    "coverage_deep": 50,  # 16+ keywords
     # Length (words) - soft guidelines, not blockers
     "words_soft_min": 150,
     "words_soft_max": 600,
@@ -61,22 +57,31 @@ QUALITY_THRESHOLDS = {
 VALIDATION_MODES = {
     "quality": {
         "description": "Full QA mode - catches LLM degradation",
-        "checks": ["structure", "primary_keyword", "coverage", "quality",
-                  "blacklist", "length", "content_standards", "grammar", "md_lint"],
+        "checks": [
+            "structure",
+            "primary_keyword",
+            "coverage",
+            "quality",
+            "blacklist",
+            "length",
+            "content_standards",
+            "grammar",
+            "md_lint",
+        ],
         "blockers": ["structure", "primary_keyword", "quality", "blacklist"],
     },
     "seo": {
         "description": "Minimal SEO mode - ready for publish",
         "checks": ["structure", "primary_keyword", "strict_blacklist"],
         "blockers": ["primary_keyword", "strict_blacklist"],
-    }
+    },
 }
 
 # =============================================================================
 # Category Mapping (L3 → Slug)
 # =============================================================================
 
-L3_TO_SLUG: Dict[str, str] = {
+L3_TO_SLUG: dict[str, str] = {
     "Активная пена": "aktivnaya-pena",
     "Для ручной мойки": "dlya-ruchnoy-moyki",
     "Очистители стекол": "ochistiteli-stekol",
@@ -96,16 +101,23 @@ L3_TO_SLUG: Dict[str, str] = {
     "Подарочные наборы": "podarochnye-nabory",
 }
 
-SLUG_TO_L3: Dict[str, str] = {v: k for k, v in L3_TO_SLUG.items()}
+SLUG_TO_L3: dict[str, str] = {v: k for k, v in L3_TO_SLUG.items()}
 
 # =============================================================================
 # Commercial Keywords (for coverage split)
 # =============================================================================
 
-COMMERCIAL_MODIFIERS: List[str] = [
-    "купить", "цена", "заказать", "стоимость",
-    "в наличии", "доставка", "недорого", "оптом",
-    "магазин", "интернет-магазин"
+COMMERCIAL_MODIFIERS: list[str] = [
+    "купить",
+    "цена",
+    "заказать",
+    "стоимость",
+    "в наличии",
+    "доставка",
+    "недорого",
+    "оптом",
+    "магазин",
+    "интернет-магазин",
 ]
 
 # =============================================================================
@@ -113,31 +125,31 @@ COMMERCIAL_MODIFIERS: List[str] = [
 # =============================================================================
 
 # AI-fluff phrases that should trigger WARNING
-AI_FLUFF_PATTERNS: List[str] = [
-    r'в этой статье',
-    r'давайте разберёмся',
-    r'давайте разберемся',
-    r'в данной статье',
-    r'мы рассмотрим',
-    r'вы узнаете',
-    r'в заключение',
-    r'подводя итоги',
-    r'как было сказано выше',
-    r'как мы уже говорили',
-    r'не секрет, что',
-    r'ни для кого не секрет',
-    r'стоит отметить',
-    r'важно отметить',
-    r'следует отметить',
-    r'необходимо отметить',
-    r'нельзя не отметить',
-    r'безусловно',
-    r'несомненно',
-    r'очевидно, что',
+AI_FLUFF_PATTERNS: list[str] = [
+    r"в этой статье",
+    r"давайте разберёмся",
+    r"давайте разберемся",
+    r"в данной статье",
+    r"мы рассмотрим",
+    r"вы узнаете",
+    r"в заключение",
+    r"подводя итоги",
+    r"как было сказано выше",
+    r"как мы уже говорили",
+    r"не секрет, что",
+    r"ни для кого не секрет",
+    r"стоит отметить",
+    r"важно отметить",
+    r"следует отметить",
+    r"необходимо отметить",
+    r"нельзя не отметить",
+    r"безусловно",
+    r"несомненно",
+    r"очевидно, что",
 ]
 
 # Strict phrases that should trigger FAIL
-STRICT_BLACKLIST_PHRASES: List[str] = [
+STRICT_BLACKLIST_PHRASES: list[str] = [
     "в современном мире",
     "широкий ассортимент",
     "высокое качество по доступной цене",
@@ -145,9 +157,9 @@ STRICT_BLACKLIST_PHRASES: List[str] = [
 ]
 
 # Words that look like cities but are often false positives
-FALSE_POSITIVE_CITIES: List[str] = [
-    'ровно',   # наречие: "ровно столько"
-    'суми',    # может быть опечатка "суммы"
+FALSE_POSITIVE_CITIES: list[str] = [
+    "ровно",  # наречие: "ровно столько"
+    "суми",  # может быть опечатка "суммы"
 ]
 
 # =============================================================================
@@ -156,15 +168,15 @@ FALSE_POSITIVE_CITIES: List[str] = [
 
 CONTENT_STANDARDS = {
     "required": {
-        "safety_block": True,      # ## Safety или test spot
-        "howto_steps": True,       # нумерованные шаги
-        "evergreen_math": True,    # расход/концентрация
-        "warnings": True,          # "так не делайте"
+        "safety_block": True,  # ## Safety или test spot
+        "howto_steps": True,  # нумерованные шаги
+        "evergreen_math": True,  # расход/концентрация
+        "warnings": True,  # "так не делайте"
     },
     "recommended": {
-        "crosslinks_min": 0,       # SSOT: перелинковка отдельным этапом
-        "faq_min": 2,              # FAQ вопросов
-    }
+        "crosslinks_min": 0,  # SSOT: перелинковка отдельным этапом
+        "faq_min": 2,  # FAQ вопросов
+    },
 }
 
 # =============================================================================
@@ -173,7 +185,7 @@ CONTENT_STANDARDS = {
 
 NLP_CONFIG = {
     "advego_multiplier": 2.4,  # Калибровочный коэффициент для water%
-    "cache_enabled": True,      # Кэшировать NLP объекты
+    "cache_enabled": True,  # Кэшировать NLP объекты
 }
 
 # =============================================================================
@@ -188,11 +200,11 @@ __updated__ = "2025-12-15"
 def get_adaptive_coverage_target(keywords_count: int) -> int:
     """Get coverage target based on keywords count."""
     if keywords_count <= 5:
-        return QUALITY_THRESHOLDS["coverage_shallow"]
+        return int(QUALITY_THRESHOLDS["coverage_shallow"])
     elif keywords_count <= 15:
-        return QUALITY_THRESHOLDS["coverage_medium"]
+        return int(QUALITY_THRESHOLDS["coverage_medium"])
     else:
-        return QUALITY_THRESHOLDS["coverage_deep"]
+        return int(QUALITY_THRESHOLDS["coverage_deep"])
 
 
 def get_guidelines_coverage_target(keywords_count: int) -> int:

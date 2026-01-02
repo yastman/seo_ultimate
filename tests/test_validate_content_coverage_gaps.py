@@ -7,13 +7,15 @@ from pathlib import Path
 
 import pytest
 
+
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 
 def _load_validate_module(module_name: str, import_guard):
     module_path = Path(__file__).parent.parent / "scripts" / "validate_content.py"
     spec = importlib.util.spec_from_file_location(module_name, module_path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
 
     real_import = builtins.__import__
 
@@ -180,7 +182,9 @@ def test_validate_content_seo_warning_suppression_guard_branch(monkeypatch, tmp_
     monkeypatch.setattr(mod, "check_keyword_coverage", lambda _t, _kws: {"overall": "PASS"})
     monkeypatch.setattr(mod, "check_quality", lambda _t, lang="ru": {"overall": "PASS"})
     monkeypatch.setattr(mod, "check_blacklist_phrases", lambda _t: {"overall": "PASS"})
-    monkeypatch.setattr(mod, "check_length", lambda _t, keywords_count=None: {"status": "WARNING: short"})
+    monkeypatch.setattr(
+        mod, "check_length", lambda _t, keywords_count=None: {"status": "WARNING: short"}
+    )
     monkeypatch.setattr(mod, "check_grammar", lambda _t: {"overall": "PASS"})
     monkeypatch.setattr(mod, "check_markdown_lint", lambda _p: {"overall": "PASS"})
 
@@ -218,7 +222,9 @@ def test_check_quality_exception_sets_error(monkeypatch):
 def test_check_blacklist_phrases_exception_sets_error(monkeypatch):
     import validate_content as mod
 
-    monkeypatch.setattr(mod, "check_blacklist", lambda _t: (_ for _ in ()).throw(RuntimeError("boom")))
+    monkeypatch.setattr(
+        mod, "check_blacklist", lambda _t: (_ for _ in ()).throw(RuntimeError("boom"))
+    )
     res = mod.check_blacklist_phrases("текст")
     assert "error" in res
 
@@ -234,7 +240,9 @@ def test_check_strict_blacklist_only_unavailable(monkeypatch):
 def test_check_length_get_adaptive_requirements_exception_is_swallowed(monkeypatch):
     import validate_content as mod
 
-    monkeypatch.setattr(mod, "get_adaptive_requirements", lambda _n: (_ for _ in ()).throw(RuntimeError("boom")))
+    monkeypatch.setattr(
+        mod, "get_adaptive_requirements", lambda _n: (_ for _ in ()).throw(RuntimeError("boom"))
+    )
     res = mod.check_length("слово " * 10, keywords_count=10)
     assert res["recommended_words"] == (150, 600)
 
@@ -247,12 +255,49 @@ def test_print_results_length_targets_and_grammar_icon(capsys):
         "primary_keyword": "kw",
         "mode": "quality",
         "checks": {
-            "structure": {"overall": "PASS", "h1": {"passed": True, "value": "H1"}, "intro": {"passed": True, "words": 30}, "h2_count": {"passed": True, "count": 1, "h2s": []}, "faq_count": {"count": 0}},
-            "primary_keyword": {"overall": "PASS", "in_h1": {"passed": True}, "in_intro": {"passed": True}, "frequency": {"count": 2, "status": "OK"}},
-            "coverage": {"overall": "PASS", "total": 0, "found": 0, "coverage_percent": 0, "target": 0, "passed": True, "found_keywords": [], "missing_keywords": []},
-            "quality": {"overall": "PASS", "water": {"value": 50, "status": "OK"}, "nausea_classic": {"value": 3.0, "status": "OK"}, "nausea_academic": {"value": 8.0, "status": "OK"}},
-            "blacklist": {"overall": "PASS", "strict_phrases": [], "brands": [], "cities": [], "ai_fluff": []},
-            "length": {"words": 200, "chars_no_spaces": 1000, "status": "OK", "keywords_count": None, "recommended_words": (150, 600)},
+            "structure": {
+                "overall": "PASS",
+                "h1": {"passed": True, "value": "H1"},
+                "intro": {"passed": True, "words": 30},
+                "h2_count": {"passed": True, "count": 1, "h2s": []},
+                "faq_count": {"count": 0},
+            },
+            "primary_keyword": {
+                "overall": "PASS",
+                "in_h1": {"passed": True},
+                "in_intro": {"passed": True},
+                "frequency": {"count": 2, "status": "OK"},
+            },
+            "coverage": {
+                "overall": "PASS",
+                "total": 0,
+                "found": 0,
+                "coverage_percent": 0,
+                "target": 0,
+                "passed": True,
+                "found_keywords": [],
+                "missing_keywords": [],
+            },
+            "quality": {
+                "overall": "PASS",
+                "water": {"value": 50, "status": "OK"},
+                "nausea_classic": {"value": 3.0, "status": "OK"},
+                "nausea_academic": {"value": 8.0, "status": "OK"},
+            },
+            "blacklist": {
+                "overall": "PASS",
+                "strict_phrases": [],
+                "brands": [],
+                "cities": [],
+                "ai_fluff": [],
+            },
+            "length": {
+                "words": 200,
+                "chars_no_spaces": 1000,
+                "status": "OK",
+                "keywords_count": None,
+                "recommended_words": (150, 600),
+            },
             "content_standards": {"overall": "PASS", "issues": []},
             "grammar": {"overall": "ERROR", "note": "x", "error_count": 0, "errors": []},
             "md_lint": {"overall": "SKIPPED", "note": "x", "violations": [], "violation_count": 0},
@@ -279,9 +324,23 @@ def test_main_parses_lang_flag(monkeypatch, tmp_path: Path):
 
     called = {}
 
-    def fake_validate(file_path, primary_keyword, all_keywords, core_keywords=None, commercial_keywords=None, use_semantic=True, mode="quality", lang="ru"):
+    def fake_validate(
+        file_path,
+        primary_keyword,
+        all_keywords,
+        core_keywords=None,
+        commercial_keywords=None,
+        use_semantic=True,
+        mode="quality",
+        lang="ru",
+    ):
         called["lang"] = lang
-        return {"file": file_path, "primary_keyword": primary_keyword, "checks": {}, "summary": {"overall": "PASS", "blockers": [], "warnings": []}}
+        return {
+            "file": file_path,
+            "primary_keyword": primary_keyword,
+            "checks": {},
+            "summary": {"overall": "PASS", "blockers": [], "warnings": []},
+        }
 
     monkeypatch.setattr(mod, "validate_content", fake_validate)
     monkeypatch.setattr(mod, "print_results", lambda *_a, **_k: None)

@@ -5,12 +5,12 @@ End-to-end-ish tests for check_simple_v2_md.check_content() to raise coverage.
 from __future__ import annotations
 
 import json
-from pathlib import Path
-
-import pytest
 
 # Import as script-style module (scripts dir on sys.path).
 import sys
+from pathlib import Path
+
+
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import check_simple_v2_md as mod  # noqa: E402
 
@@ -75,8 +75,8 @@ def test_check_content_pass_happy_path(tmp_path: Path, monkeypatch):
         "\n".join(
             [
                 "---",
-                "title: \"" + ("А" * 55) + "\"",
-                "description: \"" + ("Б" * 150) + "\"",
+                'title: "' + ("А" * 55) + '"',
+                'description: "' + ("Б" * 150) + '"',
                 "---",
                 "# Активная пена",
                 "",
@@ -113,7 +113,17 @@ def test_check_content_pass_happy_path(tmp_path: Path, monkeypatch):
 
 
 def test_check_content_density_skipped_without_categories_path(tmp_path: Path, monkeypatch):
-    monkeypatch.setattr(mod, "get_tier_requirements", lambda _tier: {"char_min": 0, "char_max": 999999, "min_words": 0, "max_words": 999999, "coverage": 0.3})
+    monkeypatch.setattr(
+        mod,
+        "get_tier_requirements",
+        lambda _tier: {
+            "char_min": 0,
+            "char_max": 999999,
+            "min_words": 0,
+            "max_words": 999999,
+            "coverage": 0.3,
+        },
+    )
     monkeypatch.setattr(mod, "NAUSEA_AVAILABLE", False)
 
     md_file = tmp_path / "x.md"

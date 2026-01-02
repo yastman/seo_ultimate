@@ -17,25 +17,25 @@
 
 ### ⬜ Следующий шаг: /generate-meta для 17 новых
 
-| #  | Slug                            | Clean | Meta | UK  | Volume |
-|----|---------------------------------|-------|------|-----|--------|
-| 1  | tverdyy-vosk                    | ✅    | ⬜   | ⬜  | 1000+  |
-| 2  | zhidkiy-vosk                    | ✅    | ⬜   | ⬜  | 480+   |
-| 3  | pyatnovyvoditeli                | ✅    | ⬜   | ⬜  | 2400   |
-| 4  | ochistiteli-kuzova              | ✅    | ⬜   | ⬜  | 590    |
-| 5  | akkumulyatornye-mashinki        | ✅    | ⬜   | ⬜  | 260    |
-| 6  | avtoshampuni                    | ✅    | ⬜   | ⬜  | 480    |
-| 7  | sredstva-dlya-stekol            | ✅    | ⬜   | ⬜  | L2     |
-| 8  | sredstva-dlya-diskov-i-shin     | ✅    | ⬜   | ⬜  | L2     |
-| 9  | s-voskom                        | ✅    | ⬜   | ⬜  | SEO    |
-| 10 | kislotnyy-shampun               | ✅    | ⬜   | ⬜  | 70     |
-| 11 | zashchitnoe-pokrytie-dlya-koles | ✅    | ⬜   | ⬜  | 10     |
-| 12 | dlya-vneshnego-plastika         | ✅    | ⬜   | ⬜  | 40     |
-| 13 | mikrofibra-dlya-polirovki       | ✅    | ⬜   | ⬜  | 50     |
-| 14 | mikrofibra-dlya-stekol          | ✅    | ⬜   | ⬜  | 50     |
-| 15 | nabory-dlya-deteylinga          | ✅    | ⬜   | ⬜  | 260    |
-| 16 | porolonovye                     | ✅    | ⬜   | ⬜  | L3     |
-| 17 | oborudovanie                    | ✅    | ⬜   | ⬜  | 90     |
+| #   | Slug                            | Clean | Meta | UK  | Volume |
+| --- | ------------------------------- | ----- | ---- | --- | ------ |
+| 1   | tverdyy-vosk                    | ✅    | ⬜   | ⬜  | 1000+  |
+| 2   | zhidkiy-vosk                    | ✅    | ⬜   | ⬜  | 480+   |
+| 3   | pyatnovyvoditeli                | ✅    | ⬜   | ⬜  | 2400   |
+| 4   | ochistiteli-kuzova              | ✅    | ⬜   | ⬜  | 590    |
+| 5   | akkumulyatornye-mashinki        | ✅    | ⬜   | ⬜  | 260    |
+| 6   | avtoshampuni                    | ✅    | ⬜   | ⬜  | 480    |
+| 7   | sredstva-dlya-stekol            | ✅    | ⬜   | ⬜  | L2     |
+| 8   | sredstva-dlya-diskov-i-shin     | ✅    | ⬜   | ⬜  | L2     |
+| 9   | s-voskom                        | ✅    | ⬜   | ⬜  | SEO    |
+| 10  | kislotnyy-shampun               | ✅    | ⬜   | ⬜  | 70     |
+| 11  | zashchitnoe-pokrytie-dlya-koles | ✅    | ⬜   | ⬜  | 10     |
+| 12  | dlya-vneshnego-plastika         | ✅    | ⬜   | ⬜  | 40     |
+| 13  | mikrofibra-dlya-polirovki       | ✅    | ⬜   | ⬜  | 50     |
+| 14  | mikrofibra-dlya-stekol          | ✅    | ⬜   | ⬜  | 50     |
+| 15  | nabory-dlya-deteylinga          | ✅    | ⬜   | ⬜  | 260    |
+| 16  | porolonovye                     | ✅    | ⬜   | ⬜  | L3     |
+| 17  | oborudovanie                    | ✅    | ⬜   | ⬜  | 90     |
 
 ---
 
@@ -48,13 +48,13 @@
 
 ## 📊 ПРОГРЕСС
 
-| Этап         | RU     | UK     |
-|--------------|--------|--------|
-| Init (папки) | 51/51 ✅| 34/51  |
-| Clean (JSON) | 51/51 ✅| 34/51  |
-| Meta (JSON)  | 34/51  | 34/51  |
-| Research     | 13/51  | —      |
-| Content      | 13/51  | 13/51  |
+| Этап         | RU       | UK    |
+| ------------ | -------- | ----- |
+| Init (папки) | 51/51 ✅ | 34/51 |
+| Clean (JSON) | 51/51 ✅ | 34/51 |
+| Meta (JSON)  | 34/51    | 34/51 |
+| Research     | 13/51    | —     |
+| Content      | 13/51    | 13/51 |
 
 ---
 
@@ -72,7 +72,7 @@ polirovalnye-mashinki, malyarnyy-skotch, mikrofibra-i-tryapki, polirovalnye-past
 
 ## Pipeline
 
-```
+```text
 CSV → /category-init → /generate-meta → /seo-research → /content-generator → /uk-content-init → /quality-gate → /deploy
 ```
 

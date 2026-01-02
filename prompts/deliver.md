@@ -7,12 +7,14 @@
 ## ⚡ D+E Pattern
 
 Валидатор автоматически определяет JSON:
+
 ```
 1. {slug}_clean.json (12 kw) ← preferred
 2. {slug}.json (52 kw)       ← fallback
 ```
 
 **Adaptive Thresholds:**
+
 | Keywords | Density Blocker | Density Warning |
 |----------|-----------------|-----------------|
 | ≤20 (clean) | 5.0% | 3.5% |
@@ -70,6 +72,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
    - Нет брендов (если не в каталоге)
 
 **Exit Codes:**
+
 - 0 = PASS ✅
 - 1 = WARNING ⚠️ (можно продолжать)
 - 2 = FAIL ❌ (требуется fix)
@@ -97,6 +100,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 Создать папку: `categories/{slug}/deliverables/`
 
 Скопировать файлы:
+
 - `{slug}_ru.md` (из content/)
 - `{slug}_meta.json` (из meta/)
 
@@ -273,7 +277,7 @@ Ready for:
 
 ## Error Handling
 
-### Если валидация провалена (exit code 2):
+### Если валидация провалена (exit code 2)
 
 ```
 ❌ VALIDATION FAILED
@@ -290,7 +294,7 @@ Action Required:
 Do not proceed to packaging.
 ```
 
-### Если файлы не найдены:
+### Если файлы не найдены
 
 ```
 ❌ ERROR: Content files not found
@@ -315,6 +319,6 @@ Action: Run PRODUCE first
 
 **Version:** 5.1
 **Spec:** SEO_MASTER.md v7.3
-**D+E Pattern:** Auto-detects _clean.json with adaptive thresholds
+**D+E Pattern:** Auto-detects_clean.json with adaptive thresholds
 **Model:** sonnet (quality audit)
 **Updated:** 2025-12-12

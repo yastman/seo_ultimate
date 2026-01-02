@@ -17,16 +17,26 @@ from scripts import config
 
 class TestAdaptiveTargets:
     def test_get_adaptive_coverage_target_shallow(self):
-        assert config.get_adaptive_coverage_target(0) == config.QUALITY_THRESHOLDS["coverage_shallow"]
-        assert config.get_adaptive_coverage_target(5) == config.QUALITY_THRESHOLDS["coverage_shallow"]
+        assert (
+            config.get_adaptive_coverage_target(0) == config.QUALITY_THRESHOLDS["coverage_shallow"]
+        )
+        assert (
+            config.get_adaptive_coverage_target(5) == config.QUALITY_THRESHOLDS["coverage_shallow"]
+        )
 
     def test_get_adaptive_coverage_target_medium(self):
-        assert config.get_adaptive_coverage_target(6) == config.QUALITY_THRESHOLDS["coverage_medium"]
-        assert config.get_adaptive_coverage_target(15) == config.QUALITY_THRESHOLDS["coverage_medium"]
+        assert (
+            config.get_adaptive_coverage_target(6) == config.QUALITY_THRESHOLDS["coverage_medium"]
+        )
+        assert (
+            config.get_adaptive_coverage_target(15) == config.QUALITY_THRESHOLDS["coverage_medium"]
+        )
 
     def test_get_adaptive_coverage_target_deep(self):
         assert config.get_adaptive_coverage_target(16) == config.QUALITY_THRESHOLDS["coverage_deep"]
-        assert config.get_adaptive_coverage_target(999) == config.QUALITY_THRESHOLDS["coverage_deep"]
+        assert (
+            config.get_adaptive_coverage_target(999) == config.QUALITY_THRESHOLDS["coverage_deep"]
+        )
 
     def test_get_semantic_depth(self):
         assert config.get_semantic_depth(0) == "shallow"
@@ -55,4 +65,3 @@ class TestPathHelpers:
         assert isinstance(config.PROJECT_ROOT, Path)
         assert isinstance(config.CATEGORIES_DIR, Path)
         assert isinstance(config.DATA_DIR, Path)
-

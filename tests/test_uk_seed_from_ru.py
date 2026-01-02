@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 
 import pytest
 
@@ -8,8 +7,10 @@ def _import_module():
     # Local import to avoid accidental side-effects when tests are collected.
     import sys
     from pathlib import Path as _Path
+
     sys.path.insert(0, str((_Path(__file__).parent.parent / "scripts").resolve()))
     import uk_seed_from_ru as m  # type: ignore
+
     return m
 
 
@@ -62,7 +63,7 @@ def test_build_translation_prompt_contains_payload_json():
     prompt = m.build_translation_prompt("x", uk)
     assert "SLUG: x" in prompt
     assert "H1/H2/H3 ТІЛЬКИ українською" in prompt
-    assert "\"keyword_ru\": \"ключ\"" in prompt
+    assert '"keyword_ru": "ключ"' in prompt
     # Must contain a parseable JSON payload at the end (multi-line).
     # Don't use rfind("{") because JSON contains nested objects.
     marker = "Вихід: поверни JSON точно у форматі нижче, заповнивши порожні поля."
@@ -72,6 +73,7 @@ def test_build_translation_prompt_contains_payload_json():
     assert start != -1
     payload_str = tail[start:].strip()
     json.loads(payload_str)
+
 
 def test_build_uk_clean_json_seeds_meta_ru_and_clears_meta():
     m = _import_module()
@@ -153,13 +155,19 @@ def test_script_writes_files(tmp_path, monkeypatch):
     slug = "demo"
     ru_path = tmp_path / "categories" / slug / "data" / f"{slug}_clean.json"
     ru_path.parent.mkdir(parents=True, exist_ok=True)
-    ru_path.write_text(json.dumps({
-        "slug": slug,
-        "language": "ru",
-        "seo_titles": {"h1": "H1 RU", "main_keyword": "ключ"},
-        "keywords": {"primary": [{"keyword": "ключ"}], "secondary": [], "supporting": []},
-        "entity_dictionary": {"equipment": ["пенокомплект"]},
-    }, ensure_ascii=False), encoding="utf-8")
+    ru_path.write_text(
+        json.dumps(
+            {
+                "slug": slug,
+                "language": "ru",
+                "seo_titles": {"h1": "H1 RU", "main_keyword": "ключ"},
+                "keywords": {"primary": [{"keyword": "ключ"}], "secondary": [], "supporting": []},
+                "entity_dictionary": {"equipment": ["пенокомплект"]},
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
 
     paths = m.get_paths(slug)
     ru = m.read_json(paths.ru_clean_json)

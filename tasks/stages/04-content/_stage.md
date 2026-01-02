@@ -71,6 +71,7 @@ python3 scripts/validate_content.py \
 ```
 
 **Что проверяет скрипт:**
+
 | Check | Rule | Status |
 |-------|------|--------|
 | word_count | 1500-2500 | ✅/❌ |
