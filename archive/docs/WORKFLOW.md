@@ -276,6 +276,7 @@ content-gen  translator   meta-tags   ┌──────────┐
 ## 🔀 DATA FLOW STAGES
 
 ### Stage -3 → -2 (URL Processing)
+
 ```
 SERP CSV (top-10)
     ↓
@@ -293,6 +294,7 @@ urls.txt (≥5 URLs, категория-specific)
 ```
 
 ### Stage 3 (Manual Research)
+
 ```
 urls.txt
     ↓
@@ -308,6 +310,7 @@ perplexity_research.md
 ```
 
 ### Stage 4 → 6 (Data Processing)
+
 ```
 meta_competitors.csv + perplexity_research.md
     ↓
@@ -325,6 +328,7 @@ keyword-distribution-agent
 ```
 
 ### Stage 8 → 11 (Content Generation)
+
 ```
 perplexity_research.md + {slug}_keywords_distributed.json
     ↓
@@ -517,4 +521,3 @@ orchestrator exit code:
 ---
 
 **Версия:** 1.0 | **Updated:** 2025-11-17
-

@@ -13,8 +13,6 @@ import csv
 import json
 from pathlib import Path
 
-import pytest
-
 import scripts.filter_mega_competitors as mod
 
 
@@ -155,4 +153,3 @@ class TestEndToEnd:
         rows = list(csv.DictReader(output_csv.open("r", encoding="utf-8")))
         assert any("shop1.com" in r["Address"] for r in rows)
         assert all("rozetka.com.ua" not in r["Address"] for r in rows)
-

@@ -2,7 +2,7 @@
 """Extract products by category from SQL backup."""
 
 import re
-import sys
+
 
 SQL_FILE = "ultimate_net_ua_backup.sql"
 
@@ -18,9 +18,10 @@ CATEGORIES = {
     417: ("antibitum-antimoshka", "Очищення кузова (антибітум, антимошка)"),
 }
 
+
 def extract_product_to_category(sql_content):
     """Extract product_id -> category_id mapping."""
-    pattern = r'\((\d+),(\d+),[01]\)'
+    pattern = r"\((\d+),(\d+),[01]\)"
     matches = re.findall(pattern, sql_content)
 
     cat_products = {}
@@ -34,22 +35,24 @@ def extract_product_to_category(sql_content):
 
     return cat_products
 
+
 def extract_product_names(sql_content, product_ids):
     """Extract product names for given IDs (UK language_id=1)."""
     names = {}
     for pid in product_ids:
         # Pattern: (product_id,1,'Name'
-        pattern = rf'\({pid},1,\'([^\']+)\''
+        pattern = rf"\({pid},1,\'([^\']+)\'"
         match = re.search(pattern, sql_content)
         if match:
             name = match.group(1)
             # Skip URLs
-            if not name.startswith('http') and len(name) > 10:
+            if not name.startswith("http") and len(name) > 10:
                 names[pid] = name
     return names
 
+
 def main():
-    with open(SQL_FILE, 'r', encoding='utf-8', errors='ignore') as f:
+    with open(SQL_FILE, encoding="utf-8", errors="ignore") as f:
         sql_content = f.read()
 
     cat_products = extract_product_to_category(sql_content)
@@ -65,7 +68,7 @@ def main():
             names = extract_product_names(sql_content, product_ids)
 
             if names:
-                for pid, name in sorted(names.items(), key=lambda x: x[1]):
+                for _pid, name in sorted(names.items(), key=lambda x: x[1]):
                     print(f"- {name}")
             else:
                 print("*Товари не знайдено*")
@@ -73,6 +76,7 @@ def main():
             print("*Товари не знайдено*")
 
         print("")
+
 
 if __name__ == "__main__":
     main()

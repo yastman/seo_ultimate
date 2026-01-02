@@ -5,12 +5,14 @@ Extra TDD tests for check_simple_v2_md.py to cover error branches and parsing lo
 from __future__ import annotations
 
 import json
+
+# Import in the same way scripts are typically executed (scripts dir on sys.path).
+import sys
 from pathlib import Path
 
 import pytest
 
-# Import in the same way scripts are typically executed (scripts dir on sys.path).
-import sys
+
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import check_simple_v2_md as mod  # noqa: E402
 
@@ -27,7 +29,9 @@ def test_parse_markdown_file_yaml_error(tmp_path: Path, monkeypatch):
     md = tmp_path / "x.md"
     md.write_text("---\n: bad\n---\n# H1\n", encoding="utf-8")
     # Force YAML parser to raise
-    monkeypatch.setattr(mod.yaml, "safe_load", lambda *_a, **_k: (_ for _ in ()).throw(mod.yaml.YAMLError("bad")))
+    monkeypatch.setattr(
+        mod.yaml, "safe_load", lambda *_a, **_k: (_ for _ in ()).throw(mod.yaml.YAMLError("bad"))
+    )
     meta, _content = mod.parse_markdown_file(str(md))
     assert meta == {}
 
@@ -64,7 +68,13 @@ def test_keyword_density_word_count_zero(tmp_path: Path):
         json.dumps(
             {
                 "keywords": {
-                    "primary": [{"keyword": "активная пена", "density_target": "0.5%", "occurrences_target": 1}]
+                    "primary": [
+                        {
+                            "keyword": "активная пена",
+                            "density_target": "0.5%",
+                            "occurrences_target": 1,
+                        }
+                    ]
                 }
             },
             ensure_ascii=False,
@@ -82,7 +92,14 @@ def test_keyword_density_variations_fallback_counts(tmp_path: Path):
         json.dumps(
             {
                 "keywords": {
-                    "primary": [{"keyword": "активная пена", "density_target": "0.5%", "occurrences_target": 1, "variations": {}}],
+                    "primary": [
+                        {
+                            "keyword": "активная пена",
+                            "density_target": "0.5%",
+                            "occurrences_target": 1,
+                            "variations": {},
+                        }
+                    ],
                     "secondary": [],
                     "supporting": [],
                 }
@@ -123,14 +140,32 @@ def test_cli_main_writes_json_report(tmp_path: Path, monkeypatch):
     (cat_dir / "content").mkdir(parents=True)
     (cat_dir / "data").mkdir(parents=True)
     (cat_dir / "data" / f"{slug}.json").write_text(
-        json.dumps({"keywords": {"primary": [{"keyword": "активная пена", "density_target": "0.5%", "occurrences_target": 1}]}}, ensure_ascii=False),
+        json.dumps(
+            {
+                "keywords": {
+                    "primary": [
+                        {
+                            "keyword": "активная пена",
+                            "density_target": "0.5%",
+                            "occurrences_target": 1,
+                        }
+                    ]
+                }
+            },
+            ensure_ascii=False,
+        ),
         encoding="utf-8",
     )
     md_file = cat_dir / "content" / f"{slug}_ru.md"
-    md_file.write_text("# Активная пена\n\nАктивная пена.\n\n## H2\n\n[ok](/x)\n[ok2](/y)\n\n## FAQ\n### Q?\nA\n### Q2?\nA\n### Q3?\nA\n", encoding="utf-8")
+    md_file.write_text(
+        "# Активная пена\n\nАктивная пена.\n\n## H2\n\n[ok](/x)\n[ok2](/y)\n\n## FAQ\n### Q?\nA\n### Q2?\nA\n### Q3?\nA\n",
+        encoding="utf-8",
+    )
 
     # Run main via sys.argv style and catch SystemExit.
-    monkeypatch.setattr(mod.sys, "argv", ["check_simple_v2_md.py", str(md_file), "активная пена", "B", "--json"])
+    monkeypatch.setattr(
+        mod.sys, "argv", ["check_simple_v2_md.py", str(md_file), "активная пена", "B", "--json"]
+    )
     with pytest.raises(SystemExit) as exc:
         mod.main()
     assert exc.value.code in (0, 1, 2)

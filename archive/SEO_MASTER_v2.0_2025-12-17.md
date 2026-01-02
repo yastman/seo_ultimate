@@ -53,7 +53,6 @@
 
 **Як перевірити:** `scripts/validate_content.py` автоматично рахує слова.
 
-
 1. Для каждой категории открой `categories/{slug}/data/{slug}_clean.json`.
 2. Собери чек‑лист: `primary/secondary/supporting` + `entity_dictionary` (термины).
 
@@ -70,7 +69,8 @@
 | **10-12** | **500-600 слов** ⚠️ | aktivnaya-pena: 12 kw → 592 слова |
 | 13+ | 600-700 слов | — |
 
-**Источники:** 
+**Источники:**
+
 - Digitaloft 2025 (топ-1 = 310 слів середній)
 - Search Engine Land грудень 2025
 - Тестирование Ultimate.net.ua (декабрь 2025): 10-12 ключей физически требуют 500-600 слов
@@ -78,7 +78,6 @@
 **Почему:** Intent Clarity (категория = transactional, не informational), Mobile-First, Behavioral Signals.
 
 **Проверка:** `scripts/validate_content.py` автоматически считает слова.
-
 
 ## Адаптивна довжина тексту (SEO 2025)
 
@@ -96,7 +95,6 @@
 
 **Як перевірити:** `scripts/validate_content.py` автоматично рахує слова.
 
-
 1. Для каждой категории открой `categories/{slug}/data/{slug}_clean.json`.
 2. Собери чек‑лист: `primary/secondary/supporting` + `entity_dictionary` (термины).
 3. Пиши как buying guide категории магазина: “что это / зачем / как выбрать / совместимость / ошибки / расход / итог выбора”.
@@ -113,6 +111,7 @@
 > "There's no such thing as LSI keywords—anyone who's telling you otherwise is mistaken, sorry."
 
 **Факты:**
+
 - LSI разработан в 1988 году — ДО интернета
 - Microsoft patent, НЕ используется Google
 - Google использует **NLP, BERT, MUM, RankBrain, Knowledge Graph** (8 млрд сущностей)
@@ -128,6 +127,7 @@
 **Правда:** Google использует **TF-IDF и semantic understanding**, НЕ простой подсчёт слов.
 
 **Зачем следить за 0.5-1%?**
+
 - ✅ **Natural writing guideline** — помогает избежать keyword stuffing
 - ✅ **Safety net** — показывает естественность текста
 - ❌ **НЕ optimization target** — 0.04% в TOP-10 (Rankability Study 2025)
@@ -211,6 +211,7 @@ Commercial (для meta):
 **⚠️ ВАЖНО:** Keywords в headers — **НЕ ranking factor** (John Mueller, 2024-2025). Headers для **UX и структуры**, не для SEO optimization.
 
 **Новый принцип (December 2025):**
+
 - Пишите headers **для человека**, не для алгоритма
 - Если keyword естественно вписывается — отлично
 - Если нет — НЕ форсируйте ради "SEO coverage"
@@ -233,16 +234,19 @@ Commercial (для meta):
 | ❌ "Активная пена для мойки авто цена" | BAD | Keyword stuffing |
 
 **Приоритет (December 2025):**
+
 1. **User experience** — пользователь понимает структуру
 2. **Semantic clarity** — заголовок точно описывает раздел
 3. **Keywords** — опционально, если естественно
 
 **Доступные термины для H2/H3:**
+
 - `secondary/supporting` keywords — если естественно
 - Entity terms (pH, мкм, бары) — экспертная лексика
 - Проблемы/задачи пользователя
 
 **НЕ используем в H2/H3:**
+
 - ❌ `commercial` keywords (`купить`, `цена`) — спам
 - ❌ Искусственные конструкции ради keyword
 
@@ -255,6 +259,7 @@ Commercial (для meta):
 **Принцип:** “термин (пояснение)” при первом появлении, дальше — коротко.
 
 Примеры:
+
 - `clay bar (глина для очистки кузова)`
 - `iron remover (индикаторный очиститель металла)`
 - `pre-wash (предварительная бесконтактная мойка)`
@@ -351,11 +356,13 @@ Commercial (для meta):
 6. **Anti-Fluff расширен** — добавлены данные о контенте, который НЕ работает (generic keyword content -63%)
 
 **Новые разделы:**
+
 - "⚠️ Развенчание мифов SEO 2025" — три основных мифа с официальными опровержениями
 - "Entity-based SEO (вместо LSI)" — современный подход к semantic coverage
 - Обновлена таблица "Что РАБОТАЕТ вместо этого" — use-case сегментация, buying considerations, comparative data
 
 **Принципиальные изменения подхода:**
+
 - **Clarity > Coverage** — ясность важнее keyword stuffing
 - **UX > SEO tricks** — пишем для человека, не для алгоритма
 - **Facts > Generic content** — конкретика побеждает универсальные фразы
@@ -363,6 +370,7 @@ Commercial (для meta):
 ---
 
 **Источники (верифицированные):**
+
 - Google Search Status Dashboard (December 11, 2025) — Core Update announcement
 - John Mueller (Google) — официальные заявления о LSI, keyword density, headers
 - Matt Cutts (бывший глава webspam Google) — keyword density

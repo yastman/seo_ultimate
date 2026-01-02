@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+import builtins
 import json
-import runpy
 import sys
 import types
 from pathlib import Path
@@ -9,7 +9,6 @@ from pathlib import Path
 import pytest
 
 import scripts.quality_runner as qr
-import builtins
 
 
 def _write_md(tmp_path: Path, text: str = "# H1\n\nintro text\n\n## H2\nbody\n") -> Path:
@@ -23,16 +22,20 @@ def test_script_standalone_inserts_project_root(monkeypatch):
     monkeypatch.setattr(sys, "argv", ["quality_runner.py"])
     monkeypatch.setattr(sys, "path", ["__sentinel__"])
 
+    code = script_path.read_text(encoding="utf-8")
+    compiled = compile(code, str(script_path), "exec")
+    globals_dict = {"__name__": "__main__", "__package__": None, "__file__": str(script_path)}
     with pytest.raises(SystemExit):
-        code = script_path.read_text(encoding="utf-8")
-        exec(compile(code, str(script_path), "exec"), {"__name__": "__main__", "__package__": None, "__file__": str(script_path)})
+        exec(compiled, globals_dict)  # noqa: S102
 
     assert sys.path[0] == str(script_path.resolve().parent.parent)
 
 
 def test_markdown_warn_prints_and_more_than_5(monkeypatch, tmp_path: Path, capsys):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
 
     class Failure:
         def __init__(self, n: int):
@@ -49,7 +52,9 @@ def test_markdown_warn_prints_and_more_than_5(monkeypatch, tmp_path: Path, capsy
         def scan_path(self, _path):
             return FakeScanResult()
 
-    monkeypatch.setitem(qr.sys.modules, "pymarkdown.api", types.SimpleNamespace(PyMarkdownApi=FakeApi))
+    monkeypatch.setitem(
+        qr.sys.modules, "pymarkdown.api", types.SimpleNamespace(PyMarkdownApi=FakeApi)
+    )
 
     status, _errors = checker.check_markdown_structure()
     out = capsys.readouterr().out
@@ -59,7 +64,9 @@ def test_markdown_warn_prints_and_more_than_5(monkeypatch, tmp_path: Path, capsy
 
 def test_check_grammar_skipped_branch(tmp_path: Path):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
     status, errors = checker.check_grammar()
     assert status == "PASS"
     assert errors == []
@@ -115,7 +122,12 @@ def test_check_water_nausea_warn_branch(monkeypatch, tmp_path: Path):
     monkeypatch.setattr(
         cwn,
         "calculate_metrics_from_text",
-        lambda _t: {"water_percent": 64.0, "classic_nausea": 3.6, "academic_nausea": 8.0, "lemma_repetition_index": 0.0},
+        lambda _t: {
+            "water_percent": 64.0,
+            "classic_nausea": 3.6,
+            "academic_nausea": 8.0,
+            "lemma_repetition_index": 0.0,
+        },
     )
     monkeypatch.setattr(
         su,
@@ -138,15 +150,36 @@ def test_check_water_nausea_warn_branch(monkeypatch, tmp_path: Path):
 
 def test_check_keyword_density_prints_warnings_count(monkeypatch, tmp_path: Path, capsys):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
 
     json_path = md.parent / f"{md.stem}_validation.json"
     json_path.write_text(
-        json.dumps({"checks": {"density_distribution": {"metrics": {"total_density": 1.0, "coverage": 55.0, "keywords_found": 1, "keywords_total": 2, "warnings_count": 2, "errors_count": 0}}}}),
+        json.dumps(
+            {
+                "checks": {
+                    "density_distribution": {
+                        "metrics": {
+                            "total_density": 1.0,
+                            "coverage": 55.0,
+                            "keywords_found": 1,
+                            "keywords_total": 2,
+                            "warnings_count": 2,
+                            "errors_count": 0,
+                        }
+                    }
+                }
+            }
+        ),
         encoding="utf-8",
     )
 
-    monkeypatch.setattr(qr.subprocess, "run", lambda *_a, **_k: types.SimpleNamespace(returncode=1, stdout="", stderr=""))
+    monkeypatch.setattr(
+        qr.subprocess,
+        "run",
+        lambda *_a, **_k: types.SimpleNamespace(returncode=1, stdout="", stderr=""),
+    )
     status, _metrics = checker.check_keyword_density()
     out = capsys.readouterr().out
     assert status == "WARN"
@@ -155,16 +188,22 @@ def test_check_keyword_density_prints_warnings_count(monkeypatch, tmp_path: Path
 
 def test_check_keyword_density_exception_branch(monkeypatch, tmp_path: Path):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
 
-    monkeypatch.setattr(qr.subprocess, "run", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("boom")))
+    monkeypatch.setattr(
+        qr.subprocess, "run", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("boom"))
+    )
     status, _metrics = checker.check_keyword_density()
     assert status == "FAIL"
 
 
 def test_check_ner_blacklist_prints_more_than_3_items(monkeypatch, tmp_path: Path, capsys):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=False)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=False
+    )
 
     import scripts.check_ner_brands as ner_mod
 
@@ -181,7 +220,9 @@ def test_check_ner_blacklist_prints_more_than_3_items(monkeypatch, tmp_path: Pat
     monkeypatch.setattr(
         ner_mod,
         "check_ner",
-        lambda _t: {"ner_entities": [{"type": "ORG", "entity": "x"}, {"type": "LOC", "entity": "y"}]},
+        lambda _t: {
+            "ner_entities": [{"type": "ORG", "entity": "x"}, {"type": "LOC", "entity": "y"}]
+        },
     )
 
     status, _findings = checker.check_ner_blacklist()
@@ -193,7 +234,9 @@ def test_check_ner_blacklist_prints_more_than_3_items(monkeypatch, tmp_path: Pat
 
 def test_parse_density_text_fallback_extracts_metrics(tmp_path: Path):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
     metrics = checker._parse_density_text_fallback("Density: 1.2%\nCoverage: 55.0%\n")
     assert metrics["density"] == 1.2
     assert metrics["coverage"] == 55.0
@@ -201,7 +244,9 @@ def test_parse_density_text_fallback_extracts_metrics(tmp_path: Path):
 
 def test_check_commercial_markers_prints_more_than_6(monkeypatch, tmp_path: Path, capsys):
     md = _write_md(tmp_path, "# H1\n\nкупить цена доставка заказать в наличии магазин каталог\n")
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
 
     import scripts.seo_utils as su
 
@@ -209,7 +254,12 @@ def test_check_commercial_markers_prints_more_than_6(monkeypatch, tmp_path: Path
     monkeypatch.setattr(
         su,
         "check_commercial_markers",
-        lambda _t, _min: {"passed": True, "found_count": 7, "found_markers": [f"m{i}" for i in range(7)], "message": "ok"},
+        lambda _t, _min: {
+            "passed": True,
+            "found_count": 7,
+            "found_markers": [f"m{i}" for i in range(7)],
+            "message": "ok",
+        },
     )
 
     status, _result = checker.check_commercial_markers()
@@ -220,7 +270,9 @@ def test_check_commercial_markers_prints_more_than_6(monkeypatch, tmp_path: Path
 
 def test_check_commercial_markers_importerror_branch(monkeypatch, tmp_path: Path):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
 
     real_import = builtins.__import__
 
@@ -236,7 +288,9 @@ def test_check_commercial_markers_importerror_branch(monkeypatch, tmp_path: Path
 
 def test_check_seo_structure_print_branches(monkeypatch, tmp_path: Path, capsys):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
 
     import scripts.check_seo_structure as ss
 
@@ -246,8 +300,18 @@ def test_check_seo_structure_print_branches(monkeypatch, tmp_path: Path, capsys)
         lambda *_a, **_k: (
             "PASS",
             {
-                "intro": {"passed": True, "in_first_sentence": False, "message": "m", "intro_preview": "x"},
-                "h2": {"passed": True, "message": "m", "h2_with_keyword": ["a"], "h2_without_keyword": []},
+                "intro": {
+                    "passed": True,
+                    "in_first_sentence": False,
+                    "message": "m",
+                    "intro_preview": "x",
+                },
+                "h2": {
+                    "passed": True,
+                    "message": "m",
+                    "h2_with_keyword": ["a"],
+                    "h2_without_keyword": [],
+                },
                 "frequency": {"status": "SPAM", "is_spam": True, "message": "m"},
             },
         ),
@@ -261,7 +325,9 @@ def test_check_seo_structure_print_branches(monkeypatch, tmp_path: Path, capsys)
 
 def test_check_keyword_density_script_missing_returns_fail(monkeypatch, tmp_path: Path, capsys):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
 
     expected_script_path = Path(qr.__file__).resolve().parent / "check_simple_v2_md.py"
     real_exists = qr.Path.exists
@@ -281,7 +347,9 @@ def test_check_keyword_density_script_missing_returns_fail(monkeypatch, tmp_path
 
 def test_check_ner_blacklist_skip_ner_branch(tmp_path: Path, capsys):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
 
     status, findings = checker.check_ner_blacklist()
     out = capsys.readouterr().out
@@ -292,7 +360,9 @@ def test_check_ner_blacklist_skip_ner_branch(tmp_path: Path, capsys):
 
 def test_check_seo_structure_importerror_branch(monkeypatch, tmp_path: Path):
     md = _write_md(tmp_path)
-    checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+    checker = qr.QualityCheck(
+        str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+    )
 
     real_import = builtins.__import__
 

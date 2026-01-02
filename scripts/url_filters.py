@@ -71,9 +71,22 @@ def is_category_page(url: str) -> bool:
 
     # Non-category indicators
     non_category_kw = [
-        "product", "item", "article", "news", "blog", "contact",
-        "about", "payment", "delivery", "dostavka", "oplata",
-        "cart", "checkout", "search", "login", "register"
+        "product",
+        "item",
+        "article",
+        "news",
+        "blog",
+        "contact",
+        "about",
+        "payment",
+        "delivery",
+        "dostavka",
+        "oplata",
+        "cart",
+        "checkout",
+        "search",
+        "login",
+        "register",
     ]
 
     has_category = any(kw in path for kw in category_kw)
@@ -85,7 +98,6 @@ def is_category_page(url: str) -> bool:
 
     # Fallback: short paths (2-3 segments) are likely categories
     path_segments = [p for p in path.split("/") if p]
-    if 2 <= len(path_segments) <= 3 and not has_non_category:
-        return True
+    return 2 <= len(path_segments) <= 3 and not has_non_category
 
     return False

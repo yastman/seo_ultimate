@@ -32,6 +32,7 @@ Output: текст RU (~2000 символов) + meta tags
 ### Критическая проблема
 
 **Keywords JSON сломаны** для большинства категорий:
+
 - `dlya-ruchnoy-moyki.json` — содержит keywords про омыватели (WRONG)
 - `ochistiteli-shin.json` — содержит keywords про обезжириватели (WRONG)
 - Причина: `parse_semantics_to_json.py` неправильно парсит CSV структуру
@@ -95,6 +96,7 @@ Output: текст RU (~2000 символов) + meta tags
 ## Что убрать
 
 ### Сейчас
+
 ```
 rm -rf .claude/skills/          # 9 skills → archive
 rm -rf prompts/                  # 3 prompts → archive
@@ -102,6 +104,7 @@ rm -rf docs/archive/             # 12 файлов мусора
 ```
 
 ### Оставить
+
 ```
 SEO_MASTER.md                   # Правила (441 строка)
 scripts/quality_runner.py       # Валидация
@@ -114,18 +117,24 @@ scripts/check_simple_v2_md.py   # Density/Keywords
 ## Решение проблемы с keywords
 
 ### Вариант A: Ручной ввод (быстро)
+
 Для каждой категории создать keywords.json вручную:
+
 - 5-10 primary keywords
 - 10-15 secondary
 - Остальные supporting
 
 ### Вариант B: Исправить парсер (правильно)
+
 Переписать `parse_semantics_to_json.py`:
+
 - Корректно обрабатывать L1/L2/L3 иерархию
 - Не смешивать keywords между категориями
 
 ### Вариант C: Новый CSV (идеально)
+
 Создать чистый CSV с правильной структурой:
+
 ```
 slug,keyword,volume,intent
 aktivnaya-pena,пена для мойки авто,1300,informational
@@ -138,22 +147,26 @@ aktivnaya-pena,купить активную пену,590,commercial
 ## План действий
 
 ### Фаза 1: Cleanup (1 час)
+
 - [ ] Архивировать skills/, prompts/, docs/archive/
 - [ ] Удалить дубликаты
 - [ ] Оставить только нужные скрипты
 
 ### Фаза 2: Keywords Fix (2-3 часа)
+
 - [ ] Проверить ВСЕ keywords.json на релевантность
 - [ ] Исправить или создать заново для каждой категории
 - [ ] Выбрать источник: ручной / парсер / новый CSV
 
 ### Фаза 3: Test Run (1 категория)
+
 - [ ] Взять категорию с правильными keywords
 - [ ] Сгенерировать контент
 - [ ] Валидация до PASS
 - [ ] Зафиксировать время и токены
 
 ### Фаза 4: Production (8 категорий)
+
 - [ ] Повторить для остальных
 - [ ] Документировать результаты
 
@@ -214,6 +227,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 ### Правило
 
 **НЕ мержить/коммитить если:**
+
 - pytest показывает FAIL
 - quality_runner.py даёт exit code 2
 
@@ -236,11 +250,13 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 Проект переусложнён. 9 skills, 3 prompts, 12 архивных docs — для задачи "написать 9 текстов по 2000 символов".
 
 **Нужно:**
+
 1. Почистить
 2. Исправить keywords
 3. Писать тексты
 
 **Не нужно:**
+
 - Sub-agents
 - State machine
 - Сложный workflow

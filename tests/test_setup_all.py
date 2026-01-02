@@ -14,32 +14,30 @@ Run manually (pytest not installed):
     python3 tests/test_setup_all.py
 """
 
-import os
-import sys
 import json
+import sys
 import tempfile
-import shutil
 from pathlib import Path
+
 
 # Add scripts to path
 SCRIPT_DIR = Path(__file__).parent.parent / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from setup_all import (
+from setup_all import (  # noqa: E402
+    CATEGORY_SUBDIRS,
+    TIER_THRESHOLDS,
     auto_detect_tier,
     create_category_folders,
     create_task_file,
-    create_keywords_json,
-    setup_category,
     get_all_categories_with_keywords,
-    TIER_THRESHOLDS,
-    CATEGORY_SUBDIRS
 )
 
 
 # =============================================================================
 # Test: auto_detect_tier
 # =============================================================================
+
 
 class TestAutoDetectTier:
     """Tests for tier auto-detection based on keywords count."""
@@ -85,6 +83,7 @@ class TestAutoDetectTier:
 # Test: create_category_folders
 # =============================================================================
 
+
 class TestCreateCategoryFolders:
     """Tests for folder structure creation."""
 
@@ -93,12 +92,13 @@ class TestCreateCategoryFolders:
         with tempfile.TemporaryDirectory() as tmpdir:
             # Temporarily override CATEGORIES_DIR
             import setup_all
+
             original_dir = setup_all.CATEGORIES_DIR
             setup_all.CATEGORIES_DIR = Path(tmpdir)
 
             try:
                 slug = "test-category"
-                result = create_category_folders(slug)
+                create_category_folders(slug)
 
                 # Check all subdirs exist
                 for subdir in CATEGORY_SUBDIRS:
@@ -112,6 +112,7 @@ class TestCreateCategoryFolders:
         """Dry run should not create folders."""
         with tempfile.TemporaryDirectory() as tmpdir:
             import setup_all
+
             original_dir = setup_all.CATEGORIES_DIR
             setup_all.CATEGORIES_DIR = Path(tmpdir)
 
@@ -129,6 +130,7 @@ class TestCreateCategoryFolders:
 # Test: create_task_file
 # =============================================================================
 
+
 class TestCreateTaskFile:
     """Tests for task file creation."""
 
@@ -136,6 +138,7 @@ class TestCreateTaskFile:
         """Task file should have correct structure."""
         with tempfile.TemporaryDirectory() as tmpdir:
             import setup_all
+
             original_root = setup_all.PROJECT_ROOT
             setup_all.PROJECT_ROOT = Path(tmpdir)
 
@@ -149,7 +152,7 @@ class TestCreateTaskFile:
                 task_path = Path(tmpdir) / f"task_{slug}.json"
                 assert task_path.exists()
 
-                with open(task_path, 'r', encoding='utf-8') as f:
+                with open(task_path, encoding="utf-8") as f:
                     data = json.load(f)
 
                 # Check required fields
@@ -169,6 +172,7 @@ class TestCreateTaskFile:
         """Dry run should not create task file."""
         with tempfile.TemporaryDirectory() as tmpdir:
             import setup_all
+
             original_root = setup_all.PROJECT_ROOT
             setup_all.PROJECT_ROOT = Path(tmpdir)
 
@@ -182,6 +186,7 @@ class TestCreateTaskFile:
 # =============================================================================
 # Test: Tier thresholds consistency
 # =============================================================================
+
 
 class TestTierThresholds:
     """Tests for tier threshold constants."""
@@ -208,6 +213,7 @@ class TestTierThresholds:
 # Test: Category subdirs
 # =============================================================================
 
+
 class TestCategorySubdirs:
     """Tests for category subdirectory constants."""
 
@@ -225,6 +231,7 @@ class TestCategorySubdirs:
 # =============================================================================
 # Test: Integration with CSV
 # =============================================================================
+
 
 class TestCSVIntegration:
     """Tests for CSV reading integration."""
@@ -263,6 +270,7 @@ class TestCSVIntegration:
 # Test: Mapping consistency
 # =============================================================================
 
+
 class TestMappingConsistency:
     """Tests for L3 to slug mapping."""
 
@@ -284,6 +292,7 @@ class TestMappingConsistency:
 # =============================================================================
 # Test: Expected categories tiers
 # =============================================================================
+
 
 class TestExpectedTiers:
     """Tests for expected tier assignment based on known data."""
@@ -312,6 +321,7 @@ class TestExpectedTiers:
 # =============================================================================
 # Run tests manually
 # =============================================================================
+
 
 def run_tests():
     """Run all tests without pytest."""

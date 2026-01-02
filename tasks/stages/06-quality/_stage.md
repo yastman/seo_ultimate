@@ -8,12 +8,14 @@
 ## Checklist per Category
 
 ### Pre-flight
+
 - [ ] Все предыдущие этапы (01-05) завершены
 - [ ] RU и UK версии существуют
 
 ### Quality Checks — Полный Аудит
 
 #### 1. Data Files Check
+
 ```bash
 # RU
 python3 -c "
@@ -33,6 +35,7 @@ print('DATA UK: PASS' if 'keywords' in data else 'DATA UK: FAIL')
 ```
 
 #### 2. Meta Tags Check
+
 ```bash
 # RU
 python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
@@ -42,6 +45,7 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 ```
 
 **Критерии:**
+
 - [ ] title RU: 50-60 chars, содержит keyword
 - [ ] title UK: 50-60 chars, содержит keyword
 - [ ] description RU: 150-160 chars
@@ -50,6 +54,7 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 - [ ] h1 UK: без commercial слов
 
 #### 3. Content Check
+
 ```bash
 # RU
 python3 scripts/validate_content.py \
@@ -65,6 +70,7 @@ python3 scripts/validate_content.py \
 ```
 
 **Критерии:**
+
 - [ ] Word count: 1500-2500
 - [ ] Keyword density: 1.5-2.5%
 - [ ] H2 count: >= 4
@@ -73,6 +79,7 @@ python3 scripts/validate_content.py \
 - [ ] No commercial keywords in text
 
 #### 4. Research Check
+
 ```bash
 # Count blocks
 grep -c "^## Block" categories/{slug}/research/RESEARCH_DATA.md
@@ -84,22 +91,26 @@ grep "Status:" categories/{slug}/research/RESEARCH_DATA.md
 ```
 
 **Критерии:**
+
 - [ ] 8 блоков заполнены
 - [ ] Status: COMPLETED
 
 #### 5. Cross-Check RU ↔ UK
+
 - [ ] Структура контента идентична
 - [ ] Все H2 переведены
 - [ ] FAQ количество совпадает
 - [ ] Таблицы совпадают по структуре
 
 #### 6. SEO Compliance
+
 - [ ] Primary keyword в H1
 - [ ] Primary keyword в первом абзаце
 - [ ] Alt-теги для изображений (если есть)
 - [ ] Внутренние ссылки присутствуют
 
 ### Generate Quality Report
+
 ```bash
 # Создать отчёт
 cat > categories/{slug}/QUALITY_REPORT.md << 'EOF'
@@ -126,12 +137,14 @@ EOF
 ```
 
 ### Acceptance Criteria
+
 - [ ] Все 6 проверок пройдены
 - [ ] QUALITY_REPORT.md создан
 - [ ] Status: PASS
 - [ ] Ready for Deploy: YES
 
 ### Post-action
+
 - [ ] Переместить из `pending/` в `completed/`
 - [ ] Обновить счётчик в `PIPELINE_STATUS.md`
 - [ ] Категория готова к Stage 07 (Deploy)

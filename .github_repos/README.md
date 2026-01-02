@@ -30,12 +30,14 @@
 **Файл:** `.github_repos/natasha/docs.ipynb` — главный референс
 
 **Текущее использование:**
+
 ```python
 # check_water_natasha.py — только базовое
 from natasha import Segmenter, MorphVocab, Doc
 ```
 
 **Расширить до:**
+
 ```python
 from natasha import (
     Segmenter,
@@ -75,6 +77,7 @@ from natasha import NewsNERTagger, NewsEmbedding, Doc, Segmenter
 ```
 
 **Интеграция:**
+
 - Добавить в `quality_runner.py` как Check 5
 - Или в `seo-validate` skill
 
@@ -97,6 +100,7 @@ from natasha import NewsNERTagger, NewsEmbedding, Doc, Segmenter
 ## Полезные файлы
 
 ### Natasha
+
 ```
 .github_repos/natasha/
 ├── docs.ipynb          # 47 KB — ГЛАВНЫЙ РЕФЕРЕНС с примерами
@@ -110,6 +114,7 @@ from natasha import NewsNERTagger, NewsEmbedding, Doc, Segmenter
 ```
 
 ### Stopwords-ru
+
 ```
 .github_repos/stopwords-ru/
 ├── stopwords-ru.txt    # 558 стоп-слов (уже скопирован в data/stopwords/)
@@ -128,6 +133,7 @@ jupyter notebook .github_repos/natasha/docs.ipynb
 ```
 
 **Ключевые секции в docs.ipynb:**
+
 1. Tokenization (Segmenter)
 2. Morphology (MorphTagger)
 3. Lemmatization (MorphVocab)
@@ -140,6 +146,7 @@ jupyter notebook .github_repos/natasha/docs.ipynb
 ## Зависимости (requirements.txt)
 
 Уже установлены:
+
 ```
 natasha==1.6.0
 pymorphy2==0.9.1
@@ -177,12 +184,14 @@ yargy==0.16.0
 ### textdescriptives — Метрики текста
 
 **Что умеет:**
+
 - Readability scores: Flesch Reading Ease, Flesch-Kincaid Grade, SMOG, Gunning-Fog, ARI, Coleman-Liau, LIX, RIX
 - Dependency distance (сложность предложений)
 - Quality metrics (дубликаты n-gram, alpha ratio)
 - Работает через spaCy pipeline
 
 **Пример использования:**
+
 ```python
 import textdescriptives as td
 
@@ -208,12 +217,14 @@ doc._.readability  # dict с метриками
 ### advertools — SEO инструменты
 
 **Что умеет:**
+
 - `word_frequency()` — частотность слов с весами
 - `word_tokenize()` — токенизация + n-grams
 - URL анализ, emoji extraction
 - SERP crawling
 
 **Пример:**
+
 ```python
 import advertools as adv
 
@@ -227,6 +238,7 @@ word_freq = adv.word_frequency(texts)
 ### spaCy для русского
 
 **Модели:**
+
 ```bash
 # Маленькая (быстрая)
 python -m spacy download ru_core_news_sm
@@ -239,6 +251,7 @@ python -m spacy download ru_core_news_lg
 ```
 
 **Лемматизация через spaCy:**
+
 ```python
 import spacy
 nlp = spacy.load("ru_core_news_sm")
@@ -248,6 +261,7 @@ lemmas = [token.lemma_ for token in doc]
 ```
 
 **Сравнение с Natasha:**
+
 | Аспект | Natasha | spaCy ru |
 |--------|---------|----------|
 | Размер модели | ~50 MB | 15-500 MB |

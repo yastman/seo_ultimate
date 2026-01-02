@@ -80,7 +80,9 @@ class TestRowsAndCsv:
             ),
             encoding="utf-8",
         )
-        (uk_categories / slug / "content" / f"{slug}_uk.md").write_text("# H1\n\ntext", encoding="utf-8")
+        (uk_categories / slug / "content" / f"{slug}_uk.md").write_text(
+            "# H1\n\ntext", encoding="utf-8"
+        )
 
         monkeypatch.setattr(exp, "ROOT", root)
         monkeypatch.setattr(exp, "UK_CATEGORIES_DIR", uk_categories)
@@ -122,7 +124,21 @@ class TestRowsAndCsv:
 
     def test_write_csv_file_writes_header_and_rows(self, tmp_path: Path):
         out = tmp_path / "out.csv"
-        exp.write_csv_file(out, [{"slug": "s", "language": "uk", "category_name_uk": "", "h1": "", "main_keyword": "", "meta_title": "", "meta_description": "", "text_md": "x\n"}])
+        exp.write_csv_file(
+            out,
+            [
+                {
+                    "slug": "s",
+                    "language": "uk",
+                    "category_name_uk": "",
+                    "h1": "",
+                    "main_keyword": "",
+                    "meta_title": "",
+                    "meta_description": "",
+                    "text_md": "x\n",
+                }
+            ],
+        )
 
         text = out.read_text(encoding="utf-8")
         assert "slug" in text
@@ -130,7 +146,9 @@ class TestRowsAndCsv:
 
 
 class TestMain:
-    def test_main_writes_output(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
+    def test_main_writes_output(
+        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
+    ):
         root = tmp_path
         uk_categories = root / "uk" / "categories"
         slug = "s1"

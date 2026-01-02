@@ -30,13 +30,15 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Any
+
 
 # Fix Windows encoding
 if sys.platform == "win32":
     import io
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 
 # =============================================================================
@@ -50,30 +52,25 @@ DESC_MIN_LENGTH = 100
 DESC_MAX_LENGTH = 160
 
 # Patterns to detect
-COLON_PATTERN = re.compile(r':\s')
+COLON_PATTERN = re.compile(r":\s")
 PRODUCER_PATTERNS = [
-    r'від виробника',
-    r'от производителя',
-    r'виробника ultimate',
-    r'производителя ultimate'
+    r"від виробника",
+    r"от производителя",
+    r"виробника ultimate",
+    r"производителя ultimate",
 ]
-WHOLESALE_PATTERNS = [
-    r'опт\b',
-    r'роздріб',
-    r'розница',
-    r'оптом'
-]
+WHOLESALE_PATTERNS = [r"опт\b", r"роздріб", r"розница", r"оптом"]
 MARKETING_FLUFF = [
-    r'без разводов',
-    r'без розводів',
-    r'густая пена',
-    r'густа піна',
-    r'быстро',
-    r'швидко',
-    r'качественн',
-    r'якісн',
-    r'лучшие цены',
-    r'найкращі ціни'
+    r"без разводов",
+    r"без розводів",
+    r"густая пена",
+    r"густа піна",
+    r"быстро",
+    r"швидко",
+    r"качественн",
+    r"якісн",
+    r"лучшие цены",
+    r"найкращі ціни",
 ]
 
 
@@ -81,38 +78,42 @@ MARKETING_FLUFF = [
 # Validation Functions
 # =============================================================================
 
-def load_json(path: str) -> Dict:
+
+# from typing import Any
+
+
+def load_json(path: str) -> dict[str, Any]:
     """Load JSON file."""
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)  # type: ignore
 
 
-def get_primary_keywords(keywords_data: Dict) -> List[str]:
+def get_primary_keywords(keywords_data: dict[str, Any]) -> list[str]:
     """Extract primary keywords from keywords JSON."""
     keywords = []
 
-    if 'keywords' in keywords_data:
-        kw_section = keywords_data['keywords']
-        if 'primary' in kw_section:
-            for item in kw_section['primary']:
+    if "keywords" in keywords_data:
+        kw_section = keywords_data["keywords"]
+        if "primary" in kw_section:
+            for item in kw_section["primary"]:
                 if isinstance(item, dict):
-                    keywords.append(item.get('keyword', '').lower())
+                    keywords.append(item.get("keyword", "").lower())
                 else:
                     keywords.append(str(item).lower())
 
     return keywords
 
 
-def get_commercial_keywords(keywords_data: Dict) -> List[str]:
+def get_commercial_keywords(keywords_data: dict[str, Any]) -> list[str]:
     """Extract commercial keywords from keywords JSON."""
     keywords = []
 
-    if 'keywords' in keywords_data:
-        kw_section = keywords_data['keywords']
-        if 'commercial' in kw_section:
-            for item in kw_section['commercial']:
+    if "keywords" in keywords_data:
+        kw_section = keywords_data["keywords"]
+        if "commercial" in kw_section:
+            for item in kw_section["commercial"]:
                 if isinstance(item, dict):
-                    keywords.append(item.get('keyword', '').lower())
+                    keywords.append(item.get("keyword", "").lower())
                 else:
                     keywords.append(str(item).lower())
 
@@ -129,9 +130,30 @@ def get_word_stem(word: str) -> str:
         return w
 
     # Remove common noun endings (ordered by length)
-    for suffix in ['ями', 'ями', 'ей', 'ов', 'ів', 'ах', 'ях', 'ий', 'ой', 'ем', 'ом', 'и', 'і', 'ы', 'а', 'я', 'е', 'ь', 'у', 'ю']:
+    for suffix in [
+        "ями",
+        "ями",
+        "ей",
+        "ов",
+        "ів",
+        "ах",
+        "ях",
+        "ий",
+        "ой",
+        "ем",
+        "ом",
+        "и",
+        "і",
+        "ы",
+        "а",
+        "я",
+        "е",
+        "ь",
+        "у",
+        "ю",
+    ]:
         if len(w) > len(suffix) + 3 and w.endswith(suffix):
-            return w[:-len(suffix)]
+            return w[: -len(suffix)]
     return w
 
 
@@ -157,13 +179,12 @@ def keyword_matches(keyword: str, text: str) -> bool:
     main_stem = get_word_stem(main_word)
 
     # Check if main stem appears in text (at least 4 chars)
-    if len(main_stem) >= 4 and main_stem in text_lower:
-        return True
+    return len(main_stem) >= 4 and main_stem in text_lower
 
     return False
 
 
-def validate_title(title: str, primary_keywords: List[str] = None) -> Dict:
+def validate_title(title: str, primary_keywords: list[str] | None = None) -> dict[str, Any]:
     """
     Validate meta title.
 
@@ -173,22 +194,23 @@ def validate_title(title: str, primary_keywords: List[str] = None) -> Dict:
     - Contains primary keyword
     - No marketing fluff
     """
-    results = {
+    checks: dict[str, Any] = {
+        "length": {"passed": False, "message": ""},
+        "no_colon": {"passed": False, "message": ""},
+        "primary_keyword": {"passed": False, "message": ""},
+        "no_fluff": {"passed": False, "message": ""},
+    }
+    results: dict[str, Any] = {
         "value": title,
         "length": len(title),
-        "checks": {
-            "length": {"passed": False, "message": ""},
-            "no_colon": {"passed": False, "message": ""},
-            "primary_keyword": {"passed": False, "message": ""},
-            "no_fluff": {"passed": False, "message": ""}
-        },
-        "overall": "FAIL"
+        "checks": checks,
+        "overall": "FAIL",
     }
 
     # Extract title without brand suffix
     title_clean = title
-    if '|' in title:
-        title_clean = title.split('|')[0].strip()
+    if "|" in title:
+        title_clean = title.split("|")[0].strip()
 
     title_length = len(title_clean)
     results["length_without_brand"] = title_length
@@ -207,7 +229,9 @@ def validate_title(title: str, primary_keywords: List[str] = None) -> Dict:
         results["checks"]["no_colon"]["passed"] = True
         results["checks"]["no_colon"]["message"] = "OK (no colon)"
     else:
-        results["checks"]["no_colon"]["message"] = "Contains colon (:) - replace with 'для' or brackets"
+        results["checks"]["no_colon"]["message"] = (
+            "Contains colon (:) - replace with 'для' or brackets"
+        )
 
     # 3. Primary keyword check (with stem matching)
     if primary_keywords:
@@ -216,7 +240,7 @@ def validate_title(title: str, primary_keywords: List[str] = None) -> Dict:
             results["checks"]["primary_keyword"]["passed"] = True
             results["checks"]["primary_keyword"]["message"] = f"Found: {found[0]}"
         else:
-            results["checks"]["primary_keyword"]["message"] = f"Missing primary keyword"
+            results["checks"]["primary_keyword"]["message"] = "Missing primary keyword"
     else:
         results["checks"]["primary_keyword"]["passed"] = True
         results["checks"]["primary_keyword"]["message"] = "No keywords to check"
@@ -233,8 +257,7 @@ def validate_title(title: str, primary_keywords: List[str] = None) -> Dict:
     # Overall
     all_passed = all(c["passed"] for c in results["checks"].values())
     critical_passed = (
-        results["checks"]["no_colon"]["passed"] and
-        results["checks"]["primary_keyword"]["passed"]
+        results["checks"]["no_colon"]["passed"] and results["checks"]["primary_keyword"]["passed"]
     )
 
     if all_passed:
@@ -247,7 +270,9 @@ def validate_title(title: str, primary_keywords: List[str] = None) -> Dict:
     return results
 
 
-def validate_description(description: str, primary_keywords: List[str] = None) -> Dict:
+def validate_description(
+    description: str, primary_keywords: list[str] | None = None
+) -> dict[str, Any]:
     """
     Validate meta description.
 
@@ -258,17 +283,18 @@ def validate_description(description: str, primary_keywords: List[str] = None) -
     - Contains "опт" or wholesale indicator
     - No marketing fluff
     """
-    results = {
+    checks: dict[str, Any] = {
+        "length": {"passed": False, "message": ""},
+        "primary_keyword": {"passed": False, "message": ""},
+        "producer": {"passed": False, "message": ""},
+        "wholesale": {"passed": False, "message": ""},
+        "no_fluff": {"passed": False, "message": ""},
+    }
+    results: dict[str, Any] = {
         "value": description,
         "length": len(description),
-        "checks": {
-            "length": {"passed": False, "message": ""},
-            "primary_keyword": {"passed": False, "message": ""},
-            "producer": {"passed": False, "message": ""},
-            "wholesale": {"passed": False, "message": ""},
-            "no_fluff": {"passed": False, "message": ""}
-        },
-        "overall": "FAIL"
+        "checks": checks,
+        "overall": "FAIL",
     }
 
     desc_lower = description.lower()
@@ -282,7 +308,9 @@ def validate_description(description: str, primary_keywords: List[str] = None) -
         results["checks"]["length"]["message"] = f"Too short ({desc_length} < {DESC_MIN_LENGTH})"
     else:
         results["checks"]["length"]["passed"] = True  # Warning only
-        results["checks"]["length"]["message"] = f"Slightly long ({desc_length} > {DESC_MAX_LENGTH})"
+        results["checks"]["length"]["message"] = (
+            f"Slightly long ({desc_length} > {DESC_MAX_LENGTH})"
+        )
 
     # 2. Primary keyword check (with stem matching)
     if primary_keywords:
@@ -323,8 +351,7 @@ def validate_description(description: str, primary_keywords: List[str] = None) -
     # Overall
     all_passed = all(c["passed"] for c in results["checks"].values())
     critical_passed = (
-        results["checks"]["primary_keyword"]["passed"] and
-        results["checks"]["producer"]["passed"]
+        results["checks"]["primary_keyword"]["passed"] and results["checks"]["producer"]["passed"]
     )
 
     if all_passed:
@@ -337,10 +364,7 @@ def validate_description(description: str, primary_keywords: List[str] = None) -
     return results
 
 
-def validate_meta_file(
-    meta_path: str,
-    keywords_path: str = None
-) -> Dict:
+def validate_meta_file(meta_path: str, keywords_path: str | None = None) -> dict[str, Any]:
     """
     Full validation of meta JSON file.
 
@@ -351,14 +375,14 @@ def validate_meta_file(
     Returns:
         Validation results dict
     """
-    results = {
+    results: dict[str, Any] = {
         "file": meta_path,
         "keywords_file": keywords_path,
         "title": None,
         "description": None,
         "h1": None,
         "overall": "FAIL",
-        "errors": []
+        "errors": [],
     }
 
     # Load meta file
@@ -377,13 +401,13 @@ def validate_meta_file(
 
     # Load keywords if provided
     primary_keywords = []
-    commercial_keywords = []
+    # commercial_keywords = []
 
     if keywords_path:
         try:
             keywords_data = load_json(keywords_path)
             primary_keywords = get_primary_keywords(keywords_data)
-            commercial_keywords = get_commercial_keywords(keywords_data)
+            # commercial_keywords = get_commercial_keywords(keywords_data)
         except Exception as e:
             results["errors"].append(f"Cannot load keywords file: {e}")
 
@@ -413,7 +437,7 @@ def validate_meta_file(
     return results
 
 
-def find_all_meta_files(base_path: str = ".") -> List[Tuple[str, str]]:
+def find_all_meta_files(base_path: str = ".") -> list[tuple[str, str | None]]:
     """
     Find all meta files and their corresponding keywords files.
 
@@ -446,14 +470,15 @@ def find_all_meta_files(base_path: str = ".") -> List[Tuple[str, str]]:
 # CLI Output
 # =============================================================================
 
-def print_results(results: Dict):
+
+def print_results(results: dict[str, Any]):
     """Print human-readable validation results."""
     print()
     print("=" * 60)
     print("META VALIDATION (v17.0)")
     print("=" * 60)
     print(f"File: {results['file']}")
-    if results.get('keywords_file'):
+    if results.get("keywords_file"):
         print(f"Keywords: {results['keywords_file']}")
     print()
 
@@ -468,7 +493,9 @@ def print_results(results: Dict):
     icon = "✅" if title["overall"] == "PASS" else ("⚠️" if title["overall"] == "WARNING" else "❌")
     print(f"{icon} TITLE: {title['overall']}")
     print(f"   Value: {title['value'][:60]}...")
-    print(f"   Length: {title.get('length_without_brand', title['length'])} chars (target: {TITLE_MIN_LENGTH}-{TITLE_MAX_LENGTH})")
+    print(
+        f"   Length: {title.get('length_without_brand', title['length'])} chars (target: {TITLE_MIN_LENGTH}-{TITLE_MAX_LENGTH})"
+    )
     for check_name, check_data in title["checks"].items():
         check_icon = "✓" if check_data["passed"] else "✗"
         print(f"   {check_icon} {check_name}: {check_data['message']}")
@@ -502,7 +529,7 @@ def print_results(results: Dict):
     print()
 
 
-def print_summary(all_results: List[Dict]):
+def print_summary(all_results: list[dict[str, Any]]):
     """Print summary of all validations."""
     print()
     print("=" * 60)
@@ -531,6 +558,7 @@ def print_summary(all_results: List[Dict]):
 # Main
 # =============================================================================
 
+
 def main():
     if len(sys.argv) < 2:
         print(__doc__)
@@ -554,7 +582,11 @@ def main():
 
             if not output_json:
                 # Print short status
-                icon = "✅" if results["overall"] == "PASS" else ("⚠️" if results["overall"] == "WARNING" else "❌")
+                icon = (
+                    "✅"
+                    if results["overall"] == "PASS"
+                    else ("⚠️" if results["overall"] == "WARNING" else "❌")
+                )
                 print(f"{icon} {meta_path}")
 
         if output_json:

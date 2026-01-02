@@ -2,7 +2,6 @@
 
 **[← Назад в корень](../README.md)**
 
-
 **Sub-agents Architecture v5.0**
 
 Prompt templates для 3-этапного workflow.

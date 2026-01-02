@@ -200,7 +200,11 @@ def test_calculate_metrics_from_text_fallback_morph_vocab(monkeypatch):
     monkeypatch.setattr(
         mod,
         "get_nlp_pipeline",
-        lambda: {"segmenter": mod.Segmenter(), "morph_vocab": (lambda _w: []), "morph_tagger": None},
+        lambda: {
+            "segmenter": mod.Segmenter(),
+            "morph_vocab": (lambda _w: []),
+            "morph_tagger": None,
+        },
     )
     # Ensure significant_lemma_counts is empty to cover its fallback as well.
     monkeypatch.setattr(mod, "load_stopwords", lambda *args: {"тест"})

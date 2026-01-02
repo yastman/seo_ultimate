@@ -25,11 +25,13 @@
 ### 1. ukrainian-translator (Приоритет: HIGH)
 
 **Текущие проблемы:**
+
 - Не проверяет сохранение LSI-баланса после перевода
 - Нет проверки на AI-fluff в украинском варианте
 - Char count validation ±5% — нужно уточнить базу
 
 **Улучшения:**
+
 - [ ] Добавить LSI preservation check (соотношение должно сохраниться)
 - [ ] Добавить UK AI-fluff blacklist: "У цій статті", "Давайте розберемо", "Варто зазначити"
 - [ ] Уточнить: chars базируются на RU (который уже 2500-3500), не старых 4000-5000
@@ -37,10 +39,12 @@
 ### 2. meta-tags-generator (Приоритет: MEDIUM)
 
 **Текущее состояние:**
+
 - Генерирует Title 50-70, Description 140-170
 - Title ≠ H1 (хорошо)
 
 **Улучшения:**
+
 - [ ] Добавить вариативность шаблонов (как в content-gen)
 - [ ] Убедиться что primary keyword в Title только 1x
 - [ ] Проверить отсутствие AI-fluff в Description
@@ -48,10 +52,12 @@
 ### 3. keyword-distribution-agent (Приоритет: HIGH)
 
 **Текущие проблемы:**
+
 - Coverage target 70% — нужно согласовать с новым LSI подходом
 - Density target до 2% — OK, но нужен нижний предел (1%)
 
 **Улучшения:**
+
 - [ ] Пересмотреть coverage calculation с учётом LSI
 - [ ] Density target: 1-2% (не "до 2%")
 - [ ] Добавить LSI synonyms distribution map
@@ -59,20 +65,24 @@
 ### 4. packaging-agent (Приоритет: LOW)
 
 **Текущее состояние:**
+
 - Копирует файлы, генерирует README/QUALITY_REPORT
 - Работает корректно
 
 **Улучшения:**
+
 - [ ] Добавить LSI metrics в QUALITY_REPORT
 - [ ] Добавить AI-fluff check result
 
 ### 5. data-preparation-agent (Приоритет: MEDIUM)
 
 **Текущее состояние:**
+
 - Создаёт JSON из scraped данных
 - Определяет tier
 
 **Улучшения:**
+
 - [ ] Добавить автоматическое формирование LSI pool из competitor analysis
 - [ ] Улучшить tier detection logic
 
@@ -87,6 +97,7 @@
 | Primary | 3-5 | 3-5 ✓ |
 
 **Исправления:**
+
 - [ ] Уменьшить LSI target: 25-40 → 20-30
 - [ ] Уменьшить chars target: 3500-5500 → 2500-3500
 - [ ] Добавить tier parameter для разных targets

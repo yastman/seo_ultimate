@@ -25,6 +25,7 @@ cp tasks/TEMPLATE_CATEGORY.md tasks/categories/{slug}.md
 ```
 
 Обновить счётчик в шапке:
+
 ```markdown
 **Total Categories:** {N} ({N-1} существующих + 1 новая)
 ```
@@ -32,6 +33,7 @@ cp tasks/TEMPLATE_CATEGORY.md tasks/categories/{slug}.md
 ### 3. Обновить PIPELINE_STATUS.md
 
 В секции "Progress Overview" обновить Total:
+
 ```markdown
 | 01-init | /category-init | XX/YY ✅ | ...
 ```
@@ -76,6 +78,7 @@ cp tasks/TEMPLATE_CATEGORY.md tasks/categories/{slug}.md
 | Не создано | COUNT(❌) в колонке |
 
 **UK-специфика:**
+
 - UK Init = количество папок в `uk/categories/`
 - UK Meta = категории с `uk/categories/{slug}/meta/{slug}_meta.json`
 - UK Content = категории с `uk/categories/{slug}/content/{slug}_uk.md`
@@ -119,6 +122,7 @@ cp tasks/TEMPLATE_CATEGORY.md tasks/categories/{slug}.md
 ```
 
 Обновить сводку:
+
 ```diff
   | Этап | Готово | В работе | Ожидает |
   |------|--------|----------|---------|
@@ -229,7 +233,9 @@ grep "| ✅ |" tasks/MASTER_CHECKLIST.md | wc -l
 
 ### Current State
 ```
+
 {Текущее состояние}
+
 ```
 
 ### Solution
@@ -256,6 +262,7 @@ grep "| ✅ |" tasks/MASTER_CHECKLIST.md | wc -l
 ---
 
 **Last Updated:** YYYY-MM-DD
+
 ```
 
 ### Добавление в очередь
@@ -291,6 +298,7 @@ python3 scripts/validate_tasks.py
 ```
 
 **Что проверять:**
+
 - [ ] Количество файлов в `tasks/categories/` = Total в MASTER_CHECKLIST
 - [ ] Каждый slug из MASTER_CHECKLIST имеет файл
 - [ ] Счётчики в Progress Overview = подсчёту из таблицы MASTER

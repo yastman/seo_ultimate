@@ -61,6 +61,7 @@
 **Команда:** `"init {slug} tier {A/B/C}"`
 
 **Prompt для агента:**
+
 ```
 Создай структуру папок для SEO-категории:
 - Slug: {slug}
@@ -86,6 +87,7 @@
 **Команда:** `"данные для {slug}"`
 
 **Prompt для агента:**
+
 ```
 Запусти скрипт подготовки данных:
 1. source venv/bin/activate
@@ -103,6 +105,7 @@
 **Команда:** `"urls для {slug}"`
 
 **Prompt для агента:**
+
 ```
 Извлеки URLs конкурентов из SERP данных:
 1. source venv/bin/activate
@@ -121,6 +124,7 @@
 **Команда:** `"конкуренты для {slug}"`
 
 **Prompt для агента:**
+
 ```
 Проанализируй конкурентов для категории "{slug}":
 
@@ -155,6 +159,7 @@
 **Команда:** `"research для {slug}"`
 
 **Prompt для агента:**
+
 ```
 Проведи исследование для SEO-контента категории "{category_name}":
 
@@ -186,6 +191,7 @@ Tier: {tier}
 **Команда:** `"контент для {slug}"`
 
 **Prompt для агента:**
+
 ```
 Напиши SEO-текст для категории интернет-магазина:
 
@@ -212,8 +218,10 @@ Tier: {tier}
 ### Synonym Rotation (КРИТИЧНО)
 Правило: Максимум 2 повтора одного слова в параграфе.
 ```
+
 ❌ Пена очищает. Пена создаёт шапку. Пена безопасна.
 ✅ Пена очищает. Состав создаёт шапку. Средство безопасно.
+
 ```
 
 ### Commercial Markers (ОБЯЗАТЕЛЬНО)
@@ -245,6 +253,7 @@ Markdown файл. Только контент, без мета-коммента
 **Команда:** `"проверь {slug}"`
 
 **Prompt для агента:**
+
 ```
 Проведи аудит SEO-контента:
 
@@ -271,6 +280,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py {file} "{keyword}" {tier}
 ```
 
 Формат ответа:
+
 ```json
 {
   "status": "PASS/WARNING/FAIL",
@@ -283,6 +293,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py {file} "{keyword}" {tier}
   "recommendations": []
 }
 ```
+
 ```
 
 **Результат:** Validation report JSON.
@@ -295,12 +306,13 @@ PYTHONPATH=. python3 scripts/quality_runner.py {file} "{keyword}" {tier}
 
 **Prompt для агента:**
 ```
+
 Переведи SEO-текст с русского на украинский:
 
 Исходный файл: categories/{slug}/content/{slug}_ru.md
 Целевой файл: categories/{slug}/content/{slug}_uk.md
 
-## Правила перевода:
+## Правила перевода
 
 1. **Длина:** ±5% от оригинала
 2. **Ключевики:** Перевод с сохранением SEO-intent
@@ -313,12 +325,14 @@ PYTHONPATH=. python3 scripts/quality_runner.py {file} "{keyword}" {tier}
 4. **Стиль:** Естественный украинский, не калька
 5. **Commercial markers:** Сохранить все маркеры
 
-## Проверка после перевода:
+## Проверка после перевода
+
 - Подсчитай символы (должно быть ±5%)
 - Проверь наличие всех H2
 - Проверь FAQ вопросы
 
 Сохрани в: categories/{slug}/content/{slug}_uk.md
+
 ```
 
 **Результат:** {slug}_uk.md
@@ -331,6 +345,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py {file} "{keyword}" {tier}
 
 **Prompt для агента:**
 ```
+
 Сгенерируй мета-теги для категории:
 
 Категория: {category_name}
@@ -338,19 +353,22 @@ Slug: {slug}
 Главный ключевик: {main_keyword}
 Паттерны конкурентов: {meta_patterns_json}
 
-## Требования:
+## Требования
 
 ### Title (RU + UK)
+
 - Длина: 50-70 символов
 - Формат: "{Ключевик} купить в Украине | Ultimate"
 - Включить: главный ключевик + коммерческий intent
 
 ### Description (RU + UK)
+
 - Длина: 140-170 символов
 - Включить: ключевик, выгоды, CTA
 - Формат: "{Ключевик} ✓ Большой выбор ✓ Доставка по Украине ✓ Лучшие цены в Ultimate"
 
-## Формат вывода:
+## Формат вывода
+
 ```json
 {
   "ru": {
@@ -369,6 +387,7 @@ Slug: {slug}
 ```
 
 Сохрани в: categories/{slug}/meta/meta_tags.json
+
 ```
 
 **Результат:** meta_tags.json
@@ -381,21 +400,25 @@ Slug: {slug}
 
 **Prompt для агента:**
 ```
+
 Упакуй deliverables для категории {slug}:
 
-## Собрать файлы:
+## Собрать файлы
+
 1. categories/{slug}/content/{slug}_ru.md
 2. categories/{slug}/content/{slug}_uk.md
 3. categories/{slug}/meta/meta_tags.json
 
-## Создать:
+## Создать
+
 categories/{slug}/deliverables/
 ├── content_ru.md (копия)
 ├── content_uk.md (копия)
 ├── meta.json (копия)
 └── summary.json
 
-## summary.json:
+## summary.json
+
 ```json
 {
   "slug": "{slug}",
@@ -411,6 +434,7 @@ categories/{slug}/deliverables/
 ```
 
 Верни путь к deliverables/ и summary.
+
 ```
 
 **Результат:** Путь к deliverables/.
@@ -534,6 +558,7 @@ Parallel after validation:
 ```
 
 **Код:**
+
 ```python
 # После успешной валидации — параллельно
 translate_task = Task(
@@ -573,19 +598,23 @@ meta_result = await TaskOutput(meta_task.id)
 ## Миграция
 
 ### Шаг 1: Обновить CLAUDE.md
+
 - Убрать секцию Skills
 - Добавить секцию Sub-agents
 
 ### Шаг 2: Удалить .claude/skills/
+
 - Или оставить как reference
 
 ### Шаг 3: Создать prompt templates
+
 - `prompts/init.md`
 - `prompts/content.md`
 - `prompts/validate.md`
 - etc.
 
 ### Шаг 4: Тестирование
+
 - Прогнать один slug через новую архитектуру
 - Сравнить качество и время
 

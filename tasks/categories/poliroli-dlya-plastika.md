@@ -1,8 +1,8 @@
-# poliroli-dlya-plastika — Poliroli Dlya Plastika
+# poliroli-dlya-plastika — Полироли для пластика
 
-**Priority:** MEDIUM (volume 390)
-**Type:** L2
-**Parent:** ukhod-za-interierom
+**Priority:** HIGH (volume 2170)
+**Type:** Cluster
+**Parent:** poliroli-dlya-plastika
 
 ---
 
@@ -10,13 +10,44 @@
 
 | Stage | RU | UK |
 |-------|----|----|
-| 01-Init | ✅ | ✅ |
-| 02-Meta | ✅ | ✅ |
+| 01-Init | ✅ | ⬜ |
+| 02-Meta | ✅ | ⬜ |
 | 03-Research | ⬜ | — |
 | 04-Content | ⬜ | ⬜ |
-| 05-UK | — | ✅ |
+| 05-UK | — | ⬜ |
 | 06-Quality | ⬜ | ⬜ |
 | 07-Deploy | ⬜ | ⬜ |
+
+---
+
+## Keywords (из CSV)
+
+| Keyword | Volume |
+|---------|--------|
+| полироль для салона автомобиля | 390 |
+| полироль для пластика автомобиля | 320 |
+| полироль для пластику авто | 320 |
+| полироль для торпеды | 260 |
+| полироль для панели авто | 170 |
+| полироль для торпеды автомобиля | 170 |
+| полироль для торпедо авто | 140 |
+| полироль для торпеды авто | 140 |
+| полироль для панели автомобиля | 70 |
+| полироль для салона | 40 |
+| полироль для пластика салона | 20 |
+| средство для ухода за пластиком авто | 20 |
+| средство для ухода за пластиком автомобиля | 20 |
+| полироль для автомобильного пластика | 10 |
+| купить полироль для панели авто | 10 |
+| купить полироль для пластика | 10 |
+| полироль для пластика | 10 |
+| купить полироль для пластика авто | 10 |
+| купить полироль для салона автомобиля | 10 |
+| средство для полировки салона автомобиля | 10 |
+| купить полироль для торпеды автомобиля | 10 |
+| средство для ухода за пластиком | 10 |
+
+**Total:** 22
 
 ---
 
@@ -29,7 +60,8 @@
 - [x] `content/poliroli-dlya-plastika_ru.md` placeholder
 - [x] `research/RESEARCH_DATA.md` template
 
-**Validation:**
+**Init Validation:**
+
 ```bash
 python3 -c "import json; json.load(open('categories/poliroli-dlya-plastika/data/poliroli-dlya-plastika_clean.json')); print('PASS')"
 ```
@@ -39,24 +71,28 @@ python3 -c "import json; json.load(open('categories/poliroli-dlya-plastika/data/
 ## Stage 02: Meta ✅
 
 ### Inputs
+
 - [ ] Прочитать `data/poliroli-dlya-plastika_clean.json`
 - [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
+
 - [ ] title_ru: 50-60 chars, содержит primary keyword
 - [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
 - [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
+
 - [ ] title_uk: 50-60 chars
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
-### Output
+### Meta Output
+
 - [ ] Записать в `meta/poliroli-dlya-plastika_meta.json`
 
-### Validation
+### Meta Validation
+
 ```bash
 python3 scripts/validate_meta.py categories/poliroli-dlya-plastika/meta/poliroli-dlya-plastika_meta.json
 ```
@@ -66,43 +102,25 @@ python3 scripts/validate_meta.py categories/poliroli-dlya-plastika/meta/poliroli
 ## Stage 03: Research ⬜
 
 ### Block 1: Product Analysis
+
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
-- [ ] Особенности товаров
 
 ### Block 2: Competitors
+
 - [ ] WebSearch: "{primary keyword} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
+
 - [ ] Для кого?
 - [ ] Какие задачи решает?
-- [ ] Где применяется?
 
-### Block 4: Buying Guide
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
+### Research Output
 
-### Block 5: FAQ
-- [ ] Собрать 5-7 вопросов
-
-### Block 6: Comparison Table
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
-
-### Block 7: How-To
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
-
-### Block 8: Interlink
-- [ ] Связанные категории
-- [ ] Дополняющие товары
-
-### Output
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
-### Validation
+### Research Validation
+
 ```bash
 grep -c "^## Block" categories/poliroli-dlya-plastika/research/RESEARCH_DATA.md
 ```
@@ -112,6 +130,7 @@ grep -c "^## Block" categories/poliroli-dlya-plastika/research/RESEARCH_DATA.md
 ## Stage 04: Content ⬜
 
 ### Structure
+
 - [ ] H1: primary keyword
 - [ ] Intro: 150-200 слов
 - [ ] H2: Buying Guide
@@ -121,77 +140,43 @@ grep -c "^## Block" categories/poliroli-dlya-plastika/research/RESEARCH_DATA.md
 - [ ] Conclusion + CTA
 
 ### SEO Requirements
+
 - [ ] Primary keyword: 3-5 раз
 - [ ] Word count: 1500-2500
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
-### Validation
+### Content Validation
+
 ```bash
 python3 scripts/validate_content.py categories/poliroli-dlya-plastika/content/poliroli-dlya-plastika_ru.md "{keyword}" --mode seo
 ```
 
 ---
 
-## Stage 05: UK ✅
+## Stage 05: UK ⬜
 
-### Create Structure
-- [ ] `uk/categories/poliroli-dlya-plastika/data/`
-- [ ] `uk/categories/poliroli-dlya-plastika/meta/`
-- [ ] `uk/categories/poliroli-dlya-plastika/content/`
-
-### Translate
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
-
-### Quality Check
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
 
 ---
 
 ## Stage 06: Quality Gate ⬜
 
-### Checklist
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
 - [ ] Research complete
 - [ ] SEO compliant
-
-### Output
-- [ ] Создать `QUALITY_REPORT.md`
 
 ---
 
 ## Stage 07: Deploy ⬜
 
-### Pre-Deploy
-- [ ] Quality Gate = PASS
 - [ ] Backup DB
-
-### Deploy
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
-
-### Post-Deploy
+- [ ] Update Meta/Content RU/UK
 - [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
 
 ---
 
-## Notes
-
-- Parent: ukhod-za-interierom
-- Type: L2
-- Volume: 390
-
----
-
-**Last Updated:** 2025-12-31
+**Last Updated:** 2026-01-02

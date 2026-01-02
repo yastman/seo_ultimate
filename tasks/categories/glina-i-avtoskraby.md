@@ -1,6 +1,6 @@
-# glina-i-avtoskraby — Glina I Avtoskraby
+# glina-i-avtoskraby — Глина и автоскрабы
 
-**Priority:** MEDIUM (volume 390)
+**Priority:** HIGH (volume 1090)
 **Type:** L3
 **Parent:** ochistiteli-kuzova
 
@@ -15,8 +15,56 @@
 | 03-Research | ✅ | — |
 | 04-Content | ✅ | ✅ |
 | 05-UK | — | ✅ |
-| 06-Quality | ✅ | ✅ |
+| 06-Quality | ⬜ | ⬜ |
 | 07-Deploy | ⬜ | ⬜ |
+
+---
+
+## Keywords (из CSV)
+
+| Keyword | Volume |
+|---------|--------|
+| глина для авто | 390 |
+| синяя глина для авто | 140 |
+| автоскраб | 90 |
+| глина для чистки авто | 50 |
+| глина для чистки автомобиля | 40 |
+| голубая глина для авто | 20 |
+| автомобильная глина | 20 |
+| глина для кузова автомобиля | 20 |
+| глина для полировки автомобиля | 20 |
+| глина для кузова авто | 20 |
+| купить синюю глину для авто | 20 |
+| глина для полировки авто | 20 |
+| автоскраб купить | 20 |
+| глина для полировки | 10 |
+| глина для кузова | 10 |
+| глина для мойки авто | 10 |
+| глина для удаления загрязнений автомобиля | 10 |
+| глина для чистки машины | 10 |
+| очищающая глина для кузова автомобиля | 10 |
+| глина для очистки кузова автомобиля | 10 |
+| глина для очистки авто | 10 |
+| глина для очистки кузова авто | 10 |
+| очищающая глина для авто | 10 |
+| купить глину для автомобиля | 10 |
+| глина для очистки кузова автомобиля купить | 10 |
+| купить глину для полировки авто | 10 |
+| купить глину для очистки авто | 10 |
+| авто глина купить | 10 |
+| глина для полировки автомобиля купить | 10 |
+| полимерная глина для авто | 10 |
+| глина для очистки кузова | 10 |
+| глина для машины | 10 |
+| глина для мытья машины | 10 |
+| глина для очистки автомобиля | 10 |
+| полировочная глина для авто | 10 |
+| глина для авто цена | 0 |
+| глина для чистки авто купить | 0 |
+| глина автоскраб | 0 |
+| глина для авто украина | 0 |
+
+**Total:** 39
 
 ---
 
@@ -29,7 +77,8 @@
 - [x] `content/glina-i-avtoskraby_ru.md` placeholder
 - [x] `research/RESEARCH_DATA.md` template
 
-**Validation:**
+**Init Validation:**
+
 ```bash
 python3 -c "import json; json.load(open('categories/glina-i-avtoskraby/data/glina-i-avtoskraby_clean.json')); print('PASS')"
 ```
@@ -39,24 +88,28 @@ python3 -c "import json; json.load(open('categories/glina-i-avtoskraby/data/glin
 ## Stage 02: Meta ✅
 
 ### Inputs
+
 - [ ] Прочитать `data/glina-i-avtoskraby_clean.json`
 - [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
+
 - [ ] title_ru: 50-60 chars, содержит primary keyword
 - [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
 - [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
+
 - [ ] title_uk: 50-60 chars
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
-### Output
+### Meta Output
+
 - [ ] Записать в `meta/glina-i-avtoskraby_meta.json`
 
-### Validation
+### Meta Validation
+
 ```bash
 python3 scripts/validate_meta.py categories/glina-i-avtoskraby/meta/glina-i-avtoskraby_meta.json
 ```
@@ -66,43 +119,25 @@ python3 scripts/validate_meta.py categories/glina-i-avtoskraby/meta/glina-i-avto
 ## Stage 03: Research ✅
 
 ### Block 1: Product Analysis
+
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
-- [ ] Особенности товаров
 
 ### Block 2: Competitors
+
 - [ ] WebSearch: "{primary keyword} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
+
 - [ ] Для кого?
 - [ ] Какие задачи решает?
-- [ ] Где применяется?
 
-### Block 4: Buying Guide
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
+### Research Output
 
-### Block 5: FAQ
-- [ ] Собрать 5-7 вопросов
-
-### Block 6: Comparison Table
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
-
-### Block 7: How-To
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
-
-### Block 8: Interlink
-- [ ] Связанные категории
-- [ ] Дополняющие товары
-
-### Output
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
-### Validation
+### Research Validation
+
 ```bash
 grep -c "^## Block" categories/glina-i-avtoskraby/research/RESEARCH_DATA.md
 ```
@@ -112,6 +147,7 @@ grep -c "^## Block" categories/glina-i-avtoskraby/research/RESEARCH_DATA.md
 ## Stage 04: Content ✅
 
 ### Structure
+
 - [ ] H1: primary keyword
 - [ ] Intro: 150-200 слов
 - [ ] H2: Buying Guide
@@ -121,12 +157,14 @@ grep -c "^## Block" categories/glina-i-avtoskraby/research/RESEARCH_DATA.md
 - [ ] Conclusion + CTA
 
 ### SEO Requirements
+
 - [ ] Primary keyword: 3-5 раз
 - [ ] Word count: 1500-2500
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
-### Validation
+### Content Validation
+
 ```bash
 python3 scripts/validate_content.py categories/glina-i-avtoskraby/content/glina-i-avtoskraby_ru.md "{keyword}" --mode seo
 ```
@@ -135,63 +173,27 @@ python3 scripts/validate_content.py categories/glina-i-avtoskraby/content/glina-
 
 ## Stage 05: UK ✅
 
-### Create Structure
-- [ ] `uk/categories/glina-i-avtoskraby/data/`
-- [ ] `uk/categories/glina-i-avtoskraby/meta/`
-- [ ] `uk/categories/glina-i-avtoskraby/content/`
-
-### Translate
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
-
-### Quality Check
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
 
 ---
 
-## Stage 06: Quality Gate ✅
+## Stage 06: Quality Gate ⬜
 
-### Checklist
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
 - [ ] Research complete
 - [ ] SEO compliant
-
-### Output
-- [ ] Создать `QUALITY_REPORT.md`
 
 ---
 
 ## Stage 07: Deploy ⬜
 
-### Pre-Deploy
-- [ ] Quality Gate = PASS
 - [ ] Backup DB
-
-### Deploy
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
-
-### Post-Deploy
+- [ ] Update Meta/Content RU/UK
 - [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
 
 ---
 
-## Notes
-
-- Parent: ochistiteli-kuzova
-- Type: L3
-- Volume: 390
-
----
-
-**Last Updated:** 2025-12-31
+**Last Updated:** 2026-01-02

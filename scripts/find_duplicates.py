@@ -12,13 +12,12 @@
     python scripts/find_duplicates.py --category aktivnaya-pena
 """
 
-import json
-import os
-import sys
-from pathlib import Path
-from collections import defaultdict
-from typing import Dict, List, Tuple, Set
 import argparse
+import json
+import sys
+from collections import defaultdict
+from pathlib import Path
+
 
 # Корневая директория проекта
 ROOT_DIR = Path(__file__).parent.parent
@@ -91,21 +90,33 @@ HIERARCHY = {
     "voski": ["tverdyy-vosk", "zhidkiy-vosk"],
     "sredstva-dlya-kozhi": ["ukhod-za-kozhey", "chistka-kozhi"],
     "sredstva-dlya-stekol": ["ochistiteli-stekol", "antidozhd", "omyvatel", "polirol-dlya-stekla"],
-    "sredstva-dlya-diskov-i-shin": ["ochistiteli-diskov", "ochistiteli-shin", "cherniteli-shin", "zashchitnoe-pokrytie-dlya-koles"],
+    "sredstva-dlya-diskov-i-shin": [
+        "ochistiteli-diskov",
+        "ochistiteli-shin",
+        "cherniteli-shin",
+        "zashchitnoe-pokrytie-dlya-koles",
+    ],
     "polirovalnye-krugi": ["mekhovye", "porolonovye"],
     "mikrofibra-i-tryapki": ["mikrofibra-dlya-polirovki", "mikrofibra-dlya-stekol"],
-    "nabory": ["nabory-dlya-polirovki", "nabory-dlya-moyki", "nabory-dlya-khimchistki", "nabory-dlya-kozhi", "nabory-dlya-deteylinga", "podarochnye-nabory"],
+    "nabory": [
+        "nabory-dlya-polirovki",
+        "nabory-dlya-moyki",
+        "nabory-dlya-khimchistki",
+        "nabory-dlya-kozhi",
+        "nabory-dlya-deteylinga",
+        "podarochnye-nabory",
+    ],
 }
 
 
-def load_category_keywords(slug: str) -> Dict:
+def load_category_keywords(slug: str) -> dict:
     """Загрузить ключи категории из _clean.json"""
     json_path = CATEGORIES_DIR / slug / "data" / f"{slug}_clean.json"
     if not json_path.exists():
         return {}
 
     try:
-        with open(json_path, 'r', encoding='utf-8') as f:
+        with open(json_path, encoding="utf-8") as f:
             data = json.load(f)
         return data
     except json.JSONDecodeError as e:
@@ -113,7 +124,7 @@ def load_category_keywords(slug: str) -> Dict:
         return {}
 
 
-def extract_all_keywords(data: Dict) -> List[Tuple[str, int, str]]:
+def extract_all_keywords(data: dict) -> list[tuple[str, int, str]]:
     """Извлечь все ключи из категории: [(keyword, volume, type), ...]"""
     keywords = []
     kw_data = data.get("keywords", {})
@@ -128,7 +139,7 @@ def extract_all_keywords(data: Dict) -> List[Tuple[str, int, str]]:
     return keywords
 
 
-def get_all_categories() -> List[str]:
+def get_all_categories() -> list[str]:
     """Получить список всех категорий"""
     categories = []
     for item in CATEGORIES_DIR.iterdir():
@@ -137,7 +148,9 @@ def get_all_categories() -> List[str]:
     return sorted(categories)
 
 
-def find_exact_duplicates(categories: List[str], verbose: bool = False) -> Dict[str, List[Tuple[str, str, int]]]:
+def find_exact_duplicates(
+    categories: list[str], verbose: bool = False
+) -> dict[str, list[tuple[str, str, int]]]:
     """
     Найти точные дубликаты ключей между категориями.
     Возвращает: {keyword: [(category, type, volume), ...]}
@@ -155,15 +168,12 @@ def find_exact_duplicates(categories: List[str], verbose: bool = False) -> Dict[
             keyword_locations[kw].append((slug, kw_type, vol))
 
     # Фильтруем — оставляем только дубликаты (присутствуют в 2+ категориях)
-    duplicates = {
-        kw: locs for kw, locs in keyword_locations.items()
-        if len(locs) > 1
-    }
+    duplicates = {kw: locs for kw, locs in keyword_locations.items() if len(locs) > 1}
 
     return duplicates
 
 
-def find_hierarchy_conflicts(verbose: bool = False) -> List[Dict]:
+def find_hierarchy_conflicts(verbose: bool = False) -> list[dict]:
     """
     Найти конфликты L2/L3 — когда родитель содержит ключи детей.
     """
@@ -174,7 +184,7 @@ def find_hierarchy_conflicts(verbose: bool = False) -> List[Dict]:
         if not parent_data:
             continue
 
-        parent_keywords = set(kw for kw, _, _ in extract_all_keywords(parent_data))
+        parent_keywords = {kw for kw, _, _ in extract_all_keywords(parent_data)}
 
         for child_slug in children:
             child_data = load_category_keywords(child_slug)
@@ -185,18 +195,20 @@ def find_hierarchy_conflicts(verbose: bool = False) -> List[Dict]:
 
             for kw, vol, kw_type in child_keywords:
                 if kw in parent_keywords:
-                    conflicts.append({
-                        "keyword": kw,
-                        "volume": vol,
-                        "parent": parent_slug,
-                        "child": child_slug,
-                        "type": kw_type
-                    })
+                    conflicts.append(
+                        {
+                            "keyword": kw,
+                            "volume": vol,
+                            "parent": parent_slug,
+                            "child": child_slug,
+                            "type": kw_type,
+                        }
+                    )
 
     return conflicts
 
 
-def find_misplaced_by_intent(categories: List[str], verbose: bool = False) -> List[Dict]:
+def find_misplaced_by_intent(categories: list[str], verbose: bool = False) -> list[dict]:
     """
     Найти ключи, которые по интенту не подходят категории.
     Новая логика: паттерны задают точные соответствия и категории-источники.
@@ -228,14 +240,16 @@ def find_misplaced_by_intent(categories: List[str], verbose: bool = False) -> Li
 
                     # Проверяем точное или частичное совпадение
                     if pattern.lower() in kw_lower:
-                        misplaced.append({
-                            "keyword": kw,
-                            "volume": vol,
-                            "current_category": slug,
-                            "suggested_category": target_category,
-                            "pattern": pattern,
-                            "type": kw_type
-                        })
+                        misplaced.append(
+                            {
+                                "keyword": kw,
+                                "volume": vol,
+                                "current_category": slug,
+                                "suggested_category": target_category,
+                                "pattern": pattern,
+                                "type": kw_type,
+                            }
+                        )
                         break  # Нашли — выходим из цикла паттернов
                 else:
                     continue
@@ -244,23 +258,23 @@ def find_misplaced_by_intent(categories: List[str], verbose: bool = False) -> Li
     return misplaced
 
 
-def print_report(duplicates: Dict, hierarchy_conflicts: List, misplaced: List, verbose: bool = False):
+def print_report(
+    duplicates: dict, hierarchy_conflicts: list, misplaced: list, verbose: bool = False
+):
     """Вывести отчёт в консоль"""
 
-    print("\n" + "="*80)
+    print("\n" + "=" * 80)
     print("📋 ОТЧЁТ ПО ДУБЛЯМ И КОНФЛИКТАМ КЛЮЧЕВЫХ СЛОВ")
-    print("="*80)
+    print("=" * 80)
 
     # 1. Точные дубликаты
     print(f"\n\n🔴 ТОЧНЫЕ ДУБЛИКАТЫ ({len(duplicates)} ключей)")
-    print("-"*60)
+    print("-" * 60)
 
     if duplicates:
         # Сортируем по суммарному volume
         sorted_dups = sorted(
-            duplicates.items(),
-            key=lambda x: max(loc[2] for loc in x[1]),
-            reverse=True
+            duplicates.items(), key=lambda x: max(loc[2] for loc in x[1]), reverse=True
         )
 
         for kw, locations in sorted_dups[:50]:  # Топ-50
@@ -273,7 +287,7 @@ def print_report(duplicates: Dict, hierarchy_conflicts: List, misplaced: List, v
 
     # 2. L2/L3 конфликты
     print(f"\n\n🟡 КОНФЛИКТЫ L2/L3 ({len(hierarchy_conflicts)} ключей)")
-    print("-"*60)
+    print("-" * 60)
 
     if hierarchy_conflicts:
         # Группируем по родителю
@@ -291,7 +305,7 @@ def print_report(duplicates: Dict, hierarchy_conflicts: List, misplaced: List, v
 
     # 3. Неправильные категории по интенту
     print(f"\n\n🟠 КЛЮЧИ В НЕПРАВИЛЬНЫХ КАТЕГОРИЯХ ({len(misplaced)} ключей)")
-    print("-"*60)
+    print("-" * 60)
 
     if misplaced:
         # Группируем по текущей категории
@@ -308,29 +322,34 @@ def print_report(duplicates: Dict, hierarchy_conflicts: List, misplaced: List, v
         print("  ✅ Всё на своих местах")
 
     # Итоги
-    print("\n\n" + "="*80)
+    print("\n\n" + "=" * 80)
     print("📊 ИТОГО:")
     print(f"   • Точных дубликатов: {len(duplicates)}")
     print(f"   • L2/L3 конфликтов: {len(hierarchy_conflicts)}")
     print(f"   • Неправильных по интенту: {len(misplaced)}")
-    print("="*80 + "\n")
+    print("=" * 80 + "\n")
 
 
-def export_to_json(duplicates: Dict, hierarchy_conflicts: List, misplaced: List):
+def export_to_json(duplicates: dict, hierarchy_conflicts: list, misplaced: list):
     """Экспорт результатов в JSON"""
     output = {
         "duplicates": [
-            {"keyword": kw, "locations": [{"category": l[0], "type": l[1], "volume": l[2]} for l in locs]}
+            {
+                "keyword": kw,
+                "locations": [
+                    {"category": loc[0], "type": loc[1], "volume": loc[2]} for loc in locs
+                ],
+            }
             for kw, locs in duplicates.items()
         ],
         "hierarchy_conflicts": hierarchy_conflicts,
-        "misplaced": misplaced
+        "misplaced": misplaced,
     }
 
     output_path = ROOT_DIR / "reports" / "duplicates_report.json"
     output_path.parent.mkdir(exist_ok=True)
 
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     print(f"\n💾 Отчёт сохранён: {output_path}")

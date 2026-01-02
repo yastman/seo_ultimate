@@ -18,6 +18,7 @@
 ## 📊 Формат SERP CSV
 
 **Колонки:**
+
 - Keyword
 - URL
 - Position
@@ -30,6 +31,7 @@
 ## 📊 Формат структуры CSV
 
 **Колонки:**
+
 - Category slug
 - Tier (A/B/C)
 - Keywords (comma-separated)

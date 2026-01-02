@@ -46,7 +46,12 @@ class TestMegaUrlExtractIntegration:
         )
 
         output_dir = tmp_path / "output"
-        assert main(["--categories-dir", str(tmp_path / "categories"), "--output-dir", str(output_dir)]) == 0
+        assert (
+            main(
+                ["--categories-dir", str(tmp_path / "categories"), "--output-dir", str(output_dir)]
+            )
+            == 0
+        )
 
         assert (output_dir / "mega_urls.txt").exists()
         urls = (output_dir / "mega_urls.txt").read_text(encoding="utf-8").strip().split("\n")
@@ -56,19 +61,28 @@ class TestMegaUrlExtractIntegration:
         cat1 = tmp_path / "categories" / "cat1" / "competitors"
         cat1.mkdir(parents=True)
         (cat1 / "cluster_urls.txt").write_text(
-            "https://shared.com/page\n" + "\n".join([f"https://unique1-{i}.com" for i in range(20)]) + "\n",
+            "https://shared.com/page\n"
+            + "\n".join([f"https://unique1-{i}.com" for i in range(20)])
+            + "\n",
             encoding="utf-8",
         )
 
         cat2 = tmp_path / "categories" / "cat2" / "competitors"
         cat2.mkdir(parents=True)
         (cat2 / "cluster_urls.txt").write_text(
-            "https://shared.com/page\n" + "\n".join([f"https://unique2-{i}.com" for i in range(10)]) + "\n",
+            "https://shared.com/page\n"
+            + "\n".join([f"https://unique2-{i}.com" for i in range(10)])
+            + "\n",
             encoding="utf-8",
         )
 
         output_dir = tmp_path / "output"
-        assert main(["--categories-dir", str(tmp_path / "categories"), "--output-dir", str(output_dir)]) == 0
+        assert (
+            main(
+                ["--categories-dir", str(tmp_path / "categories"), "--output-dir", str(output_dir)]
+            )
+            == 0
+        )
 
         urls = (output_dir / "mega_urls.txt").read_text(encoding="utf-8").strip().split("\n")
         assert len(urls) == 31
@@ -82,5 +96,9 @@ class TestMegaUrlExtractIntegration:
         )
 
         output_dir = tmp_path / "output"
-        assert main(["--categories-dir", str(tmp_path / "categories"), "--output-dir", str(output_dir)]) == 1
-
+        assert (
+            main(
+                ["--categories-dir", str(tmp_path / "categories"), "--output-dir", str(output_dir)]
+            )
+            == 1
+        )

@@ -1,100 +1,115 @@
-
-import pytest
-from unittest.mock import MagicMock, patch, mock_open
-import sys
 import json
 import subprocess
+import sys
 from pathlib import Path
+from unittest.mock import MagicMock, patch
+
+import pytest
+
 
 # Add scripts to path
 SCRIPT_DIR = Path(__file__).parent.parent / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from batch_generate import (
-    load_batch_log,
-    save_batch_log,
-    update_category_status,
-    get_category_status,
+from batch_generate import (  # noqa: E402
+    attempt_self_heal,
     extract_issues_from_validation,
     generate_fix_prompt,
+    get_category_status,
+    list_all_categories,
+    load_batch_log,
+    process_all,
+    process_category,
     run_analyze,
     run_validate,
-    process_category,
-    attempt_self_heal,
-    process_all,
-    list_all_categories
+    save_batch_log,
+    update_category_status,
 )
+
 
 # =============================================================================
 # Log & Status Tests
 # =============================================================================
 
+
 def test_load_batch_log_defaults():
-    with patch('builtins.open', side_effect=FileNotFoundError):
-        with patch('pathlib.Path.exists', return_value=False):
-            log = load_batch_log()
-            assert log["total_processed"] == 0
-            assert "categories" in log
+    with (
+        patch("builtins.open", side_effect=FileNotFoundError),
+        patch("pathlib.Path.exists", return_value=False),
+    ):
+        log = load_batch_log()
+        assert log["total_processed"] == 0
+        assert "categories" in log
 
 
 def test_load_batch_log_existing_file(tmp_path):
     import batch_generate as bg
 
     log_path = tmp_path / "batch_log.json"
-    log_path.write_text('{"total_processed": 5, "categories": {"a": {"last_status": "PASS"}}}', encoding="utf-8")
+    log_path.write_text(
+        '{"total_processed": 5, "categories": {"a": {"last_status": "PASS"}}}', encoding="utf-8"
+    )
     with patch.object(bg, "BATCH_LOG", log_path):
         loaded = bg.load_batch_log()
     assert loaded["total_processed"] == 5
     assert loaded["categories"]["a"]["last_status"] == "PASS"
 
+
 def test_save_batch_log(tmp_path):
     # Mock BATCH_LOG path
-    with patch('batch_generate.BATCH_LOG', tmp_path / "log.json"):
-        with patch('batch_generate.TASKS_DIR', tmp_path):
-            log = {"test": "data"}
-            save_batch_log(log)
-            
-            assert (tmp_path / "log.json").exists()
-            with open(tmp_path / "log.json", 'r') as f:
-                saved = json.load(f)
-                assert saved["test"] == "data"
-                assert "last_updated" in saved
+    with (
+        patch("batch_generate.BATCH_LOG", tmp_path / "log.json"),
+        patch("batch_generate.TASKS_DIR", tmp_path),
+    ):
+        log = {"test": "data"}
+        save_batch_log(log)
+
+        assert (tmp_path / "log.json").exists()
+        with open(tmp_path / "log.json") as f:
+            saved = json.load(f)
+            assert saved["test"] == "data"
+            assert "last_updated" in saved
+
 
 def test_update_category_status():
     log = {"categories": {}}
     update_category_status(log, "slug1", "stage1", "PASS", {"detail": 1})
-    
+
     cat = log["categories"]["slug1"]
     assert cat["last_status"] == "PASS"
     assert cat["last_stage"] == "stage1"
     assert len(cat["runs"]) == 1
     assert cat["runs"][0]["details"]["detail"] == 1
 
+
 def test_get_category_status(tmp_path):
     # Mock directory structure
-    with patch('batch_generate.CATEGORIES_DIR', tmp_path):
+    with patch("batch_generate.CATEGORIES_DIR", tmp_path):
         slug = "test-cat"
         (tmp_path / slug / "content").mkdir(parents=True)
         (tmp_path / slug / "content" / f"{slug}_ru.md").touch()
-        
+
         log = {"categories": {slug: {"last_status": "PASS"}}}
-        
+
         status = get_category_status(slug, log)
         assert status["has_content"] is True
         assert status["last_status"] == "PASS"
+
 
 # =============================================================================
 # Pipeline Step Tests
 # =============================================================================
 
-@patch('subprocess.run')
+
+@patch("subprocess.run")
 def test_run_analyze_success(mock_run):
     mock_run.return_value = MagicMock(returncode=0, stdout='{"count": 10}')
     success, data = run_analyze("slug")
     assert success is True
     assert data["count"] == 10
 
-@patch('subprocess.run')
+
+@patch("subprocess.run")
 def test_run_analyze_fail(mock_run):
     mock_run.return_value = MagicMock(returncode=1, stderr="Error")
     success, data = run_analyze("slug")
@@ -102,7 +117,7 @@ def test_run_analyze_fail(mock_run):
     assert data["error"] == "Error"
 
 
-@patch('subprocess.run')
+@patch("subprocess.run")
 def test_run_analyze_json_decode_fallback(mock_run):
     mock_run.return_value = MagicMock(returncode=0, stdout="not-json")
     success, data = run_analyze("slug")
@@ -110,66 +125,72 @@ def test_run_analyze_json_decode_fallback(mock_run):
     assert data["output"] == "not-json"
 
 
-@patch('subprocess.run', side_effect=subprocess.TimeoutExpired(cmd=["python3"], timeout=60))
-def test_run_analyze_timeout(_mock_run):
+@patch("subprocess.run", side_effect=subprocess.TimeoutExpired(cmd=["python3"], timeout=60))
+def test_run_analyze_timeout(mock_run):
     success, data = run_analyze("slug")
     assert success is False
     assert data["error"] == "Timeout"
 
 
-@patch('subprocess.run', side_effect=RuntimeError("boom"))
-def test_run_analyze_exception(_mock_run):
+@patch("subprocess.run", side_effect=RuntimeError("boom"))
+def test_run_analyze_exception(mock_run):
     success, data = run_analyze("slug")
     assert success is False
     assert "boom" in data["error"]
 
-@patch('subprocess.run')
+
+@patch("subprocess.run")
 def test_run_validate_pass(mock_run):
     # Mock content file existence
-    with patch('pathlib.Path.exists', return_value=True):
+    with patch("pathlib.Path.exists", return_value=True):
         mock_run.return_value = MagicMock(stdout="... PASS ...", stderr="")
         success, data = run_validate("slug", "kw")
         assert success is True
         assert data["status"] == "PASS"
 
-@patch('subprocess.run')
+
+@patch("subprocess.run")
 def test_run_validate_fail(mock_run):
     # Mock content file existence
-    with patch('pathlib.Path.exists', return_value=True):
+    with patch("pathlib.Path.exists", return_value=True):
         mock_run.return_value = MagicMock(stdout="... FAIL ...", stderr="")
         success, data = run_validate("slug", "kw")
         assert success is False
         assert data["status"] == "FAIL"
 
 
-@patch('subprocess.run')
+@patch("subprocess.run")
 def test_run_validate_parses_json_success(mock_run):
-    with patch('pathlib.Path.exists', return_value=True):
-        mock_run.return_value = MagicMock(returncode=0, stdout='{"summary": {"overall": "WARNING"}}', stderr="")
+    with patch("pathlib.Path.exists", return_value=True):
+        mock_run.return_value = MagicMock(
+            returncode=0, stdout='{"summary": {"overall": "WARNING"}}', stderr=""
+        )
         success, data = run_validate("slug", "kw")
         assert success is True
         assert data["status"] == "WARNING"
         assert data["data"]["summary"]["overall"] == "WARNING"
 
 
-@patch('subprocess.run', side_effect=subprocess.TimeoutExpired(cmd=["python3"], timeout=120))
-def test_run_validate_timeout(_mock_run):
-    with patch('pathlib.Path.exists', return_value=True):
+@patch("subprocess.run", side_effect=subprocess.TimeoutExpired(cmd=["python3"], timeout=120))
+def test_run_validate_timeout(mock_run):
+    with patch("pathlib.Path.exists", return_value=True):
         success, data = run_validate("slug", "kw")
     assert success is False
     assert data["error"] == "Timeout"
 
 
-@patch('subprocess.run', side_effect=RuntimeError("boom"))
-def test_run_validate_exception(_mock_run):
-    with patch('pathlib.Path.exists', return_value=True):
+@patch("subprocess.run", side_effect=RuntimeError("boom"))
+def test_run_validate_exception(mock_run):
+    with patch("pathlib.Path.exists", return_value=True):
         success, data = run_validate("slug", "kw")
     assert success is False
     assert "boom" in data["error"]
 
+
 # =============================================================================
 # Self-Healing Tests
 # =============================================================================
+
 
 def test_extract_issues():
     # Test water detection
@@ -177,58 +198,65 @@ def test_extract_issues():
     issues = extract_issues_from_validation(validation)
     assert "water_high" in issues
 
+
 def test_extract_issues_h1():
     # Test H1 missing detection - actual pattern is 'H1' + 'не найден'
     validation = {"output": "H1 не найден в тексте"}
     issues = extract_issues_from_validation(validation)
     assert "h1_missing" in issues
 
+
 def test_extract_issues_nausea():
     validation = {"output": "Nausea > 4.0 BLOCKER"}
     issues = extract_issues_from_validation(validation)
     assert "nausea_high" in issues
+
 
 def test_generate_fix_prompt():
     slug = "test-slug"
     issues = ["water_high", "h1_missing"]
     content = "Some content"
     prompt = generate_fix_prompt(slug, issues, content)
-    
+
     assert "Задача: Исправить контент" in prompt
     assert "Уменьшить воду" in prompt
     assert "Добавить H1" in prompt
 
-@patch('pathlib.Path.read_text', return_value="content")
-@patch('pathlib.Path.write_text')
-@patch('pathlib.Path.exists', return_value=True)
+
+@patch("pathlib.Path.read_text", return_value="content")
+@patch("pathlib.Path.write_text")
+@patch("pathlib.Path.exists", return_value=True)
 def test_attempt_self_heal(mock_exists, mock_write, mock_read):
     validation = {"output": "Water > 80% BLOCKER"}
     success, msg = attempt_self_heal("slug", validation)
-    
-    assert success is False # Because it only generates prompt, requires manual run
+
+    assert success is False  # Because it only generates prompt, requires manual run
     assert "Fix prompt generated" in msg
     mock_write.assert_called_once()
+
 
 # =============================================================================
 # Process Category Test
 # =============================================================================
 
-@patch('batch_generate.run_analyze')
-@patch('batch_generate.run_validate')
-@patch('batch_generate.update_category_status')
-@patch('pathlib.Path.exists', return_value=True)  # Content exists
+
+@patch("batch_generate.run_analyze")
+@patch("batch_generate.run_validate")
+@patch("batch_generate.update_category_status")
+@patch("pathlib.Path.exists", return_value=True)  # Content exists
 def test_process_category_success(mock_exists, mock_update, mock_validate, mock_analyze):
     log = {}
     mock_analyze.return_value = (True, {"primary_keyword": "pk"})
     mock_validate.return_value = (True, {"status": "PASS"})
-    
+
     result = process_category("slug", log)
-    
+
     assert result is True
     assert mock_analyze.called
     assert mock_validate.called
 
-@patch('batch_generate.run_analyze')
+
+@patch("batch_generate.run_analyze")
 def test_process_category_analyze_fail(mock_analyze):
     log = {"categories": {}}  # Must have categories key
     mock_analyze.return_value = (False, {"error": "err"})
@@ -238,8 +266,8 @@ def test_process_category_analyze_fail(mock_analyze):
     assert result is False
 
 
-@patch('batch_generate.run_analyze')
-@patch('batch_generate.update_category_status')
+@patch("batch_generate.run_analyze")
+@patch("batch_generate.update_category_status")
 def test_process_category_analyze_only_skips_generation(mock_update, mock_analyze):
     log = {"categories": {}}
     mock_analyze.return_value = (True, {"count": 1, "semantic_depth": "shallow"})
@@ -247,8 +275,8 @@ def test_process_category_analyze_only_skips_generation(mock_update, mock_analyz
     assert mock_update.call_count >= 1
 
 
-@patch('batch_generate.run_analyze')
-@patch('batch_generate.update_category_status')
+@patch("batch_generate.run_analyze")
+@patch("batch_generate.update_category_status")
 def test_process_category_content_missing_marks_pending(mock_update, mock_analyze, tmp_path):
     import batch_generate as bg
 
@@ -259,11 +287,13 @@ def test_process_category_content_missing_marks_pending(mock_update, mock_analyz
     mock_update.assert_any_call(log, "slug", "generate", "PENDING")
 
 
-@patch('batch_generate.run_analyze')
-@patch('batch_generate.run_validate')
-@patch('batch_generate.attempt_self_heal')
-@patch('batch_generate.update_category_status')
-def test_process_category_self_heal_success(mock_update, mock_heal, mock_validate, mock_analyze, tmp_path):
+@patch("batch_generate.run_analyze")
+@patch("batch_generate.run_validate")
+@patch("batch_generate.attempt_self_heal")
+@patch("batch_generate.update_category_status")
+def test_process_category_self_heal_success(
+    mock_update, mock_heal, mock_validate, mock_analyze, tmp_path
+):
     import batch_generate as bg
 
     slug = "slug"
@@ -278,93 +308,102 @@ def test_process_category_self_heal_success(mock_update, mock_heal, mock_validat
     mock_heal.return_value = (True, "ok")
 
     with patch.object(bg, "CATEGORIES_DIR", tmp_path):
-        assert process_category(slug, {"categories": {}}, analyze_only=False, self_heal=True) is True
+        assert (
+            process_category(slug, {"categories": {}}, analyze_only=False, self_heal=True) is True
+        )
     assert mock_heal.called
     assert mock_validate.call_count == 2
+
 
 def test_get_all_categories_csv(tmp_path):
     csv_file = tmp_path / "structure.csv"
     csv_file.write_text(
-        "L1: Auto\n"
-        "L2: Care\n"
-        "L3: Active Foam,,1000\n"
-        "kw1,,100\n"
-        "kw2,,200\n"
-        "\n"
-        "L3: Wax,,500\n"
-        "kw3,,50\n",
-        encoding="utf-8"
+        "L1: Auto\nL2: Care\nL3: Active Foam,,1000\nkw1,,100\nkw2,,200\n\nL3: Wax,,500\nkw3,,50\n",
+        encoding="utf-8",
     )
-    
-    with patch('batch_generate.SEMANTICS_CSV', csv_file):
+
+    with patch("batch_generate.SEMANTICS_CSV", csv_file):
         from batch_generate import get_all_categories
+
         cats = get_all_categories()
-        
+
         assert len(cats) == 2
         assert cats[0]["name"] == "Active Foam"
         assert cats[0]["keywords_count"] == 2
         assert cats[0]["total_volume"] == 300
-        
+
         assert cats[1]["name"] == "Wax"
         assert cats[1]["keywords_count"] == 1
         assert cats[1]["total_volume"] == 50
+
 
 # =============================================================================
 # Process All & List Tests
 # =============================================================================
 
-@patch('batch_generate.load_batch_log')
-@patch('batch_generate.get_all_categories')
-@patch('batch_generate.process_category')
-@patch('batch_generate.save_batch_log')
+
+@patch("batch_generate.load_batch_log")
+@patch("batch_generate.get_all_categories")
+@patch("batch_generate.process_category")
+@patch("batch_generate.save_batch_log")
 def test_process_all(mock_save, mock_process, mock_get_cats, mock_load):
     # Setup
     mock_load.return_value = {"categories": {}}
     mock_get_cats.return_value = [{"slug": "cat1"}, {"slug": "cat2"}]
-    
+
     # Mock status to be pending
-    with patch('batch_generate.get_category_status', return_value={"stage": "pending", "last_status": "unknown"}):
+    with patch(
+        "batch_generate.get_category_status",
+        return_value={"stage": "pending", "last_status": "unknown"},
+    ):
         process_all()
-        
+
     assert mock_process.call_count == 2
     mock_save.assert_called()
 
-@patch('batch_generate.load_batch_log')
-@patch('batch_generate.get_all_categories')
+
+@patch("batch_generate.load_batch_log")
+@patch("batch_generate.get_all_categories")
 def test_process_all_only_pending(mock_get_cats, mock_load):
     # Setup
     mock_load.return_value = {"categories": {}}
     mock_get_cats.return_value = [{"slug": "completed_cat"}, {"slug": "pending_cat"}]
-    
+
     # Mock status
     def side_effect(slug, log):
         if slug == "completed_cat":
             return {"stage": "completed", "last_status": "PASS"}
         return {"stage": "pending", "last_status": "unknown"}
-        
-    with patch('batch_generate.get_category_status', side_effect=side_effect):
-        with patch('batch_generate.process_category') as mock_process:
-            process_all(only_pending=True)
-            
-            # Should only process the pending one
-            assert mock_process.call_count == 1
-            mock_process.assert_called_with("pending_cat", mock_load.return_value, False)
 
-@patch('batch_generate.load_batch_log')
-@patch('batch_generate.get_all_categories')
+    with (
+        patch("batch_generate.get_category_status", side_effect=side_effect),
+        patch("batch_generate.process_category") as mock_process,
+    ):
+        process_all(only_pending=True)
+
+        # Should only process the pending one
+        assert mock_process.call_count == 1
+        mock_process.assert_called_with("pending_cat", mock_load.return_value, False)
+
+
+@patch("batch_generate.load_batch_log")
+@patch("batch_generate.get_all_categories")
 def test_list_all_categories(mock_get_cats, mock_load):
     mock_load.return_value = {"categories": {}}
     mock_get_cats.return_value = [
         {"slug": "cat1", "keywords_count": 10, "total_volume": 1000},
-        {"slug": "cat2", "keywords_count": 5, "total_volume": 500}
+        {"slug": "cat2", "keywords_count": 5, "total_volume": 500},
     ]
-    
-    with patch('batch_generate.get_category_status', return_value={
-        "stage": "pending", 
-        "last_status": "unknown",
-        "has_clean_json": False,
-        "has_raw_json": False
-    }):
+
+    with patch(
+        "batch_generate.get_category_status",
+        return_value={
+            "stage": "pending",
+            "last_status": "unknown",
+            "has_clean_json": False,
+            "has_raw_json": False,
+        },
+    ):
         # Just check it runs without error
         list_all_categories()
 
@@ -372,16 +411,13 @@ def test_list_all_categories(mock_get_cats, mock_load):
 def test_get_all_categories_flushes_on_l1_l2(tmp_path):
     csv_file = tmp_path / "structure.csv"
     csv_file.write_text(
-        "L3: Cat A,,100\n"
-        "kw1,,10\n"
-        "L1: Next,,\n"
-        "L3: Cat B,,100\n"
-        "kw2,,20\n",
+        "L3: Cat A,,100\nkw1,,10\nL1: Next,,\nL3: Cat B,,100\nkw2,,20\n",
         encoding="utf-8",
     )
 
     with patch("batch_generate.SEMANTICS_CSV", csv_file):
         from batch_generate import get_all_categories
+
         cats = get_all_categories()
     assert [c["name"] for c in cats] == ["Cat A", "Cat B"]
 
@@ -440,7 +476,9 @@ def test_cli_no_args_prints_doc_and_exits_0(capsys):
 def test_cli_resume_no_failed_prints_message(monkeypatch, capsys):
     import batch_generate as bg
 
-    monkeypatch.setattr(bg, "load_batch_log", MagicMock(return_value={"categories": {"a": {"last_status": "PASS"}}}))
+    monkeypatch.setattr(
+        bg, "load_batch_log", MagicMock(return_value={"categories": {"a": {"last_status": "PASS"}}})
+    )
     monkeypatch.setattr(sys, "argv", ["batch_generate.py", "--resume"])
     bg.main()
     assert "No failed categories" in capsys.readouterr().out
@@ -482,7 +520,11 @@ def test_cli_resume_processes_last_failed(monkeypatch):
     monkeypatch.setattr(
         bg,
         "load_batch_log",
-        MagicMock(return_value={"categories": {"a": {"last_status": "PASS"}, "b": {"last_status": "FAIL"}}}),
+        MagicMock(
+            return_value={
+                "categories": {"a": {"last_status": "PASS"}, "b": {"last_status": "FAIL"}}
+            }
+        ),
     )
 
     monkeypatch.setattr(sys, "argv", ["batch_generate.py", "--resume"])
@@ -519,7 +561,14 @@ def test_extract_issues_additional_patterns():
 def test_generate_fix_prompt_includes_all_issue_types():
     prompt = generate_fix_prompt(
         "slug",
-        ["water_high", "nausea_high", "coverage_low", "h1_missing", "intro_keyword_missing", "blacklist_violation"],
+        [
+            "water_high",
+            "nausea_high",
+            "coverage_low",
+            "h1_missing",
+            "intro_keyword_missing",
+            "blacklist_violation",
+        ],
         "content",
     )
     assert "Уменьшить воду" in prompt
@@ -533,7 +582,9 @@ def test_generate_fix_prompt_includes_all_issue_types():
 def test_attempt_self_heal_max_attempts():
     import batch_generate as bg
 
-    ok, msg = bg.attempt_self_heal("slug", {"output": "Water > 80%"}, attempt=bg.MAX_HEALING_ATTEMPTS + 1)
+    ok, msg = bg.attempt_self_heal(
+        "slug", {"output": "Water > 80%"}, attempt=bg.MAX_HEALING_ATTEMPTS + 1
+    )
     assert ok is False
     assert "Max healing attempts" in msg
 
@@ -567,8 +618,13 @@ def test_process_category_warning_status(mock_update, mock_validate, mock_analyz
     mock_validate.return_value = (True, {"status": "WARNING"})
 
     with patch.object(bg, "CATEGORIES_DIR", tmp_path):
-        assert bg.process_category(slug, {"categories": {}}, analyze_only=False, self_heal=False) is True
-    mock_update.assert_any_call({"categories": {}}, slug, "validate", "WARNING", {"status": "WARNING"})
+        assert (
+            bg.process_category(slug, {"categories": {}}, analyze_only=False, self_heal=False)
+            is True
+        )
+    mock_update.assert_any_call(
+        {"categories": {}}, slug, "validate", "WARNING", {"status": "WARNING"}
+    )
 
 
 @patch("batch_generate.run_analyze")
@@ -603,7 +659,10 @@ def test_process_all_increments_failed_counter(mock_save, mock_process, mock_get
     mock_get_cats.return_value = [{"slug": "cat1"}, {"slug": "cat2"}]
     mock_process.side_effect = [True, False]
 
-    with patch("batch_generate.get_category_status", return_value={"stage": "pending", "last_status": "unknown"}):
+    with patch(
+        "batch_generate.get_category_status",
+        return_value={"stage": "pending", "last_status": "unknown"},
+    ):
         process_all()
 
     assert mock_process.call_count == 2
@@ -616,7 +675,8 @@ def test_batch_generate_module_import_fallback_executes(monkeypatch):
 
     module_path = Path(__file__).parent.parent / "scripts" / "batch_generate.py"
     spec = importlib.util.spec_from_file_location("batch_generate_import_fallback", module_path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
 
     real_import = builtins.__import__
 

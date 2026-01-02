@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Валидация украинской версии категории."""
 
-import sys
 import json
+import sys
 from pathlib import Path
 
 
@@ -24,11 +24,7 @@ def validate_uk_category(slug: str) -> int:
         return 2
 
     # 2. Проверить структуру
-    required_files = [
-        f"data/{slug}_clean.json",
-        f"meta/{slug}_meta.json",
-        f"content/{slug}_uk.md"
-    ]
+    required_files = [f"data/{slug}_clean.json", f"meta/{slug}_meta.json", f"content/{slug}_uk.md"]
 
     for file in required_files:
         if not (uk_path / file).exists():
@@ -38,25 +34,25 @@ def validate_uk_category(slug: str) -> int:
     meta_path = uk_path / f"meta/{slug}_meta.json"
     if meta_path.exists():
         try:
-            with open(meta_path, 'r', encoding='utf-8') as f:
+            with open(meta_path, encoding="utf-8") as f:
                 meta = json.load(f)
 
             # Проверить UK поля (новая структура: h1, meta.title, meta.description)
-            if not meta.get('h1'):
+            if not meta.get("h1"):
                 errors.append("Пустое поле: h1")
-            meta_block = meta.get('meta', {})
-            if not meta_block.get('title'):
+            meta_block = meta.get("meta", {})
+            if not meta_block.get("title"):
                 errors.append("Пустое поле: meta.title")
-            if not meta_block.get('description'):
+            if not meta_block.get("description"):
                 errors.append("Пустое поле: meta.description")
 
             # Проверка на русские слова
             fields_to_check = {
-                'h1': meta.get('h1', ''),
-                'title': meta_block.get('title', ''),
-                'description': meta_block.get('description', '')
+                "h1": meta.get("h1", ""),
+                "title": meta_block.get("title", ""),
+                "description": meta_block.get("description", ""),
             }
-            russian_words = ['купить', 'доставка', 'цена', 'недорого']
+            russian_words = ["купить", "доставка", "цена", "недорого"]
             for field_name, field_value in fields_to_check.items():
                 for word in russian_words:
                     if word in field_value.lower():
@@ -67,11 +63,11 @@ def validate_uk_category(slug: str) -> int:
     # 4. Проверить контент
     content_path = uk_path / f"content/{slug}_uk.md"
     if content_path.exists():
-        with open(content_path, 'r', encoding='utf-8') as f:
+        with open(content_path, encoding="utf-8") as f:
             content = f.read()
 
         # Русские слова-маркеры
-        russian_markers = ['который', 'является', 'поэтому', 'также', 'однако', 'необходимо']
+        russian_markers = ["который", "является", "поэтому", "также", "однако", "необходимо"]
         for marker in russian_markers:
             if marker in content.lower():
                 warnings.append(f"Возможно русский текст: '{marker}'")

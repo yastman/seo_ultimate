@@ -1,55 +1,160 @@
-# Checklist: polirovka
+# polirovka — Полировка
 
-**Type:** L1 (Hub)
-**Primary Keyword:** набор для полировки авто (480)
-**Total Volume:** 1160
-
----
-
-## Stages
-
-### 01-Init
-- [x] Создать папку категории
-- [x] Создать `data/polirovka_clean.json`
-- [x] Добавить ключевые слова из CSV
-
-### 02-Meta
-- [ ] Запустить `/generate-meta polirovka`
-- [ ] Создать `meta/polirovka_meta.json`
-- [ ] Валидация: `python3 scripts/validate_meta.py`
-
-### 03-Research
-- [ ] Запустить `/seo-research polirovka`
-- [ ] Создать `research/RESEARCH_DATA.md`
-- [ ] Проверить 8 обязательных блоков
-
-### 04-Content
-- [ ] Запустить `/content-generator polirovka`
-- [ ] Создать `content/polirovka_ru.md`
-- [ ] Валидация: `python3 scripts/validate_content.py`
-
-### 05-UK
-- [ ] Запустить `/uk-content-init polirovka`
-- [ ] Создать UK версию
-- [ ] Перевод и адаптация
-
-### 06-Quality
-- [ ] Запустить `/quality-gate polirovka`
-- [ ] RU версия: PASS
-- [ ] UK версия: PASS
-
-### 07-Deploy
-- [ ] Запустить `/deploy-to-opencart polirovka`
-- [ ] Проверить на сайте
+**Priority:** HIGH (volume 20500)
+**Type:** L1
+**Parent:** Homepage
 
 ---
 
-## L2 Subcategories
-- polirovalnye-mashinki
-- polirovalnye-pasty
-- polirovalnye-krugi
-- glina-i-avtoskraby
+## Current Status
+
+| Stage | RU | UK |
+|-------|----|----|
+| 01-Init | ✅ | ⬜ |
+| 02-Meta | ⬜ | ⬜ |
+| 03-Research | ⬜ | — |
+| 04-Content | ⬜ | ⬜ |
+| 05-UK | — | ⬜ |
+| 06-Quality | ⬜ | ⬜ |
+| 07-Deploy | ⬜ | ⬜ |
 
 ---
 
-**Status:** Init ✅ | Meta ⬜ | Research ⬜ | Content ⬜ | UK ⬜ | Quality ⬜ | Deploy ⬜
+## Keywords (из CSV)
+
+| Keyword | Volume |
+|---------|--------|
+
+**Total:** 0
+
+---
+
+## Stage 01: Init ✅
+
+- [x] Папка создана: `categories/polirovka/`
+- [x] `data/polirovka_clean.json` создан
+- [x] Keywords кластеризованы
+- [x] `meta/polirovka_meta.json` template
+- [x] `content/polirovka_ru.md` placeholder
+- [x] `research/RESEARCH_DATA.md` template
+
+**Init Validation:**
+
+```bash
+python3 -c "import json; json.load(open('categories/polirovka/data/polirovka_clean.json')); print('PASS')"
+```
+
+---
+
+## Stage 02: Meta ⬜
+
+### Inputs
+
+- [ ] Прочитать `data/polirovka_clean.json`
+- [ ] Определить primary keyword
+
+### Tasks RU
+
+- [ ] title_ru: 50-60 chars, содержит primary keyword
+- [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
+- [ ] h1_ru: primary keyword (без "купить")
+
+### Tasks UK
+
+- [ ] title_uk: 50-60 chars
+- [ ] description_uk: 150-160 chars
+- [ ] h1_uk: перевод primary keyword
+
+### Meta Output
+
+- [ ] Записать в `meta/polirovka_meta.json`
+
+### Meta Validation
+
+```bash
+python3 scripts/validate_meta.py categories/polirovka/meta/polirovka_meta.json
+```
+
+---
+
+## Stage 03: Research ⬜
+
+### Block 1: Product Analysis
+
+- [ ] ТОП-5 брендов
+- [ ] Ценовой диапазон
+
+### Block 2: Competitors
+
+- [ ] WebSearch: "{primary keyword} купить украина"
+
+### Block 3: Use Cases
+
+- [ ] Для кого?
+- [ ] Какие задачи решает?
+
+### Research Output
+
+- [ ] Записать в `research/RESEARCH_DATA.md`
+
+### Research Validation
+
+```bash
+grep -c "^## Block" categories/polirovka/research/RESEARCH_DATA.md
+```
+
+---
+
+## Stage 04: Content ⬜
+
+### Structure
+
+- [ ] H1: primary keyword
+- [ ] Intro: 150-200 слов
+- [ ] H2: Buying Guide
+- [ ] Comparison Table
+- [ ] H2: How-To
+- [ ] H2: FAQ (5+ вопросов)
+- [ ] Conclusion + CTA
+
+### SEO Requirements
+
+- [ ] Primary keyword: 3-5 раз
+- [ ] Word count: 1500-2500
+- [ ] Density: 1.5-2.5%
+- [ ] NO commercial keywords!
+
+### Content Validation
+
+```bash
+python3 scripts/validate_content.py categories/polirovka/content/polirovka_ru.md "{keyword}" --mode seo
+```
+
+---
+
+## Stage 05: UK ⬜
+
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
+
+---
+
+## Stage 06: Quality Gate ⬜
+
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
+- [ ] Research complete
+- [ ] SEO compliant
+
+---
+
+## Stage 07: Deploy ⬜
+
+- [ ] Backup DB
+- [ ] Update Meta/Content RU/UK
+- [ ] Clear cache
+
+---
+
+**Last Updated:** 2026-01-02

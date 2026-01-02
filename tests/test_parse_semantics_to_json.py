@@ -9,33 +9,32 @@ Run:
 
 import json
 import sys
-import tempfile
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
+
 
 # Add scripts to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 from parse_semantics_to_json import (
-    read_semantics_csv,
-    classify_keywords,
-    extract_word_roots,
-    generate_variations,
-    calculate_density_target,
-    calculate_occurrences_target,
-    build_keyword_object,
-    get_tier_targets,
-    generate_full_json,
     L3_TO_SLUG,
     SLUG_TO_L3,
+    calculate_density_target,
+    calculate_occurrences_target,
+    classify_keywords,
+    extract_word_roots,
+    generate_full_json,
+    generate_variations,
+    get_tier_targets,
+    read_semantics_csv,
 )
 
 
 # =============================================================================
 # Test Data Fixtures
 # =============================================================================
+
 
 @pytest.fixture
 def sample_keywords():
@@ -70,6 +69,7 @@ L3: Другая категория,2,
 # =============================================================================
 # Test: Classification
 # =============================================================================
+
 
 class TestClassifyKeywords:
     """Tests for keyword classification by volume."""
@@ -118,6 +118,7 @@ class TestClassifyKeywords:
 # Test: Word Roots Extraction
 # =============================================================================
 
+
 class TestExtractWordRoots:
     """Tests for Russian word root extraction."""
 
@@ -145,6 +146,7 @@ class TestExtractWordRoots:
 # =============================================================================
 # Test: Variations Generation
 # =============================================================================
+
 
 class TestGenerateVariations:
     """Tests for keyword variations generation."""
@@ -189,6 +191,7 @@ class TestGenerateVariations:
 # Test: Density/Occurrences Targets
 # =============================================================================
 
+
 class TestCalculateTargets:
     """Tests for target calculations."""
 
@@ -221,6 +224,7 @@ class TestCalculateTargets:
 # =============================================================================
 # Test: Tier Targets
 # =============================================================================
+
 
 class TestTierTargets:
     """Tests for tier-based requirements (now uses adaptive approach).
@@ -268,10 +272,7 @@ class TestAdditionalCoverage:
     def test_read_semantics_csv_skips_row_without_phrase_cell(self, tmp_path: Path):
         csv_path = tmp_path / "s.csv"
         csv_path.write_text(
-            "Фраза,кол-во,Запросы сред. [GA]\n"
-            "L3: Категория,,\n"
-            ",x,100\n"
-            "kw,,200\n",
+            "Фраза,кол-во,Запросы сред. [GA]\nL3: Категория,,\n,x,100\nkw,,200\n",
             encoding="utf-8",
         )
         categories = read_semantics_csv(str(csv_path))
@@ -284,7 +285,9 @@ class TestAdditionalCoverage:
     def test_occurrences_target_volume_mid_branch(self):
         assert calculate_occurrences_target(60, "B") == 2
 
-    def test_generate_full_json_adds_semantic_entities_from_meta_patterns(self, tmp_path: Path, monkeypatch):
+    def test_generate_full_json_adds_semantic_entities_from_meta_patterns(
+        self, tmp_path: Path, monkeypatch
+    ):
         slug = "test-slug"
         (tmp_path / "categories" / slug / "competitors").mkdir(parents=True)
         (tmp_path / "categories" / slug / "competitors" / "meta_patterns.json").write_text(
@@ -326,7 +329,8 @@ class TestAdditionalCoverage:
         monkeypatch.setattr(builtins, "__import__", custom_import)
 
         spec = importlib.util.spec_from_file_location("_psj_fallback_l3", path)
-        assert spec and spec.loader
+        assert spec
+        assert spec.loader
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)  # type: ignore[union-attr]
 
@@ -367,7 +371,8 @@ class TestAdditionalCoverage:
         monkeypatch.setattr(builtins, "__import__", custom_import)
 
         spec = importlib.util.spec_from_file_location("_psj_fallback_req", path)
-        assert spec and spec.loader
+        assert spec
+        assert spec.loader
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)  # type: ignore[union-attr]
         assert mod.get_tier_targets("B")["char_max"] == 2400
@@ -387,6 +392,7 @@ class TestAdditionalCoverage:
 # =============================================================================
 # Test: Full JSON Generation
 # =============================================================================
+
 
 class TestGenerateFullJson:
     """Tests for full JSON generation."""
@@ -431,9 +437,9 @@ class TestGenerateFullJson:
         assert result["stats"]["total_keywords"] == total
 
         counted = (
-            result["stats"]["primary_count"] +
-            result["stats"]["secondary_count"] +
-            result["stats"]["supporting_count"]
+            result["stats"]["primary_count"]
+            + result["stats"]["secondary_count"]
+            + result["stats"]["supporting_count"]
         )
         assert counted == total
 
@@ -441,6 +447,7 @@ class TestGenerateFullJson:
 # =============================================================================
 # Test: CSV Reading
 # =============================================================================
+
 
 class TestReadSemanticsCSV:
     """Tests for CSV reading."""
@@ -536,6 +543,7 @@ SEO-Фильтр: С воском,,
 # Test: Slug Mappings
 # =============================================================================
 
+
 class TestSlugMappings:
     """Tests for slug/L3 name mappings."""
 
@@ -560,6 +568,7 @@ class TestSlugMappings:
 # =============================================================================
 # Test: Edge Cases
 # =============================================================================
+
 
 class TestEdgeCases:
     """Tests for edge cases and error handling."""
@@ -589,7 +598,6 @@ class TestEdgeCases:
 
 
 def test_script_standalone_inserts_project_root(monkeypatch):
-    import runpy
     import sys as sys_mod
     from pathlib import Path
 
@@ -597,9 +605,11 @@ def test_script_standalone_inserts_project_root(monkeypatch):
     monkeypatch.setattr(sys_mod, "argv", ["parse_semantics_to_json.py"])
     monkeypatch.setattr(sys_mod, "path", ["__sentinel__"])
 
+    code = script_path.read_text(encoding="utf-8")
+    compiled = compile(code, str(script_path), "exec")
+    globals_dict = {"__name__": "__main__", "__package__": None, "__file__": str(script_path)}
     with pytest.raises(SystemExit):
-        code = script_path.read_text(encoding="utf-8")
-        exec(compile(code, str(script_path), "exec"), {"__name__": "__main__", "__package__": None, "__file__": str(script_path)})
+        exec(compiled, globals_dict)  # noqa: S102
 
     assert sys_mod.path[0] == str(script_path.resolve().parent.parent)
 

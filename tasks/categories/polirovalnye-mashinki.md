@@ -1,6 +1,6 @@
-# polirovalnye-mashinki — Polirovalnye Mashinki
+# polirovalnye-mashinki — Полировальные машинки
 
-**Priority:** HIGH (volume 8100)
+**Priority:** HIGH (volume 11880)
 **Type:** L2
 **Parent:** polirovka
 
@@ -10,13 +10,68 @@
 
 | Stage | RU | UK |
 |-------|----|----|
-| 01-Init | ✅ | ✅ |
-| 02-Meta | ✅ | ✅ |
+| 01-Init | ✅ | ⬜ |
+| 02-Meta | ✅ | ⬜ |
 | 03-Research | ⬜ | — |
 | 04-Content | ⬜ | ⬜ |
-| 05-UK | — | ✅ |
+| 05-UK | — | ⬜ |
 | 06-Quality | ⬜ | ⬜ |
 | 07-Deploy | ⬜ | ⬜ |
+
+---
+
+## Keywords (из CSV)
+
+| Keyword | Volume |
+|---------|--------|
+| полировочная машинка | 8100 |
+| купить полировочную машинку | 880 |
+| купить полировочную машинку для авто | 320 |
+| аккумуляторная полировальная машина | 260 |
+| полировальная машина на аккумуляторе | 260 |
+| полировальная машинка на аккумуляторе | 260 |
+| полировальная машина для полировки авто | 260 |
+| полировочная машинка для полировки авто | 260 |
+| купить машинку для полировки авто | 210 |
+| купить полировочную машину | 110 |
+| аккумуляторная полировальная машина для авто | 90 |
+| машина для полировки авто | 90 |
+| машина для полировки автомобиля | 90 |
+| купить полировочную машинку для автомобиля | 70 |
+| купить полировальную машинку для авто в украине | 50 |
+| полировочные машинки для авто | 40 |
+| полировальные машинки для авто | 40 |
+| полировальные машинки для автомобиля | 40 |
+| машина для полировки | 40 |
+| машинка для полировки кузова | 30 |
+| машинка для полировки кузова авто | 30 |
+| машинка для полировки машины | 30 |
+| купить аккумуляторную полировальную машинку | 20 |
+| полировальная машина для авто на аккумуляторе | 20 |
+| полировальная машина для автомобиля | 20 |
+| полироль машинка | 20 |
+| полировальная машина для авто | 20 |
+| полировочная машинка цена | 20 |
+| купить машинку для полировки кузова авто | 20 |
+| купить машинку для полировки кузова автомобиля | 20 |
+| полировочная машинка на аккумуляторе | 10 |
+| машинка для полировки авто на аккумуляторе | 10 |
+| купить машинку для полировки автомобиля | 10 |
+| полировочная машинка для автомобиля | 10 |
+| купить полировочную машину для авто | 10 |
+| полировочная машинка для машины | 10 |
+| машинка для полировки | 10 |
+| машинка для полировки автомобилей | 10 |
+| полировочная машинка для автомобиля цена | 10 |
+| полировочные машины | 10 |
+| машинка для полировки авто | 10 |
+| купить полировочная машинка в украине | 10 |
+| купить полировочную машинку для авто в украине | 10 |
+| купить полировочную машину для автомобиля | 10 |
+| полировочные машинки для авто цены | 10 |
+| полировочная машинка для детейлинга | 10 |
+
+**Total:** 46
 
 ---
 
@@ -29,7 +84,8 @@
 - [x] `content/polirovalnye-mashinki_ru.md` placeholder
 - [x] `research/RESEARCH_DATA.md` template
 
-**Validation:**
+**Init Validation:**
+
 ```bash
 python3 -c "import json; json.load(open('categories/polirovalnye-mashinki/data/polirovalnye-mashinki_clean.json')); print('PASS')"
 ```
@@ -39,24 +95,28 @@ python3 -c "import json; json.load(open('categories/polirovalnye-mashinki/data/p
 ## Stage 02: Meta ✅
 
 ### Inputs
+
 - [ ] Прочитать `data/polirovalnye-mashinki_clean.json`
 - [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
+
 - [ ] title_ru: 50-60 chars, содержит primary keyword
 - [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
 - [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
+
 - [ ] title_uk: 50-60 chars
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
-### Output
+### Meta Output
+
 - [ ] Записать в `meta/polirovalnye-mashinki_meta.json`
 
-### Validation
+### Meta Validation
+
 ```bash
 python3 scripts/validate_meta.py categories/polirovalnye-mashinki/meta/polirovalnye-mashinki_meta.json
 ```
@@ -66,43 +126,25 @@ python3 scripts/validate_meta.py categories/polirovalnye-mashinki/meta/poliroval
 ## Stage 03: Research ⬜
 
 ### Block 1: Product Analysis
+
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
-- [ ] Особенности товаров
 
 ### Block 2: Competitors
+
 - [ ] WebSearch: "{primary keyword} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
+
 - [ ] Для кого?
 - [ ] Какие задачи решает?
-- [ ] Где применяется?
 
-### Block 4: Buying Guide
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
+### Research Output
 
-### Block 5: FAQ
-- [ ] Собрать 5-7 вопросов
-
-### Block 6: Comparison Table
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
-
-### Block 7: How-To
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
-
-### Block 8: Interlink
-- [ ] Связанные категории
-- [ ] Дополняющие товары
-
-### Output
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
-### Validation
+### Research Validation
+
 ```bash
 grep -c "^## Block" categories/polirovalnye-mashinki/research/RESEARCH_DATA.md
 ```
@@ -112,6 +154,7 @@ grep -c "^## Block" categories/polirovalnye-mashinki/research/RESEARCH_DATA.md
 ## Stage 04: Content ⬜
 
 ### Structure
+
 - [ ] H1: primary keyword
 - [ ] Intro: 150-200 слов
 - [ ] H2: Buying Guide
@@ -121,77 +164,43 @@ grep -c "^## Block" categories/polirovalnye-mashinki/research/RESEARCH_DATA.md
 - [ ] Conclusion + CTA
 
 ### SEO Requirements
+
 - [ ] Primary keyword: 3-5 раз
 - [ ] Word count: 1500-2500
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
-### Validation
+### Content Validation
+
 ```bash
 python3 scripts/validate_content.py categories/polirovalnye-mashinki/content/polirovalnye-mashinki_ru.md "{keyword}" --mode seo
 ```
 
 ---
 
-## Stage 05: UK ✅
+## Stage 05: UK ⬜
 
-### Create Structure
-- [ ] `uk/categories/polirovalnye-mashinki/data/`
-- [ ] `uk/categories/polirovalnye-mashinki/meta/`
-- [ ] `uk/categories/polirovalnye-mashinki/content/`
-
-### Translate
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
-
-### Quality Check
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
 
 ---
 
 ## Stage 06: Quality Gate ⬜
 
-### Checklist
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
 - [ ] Research complete
 - [ ] SEO compliant
-
-### Output
-- [ ] Создать `QUALITY_REPORT.md`
 
 ---
 
 ## Stage 07: Deploy ⬜
 
-### Pre-Deploy
-- [ ] Quality Gate = PASS
 - [ ] Backup DB
-
-### Deploy
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
-
-### Post-Deploy
+- [ ] Update Meta/Content RU/UK
 - [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
 
 ---
 
-## Notes
-
-- Parent: polirovka
-- Type: L2
-- Volume: 8100
-
----
-
-**Last Updated:** 2025-12-31
+**Last Updated:** 2026-01-02

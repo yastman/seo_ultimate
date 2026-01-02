@@ -104,6 +104,7 @@ Supporting file for content-generator skill.
 ### Типичные вопросы по категориям
 
 **Автохимия:**
+
 - Почему {продукт} не работает?
 - Можно ли использовать на {поверхность}?
 - Как часто применять?
@@ -111,6 +112,7 @@ Supporting file for content-generator skill.
 - Какую концентрацию использовать?
 
 **Защитные покрытия:**
+
 - Сколько держится {покрытие}?
 - Как подготовить поверхность?
 - Сколько слоёв наносить?
@@ -118,6 +120,7 @@ Supporting file for content-generator skill.
 - Как восстановить {покрытие}?
 
 **Инструменты:**
+
 - Какой размер выбрать?
 - Совместим ли с {оборудование}?
 - Как ухаживать?
@@ -145,6 +148,7 @@ Supporting file for content-generator skill.
 ### Tables
 
 **Always include:**
+
 - Type/variant names
 - Key differentiator (pH, size, effect)
 - Use case / when to choose

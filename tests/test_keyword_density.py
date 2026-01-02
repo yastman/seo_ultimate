@@ -9,12 +9,14 @@ Tests cover:
 5. Exit codes (0/1/2)
 """
 
-import pytest
 import sys
 from pathlib import Path
 
+import pytest
+
+
 # Add scripts directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
+sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 import check_simple_v2_md as mod  # noqa: E402
 
@@ -37,7 +39,7 @@ class TestKeywordDensityScript:
 
     def test_script_exists(self):
         """Script file should exist"""
-        script_path = Path(__file__).parent.parent / 'scripts' / 'check_simple_v2_md.py'
+        script_path = Path(__file__).parent.parent / "scripts" / "check_simple_v2_md.py"
         assert script_path.exists()
 
     def test_script_executable_with_help(self, monkeypatch, capsys):
@@ -65,7 +67,9 @@ class TestKeywordDensityScript:
 
     def test_script_with_nonexistent_file(self, monkeypatch, capsys):
         """Should fail gracefully for non-existent file"""
-        code = _run_main(monkeypatch, ["check_simple_v2_md.py", "/nonexistent/file.md", "keyword", "B"])
+        code = _run_main(
+            monkeypatch, ["check_simple_v2_md.py", "/nonexistent/file.md", "keyword", "B"]
+        )
         out = capsys.readouterr().out
         assert code == 1
         assert "Файл не найден" in out
@@ -73,7 +77,9 @@ class TestKeywordDensityScript:
     @pytest.mark.parametrize("tier", ["A", "B", "C"])
     def test_script_with_different_tiers(self, keyword_test_file, tier, monkeypatch):
         """Should accept all valid tiers"""
-        code = _run_main(monkeypatch, ["check_simple_v2_md.py", str(keyword_test_file), "активная пена", tier])
+        code = _run_main(
+            monkeypatch, ["check_simple_v2_md.py", str(keyword_test_file), "активная пена", tier]
+        )
         assert code in (0, 1, 2)
 
 
@@ -91,7 +97,9 @@ class TestKeywordDensityCalculations:
         text = mod.extract_text_content(md)
         word_count = mod.count_words(text)
 
-        result = mod.check_keyword_density_and_distribution(md, str(keywords_json), word_count, {"coverage": 0.4})
+        result = mod.check_keyword_density_and_distribution(
+            md, str(keywords_json), word_count, {"coverage": 0.4}
+        )
         assert result["total_density"] > 3.5
         assert any("BLOCKER" in e for e in result["errors"])
 
@@ -106,7 +114,9 @@ class TestKeywordDensityCalculations:
         text = mod.extract_text_content(md)
         word_count = mod.count_words(text)
 
-        result = mod.check_keyword_density_and_distribution(md, str(keywords_json), word_count, {"coverage": 0.4})
+        result = mod.check_keyword_density_and_distribution(
+            md, str(keywords_json), word_count, {"coverage": 0.4}
+        )
         assert result["coverage"] == 0.0
         assert any("Coverage" in w for w in result["warnings"])
 
@@ -143,7 +153,7 @@ class TestKeywordDensityCalculations:
 """
 
         test_file = tmp_path / "balanced.md"
-        test_file.write_text(content, encoding='utf-8')
+        test_file.write_text(content, encoding="utf-8")
 
         # Short content correctly FAILs (exit 2) - requirement is 4000-5000 chars
         assert mod.check_content(str(test_file), "активная пена", "B")["status"] == "FAIL"
@@ -154,12 +164,16 @@ class TestTierRequirements:
 
     def test_tier_b_requirements(self, keyword_test_file, monkeypatch):
         """Tier B should have specific requirements"""
-        code = _run_main(monkeypatch, ["check_simple_v2_md.py", str(keyword_test_file), "активная пена", "B"])
+        code = _run_main(
+            monkeypatch, ["check_simple_v2_md.py", str(keyword_test_file), "активная пена", "B"]
+        )
         assert code in (0, 1, 2)
 
     def test_tier_c_requirements(self, keyword_test_file, monkeypatch):
         """Tier C should have specific requirements"""
-        code = _run_main(monkeypatch, ["check_simple_v2_md.py", str(keyword_test_file), "активная пена", "C"])
+        code = _run_main(
+            monkeypatch, ["check_simple_v2_md.py", str(keyword_test_file), "активная пена", "C"]
+        )
         assert code in (0, 1, 2)
 
 
@@ -200,7 +214,9 @@ class TestExitCodes:
         test_file = tmp_path / "perfect.md"
         test_file.write_text(content, encoding="utf-8")
 
-        code = _run_main(monkeypatch, ["check_simple_v2_md.py", str(test_file), "активная пена", "B"])
+        code = _run_main(
+            monkeypatch, ["check_simple_v2_md.py", str(test_file), "активная пена", "B"]
+        )
         out = capsys.readouterr().out
         assert code == 2
         assert "4000-5000" in out or "РЕЗУЛЬТАТ: FAIL" in out
@@ -213,11 +229,15 @@ class TestEdgeCasesKeywords:
         assert "1 упоминаний" in msg
 
     def test_keyword_with_spaces(self):
-        ok, msg = mod.check_keyword_stuffing("Активная пена для мойки. Активная пена.", "активная пена")
+        ok, msg = mod.check_keyword_stuffing(
+            "Активная пена для мойки. Активная пена.", "активная пена"
+        )
         assert ok is True
         assert "2 упоминаний" in msg
 
     def test_case_insensitive_matching(self):
-        ok, msg = mod.check_keyword_stuffing("АКТИВНАЯ ПЕНА для мойки. Активная пена.", "активная пена")
+        ok, msg = mod.check_keyword_stuffing(
+            "АКТИВНАЯ ПЕНА для мойки. Активная пена.", "активная пена"
+        )
         assert ok is True
         assert "2 упоминаний" in msg

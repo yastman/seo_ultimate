@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-import json
-from pathlib import Path
 import builtins
 import importlib.util
+import json
 import sys
+from pathlib import Path
 
 import pytest
 
@@ -26,7 +26,10 @@ class TestCheckMetaQuality:
         monkeypatch.setattr(audit, "COMMERCIAL_MODIFIERS", ["купить"])
 
         p = tmp_path / "m.json"
-        p.write_text(json.dumps({"meta": {"title": "", "description": ""}}, ensure_ascii=False), encoding="utf-8")
+        p.write_text(
+            json.dumps({"meta": {"title": "", "description": ""}}, ensure_ascii=False),
+            encoding="utf-8",
+        )
         res = audit.check_meta_quality(p)
         assert res["status"] == "FAIL"
         assert "Empty Title" in res["issues"]
@@ -96,7 +99,9 @@ class TestCheckContentQuality:
         assert res["status"] == "MISSING"
 
     def test_detects_table_and_ai_fluff(self, tmp_path: Path, monkeypatch):
-        monkeypatch.setattr(audit, "AI_FLUFF_PATTERNS", [r"в современном мире", r"давайте разберемся"])
+        monkeypatch.setattr(
+            audit, "AI_FLUFF_PATTERNS", [r"в современном мире", r"давайте разберемся"]
+        )
 
         p = tmp_path / "t.md"
         p.write_text(
@@ -119,7 +124,9 @@ class TestCheckContentQuality:
 
 
 class TestMain:
-    def test_main_prints_report(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
+    def test_main_prints_report(
+        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
+    ):
         categories = tmp_path / "categories"
         categories.mkdir()
 
@@ -130,7 +137,9 @@ class TestMain:
         slug_bad = "cat-bad"
         (categories / slug_bad / "content").mkdir(parents=True)
         (categories / slug_bad / "meta").mkdir(parents=True)
-        (categories / slug_bad / "content" / f"{slug_bad}_ru.md").write_text("# H1\n", encoding="utf-8")
+        (categories / slug_bad / "content" / f"{slug_bad}_ru.md").write_text(
+            "# H1\n", encoding="utf-8"
+        )
         (categories / slug_bad / "meta" / f"{slug_bad}_meta.json").write_text(
             json.dumps({"meta": {"title": "", "description": ""}}, ensure_ascii=False),
             encoding="utf-8",
@@ -140,7 +149,9 @@ class TestMain:
         slug_ok = "cat-ok"
         (categories / slug_ok / "content").mkdir(parents=True)
         (categories / slug_ok / "meta").mkdir(parents=True)
-        (categories / slug_ok / "content" / f"{slug_ok}_ru.md").write_text("# H1\n", encoding="utf-8")
+        (categories / slug_ok / "content" / f"{slug_ok}_ru.md").write_text(
+            "# H1\n", encoding="utf-8"
+        )
         (categories / slug_ok / "meta" / f"{slug_ok}_meta.json").write_text(
             json.dumps(
                 {"meta": {"title": "Купить отличный товар в наличии", "description": "x" * 140}},
@@ -176,7 +187,8 @@ def test_module_import_fallback_branch_executes_without_config(monkeypatch):
     sys.modules.pop("config", None)
 
     spec = importlib.util.spec_from_file_location("_audit_no_config", path)
-    assert spec and spec.loader
+    assert spec
+    assert spec.loader
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)  # type: ignore[union-attr]
     assert isinstance(mod.COMMERCIAL_MODIFIERS, list)

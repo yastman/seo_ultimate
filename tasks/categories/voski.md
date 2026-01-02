@@ -1,8 +1,8 @@
-# voski — Voski
+# voski — Воски
 
-**Priority:** HIGH (volume 1600)
-**Type:** L2
-**Parent:** zashchitnye-pokrytiya
+**Priority:** HIGH (volume 2840)
+**Type:** Cluster
+**Parent:** voski
 
 ---
 
@@ -10,13 +10,60 @@
 
 | Stage | RU | UK |
 |-------|----|----|
-| 01-Init | ✅ | ✅ |
-| 02-Meta | ✅ | ✅ |
+| 01-Init | ✅ | ⬜ |
+| 02-Meta | ✅ | ⬜ |
 | 03-Research | ⬜ | — |
 | 04-Content | ⬜ | ⬜ |
-| 05-UK | — | ✅ |
+| 05-UK | — | ⬜ |
 | 06-Quality | ⬜ | ⬜ |
 | 07-Deploy | ⬜ | ⬜ |
+
+---
+
+## Keywords (из CSV)
+
+| Keyword | Volume |
+|---------|--------|
+| воск для авто | 1600 |
+| твердый воск для авто | 1000 |
+| жидкий воск для авто | 480 |
+| твердый воск | 390 |
+| купить воск для авто | 320 |
+| купить воск для автомобиля | 320 |
+| жидкий воск | 320 |
+| воск для машины | 210 |
+| купить твердый воск для авто | 210 |
+| воск для полировки авто | 90 |
+| воск автомобильный | 90 |
+| жидкий стекло цена | 90 |
+| воск для мойки авто | 70 |
+| купить жидкий воск для авто | 70 |
+| воск для кузова авто | 50 |
+| восковый полироль для авто | 50 |
+| купить жидкий воск | 40 |
+| купить воск для машины | 30 |
+| купить воск для полировки авто | 20 |
+| купить воск для мойки авто | 20 |
+| купить жидкий воск для автомобиля | 20 |
+| жидкий воск для автомобиля | 20 |
+| купить твердый воск для авто в украине | 10 |
+| твердый воск для авто цена | 10 |
+| купить твердый воск для машины | 10 |
+| твердый воск купить | 10 |
+| твердый воск для автомобиля цена | 10 |
+| твердый воск для машины | 10 |
+| твердый воск цена | 10 |
+| жидкий воск для кузова | 10 |
+| жидкий воск для авто цена | 10 |
+| жидкий воск для мойки авто | 10 |
+| жидкий воск для автомойки | 10 |
+| жидкий воск для машин | 10 |
+| жидкий воск для кузова автомобиля | 10 |
+| купить жидкий воск для машины | 10 |
+| жидке стекло для авто | 10 |
+| твердый воск для полировки авто | 0 |
+
+**Total:** 38
 
 ---
 
@@ -29,7 +76,8 @@
 - [x] `content/voski_ru.md` placeholder
 - [x] `research/RESEARCH_DATA.md` template
 
-**Validation:**
+**Init Validation:**
+
 ```bash
 python3 -c "import json; json.load(open('categories/voski/data/voski_clean.json')); print('PASS')"
 ```
@@ -39,24 +87,28 @@ python3 -c "import json; json.load(open('categories/voski/data/voski_clean.json'
 ## Stage 02: Meta ✅
 
 ### Inputs
+
 - [ ] Прочитать `data/voski_clean.json`
 - [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
+
 - [ ] title_ru: 50-60 chars, содержит primary keyword
 - [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
 - [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
+
 - [ ] title_uk: 50-60 chars
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
-### Output
+### Meta Output
+
 - [ ] Записать в `meta/voski_meta.json`
 
-### Validation
+### Meta Validation
+
 ```bash
 python3 scripts/validate_meta.py categories/voski/meta/voski_meta.json
 ```
@@ -66,43 +118,25 @@ python3 scripts/validate_meta.py categories/voski/meta/voski_meta.json
 ## Stage 03: Research ⬜
 
 ### Block 1: Product Analysis
+
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
-- [ ] Особенности товаров
 
 ### Block 2: Competitors
+
 - [ ] WebSearch: "{primary keyword} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
+
 - [ ] Для кого?
 - [ ] Какие задачи решает?
-- [ ] Где применяется?
 
-### Block 4: Buying Guide
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
+### Research Output
 
-### Block 5: FAQ
-- [ ] Собрать 5-7 вопросов
-
-### Block 6: Comparison Table
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
-
-### Block 7: How-To
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
-
-### Block 8: Interlink
-- [ ] Связанные категории
-- [ ] Дополняющие товары
-
-### Output
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
-### Validation
+### Research Validation
+
 ```bash
 grep -c "^## Block" categories/voski/research/RESEARCH_DATA.md
 ```
@@ -112,6 +146,7 @@ grep -c "^## Block" categories/voski/research/RESEARCH_DATA.md
 ## Stage 04: Content ⬜
 
 ### Structure
+
 - [ ] H1: primary keyword
 - [ ] Intro: 150-200 слов
 - [ ] H2: Buying Guide
@@ -121,77 +156,43 @@ grep -c "^## Block" categories/voski/research/RESEARCH_DATA.md
 - [ ] Conclusion + CTA
 
 ### SEO Requirements
+
 - [ ] Primary keyword: 3-5 раз
 - [ ] Word count: 1500-2500
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
-### Validation
+### Content Validation
+
 ```bash
 python3 scripts/validate_content.py categories/voski/content/voski_ru.md "{keyword}" --mode seo
 ```
 
 ---
 
-## Stage 05: UK ✅
+## Stage 05: UK ⬜
 
-### Create Structure
-- [ ] `uk/categories/voski/data/`
-- [ ] `uk/categories/voski/meta/`
-- [ ] `uk/categories/voski/content/`
-
-### Translate
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
-
-### Quality Check
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
 
 ---
 
 ## Stage 06: Quality Gate ⬜
 
-### Checklist
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
 - [ ] Research complete
 - [ ] SEO compliant
-
-### Output
-- [ ] Создать `QUALITY_REPORT.md`
 
 ---
 
 ## Stage 07: Deploy ⬜
 
-### Pre-Deploy
-- [ ] Quality Gate = PASS
 - [ ] Backup DB
-
-### Deploy
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
-
-### Post-Deploy
+- [ ] Update Meta/Content RU/UK
 - [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
 
 ---
 
-## Notes
-
-- Parent: zashchitnye-pokrytiya
-- Type: L2
-- Volume: 1600
-
----
-
-**Last Updated:** 2025-12-31
+**Last Updated:** 2026-01-02

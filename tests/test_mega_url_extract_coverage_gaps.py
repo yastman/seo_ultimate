@@ -3,8 +3,6 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
-import pytest
-
 from scripts.mega_url_extract import (
     aggregate_raw_urls,
     aggregate_url_maps,
@@ -85,7 +83,9 @@ def test_save_mega_files_writes_raw_and_map(tmp_path: Path):
 
 
 def test_main_categories_dir_missing_returns_2(tmp_path: Path):
-    rc = main(["--categories-dir", str(tmp_path / "missing"), "--output-dir", str(tmp_path / "out")])
+    rc = main(
+        ["--categories-dir", str(tmp_path / "missing"), "--output-dir", str(tmp_path / "out")]
+    )
     assert rc == 2
 
 
@@ -97,7 +97,16 @@ def test_main_prints_removal_rate_when_raw_urls_present(tmp_path: Path, capsys):
     (cat / "cluster_urls_raw.txt").write_text("\n".join(raw_urls) + "\n", encoding="utf-8")
     (cat / "cluster_urls.txt").write_text("\n".join(clean_urls) + "\n", encoding="utf-8")
 
-    rc = main(["--categories-dir", str(tmp_path / "categories"), "--output-dir", str(tmp_path / "out"), "--min-urls", "1"])
+    rc = main(
+        [
+            "--categories-dir",
+            str(tmp_path / "categories"),
+            "--output-dir",
+            str(tmp_path / "out"),
+            "--min-urls",
+            "1",
+        ]
+    )
     out = capsys.readouterr().out
     assert rc == 0
     assert "Removal rate" in out
@@ -106,9 +115,13 @@ def test_main_prints_removal_rate_when_raw_urls_present(tmp_path: Path, capsys):
 def test_main_fails_when_clean_urls_less_than_10(tmp_path: Path, capsys):
     cat = tmp_path / "categories" / "cat1" / "competitors"
     cat.mkdir(parents=True)
-    (cat / "cluster_urls.txt").write_text("\n".join([f"https://a.com/{i}" for i in range(5)]) + "\n", encoding="utf-8")
+    (cat / "cluster_urls.txt").write_text(
+        "\n".join([f"https://a.com/{i}" for i in range(5)]) + "\n", encoding="utf-8"
+    )
 
-    rc = main(["--categories-dir", str(tmp_path / "categories"), "--output-dir", str(tmp_path / "out")])
+    rc = main(
+        ["--categories-dir", str(tmp_path / "categories"), "--output-dir", str(tmp_path / "out")]
+    )
     out = capsys.readouterr().out
     assert rc == 2
     assert "FAIL" in out

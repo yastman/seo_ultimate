@@ -8,6 +8,7 @@ description: Final quality check before deployment. Validates all category files
 Final validation before deployment to OpenCart.
 
 **Documentation:**
+
 - [docs/CONTENT_GUIDE.md](../../../docs/CONTENT_GUIDE.md) — SEO Guide v20.0 (validation rules)
 - [docs/RESEARCH_GUIDE.md](../../../docs/RESEARCH_GUIDE.md) — Research requirements
 
@@ -42,6 +43,7 @@ python -c "import json; json.load(open('categories/{slug}/data/{slug}_clean.json
 ```
 
 **Checks:**
+
 - [ ] Valid JSON
 - [ ] Has primary keywords with volumes
 - [ ] Keywords clustered (primary, secondary, supporting, commercial)
@@ -54,6 +56,7 @@ python scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 ```
 
 **Checks:**
+
 - [ ] Title: 50-60 characters
 - [ ] Title: Contains "Купить/Купити"
 - [ ] Title: Primary keyword at start
@@ -63,13 +66,14 @@ python scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 - [ ] H1 ≠ Title
 - [ ] keywords_in_content synced with data
 
-### 3. Content Validation (_ru.md / _uk.md)
+### 3. Content Validation (_ru.md /_uk.md)
 
 ```bash
 python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
 ```
 
 **Checks:**
+
 - [ ] Has H1 (first line starts with #)
 - [ ] Intro: 30-60 words
 - [ ] Has comparison table
@@ -87,6 +91,7 @@ python scripts/check_seo_structure.py categories/{slug}/content/{slug}_ru.md
 ```
 
 **Checks:**
+
 - [ ] H1 exists and matches meta
 - [ ] H2 structure logical
 - [ ] Tables formatted correctly
@@ -95,6 +100,7 @@ python scripts/check_seo_structure.py categories/{slug}/content/{slug}_ru.md
 ### 5. Translation Check (UK only)
 
 **Checks:**
+
 - [ ] резина → гума (not резина)
 - [ ] мойка → миття/мийка
 - [ ] стекло → скло

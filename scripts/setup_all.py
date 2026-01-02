@@ -19,24 +19,22 @@ Tier auto-detection:
     <10 keywords  → Tier C (small)
 """
 
-import os
-import sys
-import json
 import argparse
-from pathlib import Path
+import json
+import sys
 from datetime import datetime
-from typing import Dict, List, Tuple, Optional
+from pathlib import Path
+
 
 # Add scripts to path for imports
 SCRIPT_DIR = Path(__file__).parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from parse_semantics_to_json import (
+from parse_semantics_to_json import (  # noqa: E402
     L3_TO_SLUG,
-    read_semantics_csv,
+    SEMANTICS_CSV,
     generate_full_json,
-    get_tier_targets,
-    SEMANTICS_CSV
+    read_semantics_csv,
 )
 
 
@@ -48,24 +46,18 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 CATEGORIES_DIR = PROJECT_ROOT / "categories"
 
 TIER_THRESHOLDS = {
-    "A": 30,   # >30 keywords
-    "B": 10,   # 10-30 keywords
-    "C": 0,    # <10 keywords
+    "A": 30,  # >30 keywords
+    "B": 10,  # 10-30 keywords
+    "C": 0,  # <10 keywords
 }
 
-CATEGORY_SUBDIRS = [
-    "data",
-    "content",
-    "meta",
-    "competitors",
-    "deliverables",
-    "research"
-]
+CATEGORY_SUBDIRS = ["data", "content", "meta", "competitors", "deliverables", "research"]
 
 
 # =============================================================================
 # Core Functions
 # =============================================================================
+
 
 def auto_detect_tier(keywords_count: int) -> str:
     """
@@ -105,12 +97,7 @@ def create_category_folders(slug: str, dry_run: bool = False) -> Path:
     return category_path
 
 
-def create_task_file(
-    slug: str,
-    tier: str,
-    keywords_count: int,
-    dry_run: bool = False
-) -> Path:
+def create_task_file(slug: str, tier: str, keywords_count: int, dry_run: bool = False) -> Path:
     """
     Create task_{slug}.json checkpoint file.
 
@@ -132,31 +119,28 @@ def create_task_file(
         "created_at": datetime.now().isoformat(),
         "current_stage": "prepare",
         "stages": {
-            "prepare": "completed",   # Folders + Keywords JSON (done by this script)
-            "produce": "pending",     # Content RU + Meta
-            "deliver": "pending"      # Validation + Package
+            "prepare": "completed",  # Folders + Keywords JSON (done by this script)
+            "produce": "pending",  # Content RU + Meta
+            "deliver": "pending",  # Validation + Package
         },
         "paths": {
             "data": f"categories/{slug}/data/{slug}.json",
             "content_ru": f"categories/{slug}/content/{slug}_ru.md",
             "meta": f"categories/{slug}/meta/{slug}_meta.json",
-            "deliverables": f"categories/{slug}/deliverables/"
-        }
+            "deliverables": f"categories/{slug}/deliverables/",
+        },
     }
 
     if not dry_run:
-        with open(task_file, 'w', encoding='utf-8') as f:
+        with open(task_file, "w", encoding="utf-8") as f:
             json.dump(task_data, f, ensure_ascii=False, indent=2)
 
     return task_file
 
 
 def create_keywords_json(
-    slug: str,
-    tier: str,
-    keywords_raw: List[Dict],
-    dry_run: bool = False
-) -> Optional[Path]:
+    slug: str, tier: str, keywords_raw: list[dict], dry_run: bool = False
+) -> Path | None:
     """
     Generate keywords JSON for category.
 
@@ -177,13 +161,13 @@ def create_keywords_json(
     if not dry_run:
         full_json = generate_full_json(slug, tier, keywords_raw)
 
-        with open(json_path, 'w', encoding='utf-8') as f:
+        with open(json_path, "w", encoding="utf-8") as f:
             json.dump(full_json, f, ensure_ascii=False, indent=2)
 
     return json_path
 
 
-def get_all_categories_with_keywords() -> Dict[str, List[Dict]]:
+def get_all_categories_with_keywords() -> dict[str, list[dict]]:
     """
     Read CSV and get all categories with their keywords.
 
@@ -205,11 +189,8 @@ def get_all_categories_with_keywords() -> Dict[str, List[Dict]]:
 
 
 def setup_category(
-    slug: str,
-    keywords: List[Dict],
-    force: bool = False,
-    dry_run: bool = False
-) -> Dict:
+    slug: str, keywords: list[dict], force: bool = False, dry_run: bool = False
+) -> dict:
     """
     Setup single category: folders + task file + keywords JSON.
 
@@ -237,7 +218,7 @@ def setup_category(
             "status": "skipped",
             "reason": "exists",
             "tier": tier,
-            "keywords": keywords_count
+            "keywords": keywords_count,
         }
 
     # Create everything
@@ -253,12 +234,12 @@ def setup_category(
         "paths": {
             "folder": str(category_path),
             "task": str(task_file),
-            "json": str(CATEGORIES_DIR / slug / "data" / f"{slug}.json")
-        }
+            "json": str(CATEGORIES_DIR / slug / "data" / f"{slug}.json"),
+        },
     }
 
 
-def setup_all(force: bool = False, dry_run: bool = False) -> List[Dict]:
+def setup_all(force: bool = False, dry_run: bool = False) -> list[dict]:
     """
     Setup all categories from CSV.
 
@@ -279,7 +260,7 @@ def setup_all(force: bool = False, dry_run: bool = False) -> List[Dict]:
     return results
 
 
-def print_summary(results: List[Dict], dry_run: bool = False):
+def print_summary(results: list[dict], dry_run: bool = False):
     """Print setup summary."""
 
     mode = "[DRY RUN] " if dry_run else ""
@@ -329,25 +310,12 @@ def print_summary(results: List[Dict], dry_run: bool = False):
 # CLI
 # =============================================================================
 
+
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(
-        description="Batch initialize all categories from CSV"
-    )
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Preview without creating files"
-    )
-    parser.add_argument(
-        "--force",
-        action="store_true",
-        help="Overwrite existing categories"
-    )
-    parser.add_argument(
-        "--list",
-        action="store_true",
-        help="Just list categories and exit"
-    )
+    parser = argparse.ArgumentParser(description="Batch initialize all categories from CSV")
+    parser.add_argument("--dry-run", action="store_true", help="Preview without creating files")
+    parser.add_argument("--force", action="store_true", help="Overwrite existing categories")
+    parser.add_argument("--list", action="store_true", help="Just list categories and exit")
 
     args = parser.parse_args(argv)
 

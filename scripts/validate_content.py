@@ -28,8 +28,8 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
-from collections import Counter
+from typing import Any
+
 
 # Add scripts to path
 SCRIPT_DIR = Path(__file__).parent
@@ -38,8 +38,9 @@ sys.path.insert(0, str(SCRIPT_DIR))
 # Fix Windows encoding issues for emojis/Cyrillic
 if sys.platform == "win32":
     import io
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 try:
     from check_water_natasha import calculate_metrics_from_text as calculate_water_and_nausea
@@ -53,20 +54,30 @@ except ImportError:
 
 # SSOT: Use core functions from seo_utils
 try:
-    from seo_utils import clean_markdown, count_words, count_chars_no_spaces, get_adaptive_requirements
+    from seo_utils import (
+        clean_markdown,
+        count_chars_no_spaces,
+        count_words,
+        get_adaptive_requirements,
+    )
 except ImportError:
     print("❌ Error: Could not import core functions from seo_utils")
     sys.exit(1)
 
 # Coverage targets (SSOT)
 try:
-    from scripts.config import get_adaptive_coverage_target, QUALITY_THRESHOLDS, CONTENT_STANDARDS
+    from scripts.config import CONTENT_STANDARDS, QUALITY_THRESHOLDS, get_adaptive_coverage_target
 except ImportError:
-    from config import get_adaptive_coverage_target, QUALITY_THRESHOLDS, CONTENT_STANDARDS
+    from config import (  # type: ignore
+        CONTENT_STANDARDS,
+        QUALITY_THRESHOLDS,
+        get_adaptive_coverage_target,
+    )
 
 # Grammar check (language_tool_python)
 try:
     import language_tool_python
+
     GRAMMAR_AVAILABLE = True
 except ImportError:
     language_tool_python = None
@@ -75,6 +86,7 @@ except ImportError:
 # MD-Linting (pymarkdownlnt)
 try:
     from pymarkdown.api import PyMarkdownApi
+
     MDLINT_AVAILABLE = True
 except ImportError:
     PyMarkdownApi = None
@@ -88,42 +100,43 @@ VALIDATION_MODES = ("quality", "seo")
 # Text Processing
 # =============================================================================
 
-def extract_h1(text: str) -> Optional[str]:
+
+def extract_h1(text: str) -> str | None:
     """Extract H1 heading."""
-    match = re.search(r'^#\s+(.+)$', text, re.MULTILINE)
+    match = re.search(r"^#\s+(.+)$", text, re.MULTILINE)
     return match.group(1) if match else None
 
 
-def extract_h2s(text: str) -> List[str]:
+def extract_h2s(text: str) -> list[str]:
     """Extract all H2 headings."""
-    return re.findall(r'^##\s+(.+)$', text, re.MULTILINE)
+    return re.findall(r"^##\s+(.+)$", text, re.MULTILINE)
 
 
 def extract_intro(text: str) -> str:
     """Extract intro paragraph (first text after H1)."""
-    lines = text.split('\n')
+    lines = text.split("\n")
     intro_lines = []
     found_h1 = False
 
     for line in lines:
-        if line.startswith('# '):
+        if line.startswith("# "):
             found_h1 = True
             continue
+        if found_h1 and line.startswith("## "):
+            break
         if found_h1:
-            if line.startswith('## '):
-                break
             if line.strip():
                 intro_lines.append(line.strip())
             if len(intro_lines) >= 5:  # Max 5 lines for intro
                 break
 
-    return ' '.join(intro_lines)
+    return " ".join(intro_lines)
 
 
 def count_faq(text: str) -> int:
     """Count FAQ questions."""
     # Look for **Q:** or **В:** patterns
-    q_pattern = r'\*\*[QВ][:\.]'
+    q_pattern = r"\*\*[QВ][:\.]"
     matches = re.findall(q_pattern, text)
     return len(matches)
 
@@ -132,7 +145,8 @@ def count_faq(text: str) -> int:
 # Validation Checks
 # =============================================================================
 
-def check_structure(text: str) -> Dict:
+
+def check_structure(text: str) -> dict:
     """
     Check content structure.
 
@@ -145,12 +159,12 @@ def check_structure(text: str) -> Dict:
     - FAQ section
     - Trust signals
     """
-    results = {
+    results: dict[str, Any] = {
         "h1": {"passed": False, "value": None},
         "intro": {"passed": False, "words": 0},
         "h2_count": {"passed": False, "count": 0},
         "faq_count": {"info": True, "count": 0},
-        "overall": "FAIL"
+        "overall": "FAIL",
     }
 
     # H1
@@ -178,7 +192,7 @@ def check_structure(text: str) -> Dict:
     blockers = [
         not results["h1"]["passed"],
         not results["intro"]["passed"],
-        not results["h2_count"]["passed"]
+        not results["h2_count"]["passed"],
     ]
 
     if any(blockers):
@@ -189,7 +203,7 @@ def check_structure(text: str) -> Dict:
     return results
 
 
-def check_primary_keyword(text: str, primary_keyword: str) -> Dict:
+def check_primary_keyword(text: str, primary_keyword: str) -> dict:
     """
     Check primary keyword placement.
 
@@ -197,11 +211,11 @@ def check_primary_keyword(text: str, primary_keyword: str) -> Dict:
     - Primary keyword in H1
     - Primary keyword in intro
     """
-    results = {
+    results: dict[str, Any] = {
         "in_h1": {"passed": False},
         "in_intro": {"passed": False},
         "frequency": {"count": 0, "status": "OK"},
-        "overall": "FAIL"
+        "overall": "FAIL",
     }
 
     keyword_lower = primary_keyword.lower()
@@ -236,11 +250,7 @@ def check_primary_keyword(text: str, primary_keyword: str) -> Dict:
     return results
 
 
-def check_primary_keyword_semantic(
-    text: str,
-    primary_keyword: str,
-    use_llm: bool = False
-) -> Dict:
+def check_primary_keyword_semantic(text: str, primary_keyword: str, use_llm: bool = False) -> dict:
     """
     Semantic check for primary keyword using LLM (hybrid approach).
 
@@ -259,7 +269,7 @@ def check_primary_keyword_semantic(
     h1 = extract_h1(text) or ""
     intro = extract_intro(text)
 
-    results = {
+    results: dict[str, Any] = {
         "keyword": primary_keyword,
         "h1": h1,
         "intro_preview": intro[:200],
@@ -267,7 +277,7 @@ def check_primary_keyword_semantic(
         "semantic_intro": False,
         "confidence": 0,
         "overall": "PENDING",
-        "llm_prompt": None
+        "llm_prompt": None,
     }
 
     # Generate semantic variations of keyword
@@ -328,7 +338,7 @@ INTRO: "{intro[:300]}..."
     return results
 
 
-def check_keyword_coverage(text: str, keywords: List[str]) -> Dict:
+def check_keyword_coverage(text: str, keywords: list[str]) -> dict:
     """
     Check keyword coverage (legacy, for backwards compatibility).
 
@@ -348,7 +358,7 @@ def check_keyword_coverage(text: str, keywords: List[str]) -> Dict:
             "passed": True,
             "overall": "PASS",
             "found_keywords": [],
-            "missing_keywords": []
+            "missing_keywords": [],
         }
 
     total = len(keywords)
@@ -378,7 +388,7 @@ def check_keyword_coverage(text: str, keywords: List[str]) -> Dict:
         "passed": passed,
         "overall": "PASS" if passed else "WARNING",
         "found_keywords": found[:10],  # First 10
-        "missing_keywords": missing[:10]  # First 10
+        "missing_keywords": missing[:10],  # First 10
     }
 
 
@@ -437,11 +447,8 @@ def keyword_matches_semantic(keyword: str, text: str) -> bool:
 
 
 def check_keyword_coverage_split(
-    text: str,
-    core_keywords: List[str],
-    commercial_keywords: List[str],
-    use_semantic: bool = True
-) -> Dict:
+    text: str, core_keywords: list[str], commercial_keywords: list[str], use_semantic: bool = True
+) -> dict:
     """
     Check keyword coverage split by intent (v8.5).
 
@@ -490,21 +497,21 @@ def check_keyword_coverage_split(
             "coverage_percent": round(core_coverage, 1),
             "target": core_target,
             "passed": core_passed,
-            "missing_keywords": core_missing[:10]
+            "missing_keywords": core_missing[:10],
         },
         "commercial": {
             "total": comm_total,
             "found": len(comm_found),
             "coverage_percent": round(comm_coverage, 1),
             "note": "INFO only (for meta tags)",
-            "missing_keywords": comm_missing[:10]
+            "missing_keywords": comm_missing[:10],
         },
         "overall": overall,
-        "passed": core_passed
+        "passed": core_passed,
     }
 
 
-def check_quality(text: str, lang: str = 'ru') -> Dict:
+def check_quality(text: str, lang: str = "ru") -> dict:
     """
     Check content quality metrics.
 
@@ -519,11 +526,11 @@ def check_quality(text: str, lang: str = 'ru') -> Dict:
         text: Markdown text to check
         lang: 'ru' or 'uk' for stopwords selection
     """
-    results = {
+    results: dict[str, Any] = {
         "water": {"value": None, "passed": True, "status": "UNKNOWN"},
         "nausea_classic": {"value": None, "passed": True, "status": "UNKNOWN"},
         "nausea_academic": {"value": None, "passed": True, "status": "UNKNOWN"},
-        "overall": "UNKNOWN"
+        "overall": "UNKNOWN",
     }
 
     if calculate_water_and_nausea is None:
@@ -538,7 +545,10 @@ def check_quality(text: str, lang: str = 'ru') -> Dict:
         water = metrics.get("water_percent", 0)
         results["water"]["value"] = round(water, 1)
 
-        if water < QUALITY_THRESHOLDS["water_target_min"] or water > QUALITY_THRESHOLDS["water_target_max"]:
+        if (
+            water < QUALITY_THRESHOLDS["water_target_min"]
+            or water > QUALITY_THRESHOLDS["water_target_max"]
+        ):
             results["water"]["status"] = "WARNING"
         else:
             results["water"]["status"] = "OK"
@@ -565,7 +575,7 @@ def check_quality(text: str, lang: str = 'ru') -> Dict:
         warnings = [
             results["water"]["status"] == "WARNING",
             results["nausea_classic"]["status"] == "WARNING",
-            results["nausea_academic"]["status"] == "WARNING"
+            results["nausea_academic"]["status"] == "WARNING",
         ]
 
         if any(warnings):
@@ -580,7 +590,7 @@ def check_quality(text: str, lang: str = 'ru') -> Dict:
     return results
 
 
-def check_blacklist_phrases(text: str) -> Dict:
+def check_blacklist_phrases(text: str) -> dict:
     """
     Check for blacklisted phrases.
 
@@ -592,12 +602,12 @@ def check_blacklist_phrases(text: str) -> Dict:
     WARNING:
     - AI-fluff phrases
     """
-    results = {
+    results: dict[str, Any] = {
         "strict_phrases": [],
         "brands": [],
         "cities": [],
         "ai_fluff": [],
-        "overall": "PASS"
+        "overall": "PASS",
     }
 
     if check_blacklist is None:
@@ -627,7 +637,7 @@ def check_blacklist_phrases(text: str) -> Dict:
     return results
 
 
-def check_strict_blacklist_only(text: str) -> Dict:
+def check_strict_blacklist_only(text: str) -> dict:
     """
     Strict-only blacklist check (SEO mode).
 
@@ -636,7 +646,7 @@ def check_strict_blacklist_only(text: str) -> Dict:
 
     Everything else is informational (brands/cities/ai_fluff are not used for overall).
     """
-    results = {
+    results: dict[str, Any] = {
         "strict_phrases": [],
         "brands": [],
         "cities": [],
@@ -667,7 +677,7 @@ def check_strict_blacklist_only(text: str) -> Dict:
     return results
 
 
-def check_length(text: str, keywords_count: Optional[int] = None) -> Dict:
+def check_length(text: str, keywords_count: int | None = None) -> dict:
     """
     Check content length (informational, not blocker).
 
@@ -686,7 +696,7 @@ def check_length(text: str, keywords_count: Optional[int] = None) -> Dict:
             rec = adaptive.get("words_recommended")
             if rec and len(rec) == 2:
                 recommended_min, recommended_max = int(rec[0]), int(rec[1])
-        except Exception:
+        except Exception:  # noqa: S110
             pass
 
     status = "OK"
@@ -701,11 +711,11 @@ def check_length(text: str, keywords_count: Optional[int] = None) -> Dict:
         "status": status,
         "keywords_count": keywords_count,
         "recommended_words": (recommended_min, recommended_max),
-        "note": "Length is informational (adaptive by keywords_count when available)."
+        "note": "Length is informational (adaptive by keywords_count when available).",
     }
 
 
-def check_content_standards(text: str, lang: str = 'ru') -> Dict:
+def check_content_standards(text: str, lang: str = "ru") -> dict:
     """
     Check content against CONTENT_GUIDE.md requirements.
 
@@ -719,73 +729,87 @@ def check_content_standards(text: str, lang: str = 'ru') -> Dict:
     Returns:
         Dict with checks results
     """
-    results = {
+    results: dict[str, Any] = {
         "safety_block": False,
         "howto_steps": False,
         "evergreen_math": False,
         "warnings_present": False,
         "crosslinks_count": 0,
         "issues": [],
-        "overall": "OK"
+        "overall": "OK",
     }
 
     text_lower = text.lower()
 
     # Patterns by language
     patterns = {
-        'ru': {
-            'safety': [
-                r'##\s*важно\b', r'##\s*безопас', r'##\s*как\s+не\s+(сделать|испортить|навредить)',
-                r'##\s*ошибк', r'##\s*предосторож'
+        "ru": {
+            "safety": [
+                r"##\s*важно\b",
+                r"##\s*безопас",
+                r"##\s*как\s+не\s+(сделать|испортить|навредить)",
+                r"##\s*ошибк",
+                r"##\s*предосторож",
             ],
-            'math': [
-                r'расход', r'концентрац', r'разведен',
-                r'\d+\s*(мл|литр|л\b|г\b)', r'\d+:\d+'
+            "math": [r"расход", r"концентрац", r"разведен", r"\d+\s*(мл|литр|л\b|г\b)", r"\d+:\d+"],
+            "warning": [
+                r"никогда\s+не",
+                r"нельзя",
+                r"не\s+допускайте",
+                r"не\s+наносите",
+                r"не\s+используйте",
+                r"не\s+работайте",
+                r"так\s+не\s+делайте",
+                r"не\s+пересушивайте",
+                r"не\s+давайте\s+высохнуть",
+                r"лучше\s+избегать",
+                r"не\s+рекомендуется",
             ],
-            'warning': [
-                r'никогда\s+не', r'нельзя', r'не\s+допускайте', r'не\s+наносите',
-                r'не\s+используйте', r'не\s+работайте', r'так\s+не\s+делайте',
-                r'не\s+пересушивайте', r'не\s+давайте\s+высохнуть', r'лучше\s+избегать',
-                r'не\s+рекомендуется'
-            ]
         },
-        'uk': {
-            'safety': [
-                r'##\s*важливо\b', r'##\s*безпек', r'##\s*як\s+не\s+(зіпсувати|нашкодити)',
-                r'##\s*помилк', r'##\s*застереж'
+        "uk": {
+            "safety": [
+                r"##\s*важливо\b",
+                r"##\s*безпек",
+                r"##\s*як\s+не\s+(зіпсувати|нашкодити)",
+                r"##\s*помилк",
+                r"##\s*застереж",
             ],
-            'math': [
-                r'витрат', r'концентрац', r'розведен',
-                r'\d+\s*(мл|літр|л\b|г\b)', r'\d+:\d+'
+            "math": [r"витрат", r"концентрац", r"розведен", r"\d+\s*(мл|літр|л\b|г\b)", r"\d+:\d+"],
+            "warning": [
+                r"ніколи\s+не",
+                r"не\s+можна",
+                r"не\s+допускайте",
+                r"не\s+наносьте",
+                r"не\s+використовуйте",
+                r"не\s+працюйте",
+                r"так\s+не\s+робіть",
+                r"не\s+пересушуйте",
+                r"не\s+давайте\s+висохнути",
+                r"краще\s+уникати",
+                r"не\s+рекомендується",
             ],
-            'warning': [
-                r'ніколи\s+не', r'не\s+можна', r'не\s+допускайте', r'не\s+наносьте',
-                r'не\s+використовуйте', r'не\s+працюйте', r'так\s+не\s+робіть',
-                r'не\s+пересушуйте', r'не\s+давайте\s+висохнути', r'краще\s+уникати',
-                r'не\s+рекомендується'
-            ]
-        }
+        },
     }
 
     # Fallback to RU if lang not found
-    lang_patterns = patterns.get(lang, patterns['ru'])
+    lang_patterns = patterns.get(lang, patterns["ru"])
 
     required = CONTENT_STANDARDS.get("required", {})
 
     # 1. Safety block
-    if any(re.search(p, text_lower) for p in lang_patterns['safety']) or 'test spot' in text_lower:
+    if any(re.search(p, text_lower) for p in lang_patterns["safety"]) or "test spot" in text_lower:
         results["safety_block"] = True
     elif required.get("safety_block", True):
         results["issues"].append("Нет блока про безопасность/ошибки (Safety/Важливо)")
 
     # 2. How-to steps: нумерованные списки (Language independent)
-    if re.search(r'^\d+\.\s+', text, re.MULTILINE):
+    if re.search(r"^\d+\.\s+", text, re.MULTILINE):
         results["howto_steps"] = True
     elif required.get("howto_steps", True):
         results["issues"].append("Нет нумерованных шагов (How-to)")
 
     # 3. Evergreen Math
-    for pattern in lang_patterns['math']:
+    for pattern in lang_patterns["math"]:
         if re.search(pattern, text_lower):
             results["evergreen_math"] = True
             break
@@ -793,7 +817,7 @@ def check_content_standards(text: str, lang: str = 'ru') -> Dict:
         results["issues"].append("Нет Evergreen Math (расход/разведение/витрата)")
 
     # 4. "Так не делайте": предупреждения
-    for pattern in lang_patterns['warning']:
+    for pattern in lang_patterns["warning"]:
         if re.search(pattern, text_lower):
             results["warnings_present"] = True
             break
@@ -801,16 +825,14 @@ def check_content_standards(text: str, lang: str = 'ru') -> Dict:
         results["issues"].append("Нет предупреждений ('так не делайте/не можна')")
 
     # 5. Cross-links
-    crosslinks = re.findall(r'\]\(/', text)
+    crosslinks = re.findall(r"\]\(/", text)
     results["crosslinks_count"] = len(crosslinks)
 
     # Determine overall status
     critical_missing = required.get("safety_block", True) and not results["safety_block"]
     warnings_count = len(results["issues"])
 
-    if critical_missing:
-        results["overall"] = "WARNING"
-    elif warnings_count >= 3:
+    if critical_missing or warnings_count >= 3:
         results["overall"] = "WARNING"
     else:
         results["overall"] = "OK"
@@ -818,7 +840,7 @@ def check_content_standards(text: str, lang: str = 'ru') -> Dict:
     return results
 
 
-def check_grammar(text: str) -> Dict:
+def check_grammar(text: str) -> dict:
     """
     Check grammar using language_tool_python.
 
@@ -827,12 +849,7 @@ def check_grammar(text: str) -> Dict:
     Returns:
         Dict with errors list and overall status
     """
-    results = {
-        "errors": [],
-        "error_count": 0,
-        "overall": "UNKNOWN",
-        "note": None
-    }
+    results = {"errors": [], "error_count": 0, "overall": "UNKNOWN", "note": None}
 
     if not GRAMMAR_AVAILABLE:
         results["note"] = "Grammar check unavailable (install: pip install language-tool-python)"
@@ -841,7 +858,7 @@ def check_grammar(text: str) -> Dict:
 
     try:
         # Initialize LanguageTool for Russian
-        tool = language_tool_python.LanguageTool('ru-RU')
+        tool = language_tool_python.LanguageTool("ru-RU")
 
         # Clean markdown for grammar check
         clean_text = clean_markdown(text)
@@ -855,12 +872,14 @@ def check_grammar(text: str) -> Dict:
 
         # Parse errors (limit to 10)
         for match in matches[:10]:
-            results["errors"].append({
-                "message": match.message,
-                "context": match.context[:80] if match.context else "",
-                "rule": match.ruleId,
-                "suggestions": match.replacements[:3] if match.replacements else []
-            })
+            results["errors"].append(
+                {
+                    "message": match.message,
+                    "context": match.context[:80] if match.context else "",
+                    "rule": match.ruleId,
+                    "suggestions": match.replacements[:3] if match.replacements else [],
+                }
+            )
 
         results["error_count"] = len(matches)
 
@@ -878,7 +897,7 @@ def check_grammar(text: str) -> Dict:
     return results
 
 
-def check_markdown_lint(file_path: str) -> Dict:
+def check_markdown_lint(file_path: str) -> dict:
     """
     Check Markdown structure using pymarkdownlnt.
 
@@ -887,12 +906,7 @@ def check_markdown_lint(file_path: str) -> Dict:
     Returns:
         Dict with violations list and overall status
     """
-    results = {
-        "violations": [],
-        "violation_count": 0,
-        "overall": "UNKNOWN",
-        "note": None
-    }
+    results = {"violations": [], "violation_count": 0, "overall": "UNKNOWN", "note": None}
 
     if not MDLINT_AVAILABLE:
         results["note"] = "MD-Lint check unavailable (install: pip install pymarkdownlnt)"
@@ -911,12 +925,14 @@ def check_markdown_lint(file_path: str) -> Dict:
 
         # Parse violations (limit to 10)
         for failure in scan_result.scan_failures[:10]:
-            results["violations"].append({
-                "line": failure.line_number,
-                "column": failure.column_number,
-                "rule": failure.rule_id,
-                "description": failure.rule_description
-            })
+            results["violations"].append(
+                {
+                    "line": failure.line_number,
+                    "column": failure.column_number,
+                    "rule": failure.rule_id,
+                    "description": failure.rule_description,
+                }
+            )
 
         results["violation_count"] = len(scan_result.scan_failures)
 
@@ -936,16 +952,17 @@ def check_markdown_lint(file_path: str) -> Dict:
 # Main Validation
 # =============================================================================
 
+
 def validate_content(
     file_path: str,
     primary_keyword: str,
-    all_keywords: Optional[List[str]] = None,
-    core_keywords: Optional[List[str]] = None,
-    commercial_keywords: Optional[List[str]] = None,
+    all_keywords: list[str] | None = None,
+    core_keywords: list[str] | None = None,
+    commercial_keywords: list[str] | None = None,
     use_semantic: bool = True,
     mode: str = "quality",
     lang: str = "ru",
-) -> Dict:
+) -> dict:
     """
     Full content validation.
 
@@ -969,7 +986,7 @@ def validate_content(
     if not path.exists():
         return {"error": f"File not found: {file_path}"}
 
-    text = path.read_text(encoding='utf-8')
+    text = path.read_text(encoding="utf-8")
 
     # Run all checks
     # NOTE: In SEO mode, we keep structure output for visibility, but do not enforce
@@ -984,7 +1001,9 @@ def validate_content(
 
     if semantic_allowed and (use_semantic or primary_kw["overall"] == "FAIL"):
         # Run semantic check as fallback or if requested
-        semantic_kw = check_primary_keyword_semantic(text, primary_keyword, use_llm=semantic_allowed)
+        semantic_kw = check_primary_keyword_semantic(
+            text, primary_keyword, use_llm=semantic_allowed
+        )
 
         # If semantic passes but exact fails, upgrade status
         if primary_kw["overall"] == "FAIL" and semantic_kw["overall"] in ["PASS", "WARNING"]:
@@ -996,10 +1015,7 @@ def validate_content(
     # Coverage: use split if available (v8.4), otherwise legacy
     if core_keywords is not None or commercial_keywords is not None:
         coverage = check_keyword_coverage_split(
-            text,
-            core_keywords or [],
-            commercial_keywords or [],
-            use_semantic=semantic_allowed
+            text, core_keywords or [], commercial_keywords or [], use_semantic=semantic_allowed
         )
     else:
         coverage = check_keyword_coverage(text, all_keywords or [])
@@ -1009,7 +1025,9 @@ def validate_content(
         if "core" in coverage:
             coverage["core"]["target"] = None
             coverage["core"]["passed"] = True
-            coverage["commercial"]["note"] = "SEO mode: commercial keywords belong to meta/structured data."
+            coverage["commercial"]["note"] = (
+                "SEO mode: commercial keywords belong to meta/structured data."
+            )
         else:
             coverage["target"] = None
             coverage["passed"] = True
@@ -1027,7 +1045,7 @@ def validate_content(
     else:
         quality = check_quality(text, lang=lang)
         blacklist = check_blacklist_phrases(text)
-    inferred_keywords_count: Optional[int] = None
+    inferred_keywords_count: int | None = None
     if core_keywords is not None or commercial_keywords is not None:
         inferred_keywords_count = len(set((core_keywords or []) + (commercial_keywords or [])))
     elif all_keywords:
@@ -1053,15 +1071,19 @@ def validate_content(
         content_standards = {
             "overall": "SKIPPED",
             "note": "SEO mode: content standards check disabled.",
-            "issues": []
+            "issues": [],
         }
 
     if mode == "seo":
         length["status"] = "INFO"
         length["note"] = "SEO mode: length is informational only."
         grammar = {"overall": "SKIPPED", "note": "SEO mode: grammar check disabled."}
-        md_lint = {"overall": "SKIPPED", "note": "SEO mode: markdown lint disabled.",
-                   "violations": [], "violation_count": 0}
+        md_lint = {
+            "overall": "SKIPPED",
+            "note": "SEO mode: markdown lint disabled.",
+            "violations": [],
+            "violation_count": 0,
+        }
     else:
         grammar = check_grammar(text)
         md_lint = check_markdown_lint(file_path)
@@ -1071,9 +1093,8 @@ def validate_content(
     warnings = []
 
     # Structure blockers (quality mode only)
-    if mode != "seo":
-        if structure["overall"] == "FAIL":
-            blockers.append("structure")
+    if mode != "seo" and structure["overall"] == "FAIL":
+        blockers.append("structure")
 
     # Primary keyword blockers
     if primary_kw["overall"] == "FAIL":
@@ -1130,13 +1151,9 @@ def validate_content(
             "length": length,
             "content_standards": content_standards,  # FIX v8.5
             "grammar": grammar,
-            "md_lint": md_lint
+            "md_lint": md_lint,
         },
-        "summary": {
-            "overall": overall,
-            "blockers": blockers,
-            "warnings": warnings
-        }
+        "summary": {"overall": overall, "blockers": blockers, "warnings": warnings},
     }
 
 
@@ -1144,7 +1161,8 @@ def validate_content(
 # CLI
 # =============================================================================
 
-def print_results(results: Dict):
+
+def print_results(results: dict):
     """Print human-readable results."""
     print()
     print("=" * 60)
@@ -1163,8 +1181,12 @@ def print_results(results: Dict):
     icon = "✅" if struct["overall"] == "PASS" else "❌"
     print(f"{icon} STRUCTURE:")
     print(f"   H1: {'✓' if struct['h1']['passed'] else '✗'} {struct['h1']['value'] or 'missing'}")
-    print(f"   Intro: {'✓' if struct['intro']['passed'] else '✗'} ({struct['intro']['words']} words)")
-    print(f"   H2 count: {'✓' if struct['h2_count']['passed'] else '✗'} ({struct['h2_count']['count']})")
+    print(
+        f"   Intro: {'✓' if struct['intro']['passed'] else '✗'} ({struct['intro']['words']} words)"
+    )
+    print(
+        f"   H2 count: {'✓' if struct['h2_count']['passed'] else '✗'} ({struct['h2_count']['count']})"
+    )
     print()
 
     # Primary Keyword
@@ -1191,12 +1213,18 @@ def print_results(results: Dict):
         core = cov["core"]
         comm = cov["commercial"]
         if core.get("target") is None:
-            print(f"   ┌─ Core (topic): {core['found']}/{core['total']} ({core['coverage_percent']}%)")
+            print(
+                f"   ┌─ Core (topic): {core['found']}/{core['total']} ({core['coverage_percent']}%)"
+            )
         else:
-            print(f"   ┌─ Core (topic): {core['found']}/{core['total']} ({core['coverage_percent']}%) target={core['target']}%")
+            print(
+                f"   ┌─ Core (topic): {core['found']}/{core['total']} ({core['coverage_percent']}%) target={core['target']}%"
+            )
         if core["missing_keywords"]:
             print(f"   │  Missing: {', '.join(core['missing_keywords'][:5])}...")
-        print(f"   └─ Commercial: {comm['found']}/{comm['total']} ({comm['coverage_percent']}%) [INFO only]")
+        print(
+            f"   └─ Commercial: {comm['found']}/{comm['total']} ({comm['coverage_percent']}%) [INFO only]"
+        )
         if comm["missing_keywords"]:
             print(f"      → For meta: {', '.join(comm['missing_keywords'][:3])}...")
     else:
@@ -1216,8 +1244,12 @@ def print_results(results: Dict):
     print(f"{icon} QUALITY:")
     if qual["water"]["value"] is not None:
         print(f"   Water: {qual['water']['value']}% ({qual['water']['status']})")
-        print(f"   Classic Nausea: {qual['nausea_classic']['value']} ({qual['nausea_classic']['status']})")
-        print(f"   Academic Nausea: {qual['nausea_academic']['value']}% ({qual['nausea_academic']['status']})")
+        print(
+            f"   Classic Nausea: {qual['nausea_classic']['value']} ({qual['nausea_classic']['status']})"
+        )
+        print(
+            f"   Academic Nausea: {qual['nausea_academic']['value']}% ({qual['nausea_academic']['status']})"
+        )
     else:
         print(f"   {qual.get('note', 'Unavailable')}")
     print()
@@ -1233,7 +1265,7 @@ def print_results(results: Dict):
     if bl["ai_fluff"]:
         print(f"   ⚠️  AI-fluff: {len(bl['ai_fluff'])}")
     if bl["overall"] == "PASS":
-        print(f"   No issues found")
+        print("   No issues found")
     print()
 
     # Length
@@ -1270,7 +1302,7 @@ def print_results(results: Dict):
         for err in gram["errors"][:3]:
             print(f"   - {err['message']}")
     else:
-        print(f"   No issues found")
+        print("   No issues found")
     print()
 
     # MD-Lint
@@ -1291,7 +1323,7 @@ def print_results(results: Dict):
         for viol in mdl["violations"][:3]:
             print(f"   - Line {viol['line']}: {viol['rule']} - {viol['description']}")
     else:
-        print(f"   No issues found")
+        print("   No issues found")
     print()
 
     # Summary
@@ -1345,6 +1377,7 @@ def main():
             slug = sys.argv[idx + 1]
             try:
                 from analyze_category import analyze_category
+
                 try:
                     analysis = analyze_category(slug, lang=lang)
                 except TypeError:

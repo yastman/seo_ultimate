@@ -16,6 +16,7 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlparse
 
+
 if __name__ == "__main__" and __package__ is None:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
@@ -29,7 +30,7 @@ from scripts.seo_utils import (
 def analyze_url_category(url: str) -> tuple[bool, str]:
     """
     AI-based reasoning to determine if URL is a category page.
-    
+
     Uses seo_utils.is_category_page for core logic.
 
     Returns:
@@ -37,12 +38,12 @@ def analyze_url_category(url: str) -> tuple[bool, str]:
     """
     # Import here to avoid circular dependency
     from scripts.seo_utils import is_category_page
-    
+
     # First check blacklist
     if is_blacklisted_domain(url):
         domain = urlparse(url).netloc.lower()
         return False, f"BLACKLIST: Domain {domain} is marketplace/social media - excluded"
-    
+
     # Delegate to seo_utils for category check
     return is_category_page(url)
 

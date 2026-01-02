@@ -14,8 +14,8 @@ from pathlib import Path
 import pytest
 
 from scripts.extract_competitor_urls_v2 import (
-    build_parser,
     build_competitors_df,
+    build_parser,
     is_blacklisted,
     load_clusters_df,
     load_serp_df,
@@ -29,7 +29,7 @@ from scripts.extract_competitor_urls_v2 import (
 
 class TestTransliterateSlug:
     @pytest.mark.parametrize(
-        "input_text,expected",
+        ("input_text", "expected"),
         [
             ("Активная пена", "aktivnaya-pena"),
             ("Автохимия", "avtokhimiya"),
@@ -41,7 +41,7 @@ class TestTransliterateSlug:
         assert transliterate_slug(input_text) == expected
 
     @pytest.mark.parametrize(
-        "input_text,expected",
+        ("input_text", "expected"),
         [
             ("Київ", "kiyiv"),
             ("Україна", "ukrayina"),
@@ -253,7 +253,14 @@ def test_build_competitors_df_respects_max_urls_per_domain(tmp_path: Path):
     )
     vch_df = pd.DataFrame(
         [
-            {"l1": "L1", "l2": "L2", "l3": "L3", "keyword": "kw", "keyword_lower": "kw", "volume": 1000},
+            {
+                "l1": "L1",
+                "l2": "L2",
+                "l3": "L3",
+                "keyword": "kw",
+                "keyword_lower": "kw",
+                "volume": 1000,
+            },
         ]
     )
     out = build_competitors_df(serp_df, vch_df, max_urls_per_category=10, max_urls_per_domain=0)
@@ -292,16 +299,29 @@ def test_write_outputs_honors_output_override(tmp_path: Path):
     assert override.exists()
 
 
-def test_main_errors_cover_missing_files_and_empty_inputs(tmp_path: Path, capsys: pytest.CaptureFixture[str]):
+def test_main_errors_cover_missing_files_and_empty_inputs(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+):
     # Missing SERP file.
-    rc = main(["--slug", "x", "--serp-file", str(tmp_path / "no.csv"), "--clusters-file", str(tmp_path / "c.csv")])
+    rc = main(
+        [
+            "--slug",
+            "x",
+            "--serp-file",
+            str(tmp_path / "no.csv"),
+            "--clusters-file",
+            str(tmp_path / "c.csv"),
+        ]
+    )
     assert rc == 2
     assert "SERP file not found" in capsys.readouterr().out
 
     # Missing clusters file.
     serp_file = tmp_path / "serp.csv"
     serp_file.write_text("Phrase;URL;Position\nkw;https://a.com/x;1\n", encoding="utf-8")
-    rc = main(["--slug", "x", "--serp-file", str(serp_file), "--clusters-file", str(tmp_path / "no.csv")])
+    rc = main(
+        ["--slug", "x", "--serp-file", str(serp_file), "--clusters-file", str(tmp_path / "no.csv")]
+    )
     assert rc == 2
     assert "Clusters file not found" in capsys.readouterr().out
 
@@ -309,8 +329,12 @@ def test_main_errors_cover_missing_files_and_empty_inputs(tmp_path: Path, capsys
     empty_serp = tmp_path / "empty_serp.csv"
     empty_serp.write_text("Phrase;URL;Position\n", encoding="utf-8")
     clusters_file = tmp_path / "clusters.csv"
-    clusters_file.write_text("Фраза,Запросы сред. [GA]\nL1: A,\nL2: B,\nL3: C,\nkw,100\n", encoding="utf-8")
-    rc = main(["--slug", "c", "--serp-file", str(empty_serp), "--clusters-file", str(clusters_file)])
+    clusters_file.write_text(
+        "Фраза,Запросы сред. [GA]\nL1: A,\nL2: B,\nL3: C,\nkw,100\n", encoding="utf-8"
+    )
+    rc = main(
+        ["--slug", "c", "--serp-file", str(empty_serp), "--clusters-file", str(clusters_file)]
+    )
     assert rc == 2
     assert "SERP file parsed as empty" in capsys.readouterr().out
 
@@ -321,7 +345,9 @@ def test_main_errors_cover_missing_files_and_empty_inputs(tmp_path: Path, capsys
     assert rc == 2
 
 
-def test_main_category_not_found_and_vch_empty(tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
+def test_main_category_not_found_and_vch_empty(
+    tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
+):
     serp_file = tmp_path / "serp.csv"
     serp_file.write_text("Phrase;URL;Position\nkw;https://a.com/x;1\n", encoding="utf-8")
 
@@ -332,7 +358,9 @@ def test_main_category_not_found_and_vch_empty(tmp_path: Path, monkeypatch, caps
     )
 
     # Category not found.
-    rc = main(["--slug", "missing", "--serp-file", str(serp_file), "--clusters-file", str(clusters_file)])
+    rc = main(
+        ["--slug", "missing", "--serp-file", str(serp_file), "--clusters-file", str(clusters_file)]
+    )
     assert rc == 2
     assert "не найдена" in capsys.readouterr().out.lower()
 
@@ -354,6 +382,7 @@ def test_main_category_not_found_and_vch_empty(tmp_path: Path, monkeypatch, caps
 
     # Competitors empty.
     import pandas as pd
+
     import scripts.extract_competitor_urls_v2 as mod
 
     monkeypatch.setattr(mod, "build_competitors_df", lambda *_a, **_k: pd.DataFrame([]))

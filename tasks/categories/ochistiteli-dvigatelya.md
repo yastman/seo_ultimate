@@ -1,8 +1,8 @@
-# ochistiteli-dvigatelya — Ochistiteli Dvigatelya
+# ochistiteli-dvigatelya — Очистители двигателя
 
-**Priority:** MEDIUM (volume 480)
-**Type:** L2
-**Parent:** moyka-i-eksterior
+**Priority:** HIGH (volume 2310)
+**Type:** Cluster
+**Parent:** ochistiteli-dvigatelya
 
 ---
 
@@ -15,8 +15,61 @@
 | 03-Research | ✅ | — |
 | 04-Content | ✅ | ✅ |
 | 05-UK | — | ✅ |
-| 06-Quality | ✅ | ✅ |
+| 06-Quality | ⬜ | ⬜ |
 | 07-Deploy | ⬜ | ⬜ |
+
+---
+
+## Keywords (из CSV)
+
+| Keyword | Volume |
+|---------|--------|
+| очиститель двигателя | 480 |
+| химия для мойки двигателя | 320 |
+| средства для мойки двигателя | 260 |
+| очиститель двигателя от масла и грязи | 210 |
+| средство для мытья двигателя | 140 |
+| очиститель двигателя от масляных загрязнений | 110 |
+| купить химию для мойки двигателя | 90 |
+| химия для мотора | 70 |
+| купить очиститель двигателя | 50 |
+| химия для очистки двигателя снаружи | 40 |
+| химия для мойки мотора | 40 |
+| профессиональная химия для мойки двигателя | 40 |
+| средство для мытья двигателя от масла | 20 |
+| жидкость для мытья двигателя | 20 |
+| химия для чистки двигателя | 20 |
+| автохимия для двигателя | 20 |
+| средство для мытья мотора | 20 |
+| купить средство для мойки двигателя | 20 |
+| химия для очистки двигателя | 20 |
+| средство для очистки двигателя | 20 |
+| средство для очистки двигателя от масла | 20 |
+| очиститель двигателя от масла | 20 |
+| средство для очистки двигателя снаружи | 20 |
+| средство для мойки двигателя от масла | 20 |
+| очиститель двигателя наружный | 20 |
+| химия для мойки деталей двигателя | 20 |
+| средства для мытья двигателя автомобиля | 10 |
+| моющее средство для двигателя автомобиля | 10 |
+| средство для мытья двигателя авто | 10 |
+| автохимия для очистки двигателя | 10 |
+| химия для мойки двигателя цена | 10 |
+| моющее средство для мойки двигателя | 10 |
+| химия для мытья двигателя | 10 |
+| химия для двигателя | 10 |
+| средство для мойки двигателя цена | 10 |
+| средство для мойки двигателя авто | 10 |
+| средства для мойки двигателя автомобиля | 10 |
+| очиститель двигателя цена | 10 |
+| для очистки двигателя | 10 |
+| очиститель поверхности двигателя | 10 |
+| очиститель двигателя автомобиля | 10 |
+| купить средство для очистки двигателя | 10 |
+| жидкость для очистки двигателя | 10 |
+| мощный очиститель двигателя | 10 |
+
+**Total:** 44
 
 ---
 
@@ -29,7 +82,8 @@
 - [x] `content/ochistiteli-dvigatelya_ru.md` placeholder
 - [x] `research/RESEARCH_DATA.md` template
 
-**Validation:**
+**Init Validation:**
+
 ```bash
 python3 -c "import json; json.load(open('categories/ochistiteli-dvigatelya/data/ochistiteli-dvigatelya_clean.json')); print('PASS')"
 ```
@@ -39,24 +93,28 @@ python3 -c "import json; json.load(open('categories/ochistiteli-dvigatelya/data/
 ## Stage 02: Meta ✅
 
 ### Inputs
+
 - [ ] Прочитать `data/ochistiteli-dvigatelya_clean.json`
 - [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
+
 - [ ] title_ru: 50-60 chars, содержит primary keyword
 - [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
 - [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
+
 - [ ] title_uk: 50-60 chars
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
-### Output
+### Meta Output
+
 - [ ] Записать в `meta/ochistiteli-dvigatelya_meta.json`
 
-### Validation
+### Meta Validation
+
 ```bash
 python3 scripts/validate_meta.py categories/ochistiteli-dvigatelya/meta/ochistiteli-dvigatelya_meta.json
 ```
@@ -66,43 +124,25 @@ python3 scripts/validate_meta.py categories/ochistiteli-dvigatelya/meta/ochistit
 ## Stage 03: Research ✅
 
 ### Block 1: Product Analysis
+
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
-- [ ] Особенности товаров
 
 ### Block 2: Competitors
+
 - [ ] WebSearch: "{primary keyword} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
+
 - [ ] Для кого?
 - [ ] Какие задачи решает?
-- [ ] Где применяется?
 
-### Block 4: Buying Guide
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
+### Research Output
 
-### Block 5: FAQ
-- [ ] Собрать 5-7 вопросов
-
-### Block 6: Comparison Table
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
-
-### Block 7: How-To
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
-
-### Block 8: Interlink
-- [ ] Связанные категории
-- [ ] Дополняющие товары
-
-### Output
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
-### Validation
+### Research Validation
+
 ```bash
 grep -c "^## Block" categories/ochistiteli-dvigatelya/research/RESEARCH_DATA.md
 ```
@@ -112,6 +152,7 @@ grep -c "^## Block" categories/ochistiteli-dvigatelya/research/RESEARCH_DATA.md
 ## Stage 04: Content ✅
 
 ### Structure
+
 - [ ] H1: primary keyword
 - [ ] Intro: 150-200 слов
 - [ ] H2: Buying Guide
@@ -121,12 +162,14 @@ grep -c "^## Block" categories/ochistiteli-dvigatelya/research/RESEARCH_DATA.md
 - [ ] Conclusion + CTA
 
 ### SEO Requirements
+
 - [ ] Primary keyword: 3-5 раз
 - [ ] Word count: 1500-2500
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
-### Validation
+### Content Validation
+
 ```bash
 python3 scripts/validate_content.py categories/ochistiteli-dvigatelya/content/ochistiteli-dvigatelya_ru.md "{keyword}" --mode seo
 ```
@@ -135,63 +178,27 @@ python3 scripts/validate_content.py categories/ochistiteli-dvigatelya/content/oc
 
 ## Stage 05: UK ✅
 
-### Create Structure
-- [ ] `uk/categories/ochistiteli-dvigatelya/data/`
-- [ ] `uk/categories/ochistiteli-dvigatelya/meta/`
-- [ ] `uk/categories/ochistiteli-dvigatelya/content/`
-
-### Translate
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
-
-### Quality Check
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
 
 ---
 
-## Stage 06: Quality Gate ✅
+## Stage 06: Quality Gate ⬜
 
-### Checklist
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
 - [ ] Research complete
 - [ ] SEO compliant
-
-### Output
-- [ ] Создать `QUALITY_REPORT.md`
 
 ---
 
 ## Stage 07: Deploy ⬜
 
-### Pre-Deploy
-- [ ] Quality Gate = PASS
 - [ ] Backup DB
-
-### Deploy
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
-
-### Post-Deploy
+- [ ] Update Meta/Content RU/UK
 - [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
 
 ---
 
-## Notes
-
-- Parent: moyka-i-eksterior
-- Type: L2
-- Volume: 480
-
----
-
-**Last Updated:** 2025-12-31
+**Last Updated:** 2026-01-02

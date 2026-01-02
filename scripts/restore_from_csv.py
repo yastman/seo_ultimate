@@ -8,7 +8,7 @@ restore_from_csv.py — Восстанавливает _clean.json из CSV се
 import csv
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
+
 
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
@@ -37,24 +37,24 @@ SLUG_TO_SUBBLOCKS = {
 COMMERCIAL_MODIFIERS = ["купить", "цена", "заказать", "стоимость", "недорого", "оптом"]
 
 
-def parse_csv_block(block_name: str) -> List[Dict]:
+def parse_csv_block(block_name: str) -> list[dict]:
     """Parse all keywords from a CSV block."""
     keywords = []
     current_block = None
 
-    with open(SEMANTICS_CSV, encoding='utf-8') as f:
+    with open(SEMANTICS_CSV, encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
             if not row or not row[0].strip():
                 continue
 
             phrase = row[0].strip()
-            volume_str = row[2].strip() if len(row) > 2 else ''
+            volume_str = row[2].strip() if len(row) > 2 else ""
 
             # Detect block headers
-            for prefix in ['L1:', 'L2:', 'L3:', 'SEO-Фильтр:']:
+            for prefix in ["L1:", "L2:", "L3:", "SEO-Фильтр:"]:
                 if phrase.startswith(prefix):
-                    name = phrase.replace(prefix, '').strip()
+                    name = phrase.replace(prefix, "").strip()
                     if name == block_name:
                         current_block = name
                     elif current_block:
@@ -64,29 +64,26 @@ def parse_csv_block(block_name: str) -> List[Dict]:
             else:
                 # Not a header - check if keyword
                 if current_block and volume_str.isdigit():
-                    keywords.append({
-                        'keyword': phrase,
-                        'volume': int(volume_str)
-                    })
+                    keywords.append({"keyword": phrase, "volume": int(volume_str)})
 
     return keywords
 
 
-def parse_csv_subblocks(subblock_names: List[str]) -> List[Dict]:
+def parse_csv_subblocks(subblock_names: list[str]) -> list[dict]:
     """Parse keywords from multiple sub-blocks in the 'Наборы' section."""
     keywords = []
     current_subblock = None
     in_nabory = False
 
-    with open(SEMANTICS_CSV, encoding='utf-8') as f:
+    with open(SEMANTICS_CSV, encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
             if not row or not row[0].strip():
                 continue
 
             phrase = row[0].strip()
-            count_str = row[1].strip() if len(row) > 1 else ''
-            volume_str = row[2].strip() if len(row) > 2 else ''
+            count_str = row[1].strip() if len(row) > 1 else ""
+            volume_str = row[2].strip() if len(row) > 2 else ""
 
             # Check for "Наборы" parent block
             if phrase == "Наборы" and count_str:
@@ -94,14 +91,14 @@ def parse_csv_subblocks(subblock_names: List[str]) -> List[Dict]:
                 continue
 
             # Exit Наборы section on next L1/L2/L3 header
-            if in_nabory and phrase.startswith(('L1:', 'L2:', 'L3:')):
+            if in_nabory and phrase.startswith(("L1:", "L2:", "L3:")):
                 break
 
             if not in_nabory:
                 continue
 
             # Check for sub-block header (has count like "2/10" or "2")
-            if count_str and ('/' in count_str or count_str.isdigit()) and not volume_str:
+            if count_str and ("/" in count_str or count_str.isdigit()) and not volume_str:
                 # This is a sub-block header
                 if phrase.lower() in [n.lower() for n in subblock_names]:
                     current_subblock = phrase
@@ -111,18 +108,15 @@ def parse_csv_subblocks(subblock_names: List[str]) -> List[Dict]:
 
             # Parse keyword
             if current_subblock and volume_str.isdigit():
-                keywords.append({
-                    'keyword': phrase,
-                    'volume': int(volume_str)
-                })
+                keywords.append({"keyword": phrase, "volume": int(volume_str)})
 
     return keywords
 
 
-def cluster_keywords(keywords: List[Dict]) -> Dict:
+def cluster_keywords(keywords: list[dict]) -> dict:
     """Cluster keywords into primary/secondary/supporting/commercial."""
     # Sort by volume descending
-    sorted_kws = sorted(keywords, key=lambda x: x['volume'], reverse=True)
+    sorted_kws = sorted(keywords, key=lambda x: x["volume"], reverse=True)
 
     primary = []
     secondary = []
@@ -130,8 +124,8 @@ def cluster_keywords(keywords: List[Dict]) -> Dict:
     commercial = []
 
     for kw in sorted_kws:
-        keyword = kw['keyword']
-        volume = kw['volume']
+        keyword = kw["keyword"]
+        volume = kw["volume"]
 
         # Skip zero volume
         if volume == 0:
@@ -141,36 +135,26 @@ def cluster_keywords(keywords: List[Dict]) -> Dict:
         is_commercial = any(mod in keyword.lower() for mod in COMMERCIAL_MODIFIERS)
 
         if is_commercial:
-            commercial.append({
-                'keyword': keyword,
-                'volume': volume,
-                'cluster': 'commercial',
-                'use_in': 'meta_only'
-            })
+            commercial.append(
+                {
+                    "keyword": keyword,
+                    "volume": volume,
+                    "cluster": "commercial",
+                    "use_in": "meta_only",
+                }
+            )
         elif volume >= 300:
-            primary.append({
-                'keyword': keyword,
-                'volume': volume,
-                'cluster': 'main'
-            })
+            primary.append({"keyword": keyword, "volume": volume, "cluster": "main"})
         elif volume >= 50:
-            secondary.append({
-                'keyword': keyword,
-                'volume': volume,
-                'cluster': 'related'
-            })
+            secondary.append({"keyword": keyword, "volume": volume, "cluster": "related"})
         else:
-            supporting.append({
-                'keyword': keyword,
-                'volume': volume,
-                'cluster': 'long_tail'
-            })
+            supporting.append({"keyword": keyword, "volume": volume, "cluster": "long_tail"})
 
     return {
-        'primary': primary[:5],  # Top 5
-        'secondary': secondary[:10],  # Top 10
-        'supporting': supporting[:15],  # Top 15
-        'commercial': commercial[:5]  # Top 5
+        "primary": primary[:5],  # Top 5
+        "secondary": secondary[:10],  # Top 10
+        "supporting": supporting[:15],  # Top 15
+        "commercial": commercial[:5],  # Top 5
     }
 
 
@@ -201,28 +185,26 @@ def restore_category(slug: str) -> bool:
     # Read existing file
     clean_path = CATEGORIES_DIR / slug / "data" / f"{slug}_clean.json"
     if clean_path.exists():
-        with open(clean_path, encoding='utf-8') as f:
+        with open(clean_path, encoding="utf-8") as f:
             data = json.load(f)
     else:
         data = {"slug": slug, "language": "ru"}
 
     # Update keywords
-    data['keywords'] = clustered
+    data["keywords"] = clustered
 
     # Update stats
-    total_kws = sum(len(clustered[cat]) for cat in ['primary', 'secondary', 'supporting', 'commercial'])
-    total_vol = sum(kw['volume'] for cat in clustered.values() for kw in cat)
-    data['stats'] = {
-        'before': len(keywords),
-        'after': total_kws,
-        'total_volume': total_vol
-    }
+    total_kws = sum(
+        len(clustered[cat]) for cat in ["primary", "secondary", "supporting", "commercial"]
+    )
+    total_vol = sum(kw["volume"] for cat in clustered.values() for kw in cat)
+    data["stats"] = {"before": len(keywords), "after": total_kws, "total_volume": total_vol}
 
     # Add note
-    data['restored_from'] = f"{source} ({len(keywords)} raw keywords)"
+    data["restored_from"] = f"{source} ({len(keywords)} raw keywords)"
 
     # Write
-    with open(clean_path, 'w', encoding='utf-8') as f:
+    with open(clean_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
     print(f"  ✅ {slug}: {total_kws} keywords from {len(keywords)} raw")
@@ -233,12 +215,7 @@ def main():
     print("🔄 Restoring categories from CSV...\n")
 
     # Categories from main blocks
-    main_block_cats = [
-        "mikrofibra-i-tryapki",
-        "shchetki-i-kisti",
-        "mekhovye",
-        "s-voskom"
-    ]
+    main_block_cats = ["mikrofibra-i-tryapki", "shchetki-i-kisti", "mekhovye", "s-voskom"]
 
     # Categories from sub-blocks
     subblock_cats = [
@@ -247,7 +224,7 @@ def main():
         "nabory-dlya-khimchistki",
         "nabory-dlya-kozhi",
         "nabory-dlya-deteylinga",
-        "podarochnye-nabory"
+        "podarochnye-nabory",
     ]
 
     categories = main_block_cats + subblock_cats

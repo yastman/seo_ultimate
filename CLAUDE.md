@@ -18,6 +18,7 @@ CSV → /category-init → /generate-meta → /seo-research → /content-generat
 **Главный файл:** `tasks/PIPELINE_STATUS.md`
 
 ### Структура
+
 ```
 tasks/
 ├── PIPELINE_STATUS.md      # Прогресс + текущая очередь

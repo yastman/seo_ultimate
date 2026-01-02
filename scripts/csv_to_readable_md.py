@@ -25,7 +25,7 @@ from typing import Any
 sys.path.append(str(Path(__file__).parent))
 
 try:
-    import config
+    # import config
     from config import PROJECT_ROOT, SEMANTICS_CSV
 except ImportError:
     print("Warning: config.py not found, using default paths.")
@@ -86,7 +86,7 @@ class SemanticsParser:
 
         with open(csv_path, encoding="utf-8") as f:
             reader = csv.reader(f)
-            for row_idx, row in enumerate(reader):
+            for row in reader:
                 if not row:
                     continue
 
@@ -196,14 +196,15 @@ class SemanticsParser:
                 # Must be a header if:
                 # A) Col2 contains '/' (e.g., 3/15)
                 # B) Col2 is a digit >= 5 (smaller blocks are assumed to be lists inside a larger block, unless explicitly marked)
-                
+
                 is_valid_header_count = False
-                if col2 and (not col3 or col3 == "0"):
-                     if "/" in col2:
-                         is_valid_header_count = True
-                     elif col2.isdigit() and int(col2) >= 5:
-                         is_valid_header_count = True
-                
+                if (
+                    col2
+                    and (not col3 or col3 == "0")
+                    and ("/" in col2 or (col2.isdigit() and int(col2) >= 5))
+                ):
+                    is_valid_header_count = True
+
                 if is_valid_header_count:
                     name = col1.strip()
                     # Normalize name (Capitalize first letter to match L3 style)
@@ -239,31 +240,33 @@ class SemanticsParser:
                         if current_l3:
                             active_container = current_l3
                         else:
-                             active_container = self._ensure_direct_keywords_container(current_l1, current_l2)
-                    
+                            active_container = self._ensure_direct_keywords_container(
+                                current_l1, current_l2
+                            )
+
                     if active_container:
                         active_container.add_keyword(col1, volume)
                         self._track_keyword(col1, volume, active_container.name)
                     else:
-                        # Should technically be handled by _ensure_direct_keywords_container, 
+                        # Should technically be handled by _ensure_direct_keywords_container,
                         # but if no L1 exists at all:
                         self.orphans.append(
                             {"keyword": col1, "volume": volume, "context": last_header}
                         )
                     continue
-    
+
     def _ensure_direct_keywords_container(self, l1: Node | None, l2: Node | None) -> Node | None:
         """Helper to get or create a 'Direct Keywords' cluster under the lowest available parent."""
         parent = l2 if l2 else l1
         if not parent:
             return None
-        
+
         cluster_name = f"🔑 Direct Keywords ({parent.name})"
-        
+
         # Check if last child is already this container
         if parent.children and parent.children[-1].name == cluster_name:
             return parent.children[-1]
-        
+
         # Create new
         container = Node(cluster_name, "Cluster")
         parent.add_child(container)
@@ -287,10 +290,8 @@ class SemanticsParser:
                 f"⚠️ VALIDATION FAILED: CSV={self.csv_total_count}, Parsed={self.parsed_count}, Lost={lost}"
             )
             # Allow script to proceed but Warn heavily, maybe return False
-            return False 
-        print(
-            f"✅ Validation OK: Parsed {self.parsed_count}/{self.csv_total_count} (100%)"
-        )
+            return False
+        print(f"✅ Validation OK: Parsed {self.parsed_count}/{self.csv_total_count} (100%)")
         return True
 
     def _track_keyword(self, keyword: str, volume: int, category_name: str) -> None:
@@ -311,19 +312,17 @@ class SemanticsParser:
         # Recursively collect stats
         for l1 in self.tree:
             self._collect_stats_recursive(l1, all_keywords_flat)
-        
+
         # Determine stats
         total_keywords = len(all_keywords_flat)
         total_volume = sum(k["volume"] for k in all_keywords_flat)
         orphan_count = len(self.orphans)
-        
+
         # Counters
         total_clusters, total_filters = self._count_structural_nodes(self.tree)
         duplicate_count = len(self.duplicates)
 
-        print(
-            f"Stats: TreeKWs={total_keywords}, StructOrphans={orphan_count}"
-        )
+        print(f"Stats: TreeKWs={total_keywords}, StructOrphans={orphan_count}")
         print(f"Writing Markdown to: {output_path}")
 
         with open(output_path, "w", encoding="utf-8") as f:
@@ -335,7 +334,9 @@ class SemanticsParser:
 
             validation_icon = "✅" if self.csv_total_count == self.parsed_count else "⚠️"
             if self.csv_total_count != self.parsed_count:
-                 f.write(f"> ⚠️ **ВНИМАНИЕ**: Обнаружено расхождение в {self.csv_total_count - self.parsed_count} ключей. Проверьте лог консоли.\n\n")
+                f.write(
+                    f"> ⚠️ **ВНИМАНИЕ**: Обнаружено расхождение в {self.csv_total_count - self.parsed_count} ключей. Проверьте лог консоли.\n\n"
+                )
 
             f.write("## 📊 Сводка\n\n")
             f.write(
@@ -344,23 +345,19 @@ class SemanticsParser:
             f.write(
                 f"- **Структура**: L1: {len(self.tree)} | Кластеров: {total_clusters} | Фильтров: {total_filters}\n"
             )
-            f.write(
-                f"- **Ключей**: {total_keywords} | **Volume**: {total_volume}\n"
-            )
+            f.write(f"- **Ключей**: {total_keywords} | **Volume**: {total_volume}\n")
             f.write(f"- **🔄 Дублей**: {duplicate_count}\n")
             if orphan_count > 0:
-                 f.write(f"- **⚠️ Ошибки парсинга (Orphans)**: {orphan_count}\n")
+                f.write(f"- **⚠️ Ошибки парсинга (Orphans)**: {orphan_count}\n")
             f.write("\n")
 
             # Top 10
-            top_10 = sorted(
-                all_keywords_flat, key=lambda x: x["volume"], reverse=True
-            )[:10]
+            top_10 = sorted(all_keywords_flat, key=lambda x: x["volume"], reverse=True)[:10]
             f.write("## 🔥 Топ-10 по Volume\n\n")
             f.write("| Keyword | Volume | Block |\n")
             f.write("|---|---|---|\n")
             for kw in top_10:
-                block_name = kw.get('block', 'Unknown')
+                block_name = kw.get("block", "Unknown")
                 f.write(f"| {kw['keyword']} | {kw['volume']} | {block_name} |\n")
             f.write("\n")
 
@@ -387,13 +384,9 @@ class SemanticsParser:
                 f.write("## ⚠️ Ошибки Структуры (Без категории)\n\n")
                 f.write("| Keyword | Volume | Контекст |\n")
                 f.write("|---|---|---|\n")
-                sorted_orphans = sorted(
-                    self.orphans, key=lambda x: x["volume"], reverse=True
-                )
+                sorted_orphans = sorted(self.orphans, key=lambda x: x["volume"], reverse=True)
                 for o in sorted_orphans:
-                    f.write(
-                        f"| {o['keyword']} | {o['volume']} | {o['context']} |\n"
-                    )
+                    f.write(f"| {o['keyword']} | {o['volume']} | {o['context']} |\n")
 
             f.write("\n## 🔄 Дубли (внутри CSV)\n\n")
             if self.duplicates:
@@ -409,9 +402,9 @@ class SemanticsParser:
         for kw in node.keywords:
             # Capture block name for Top-10
             entry = kw.copy()
-            entry['block'] = node.name 
+            entry["block"] = node.name
             sink.append(entry)
-            
+
         for child in node.children:
             self._collect_stats_recursive(child, sink)
 
@@ -424,11 +417,11 @@ class SemanticsParser:
                 n_clusters += 1
             elif node.level == "Filter":
                 n_filters += 1
-            
+
             sub_c, sub_f = self._count_structural_nodes(node.children)
             n_clusters += sub_c
             n_filters += sub_f
-            
+
         return n_clusters, n_filters
 
     def _get_node_stats(self, node: Node) -> dict[str, int]:

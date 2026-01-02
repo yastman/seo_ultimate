@@ -71,12 +71,13 @@ ultimate_net_ua_backup.sql (62 MB) — исходный дамп с продак
 ```
 
 Восстановление с нуля (если нужно):
+
 ```bash
 mysql -u ultimate -pultimate123 -e "DROP DATABASE IF EXISTS yastman_test; CREATE DATABASE yastman_test;"
 mysql -u ultimate -pultimate123 yastman_test < ultimate_net_ua_backup.sql
 ```
 
-### Подключение:
+### Подключение
 
 ```bash
 # Подключиться к базе
@@ -89,7 +90,7 @@ mysql -u ultimate -pultimate123 yastman_test -e "SHOW TABLES;"
 mysql -u ultimate -pultimate123 yastman_test -e "SELECT category_id, name FROM oc_category_description WHERE language_id = 3 LIMIT 10;"
 ```
 
-### Креды (в `.env`):
+### Креды (в `.env`)
 
 ```
 DB_HOST=localhost
@@ -99,7 +100,7 @@ DB_USER=ultimate
 DB_PASSWORD=ultimate123
 ```
 
-### Запуск/остановка MySQL:
+### Запуск/остановка MySQL
 
 ```bash
 # Запустить
@@ -155,7 +156,7 @@ CREATE TABLE `oc_category_description` (
       └─ 420: Очистители шин
 ```
 
-### Наши 9 категорий (slug → ID):
+### Наши 9 категорий (slug → ID)
 
 | Slug | ID | Название | Родитель |
 |------|-----|----------|----------|
@@ -184,6 +185,7 @@ python3 scripts/upload_to_db.py antimoshka
 ```
 
 Скрипт автоматически:
+
 - Конвертирует MD → HTML (h2, h3, таблицы, списки)
 - Читает meta из JSON
 - Обновляет `description`, `meta_title`, `meta_description`, `meta_h1`

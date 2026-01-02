@@ -26,11 +26,11 @@ Usage:
 """
 
 import json
-import sys
-from pathlib import Path
-from datetime import datetime, timezone
-from typing import Dict, List, Optional, Tuple
 import subprocess
+import sys
+from datetime import UTC, datetime
+from pathlib import Path
+
 
 # =============================================================================
 # Configuration
@@ -45,10 +45,10 @@ SEMANTICS_CSV = PROJECT_ROOT / "data" / "Структура  Ultimate финал
 
 # Import from seo_utils (SSOT)
 try:
-    from scripts.seo_utils import L3_TO_SLUG, SLUG_TO_L3, slugify, QUALITY_THRESHOLDS
+    from scripts.seo_utils import L3_TO_SLUG, SLUG_TO_L3, slugify
 except ImportError:
     try:
-        from seo_utils import L3_TO_SLUG, SLUG_TO_L3, slugify, QUALITY_THRESHOLDS
+        from seo_utils import L3_TO_SLUG, SLUG_TO_L3, slugify
     except ImportError:
         print("Warning: seo_utils not found, using fallback")
         L3_TO_SLUG = {}
@@ -58,48 +58,42 @@ except ImportError:
 # Batch Log Management
 # =============================================================================
 
-def load_batch_log() -> Dict:
+
+def load_batch_log() -> dict:
     """Load batch processing log."""
     if BATCH_LOG.exists():
-        with open(BATCH_LOG, encoding='utf-8') as f:
+        with open(BATCH_LOG, encoding="utf-8") as f:
             return json.load(f)
     return {
-        "created_at": datetime.now(timezone.utc).isoformat(),
+        "created_at": datetime.now(UTC).isoformat(),
         "last_updated": None,
         "total_processed": 0,
         "total_success": 0,
         "total_failed": 0,
-        "categories": {}
+        "categories": {},
     }
 
 
-def save_batch_log(log: Dict):
+def save_batch_log(log: dict):
     """Save batch processing log."""
-    log["last_updated"] = datetime.now(timezone.utc).isoformat()
+    log["last_updated"] = datetime.now(UTC).isoformat()
     TASKS_DIR.mkdir(parents=True, exist_ok=True)
-    with open(BATCH_LOG, 'w', encoding='utf-8') as f:
+    with open(BATCH_LOG, "w", encoding="utf-8") as f:
         json.dump(log, f, ensure_ascii=False, indent=2)
 
 
 def update_category_status(
-    log: Dict,
-    slug: str,
-    stage: str,
-    status: str,
-    details: Optional[Dict] = None
+    log: dict, slug: str, stage: str, status: str, details: dict | None = None
 ):
     """Update category status in batch log."""
     if slug not in log["categories"]:
-        log["categories"][slug] = {
-            "first_run": datetime.now(timezone.utc).isoformat(),
-            "runs": []
-        }
+        log["categories"][slug] = {"first_run": datetime.now(UTC).isoformat(), "runs": []}
 
     run = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": datetime.now(UTC).isoformat(),
         "stage": stage,
         "status": status,
-        "details": details or {}
+        "details": details or {},
     }
 
     log["categories"][slug]["runs"].append(run)
@@ -113,7 +107,8 @@ def update_category_status(
 # Category Discovery
 # =============================================================================
 
-def get_all_categories() -> List[Dict]:
+
+def get_all_categories() -> list[dict]:
     """Get all categories from CSV with metadata."""
     import csv
 
@@ -121,7 +116,7 @@ def get_all_categories() -> List[Dict]:
     current_l3 = None
     current_keywords = []
 
-    with open(SEMANTICS_CSV, encoding='utf-8') as f:
+    with open(SEMANTICS_CSV, encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
             if not row or not row[0].strip():
@@ -130,58 +125,61 @@ def get_all_categories() -> List[Dict]:
             phrase = row[0].strip()
 
             # Detect L3 category
-            if phrase.startswith('L3:'):
+            if phrase.startswith("L3:"):
                 # Save previous category
                 if current_l3 and current_keywords:
                     slug = L3_TO_SLUG.get(current_l3) or slugify(current_l3)
-                    categories.append({
-                        "slug": slug,
-                        "name": current_l3,
-                        "keywords_count": len(current_keywords),
-                        "total_volume": sum(kw.get('volume', 0) for kw in current_keywords)
-                    })
+                    categories.append(
+                        {
+                            "slug": slug,
+                            "name": current_l3,
+                            "keywords_count": len(current_keywords),
+                            "total_volume": sum(kw.get("volume", 0) for kw in current_keywords),
+                        }
+                    )
 
-                current_l3 = phrase.replace('L3:', '').strip()
+                current_l3 = phrase.replace("L3:", "").strip()
                 current_keywords = []
                 continue
 
             # Skip L1, L2 headers
-            if phrase.startswith('L1:') or phrase.startswith('L2:'):
+            if phrase.startswith("L1:") or phrase.startswith("L2:"):
                 if current_l3 and current_keywords:
                     slug = L3_TO_SLUG.get(current_l3) or slugify(current_l3)
-                    categories.append({
-                        "slug": slug,
-                        "name": current_l3,
-                        "keywords_count": len(current_keywords),
-                        "total_volume": sum(kw.get('volume', 0) for kw in current_keywords)
-                    })
+                    categories.append(
+                        {
+                            "slug": slug,
+                            "name": current_l3,
+                            "keywords_count": len(current_keywords),
+                            "total_volume": sum(kw.get("volume", 0) for kw in current_keywords),
+                        }
+                    )
                 current_l3 = None
                 current_keywords = []
                 continue
 
             # Parse keyword
             if current_l3:
-                volume_str = row[2].strip() if len(row) > 2 else ''
+                volume_str = row[2].strip() if len(row) > 2 else ""
                 if volume_str.isdigit():
-                    current_keywords.append({
-                        'keyword': phrase,
-                        'volume': int(volume_str)
-                    })
+                    current_keywords.append({"keyword": phrase, "volume": int(volume_str)})
 
     # Don't forget the last category
     if current_l3 and current_keywords:
         slug = L3_TO_SLUG.get(current_l3) or slugify(current_l3)
-        categories.append({
-            "slug": slug,
-            "name": current_l3,
-            "keywords_count": len(current_keywords),
-            "total_volume": sum(kw.get('volume', 0) for kw in current_keywords)
-        })
+        categories.append(
+            {
+                "slug": slug,
+                "name": current_l3,
+                "keywords_count": len(current_keywords),
+                "total_volume": sum(kw.get("volume", 0) for kw in current_keywords),
+            }
+        )
 
     return categories
 
 
-def get_category_status(slug: str, log: Dict) -> Dict:
+def get_category_status(slug: str, log: dict) -> dict:
     """Get current status of a category."""
     cat_log = log.get("categories", {}).get(slug, {})
 
@@ -210,7 +208,7 @@ def get_category_status(slug: str, log: Dict) -> Dict:
         "has_content": has_content,
         "has_meta": has_meta,
         "last_status": cat_log.get("last_status", "unknown"),
-        "runs_count": len(cat_log.get("runs", []))
+        "runs_count": len(cat_log.get("runs", [])),
     }
 
 
@@ -218,16 +216,17 @@ def get_category_status(slug: str, log: Dict) -> Dict:
 # Pipeline Steps
 # =============================================================================
 
-def run_analyze(slug: str) -> Tuple[bool, Dict]:
+
+def run_analyze(slug: str) -> tuple[bool, dict]:
     """Run analyze_category.py for a slug."""
     script = SCRIPT_DIR / "analyze_category.py"
 
     try:
-        result = subprocess.run(
-            ["python3", str(script), slug, "--json"],
+        result = subprocess.run(  # noqa: S603
+            ["python3", str(script), slug, "--json"],  # noqa: S607
             capture_output=True,
             text=True,
-            timeout=60
+            timeout=60,
         )
 
         if result.returncode == 0:
@@ -245,7 +244,7 @@ def run_analyze(slug: str) -> Tuple[bool, Dict]:
         return False, {"error": str(e)}
 
 
-def run_validate(slug: str, primary_keyword: str) -> Tuple[bool, Dict]:
+def run_validate(slug: str, primary_keyword: str) -> tuple[bool, dict]:
     """Run validate_content.py for a slug.
 
     FIX v8.5: Использует --json для надёжного парсинга результата
@@ -259,12 +258,12 @@ def run_validate(slug: str, primary_keyword: str) -> Tuple[bool, Dict]:
 
     try:
         # FIX: Используем --json для structured output
-        result = subprocess.run(
-            ["python3", str(script), str(content_file), primary_keyword, "--json"],
+        result = subprocess.run(  # noqa: S603
+            ["python3", str(script), str(content_file), primary_keyword, "--json"],  # noqa: S607
             capture_output=True,
             text=True,
-            timeout=120
-        )
+            timeout=120,
+        )  # noqa: S603, S607
 
         # Пытаемся распарсить JSON output
         try:
@@ -293,15 +292,15 @@ def run_validate(slug: str, primary_keyword: str) -> Tuple[bool, Dict]:
 
 MAX_HEALING_ATTEMPTS = 3
 
-def extract_issues_from_validation(validation: Dict) -> List[str]:
+
+def extract_issues_from_validation(validation: dict) -> list[str]:
     """Extract fixable issues from validation output."""
     issues = []
     data = validation.get("data")
-    output = validation.get('output', '')
+    output = validation.get("output", "")
 
     if data:
         checks = data.get("checks", {})
-        summary = data.get("summary", {})
 
         quality = checks.get("quality", {})
         water = quality.get("water", {})
@@ -341,34 +340,38 @@ def extract_issues_from_validation(validation: Dict) -> List[str]:
             return issues
 
     # Common issues patterns
-    if 'Water' in output and ('>' in output or 'высоко' in output.lower()):
+    if "Water" in output and (">" in output or "высоко" in output.lower()):
         issues.append("water_high")
-    if 'Nausea' in output and ('>' in output or 'высоко' in output.lower()):
+    if "Nausea" in output and (">" in output or "высоко" in output.lower()):
         issues.append("nausea_high")
-    if 'coverage' in output.lower() and ('<' in output or 'низ' in output.lower()):
+    if "coverage" in output.lower() and ("<" in output or "низ" in output.lower()):
         issues.append("coverage_low")
-    if 'H1' in output and 'не найден' in output.lower():
+    if "H1" in output and "не найден" in output.lower():
         issues.append("h1_missing")
-    if 'intro' in output.lower() and 'не найден' in output.lower():
+    if "intro" in output.lower() and "не найден" in output.lower():
         issues.append("intro_keyword_missing")
-    if 'blacklist' in output.lower() or 'запрещ' in output.lower():
+    if "blacklist" in output.lower() or "запрещ" in output.lower():
         issues.append("blacklist_violation")
 
     return issues
 
 
-def generate_fix_prompt(slug: str, issues: List[str], content: str) -> str:
+def generate_fix_prompt(slug: str, issues: list[str], content: str) -> str:
     """Generate prompt for LLM to fix issues."""
     fix_instructions = []
 
     if "water_high" in issues:
-        fix_instructions.append("- Уменьшить воду: убрать водянистые фразы ('является', 'представляет собой', 'на сегодняшний день')")
+        fix_instructions.append(
+            "- Уменьшить воду: убрать водянистые фразы ('является', 'представляет собой', 'на сегодняшний день')"
+        )
 
     if "nausea_high" in issues:
         fix_instructions.append("- Снизить тошноту: использовать синонимы для самого частого слова")
 
     if "coverage_low" in issues:
-        fix_instructions.append("- Повысить coverage: добавить больше ключевых слов естественно в текст")
+        fix_instructions.append(
+            "- Повысить coverage: добавить больше ключевых слов естественно в текст"
+        )
 
     if "h1_missing" in issues:
         fix_instructions.append("- Добавить H1 с primary keyword в начало")
@@ -398,7 +401,7 @@ def generate_fix_prompt(slug: str, issues: List[str], content: str) -> str:
 """
 
 
-def attempt_self_heal(slug: str, validation: Dict, attempt: int = 1) -> Tuple[bool, str]:
+def attempt_self_heal(slug: str, validation: dict, attempt: int = 1) -> tuple[bool, str]:
     """
     Attempt to self-heal content based on validation errors.
 
@@ -420,7 +423,7 @@ def attempt_self_heal(slug: str, validation: Dict, attempt: int = 1) -> Tuple[bo
     if not content_file.exists():
         return False, "Content file not found"
 
-    content = content_file.read_text(encoding='utf-8')
+    content = content_file.read_text(encoding="utf-8")
 
     # Generate fix prompt
     fix_prompt = generate_fix_prompt(slug, issues, content)
@@ -428,23 +431,26 @@ def attempt_self_heal(slug: str, validation: Dict, attempt: int = 1) -> Tuple[bo
     # Note: Actual LLM call should be done externally
     # This returns the prompt for manual/external execution
     prompt_file = CATEGORIES_DIR / slug / "content" / f"{slug}_fix_prompt.md"
-    prompt_file.write_text(fix_prompt, encoding='utf-8')
+    prompt_file.write_text(fix_prompt, encoding="utf-8")
 
     print(f"   Fix prompt saved to: {prompt_file.name}")
     print(f"   Run LLM manually or use: 'исправь {slug}'")
 
-    return False, f"Fix prompt generated. Manual intervention required."
+    return False, "Fix prompt generated. Manual intervention required."
 
 
 # =============================================================================
 # Batch Processing
 # =============================================================================
 
-def process_category(slug: str, log: Dict, analyze_only: bool = False, self_heal: bool = True) -> bool:
+
+def process_category(
+    slug: str, log: dict, analyze_only: bool = False, self_heal: bool = True
+) -> bool:
     """Process a single category through the pipeline."""
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"Processing: {slug}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     # Step 1: Analyze
     print("\n[1/3] Analyzing category...")
@@ -467,7 +473,7 @@ def process_category(slug: str, log: Dict, analyze_only: bool = False, self_heal
     # Step 2: Check if content exists (generation is external)
     content_file = CATEGORIES_DIR / slug / "content" / f"{slug}_ru.md"
     if not content_file.exists():
-        print(f"\n[2/3] Content not found. Generate with LLM:")
+        print("\n[2/3] Content not found. Generate with LLM:")
         print(f"   Use: 'контент для {slug}' command")
         update_category_status(log, slug, "generate", "PENDING")
         return False
@@ -477,23 +483,23 @@ def process_category(slug: str, log: Dict, analyze_only: bool = False, self_heal
     # Step 3: Validate
     print("\n[3/3] Validating content...")
     # FIX: Правильный путь к primary keyword в структуре analyze_category.py
-    keywords_data = analysis.get('keywords', {})
-    primary_data = keywords_data.get('primary', {})
-    primary_kw = primary_data.get('keyword', '') or slug.replace('-', ' ')
+    keywords_data = analysis.get("keywords", {})
+    primary_data = keywords_data.get("primary", {})
+    primary_kw = primary_data.get("keyword", "") or slug.replace("-", " ")
     success, validation = run_validate(slug, primary_kw)
 
-    status = validation.get('status', 'UNKNOWN')
+    status = validation.get("status", "UNKNOWN")
     if status == "PASS":
-        print(f"   Validation: PASS")
+        print("   Validation: PASS")
         update_category_status(log, slug, "validate", "PASS", validation)
         log["total_success"] = log.get("total_success", 0) + 1
         return True
     elif status == "WARNING":
-        print(f"   Validation: WARNING (acceptable)")
+        print("   Validation: WARNING (acceptable)")
         update_category_status(log, slug, "validate", "WARNING", validation)
         return True
     else:
-        print(f"   Validation: FAIL")
+        print("   Validation: FAIL")
         update_category_status(log, slug, "validate", "FAIL", validation)
 
         # Attempt self-healing
@@ -503,8 +509,8 @@ def process_category(slug: str, log: Dict, analyze_only: bool = False, self_heal
                 # Re-validate after healing
                 print("\n   Re-validating after self-heal...")
                 success, validation = run_validate(slug, primary_kw)
-                if validation.get('status') in ['PASS', 'WARNING']:
-                    print(f"   Self-heal SUCCESSFUL!")
+                if validation.get("status") in ["PASS", "WARNING"]:
+                    print("   Self-heal SUCCESSFUL!")
                     update_category_status(log, slug, "self_heal", "PASS", validation)
                     log["total_success"] = log.get("total_success", 0) + 1
                     return True
@@ -573,7 +579,9 @@ def list_all_categories():
 
         clean_mark = "" if status["has_clean_json"] else "" if status["has_raw_json"] else ""
 
-        print(f"{slug:<25} {cat['keywords_count']:>8} {status['stage']:<18} {status['last_status']:<12} {clean_mark}")
+        print(
+            f"{slug:<25} {cat['keywords_count']:>8} {status['stage']:<18} {status['last_status']:<12} {clean_mark}"
+        )
 
     print("-" * 80)
     print(f"Total: {len(categories)} categories")
@@ -594,6 +602,7 @@ def list_all_categories():
 # =============================================================================
 # CLI
 # =============================================================================
+
 
 def main():
     if len(sys.argv) < 2:

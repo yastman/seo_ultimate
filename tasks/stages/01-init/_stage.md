@@ -8,12 +8,15 @@
 ## Checklist per Category
 
 ### Pre-flight
+
 - [ ] Slug в kebab-case (lowercase, hyphens)
 - [ ] Slug существует в `Структура _Ultimate.csv`
 - [ ] Папка `categories/{slug}/` НЕ существует
 
 ### Execution
+
 - [ ] Создать структуру папок:
+
   ```
   categories/{slug}/
   ├── data/
@@ -21,6 +24,7 @@
   ├── content/
   └── research/
   ```
+
 - [ ] Извлечь ключи из CSV
 - [ ] Кластеризовать ключи (50+ → 10-15)
 - [ ] Создать `data/{slug}_clean.json`
@@ -29,6 +33,7 @@
 - [ ] Создать `research/RESEARCH_DATA.md` (template)
 
 ### Validation
+
 ```bash
 # 1. Проверить структуру папок
 ls -la categories/{slug}/
@@ -47,6 +52,7 @@ print('PASS' if not missing else f'FAIL: missing {missing}')
 ```
 
 ### Acceptance Criteria
+
 - [ ] JSON валиден (без ошибок парсинга)
 - [ ] stats.before > stats.after (кластеризация выполнена)
 - [ ] keywords.primary содержит 2-3 ключа
@@ -54,6 +60,7 @@ print('PASS' if not missing else f'FAIL: missing {missing}')
 - [ ] usage_rules присутствуют
 
 ### Post-action
+
 - [ ] Переместить файл из `pending/` в `completed/`
 - [ ] Обновить счётчик в `PIPELINE_STATUS.md`
 

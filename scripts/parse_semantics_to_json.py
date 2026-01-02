@@ -28,11 +28,10 @@ Variations Generation:
 
 import csv
 import json
-import re
 import sys
-from pathlib import Path
 from datetime import datetime
-from typing import Dict, List, Tuple, Optional
+from pathlib import Path
+
 
 if __name__ == "__main__" and __package__ is None:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -47,8 +46,8 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 SEMANTICS_CSV = PROJECT_ROOT / "data" / "Структура  Ultimate финал - Лист2.csv"
 
 # Volume thresholds for classification
-VOLUME_PRIMARY = 500      # >500 = PRIMARY
-VOLUME_SECONDARY = 100    # 100-500 = SECONDARY
+VOLUME_PRIMARY = 500  # >500 = PRIMARY
+VOLUME_SECONDARY = 100  # 100-500 = SECONDARY
 # <100 = SUPPORTING
 
 # L3 name to slug mapping - imported from seo_utils.py (SSOT)
@@ -79,14 +78,17 @@ except ImportError:
             "Подарочные наборы": "podarochnye-nabory",
         }
         SLUG_TO_L3 = {v: k for k, v in L3_TO_SLUG.items()}
-        get_l3_slug = lambda name: L3_TO_SLUG.get(name, name.lower().replace(' ', '-'))
+
+        def get_l3_slug(name):
+            return L3_TO_SLUG.get(name, name.lower().replace(" ", "-"))
 
 
 # =============================================================================
 # Core Functions
 # =============================================================================
 
-def read_semantics_csv(csv_path: str) -> Dict[str, List[Dict]]:
+
+def read_semantics_csv(csv_path: str) -> dict[str, list[dict]]:
     """
     Читает CSV семантики и возвращает keywords по категориям L3.
 
@@ -99,12 +101,12 @@ def read_semantics_csv(csv_path: str) -> Dict[str, List[Dict]]:
             ...
         }
     """
-    categories: Dict[str, List[Dict]] = {}
-    current_l3: Optional[str] = None
-    expected_keywords: Optional[int] = None
-    collected_keywords = 0
+    categories: dict[str, list[dict]] = {}
+    current_l3: str | None = None
+    # expected_keywords: int | None = None
+    # collected_keywords = 0
 
-    with open(csv_path, encoding='utf-8') as f:
+    with open(csv_path, encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
             # Empty rows are common in the real export and may appear *inside* an L3 block.
@@ -116,29 +118,34 @@ def read_semantics_csv(csv_path: str) -> Dict[str, List[Dict]]:
                 continue
 
             phrase = row[0].strip()
-            volume_str = row[2].strip() if len(row) > 2 else ''
+            volume_str = row[2].strip() if len(row) > 2 else ""
 
             # Detect L3 category
-            if phrase.startswith('L3:'):
-                current_l3 = phrase.replace('L3:', '').strip()
-                
+            if phrase.startswith("L3:"):
+                current_l3 = phrase.replace("L3:", "").strip()
+
                 if current_l3 not in categories:
                     categories[current_l3] = []
                 continue
 
             # Skip L1, L2 headers
-            if phrase.startswith('L1:') or phrase.startswith('L2:'):
+            if phrase.startswith("L1:") or phrase.startswith("L2:"):
                 current_l3 = None
                 continue
 
             # Skip SEO filter / section headers inside blocks
-            if phrase.startswith('SEO-Фильтр:'):
+            if phrase.startswith("SEO-Фильтр:"):
                 continue
 
             # Real CSV sometimes has unprefixed boundary rows like: "категория,16,"
             # If we are inside an L3 block, treat this as the end of the block.
-            count_str = row[1].strip() if len(row) > 1 else ''
-            if current_l3 and phrase.lower() == 'категория' and count_str.isdigit() and not volume_str:
+            count_str = row[1].strip() if len(row) > 1 else ""
+            if (
+                current_l3
+                and phrase.lower() == "категория"
+                and count_str.isdigit()
+                and not volume_str
+            ):
                 current_l3 = None
                 continue
 
@@ -146,7 +153,7 @@ def read_semantics_csv(csv_path: str) -> Dict[str, List[Dict]]:
                 continue
 
             # Skip subsection headers like: "Омыватель,35," or "Защитные ... ,2,"
-            count_str = row[1].strip() if len(row) > 1 else ''
+            count_str = row[1].strip() if len(row) > 1 else ""
             if count_str and not volume_str:
                 # Do not treat as keyword
                 continue
@@ -156,44 +163,40 @@ def read_semantics_csv(csv_path: str) -> Dict[str, List[Dict]]:
                 continue
 
             volume = int(volume_str)
-            categories[current_l3].append({'keyword': phrase, 'volume': volume})
+            categories[current_l3].append({"keyword": phrase, "volume": volume})
 
     return categories
 
 
-def classify_keywords(keywords: List[Dict]) -> Dict[str, List[Dict]]:
+def classify_keywords(keywords: list[dict]) -> dict[str, list[dict]]:
     """
     Классифицирует keywords по volume в PRIMARY/SECONDARY/SUPPORTING.
     """
-    result = {
-        'primary': [],
-        'secondary': [],
-        'supporting': []
-    }
+    result = {"primary": [], "secondary": [], "supporting": []}
 
     # Sort by volume descending
-    sorted_kws = sorted(keywords, key=lambda x: -x['volume'])
+    sorted_kws = sorted(keywords, key=lambda x: -x["volume"])
 
     for kw in sorted_kws:
-        vol = kw['volume']
+        vol = kw["volume"]
         if vol > VOLUME_PRIMARY:
-            result['primary'].append(kw)
+            result["primary"].append(kw)
         elif vol >= VOLUME_SECONDARY:
-            result['secondary'].append(kw)
+            result["secondary"].append(kw)
         else:
-            result['supporting'].append(kw)
+            result["supporting"].append(kw)
 
     # Ensure at least one PRIMARY keyword only when everything is supporting.
-    if not result['primary'] and not result['secondary'] and result['supporting']:
-        promoted_kw = result['supporting'][0]
-        result['primary'].append(promoted_kw)
+    if not result["primary"] and not result["secondary"] and result["supporting"]:
+        promoted_kw = result["supporting"][0]
+        result["primary"].append(promoted_kw)
         # Remove from supporting to avoid double-counting
-        result['supporting'] = [kw for kw in result['supporting'] if kw != promoted_kw]
+        result["supporting"] = [kw for kw in result["supporting"] if kw != promoted_kw]
 
     return result
 
 
-def extract_word_roots(keyword: str) -> List[str]:
+def extract_word_roots(keyword: str) -> list[str]:
     """
     Извлекает корни слов для partial matching.
     Убирает окончания русских слов.
@@ -202,10 +205,40 @@ def extract_word_roots(keyword: str) -> List[str]:
     roots = []
 
     # Common Russian word endings to remove
-    endings = ['ой', 'ый', 'ая', 'ое', 'ые', 'ых', 'ом', 'ем', 'ам', 'ям',
-               'ов', 'ев', 'ей', 'ию', 'ью', 'ия', 'ья', 'ье', 'ий',
-               'ать', 'ять', 'еть', 'ить', 'уть', 'ыть',
-               'ка', 'ки', 'ку', 'ке', 'ок', 'ек', 'ик']
+    endings = [
+        "ой",
+        "ый",
+        "ая",
+        "ое",
+        "ые",
+        "ых",
+        "ом",
+        "ем",
+        "ам",
+        "ям",
+        "ов",
+        "ев",
+        "ей",
+        "ию",
+        "ью",
+        "ия",
+        "ья",
+        "ье",
+        "ий",
+        "ать",
+        "ять",
+        "еть",
+        "ить",
+        "уть",
+        "ыть",
+        "ка",
+        "ки",
+        "ку",
+        "ке",
+        "ок",
+        "ек",
+        "ик",
+    ]
 
     for word in words:
         if len(word) < 4:
@@ -214,7 +247,7 @@ def extract_word_roots(keyword: str) -> List[str]:
         root = word
         for ending in endings:
             if word.endswith(ending) and len(word) - len(ending) >= 3:
-                root = word[:-len(ending)]
+                root = word[: -len(ending)]
                 break
 
         if len(root) >= 3:
@@ -223,7 +256,7 @@ def extract_word_roots(keyword: str) -> List[str]:
     return roots
 
 
-def generate_variations(keyword: str, all_keywords: List[str]) -> Dict[str, List[str]]:
+def generate_variations(keyword: str, all_keywords: list[str]) -> dict[str, list[str]]:
     """
     Генерирует variations для keyword:
     - exact: сам keyword + похожие формы (падежи)
@@ -243,9 +276,8 @@ def generate_variations(keyword: str, all_keywords: List[str]) -> Dict[str, List
 
         # If >70% words overlap, consider it a variation
         common = kw_words & other_words
-        if len(common) >= len(kw_words) * 0.7:
-            if other_kw not in exact:
-                exact.append(other_kw)
+        if len(common) >= len(kw_words) * 0.7 and other_kw not in exact:
+            exact.append(other_kw)
 
     # Extract roots for partial matching
     roots = extract_word_roots(keyword)
@@ -254,8 +286,8 @@ def generate_variations(keyword: str, all_keywords: List[str]) -> Dict[str, List
             partial.append(root)
 
     return {
-        'exact': exact[:5],  # Limit to 5 exact forms
-        'partial': partial[:5]  # Limit to 5 partial forms
+        "exact": exact[:5],  # Limit to 5 exact forms
+        "partial": partial[:5],  # Limit to 5 partial forms
     }
 
 
@@ -296,13 +328,8 @@ def calculate_occurrences_target(volume: int, tier: str) -> int:
 
 
 def build_keyword_object(
-    keyword: str,
-    volume: int,
-    kw_type: str,
-    all_keywords: List[str],
-    total_volume: int,
-    tier: str
-) -> Dict:
+    keyword: str, volume: int, kw_type: str, all_keywords: list[str], total_volume: int, tier: str
+) -> dict:
     """
     Создаёт полный объект keyword для JSON.
     """
@@ -314,20 +341,19 @@ def build_keyword_object(
         "intent": "commercial" if "купить" in keyword.lower() else "informational",
         "density_target": calculate_density_target(volume, total_volume, tier),
         "occurrences_target": calculate_occurrences_target(volume, tier),
-        "variations": variations
+        "variations": variations,
     }
 
 
-def read_meta_patterns(slug: str) -> Optional[Dict]:
+def read_meta_patterns(slug: str) -> dict | None:
     """
     Читает meta_patterns.json если существует.
     """
     path = Path(f"categories/{slug}/competitors/meta_patterns.json")
     if path.exists():
-        with open(path, encoding='utf-8') as f:
+        with open(path, encoding="utf-8") as f:
             return json.load(f)
     return None
-
 
 
 # Validating imports
@@ -344,30 +370,29 @@ except ImportError:
         from seo_utils import get_tier_requirements
 
 
-def get_tier_targets(tier: str) -> Dict:
+def get_tier_targets(tier: str) -> dict:
     """
     Возвращает targets по tier из seo_utils (v7.3 Shop Mode).
     Wrapper for compatibility.
     """
     reqs = get_tier_requirements(tier)
-    
+
     # Map seo_utils keys to JSON format keys if different
     # seo_utils: char_min, char_max, h2_range=(min, max), faq_range=(min, max)
-    
+
     # Convert ranges to strings "min-max"
-    h2_min, h2_max = reqs.get('h2_range', (3, 5))
-    faq_min, faq_max = reqs.get('faq_range', (3, 6))
-    
+    h2_min, h2_max = reqs.get("h2_range", (3, 5))
+    faq_min, faq_max = reqs.get("faq_range", (3, 6))
+
     return {
-        "char_min": reqs.get('char_min', 2000),
-        "char_max": reqs.get('char_max', 2500),
+        "char_min": reqs.get("char_min", 2000),
+        "char_max": reqs.get("char_max", 2500),
         "h2": f"{h2_min}-{h2_max}",
-        "faq": f"{faq_min}-{faq_max}"
+        "faq": f"{faq_min}-{faq_max}",
     }
 
 
-
-def generate_full_json(slug: str, tier: str, keywords_raw: List[Dict]) -> Dict:
+def generate_full_json(slug: str, tier: str, keywords_raw: list[dict]) -> dict:
     """
     Генерирует полный JSON для категории.
     """
@@ -375,27 +400,18 @@ def generate_full_json(slug: str, tier: str, keywords_raw: List[Dict]) -> Dict:
     classified = classify_keywords(keywords_raw)
 
     # Get all keyword strings for variation matching
-    all_kw_strings = [kw['keyword'] for kw in keywords_raw]
+    all_kw_strings = [kw["keyword"] for kw in keywords_raw]
 
     # Calculate total volume
-    total_volume = sum(kw['volume'] for kw in keywords_raw)
+    total_volume = sum(kw["volume"] for kw in keywords_raw)
 
     # Build keyword objects
-    keywords = {
-        "primary": [],
-        "secondary": [],
-        "supporting": []
-    }
+    keywords = {"primary": [], "secondary": [], "supporting": []}
 
     for kw_type in ["primary", "secondary", "supporting"]:
         for kw in classified[kw_type]:
             kw_obj = build_keyword_object(
-                kw['keyword'],
-                kw['volume'],
-                kw_type,
-                all_kw_strings,
-                total_volume,
-                tier
+                kw["keyword"], kw["volume"], kw_type, all_kw_strings, total_volume, tier
             )
             keywords[kw_type].append(kw_obj)
 
@@ -403,15 +419,13 @@ def generate_full_json(slug: str, tier: str, keywords_raw: List[Dict]) -> Dict:
     meta_patterns = read_meta_patterns(slug)
     semantic_entities = []
 
-    if meta_patterns and 'h2_themes' in meta_patterns:
+    if meta_patterns and "h2_themes" in meta_patterns:
         # Convert h2_themes to semantic entities
-        for theme in meta_patterns['h2_themes']:
+        for theme in meta_patterns["h2_themes"]:
             if isinstance(theme, str) and len(theme) > 5:
-                semantic_entities.append({
-                    "main": theme,
-                    "related": [],
-                    "source": "competitors_h2_themes"
-                })
+                semantic_entities.append(
+                    {"main": theme, "related": [], "source": "competitors_h2_themes"}
+                )
 
     # Get tier targets
     tier_targets = get_tier_targets(tier)
@@ -421,32 +435,27 @@ def generate_full_json(slug: str, tier: str, keywords_raw: List[Dict]) -> Dict:
         "schema_version": "3.0.0",
         "generated_at": datetime.utcnow().isoformat() + "Z",
         "generator_script": "parse_semantics_to_json.py",
-
         "slug": slug,
         "category_name_ru": SLUG_TO_L3.get(slug, slug),
         "tier": tier.upper(),
         "language": "ru",
-
         "keywords": keywords,
-
         "semantic_entities": semantic_entities,
-
         "content_targets": {
             "char_count_no_spaces": f"{tier_targets['char_min']}-{tier_targets['char_max']}",
-            "h2_count": tier_targets['h2'],
-            "faq_count": tier_targets['faq'],
+            "h2_count": tier_targets["h2"],
+            "faq_count": tier_targets["faq"],
             "coverage_target": 50,  # v7.3: minimum 50%, ideal 50-60%
             "density_target": "1-2%",
-            "lsi_ratio": ">=5:1"
+            "lsi_ratio": ">=5:1",
         },
-
         "stats": {
             "total_keywords": len(keywords_raw),
             "total_volume": total_volume,
-            "primary_count": len(keywords['primary']),
-            "secondary_count": len(keywords['secondary']),
-            "supporting_count": len(keywords['supporting'])
-        }
+            "primary_count": len(keywords["primary"]),
+            "secondary_count": len(keywords["secondary"]),
+            "supporting_count": len(keywords["supporting"]),
+        },
     }
 
     return result
@@ -456,6 +465,7 @@ def generate_full_json(slug: str, tier: str, keywords_raw: List[Dict]) -> Dict:
 # CLI
 # =============================================================================
 
+
 def list_categories():
     """Показать все доступные L3 категории."""
     print("=== Доступные категории (L3) ===\n")
@@ -464,7 +474,7 @@ def list_categories():
 
     for l3_name, keywords in sorted(categories.items(), key=lambda x: -len(x[1])):
         slug = L3_TO_SLUG.get(l3_name, "???")
-        total_vol = sum(kw['volume'] for kw in keywords)
+        total_vol = sum(kw["volume"] for kw in keywords)
         print(f"  {slug:25s} ({l3_name})")
         print(f"    Keywords: {len(keywords):3d}, Volume: {total_vol:5d}")
         print()
@@ -515,7 +525,7 @@ def main():
     output_path = output_dir / f"{slug}.json"
 
     # Write JSON
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
     print(f"✅ Written: {output_path}")
@@ -524,7 +534,9 @@ def main():
     print(f"   PRIMARY:    {result['stats']['primary_count']} keywords")
     print(f"   SECONDARY:  {result['stats']['secondary_count']} keywords")
     print(f"   SUPPORTING: {result['stats']['supporting_count']} keywords")
-    print(f"   Total:      {result['stats']['total_keywords']} keywords, volume {result['stats']['total_volume']}")
+    print(
+        f"   Total:      {result['stats']['total_keywords']} keywords, volume {result['stats']['total_volume']}"
+    )
 
 
 if __name__ == "__main__":

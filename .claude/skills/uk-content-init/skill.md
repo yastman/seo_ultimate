@@ -8,6 +8,7 @@ description: Initialize Ukrainian category structure and translate SEO keywords 
 Initialize UK category structure with translated keywords from RU source.
 
 **Documentation:**
+
 - [docs/CONTENT_GUIDE.md](../../../docs/CONTENT_GUIDE.md) — SEO Guide v20.0 (December 2025 rules)
 - [TRANSLATION_RULES.md](TRANSLATION_RULES.md) — Dictionary RU→UK, intent mapping
 
@@ -17,7 +18,7 @@ Initialize UK category structure with translated keywords from RU source.
 
 Before initializing UK version, verify:
 
-```
+```text
 Prerequisites:
 - [ ] categories/{slug}/data/{slug}_clean.json EXISTS
 - [ ] categories/{slug}/meta/{slug}_meta.json EXISTS
@@ -31,12 +32,12 @@ If RU version missing, run /content-generator {slug} first.
 
 ## December 2025 Rules
 
-| Parameter | Value |
-|-----------|-------|
-| Title | **50-60 chars**, "Купити" REQUIRED |
-| Description | **120-160 chars** |
-| H1 | **NO "Купити"** — commercial only in Title |
-| Intro | **30-60 words** |
+| Parameter   | Value                                      |
+| ----------- | ------------------------------------------ |
+| Title       | **50-60 chars**, "Купити" REQUIRED         |
+| Description | **120-160 chars**                          |
+| H1          | **NO "Купити"** — commercial only in Title |
+| Intro       | **30-60 words**                            |
 
 ---
 
@@ -51,6 +52,7 @@ categories/{slug}/meta/{slug}_meta.json
 ```
 
 Extract:
+
 - Keywords (primary, secondary, supporting, commercial)
 - Meta (types, forms, volumes)
 - Category name
@@ -60,6 +62,7 @@ Extract:
 Apply rules from [TRANSLATION_RULES.md](TRANSLATION_RULES.md):
 
 **Quick reference:**
+
 ```
 резина     → гума       (IMPORTANT!)
 средство   → засіб
@@ -71,6 +74,7 @@ Apply rules from [TRANSLATION_RULES.md](TRANSLATION_RULES.md):
 ```
 
 **Keep unchanged:**
+
 - pH, PPF, APC, HF, SiO2
 - антимошка, антибітум
 
@@ -120,15 +124,15 @@ uk/categories/{slug}/
 
 ```json
 {
-  "language": "uk",
-  "slug": "{slug}",
-  "h1": "{Primary keyword} для авто",
-  "meta": {
-    "title": "Купити {Primary} в Україні | Ultimate",
-    "description": "{Категорія} від виробника Ultimate. {Типи}. Опт і роздріб."
-  },
-  "types": ["тип1", "тип2"],
-  "volumes": ["0.5л", "1л", "5л"]
+    "language": "uk",
+    "slug": "{slug}",
+    "h1": "{Primary keyword} для авто",
+    "meta": {
+        "title": "Купити {Primary} в Україні | Ultimate",
+        "description": "{Категорія} від виробника Ultimate. {Типи}. Опт і роздріб."
+    },
+    "types": ["тип1", "тип2"],
+    "volumes": ["0.5л", "1л", "5л"]
 }
 ```
 
@@ -138,24 +142,28 @@ uk/categories/{slug}/
 # Research Context: {category_name_uk}
 
 ## Primary Keyword
+
 **UK:** {keyword}
 **RU:** {original}
 
 ## Keywords
-| Type | UK | RU | Volume |
-|------|----|----|--------|
-| primary | ... | ... | ... |
-| secondary | ... | ... | ... |
+
+| Type      | UK  | RU  | Volume |
+| --------- | --- | --- | ------ |
+| primary   | ... | ... | ...    |
+| secondary | ... | ... | ...    |
 
 ## Content Requirements
-- 300-700 words
-- H1 = primary keyword (NO "Купити")
-- Intro: 30-60 words
-- 1+ table, 1+ warning
+
+-   300-700 words
+-   H1 = primary keyword (NO "Купити")
+-   Intro: 30-60 words
+-   1+ table, 1+ warning
 
 ## Next Steps
+
 1. Web search: "{primary_uk} як обрати"
-2. Write uk/categories/{slug}/content/{slug}_uk.md
+2. Write uk/categories/{slug}/content/{slug}\_uk.md
 ```
 
 ### Step 7: Validate Output
@@ -165,6 +173,7 @@ python scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 ```
 
 **Validation checks:**
+
 - [ ] UK folder structure created
 - [ ] Keywords translated correctly (резина→гума)
 - [ ] Commercial keywords marked as meta_only
@@ -191,14 +200,14 @@ Status: ready for UK content writing
 
 ## Common Mistakes
 
-| Wrong | Right |
-|-------|-------|
-| резина → резина | резина → гума |
-| Copy RU numbers | "діапазон + див. етикетку" |
-| Latin in H1 | Only in body text |
-| Skip commercial flag | Add `use_in: meta_only` |
-| H1 с "Купити" | H1 БЕЗ "Купити" |
-| Title без "Купити" | Title С "Купити" |
+| Wrong                | Right                      |
+| -------------------- | -------------------------- |
+| резина → резина      | резина → гума              |
+| Copy RU numbers      | "діапазон + див. етикетку" |
+| Latin in H1          | Only in body text          |
+| Skip commercial flag | Add `use_in: meta_only`    |
+| H1 с "Купити"        | H1 БЕЗ "Купити"            |
+| Title без "Купити"   | Title С "Купити"           |
 
 ---
 

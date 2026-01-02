@@ -1,6 +1,6 @@
-# cherniteli-shin — Cherniteli Shin
+# cherniteli-shin — Чернители шин
 
-**Priority:** HIGH (volume 1000)
+**Priority:** HIGH (volume 2080)
 **Type:** L3
 **Parent:** sredstva-dlya-diskov-i-shin
 
@@ -15,8 +15,41 @@
 | 03-Research | ✅ | — |
 | 04-Content | ✅ | ✅ |
 | 05-UK | — | ✅ |
-| 06-Quality | ✅ | ✅ |
+| 06-Quality | ⬜ | ⬜ |
 | 07-Deploy | ⬜ | ⬜ |
+
+---
+
+## Keywords (из CSV)
+
+| Keyword | Volume |
+|---------|--------|
+| чернитель резины | 1000 |
+| чернение резины | 390 |
+| полироль для колес | 170 |
+| полироль для шин | 90 |
+| средства для чернения шин | 90 |
+| купить чернитель резины | 70 |
+| чернитель колёс | 50 |
+| чернение колес | 40 |
+| полироль для резины | 30 |
+| чернитель шин купить | 20 |
+| полироль для резины автомобиля | 20 |
+| средство для резины | 10 |
+| средства для чернения резины | 10 |
+| средство для чернения резины купить | 10 |
+| средство для ухода за шинами | 10 |
+| средства для ухода за резиной автомобиля | 10 |
+| средство для ухода за резиной | 10 |
+| средства для шин | 10 |
+| купить средство для чернения шин | 10 |
+| средство для обработки шин | 10 |
+| средство для шин авто | 10 |
+| средство для натирания шин | 10 |
+| купить средство для шин машины | 0 |
+| средство для блеска шин | 0 |
+
+**Total:** 24
 
 ---
 
@@ -29,7 +62,8 @@
 - [x] `content/cherniteli-shin_ru.md` placeholder
 - [x] `research/RESEARCH_DATA.md` template
 
-**Validation:**
+**Init Validation:**
+
 ```bash
 python3 -c "import json; json.load(open('categories/cherniteli-shin/data/cherniteli-shin_clean.json')); print('PASS')"
 ```
@@ -39,24 +73,28 @@ python3 -c "import json; json.load(open('categories/cherniteli-shin/data/chernit
 ## Stage 02: Meta ✅
 
 ### Inputs
+
 - [ ] Прочитать `data/cherniteli-shin_clean.json`
 - [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
+
 - [ ] title_ru: 50-60 chars, содержит primary keyword
 - [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
 - [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
+
 - [ ] title_uk: 50-60 chars
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
-### Output
+### Meta Output
+
 - [ ] Записать в `meta/cherniteli-shin_meta.json`
 
-### Validation
+### Meta Validation
+
 ```bash
 python3 scripts/validate_meta.py categories/cherniteli-shin/meta/cherniteli-shin_meta.json
 ```
@@ -66,43 +104,25 @@ python3 scripts/validate_meta.py categories/cherniteli-shin/meta/cherniteli-shin
 ## Stage 03: Research ✅
 
 ### Block 1: Product Analysis
+
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
-- [ ] Особенности товаров
 
 ### Block 2: Competitors
+
 - [ ] WebSearch: "{primary keyword} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
+
 - [ ] Для кого?
 - [ ] Какие задачи решает?
-- [ ] Где применяется?
 
-### Block 4: Buying Guide
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
+### Research Output
 
-### Block 5: FAQ
-- [ ] Собрать 5-7 вопросов
-
-### Block 6: Comparison Table
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
-
-### Block 7: How-To
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
-
-### Block 8: Interlink
-- [ ] Связанные категории
-- [ ] Дополняющие товары
-
-### Output
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
-### Validation
+### Research Validation
+
 ```bash
 grep -c "^## Block" categories/cherniteli-shin/research/RESEARCH_DATA.md
 ```
@@ -112,6 +132,7 @@ grep -c "^## Block" categories/cherniteli-shin/research/RESEARCH_DATA.md
 ## Stage 04: Content ✅
 
 ### Structure
+
 - [ ] H1: primary keyword
 - [ ] Intro: 150-200 слов
 - [ ] H2: Buying Guide
@@ -121,12 +142,14 @@ grep -c "^## Block" categories/cherniteli-shin/research/RESEARCH_DATA.md
 - [ ] Conclusion + CTA
 
 ### SEO Requirements
+
 - [ ] Primary keyword: 3-5 раз
 - [ ] Word count: 1500-2500
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
-### Validation
+### Content Validation
+
 ```bash
 python3 scripts/validate_content.py categories/cherniteli-shin/content/cherniteli-shin_ru.md "{keyword}" --mode seo
 ```
@@ -135,63 +158,27 @@ python3 scripts/validate_content.py categories/cherniteli-shin/content/chernitel
 
 ## Stage 05: UK ✅
 
-### Create Structure
-- [ ] `uk/categories/cherniteli-shin/data/`
-- [ ] `uk/categories/cherniteli-shin/meta/`
-- [ ] `uk/categories/cherniteli-shin/content/`
-
-### Translate
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
-
-### Quality Check
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
 
 ---
 
-## Stage 06: Quality Gate ✅
+## Stage 06: Quality Gate ⬜
 
-### Checklist
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
 - [ ] Research complete
 - [ ] SEO compliant
-
-### Output
-- [ ] Создать `QUALITY_REPORT.md`
 
 ---
 
 ## Stage 07: Deploy ⬜
 
-### Pre-Deploy
-- [ ] Quality Gate = PASS
 - [ ] Backup DB
-
-### Deploy
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
-
-### Post-Deploy
+- [ ] Update Meta/Content RU/UK
 - [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
 
 ---
 
-## Notes
-
-- Parent: sredstva-dlya-diskov-i-shin
-- Type: L3
-- Volume: 1000
-
----
-
-**Last Updated:** 2025-12-31
+**Last Updated:** 2026-01-02

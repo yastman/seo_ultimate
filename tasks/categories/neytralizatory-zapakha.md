@@ -1,8 +1,8 @@
-# neytralizatory-zapakha — Neytralizatory Zapakha
+# neytralizatory-zapakha — Нейтрализаторы запаха
 
-**Priority:** HIGH (volume 2400)
-**Type:** L2
-**Parent:** ukhod-za-interierom
+**Priority:** HIGH (volume 3740)
+**Type:** Cluster
+**Parent:** neytralizatory-zapakha
 
 ---
 
@@ -10,13 +10,51 @@
 
 | Stage | RU | UK |
 |-------|----|----|
-| 01-Init | ✅ | ✅ |
-| 02-Meta | ✅ | ✅ |
+| 01-Init | ✅ | ⬜ |
+| 02-Meta | ✅ | ⬜ |
 | 03-Research | ⬜ | — |
 | 04-Content | ⬜ | ⬜ |
-| 05-UK | — | ✅ |
+| 05-UK | — | ⬜ |
 | 06-Quality | ⬜ | ⬜ |
 | 07-Deploy | ⬜ | ⬜ |
+
+---
+
+## Keywords (из CSV)
+
+| Keyword | Volume |
+|---------|--------|
+| нейтрализаторы запаха | 2400 |
+| поглотитель запаха | 260 |
+| нейтрализатор запаха в автомобиле | 170 |
+| профессиональный нейтрализатор запаха | 170 |
+| нейтрализатор запаха в авто | 140 |
+| устранитель запаха | 90 |
+| купить нейтрализатор запахов | 90 |
+| нейтрализатор для авто | 70 |
+| нейтрализатор запахов в салоне авто | 50 |
+| нейтрализатор запаха автомобильный | 40 |
+| средство для удаления запаха в салоне автомобиля | 30 |
+| нейтрализатор запаха в машину | 30 |
+| устранение запаха в автомобиле | 30 |
+| устранитель запахов в авто | 20 |
+| устранитель запаха купить | 10 |
+| поглотитель запахов купить | 10 |
+| поглотитель запаха для автомобиля | 10 |
+| нейтрализатор запаха для автомобиля купить | 10 |
+| устранитель запаха в машине | 10 |
+| поглотитель запаха для авто | 10 |
+| поглотитель запаха автомобильный | 10 |
+| поглотитель запаха в машину | 10 |
+| нейтрализатор запахов в салоне | 10 |
+| удаление запаха в машине | 10 |
+| удаление запахов в автомобиле | 10 |
+| удалить запах в салоне автомобиля | 10 |
+| устранение запаха в салоне автомобиля | 10 |
+| устранение неприятных запахов в автомобиле | 10 |
+| устранитель запаха в автомобиле | 10 |
+
+**Total:** 29
 
 ---
 
@@ -29,7 +67,8 @@
 - [x] `content/neytralizatory-zapakha_ru.md` placeholder
 - [x] `research/RESEARCH_DATA.md` template
 
-**Validation:**
+**Init Validation:**
+
 ```bash
 python3 -c "import json; json.load(open('categories/neytralizatory-zapakha/data/neytralizatory-zapakha_clean.json')); print('PASS')"
 ```
@@ -39,24 +78,28 @@ python3 -c "import json; json.load(open('categories/neytralizatory-zapakha/data/
 ## Stage 02: Meta ✅
 
 ### Inputs
+
 - [ ] Прочитать `data/neytralizatory-zapakha_clean.json`
 - [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
+
 - [ ] title_ru: 50-60 chars, содержит primary keyword
 - [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
 - [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
+
 - [ ] title_uk: 50-60 chars
 - [ ] description_uk: 150-160 chars
 - [ ] h1_uk: перевод primary keyword
 
-### Output
+### Meta Output
+
 - [ ] Записать в `meta/neytralizatory-zapakha_meta.json`
 
-### Validation
+### Meta Validation
+
 ```bash
 python3 scripts/validate_meta.py categories/neytralizatory-zapakha/meta/neytralizatory-zapakha_meta.json
 ```
@@ -66,43 +109,25 @@ python3 scripts/validate_meta.py categories/neytralizatory-zapakha/meta/neytrali
 ## Stage 03: Research ⬜
 
 ### Block 1: Product Analysis
+
 - [ ] ТОП-5 брендов
 - [ ] Ценовой диапазон
-- [ ] Особенности товаров
 
 ### Block 2: Competitors
+
 - [ ] WebSearch: "{primary keyword} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
+
 - [ ] Для кого?
 - [ ] Какие задачи решает?
-- [ ] Где применяется?
 
-### Block 4: Buying Guide
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
+### Research Output
 
-### Block 5: FAQ
-- [ ] Собрать 5-7 вопросов
-
-### Block 6: Comparison Table
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
-
-### Block 7: How-To
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
-
-### Block 8: Interlink
-- [ ] Связанные категории
-- [ ] Дополняющие товары
-
-### Output
 - [ ] Записать в `research/RESEARCH_DATA.md`
 
-### Validation
+### Research Validation
+
 ```bash
 grep -c "^## Block" categories/neytralizatory-zapakha/research/RESEARCH_DATA.md
 ```
@@ -112,6 +137,7 @@ grep -c "^## Block" categories/neytralizatory-zapakha/research/RESEARCH_DATA.md
 ## Stage 04: Content ⬜
 
 ### Structure
+
 - [ ] H1: primary keyword
 - [ ] Intro: 150-200 слов
 - [ ] H2: Buying Guide
@@ -121,77 +147,43 @@ grep -c "^## Block" categories/neytralizatory-zapakha/research/RESEARCH_DATA.md
 - [ ] Conclusion + CTA
 
 ### SEO Requirements
+
 - [ ] Primary keyword: 3-5 раз
 - [ ] Word count: 1500-2500
 - [ ] Density: 1.5-2.5%
 - [ ] NO commercial keywords!
 
-### Validation
+### Content Validation
+
 ```bash
 python3 scripts/validate_content.py categories/neytralizatory-zapakha/content/neytralizatory-zapakha_ru.md "{keyword}" --mode seo
 ```
 
 ---
 
-## Stage 05: UK ✅
+## Stage 05: UK ⬜
 
-### Create Structure
-- [ ] `uk/categories/neytralizatory-zapakha/data/`
-- [ ] `uk/categories/neytralizatory-zapakha/meta/`
-- [ ] `uk/categories/neytralizatory-zapakha/content/`
-
-### Translate
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
-
-### Quality Check
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+- [ ] Structure created
+- [ ] Translated Keywords, Meta, Content
 
 ---
 
 ## Stage 06: Quality Gate ⬜
 
-### Checklist
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
+- [ ] Data JSON valid
+- [ ] Meta valid
+- [ ] Content valid
 - [ ] Research complete
 - [ ] SEO compliant
-
-### Output
-- [ ] Создать `QUALITY_REPORT.md`
 
 ---
 
 ## Stage 07: Deploy ⬜
 
-### Pre-Deploy
-- [ ] Quality Gate = PASS
 - [ ] Backup DB
-
-### Deploy
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
-
-### Post-Deploy
+- [ ] Update Meta/Content RU/UK
 - [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
 
 ---
 
-## Notes
-
-- Parent: ukhod-za-interierom
-- Type: L2
-- Volume: 2400
-
----
-
-**Last Updated:** 2025-12-31
+**Last Updated:** 2026-01-02

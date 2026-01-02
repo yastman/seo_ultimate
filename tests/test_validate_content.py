@@ -1,39 +1,39 @@
-
-import pytest
-from unittest.mock import MagicMock, patch
 import sys
 from pathlib import Path
+from unittest.mock import MagicMock, patch
+
+import pytest
+
 
 # Add scripts to path
 SCRIPT_DIR = Path(__file__).parent.parent / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
-from validate_content import (
+from validate_content import (  # noqa: E402
+    check_blacklist_phrases,
+    check_content_standards,
+    check_grammar,
+    check_keyword_coverage,
+    check_keyword_coverage_split,
+    check_length,
+    check_markdown_lint,
+    check_primary_keyword,
+    check_primary_keyword_semantic,
+    check_quality,
+    check_structure,
     clean_markdown,
-    count_words,
     count_chars_no_spaces,
+    count_faq,
+    count_words,
     extract_h1,
     extract_h2s,
     extract_intro,
-    count_faq,
-    check_structure,
-    check_primary_keyword,
-    check_keyword_coverage,
-    check_keyword_coverage_split,
-    check_quality,
-    check_blacklist_phrases,
-    check_quality,
-    check_blacklist_phrases,
-    check_length,
-    check_content_standards,
-    check_grammar,
-    check_markdown_lint,
-    check_primary_keyword_semantic,
-    validate_content
+    validate_content,
 )
 
+
 # Text samples for testing
-SAMPLE_TEXT_PASS = """# Active Foam
+SAMPLE_TEXT_VALID = """# Active Foam
 
 This is a great intro about active foam. It contains the keyword active foam and is long enough to pass the check. We need at least 30 words in the intro so I am adding more text here to ensure it passes the length requirement. Active foam is amazing for cleaning cars without touching them.
 
@@ -58,6 +58,7 @@ Short intro.
 # Text Processing Tests
 # =============================================================================
 
+
 def test_clean_markdown():
     text = "# Header\n**Bold** and *Italic*.\n[Link](http://example.com)"
     cleaned = clean_markdown(text)
@@ -69,18 +70,22 @@ def test_clean_markdown():
     assert "**" not in cleaned
     assert "[" not in cleaned
 
+
 def test_count_words():
     text = "One two three."
     assert count_words(text) == 3
+
 
 def test_count_chars_no_spaces():
     text = "One two"
     assert count_chars_no_spaces(text) == 6
 
+
 def test_extract_h1():
     text = "# My Header\n## Subheader"
     assert extract_h1(text) == "My Header"
     assert extract_h1("No header") is None
+
 
 def test_extract_h2s():
     text = "# H1\n## H2 First\nText\n## H2 Second"
@@ -89,6 +94,7 @@ def test_extract_h2s():
     assert "H2 First" in h2s
     assert "H2 Second" in h2s
 
+
 def test_extract_intro():
     text = "# H1\nIntro line 1.\nIntro line 2.\n## H2"
     intro = extract_intro(text)
@@ -96,37 +102,44 @@ def test_extract_intro():
     assert "Intro line 2." in intro
     assert "## H2" not in intro
 
+
 def test_count_faq():
     text = "**Q: Question?**\n**В: Вопрос?**"
     assert count_faq(text) == 2
+
 
 # =============================================================================
 # Check Functions Tests
 # =============================================================================
 
+
 def test_check_structure_pass():
-    result = check_structure(SAMPLE_TEXT_PASS)
+    result = check_structure(SAMPLE_TEXT_VALID)
     assert result["overall"] == "PASS"
     assert result["h1"]["passed"] is True
     assert result["intro"]["passed"] is True
     assert result["h2_count"]["passed"] is True
+
 
 def test_check_structure_fail():
     result = check_structure(SAMPLE_TEXT_FAIL)
     assert result["overall"] == "FAIL"
     assert result["intro"]["passed"] is False  # Too short
 
+
 def test_check_primary_keyword_pass():
-    result = check_primary_keyword(SAMPLE_TEXT_PASS, "active foam")
+    result = check_primary_keyword(SAMPLE_TEXT_VALID, "active foam")
     assert result["overall"] == "PASS"
     assert result["in_h1"]["passed"] is True
     assert result["in_intro"]["passed"] is True
     assert result["frequency"]["status"] == "OK"
 
+
 def test_check_primary_keyword_fail():
     result = check_primary_keyword(SAMPLE_TEXT_FAIL, "active foam")
     assert result["overall"] == "FAIL"
     assert result["in_h1"]["passed"] is False
+
 
 def test_check_keyword_coverage():
     text = "one two three four"
@@ -139,6 +152,7 @@ def test_check_keyword_coverage():
     # The code says: coverage >= target. 66.7 < 70, so passed=False => WARNING
     assert result["overall"] == "WARNING"
 
+
 def test_check_primary_keyword_semantic_pass():
     text = "# Чернитель резины\nВведение про чернители шин."
     # "чернитель резины" -> stem "черни"
@@ -149,6 +163,7 @@ def test_check_primary_keyword_semantic_pass():
     assert result["semantic_intro"] is True
     assert result["overall"] == "PASS"
 
+
 def test_check_primary_keyword_semantic_fail():
     text = "# Другой заголовок\nВведение совсем про другое."
     result = check_primary_keyword_semantic(text, "чернитель резины")
@@ -156,53 +171,50 @@ def test_check_primary_keyword_semantic_fail():
     assert result["semantic_intro"] is False
     assert result["overall"] == "FAIL"
 
+
 # =============================================================================
 # Quality & External Mocks Tests
 # =============================================================================
 
-@patch('validate_content.calculate_water_and_nausea')
+
+@patch("validate_content.calculate_water_and_nausea")
 def test_check_quality_pass(mock_calc):
-    mock_calc.return_value = {
-        "water_percent": 45,
-        "classic_nausea": 2.5,
-        "academic_nausea": 8.0
-    }
+    mock_calc.return_value = {"water_percent": 45, "classic_nausea": 2.5, "academic_nausea": 8.0}
     result = check_quality("some text")
     assert result["overall"] == "PASS"
     assert result["water"]["status"] == "OK"
 
-@patch('validate_content.calculate_water_and_nausea')
+
+@patch("validate_content.calculate_water_and_nausea")
 def test_check_quality_warning(mock_calc):
     mock_calc.return_value = {
         "water_percent": 80,  # Too high
-        "classic_nausea": 5.0, # Too high
-        "academic_nausea": 15.0 # Too high
+        "classic_nausea": 5.0,  # Too high
+        "academic_nausea": 15.0,  # Too high
     }
     result = check_quality("some text")
     assert result["overall"] == "WARNING"
     assert result["water"]["status"] == "WARNING"
 
-@patch('validate_content.check_blacklist')
+
+@patch("validate_content.check_blacklist")
 def test_check_blacklist_pass(mock_check):
-    mock_check.return_value = {
-        "strict_phrases": [],
-        "brands": [],
-        "cities": [],
-        "ai_fluff": []
-    }
+    mock_check.return_value = {"strict_phrases": [], "brands": [], "cities": [], "ai_fluff": []}
     result = check_blacklist_phrases("text")
     assert result["overall"] == "PASS"
 
-@patch('validate_content.check_blacklist')
+
+@patch("validate_content.check_blacklist")
 def test_check_blacklist_fail(mock_check):
     mock_check.return_value = {
         "strict_phrases": ["forbidden"],
         "brands": [],
         "cities": [],
-        "ai_fluff": []
+        "ai_fluff": [],
     }
     result = check_blacklist_phrases("text")
     assert result["overall"] == "FAIL"
+
 
 def test_check_length():
     short_text = "word " * 10
@@ -215,83 +227,90 @@ def test_check_length():
 
     assert result["status"] == "OK"
 
+
 def test_check_grammar():
     # Patch the global flag AND the module
-    with patch('validate_content.GRAMMAR_AVAILABLE', True), \
-         patch('validate_content.language_tool_python') as mock_lt:
-        
+    with (
+        patch("validate_content.GRAMMAR_AVAILABLE", True),
+        patch("validate_content.language_tool_python") as mock_lt,
+    ):
         # Mock LanguageTool
         mock_tool = MagicMock()
         mock_lt.LanguageTool.return_value = mock_tool
-        
+
         # Case 1: Pass
         mock_tool.check.return_value = []
         result = check_grammar("Clean text")
         assert result["overall"] == "PASS"
-        
+
         # Case 2: Warning
         mock_match = MagicMock()
         mock_match.message = "Error"
         mock_match.context = "ctx"
         mock_match.ruleId = "RULE"
         mock_match.replacements = []
-        
+
         # 6 errors > 5 threshold for WARNING
         mock_tool.check.return_value = [mock_match] * 6
         result = check_grammar("Bad text")
         assert result["overall"] == "WARNING"
         assert len(result["errors"]) == 6
 
+
 def test_check_markdown_lint():
-    with patch('validate_content.MDLINT_AVAILABLE', True), \
-         patch('validate_content.PyMarkdownApi') as mock_api:
-        
+    with (
+        patch("validate_content.MDLINT_AVAILABLE", True),
+        patch("validate_content.PyMarkdownApi") as mock_api,
+    ):
         # Mock API instance
         mock_instance = MagicMock()
         mock_api.return_value = mock_instance
-        
+
         # Case 1: Pass
         mock_scan = MagicMock()
         mock_scan.scan_failures = []
         mock_instance.scan_path.return_value = mock_scan
-        
+
         result = check_markdown_lint("file.md")
         assert result["overall"] == "PASS"
-        
+
         # Case 2: Warning
         mock_fail = MagicMock()
         mock_fail.line_number = 1
         mock_fail.column_number = 1
         mock_fail.rule_id = "MD001"
         mock_fail.rule_description = "Desc"
-        
+
         # 6 failures > 5 threshold for WARNING
         mock_scan.scan_failures = [mock_fail] * 6
         mock_instance.scan_path.return_value = mock_scan
-        
+
         result = check_markdown_lint("file.md")
         assert result["overall"] == "WARNING"
+
 
 # =============================================================================
 # Integration Test
 # =============================================================================
 
-@patch('validate_content.Path.read_text')
-@patch('validate_content.Path.exists')
-@patch('validate_content.check_quality')
-@patch('validate_content.check_blacklist_phrases')
+
+@patch("validate_content.Path.read_text")
+@patch("validate_content.Path.exists")
+@patch("validate_content.check_quality")
+@patch("validate_content.check_blacklist_phrases")
 def test_validate_content_integration(mock_blacklist, mock_quality, mock_exists, mock_read):
     mock_exists.return_value = True
-    mock_read.return_value = SAMPLE_TEXT_PASS
+    mock_read.return_value = SAMPLE_TEXT_VALID
 
     # Mock quality and blacklist to return PASS
     mock_quality.return_value = {"overall": "PASS"}
     mock_blacklist.return_value = {"overall": "PASS"}
 
     # Mock language tools to avoid import errors during test
-    with patch('validate_content.check_grammar', return_value={"overall": "PASS"}), \
-         patch('validate_content.check_markdown_lint', return_value={"overall": "PASS"}):
-
+    with (
+        patch("validate_content.check_grammar", return_value={"overall": "PASS"}),
+        patch("validate_content.check_markdown_lint", return_value={"overall": "PASS"}),
+    ):
         result = validate_content("dummy_path.md", "active foam")
 
         # WARNING is acceptable (no blockers), PASS is ideal
@@ -303,15 +322,17 @@ def test_validate_content_integration(mock_blacklist, mock_quality, mock_exists,
 # Semantic Matching Tests
 # =============================================================================
 
-from validate_content import check_primary_keyword_semantic
 
 def test_semantic_match_singular_plural():
     """Test that singular/plural variations are matched."""
-    text = "# Чернители шин для автомобиля\n\nЧернители помогают вернуть цвет резине и защищают от UV."
+    text = (
+        "# Чернители шин для автомобиля\n\nЧернители помогают вернуть цвет резине и защищают от UV."
+    )
     result = check_primary_keyword_semantic(text, "чернитель резины")
     # Should match via stem "чернител"
     assert result["semantic_h1"] is True
     assert result["confidence"] >= 60
+
 
 def test_semantic_match_stem_based():
     """Test stem-based matching."""
@@ -319,11 +340,13 @@ def test_semantic_match_stem_based():
     result = check_primary_keyword_semantic(text, "очиститель дисков")
     assert result["semantic_h1"] is True
 
+
 def test_semantic_no_match():
     """Test that completely different text doesn't match."""
     text = "# Шампуни для ручной мойки\n\nШампуни для ручной мойки автомобиля."
     result = check_primary_keyword_semantic(text, "активная пена")
     assert result["confidence"] < 60
+
 
 def test_semantic_returns_confidence():
     """Test that confidence score is returned."""
@@ -332,6 +355,7 @@ def test_semantic_returns_confidence():
     assert "confidence" in result
     assert isinstance(result["confidence"], int)
     assert result["overall"] == "PASS"
+
 
 def test_semantic_with_intro_check():
     """Test that intro is also checked semantically."""
@@ -344,11 +368,13 @@ def test_semantic_with_intro_check():
 # Edge Cases
 # =============================================================================
 
+
 def test_empty_text():
     """Test with empty text."""
     result = check_structure("")
     assert result["overall"] == "FAIL"
     assert result["h1"]["passed"] is False
+
 
 def test_keyword_coverage_empty():
     """Test coverage with no keywords."""
@@ -356,11 +382,13 @@ def test_keyword_coverage_empty():
     assert result["passed"] is True
     assert result["total"] == 0
 
+
 def test_adaptive_target_large():
     """Test adaptive target for large keyword sets."""
     keywords = [f"kw{i}" for i in range(25)]  # 20+ keywords
     result = check_keyword_coverage("", keywords)
     assert result["target"] == 50
+
 
 def test_check_structure_no_h2():
     """Test structure check fails without H2."""
@@ -372,6 +400,7 @@ def test_check_structure_no_h2():
 # =============================================================================
 # Split Coverage Tests (v8.4)
 # =============================================================================
+
 
 def test_coverage_split_basic():
     """Test split coverage with core and commercial keywords."""
@@ -444,7 +473,8 @@ def test_coverage_split_missing_keywords():
     assert "купить" in result["commercial"]["missing_keywords"]
     assert "цена" in result["commercial"]["missing_keywords"]
 
-@patch('validate_content.print')
+
+@patch("validate_content.print")
 def test_print_results(mock_print):
     results = {
         "file": "test.md",
@@ -455,52 +485,55 @@ def test_print_results(mock_print):
                 "h1": {"passed": True, "value": "Title"},
                 "intro": {"passed": True, "words": 50},
                 "h2_count": {"passed": True, "count": 2},
-                "faq_count": {"count": 1}
+                "faq_count": {"count": 1},
             },
             "primary_keyword": {
-                "overall": "PASS", 
-                "in_h1": {"passed": True}, 
-                "in_intro": {"passed": True}, 
-                "frequency": {"status": "OK", "count": 3}
+                "overall": "PASS",
+                "in_h1": {"passed": True},
+                "in_intro": {"passed": True},
+                "frequency": {"status": "OK", "count": 3},
             },
             "coverage": {
-                "overall": "PASS", 
-                "coverage_percent": 100, 
+                "overall": "PASS",
+                "coverage_percent": 100,
                 "target": 70,
                 "found": 5,
-                "total": 5
+                "total": 5,
             },
             "quality": {
-                "overall": "PASS", 
-                "water": {"value": 50, "status": "OK"}, 
+                "overall": "PASS",
+                "water": {"value": 50, "status": "OK"},
                 "nausea_classic": {"value": 1, "status": "OK"},
-                "nausea_academic": {"value": 5, "status": "OK"}
+                "nausea_academic": {"value": 5, "status": "OK"},
             },
             "blacklist": {
                 "overall": "PASS",
                 "strict_phrases": [],
                 "brands": [],
                 "cities": [],
-                "ai_fluff": []
+                "ai_fluff": [],
             },
             "length": {"status": "OK", "words": 500, "chars_no_spaces": 3000},
             "grammar": {"overall": "PASS", "error_count": 0},
-            "md_lint": {"overall": "PASS", "violation_count": 0}
+            "md_lint": {"overall": "PASS", "violation_count": 0},
         },
-        "summary": {"overall": "PASS", "blockers": [], "warnings": []}
+        "summary": {"overall": "PASS", "blockers": [], "warnings": []},
     }
-    
+
     # Need to import print_results locally or from module if exported
     from validate_content import print_results
+
     print_results(results)
     assert mock_print.called
 
-@patch('validate_content.validate_content')
-@patch('validate_content.print_results')
+
+@patch("validate_content.validate_content")
+@patch("validate_content.print_results")
 def test_main(mock_print, mock_validate):
     # Mock sys.argv
-    with patch('sys.argv', ['script.py', 'file.md', 'keyword']):
+    with patch("sys.argv", ["script.py", "file.md", "keyword"]):
         from validate_content import main
+
         mock_validate.return_value = {"summary": {"overall": "PASS"}}
 
         # Test normal execution - main() calls sys.exit(0) on success
@@ -511,8 +544,8 @@ def test_main(mock_print, mock_validate):
         mock_validate.assert_called_once()
         # Check core arguments (file_path, primary_keyword, all_keywords)
         call_args = mock_validate.call_args
-        assert call_args[0][0] == 'file.md'
-        assert call_args[0][1] == 'keyword'
+        assert call_args[0][0] == "file.md"
+        assert call_args[0][1] == "keyword"
         mock_print.assert_called()
 
 
@@ -567,17 +600,44 @@ def test_validate_content_semantic_override(tmp_path, monkeypatch):
     md = tmp_path / "t.md"
     md.write_text("# H1\nIntro text", encoding="utf-8")
 
-    monkeypatch.setattr(vc, "check_structure", lambda _t: {"overall": "PASS", "h1": {"passed": True, "value": "H1"}, "intro": {"passed": True, "words": 40}, "h2_count": {"passed": True, "count": 2}})
-    monkeypatch.setattr(vc, "check_primary_keyword", lambda _t, _kw: {"overall": "FAIL", "in_h1": {"passed": False}, "in_intro": {"passed": False}, "frequency": {"count": 0, "status": "LOW"}})
+    monkeypatch.setattr(
+        vc,
+        "check_structure",
+        lambda _t: {
+            "overall": "PASS",
+            "h1": {"passed": True, "value": "H1"},
+            "intro": {"passed": True, "words": 40},
+            "h2_count": {"passed": True, "count": 2},
+        },
+    )
+    monkeypatch.setattr(
+        vc,
+        "check_primary_keyword",
+        lambda _t, _kw: {
+            "overall": "FAIL",
+            "in_h1": {"passed": False},
+            "in_intro": {"passed": False},
+            "frequency": {"count": 0, "status": "LOW"},
+        },
+    )
     monkeypatch.setattr(
         vc,
         "check_primary_keyword_semantic",
-        lambda _t, _kw, use_llm=True: {"overall": "PASS", "semantic_h1": True, "semantic_intro": True, "confidence": 80},
+        lambda _t, _kw, use_llm=True: {
+            "overall": "PASS",
+            "semantic_h1": True,
+            "semantic_intro": True,
+            "confidence": 80,
+        },
     )
-    monkeypatch.setattr(vc, "check_keyword_coverage", lambda _t, _k: {"overall": "PASS", "passed": True})
+    monkeypatch.setattr(
+        vc, "check_keyword_coverage", lambda _t, _k: {"overall": "PASS", "passed": True}
+    )
     monkeypatch.setattr(vc, "check_quality", lambda _t, **kw: {"overall": "PASS"})
     monkeypatch.setattr(vc, "check_blacklist_phrases", lambda _t: {"overall": "PASS"})
-    monkeypatch.setattr(vc, "check_length", lambda _t: {"status": "OK", "words": 200, "chars_no_spaces": 1000})
+    monkeypatch.setattr(
+        vc, "check_length", lambda _t: {"status": "OK", "words": 200, "chars_no_spaces": 1000}
+    )
     monkeypatch.setattr(vc, "check_content_standards", lambda _t: {"overall": "OK", "issues": []})
     monkeypatch.setattr(vc, "check_grammar", lambda _t: {"overall": "PASS"})
     monkeypatch.setattr(vc, "check_markdown_lint", lambda _p: {"overall": "PASS"})
@@ -594,7 +654,17 @@ def test_validate_content_seo_mode_sets_skipped_and_info(tmp_path, monkeypatch):
     md = tmp_path / "t.md"
     md.write_text("# Активная пена\n\nАктивная пена.", encoding="utf-8")
 
-    monkeypatch.setattr(vc, "check_strict_blacklist_only", lambda _t: {"overall": "PASS", "strict_phrases": [], "brands": [], "cities": [], "ai_fluff": []})
+    monkeypatch.setattr(
+        vc,
+        "check_strict_blacklist_only",
+        lambda _t: {
+            "overall": "PASS",
+            "strict_phrases": [],
+            "brands": [],
+            "cities": [],
+            "ai_fluff": [],
+        },
+    )
 
     res = vc.validate_content(str(md), "активная пена", all_keywords=["активная пена"], mode="seo")
     assert res["checks"]["coverage"]["overall"] == "INFO"
@@ -611,7 +681,10 @@ def test_check_grammar_skipped_when_unavailable():
 
 
 def test_check_grammar_exception_returns_error():
-    with patch("validate_content.GRAMMAR_AVAILABLE", True), patch("validate_content.language_tool_python") as mock_lt:
+    with (
+        patch("validate_content.GRAMMAR_AVAILABLE", True),
+        patch("validate_content.language_tool_python") as mock_lt,
+    ):
         mock_lt.LanguageTool.side_effect = RuntimeError("boom")
         res = check_grammar("text")
     assert res["overall"] == "ERROR"
@@ -625,7 +698,10 @@ def test_check_markdown_lint_skipped_when_unavailable():
 
 
 def test_check_markdown_lint_exception_returns_error():
-    with patch("validate_content.MDLINT_AVAILABLE", True), patch("validate_content.PyMarkdownApi") as mock_api:
+    with (
+        patch("validate_content.MDLINT_AVAILABLE", True),
+        patch("validate_content.PyMarkdownApi") as mock_api,
+    ):
         mock_instance = MagicMock()
         mock_instance.scan_path.side_effect = RuntimeError("boom")
         mock_api.return_value = mock_instance
@@ -638,6 +714,7 @@ def test_check_markdown_lint_exception_returns_error():
 def test_main_error_result_exits_2(mock_validate):
     with patch("sys.argv", ["script.py", "file.md", "keyword"]):
         from validate_content import main
+
         mock_validate.return_value = {"error": "nope"}
         with pytest.raises(SystemExit) as exc:
             main()
@@ -647,9 +724,8 @@ def test_main_error_result_exits_2(mock_validate):
 def test_main_usage_exits_1(capsys):
     import validate_content as vc
 
-    with patch("sys.argv", ["script.py"]):
-        with pytest.raises(SystemExit) as exc:
-            vc.main()
+    with patch("sys.argv", ["script.py"]), pytest.raises(SystemExit) as exc:
+        vc.main()
     assert exc.value.code == 1
     assert "Usage" in capsys.readouterr().out
 
@@ -658,7 +734,12 @@ def test_main_json_output(monkeypatch, capsys):
     import validate_content as vc
 
     def _fake_validate(*_a, **_kw):
-        return {"file": "f", "primary_keyword": "k", "checks": {}, "summary": {"overall": "PASS", "blockers": [], "warnings": []}}
+        return {
+            "file": "f",
+            "primary_keyword": "k",
+            "checks": {},
+            "summary": {"overall": "PASS", "blockers": [], "warnings": []},
+        }
 
     monkeypatch.setattr(vc, "validate_content", _fake_validate)
     monkeypatch.setattr(sys, "argv", ["script.py", "file.md", "keyword", "--json"])
@@ -671,6 +752,7 @@ def test_main_json_output(monkeypatch, capsys):
 
 def test_main_with_analysis_loads_keywords(monkeypatch):
     import types
+
     import validate_content as vc
 
     dummy = types.ModuleType("analyze_category")
@@ -689,7 +771,12 @@ def test_main_with_analysis_loads_keywords(monkeypatch):
         captured["all_keywords"] = all_keywords
         captured["core_keywords"] = kw.get("core_keywords")
         captured["commercial_keywords"] = kw.get("commercial_keywords")
-        return {"file": file_path, "primary_keyword": primary_keyword, "checks": {}, "summary": {"overall": "PASS", "blockers": [], "warnings": []}}
+        return {
+            "file": file_path,
+            "primary_keyword": primary_keyword,
+            "checks": {},
+            "summary": {"overall": "PASS", "blockers": [], "warnings": []},
+        }
 
     monkeypatch.setattr(vc, "validate_content", _fake_validate)
     monkeypatch.setattr(vc, "print_results", lambda _r: None)
@@ -710,7 +797,12 @@ def test_main_mode_option_is_parsed(monkeypatch):
 
     def _fake_validate(*_a, **kw):
         captured["mode"] = kw.get("mode")
-        return {"file": "f", "primary_keyword": "k", "checks": {}, "summary": {"overall": "PASS", "blockers": [], "warnings": []}}
+        return {
+            "file": "f",
+            "primary_keyword": "k",
+            "checks": {},
+            "summary": {"overall": "PASS", "blockers": [], "warnings": []},
+        }
 
     monkeypatch.setattr(vc, "validate_content", _fake_validate)
     monkeypatch.setattr(vc, "print_results", lambda _r: None)
@@ -724,13 +816,23 @@ def test_main_mode_option_is_parsed(monkeypatch):
 
 def test_main_with_analysis_exception_prints_warning(monkeypatch, capsys):
     import types
+
     import validate_content as vc
 
     dummy = types.ModuleType("analyze_category")
     dummy.analyze_category = lambda _slug: (_ for _ in ()).throw(RuntimeError("boom"))
     monkeypatch.setitem(sys.modules, "analyze_category", dummy)
 
-    monkeypatch.setattr(vc, "validate_content", lambda *_a, **_kw: {"file": "f", "primary_keyword": "k", "checks": {}, "summary": {"overall": "PASS", "blockers": [], "warnings": []}})
+    monkeypatch.setattr(
+        vc,
+        "validate_content",
+        lambda *_a, **_kw: {
+            "file": "f",
+            "primary_keyword": "k",
+            "checks": {},
+            "summary": {"overall": "PASS", "blockers": [], "warnings": []},
+        },
+    )
     monkeypatch.setattr(vc, "print_results", lambda _r: None)
     monkeypatch.setattr(sys, "argv", ["script.py", "file.md", "keyword", "--with-analysis", "slug"])
 
@@ -745,13 +847,23 @@ def test_main_with_analysis_exception_prints_warning(monkeypatch, capsys):
 def test_main_exit_codes_warning_and_fail(mock_print, mock_validate):
     import validate_content as vc
 
-    mock_validate.return_value = {"file": "f", "primary_keyword": "k", "checks": {}, "summary": {"overall": "WARNING", "blockers": [], "warnings": ["coverage"]}}
+    mock_validate.return_value = {
+        "file": "f",
+        "primary_keyword": "k",
+        "checks": {},
+        "summary": {"overall": "WARNING", "blockers": [], "warnings": ["coverage"]},
+    }
     with patch("sys.argv", ["script.py", "file.md", "keyword"]):
         with pytest.raises(SystemExit) as exc:
             vc.main()
         assert exc.value.code == 1
 
-    mock_validate.return_value = {"file": "f", "primary_keyword": "k", "checks": {}, "summary": {"overall": "FAIL", "blockers": ["primary_keyword"], "warnings": []}}
+    mock_validate.return_value = {
+        "file": "f",
+        "primary_keyword": "k",
+        "checks": {},
+        "summary": {"overall": "FAIL", "blockers": ["primary_keyword"], "warnings": []},
+    }
     with patch("sys.argv", ["script.py", "file.md", "keyword"]):
         with pytest.raises(SystemExit) as exc:
             vc.main()
@@ -760,7 +872,12 @@ def test_main_exit_codes_warning_and_fail(mock_print, mock_validate):
 
 def test_check_blacklist_phrases_warning_when_non_strict_found():
     with patch("validate_content.check_blacklist") as mock_check:
-        mock_check.return_value = {"strict_phrases": [], "brands": [{"entity": "x"}], "cities": [], "ai_fluff": []}
+        mock_check.return_value = {
+            "strict_phrases": [],
+            "brands": [{"entity": "x"}],
+            "cities": [],
+            "ai_fluff": [],
+        }
         res = check_blacklist_phrases("text")
     assert res["overall"] == "WARNING"
 
@@ -777,11 +894,22 @@ def test_check_blacklist_phrases_unavailable(monkeypatch):
 def test_check_strict_blacklist_only_paths(monkeypatch):
     import validate_content as vc
 
-    monkeypatch.setattr(vc, "check_blacklist", lambda _t: {"strict_phrases": ["x"], "brands": [{"entity": "b"}], "cities": [], "ai_fluff": []})
+    monkeypatch.setattr(
+        vc,
+        "check_blacklist",
+        lambda _t: {
+            "strict_phrases": ["x"],
+            "brands": [{"entity": "b"}],
+            "cities": [],
+            "ai_fluff": [],
+        },
+    )
     res = vc.check_strict_blacklist_only("text")
     assert res["overall"] == "FAIL"
 
-    monkeypatch.setattr(vc, "check_blacklist", lambda _t: (_ for _ in ()).throw(RuntimeError("boom")))
+    monkeypatch.setattr(
+        vc, "check_blacklist", lambda _t: (_ for _ in ()).throw(RuntimeError("boom"))
+    )
     res = vc.check_strict_blacklist_only("text")
     assert res["overall"] == "ERROR"
 
@@ -804,7 +932,10 @@ test spot
 
 
 def test_check_grammar_pass_with_few_matches():
-    with patch("validate_content.GRAMMAR_AVAILABLE", True), patch("validate_content.language_tool_python") as mock_lt:
+    with (
+        patch("validate_content.GRAMMAR_AVAILABLE", True),
+        patch("validate_content.language_tool_python") as mock_lt,
+    ):
         mock_tool = MagicMock()
         mock_lt.LanguageTool.return_value = mock_tool
         match = MagicMock()
@@ -819,7 +950,10 @@ def test_check_grammar_pass_with_few_matches():
 
 
 def test_check_markdown_lint_pass_with_few_violations():
-    with patch("validate_content.MDLINT_AVAILABLE", True), patch("validate_content.PyMarkdownApi") as mock_api:
+    with (
+        patch("validate_content.MDLINT_AVAILABLE", True),
+        patch("validate_content.PyMarkdownApi") as mock_api,
+    ):
         mock_instance = MagicMock()
         mock_api.return_value = mock_instance
         mock_fail = MagicMock()
@@ -843,19 +977,51 @@ def test_print_results_covers_split_coverage_and_icons(capsys):
         "primary_keyword": "k",
         "mode": "quality",
         "checks": {
-            "structure": {"overall": "FAIL", "h1": {"passed": False, "value": None}, "intro": {"passed": False, "words": 0}, "h2_count": {"passed": False, "count": 0}},
-            "primary_keyword": {"overall": "FAIL", "in_h1": {"passed": False}, "in_intro": {"passed": False}, "frequency": {"count": 0, "status": "LOW"}},
+            "structure": {
+                "overall": "FAIL",
+                "h1": {"passed": False, "value": None},
+                "intro": {"passed": False, "words": 0},
+                "h2_count": {"passed": False, "count": 0},
+            },
+            "primary_keyword": {
+                "overall": "FAIL",
+                "in_h1": {"passed": False},
+                "in_intro": {"passed": False},
+                "frequency": {"count": 0, "status": "LOW"},
+            },
             "coverage": {
                 "overall": "WARNING",
-                "core": {"found": 1, "total": 3, "coverage_percent": 33.3, "target": 70, "missing_keywords": ["a", "b"]},
-                "commercial": {"found": 0, "total": 2, "coverage_percent": 0.0, "missing_keywords": ["c"], "note": "INFO"},
+                "core": {
+                    "found": 1,
+                    "total": 3,
+                    "coverage_percent": 33.3,
+                    "target": 70,
+                    "missing_keywords": ["a", "b"],
+                },
+                "commercial": {
+                    "found": 0,
+                    "total": 2,
+                    "coverage_percent": 0.0,
+                    "missing_keywords": ["c"],
+                    "note": "INFO",
+                },
                 "note": "n",
             },
             "quality": {"overall": "SKIPPED", "water": {"value": None}, "note": "Unavailable"},
-            "blacklist": {"overall": "FAIL", "strict_phrases": ["x"], "brands": ["b"], "cities": [], "ai_fluff": ["f"]},
+            "blacklist": {
+                "overall": "FAIL",
+                "strict_phrases": ["x"],
+                "brands": ["b"],
+                "cities": [],
+                "ai_fluff": ["f"],
+            },
             "length": {"words": 10, "chars_no_spaces": 20, "status": "WARNING_SHORT"},
             "grammar": {"overall": "SKIPPED", "note": "n"},
-            "md_lint": {"overall": "WARNING", "violations": [{"line": 1, "rule": "MD001", "description": "d"}], "violation_count": 6},
+            "md_lint": {
+                "overall": "WARNING",
+                "violations": [{"line": 1, "rule": "MD001", "description": "d"}],
+                "violation_count": 6,
+            },
             "content_standards": {"overall": "OK", "issues": []},
         },
         "summary": {"overall": "FAIL", "blockers": ["primary_keyword"], "warnings": ["coverage"]},
@@ -893,20 +1059,56 @@ def test_validate_content_collects_blockers(tmp_path, monkeypatch):
     md = tmp_path / "t.md"
     md.write_text("# H1\nintro", encoding="utf-8")
 
-    monkeypatch.setattr(vc, "check_structure", lambda _t: {"overall": "FAIL", "h1": {"passed": False, "value": None}, "intro": {"passed": False, "words": 0}, "h2_count": {"passed": False, "count": 0}})
-    monkeypatch.setattr(vc, "check_primary_keyword", lambda _t, _kw: {"overall": "FAIL", "in_h1": {"passed": False}, "in_intro": {"passed": False}, "frequency": {"count": 0, "status": "LOW"}})
-    monkeypatch.setattr(vc, "check_primary_keyword_semantic", lambda *_a, **_kw: {"overall": "FAIL", "semantic_h1": False, "semantic_intro": False, "confidence": 0})
-    monkeypatch.setattr(vc, "check_keyword_coverage", lambda *_a, **_kw: {"overall": "PASS", "passed": True})
+    monkeypatch.setattr(
+        vc,
+        "check_structure",
+        lambda _t: {
+            "overall": "FAIL",
+            "h1": {"passed": False, "value": None},
+            "intro": {"passed": False, "words": 0},
+            "h2_count": {"passed": False, "count": 0},
+        },
+    )
+    monkeypatch.setattr(
+        vc,
+        "check_primary_keyword",
+        lambda _t, _kw: {
+            "overall": "FAIL",
+            "in_h1": {"passed": False},
+            "in_intro": {"passed": False},
+            "frequency": {"count": 0, "status": "LOW"},
+        },
+    )
+    monkeypatch.setattr(
+        vc,
+        "check_primary_keyword_semantic",
+        lambda *_a, **_kw: {
+            "overall": "FAIL",
+            "semantic_h1": False,
+            "semantic_intro": False,
+            "confidence": 0,
+        },
+    )
+    monkeypatch.setattr(
+        vc, "check_keyword_coverage", lambda *_a, **_kw: {"overall": "PASS", "passed": True}
+    )
     monkeypatch.setattr(vc, "check_quality", lambda _t, **kw: {"overall": "FAIL"})
     monkeypatch.setattr(vc, "check_blacklist_phrases", lambda _t: {"overall": "FAIL"})
-    monkeypatch.setattr(vc, "check_length", lambda _t: {"status": "OK", "words": 200, "chars_no_spaces": 1000})
+    monkeypatch.setattr(
+        vc, "check_length", lambda _t: {"status": "OK", "words": 200, "chars_no_spaces": 1000}
+    )
     monkeypatch.setattr(vc, "check_content_standards", lambda _t: {"overall": "OK", "issues": []})
     monkeypatch.setattr(vc, "check_grammar", lambda _t: {"overall": "PASS"})
     monkeypatch.setattr(vc, "check_markdown_lint", lambda _p: {"overall": "PASS"})
 
     res = vc.validate_content(str(md), "kw", all_keywords=["a"], use_semantic=False, mode="quality")
     assert res["summary"]["overall"] == "FAIL"
-    assert set(res["summary"]["blockers"]) >= {"structure", "primary_keyword", "quality", "blacklist"}
+    assert set(res["summary"]["blockers"]) >= {
+        "structure",
+        "primary_keyword",
+        "quality",
+        "blacklist",
+    }
 
 
 def test_validate_content_collects_warnings(tmp_path, monkeypatch):
@@ -915,19 +1117,53 @@ def test_validate_content_collects_warnings(tmp_path, monkeypatch):
     md = tmp_path / "t.md"
     md.write_text("# H1\n\nkw " + ("x " * 200) + "\n## H2\ntext", encoding="utf-8")
 
-    monkeypatch.setattr(vc, "check_structure", lambda _t: {"overall": "PASS", "h1": {"passed": True, "value": "H1"}, "intro": {"passed": True, "words": 40}, "h2_count": {"passed": True, "count": 2}})
-    monkeypatch.setattr(vc, "check_primary_keyword", lambda _t, _kw: {"overall": "PASS", "in_h1": {"passed": True}, "in_intro": {"passed": True}, "frequency": {"count": 1, "status": "OK"}})
-    monkeypatch.setattr(vc, "check_keyword_coverage", lambda *_a, **_kw: {"overall": "WARNING", "passed": False})
+    monkeypatch.setattr(
+        vc,
+        "check_structure",
+        lambda _t: {
+            "overall": "PASS",
+            "h1": {"passed": True, "value": "H1"},
+            "intro": {"passed": True, "words": 40},
+            "h2_count": {"passed": True, "count": 2},
+        },
+    )
+    monkeypatch.setattr(
+        vc,
+        "check_primary_keyword",
+        lambda _t, _kw: {
+            "overall": "PASS",
+            "in_h1": {"passed": True},
+            "in_intro": {"passed": True},
+            "frequency": {"count": 1, "status": "OK"},
+        },
+    )
+    monkeypatch.setattr(
+        vc, "check_keyword_coverage", lambda *_a, **_kw: {"overall": "WARNING", "passed": False}
+    )
     monkeypatch.setattr(vc, "check_quality", lambda _t, **kw: {"overall": "WARNING"})
     monkeypatch.setattr(vc, "check_blacklist_phrases", lambda _t: {"overall": "WARNING"})
-    monkeypatch.setattr(vc, "check_length", lambda _t: {"status": "WARNING_SHORT", "words": 10, "chars_no_spaces": 20})
-    monkeypatch.setattr(vc, "check_content_standards", lambda _t: {"overall": "WARNING", "issues": ["x"]})
+    monkeypatch.setattr(
+        vc,
+        "check_length",
+        lambda _t: {"status": "WARNING_SHORT", "words": 10, "chars_no_spaces": 20},
+    )
+    monkeypatch.setattr(
+        vc, "check_content_standards", lambda _t: {"overall": "WARNING", "issues": ["x"]}
+    )
     monkeypatch.setattr(vc, "check_grammar", lambda _t: {"overall": "WARNING"})
     monkeypatch.setattr(vc, "check_markdown_lint", lambda _p: {"overall": "WARNING"})
 
     res = vc.validate_content(str(md), "kw", all_keywords=["a"], use_semantic=False, mode="quality")
     assert res["summary"]["overall"] == "WARNING"
-    assert set(res["summary"]["warnings"]) >= {"coverage", "quality", "blacklist", "length", "grammar", "md_lint", "content_standards"}
+    assert set(res["summary"]["warnings"]) >= {
+        "coverage",
+        "quality",
+        "blacklist",
+        "length",
+        "grammar",
+        "md_lint",
+        "content_standards",
+    }
 
 
 def test_print_results_more_branches(capsys):
@@ -939,12 +1175,34 @@ def test_print_results_more_branches(capsys):
         "primary_keyword": "k",
         "mode": "quality",
         "checks": {
-            "structure": {"overall": "PASS", "h1": {"passed": True, "value": "H1"}, "intro": {"passed": True, "words": 40}, "h2_count": {"passed": True, "count": 2}},
-            "primary_keyword": {"overall": "PASS", "in_h1": {"passed": True}, "in_intro": {"passed": True}, "frequency": {"count": 1, "status": "OK"}},
+            "structure": {
+                "overall": "PASS",
+                "h1": {"passed": True, "value": "H1"},
+                "intro": {"passed": True, "words": 40},
+                "h2_count": {"passed": True, "count": 2},
+            },
+            "primary_keyword": {
+                "overall": "PASS",
+                "in_h1": {"passed": True},
+                "in_intro": {"passed": True},
+                "frequency": {"count": 1, "status": "OK"},
+            },
             "coverage": {
                 "overall": "INFO",
-                "core": {"found": 1, "total": 3, "coverage_percent": 33.3, "target": None, "missing_keywords": ["a"]},
-                "commercial": {"found": 0, "total": 2, "coverage_percent": 0.0, "missing_keywords": [], "note": "INFO"},
+                "core": {
+                    "found": 1,
+                    "total": 3,
+                    "coverage_percent": 33.3,
+                    "target": None,
+                    "missing_keywords": ["a"],
+                },
+                "commercial": {
+                    "found": 0,
+                    "total": 2,
+                    "coverage_percent": 0.0,
+                    "missing_keywords": [],
+                    "note": "INFO",
+                },
                 "note": "n",
             },
             "quality": {
@@ -953,9 +1211,19 @@ def test_print_results_more_branches(capsys):
                 "nausea_classic": {"value": 2.0, "status": "OK"},
                 "nausea_academic": {"value": 8.0, "status": "OK"},
             },
-            "blacklist": {"overall": "PASS", "strict_phrases": [], "brands": [], "cities": [], "ai_fluff": []},
+            "blacklist": {
+                "overall": "PASS",
+                "strict_phrases": [],
+                "brands": [],
+                "cities": [],
+                "ai_fluff": [],
+            },
             "length": {"words": 200, "chars_no_spaces": 1000, "status": "OK"},
-            "grammar": {"overall": "WARNING", "error_count": 2, "errors": [{"message": "m1"}, {"message": "m2"}]},
+            "grammar": {
+                "overall": "WARNING",
+                "error_count": 2,
+                "errors": [{"message": "m1"}, {"message": "m2"}],
+            },
             "md_lint": {"overall": "ERROR", "note": "boom", "violations": [], "violation_count": 0},
             "content_standards": {"overall": "OK", "issues": []},
         },
@@ -969,16 +1237,39 @@ def test_print_results_more_branches(capsys):
         "primary_keyword": "k",
         "mode": "quality",
         "checks": {
-            "structure": {"overall": "PASS", "h1": {"passed": True, "value": "H1"}, "intro": {"passed": True, "words": 40}, "h2_count": {"passed": True, "count": 2}},
-            "primary_keyword": {"overall": "PASS", "in_h1": {"passed": True}, "in_intro": {"passed": True}, "frequency": {"count": 1, "status": "OK"}},
-            "coverage": {"overall": "INFO", "found": 1, "total": 3, "coverage_percent": 33.3, "target": 70, "missing_keywords": ["a", "b"]},
+            "structure": {
+                "overall": "PASS",
+                "h1": {"passed": True, "value": "H1"},
+                "intro": {"passed": True, "words": 40},
+                "h2_count": {"passed": True, "count": 2},
+            },
+            "primary_keyword": {
+                "overall": "PASS",
+                "in_h1": {"passed": True},
+                "in_intro": {"passed": True},
+                "frequency": {"count": 1, "status": "OK"},
+            },
+            "coverage": {
+                "overall": "INFO",
+                "found": 1,
+                "total": 3,
+                "coverage_percent": 33.3,
+                "target": 70,
+                "missing_keywords": ["a", "b"],
+            },
             "quality": {
                 "overall": "PASS",
                 "water": {"value": 50.0, "status": "OK"},
                 "nausea_classic": {"value": 2.0, "status": "OK"},
                 "nausea_academic": {"value": 8.0, "status": "OK"},
             },
-            "blacklist": {"overall": "PASS", "strict_phrases": [], "brands": [], "cities": [], "ai_fluff": []},
+            "blacklist": {
+                "overall": "PASS",
+                "strict_phrases": [],
+                "brands": [],
+                "cities": [],
+                "ai_fluff": [],
+            },
             "length": {"words": 200, "chars_no_spaces": 1000, "status": "OK"},
             "grammar": {"overall": "PASS", "error_count": 0, "errors": []},
             "md_lint": {"overall": "SKIPPED", "note": "n", "violations": [], "violation_count": 0},
@@ -992,4 +1283,3 @@ def test_print_results_more_branches(capsys):
     assert "target=70" in out or "Target:" in out
     assert "Missing:" in out
     assert "OVERALL: WARNING" in out
-

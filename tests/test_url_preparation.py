@@ -11,7 +11,6 @@ Tests cover:
 from __future__ import annotations
 
 import json
-import runpy
 import sys
 from pathlib import Path
 
@@ -53,19 +52,25 @@ class TestUrlPreparationCli:
 
 
 def test_script_standalone_inserts_project_root(monkeypatch):
-    script_path = Path(__file__).parent.parent / "scripts" / "url_preparation_filter_and_validate.py"
+    script_path = (
+        Path(__file__).parent.parent / "scripts" / "url_preparation_filter_and_validate.py"
+    )
     monkeypatch.setattr(sys, "argv", ["url_preparation_filter_and_validate.py"])
     monkeypatch.setattr(sys, "path", ["__sentinel__"])
 
+    code = script_path.read_text(encoding="utf-8")
+    compiled = compile(code, str(script_path), "exec")
+    globals_dict = {"__name__": "__main__", "__package__": None, "__file__": str(script_path)}
     with pytest.raises(SystemExit):
-        code = script_path.read_text(encoding="utf-8")
-        exec(compile(code, str(script_path), "exec"), {"__name__": "__main__", "__package__": None, "__file__": str(script_path)})
+        exec(compiled, globals_dict)  # noqa: S102
 
     assert sys.path[0] == str(script_path.resolve().parent.parent)
 
 
 class TestUrlPreparationIntegration:
-    def test_missing_urls_raw_file_in_task(self, tmp_path: Path, capsys: pytest.CaptureFixture[str]):
+    def test_missing_urls_raw_file_in_task(
+        self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+    ):
         cat_dir = tmp_path / "categories" / "test-slug"
         cat_dir.mkdir(parents=True)
         logs_dir = cat_dir / ".logs"
@@ -93,7 +98,9 @@ class TestUrlPreparationIntegration:
         assert payload["status"] == "FAIL"
         assert "urls file not found" in payload["error"].lower()
 
-    def test_processes_valid_task_file_success(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
+    def test_processes_valid_task_file_success(
+        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
+    ):
         cat_dir = tmp_path / "categories" / "test-slug"
         cat_dir.mkdir(parents=True)
         logs_dir = cat_dir / ".logs"
@@ -147,7 +154,9 @@ class TestUrlPreparationIntegration:
         assert all("rozetka.com.ua" not in u for u in validated_urls)
         assert all("/ua/" not in u for u in validated_urls)
 
-    def test_ua_fix_strategy_replaces_with_ru_when_remove_fails(self, tmp_path: Path, monkeypatch, capsys):
+    def test_ua_fix_strategy_replaces_with_ru_when_remove_fails(
+        self, tmp_path: Path, monkeypatch, capsys
+    ):
         cat_dir = tmp_path / "categories" / "test-slug"
         cat_dir.mkdir(parents=True)
         logs_dir = cat_dir / ".logs"
@@ -169,7 +178,14 @@ class TestUrlPreparationIntegration:
             encoding="utf-8",
         )
 
-        task = {"slug": "test-slug", "paths": {"urls_raw": str(urls_raw_file), "urls": str(urls_out_file), "logs": str(logs_dir)}}
+        task = {
+            "slug": "test-slug",
+            "paths": {
+                "urls_raw": str(urls_raw_file),
+                "urls": str(urls_out_file),
+                "logs": str(logs_dir),
+            },
+        }
         task_file = tmp_path / "task.json"
         task_file.write_text(json.dumps(task, ensure_ascii=False), encoding="utf-8")
 
@@ -195,7 +211,9 @@ class TestUrlPreparationIntegration:
         err = capsys.readouterr().err
         assert "Replaced /ua/ → /ru/ → 200 OK" in err
 
-    def test_ua_fix_strategy_keeps_original_when_ru_fails_but_original_ok(self, tmp_path: Path, monkeypatch, capsys):
+    def test_ua_fix_strategy_keeps_original_when_ru_fails_but_original_ok(
+        self, tmp_path: Path, monkeypatch, capsys
+    ):
         cat_dir = tmp_path / "categories" / "test-slug"
         cat_dir.mkdir(parents=True)
         logs_dir = cat_dir / ".logs"
@@ -218,7 +236,14 @@ class TestUrlPreparationIntegration:
             encoding="utf-8",
         )
 
-        task = {"slug": "test-slug", "paths": {"urls_raw": str(urls_raw_file), "urls": str(urls_out_file), "logs": str(logs_dir)}}
+        task = {
+            "slug": "test-slug",
+            "paths": {
+                "urls_raw": str(urls_raw_file),
+                "urls": str(urls_out_file),
+                "logs": str(logs_dir),
+            },
+        }
         task_file = tmp_path / "task.json"
         task_file.write_text(json.dumps(task, ensure_ascii=False), encoding="utf-8")
 
@@ -231,9 +256,7 @@ class TestUrlPreparationIntegration:
             # Force: remove fails, RU fails, original succeeds.
             if url == original:
                 return True
-            if url in {url_without_ua, url_with_ru}:
-                return False
-            return True
+            return url not in {url_without_ua, url_with_ru}
 
         monkeypatch.setattr(mod, "check_url_accessibility", fake_access)
         monkeypatch.setattr(mod.time, "sleep", lambda *_args, **_kwargs: None)
@@ -243,7 +266,9 @@ class TestUrlPreparationIntegration:
         err = capsys.readouterr().err
         assert "Keeping original (200 OK)" in err
 
-    def test_legacy_args_mode(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
+    def test_legacy_args_mode(
+        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
+    ):
         urls_raw_file = tmp_path / "urls_raw.txt"
         urls_raw_file.write_text(
             "\n".join(
@@ -358,7 +383,15 @@ class TestUrlPreparationIntegration:
     @pytest.mark.parametrize(
         ("urls", "expected_status", "expected_rc"),
         [
-            (["https://shop.com/catalog/a", "https://shop.com/catalog/b", "https://shop.com/catalog/c"], "WARNING", 1),
+            (
+                [
+                    "https://shop.com/catalog/a",
+                    "https://shop.com/catalog/b",
+                    "https://shop.com/catalog/c",
+                ],
+                "WARNING",
+                1,
+            ),
             (["https://shop.com/catalog/a", "https://shop.com/catalog/b"], "FAIL", 2),
         ],
     )

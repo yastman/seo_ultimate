@@ -12,6 +12,7 @@ Initialize new category for SEO content pipeline with **proper keyword clusterin
 ## Проблема, которую решаем
 
 CSV содержит 50+ сырых ключей с дублями:
+
 - "пена для мойки авто" (1300)
 - "пена для мойки автомобиля" (1300)
 - "активная пена для мойки авто" (1000)
@@ -37,11 +38,13 @@ Validate:
 ### Step 2: Find Category in CSV
 
 Parse `Структура _Ultimate.csv`:
+
 - Find L2/L3 category matching slug
 - Extract ALL keywords with search volumes
 - Note parent L1 and L2 categories
 
 CSV structure:
+
 ```
 L1: Мойка и Экстерьер,24/338,
 L2: Автошампуни,5/59,
@@ -71,6 +74,7 @@ categories/{slug}/
 #### 4.1 Слияние дублей
 
 Объединяем семантически идентичные ключи:
+
 ```
 "пена для мойки авто" (1300)
 "пена для мойки автомобиля" (1300)
@@ -81,6 +85,7 @@ categories/{slug}/
 #### 4.2 Выделение Commercial
 
 Все ключи с "купить/цена/заказать" → отдельная группа с `use_in: "meta_only"`:
+
 ```json
 {
   "keyword": "купить активную пену",
@@ -208,11 +213,13 @@ categories/{slug}/
 ### Step 6: Create Templates
 
 **meta/{slug}_meta.json:**
+
 ```json
 {"slug": "{slug}", "language": "ru", "status": "template"}
 ```
 
 **research/RESEARCH_DATA.md:**
+
 ```markdown
 # Research: {slug}
 
@@ -222,6 +229,7 @@ categories/{slug}/
 ### Step 7: Validate Output
 
 Check:
+
 - [ ] JSON is valid
 - [ ] Keywords clustered (before > after в stats)
 - [ ] Commercial имеют `use_in: "meta_only"`
@@ -234,22 +242,26 @@ Check:
 ## Правила кластеризации
 
 ### Primary (2-3 ключа)
+
 - Главный запрос категории
 - Самый высокий volume после слияния дублей
 - Использовать в H1 и intro
 
 ### Secondary (3-5 ключей)
+
 - Вариации по методу/оборудованию/сегменту
 - Volume 20-100
 - Для H2 заголовков
 
 ### Supporting (5-7 ключей)
+
 - Long-tail запросы
 - Синонимы
 - Volume 10-20
 - Для FAQ и таблиц
 
 ### Commercial (2-4 ключа)
+
 - ВСЕ с "купить/цена/заказать"
 - **ОБЯЗАТЕЛЬНО** `use_in: "meta_only"`
 - НИКОГДА не использовать в тексте статьи

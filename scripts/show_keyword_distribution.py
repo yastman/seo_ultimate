@@ -125,7 +125,9 @@ def format_stats(data: dict, keywords: list[dict]) -> str:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Show keyword distribution for a category JSON file")
+    parser = argparse.ArgumentParser(
+        description="Show keyword distribution for a category JSON file"
+    )
     parser.add_argument("category_json", help="Path to category JSON")
     return parser
 

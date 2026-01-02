@@ -8,6 +8,7 @@
 ## Checklist per Category
 
 ### Pre-flight
+
 - [ ] RU версия полностью готова (Stage 04 completed)
 - [ ] `categories/{slug}/content/{slug}_ru.md` существует
 - [ ] `categories/{slug}/meta/{slug}_meta.json` содержит RU версию
@@ -15,23 +16,27 @@
 ### Execution
 
 #### 1. Создать UK структуру
+
 ```bash
 mkdir -p uk/categories/{slug}/{data,meta,content,research}
 ```
 
 #### 2. Перевести Keywords
+
 - [ ] Открыть `categories/{slug}/data/{slug}_clean.json`
 - [ ] Перевести primary keywords на украинский
 - [ ] Проверить search volume для UK версий (если возможно)
 - [ ] Создать `uk/categories/{slug}/data/{slug}_clean.json`
 
 #### 3. Перевести Meta Tags
+
 - [ ] title_uk: перевод с адаптацией
 - [ ] description_uk: перевод с украинским CTA
 - [ ] h1_uk: точный перевод primary keyword
 - [ ] Записать в `uk/categories/{slug}/meta/{slug}_meta.json`
 
 #### 4. Перевести Content
+
 - [ ] Перевести заголовки (H1, H2, H3)
 - [ ] Перевести текст (сохранить структуру)
 - [ ] Адаптировать FAQ для украинской аудитории
@@ -39,15 +44,18 @@ mkdir -p uk/categories/{slug}/{data,meta,content,research}
 - [ ] Записать в `uk/categories/{slug}/content/{slug}_uk.md`
 
 #### 5. Создать Context File
+
 - [ ] Записать заметки по переводу в `uk/categories/{slug}/research/CONTEXT.md`
 
 ### Translation Quality Checks
+
 - [ ] НЕ транслитерация, а перевод
 - [ ] Правильная украинская терминология
 - [ ] Нет русизмов
 - [ ] CTA на украинском ("Замовити", не "Заказать")
 
 ### Validation Script
+
 ```bash
 # Meta validation
 python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
@@ -60,6 +68,7 @@ python3 scripts/validate_content.py \
 ```
 
 ### Acceptance Criteria
+
 - [ ] Все файлы созданы в uk/categories/{slug}/
 - [ ] Meta tags в пределах лимитов символов
 - [ ] Контент переведён полностью
@@ -67,6 +76,7 @@ python3 scripts/validate_content.py \
 - [ ] Нет смешения RU/UK
 
 ### Post-action
+
 - [ ] Переместить из `pending/` в `completed/`
 - [ ] Обновить счётчик в `PIPELINE_STATUS.md`
 
@@ -75,6 +85,7 @@ python3 scripts/validate_content.py \
 ## Pending (17)
 
 ### Blocked by RU Content (17)
+
 tverdyy-vosk, zhidkiy-vosk, pyatnovyvoditeli, ochistiteli-kuzova, akkumulyatornye-mashinki, avtoshampuni, sredstva-dlya-stekol, sredstva-dlya-diskov-i-shin, s-voskom, kislotnyy-shampun, zashchitnoe-pokrytie-dlya-koles, dlya-vneshnego-plastika, mikrofibra-dlya-polirovki, mikrofibra-dlya-stekol, nabory-dlya-deteylinga, porolonovye, oborudovanie
 
 *+ 21 категория из Stage 03/04*

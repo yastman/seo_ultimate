@@ -37,7 +37,7 @@ def test_h2_check_passes_with_stems():
 
 
 @pytest.mark.parametrize(
-    "count,expected_status,is_spam",
+    ("count", "expected_status", "is_spam"),
     [
         (0, "LOW", False),
         (3, "OK", False),
@@ -77,7 +77,9 @@ def test_check_seo_structure_overall_pass(tmp_path: Path):
 
     status, results = mod.check_seo_structure(str(md), "активная пена")
     assert status in ("PASS", "WARN")  # depends on H2 counting and frequency
-    assert "intro" in results and "h2" in results and "frequency" in results
+    assert "intro" in results
+    assert "h2" in results
+    assert "frequency" in results
 
 
 def test_check_seo_structure_fail_when_missing_intro(tmp_path: Path):

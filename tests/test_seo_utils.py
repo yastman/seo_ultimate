@@ -11,29 +11,31 @@ Tests cover:
 7. URL validation functions
 """
 
-import pytest
 import sys
 from pathlib import Path
 
+import pytest
+
+
 # Add scripts directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
+sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 from seo_utils import (
-    parse_front_matter,
-    rebuild_document,
-    normalize_text,
-    count_words,
+    DEFAULT_BLACKLIST_DOMAINS,
     count_chars_no_spaces,
     count_keyword_occurrences,
-    safe_sentence_split,
-    is_protected_section,
-    get_tier_requirements,
-    get_protected_zones,
-    is_in_protected_zone,
-    is_blacklisted_domain,
+    count_words,
     fix_ua_in_url,
+    get_protected_zones,
+    get_tier_requirements,
+    is_blacklisted_domain,
     is_category_page,
-    DEFAULT_BLACKLIST_DOMAINS
+    is_in_protected_zone,
+    is_protected_section,
+    normalize_text,
+    parse_front_matter,
+    rebuild_document,
+    safe_sentence_split,
 )
 
 
@@ -234,10 +236,7 @@ class TestCountKeywordOccurrences:
     def test_count_exact_matches(self):
         """Should count exact keyword matches"""
         text = "активная пена очищает. активная пена безопасна."
-        variations = {
-            "exact": ["активная пена"],
-            "partial": []
-        }
+        variations = {"exact": ["активная пена"], "partial": []}
 
         exact, partial = count_keyword_occurrences(text, "активная пена", variations)
 
@@ -247,10 +246,7 @@ class TestCountKeywordOccurrences:
     def test_count_partial_matches(self):
         """Should count partial variations"""
         text = "активной пены достаточно. с активной пеной легко."
-        variations = {
-            "exact": ["активная пена"],
-            "partial": ["активной пены", "активной пеной"]
-        }
+        variations = {"exact": ["активная пена"], "partial": ["активной пены", "активной пеной"]}
 
         exact, partial = count_keyword_occurrences(text, "активная пена", variations)
 
@@ -325,19 +321,22 @@ After code."""
 class TestIsProtectedSection:
     """Test protected section detection"""
 
-    @pytest.mark.parametrize("sentence", [
-        "# Header",
-        "## Subheader",
-        "### FAQ Question",
-        "- List item",
-        "* Bullet point",
-        "+ Another bullet",
-        "> Quote",
-        "```code",
-        "1. Numbered",
-        "2. Also numbered",
-        "**Bold start**",
-    ])
+    @pytest.mark.parametrize(
+        "sentence",
+        [
+            "# Header",
+            "## Subheader",
+            "### FAQ Question",
+            "- List item",
+            "* Bullet point",
+            "+ Another bullet",
+            "> Quote",
+            "```code",
+            "1. Numbered",
+            "2. Also numbered",
+            "**Bold start**",
+        ],
+    )
     def test_protected_prefixes(self, sentence):
         """Should protect headers, lists, quotes, code, numbers, bold"""
         assert is_protected_section(sentence) is True
@@ -469,22 +468,14 @@ class TestIsInProtectedZone:
 
     def test_position_in_intro(self):
         """Should detect position in intro zone"""
-        zones = {
-            "intro": [(0, 100)],
-            "h2_sections": [],
-            "faq": []
-        }
+        zones = {"intro": [(0, 100)], "h2_sections": [], "faq": []}
 
         assert is_in_protected_zone(50, zones) is True
         assert is_in_protected_zone(150, zones) is False
 
     def test_position_in_h2(self):
         """Should detect position in H2 zone"""
-        zones = {
-            "intro": [],
-            "h2_sections": [(100, 200), (300, 400)],
-            "faq": []
-        }
+        zones = {"intro": [], "h2_sections": [(100, 200), (300, 400)], "faq": []}
 
         assert is_in_protected_zone(150, zones) is True
         assert is_in_protected_zone(350, zones) is True

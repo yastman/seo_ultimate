@@ -42,14 +42,26 @@ class TestMain:
 
         monkeypatch.setattr(qr, "QualityCheck", Dummy)
 
-        rc = qr.main([str(md), "intro", "B", "--no-write-report", "--skip-grammar", "--skip-water", "--skip-ner"])
+        rc = qr.main(
+            [
+                str(md),
+                "intro",
+                "B",
+                "--no-write-report",
+                "--skip-grammar",
+                "--skip-water",
+                "--skip-ner",
+            ]
+        )
         assert rc == 0
 
 
 class TestMarkdownCheck:
     def test_markdown_pass_via_pymarkdown_api(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path)
-        checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         class FakeScanResult:
             scan_failures: list = []
@@ -67,7 +79,9 @@ class TestMarkdownCheck:
 
     def test_markdown_warn_via_pymarkdown_api(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path)
-        checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         class Failure:
             scan_file = "x.md"
@@ -129,7 +143,8 @@ class TestGrammarCheck:
 
         status, errors = checker.check_grammar()
         assert status == "WARN"
-        assert errors and isinstance(errors[0], dict)
+        assert errors
+        assert isinstance(errors[0], dict)
 
 
 class TestWaterCheck:
@@ -189,7 +204,12 @@ class TestWaterCheck:
         monkeypatch.setattr(
             seo_utils,
             "get_tier_requirements",
-            lambda _tier: {"water_min": 40.0, "water_max": 60.0, "water_blocker_low": 30.0, "water_blocker_high": 61.0},
+            lambda _tier: {
+                "water_min": 40.0,
+                "water_max": 60.0,
+                "water_blocker_low": 30.0,
+                "water_blocker_high": 61.0,
+            },
         )
 
         status, _metrics = checker.check_water_nausea()
@@ -199,12 +219,25 @@ class TestWaterCheck:
 class TestKeywordDensity:
     def test_keyword_density_pass_with_json_report(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path, "# H1\n\nактивная пена активная пена активная пена\n")
-        checker = qr.QualityCheck(str(md), "активная пена", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "активная пена", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         report = {
-            "checks": {"density_distribution": {"metrics": {"total_density": 1.2, "coverage": 55.0, "keywords_found": 5, "keywords_total": 8}}}
+            "checks": {
+                "density_distribution": {
+                    "metrics": {
+                        "total_density": 1.2,
+                        "coverage": 55.0,
+                        "keywords_found": 5,
+                        "keywords_total": 8,
+                    }
+                }
+            }
         }
-        (tmp_path / "x_validation.json").write_text(json.dumps(report, ensure_ascii=False), encoding="utf-8")
+        (tmp_path / "x_validation.json").write_text(
+            json.dumps(report, ensure_ascii=False), encoding="utf-8"
+        )
 
         class R:
             returncode = 0
@@ -219,10 +252,18 @@ class TestKeywordDensity:
 
     def test_keyword_density_warn_when_returncode_1(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path, "# H1\n\nактивная пена\n")
-        checker = qr.QualityCheck(str(md), "активная пена", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "активная пена", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
-        report = {"checks": {"density_distribution": {"metrics": {"total_density": 2.6, "coverage": 20.0}}}}
-        (tmp_path / "x_validation.json").write_text(json.dumps(report, ensure_ascii=False), encoding="utf-8")
+        report = {
+            "checks": {
+                "density_distribution": {"metrics": {"total_density": 2.6, "coverage": 20.0}}
+            }
+        }
+        (tmp_path / "x_validation.json").write_text(
+            json.dumps(report, ensure_ascii=False), encoding="utf-8"
+        )
 
         class R:
             returncode = 1
@@ -236,10 +277,18 @@ class TestKeywordDensity:
 
     def test_keyword_density_fail_when_returncode_2(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path, "# H1\n\nактивная пена\n")
-        checker = qr.QualityCheck(str(md), "активная пена", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "активная пена", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
-        report = {"checks": {"density_distribution": {"metrics": {"total_density": 4.0, "coverage": 10.0}}}}
-        (tmp_path / "x_validation.json").write_text(json.dumps(report, ensure_ascii=False), encoding="utf-8")
+        report = {
+            "checks": {
+                "density_distribution": {"metrics": {"total_density": 4.0, "coverage": 10.0}}
+            }
+        }
+        (tmp_path / "x_validation.json").write_text(
+            json.dumps(report, ensure_ascii=False), encoding="utf-8"
+        )
 
         class R:
             returncode = 2
@@ -253,7 +302,9 @@ class TestKeywordDensity:
 
     def test_keyword_density_fails_when_json_missing(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path, "# H1\n\nактивная пена\n")
-        checker = qr.QualityCheck(str(md), "активная пена", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "активная пена", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         class R:
             returncode = 0
@@ -273,7 +324,11 @@ class TestNerCommercialSeoStructure:
 
         import scripts.check_ner_brands as ner_mod
 
-        monkeypatch.setattr(ner_mod, "check_blacklist", lambda _t: {"brands": [], "cities": [], "ai_fluff": [], "strict_phrases": []})
+        monkeypatch.setattr(
+            ner_mod,
+            "check_blacklist",
+            lambda _t: {"brands": [], "cities": [], "ai_fluff": [], "strict_phrases": []},
+        )
         monkeypatch.setattr(ner_mod, "check_ner", lambda _t: {"ner_entities": []})
 
         status, findings = checker.check_ner_blacklist()
@@ -289,7 +344,12 @@ class TestNerCommercialSeoStructure:
         monkeypatch.setattr(
             ner_mod,
             "check_blacklist",
-            lambda _t: {"brands": [], "cities": [], "ai_fluff": [], "strict_phrases": [{"entity": "строго"}]},
+            lambda _t: {
+                "brands": [],
+                "cities": [],
+                "ai_fluff": [],
+                "strict_phrases": [{"entity": "строго"}],
+            },
         )
         monkeypatch.setattr(ner_mod, "check_ner", lambda _t: {"ner_entities": []})
 
@@ -298,7 +358,9 @@ class TestNerCommercialSeoStructure:
 
     def test_commercial_pass_when_enough(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path, "# H1\n\nкупить цена доставка\n")
-        checker = qr.QualityCheck(str(md), "купить", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "купить", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         import scripts.seo_utils as seo_utils
 
@@ -306,7 +368,12 @@ class TestNerCommercialSeoStructure:
         monkeypatch.setattr(
             seo_utils,
             "check_commercial_markers",
-            lambda _text, _min_required: {"passed": True, "found_count": 3, "found_markers": ["купить", "цена"], "message": "ok"},
+            lambda _text, _min_required: {
+                "passed": True,
+                "found_count": 3,
+                "found_markers": ["купить", "цена"],
+                "message": "ok",
+            },
         )
 
         status, _markers = checker.check_commercial_markers()
@@ -314,14 +381,28 @@ class TestNerCommercialSeoStructure:
 
     def test_seo_structure_fail(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path, "# H1\n\nintro\n\n## H2\n")
-        checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         import scripts.check_seo_structure as seo_structure_mod
 
         monkeypatch.setattr(
             seo_structure_mod,
             "check_seo_structure",
-            lambda _path, _kw: ("FAIL", {"intro": {"passed": False, "message": "no"}, "h2": {"passed": True, "message": "ok", "h2_with_keyword": [], "h2_without_keyword": []}, "frequency": {"status": "OK", "is_spam": False, "message": "ok"}}),
+            lambda _path, _kw: (
+                "FAIL",
+                {
+                    "intro": {"passed": False, "message": "no"},
+                    "h2": {
+                        "passed": True,
+                        "message": "ok",
+                        "h2_with_keyword": [],
+                        "h2_without_keyword": [],
+                    },
+                    "frequency": {"status": "OK", "is_spam": False, "message": "ok"},
+                },
+            ),
         )
 
         status, _results = checker.check_seo_structure()
@@ -331,7 +412,9 @@ class TestNerCommercialSeoStructure:
 class TestMarkdownFallback:
     def test_markdownlint_fallback_warn(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path)
-        checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         real_import = __import__
 
@@ -354,7 +437,9 @@ class TestMarkdownFallback:
 
     def test_markdownlint_missing_binary_fails(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path)
-        checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         real_import = __import__
 
@@ -374,7 +459,9 @@ class TestMarkdownFallback:
 
     def test_commercial_fail_when_not_enough(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path, "# H1\n\nтекст\n")
-        checker = qr.QualityCheck(str(md), "текст", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "текст", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         import scripts.seo_utils as seo_utils
 
@@ -382,7 +469,12 @@ class TestMarkdownFallback:
         monkeypatch.setattr(
             seo_utils,
             "check_commercial_markers",
-            lambda _text, _min_required: {"passed": False, "found_count": 1, "found_markers": ["купить"], "message": "too few"},
+            lambda _text, _min_required: {
+                "passed": False,
+                "found_count": 1,
+                "found_markers": ["купить"],
+                "message": "too few",
+            },
         )
 
         status, _markers = checker.check_commercial_markers()
@@ -390,7 +482,9 @@ class TestMarkdownFallback:
 
     def test_seo_structure_warn(self, tmp_path: Path, monkeypatch):
         md = _write_md(tmp_path, "# H1\n\nintro\n\n## Заголовок\n")
-        checker = qr.QualityCheck(str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True)
+        checker = qr.QualityCheck(
+            str(md), "intro", "B", skip_grammar=True, skip_water=True, skip_ner=True
+        )
 
         import scripts.check_seo_structure as seo_structure_mod
 
@@ -401,7 +495,12 @@ class TestMarkdownFallback:
                 "WARN",
                 {
                     "intro": {"passed": True, "message": "ok", "in_first_sentence": True},
-                    "h2": {"passed": False, "message": "meh", "h2_with_keyword": [], "h2_without_keyword": ["a"]},
+                    "h2": {
+                        "passed": False,
+                        "message": "meh",
+                        "h2_with_keyword": [],
+                        "h2_without_keyword": ["a"],
+                    },
                     "frequency": {"status": "OK", "is_spam": False, "message": "ok"},
                 },
             ),

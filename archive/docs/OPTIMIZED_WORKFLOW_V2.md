@@ -82,7 +82,7 @@
 
 ---
 
-### Команда для возобновления:
+### Команда для возобновления
 
 ```
 данные готовы, продолжай для {slug}
@@ -1182,29 +1182,29 @@ claude run keyword-distribution-agent \
 
 ## 📚 ИСТОЧНИКИ
 
-### Индустриальные практики:
+### Индустриальные практики
 
 - [Clearscope: SEO Content Brief](https://www.clearscope.io/blog/SEO-content-brief)
 - [Semrush: Keyword Mapping](https://www.semrush.com/blog/keyword-mapping/)
 - [Moz: Keyword Map for SEO](https://moz.com/blog/build-content-keyword-map-for-seo-whiteboard-friday)
 - [SEO Monitor: Perfect Content Brief](https://www.seomonitor.com/learning-hub/the-perfect-seo-content-brief-template/)
 
-### LSI Keywords (терминология):
+### LSI Keywords (терминология)
 
 - [Google: No LSI Keywords](https://www.seroundtable.com/google-lsi-keywords-27970.html)
 - [Builder Society: LSI Myth](https://www.buildersociety.com/threads/john-mueller-says-there-is-no-such-thing-as-lsi-keywords.4419/)
 
-### Keyword Density 2025:
+### Keyword Density 2025
 
 - [Content Hero: Best Keyword Density](https://www.contenthero.co.uk/best-keyword-density-for-seo/)
 - [WriteSonic: Keywords Per Page](https://writesonic.com/blog/how-many-seo-keywords-per-page)
 
-### Screaming Frog:
+### Screaming Frog
 
 - [Configuration Guide](https://www.screamingfrog.co.uk/seo-spider/user-guide/configuration/)
 - [Title Same as H1 Issue](https://www.screamingfrog.co.uk/seo-spider/issues/page-titles/same-as-h1/)
 
-### Внутренняя документация:
+### Внутренняя документация
 
 - `docs/01_RULES_2025_UPDATES.md` - SEO правила 2025
 - `docs/02_CONTENT_GENERATION.md` - Спецификация генерации

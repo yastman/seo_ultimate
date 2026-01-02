@@ -8,11 +8,14 @@
 ## Issue D1: polirovalnye-krugi ↔ mekhovye
 
 ### Problem
+
 Ключевые слова "меховой круг" и "шерстяной круг" присутствуют в обеих категориях:
+
 - `polirovalnye-krugi` (полировальные круги)
 - `mekhovye` (меховые круги)
 
 ### Current State
+
 ```
 polirovalnye-krugi/_clean.json:
   - "меховой полировальный круг"
@@ -24,6 +27,7 @@ mekhovye/_clean.json:
 ```
 
 ### Solution
+
 Убрать из `polirovalnye-krugi` ключи, которые относятся к `mekhovye`:
 
 ```json
@@ -36,6 +40,7 @@ mekhovye/_clean.json:
 ```
 
 ### Checklist
+
 - [ ] Открыть `categories/polirovalnye-krugi/data/polirovalnye-krugi_clean.json`
 - [ ] Найти ключи с "меховой/шерстяной"
 - [ ] Удалить их из keywords
@@ -45,6 +50,7 @@ mekhovye/_clean.json:
 - [ ] Валидировать JSON
 
 ### Validation
+
 ```bash
 python3 -c "
 import json
@@ -62,13 +68,16 @@ else:
 ## Issue D2: voski restructure
 
 ### Problem
+
 Категория `voski` является родительской для:
+
 - `tverdyy-vosk`
 - `zhidkiy-vosk`
 
 После создания подкатегорий нужно убрать из `voski` ключи, которые теперь принадлежат подкатегориям.
 
 ### Current State
+
 ```
 voski/_clean.json:
   - "воск для авто" (main)
@@ -77,10 +86,12 @@ voski/_clean.json:
 ```
 
 ### Solution
+
 1. Оставить в `voski` только общие ключи
 2. Специфичные ключи уже в подкатегориях
 
 ### Checklist
+
 - [ ] Открыть `categories/voski/data/voski_clean.json`
 - [ ] Найти ключи с "твердый/твёрдый"
 - [ ] Найти ключи с "жидкий"
@@ -91,6 +102,7 @@ voski/_clean.json:
 - [ ] Валидировать JSON
 
 ### Validation
+
 ```bash
 python3 -c "
 import json

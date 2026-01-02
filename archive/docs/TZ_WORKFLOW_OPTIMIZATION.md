@@ -10,7 +10,7 @@
 
 ## 1. Текущее состояние
 
-### Документы (что есть):
+### Документы (что есть)
 
 | Файл | Статус | Проблема |
 |------|--------|----------|
@@ -23,7 +23,8 @@
 | `.claude/skills/` | ❌ Устаревшие | 10 файлов, не нужны |
 | `.claude/agents_archive/` | 📁 Архив | 12 старых агентов v6.0 |
 
-### Проблема:
+### Проблема
+
 - **Разброс документации** — 2 ТЗ, 2 устаревших файла
 - **Skills не удалены** — занимают место, путают
 - **prompts/ не создана** — Sub-agents без инструкций
@@ -33,7 +34,7 @@
 
 ## 2. Целевое состояние
 
-### Структура файлов:
+### Структура файлов
 
 ```
 /
@@ -137,15 +138,18 @@ python3 scripts/parse_semantics_to_json.py {slug} {tier}
 ```
 
 ### Step 3: URLs (optional)
+
 ```bash
 python3 scripts/extract_competitor_urls_v2.py {slug}
 ```
 
 ## Output
+
 - Папки созданы
 - task_{slug}.json создан
 - categories/{slug}/data/{slug}.json создан
 - Keywords stats
+
 ```
 
 ### 4.2 prompts/produce.md (КРИТИЧНЫЙ)
@@ -191,8 +195,10 @@ python3 scripts/extract_competitor_urls_v2.py {slug}
 ### Synonym Rotation (КРИТИЧНО)
 Максимум 2 повтора слова в параграфе!
 ```
+
 ❌ Пена очищает. Пена создаёт. Пена безопасна.
 ✅ Пена очищает. Состав создаёт. Средство безопасно.
+
 ```
 
 ### Anti-Fluff (ЗАПРЕЩЕНО)
@@ -257,6 +263,7 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 ```
 
 5 Checks:
+
 1. Markdown structure
 2. Grammar
 3. Water/Nausea (40-60% / ≤3.5)
@@ -266,10 +273,13 @@ PYTHONPATH=. python3 scripts/quality_runner.py \
 Exit codes: 0=PASS, 1=WARNING, 2=FAIL
 
 ### Step 2: Fix (если FAIL)
+
 Исправить проблемные секции и перезапустить.
 
 ### Step 3: Package
+
 Создать categories/{slug}/deliverables/:
+
 - README.md
 - QUALITY_REPORT.md
 - {slug}_ru.md (copy)
@@ -277,6 +287,7 @@ Exit codes: 0=PASS, 1=WARNING, 2=FAIL
 - {slug}_meta.json (copy)
 
 ### Step 4: Update Task
+
 ```json
 {
   "status": "completed",
@@ -287,9 +298,11 @@ Exit codes: 0=PASS, 1=WARNING, 2=FAIL
 ```
 
 ## Output
+
 - Validation report
 - Deliverables path
 - Updated task file
+
 ```
 
 ---

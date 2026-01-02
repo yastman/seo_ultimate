@@ -8,11 +8,13 @@
 ## Checklist per Category
 
 ### Pre-flight
+
 - [ ] `data/{slug}_clean.json` существует и валиден
 - [ ] Прочитать primary keywords и volumes
 - [ ] Загрузить товары из `products_with_descriptions.md`
 
 ### Execution
+
 - [ ] Сгенерировать **title RU** (50-60 символов)
   - Формула: `{Primary Keyword} | Купить в Ultimate`
   - Включить: primary keyword + commercial intent
@@ -26,11 +28,13 @@
 - [ ] Записать в `meta/{slug}_meta.json`
 
 ### Validation Script
+
 ```bash
 python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 ```
 
 **Что проверяет скрипт:**
+
 | Check | Rule | Status |
 |-------|------|--------|
 | title_ru length | 50-60 chars | ✅/❌ |
@@ -43,6 +47,7 @@ python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 | keyword in h1 | primary keyword present | ✅/❌ |
 
 ### Acceptance Criteria
+
 - [ ] Exit code 0 от validate_meta.py
 - [ ] title содержит primary keyword
 - [ ] description содержит CTA
@@ -50,6 +55,7 @@ python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 - [ ] UK версия — перевод, не транслитерация
 
 ### Post-action
+
 - [ ] Переместить из `pending/` в `completed/`
 - [ ] Обновить счётчик в `PIPELINE_STATUS.md`
 

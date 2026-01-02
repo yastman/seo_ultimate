@@ -26,6 +26,7 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 **Формула UK:** `{Primary} — купити, ціни | Ultimate`
 
 **Правила:**
+
 - Primary keyword **В НАЧАЛО**
 - Commercial modifiers ("купить/купити", "цены/ціни") **ОБЯЗАТЕЛЬНО**
 - Бренд **В КОНЕЦ** `| Ultimate`
@@ -33,6 +34,7 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 - Скобки только для **синонимов с разными корнями**
 
 **Примеры:**
+
 ```
 ✅ Чорнитель шин — купити, ціни | Ultimate          (42 chars)
 ✅ Активна піна для миття авто — купити | Ultimate  (48 chars)
@@ -48,12 +50,14 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 **Формула UK:** `{Категорія} від виробника Ultimate. {Типи}. {Призначення}. {Volumes}. Опт і роздріб.`
 
 **Правила:**
+
 - НЕ дублировать Title
 - "Производитель/Виробник Ultimate" — USP
 - Типы из товаров (факты, не маркетинг)
 - **БЕЗ emoji**
 
 **Что извлекать из товаров:**
+
 | Поле | Откуда | Пример |
 |------|--------|--------|
 | Типы | Названия товаров | готові, концентрати |
@@ -67,6 +71,7 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 **Формула:** `{Primary keyword} для авто`
 
 **Правила:**
+
 - **БЕЗ "Купить/Купити"**
 - H1 ≠ Title
 - H1 — для людей, Title — для поиска

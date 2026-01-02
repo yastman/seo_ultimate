@@ -1,19 +1,10 @@
 import csv
 import shutil
-import sys
-from pathlib import Path
+
+from config import SEMANTICS_CSV
 
 
-# Add scripts dir to path to allow importing config
-sys.path.append(str(Path(__file__).parent))
-
-try:
-    import config
-    from config import PROJECT_ROOT, SEMANTICS_CSV
-except ImportError:
-    print("Warning: config.py not found, using default paths.")
-    PROJECT_ROOT = Path(__file__).parent.parent
-    SEMANTICS_CSV = PROJECT_ROOT / "Структура _Ultimate.csv"
+# import config
 
 BACKUP_CSV = SEMANTICS_CSV.parent / f"{SEMANTICS_CSV.stem}_backup{SEMANTICS_CSV.suffix}"
 
@@ -30,8 +21,7 @@ def is_explicit_marker(col1: str, col2: str) -> bool:
         return True
 
     # Check for X/Y format in col2 (e.g. 3/59)
-    if "/" in col2:
-        return True
+    return "/" in col2
 
     return False
 
@@ -71,12 +61,12 @@ def fix_csv():
 
             if col2.isdigit():
                 val = int(col2)
-                if 1 <= val <= 4:
-                    # Potential candidate
-                    # Must have empty Volume (col3) or 0
-                    if not col3 or col3 == "0":
-                        if not is_explicit_marker(col1, col2):
-                            should_fix = True
+                if (
+                    1 <= val <= 4
+                    and (not col3 or col3 == "0")
+                    and not is_explicit_marker(col1, col2)
+                ):
+                    should_fix = True
 
             if should_fix:
                 original_col2 = current_row[1]
