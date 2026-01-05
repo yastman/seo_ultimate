@@ -51,8 +51,10 @@ def normalize_keyword(keyword: str) -> str:
     text = keyword.lower()
 
     # 1. Remove specific auto terms
-    for syn in AUTO_SYNONYMS:
-        text = text.replace(syn, "")
+    # Sort by length desc to handle multi-word phrases first
+    sorted_synonyms = sorted(AUTO_SYNONYMS, key=len, reverse=True)
+    for syn in sorted_synonyms:
+         text = re.sub(rf"\b{re.escape(syn)}\b", " ", text)
 
     # 2. Remove stop words
     # Use word boundaries to avoid replacing inside words
