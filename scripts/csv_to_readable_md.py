@@ -154,6 +154,32 @@ class SemanticsParser:
                     last_header = f"L3: {class_name}"
                     continue
 
+                # Special / Спец
+                if col1.lower().startswith("special:") or col1.lower().startswith("спец:"):
+                    name = col1.split(":", 1)[1].strip()
+                    # Treat Special as a high-level block (sibling to L2, child of L1)
+                    # Use a distinct level 'Special'
+                    special_node = Node(name, "Special")
+
+                    if current_l1:
+                        current_l1.add_child(special_node)
+                    else:
+                        # Or attach to misc root
+                        current_l1 = Node("Misc Root", "L1")
+                        self.tree.append(current_l1)
+                        current_l1.add_child(special_node)
+
+                    # Because it's a high-level container like L2/Cluster, valid for direct keywords
+                    # but we also reset L2/L3 context because Special breaks the flow?
+                    # Actually, usually Special is like L2. Let's set it as current_l2 context?
+                    # If we set current_l2 = special_node, then subsequent L3s will go inside it.
+                    # That is likely desired behavior (e.g. Special -> L3 subcat).
+                    current_l2 = special_node
+                    current_l3 = None
+                    active_container = None
+                    last_header = f"Special: {name}"
+                    continue
+
                 # SEO-Filter
                 if col1.lower().startswith("seo-фильтр:") or col1.lower().startswith("seo-filter:"):
                     name = col1.split(":", 1)[1].strip()
@@ -413,7 +439,7 @@ class SemanticsParser:
         n_clusters = 0
         n_filters = 0
         for node in nodes:
-            if node.level in ["L3", "Cluster"]:
+            if node.level in ["L3", "Cluster", "Special"]:
                 n_clusters += 1
             elif node.level == "Filter":
                 n_filters += 1
@@ -441,6 +467,8 @@ class SemanticsParser:
             icon = "⚡"
         if node.level == "Cluster":
             icon = "📦"
+        if node.level == "Special":
+            icon = "🌟"
 
         prefix = "#" * indent_level
         header_text = f"{prefix} {icon} {node.level}: {node.name} (Vol: {stats['vol']})"
