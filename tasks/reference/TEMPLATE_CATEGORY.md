@@ -8,26 +8,26 @@
 
 ## Current Status
 
-| Stage | RU | UK |
-|-------|----|----|
-| 01-Init | ⬜ | ⬜ |
-| 02-Meta | ⬜ | ⬜ |
-| 03-Research | ⬜ | — |
-| 04-Content | ⬜ | ⬜ |
-| 05-UK | — | ⬜ |
-| 06-Quality | ⬜ | ⬜ |
-| 07-Deploy | ⬜ | ⬜ |
+| Stage       | RU  | UK  |
+| ----------- | --- | --- |
+| 01-Init     | ⬜  | ⬜  |
+| 02-Meta     | ⬜  | ⬜  |
+| 03-Research | ⬜  | —   |
+| 04-Content  | ⬜  | ⬜  |
+| 05-UK       | —   | ⬜  |
+| 06-Quality  | ⬜  | ⬜  |
+| 07-Deploy   | ⬜  | ⬜  |
 
 ---
 
 ## Stage 01: Init ⬜
 
-- [ ] Папка создана: `categories/{slug}/`
-- [ ] `data/{slug}_clean.json` создан
-- [ ] Keywords кластеризованы
-- [ ] `meta/{slug}_meta.json` template
-- [ ] `content/{slug}_ru.md` placeholder
-- [ ] `research/RESEARCH_DATA.md` template
+-   [ ] Папка создана: `categories/{slug}/`
+-   [ ] `data/{slug}_clean.json` создан
+-   [ ] Keywords кластеризованы
+-   [ ] `meta/{slug}_meta.json` template
+-   [ ] `content/{slug}_ru.md` placeholder
+-   [ ] `research/RESEARCH_DATA.md` template
 
 **Validation:**
 
@@ -41,25 +41,25 @@ python3 -c "import json; json.load(open('categories/{slug}/data/{slug}_clean.jso
 
 ### Inputs
 
-- [ ] Прочитать `data/{slug}_clean.json`
-- [ ] Определить primary keyword
-- [ ] Загрузить товары из products_with_descriptions.md
+-   [ ] Прочитать `data/{slug}_clean.json`
+-   [ ] Определить primary keyword
+-   [ ] Загрузить товары из products_with_descriptions.md
 
 ### Tasks RU
 
-- [ ] title_ru: 50-60 chars, содержит primary keyword
-- [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
-- [ ] h1_ru: primary keyword (без "купить")
+-   [ ] title_ru: 50-60 chars, содержит primary keyword
+-   [ ] description_ru: 150-160 chars, CTA "Доставка по Украине"
+-   [ ] h1_ru: primary keyword (без "купить")
 
 ### Tasks UK
 
-- [ ] title_uk: 50-60 chars
-- [ ] description_uk: 150-160 chars
-- [ ] h1_uk: перевод primary keyword
+-   [ ] title_uk: 50-60 chars
+-   [ ] description_uk: 150-160 chars
+-   [ ] h1_uk: перевод primary keyword
 
 ### Output
 
-- [ ] Записать в `meta/{slug}_meta.json`
+-   [ ] Записать в `meta/{slug}_meta.json`
 
 ### Validation
 
@@ -73,49 +73,49 @@ python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 
 ### Block 1: Product Analysis
 
-- [ ] ТОП-5 брендов
-- [ ] Ценовой диапазон
-- [ ] Особенности товаров
+-   [ ] ТОП-5 брендов
+-   [ ] Ценовой диапазон
+-   [ ] Особенности товаров
 
 ### Block 2: Competitors
 
-- [ ] WebSearch: "{primary keyword} купить украина"
-- [ ] Найти 3-5 конкурентов
-- [ ] Выписать структуру контента
+-   [ ] WebSearch: "{primary keyword} купить украина"
+-   [ ] Найти 3-5 конкурентов
+-   [ ] Выписать структуру контента
 
 ### Block 3: Use Cases
 
-- [ ] Для кого?
-- [ ] Какие задачи решает?
-- [ ] Где применяется?
+-   [ ] Для кого?
+-   [ ] Какие задачи решает?
+-   [ ] Где применяется?
 
 ### Block 4: Buying Guide
 
-- [ ] Критерии выбора
-- [ ] На что обратить внимание
+-   [ ] Критерии выбора
+-   [ ] На что обратить внимание
 
 ### Block 5: FAQ
 
-- [ ] Собрать 5-7 вопросов
+-   [ ] Собрать 5-7 вопросов
 
 ### Block 6: Comparison Table
 
-- [ ] Определить критерии
-- [ ] 3-5 брендов/продуктов
+-   [ ] Определить критерии
+-   [ ] 3-5 брендов/продуктов
 
 ### Block 7: How-To
 
-- [ ] Пошаговая инструкция
-- [ ] Необходимое оборудование
+-   [ ] Пошаговая инструкция
+-   [ ] Необходимое оборудование
 
 ### Block 8: Interlink
 
-- [ ] Связанные категории
-- [ ] Дополняющие товары
+-   [ ] Связанные категории
+-   [ ] Дополняющие товары
 
 ### Output
 
-- [ ] Записать в `research/RESEARCH_DATA.md`
+-   [ ] Записать в `research/RESEARCH_DATA.md`
 
 ### Validation
 
@@ -129,20 +129,20 @@ grep -c "^## Block" categories/{slug}/research/RESEARCH_DATA.md
 
 ### Structure
 
-- [ ] H1: primary keyword
-- [ ] Intro: 150-200 слов
-- [ ] H2: Buying Guide
-- [ ] Comparison Table
-- [ ] H2: How-To
-- [ ] H2: FAQ (5+ вопросов)
-- [ ] Conclusion + CTA
+-   [ ] H1: primary keyword
+-   [ ] Intro: 150-200 слов
+-   [ ] H2: Buying Guide
+-   [ ] Comparison Table
+-   [ ] H2: How-To
+-   [ ] H2: FAQ (5+ вопросов)
+-   [ ] Conclusion + CTA
 
 ### SEO Requirements
 
-- [ ] Primary keyword: 3-5 раз
-- [ ] Word count: 1500-2500
-- [ ] Density: 1.5-2.5%
-- [ ] NO commercial keywords!
+-   [ ] Primary keyword: 3-5 раз
+-   [ ] Word count: 1500-2500
+-   [ ] Density: 1.5-2.5%
+-   [ ] NO commercial keywords!
 
 ### Validation
 
@@ -156,21 +156,21 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{key
 
 ### Create Structure
 
-- [ ] `uk/categories/{slug}/data/`
-- [ ] `uk/categories/{slug}/meta/`
-- [ ] `uk/categories/{slug}/content/`
+-   [ ] `uk/categories/{slug}/data/`
+-   [ ] `uk/categories/{slug}/meta/`
+-   [ ] `uk/categories/{slug}/content/`
 
 ### Translate
 
-- [ ] Keywords
-- [ ] Meta tags
-- [ ] Content
+-   [ ] Keywords
+-   [ ] Meta tags
+-   [ ] Content
 
 ### Quality Check
 
-- [ ] Перевод (не транслитерация)
-- [ ] Терминология
-- [ ] CTA на украинском
+-   [ ] Перевод (не транслитерация)
+-   [ ] Терминология
+-   [ ] CTA на украинском
 
 ---
 
@@ -178,15 +178,15 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{key
 
 ### Checklist
 
-- [ ] Data JSON valid (RU + UK)
-- [ ] Meta valid (RU + UK)
-- [ ] Content valid (RU + UK)
-- [ ] Research complete
-- [ ] SEO compliant
+-   [ ] Data JSON valid (RU + UK)
+-   [ ] Meta valid (RU + UK)
+-   [ ] Content valid (RU + UK)
+-   [ ] Research complete
+-   [ ] SEO compliant
 
 ### Output
 
-- [ ] Создать `QUALITY_REPORT.md`
+-   [ ] Создать `QUALITY_REPORT.md`
 
 ---
 
@@ -194,30 +194,30 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{key
 
 ### Pre-Deploy
 
-- [ ] Quality Gate = PASS
-- [ ] Backup DB
+-   [ ] Quality Gate = PASS
+-   [ ] Backup DB
 
 ### Deploy
 
-- [ ] Find category_id
-- [ ] UPDATE meta RU
-- [ ] UPDATE content RU
-- [ ] UPDATE meta UK
-- [ ] UPDATE content UK
+-   [ ] Find category_id
+-   [ ] UPDATE meta RU
+-   [ ] UPDATE content RU
+-   [ ] UPDATE meta UK
+-   [ ] UPDATE content UK
 
 ### Post-Deploy
 
-- [ ] Clear cache
-- [ ] Visual check
-- [ ] Verify both languages
+-   [ ] Clear cache
+-   [ ] Visual check
+-   [ ] Verify both languages
 
 ---
 
 ## Notes
 
-- Parent: {parent-slug}
-- Type: L1/L2/L3
-- Volume: XXX
+-   Parent: {parent-slug}
+-   Type: L1/L2/L3
+-   Volume: XXX
 
 ---
 
