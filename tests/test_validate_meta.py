@@ -1,6 +1,7 @@
-import pytest
 import json
-from scripts.validate_meta import validate_title, validate_description, validate_meta_file
+
+from scripts.validate_meta import validate_description, validate_meta_file, validate_title
+
 
 class TestValidateTitle:
     def test_valid_title(self):

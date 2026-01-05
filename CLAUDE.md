@@ -13,18 +13,19 @@ CSV → /category-init → /generate-meta → /seo-research → /content-generat
 
 ---
 
-## Система задач
+## 🛠 Система задач
 
 **Главный файл:** `tasks/PIPELINE_STATUS.md`
 
-### Структура
+### Структура `tasks/`
 
 ```
 tasks/
-├── PIPELINE_STATUS.md      # Прогресс + текущая очередь
-├── MASTER_CHECKLIST.md     # Все категории со статусами
-├── categories/{slug}.md    # Чеклист категории
-└── stages/0X-*/_stage.md   # Описание этапов
+├── active/                 # Активные ТЗ
+├── completed/              # Выполненные задачи
+├── reference/              # Справочные материалы
+├── categories/{slug}.md    # Чеклисты по категориям
+└── stages/                 # Описание этапов
 ```
 
 ### Правила работы
@@ -32,74 +33,58 @@ tasks/
 1. **Перед работой** → читать `tasks/PIPELINE_STATUS.md`
 2. **Работать** → по чеклисту `tasks/categories/{slug}.md`
 3. **Отмечать** → `[x]` выполненные, статус ⬜ → ✅
-4. **Обновлять** → счётчики в PIPELINE_STATUS и MASTER_CHECKLIST
+4. **Обновлять** → счётчики в PIPELINE_STATUS
 5. **Валидировать** → после каждого этапа
 
 ---
 
-## Структура категории
+## 📁 Структура проекта
 
 ```
-categories/{slug}/
+categories/{slug}/          # Данные категории (RU)
 ├── data/{slug}_clean.json    # Ключи
 ├── meta/{slug}_meta.json     # Мета-теги
 ├── content/{slug}_ru.md      # Контент
 └── research/RESEARCH_DATA.md # Исследование
+
+uk/categories/{slug}/       # Локализация (UK)
+
+data/                       # Центральное хранилище
+├── raw/                      # Исходные данные
+├── generated/                # Авто-генерация
+├── dumps/                    # SQL дампы
+└── sql_output/               # Готовые скрипты
 ```
 
-UK версия: `uk/categories/{slug}/`
+---
+
+## ⚡ Скиллы (Slash Commands)
+
+| Триггер           | Скилл                        |
+| ----------------- | ---------------------------- |
+| Новая категория   | `/category-init {slug}`      |
+| Мета-теги         | `/generate-meta {slug}`      |
+| Исследование      | `/seo-research {slug}`       |
+| Контент           | `/content-generator {slug}`  |
+| Украинская версия | `/uk-content-init {slug}`    |
+| Проверка          | `/quality-gate {slug}`       |
+| Деплой            | `/deploy-to-opencart {slug}` |
 
 ---
 
-## Скиллы
-
-| Триггер | Скилл |
-|---------|-------|
-| Новая категория | `/category-init {slug}` |
-| Мета-теги | `/generate-meta {slug}` |
-| Исследование | `/seo-research {slug}` |
-| Контент | `/content-generator {slug}` |
-| Batch контент | `/batch-content` |
-| Украинская версия | `/uk-content-init {slug}` |
-| Проверка | `/quality-gate {slug}` |
-| Деплой | `/deploy-to-opencart {slug}` |
-
----
-
-## Источники данных
-
-| Файл | Расположение | Описание |
-|------|--------------|----------|
-| Структура категорий | `data/list_mode_export.csv` | CSV со всеми категориями |
-| Товары | `categories/{slug}/products_with_descriptions.md` | Товары категории |
-| Стоп-слова | `data/stopwords/` | Фильтры для ключей |
-| Мета все | `data/all_meta.json` | Все мета-теги |
-
----
-
-## Валидация
+## 🔍 Инструменты (Scripts)
 
 ```bash
-# Meta
-python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
+# Meta Validation
+python scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 
-# Content
-python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{keyword}" --mode seo
+# Content Validation
+python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{keyword}" --mode seo
+
+# HTML Preview
+python scripts/md_to_html.py categories/{slug}/content/{slug}_ru.md
 ```
 
-Exit codes: 0=PASS, 1=WARNING, 2=FAIL
-
 ---
 
-## Документация
-
-| Файл | Описание |
-|------|----------|
-| `tasks/PIPELINE_STATUS.md` | **Текущий прогресс** |
-| `tasks/MASTER_CHECKLIST.md` | Все категории |
-| `tasks/MAINTENANCE.md` | Поддержка системы задач |
-| `docs/CONTENT_GUIDE.md` | SEO Guide |
-
----
-
-**Version:** 25.1
+**Version:** 26.0 (Refactored)
