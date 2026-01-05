@@ -7,6 +7,7 @@ import requests
 # Check URL Accessibility
 # ============================================================================
 
+
 def check_url_accessibility(url: str, timeout: int = 5, max_retries: int = 3) -> bool:
     """
     Check if URL is accessible (returns 200 OK)
@@ -43,8 +44,9 @@ def check_url_accessibility(url: str, timeout: int = 5, max_retries: int = 3) ->
                 wait_time = RETRY_BACKOFF_FACTOR**attempt
                 time.sleep(wait_time)
                 continue
-            
+
     return False
+
 
 # ============================================================================
 # URL Validation & Filtering

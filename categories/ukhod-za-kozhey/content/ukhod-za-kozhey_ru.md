@@ -1,1 +1,0 @@
-# ukhod-za-kozhey

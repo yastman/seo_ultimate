@@ -10,7 +10,6 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-
 CATEGORIES_DIR = Path(__file__).parent.parent / "categories"
 
 # Правила что куда должно идти (строгие)

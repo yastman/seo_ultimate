@@ -18,7 +18,6 @@ import json
 import re
 from pathlib import Path
 
-
 # Импорт конфигурации
 try:
     from config import CATEGORIES_DIR

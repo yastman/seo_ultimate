@@ -1,7 +1,6 @@
 import csv
 import os
 
-
 CSV_FILE = r"Структура _Ultimate.csv"
 
 

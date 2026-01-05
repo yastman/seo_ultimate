@@ -3,7 +3,6 @@ import os
 import re
 from collections import defaultdict
 
-
 # Configuration
 CATEGORIES_DIR = (
     r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"

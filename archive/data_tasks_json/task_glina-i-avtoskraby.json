@@ -1,0 +1,18 @@
+{
+  "slug": "glina-i-avtoskraby",
+  "tier": "A",
+  "keywords_count": 39,
+  "created_at": "2025-12-13T12:43:39.195241",
+  "current_stage": "prepare",
+  "stages": {
+    "prepare": "completed",
+    "produce": "pending",
+    "deliver": "pending"
+  },
+  "paths": {
+    "data": "categories/glina-i-avtoskraby/data/glina-i-avtoskraby.json",
+    "content_ru": "categories/glina-i-avtoskraby/content/glina-i-avtoskraby_ru.md",
+    "meta": "categories/glina-i-avtoskraby/meta/glina-i-avtoskraby_meta.json",
+    "deliverables": "categories/glina-i-avtoskraby/deliverables/"
+  }
+}

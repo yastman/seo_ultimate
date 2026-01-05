@@ -1,33 +1,83 @@
 # Pipeline Status — Ultimate.net.ua SEO
 
-**Total Categories:** 96
-**Updated:** 2026-01-02
+**Updated:** 2026-01-05
 
 ---
 
-## Progress Overview
+## Текущий этап
 
-| Stage       | Skill               | RU    | UK    | Pending |
-| ----------- | ------------------- | ----- | ----- | ------- |
-| 01-init     | /category-init      | 52/96 | 52/96 | 44      |
-| 02-meta     | /generate-meta      | 46/96 | 46/96 | 50      |
-| 03-research | /seo-research       | 14/96 | —     | 82      |
-| 04-content  | /content-generator  | 12/96 | 12/96 | 84      |
-| 05-uk       | /uk-content-init    | —     | 12/96 | 84      |
-| 06-quality  | /quality-gate       | 0/96  | 0/96  | 96      |
-| 07-deploy   | /deploy-to-opencart | 0/96  | 0/96  | 96      |
+```
+Этап 0-2 ✅ (чистка, аудит, миграция)
+    ↓
+Этап 3 (маппинг структуры) ← ТЕКУЩИЙ
+    ↓
+Этап 4 (чистка синонимов)
+    ↓
+Этап 5-7 (контент, UK, деплой)
+```
+
+**Подробности:** [`reference/ROADMAP.md`](reference/ROADMAP.md)
 
 ---
 
-## Next Steps needed (Top 5 Priority)
+## Прогресс по этапам
 
-- moyka-i-eksterer (Meta)
-- avtoshampuni (Research)
-- s-voskom (Research)
-- kislotnyy (Meta)
-- sredstva-dlya-stekol (Research)
-- omyvatel (Research)
-- antidozhd (Research)
-- ochistiteli-kuzova (Content)
-- sredstva-dlya-diskov-i-shin (Research)
-- obezzhirivateli (Research)
+| Этап | Название | Статус | Прогресс |
+|------|----------|--------|----------|
+| 0 | Чистка tasks/ | ✅ | 100% |
+| 1 | Аудит кластеров | ✅ | 100% |
+| 2 | Миграция ключей | ✅ | 100% (168 ключей) |
+| 3 | Маппинг структуры | ⬜ | 0% |
+| 4 | Чистка синонимов | ⬜ | 0% |
+| 5 | Генерация контента | ⬜ | — |
+| 6 | UK версии | ⬜ | — |
+| 7 | Деплой | ⬜ | — |
+
+---
+
+## Следующие действия
+
+### Этап 3: Маппинг структуры (~2ч)
+
+1. [ ] Выгрузить категории с сайта (ID, slug, parent_id)
+2. [ ] Сопоставить 52 кластера CSV с категориями
+3. [ ] Создать `data/cluster_map.json`
+4. [ ] Определить типы: category / filter / skip
+
+### Этап 4: Чистка синонимов (~4ч)
+
+1. [ ] Создать `data/synonym_rules.json`
+2. [ ] Доработать `scripts/propose_synonyms.py`
+3. [ ] Batch-обработка всех категорий
+4. [ ] Ручная проверка и утверждение `_clean.json`
+
+---
+
+## Статистика
+
+| Метрика | Значение |
+|---------|----------|
+| Кластеров в CSV | 52 |
+| Категорий на сайте | ~96 |
+| Ключей (до миграции) | ~1000 |
+| Мигрировано ключей | 168 (~20,860 vol) |
+| Эталон `_clean.json` | aktivnaya-pena (52→12 ключей) |
+
+---
+
+## Эталонная категория
+
+**`aktivnaya-pena`** — пример завершённой чистки синонимов:
+
+```
+categories/aktivnaya-pena/
+├── data/
+│   ├── aktivnaya-pena.json        # RAW (52 ключа)
+│   └── aktivnaya-pena_clean.json  # CLEAN (12 ключей)
+├── meta/aktivnaya-pena_meta.json
+└── content/aktivnaya-pena_ru.md
+```
+
+---
+
+**Главный план:** [`reference/ROADMAP.md`](reference/ROADMAP.md)

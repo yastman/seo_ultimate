@@ -3,7 +3,6 @@ import shutil
 
 from config import SEMANTICS_CSV
 
-
 # import config
 
 BACKUP_CSV = SEMANTICS_CSV.parent / f"{SEMANTICS_CSV.stem}_backup{SEMANTICS_CSV.suffix}"

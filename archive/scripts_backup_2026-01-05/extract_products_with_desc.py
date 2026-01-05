@@ -5,7 +5,6 @@ import html
 import re
 import sys
 
-
 SQL_FILE = "ultimate_net_ua_backup.sql"
 
 # Category mapping: category_id -> (slug, uk_name)

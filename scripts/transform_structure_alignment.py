@@ -2,7 +2,6 @@ import csv
 import os
 import re
 
-
 INPUT_FILE = r"Структура _Ultimate.csv"
 BACKUP_FILE = r"Структура _Ultimate_backup.csv"
 OUTPUT_FILE = r"Структура _Ultimate.csv"

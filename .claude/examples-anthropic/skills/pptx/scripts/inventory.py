@@ -35,7 +35,6 @@ from pptx import Presentation
 from pptx.enum.text import PP_ALIGN
 from pptx.shapes.base import BaseShape
 
-
 # Type aliases for cleaner signatures
 JsonValue = Union[str, int, float, bool, None]
 ParagraphDict = dict[str, JsonValue]

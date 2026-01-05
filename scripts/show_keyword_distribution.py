@@ -15,7 +15,6 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-
 ROLE_PLACEMENT = {
     "primary": "Title, H1",
     "secondary": "H2, Description",

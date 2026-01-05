@@ -18,7 +18,6 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-
 # =============================================================================
 # Configuration
 # =============================================================================
@@ -54,7 +53,7 @@ def normalize_keyword(keyword: str) -> str:
     # Sort by length desc to handle multi-word phrases first
     sorted_synonyms = sorted(AUTO_SYNONYMS, key=len, reverse=True)
     for syn in sorted_synonyms:
-         text = re.sub(rf"\b{re.escape(syn)}\b", " ", text)
+        text = re.sub(rf"\b{re.escape(syn)}\b", " ", text)
 
     # 2. Remove stop words
     # Use word boundaries to avoid replacing inside words

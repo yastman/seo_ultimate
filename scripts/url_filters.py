@@ -9,7 +9,6 @@ Used by:
 
 from urllib.parse import urlparse
 
-
 # ===== BLACKLIST DOMAINS =====
 BLACKLISTED_DOMAINS = [
     "rozetka.com.ua",

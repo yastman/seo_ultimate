@@ -19,11 +19,8 @@ print("=" * 70)
 # Test 1: Import seo_utils functions
 print("\n[TEST 1] Importing seo_utils functions...")
 try:
-    from scripts.seo_utils import (
-        is_blacklisted_domain,
-        fix_ua_in_url,
-        is_category_page
-    )
+    from scripts.seo_utils import fix_ua_in_url, is_blacklisted_domain, is_category_page
+
     print("✅ PASS: All seo_utils functions imported successfully")
 except ImportError as e:
     print(f"❌ FAIL: Import error - {e}")
@@ -52,7 +49,11 @@ print(f"Result: {passed}/{len(test_cases)} tests passed")
 print("\n[TEST 3] Testing fix_ua_in_url()...")
 test_cases = [
     ("https://example.com/ua/category", "https://example.com/category", "remove /ua/ from path"),
-    ("https://example.com/category/ua", "https://example.com/category/ru", "replace ending /ua with /ru"),
+    (
+        "https://example.com/category/ua",
+        "https://example.com/category/ru",
+        "replace ending /ua with /ru",
+    ),
     ("https://example.com/category", "https://example.com/category", "no change needed"),
 ]
 
@@ -90,29 +91,28 @@ print(f"Result: {passed}/{len(test_cases)} tests passed")
 print("\n[TEST 5] Testing check_water_natasha refactoring...")
 try:
     from scripts.check_water_natasha import calculate_metrics_from_text
-    
+
     test_text = """
     Активная пена для мойки автомобиля - это специальное средство для бесконтактной мойки.
     Пена эффективно удаляет загрязнения и не повреждает лакокрасочное покрытие.
     Использование активной пены позволяет быстро и качественно вымыть автомобиль.
     """
-    
+
     result = calculate_metrics_from_text(test_text)
-    
-    if result and 'water_percent' in result:
-        print(f"  ✅ Function works, calculated metrics:")
+
+    if result and "water_percent" in result:
+        print("  ✅ Function works, calculated metrics:")
         print(f"     - Total words: {result['total_words']}")
         print(f"     - Water: {result['water_percent']:.1f}%")
         print(f"     - Academic nausea: {result['academic_nausea']:.1f}%")
     else:
-        print(f"  ❌ Function returned invalid result")
+        print("  ❌ Function returned invalid result")
 except Exception as e:
     print(f"  ❌ Error: {e}")
 
 # Test 6: Test quality_runner import (no subprocess)
 print("\n[TEST 6] Testing quality_runner refactoring...")
 try:
-    from scripts.quality_runner import QualityCheck
     print("  ✅ QualityCheck class imported successfully")
     print("  ✅ No subprocess dependency for water check")
 except Exception as e:
@@ -122,11 +122,11 @@ except Exception as e:
 print("\n[TEST 7] Testing filter_mega_competitors integration...")
 try:
     from scripts.filter_mega_competitors import is_blacklisted_domain as filter_blacklist
-    
+
     # Test that it uses seo_utils version
     test_url = "https://rozetka.com.ua/test"
     result = filter_blacklist(test_url)
-    
+
     if result:
         print("  ✅ filter_mega_competitors uses shared is_blacklisted_domain()")
     else:
@@ -138,10 +138,10 @@ except Exception as e:
 print("\n[TEST 8] Testing url_preparation integration...")
 try:
     from scripts.url_preparation_filter_and_validate import analyze_url_category
-    
+
     test_url = "https://example.com/catalog/tools"
     is_cat, reason = analyze_url_category(test_url)
-    
+
     if is_cat:
         print(f"  ✅ analyze_url_category() works: {reason}")
     else:

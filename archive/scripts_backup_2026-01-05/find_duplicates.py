@@ -18,7 +18,6 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-
 # Корневая директория проекта
 ROOT_DIR = Path(__file__).parent.parent
 CATEGORIES_DIR = ROOT_DIR / "categories"

@@ -50,7 +50,6 @@ from inventory import extract_text_inventory
 from PIL import Image, ImageDraw, ImageFont
 from pptx import Presentation
 
-
 # Constants
 THUMBNAIL_WIDTH = 300  # Fixed thumbnail width in pixels
 CONVERSION_DPI = 100  # DPI for PDF to image conversion
@@ -174,7 +173,7 @@ def get_placeholder_regions(pptx_path):
         slide_idx = int(slide_key.split("-")[1])
         regions = []
 
-        for shape_key, shape_data in shapes.items():
+        for _shape_key, shape_data in shapes.items():
             # The inventory only contains shapes with text, so all shapes should be highlighted
             regions.append(
                 {

@@ -4,7 +4,6 @@ import shutil
 from collections import OrderedDict
 from pathlib import Path
 
-
 # Paths
 BASE_DIR = Path("c:/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт")
 REGISTRY_FILE = BASE_DIR / "tasks/reports/KEYWORD_MIGRATION_REGISTRY.md"

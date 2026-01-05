@@ -30,7 +30,6 @@ import sys
 from pathlib import Path
 from typing import Any
 
-
 # Add scripts to path
 SCRIPT_DIR = Path(__file__).parent
 sys.path.insert(0, str(SCRIPT_DIR))

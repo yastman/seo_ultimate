@@ -22,7 +22,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 # Try imports, fallback for different envs
 try:
     from scripts.seo_utils import fix_ua_in_url, is_blacklisted_domain, slugify

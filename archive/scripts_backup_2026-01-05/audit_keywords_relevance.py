@@ -2,7 +2,6 @@ import glob
 import json
 import os
 
-
 # Configuration
 SEARCH_DIR = "categories"
 RULES = [

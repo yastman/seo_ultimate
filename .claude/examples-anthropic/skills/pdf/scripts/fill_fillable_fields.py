@@ -4,7 +4,6 @@ import sys
 from extract_form_field_info import get_field_info
 from pypdf import PdfReader, PdfWriter
 
-
 # Fills fillable form fields in a PDF. See forms.md.
 
 
