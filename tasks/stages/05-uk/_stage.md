@@ -88,13 +88,13 @@ python3 scripts/validate_content.py \
 
 tverdyy-vosk, zhidkiy-vosk, pyatnovyvoditeli, ochistiteli-kuzova, akkumulyatornye-mashinki, avtoshampuni, sredstva-dlya-stekol, sredstva-dlya-diskov-i-shin, s-voskom, kislotnyy-shampun, zashchitnoe-pokrytie-dlya-koles, dlya-vneshnego-plastika, mikrofibra-dlya-polirovki, mikrofibra-dlya-stekol, nabory-dlya-deteylinga, porolonovye, oborudovanie
 
-*+ 21 категория из Stage 03/04*
+_+ 21 категория из Stage 03/04_
 
 ---
 
 ## Completed (34)
 
-*Все категории с готовым RU контентом имеют UK версии*
+_Все категории с готовым RU контентом имеют UK версии_
 
 aktivnaya-pena, aksessuary-dlya-naneseniya, antibitum, antidozhd, antimoshka, apparaty-tornador, cherniteli-shin, dlya-khimchistki-salona, dlya-ruchnoy-moyki, glina-i-avtoskraby, gubki-i-varezhki, keramika-i-zhidkoe-steklo, kvik-deteylery, malyarnyy-skotch, mekhovye, mikrofibra-i-tryapki, neytralizatory-zapakha, obezzhirivateli, ochistiteli-diskov, ochistiteli-dvigatelya, ochistiteli-shin, ochistiteli-stekol, omyvatel, polirol-dlya-stekla, poliroli-dlya-plastika, polirovalnye-krugi, polirovalnye-mashinki, polirovalnye-pasty, raspyliteli-i-penniki, shchetki-i-kisti, silanty, sredstva-dlya-kozhi, vedra-i-emkosti, voski
 
@@ -102,22 +102,22 @@ aktivnaya-pena, aksessuary-dlya-naneseniya, antibitum, antidozhd, antimoshka, ap
 
 ## Common Translation Issues
 
-| RU | UK (правильно) | UK (неправильно) |
-|----|----------------|------------------|
-| автохимия | автохімія | автохимия |
-| чернитель шин | чорнитель шин | чернитель шин |
-| купить | купити | купить |
-| доставка | доставка | — |
-| очиститель | очисник | очіщувач |
-| полироль | поліроль | полироль |
-| антидождь | антидощ | антидождь |
-| обезжириватель | знежирювач | обезжирювач |
+| RU             | UK (правильно) | UK (неправильно) |
+| -------------- | -------------- | ---------------- |
+| автохимия      | автохімія      | автохимия        |
+| чернитель шин  | чорнитель шин  | чернитель шин    |
+| купить         | купити         | купить           |
+| доставка       | доставка       | —                |
+| очиститель     | очисник        | очіщувач         |
+| полироль       | поліроль       | полироль         |
+| антидождь      | антидощ        | антидождь        |
+| обезжириватель | знежирювач     | обезжирювач      |
 
 ---
 
 ## UK File Structure
 
-```
+```text
 uk/categories/{slug}/
 ├── data/{slug}_clean.json    # Keywords UK
 ├── meta/{slug}_meta.json     # Meta UK

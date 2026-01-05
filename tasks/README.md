@@ -6,15 +6,19 @@
 
 ## Основные файлы
 
-* [`PIPELINE_STATUS.md`](PIPELINE_STATUS.md): **Главный дашборд**. Текущий статус всех категорий и очередь задач. Читать перед началом работы.
-* [`MASTER_CHECKLIST.md`](MASTER_CHECKLIST.md): Полный список всех категорий со статусами каждого этапа (Init, Meta, ...).
-* [`MAINTENANCE.md`](MAINTENANCE.md): Инструкции по поддержке и обновлению трекеров задач.
+- [`PIPELINE_STATUS.md`](PIPELINE_STATUS.md): **Главный дашборд**. Текущий статус всех категорий и очередь задач.
+- [`ROADMAP.md`](ROADMAP.md): Глобальный план по этапам работ.
+- [`STRUCTURE_CHANGES_PLAN.md`](STRUCTURE_CHANGES_PLAN.md): Актуальный план изменений структуры (L3, Merge, Relocate).
+- [`IDEAL_STRUCTURE_TARGET.md`](IDEAL_STRUCTURE_TARGET.md): Эталон целевой структуры для валидации.
+- [`MASTER_CHECKLIST.md`](MASTER_CHECKLIST.md): Полный список всех категорий со статусами.
+- [`MAINTENANCE.md`](MAINTENANCE.md): Инструкции по поддержке системы задач.
 
 ## Папки
 
-* `categories/`: Индивидуальные чеклисты для каждой категории (Markdown файлы). Используются для трекинга прогресса по конкретной категории.
-* `stages/`: Описание этапов работы (Standard Operating Procedures).
-* `fixes/`: Задачи на исправление ошибок.
+- `categories/`: Индивидуальные чеклисты для каждой категории.
+- `stages/`: Описание этапов работы (SOP).
+- `fixes/`: Актуальные задачи на исправление ошибок.
+- `archive/`: Устаревшие ТЗ и выполненные задачи.
 
 ## Workflow
 

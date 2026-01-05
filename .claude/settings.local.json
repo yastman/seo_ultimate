@@ -11,7 +11,8 @@
       "Bash(done)",
       "Bash(dir /b \"c:\\Users\\user\\Documents\\Сайты\\Ultimate.net.ua\\сео_для_категорий_ультимейт\\uk\\categories\")",
       "Bash(python scripts/validate_meta.py:*)",
-      "Bash(powershell -Command \"$PSVersionTable.PSVersion\")"
+      "Bash(powershell -Command \"$PSVersionTable.PSVersion\")",
+      "Bash(ls:*)"
     ]
   }
 }
