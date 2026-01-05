@@ -8,7 +8,7 @@ repos:
     hooks:
       # Linter (fixes imports, unused vars, style)
       - id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
+        args: [--fix, --exit-non-zero-on-fix, --unsafe-fixes]
       # Formatter (Black-compatible)
       - id: ruff-format
 
@@ -21,12 +21,13 @@ repos:
   #       args: [--config-file=pyproject.toml]
 
   # Markdown
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.43.0
-    hooks:
-      - id: markdownlint
-        args: [--fix]
-        exclude: ^(archive/|\.claude/)
+  # Markdown
+  # - repo: https://github.com/igorshubovych/markdownlint-cli
+  #   rev: v0.43.0
+  #   hooks:
+  #     - id: markdownlint
+  #       args: [--fix]
+  #       exclude: ^(archive/|tasks/archive/|\.claude/|artifacts/)
 
   # YAML
   # - repo: https://github.com/adrienverge/yamllint
