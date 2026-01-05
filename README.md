@@ -3,11 +3,11 @@
 Автоматизированная система генерации SEO-контента для категорий интернет-магазина автохимии.
 
 **Архитектура:** Skills-based Pipeline
-**SSOT (контент):** `docs/CONTENT_GUIDE.md` v20.0
-**Оркестратор:** `CLAUDE.md` v25.1
+**SSOT (контент):** `docs/CONTENT_GUIDE.md`
+**Оркестратор:** `CLAUDE.md`
 **Задачи:** `tasks/PIPELINE_STATUS.md`
 **Язык:** RU + UK
-**Version:** 8.0
+**Version:** 9.0 (Refactored)
 
 ---
 
@@ -21,203 +21,94 @@ CSV → /category-init → /generate-meta → /seo-research → /content-generat
 
 ---
 
-## Quick Links 📂
-
-| Раздел | Ссылка | Описание |
-|--------|--------|----------|
-| 📚 **Документация** | [`docs/`](docs/README.md) | Все гайды и инструкции |
-| 📋 **Задачи** | [`tasks/`](tasks/README.md) | Статусы, пайплайн, чеклисты |
-| 📦 **Категории** | [`categories/`](categories/README.md) | Данные категорий (RU) |
-| 🛠️ **Скрипты** | [`scripts/`](scripts/README.md) | Утилиты автоматизации |
-| 🇺🇦 **UK Версия** | [`uk/`](uk/README.md) | Локализация |
-| 🧹 **Архив** | [`archive/`](archive/README.md) | Устаревшие файлы |
-| 📊 **Отчеты** | [`reports/`](reports/README.md) | Логи авто-проверок |
-| 🧪 **Тесты** | [`tests/`](tests/README.md) | Pytest Suite |
-| 🏗️ **Артефакты** | [`artifacts/`](artifacts/README.md) | Временные файлы |
-| 🤖 **Промпты** | [`prompts/`](prompts/README.md) | Шаблоны для AI агентов |
-| 🚀 **Деплой** | [`deploy/`](deploy/README.md) | SQL скрипты |
-
----
-
-## Быстрый старт
-
-### Новая категория (полный цикл)
-
-```bash
-# 1. Инициализация из CSV
-/category-init aktivnaya-pena
-
-# 2. Мета-теги
-/generate-meta aktivnaya-pena
-
-# 3. Исследование
-/seo-research aktivnaya-pena
-
-# 4. Генерация контента
-/content-generator aktivnaya-pena
-
-# 5. Украинская версия (опционально)
-/uk-content-init aktivnaya-pena
-
-# 6. Проверка качества
-/quality-gate aktivnaya-pena
-
-# 7. Деплой
-/deploy-to-opencart aktivnaya-pena
-```
-
-### Короткие команды
-
-```
-создай категорию aktivnaya-pena     → /category-init
-сгенерируй мета                      → /generate-meta
-исследуй категорию                   → /seo-research
-напиши контент                       → /content-generator
-створи UK версію                     → /uk-content-init
-проверь перед деплоем               → /quality-gate
-залей на сайт                        → /deploy-to-opencart
-```
-
----
-
-## Skills
-
-| Skill | Версия | Input | Output |
-|-------|--------|-------|--------|
-| `/category-init` | 1.0 | slug из CSV | folders + _clean.json |
-| `/generate-meta` | 8.0 | _clean.json | _meta.json |
-| `/seo-research` | 1.0 | _meta.json | RESEARCH_DATA.md |
-| `/content-generator` | 1.0 | research + meta | _ru.md |
-| `/batch-content` | 1.0 | multiple slugs | batch processing |
-| `/uk-content-init` | 4.0 | RU complete | uk/ structure |
-| `/quality-gate` | 1.0 | all files | PASS/FAIL report |
-| `/deploy-to-opencart` | 3.0 | quality PASS | DB updated |
-
----
-
-## Структура проекта
+## 📂 Структура проекта
 
 ```
 /
-├── CLAUDE.md                 # Оркестратор (v25.1)
-├── README.md                 # Этот файл
+├── CLAUDE.md               # Инструкции для Claude
+├── GEMINI.md               # Инструкции для Gemini [UPDATED]
+├── README.md               # Этот файл
 │
-├── docs/                     # Документация + README.md
-│   ├── CONTENT_GUIDE.md      # SEO Guide v20.0
-│   └── RESEARCH_GUIDE.md     # Гайд по исследованиям
-│
-├── tasks/                    # Система задач + README.md
-│   ├── PIPELINE_STATUS.md    # Текущий прогресс
-│   ├── MASTER_CHECKLIST.md   # Все категории
-│   ├── categories/           # Чеклисты (58 файлов)
-│   └── stages/               # Описание этапов
-│
-├── categories/               # Данные категорий + README.md
-│   └── {slug}/               # Папка категории
-│       ├── data/{slug}_clean.json
-│       ├── meta/{slug}_meta.json
-│       ├── content/{slug}_ru.md
-│       └── research/RESEARCH_DATA.md
-│
-├── uk/                       # UK локализация + README.md
-│   └── categories/{slug}/
-│
-├── scripts/                  # Скрипты (60+) + README.md
-├── tests/                    # Тесты + README.md
-├── archive/                  # Архив + README.md
-├── data/                     # Input/Output data + README.md
-├── reports/                  # Отчеты и логи + README.md
-├── prompts/                  # Промпты для агентов + README.md
-│
-└── deploy/                   # SQL для OpenCart + README.md
+├── docs/                   # Документация проекта
+├── tasks/                  # Управление задачами (Active, Completed, Refs)
+├── categories/             # Данные категорий (RU)
+├── uk/                     # Локализация (UK)
+├── scripts/                # Утилиты автоматизации [REFACTORED]
+├── data/                   # Данные (Raw, Dumps, Generated)
+├── reports/                # Логи и отчеты
+├── tests/                  # Pytest тесты
+├── archive/                # Устаревшие файлы
+└── deploy/                 # SQL скрипты для деплоя
 ```
 
 ---
 
-## Validation
+## 🚀 Быстрый старт
 
-Каждый skill имеет input/output валидацию:
+### Основные команды
 
-| Skill | Input Check | Output Check | Script |
-|-------|-------------|--------------|--------|
-| category-init | slug в CSV | JSON valid | — |
-| generate-meta | _clean.json | Title/Desc length | validate_meta.py |
-| seo-research | meta exists | 8 blocks | — |
-| content-generator | research | structure | validate_content.py |
-| uk-content-init | RU complete | translation | validate_meta.py |
-| quality-gate | all files | all checks | analyze_category.py |
-| deploy-to-opencart | PASS | DB updated | — |
+```bash
+# Инициализация категории
+python scripts/setup_all.py --slug avtoshampuni
 
----
+# Генерация мета-тегов
+python scripts/validate_meta.py categories/avtoshampuni/meta/avtoshampuni_meta.json
 
-## December 2025 Rules
+# Валидация контента
+python scripts/validate_content.py categories/avtoshampuni/content/avtoshampuni_ru.md
 
-| Parameter | Value |
-|-----------|-------|
-| Title | **50-60 chars**, "Купить/Купити" REQUIRED |
-| Description | **120-160 chars**, NO emojis |
-| H1 | **NO "Купить"**, H1 ≠ Title |
-| Intro | **30-60 words** |
-| Keyword density | **NOT a factor** — write naturally |
-| FAQ | **3-5 questions**, real user queries |
+# Генерация HTML
+python scripts/md_to_html.py categories/avtoshampuni/content/avtoshampuni_ru.md
+```
 
----
+### Skills (Slash Commands)
 
-## Категории
-
-**Total:** 58 категорий (RU + UK = 116 страниц)
-
-| Статус | Количество | Описание |
-|--------|------------|----------|
-| ✅ Готово к Deploy | 13 | Полный цикл завершён |
-| 🔄 Meta готово | 21 | Нужен Research + Content |
-| ⬜ Init готово | 24 | Нужен Meta |
-
-**Детали:** `tasks/PIPELINE_STATUS.md`
+```
+/category-init {slug}      → Создать структуру папок
+/generate-meta {slug}      → Сгенерировать JSON мета-тегов
+/seo-research {slug}       → Провести анализ конкурентов
+/content-generator {slug}  → Написать контент (RU)
+/uk-content-init {slug}    → Создать UK версию
+/quality-gate {slug}       → Полная проверка
+/deploy-to-opencart {slug} → SQL дамп
+```
 
 ---
 
-## Scripts
+## 📋 Статус проекта
 
-| Script | Назначение |
-|--------|------------|
-| `analyze_category.py` | Анализ категории |
-| `validate_content.py` | Валидация контента |
-| `validate_meta.py` | Валидация мета-тегов |
-| `md_to_html.py` | Конвертация MD → HTML |
-| `upload_to_db.py` | Upload в OpenCart |
+Актуальный статус всех работ находится в **[`tasks/PIPELINE_STATUS.md`](tasks/PIPELINE_STATUS.md)**.
 
----
+**Метрики:**
 
-## Changelog
-
-### v8.0 (2025-12-31)
-
-- Task system: PIPELINE_STATUS, MASTER_CHECKLIST, MAINTENANCE
-- 58 категорий (13 готовы к deploy)
-- 8 skills (добавлен batch-content)
-- scripts/README.md, deploy/README.md
-- validate_uk.py
-
-### v7.0 (2025-12-30)
-
-- Skills-based pipeline architecture
-- 7 specialized skills with validation
-- Cloned Anthropic skills examples
-- CLAUDE.md v22.0 with full routing
-- Input/output validation at each step
-
-### v6.1 (2025-12-16)
-
-- SSOT: CONTENT_GUIDE.md v4.4
-- Two-mode validation (quality/seo)
-
-### v6.0 (2025-12-15)
-
-- v8.5 SEO Standard
-- 4 basic skills
+-   **Всего категорий:** 280+
+-   **Готово к деплою:** См. статус
+-   **Скриптов:** ~30 (оптимизировано)
 
 ---
 
-**Updated:** 2025-12-31
-**Version:** 8.0
+## 🛠 Инструменты `scripts/`
+
+Полный список в [`scripts/README.md`](scripts/README.md).
+
+| Группа         | Скрипты                                                     |
+| -------------- | ----------------------------------------------------------- |
+| **Core**       | `seo_utils.py`, `config.py`                                 |
+| **Validators** | `validate_meta.py`, `validate_content.py`, `validate_uk.py` |
+| **Parsers**    | `csv_to_readable_md.py`, `parse_semantics_to_json.py`       |
+| **Tools**      | `synonym_tools.py`, `competitors.py`, `products.py`         |
+| **Generators** | `generate_sql.py`, `md_to_html.py`                          |
+
+---
+
+## 📝 Основные правила (2025/2026)
+
+1. **Title:** 50-60 знаков, "Купить" + Бренд в конце.
+2. **Desc:** 130-150 знаков, без эмодзи.
+3. **Content:** Полезный, без воды, с таблицами и списками.
+4. **Git:** Commit often, Atomic commits.
+
+---
+
+**Updated:** 2026-01-05
+**Version:** 9.0

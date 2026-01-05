@@ -1,16 +1,80 @@
+# User Specific
+.vscode/
+
+# Logs & Temp
+*.log
+*.txt
+!requirements.txt
+!requirements-dev.txt
+temp/
+*.tmp
+
+# SQL Dumps (Heavy)
+data/dumps/*.sql
+data/sql_output/*.sql
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Env
+.env
+.venv
 env/
 venv/
 ENV/
-.venv
+env.bak/
+venv.bak/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ruff
+.ruff_cache/
 
 # Editors
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -20,31 +84,12 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Project specific
-output/reports/*.json
-output/reports/*.txt
-*.log
-
-# Backup files
-*.bak
-*.backup
-*.tmp
-
 # Large files
 ultimate_net_ua_backup.sql
 nul
 *.db
 *.sqlite
 
-# Cache
-.cache/
-.ruff_cache/
-
 # Coverage
-.coverage
 coverage.json
-htmlcov/
 artifacts/
-
-# Pytest
-.pytest_cache/

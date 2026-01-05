@@ -24,16 +24,23 @@ RULES 2025 v8.0 (Google December 2025 Update — Adaptive Approach):
 """
 
 import re
+import sys
 import time
+from pathlib import Path
+from typing import Any
 
 import requests
 import yaml
 
+# Fix path for direct execution and legacy imports
+if __name__ == "__main__" or __package__ is None:
+    sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 try:
-    _config = __import__("scripts.config", fromlist=["*"])
+    from scripts import config as _config
 except ImportError:
-    import config as _config
+    # Fallback for some IDE execution contexts or if root is not in path
+    import config as _config  # type: ignore
 
 QUALITY_THRESHOLDS = _config.QUALITY_THRESHOLDS
 COMMERCIAL_MODIFIERS = _config.COMMERCIAL_MODIFIERS
@@ -45,12 +52,12 @@ def get_adaptive_coverage_target(keywords_count: int) -> int:
     """Get coverage target based on keywords count (fallback safe)."""
     func = getattr(_config, "get_adaptive_coverage_target", None)
     if callable(func):
-        return func(keywords_count)
+        return int(func(keywords_count))
     if keywords_count <= 5:
-        return QUALITY_THRESHOLDS.get("coverage_shallow", 70)
+        return int(QUALITY_THRESHOLDS.get("coverage_shallow", 70))
     if keywords_count <= 15:
-        return QUALITY_THRESHOLDS.get("coverage_medium", 60)
-    return QUALITY_THRESHOLDS.get("coverage_deep", 50)
+        return int(QUALITY_THRESHOLDS.get("coverage_medium", 60))
+    return int(QUALITY_THRESHOLDS.get("coverage_deep", 50))
 
 
 # ============================================================================
@@ -99,14 +106,14 @@ COMMERCIAL_MODIFIERS_UK = [
 ]
 
 
-def get_mappings_for_lang(lang: str = "ru") -> tuple:
+def get_mappings_for_lang(lang: str = "ru") -> tuple[dict[str, str], dict[str, str]]:
     """Get L3_TO_SLUG and SLUG_TO_L3 mappings for specified language."""
     if lang == "uk":
         return L3_TO_SLUG_UK, SLUG_TO_L3_UK
     return L3_TO_SLUG, SLUG_TO_L3
 
 
-def get_commercial_modifiers(lang: str = "ru") -> list:
+def get_commercial_modifiers(lang: str = "ru") -> list[str]:
     """Get commercial modifiers for specified language."""
     if lang == "uk":
         return COMMERCIAL_MODIFIERS_UK
@@ -240,7 +247,7 @@ def get_l3_name(slug: str) -> str | None:
 # ============================================================================
 
 
-def parse_front_matter(content: str) -> tuple[dict | None, str, str]:
+def parse_front_matter(content: str) -> tuple[dict[str, Any] | None, str, str]:
     """
     Парсинг Markdown с YAML front matter
 
@@ -485,7 +492,9 @@ def check_url_accessibility(url: str, timeout: int = 5, max_retries: int = 3) ->
 # ============================================================================
 
 
-def count_keyword_occurrences(text: str, keyword: str, variations: dict) -> tuple[int, int]:
+def count_keyword_occurrences(
+    text: str, keyword: str, variations: dict[str, list[str]]
+) -> tuple[int, int]:
     """
     Подсчёт exact и partial вхождений keyword с fallback
 
@@ -544,9 +553,9 @@ def safe_sentence_split(md_body: str) -> list[str]:
         Список предложений
     """
     # 1. Stash код-блоки (временно заменяем плейсхолдерами)
-    fences = {}
+    fences: dict[str, str] = {}
 
-    def stash_fence(match):
+    def stash_fence(match: re.Match[str]) -> str:
         key = f"__FENCE_{len(fences)}__"
         fences[key] = match.group(0)
         return key
@@ -619,7 +628,7 @@ def is_protected_section(sentence: str) -> bool:
 # ============================================================================
 
 
-def get_adaptive_requirements(keywords_count: int = 10) -> dict:
+def get_adaptive_requirements(keywords_count: int = 10) -> dict[str, Any]:
     """
     Адаптивные требования на основе количества ключей (НЕ tier)
 
@@ -701,7 +710,7 @@ def get_adaptive_requirements(keywords_count: int = 10) -> dict:
     }
 
 
-def get_tier_requirements(tier: str = "B") -> dict:
+def get_tier_requirements(tier: str = "B") -> dict[str, Any]:
     """
     DEPRECATED: Используй get_adaptive_requirements()
 
@@ -773,7 +782,7 @@ COMMERCIAL_MARKERS = [
 ]
 
 
-def check_commercial_markers(text: str, min_required: int = 3) -> dict:
+def check_commercial_markers(text: str, min_required: int = 3) -> dict[str, Any]:
     """
     Проверка наличия коммерческих маркеров в тексте
 
@@ -848,7 +857,7 @@ STOPLIST_PHRASES = [
 ]
 
 
-def check_stoplist(text: str) -> dict:
+def check_stoplist(text: str) -> dict[str, Any]:
     """
     Проверка на стоп-фразы (Anti-Fluff)
 
@@ -902,7 +911,7 @@ def get_protected_zones(md_body: str) -> dict[str, list[tuple[int, int]]]:
             "faq": [(start, end), ...]
         }
     """
-    zones = {"intro": [], "h2_sections": [], "faq": []}
+    zones: dict[str, list[tuple[int, int]]] = {"intro": [], "h2_sections": [], "faq": []}
 
     # 1. Intro - только первый абзац ДО первого H2 (сохраняем PRIMARY keywords)
     first_h2_pos = md_body.find("\n## ")
@@ -973,7 +982,7 @@ DEFAULT_BLACKLIST_DOMAINS = [
 ]
 
 
-def is_blacklisted_domain(url: str, blacklist: list[str] = None) -> bool:
+def is_blacklisted_domain(url: str, blacklist: list[str] | None = None) -> bool:
     """
     Check if URL domain is in blacklist
 
