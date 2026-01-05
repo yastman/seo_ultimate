@@ -1,43 +1,32 @@
 {
-  "slug": "ochistiteli-shin",
-  "language": "ru",
-  "clustered_at": "2025-12-31",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "очиститель шин",
-        "volume": 70,
-        "cluster": "main"
-      }
-    ],
-    "secondary": [],
-    "supporting": [
-      {
-        "keyword": "средства для ухода за резиной автомобиля",
-        "volume": 10,
-        "cluster": "long_tail"
-      }
-    ],
-    "commercial": []
-  },
-  "seo_titles": {
-    "h1": "Очиститель шин",
-    "main_keyword": "очиститель шин"
-  },
-  "stats": {
-    "before": 6,
-    "after": 4,
-    "total_volume": 160
-  },
-  "usage_rules": {
-    "primary": "H1 + intro (первые 150 слов)",
-    "secondary": "разделы buying guide (выбор, виды, применение)",
-    "supporting": "FAQ, таблицы, естественные упоминания",
-    "commercial": "ТОЛЬКО meta title/description, НЕ в текст"
-  },
-  "note": "Ключи про защитное покрытие для дисков перенесены в zashchitnoe-pokrytie-dlya-koles (2026-01-01)",
-  "clustering_notes": {
-    "cleaned_at": "2026-01-01",
-    "merged": []
-  }
+  "id": "ochistiteli-shin",
+  "name": "Очистители шин",
+  "type": "category",
+  "parent_id": "sredstva-dlya-diskov-i-shin",
+  "keywords": [
+    {
+      "keyword": "очиститель шин",
+      "volume": 70
+    },
+    {
+      "keyword": "очиститель резины",
+      "volume": 10
+    },
+    {
+      "keyword": "средство для чистки шин",
+      "volume": 10
+    },
+    {
+      "keyword": "средство для очистки резины",
+      "volume": 10
+    },
+    {
+      "keyword": "защитное покрытие для дисков",
+      "volume": 10
+    },
+    {
+      "keyword": "защитное покрытие для литых дисков",
+      "volume": 10
+    }
+  ]
 }

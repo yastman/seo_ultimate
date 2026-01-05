@@ -1,0 +1,16 @@
+{
+  "id": "kislotnyy",
+  "name": "Кислотный",
+  "type": "filter",
+  "parent_id": "avtoshampuni",
+  "keywords": [
+    {
+      "keyword": "кислотный шампунь для авто",
+      "volume": 70
+    },
+    {
+      "keyword": "кислотный автошампунь",
+      "volume": 20
+    }
+  ]
+}

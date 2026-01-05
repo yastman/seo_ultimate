@@ -1,0 +1,28 @@
+{
+  "id": "vedra-i-emkosti",
+  "name": "Ведра и емкости",
+  "type": "category",
+  "parent_id": "aksessuary",
+  "keywords": [
+    {
+      "keyword": "ведро для мойки автомобиля",
+      "volume": 90
+    },
+    {
+      "keyword": "ведра для мойки авто",
+      "volume": 90
+    },
+    {
+      "keyword": "ведро для мытья машины",
+      "volume": 10
+    },
+    {
+      "keyword": "купить ведро для мойки авто",
+      "volume": 10
+    },
+    {
+      "keyword": "ведро для мойки автомобиля купить",
+      "volume": 0
+    }
+  ]
+}
