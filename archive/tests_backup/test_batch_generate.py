@@ -6,7 +6,6 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-
 # Add scripts to path
 SCRIPT_DIR = Path(__file__).parent.parent / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
@@ -25,7 +24,6 @@ from batch_generate import (  # noqa: E402
     save_batch_log,
     update_category_status,
 )
-
 
 # =============================================================================
 # Log & Status Tests

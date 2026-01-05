@@ -19,7 +19,6 @@ import sys
 import tempfile
 from pathlib import Path
 
-
 # Add scripts to path
 SCRIPT_DIR = Path(__file__).parent.parent / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
@@ -32,7 +31,6 @@ from setup_all import (  # noqa: E402
     create_task_file,
     get_all_categories_with_keywords,
 )
-
 
 # =============================================================================
 # Test: auto_detect_tier
