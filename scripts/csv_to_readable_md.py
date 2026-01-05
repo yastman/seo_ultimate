@@ -31,7 +31,7 @@ except ImportError:
     PROJECT_ROOT = Path(__file__).parent.parent
     SEMANTICS_CSV = PROJECT_ROOT / "Структура _Ultimate.csv"
 
-OUTPUT_FILE = PROJECT_ROOT / "data" / "STRUCTURE.md"
+OUTPUT_FILE = PROJECT_ROOT / "data" / "generated" / "STRUCTURE.md"
 
 
 class Node:
