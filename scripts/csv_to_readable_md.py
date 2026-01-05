@@ -20,7 +20,6 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-
 # Add scripts dir to path to allow importing config
 sys.path.append(str(Path(__file__).parent))
 

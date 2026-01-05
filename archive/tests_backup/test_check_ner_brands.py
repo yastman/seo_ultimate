@@ -12,7 +12,6 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-
 # Add project root to path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
@@ -28,7 +27,6 @@ from scripts.check_ner_brands import (  # noqa: E402
     clean_markdown,
     is_false_positive_location,
 )
-
 
 # ============================================================================
 # Fixtures

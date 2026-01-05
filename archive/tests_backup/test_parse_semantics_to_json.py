@@ -13,7 +13,6 @@ from pathlib import Path
 
 import pytest
 
-
 # Add scripts to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
@@ -29,7 +28,6 @@ from parse_semantics_to_json import (
     get_tier_targets,
     read_semantics_csv,
 )
-
 
 # =============================================================================
 # Test Data Fixtures

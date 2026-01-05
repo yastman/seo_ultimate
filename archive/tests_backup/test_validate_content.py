@@ -4,7 +4,6 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-
 # Add scripts to path
 SCRIPT_DIR = Path(__file__).parent.parent / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
@@ -30,7 +29,6 @@ from validate_content import (  # noqa: E402
     extract_intro,
     validate_content,
 )
-
 
 # Text samples for testing
 SAMPLE_TEXT_VALID = """# Active Foam

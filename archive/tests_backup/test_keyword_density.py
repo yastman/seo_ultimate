@@ -14,7 +14,6 @@ from pathlib import Path
 
 import pytest
 
-
 # Add scripts directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
