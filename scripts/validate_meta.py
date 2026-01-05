@@ -33,12 +33,7 @@ from pathlib import Path
 from typing import Any
 
 
-# Fix Windows encoding
-if sys.platform == "win32":
-    import io
-
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+# Fix Windows encoding is moved to main() block to avoid pytest conflicts
 
 
 # =============================================================================
@@ -131,7 +126,22 @@ def get_word_stem(word: str) -> str:
 
     # Remove common noun endings (ordered by length)
     for suffix in [
-        "ями",
+        "ого",
+        "его",
+        "ому",
+        "ему",
+        "ими",
+        "ыми",
+        "ая",
+        "яя",
+        "ую",
+        "юю",
+        "ое",
+        "ее",
+        "ые",
+        "ие",
+        "ый",
+        "ій",
         "ями",
         "ей",
         "ов",
