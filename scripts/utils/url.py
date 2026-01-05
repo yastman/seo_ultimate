@@ -1,6 +1,7 @@
 import time
-import requests
 from urllib.parse import urlparse
+
+import requests
 
 # ============================================================================
 # Check URL Accessibility

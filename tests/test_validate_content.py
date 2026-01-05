@@ -1,5 +1,11 @@
-import pytest
-from scripts.validate_content import check_structure, check_primary_keyword, check_length, extract_intro, extract_h1
+from scripts.validate_content import (
+    check_length,
+    check_primary_keyword,
+    check_structure,
+    extract_h1,
+    extract_intro,
+)
+
 
 class TestExtract:
     def test_extract_h1(self):

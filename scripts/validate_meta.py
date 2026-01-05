@@ -32,7 +32,6 @@ import sys
 from pathlib import Path
 from typing import Any
 
-
 # Fix Windows encoding is moved to main() block to avoid pytest conflicts
 
 

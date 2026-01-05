@@ -25,19 +25,9 @@ RULES 2025 v8.0 (Google December 2025 Update — Adaptive Approach):
 
 import re
 import sys
-import time
 from pathlib import Path
 from typing import Any
 
-from scripts.utils.url import (
-    check_url_accessibility,
-    is_blacklisted_domain,
-    fix_ua_in_url,
-    is_category_page,
-    DEFAULT_BLACKLIST_DOMAINS
-)
-
-import requests
 import yaml
 
 # Fix path for direct execution and legacy imports
