@@ -2,7 +2,6 @@ import os
 
 from playwright.sync_api import sync_playwright
 
-
 # Example: Automating interaction with static HTML files using file:// URLs
 
 html_file_path = os.path.abspath("path/to/your/file.html")

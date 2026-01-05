@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 
-
 BASE_DIR = Path(r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт")
 RU_DIR = BASE_DIR / "categories"
 UK_DIR = BASE_DIR / "uk" / "categories"

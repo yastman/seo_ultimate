@@ -25,7 +25,6 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-
 # Allow running as `python3 scripts/filter_mega_competitors.py` without PYTHONPATH=.
 if __name__ == "__main__" and __package__ is None:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))

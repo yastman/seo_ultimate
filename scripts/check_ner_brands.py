@@ -21,7 +21,6 @@ import re
 import sys
 from pathlib import Path
 
-
 try:
     from natasha import (
         Doc,
@@ -215,14 +214,22 @@ AI_FLUFF_PATTERNS = [
 try:
     from scripts.config import (
         AI_FLUFF_PATTERNS as AI_FLUFF_PATTERNS_SSOT,
+    )
+    from scripts.config import (
         FALSE_POSITIVE_CITIES as FALSE_POSITIVE_CITIES_SSOT,
+    )
+    from scripts.config import (
         STRICT_BLACKLIST_PHRASES as STRICT_PHRASES_SSOT,
     )
 except ImportError:
     try:
         from config import (
             AI_FLUFF_PATTERNS as AI_FLUFF_PATTERNS_SSOT,
+        )
+        from config import (
             FALSE_POSITIVE_CITIES as FALSE_POSITIVE_CITIES_SSOT,
+        )
+        from config import (
             STRICT_BLACKLIST_PHRASES as STRICT_PHRASES_SSOT,
         )
     except ImportError:

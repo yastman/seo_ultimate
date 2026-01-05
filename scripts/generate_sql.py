@@ -17,7 +17,6 @@ from pathlib import Path
 
 import markdown
 
-
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 OUTPUT_FILE = PROJECT_DIR / "content_updates.sql"
 

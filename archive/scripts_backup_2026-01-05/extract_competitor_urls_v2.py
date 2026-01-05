@@ -22,7 +22,6 @@ from urllib.parse import urlparse
 
 import pandas as pd
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 BLACKLIST_DOMAINS = [

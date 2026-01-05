@@ -18,7 +18,6 @@ import json
 from collections.abc import Iterable
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parent.parent
 SEMANTICS_CSV = ROOT / "data" / "Структура  Ultimate финал - Лист2.csv"
 UK_CATEGORIES_DIR = ROOT / "uk" / "categories"

@@ -29,7 +29,6 @@ import time
 import requests
 import yaml
 
-
 try:
     _config = __import__("scripts.config", fromlist=["*"])
 except ImportError:

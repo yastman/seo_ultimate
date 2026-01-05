@@ -2,7 +2,6 @@ import json
 import re
 from pathlib import Path
 
-
 CATEGORIES_DIR = Path(__file__).parent.parent / "categories"
 
 # Patterns that SHOULD NOT be in L2 categories

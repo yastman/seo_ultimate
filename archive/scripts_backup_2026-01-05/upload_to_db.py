@@ -8,7 +8,6 @@ import re
 
 import mysql.connector
 
-
 # Маппинг slug → category_id
 CATEGORY_IDS = {
     "aktivnaya-pena": 415,

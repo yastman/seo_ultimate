@@ -25,7 +25,6 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-
 # Add scripts to path for imports
 SCRIPT_DIR = Path(__file__).parent
 sys.path.insert(0, str(SCRIPT_DIR))
@@ -36,7 +35,6 @@ from parse_semantics_to_json import (  # noqa: E402
     generate_full_json,
     read_semantics_csv,
 )
-
 
 # =============================================================================
 # Constants

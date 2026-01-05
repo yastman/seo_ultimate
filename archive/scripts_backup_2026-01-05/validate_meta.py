@@ -32,7 +32,6 @@ import sys
 from pathlib import Path
 from typing import Any
 
-
 # Fix Windows encoding
 if sys.platform == "win32":
     import io

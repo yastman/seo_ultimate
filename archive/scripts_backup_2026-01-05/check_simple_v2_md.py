@@ -23,7 +23,6 @@ from pathlib import Path
 
 import yaml
 
-
 # Импортируем из seo_utils.py для унификации
 try:
     from seo_utils import count_chars_no_spaces, count_words, get_tier_requirements, normalize_text

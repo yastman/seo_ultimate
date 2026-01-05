@@ -40,7 +40,6 @@ from ooxml.scripts.validation.redlining import RedliningValidator
 
 from .utilities import XMLEditor
 
-
 # Path to template files
 TEMPLATE_DIR = Path(__file__).parent / "templates"
 
