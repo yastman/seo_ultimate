@@ -1,0 +1,632 @@
+[
+  {
+    "id": "moyka-i-eksterer",
+    "name": "Мойка и Экстерьер",
+    "type": "category",
+    "level": "L1",
+    "parent_id": null,
+    "path": "moyka-i-eksterer",
+    "sort_order": 10,
+    "status": "active"
+  },
+  {
+    "id": "avtoshampuni",
+    "name": "Автошампуни",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "moyka-i-eksterer",
+    "path": "moyka-i-eksterer/avtoshampuni",
+    "sort_order": 20,
+    "status": "active"
+  },
+  {
+    "id": "aktivnaya-pena",
+    "name": "Активная пена",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "avtoshampuni",
+    "path": "moyka-i-eksterer/avtoshampuni/aktivnaya-pena",
+    "sort_order": 30,
+    "status": "active"
+  },
+  {
+    "id": "shampuni-dlya-ruchnoy-moyki",
+    "name": "Шампуни для ручной мойки",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "avtoshampuni",
+    "path": "moyka-i-eksterer/avtoshampuni/shampuni-dlya-ruchnoy-moyki",
+    "sort_order": 40,
+    "status": "active"
+  },
+  {
+    "id": "kislotnyy",
+    "name": "Кислотный",
+    "type": "filter",
+    "level": "Filter",
+    "parent_id": "avtoshampuni",
+    "path": "moyka-i-eksterer/avtoshampuni/kislotnyy",
+    "sort_order": 50,
+    "status": "active"
+  },
+  {
+    "id": "sredstva-dlya-stekol",
+    "name": "Средства для стекол",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "moyka-i-eksterer",
+    "path": "moyka-i-eksterer/sredstva-dlya-stekol",
+    "sort_order": 60,
+    "status": "active"
+  },
+  {
+    "id": "omyvatel",
+    "name": "Омыватель",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "sredstva-dlya-stekol",
+    "path": "moyka-i-eksterer/sredstva-dlya-stekol/omyvatel",
+    "sort_order": 70,
+    "status": "active"
+  },
+  {
+    "id": "antidozhd",
+    "name": "Антидождь",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "sredstva-dlya-stekol",
+    "path": "moyka-i-eksterer/sredstva-dlya-stekol/antidozhd",
+    "sort_order": 80,
+    "status": "active"
+  },
+  {
+    "id": "ochistiteli-stekol",
+    "name": "Очистители стекол",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "sredstva-dlya-stekol",
+    "path": "moyka-i-eksterer/sredstva-dlya-stekol/ochistiteli-stekol",
+    "sort_order": 90,
+    "status": "active"
+  },
+  {
+    "id": "ochistiteli-kuzova",
+    "name": "Очистители кузова",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "moyka-i-eksterer",
+    "path": "moyka-i-eksterer/ochistiteli-kuzova",
+    "sort_order": 100,
+    "status": "active"
+  },
+  {
+    "id": "glina-i-avtoskraby",
+    "name": "Глина и автоскрабы",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "ochistiteli-kuzova",
+    "path": "moyka-i-eksterer/ochistiteli-kuzova/glina-i-avtoskraby",
+    "sort_order": 110,
+    "status": "active"
+  },
+  {
+    "id": "obezzhirivateli",
+    "name": "Обезжириватели",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "ochistiteli-kuzova",
+    "path": "moyka-i-eksterer/ochistiteli-kuzova/obezzhirivateli",
+    "sort_order": 120,
+    "status": "active"
+  },
+  {
+    "id": "antimoshka",
+    "name": "Антимошка",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "ochistiteli-kuzova",
+    "path": "moyka-i-eksterer/ochistiteli-kuzova/antimoshka",
+    "sort_order": 130,
+    "status": "active"
+  },
+  {
+    "id": "antibitum",
+    "name": "Антибитум",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "ochistiteli-kuzova",
+    "path": "moyka-i-eksterer/ochistiteli-kuzova/antibitum",
+    "sort_order": 140,
+    "status": "active"
+  },
+  {
+    "id": "ukhod-za-naruzhnym-plastikom",
+    "name": "Уход за наружным пластиком",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "ochistiteli-kuzova",
+    "path": "moyka-i-eksterer/ochistiteli-kuzova/ukhod-za-naruzhnym-plastikom",
+    "sort_order": 150,
+    "status": "active"
+  },
+  {
+    "id": "sredstva-dlya-diskov-i-shin",
+    "name": "Средства для дисков и шин",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "moyka-i-eksterer",
+    "path": "moyka-i-eksterer/sredstva-dlya-diskov-i-shin",
+    "sort_order": 160,
+    "status": "active"
+  },
+  {
+    "id": "cherniteli-shin",
+    "name": "Чернители шин",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "sredstva-dlya-diskov-i-shin",
+    "path": "moyka-i-eksterer/sredstva-dlya-diskov-i-shin/cherniteli-shin",
+    "sort_order": 170,
+    "status": "active"
+  },
+  {
+    "id": "ochistiteli-diskov",
+    "name": "Очистители дисков",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "sredstva-dlya-diskov-i-shin",
+    "path": "moyka-i-eksterer/sredstva-dlya-diskov-i-shin/ochistiteli-diskov",
+    "sort_order": 180,
+    "status": "active"
+  },
+  {
+    "id": "ochistiteli-shin",
+    "name": "Очистители шин",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "sredstva-dlya-diskov-i-shin",
+    "path": "moyka-i-eksterer/sredstva-dlya-diskov-i-shin/ochistiteli-shin",
+    "sort_order": 190,
+    "status": "active"
+  },
+  {
+    "id": "keramika-dlya-diskov",
+    "name": "Керамика для дисков",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "sredstva-dlya-diskov-i-shin",
+    "path": "moyka-i-eksterer/sredstva-dlya-diskov-i-shin/keramika-dlya-diskov",
+    "sort_order": 200,
+    "status": "active"
+  },
+  {
+    "id": "ochistiteli-dvigatelya",
+    "name": "Очистители двигателя",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "moyka-i-eksterer",
+    "path": "moyka-i-eksterer/ochistiteli-dvigatelya",
+    "sort_order": 210,
+    "status": "active"
+  },
+  {
+    "id": "aksessuary",
+    "name": "Аксессуары",
+    "type": "category",
+    "level": "L1",
+    "parent_id": null,
+    "path": "aksessuary",
+    "sort_order": 220,
+    "status": "active"
+  },
+  {
+    "id": "malyarniy-skotch",
+    "name": "Малярний Скотч",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "aksessuary",
+    "path": "aksessuary/malyarniy-skotch",
+    "sort_order": 230,
+    "status": "active"
+  },
+  {
+    "id": "mikrofibra-i-tryapki",
+    "name": "Микрофибра и тряпки",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "aksessuary",
+    "path": "aksessuary/mikrofibra-i-tryapki",
+    "sort_order": 240,
+    "status": "active"
+  },
+  {
+    "id": "tryapka-dlya-avto",
+    "name": "Тряпка для авто",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "mikrofibra-i-tryapki",
+    "path": "aksessuary/mikrofibra-i-tryapki/tryapka-dlya-avto",
+    "sort_order": 250,
+    "status": "active"
+  },
+  {
+    "id": "tryapka-dlya-vytiraniya-avto-posle-moyki",
+    "name": "Тряпка для вытирания авто после мойки",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "mikrofibra-i-tryapki",
+    "path": "aksessuary/mikrofibra-i-tryapki/tryapka-dlya-vytiraniya-avto-posle-moyki",
+    "sort_order": 260,
+    "status": "active"
+  },
+  {
+    "id": "dlya-stekol",
+    "name": "Для стекол",
+    "type": "filter",
+    "level": "Filter",
+    "parent_id": "mikrofibra-i-tryapki",
+    "path": "aksessuary/mikrofibra-i-tryapki/dlya-stekol",
+    "sort_order": 270,
+    "status": "active"
+  },
+  {
+    "id": "shchetki-i-kisti",
+    "name": "Щетки и кисти",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "aksessuary",
+    "path": "aksessuary/shchetki-i-kisti",
+    "sort_order": 280,
+    "status": "active"
+  },
+  {
+    "id": "shchetka-dlya-moyki-avto",
+    "name": "Щетка для мойки авто",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "shchetki-i-kisti",
+    "path": "aksessuary/shchetki-i-kisti/shchetka-dlya-moyki-avto",
+    "sort_order": 290,
+    "status": "active"
+  },
+  {
+    "id": "kisti-dlya-deteylinga",
+    "name": "Кисти для детейлинга",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "shchetki-i-kisti",
+    "path": "aksessuary/shchetki-i-kisti/kisti-dlya-deteylinga",
+    "sort_order": 300,
+    "status": "active"
+  },
+  {
+    "id": "gubki-i-varezhki",
+    "name": "Губки и варежки",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "aksessuary",
+    "path": "aksessuary/gubki-i-varezhki",
+    "sort_order": 310,
+    "status": "active"
+  },
+  {
+    "id": "raspyliteli-i-penniki",
+    "name": "Распылители и пенники",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "aksessuary",
+    "path": "aksessuary/raspyliteli-i-penniki",
+    "sort_order": 320,
+    "status": "active"
+  },
+  {
+    "id": "aksessuary-dlya-naneseniya-sredstv",
+    "name": "Аксессуары для нанесения средств",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "aksessuary",
+    "path": "aksessuary/aksessuary-dlya-naneseniya-sredstv",
+    "sort_order": 330,
+    "status": "active"
+  },
+  {
+    "id": "vedra-i-emkosti",
+    "name": "Ведра и емкости",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "aksessuary",
+    "path": "aksessuary/vedra-i-emkosti",
+    "sort_order": 340,
+    "status": "active"
+  },
+  {
+    "id": "nabory",
+    "name": "Наборы",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "aksessuary",
+    "path": "aksessuary/nabory",
+    "sort_order": 350,
+    "status": "active"
+  },
+  {
+    "id": "nabory-dlya-moyki",
+    "name": "Наборы для мойки",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "nabory",
+    "path": "aksessuary/nabory/nabory-dlya-moyki",
+    "sort_order": 360,
+    "status": "active"
+  },
+  {
+    "id": "nabory-dlya-salona",
+    "name": "Наборы для салона",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "nabory",
+    "path": "aksessuary/nabory/nabory-dlya-salona",
+    "sort_order": 370,
+    "status": "active"
+  },
+  {
+    "id": "podarochnyy",
+    "name": "Подарочный",
+    "type": "filter",
+    "level": "Filter",
+    "parent_id": "nabory",
+    "path": "aksessuary/nabory/podarochnyy",
+    "sort_order": 380,
+    "status": "active"
+  },
+  {
+    "id": "polirovka",
+    "name": "Полировка",
+    "type": "category",
+    "level": "L1",
+    "parent_id": null,
+    "path": "polirovka",
+    "sort_order": 390,
+    "status": "active"
+  },
+  {
+    "id": "polirovalnye-mashinki",
+    "name": "Полировальные машинки",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "polirovka",
+    "path": "polirovka/polirovalnye-mashinki",
+    "sort_order": 400,
+    "status": "active"
+  },
+  {
+    "id": "akkumulyatornaya",
+    "name": "Аккумуляторная",
+    "type": "filter",
+    "level": "Filter",
+    "parent_id": "polirovalnye-mashinki",
+    "path": "polirovka/polirovalnye-mashinki/akkumulyatornaya",
+    "sort_order": 410,
+    "status": "active"
+  },
+  {
+    "id": "polirovalnye-pasty",
+    "name": "Полировальные пасты",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "polirovka",
+    "path": "polirovka/polirovalnye-pasty",
+    "sort_order": 420,
+    "status": "active"
+  },
+  {
+    "id": "polirovalnye-krugi",
+    "name": "Полировальные круги",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "polirovka",
+    "path": "polirovka/polirovalnye-krugi",
+    "sort_order": 430,
+    "status": "active"
+  },
+  {
+    "id": "mekhovye",
+    "name": "Меховые",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "polirovalnye-krugi",
+    "path": "polirovka/polirovalnye-krugi/mekhovye",
+    "sort_order": 440,
+    "status": "active"
+  },
+  {
+    "id": "ukhod-za-intererom",
+    "name": "Уход за интерьером",
+    "type": "category",
+    "level": "L1",
+    "parent_id": null,
+    "path": "ukhod-za-intererom",
+    "sort_order": 450,
+    "status": "active"
+  },
+  {
+    "id": "neytralizatory-zapakha",
+    "name": "Нейтрализаторы запаха",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "ukhod-za-intererom",
+    "path": "ukhod-za-intererom/neytralizatory-zapakha",
+    "sort_order": 460,
+    "status": "active"
+  },
+  {
+    "id": "poliroli-dlya-plastika",
+    "name": "Полироли для пластика",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "ukhod-za-intererom",
+    "path": "ukhod-za-intererom/poliroli-dlya-plastika",
+    "sort_order": 470,
+    "status": "active"
+  },
+  {
+    "id": "sredstva-dlya-kozhi",
+    "name": "Средства для кожи",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "ukhod-za-intererom",
+    "path": "ukhod-za-intererom/sredstva-dlya-kozhi",
+    "sort_order": 480,
+    "status": "active"
+  },
+  {
+    "id": "ukhod-za-kozhey",
+    "name": "Уход за кожей",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "sredstva-dlya-kozhi",
+    "path": "ukhod-za-intererom/sredstva-dlya-kozhi/ukhod-za-kozhey",
+    "sort_order": 490,
+    "status": "active"
+  },
+  {
+    "id": "ochistiteli-kozhi",
+    "name": "Очистители кожи",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "sredstva-dlya-kozhi",
+    "path": "ukhod-za-intererom/sredstva-dlya-kozhi/ochistiteli-kozhi",
+    "sort_order": 500,
+    "status": "active"
+  },
+  {
+    "id": "sredstva-dlya-khimchistki-salona",
+    "name": "Средства для химчистки салона",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "ukhod-za-intererom",
+    "path": "ukhod-za-intererom/sredstva-dlya-khimchistki-salona",
+    "sort_order": 510,
+    "status": "active"
+  },
+  {
+    "id": "pyatnovyvoditeli",
+    "name": "Пятновыводители",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "ukhod-za-intererom",
+    "path": "ukhod-za-intererom/pyatnovyvoditeli",
+    "sort_order": 520,
+    "status": "active"
+  },
+  {
+    "id": "zashchitnye-pokrytiya",
+    "name": "Защитные покрытия",
+    "type": "category",
+    "level": "L1",
+    "parent_id": null,
+    "path": "zashchitnye-pokrytiya",
+    "sort_order": 530,
+    "status": "active"
+  },
+  {
+    "id": "voski",
+    "name": "Воски",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "zashchitnye-pokrytiya",
+    "path": "zashchitnye-pokrytiya/voski",
+    "sort_order": 540,
+    "status": "active"
+  },
+  {
+    "id": "tverdyy-vosk",
+    "name": "Твердый воск",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "voski",
+    "path": "zashchitnye-pokrytiya/voski/tverdyy-vosk",
+    "sort_order": 550,
+    "status": "active"
+  },
+  {
+    "id": "zhidkiy-vosk",
+    "name": "Жидкий воск",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "voski",
+    "path": "zashchitnye-pokrytiya/voski/zhidkiy-vosk",
+    "sort_order": 560,
+    "status": "active"
+  },
+  {
+    "id": "keramika-i-zhidkoe-steklo",
+    "name": "Керамика и жидкое стекло",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "zashchitnye-pokrytiya",
+    "path": "zashchitnye-pokrytiya/keramika-i-zhidkoe-steklo",
+    "sort_order": 570,
+    "status": "active"
+  },
+  {
+    "id": "kvik-deteylery",
+    "name": "Квик-детейлеры",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "zashchitnye-pokrytiya",
+    "path": "zashchitnye-pokrytiya/kvik-deteylery",
+    "sort_order": 580,
+    "status": "active"
+  },
+  {
+    "id": "silanty",
+    "name": "Силанты",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "zashchitnye-pokrytiya",
+    "path": "zashchitnye-pokrytiya/silanty",
+    "sort_order": 590,
+    "status": "active"
+  },
+  {
+    "id": "oborudovanie",
+    "name": "Оборудование",
+    "type": "category",
+    "level": "L1",
+    "parent_id": null,
+    "path": "oborudovanie",
+    "sort_order": 600,
+    "status": "active"
+  },
+  {
+    "id": "oborudovanie-l2",
+    "name": "Оборудование",
+    "type": "category",
+    "level": "L2",
+    "parent_id": "oborudovanie",
+    "path": "oborudovanie/oborudovanie-l2",
+    "sort_order": 610,
+    "status": "active"
+  },
+  {
+    "id": "apparaty-tornador",
+    "name": "Аппараты Tornador",
+    "type": "category",
+    "level": "L3",
+    "parent_id": "oborudovanie-l2",
+    "path": "oborudovanie/oborudovanie-l2/apparaty-tornador",
+    "sort_order": 620,
+    "status": "active"
+  },
+  {
+    "id": "opt-i-b2b",
+    "name": "Опт и B2B",
+    "type": "category",
+    "level": "L1",
+    "parent_id": null,
+    "path": "opt-i-b2b",
+    "sort_order": 630,
+    "status": "active"
+  }
+]
