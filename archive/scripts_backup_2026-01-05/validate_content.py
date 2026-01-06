@@ -544,10 +544,7 @@ def check_quality(text: str, lang: str = "ru") -> dict:
         water = metrics.get("water_percent", 0)
         results["water"]["value"] = round(water, 1)
 
-        if (
-            water < QUALITY_THRESHOLDS["water_target_min"]
-            or water > QUALITY_THRESHOLDS["water_target_max"]
-        ):
+        if water < QUALITY_THRESHOLDS["water_target_min"] or water > QUALITY_THRESHOLDS["water_target_max"]:
             results["water"]["status"] = "WARNING"
         else:
             results["water"]["status"] = "OK"
@@ -1000,9 +997,7 @@ def validate_content(
 
     if semantic_allowed and (use_semantic or primary_kw["overall"] == "FAIL"):
         # Run semantic check as fallback or if requested
-        semantic_kw = check_primary_keyword_semantic(
-            text, primary_keyword, use_llm=semantic_allowed
-        )
+        semantic_kw = check_primary_keyword_semantic(text, primary_keyword, use_llm=semantic_allowed)
 
         # If semantic passes but exact fails, upgrade status
         if primary_kw["overall"] == "FAIL" and semantic_kw["overall"] in ["PASS", "WARNING"]:
@@ -1024,9 +1019,7 @@ def validate_content(
         if "core" in coverage:
             coverage["core"]["target"] = None
             coverage["core"]["passed"] = True
-            coverage["commercial"]["note"] = (
-                "SEO mode: commercial keywords belong to meta/structured data."
-            )
+            coverage["commercial"]["note"] = "SEO mode: commercial keywords belong to meta/structured data."
         else:
             coverage["target"] = None
             coverage["passed"] = True
@@ -1180,12 +1173,8 @@ def print_results(results: dict):
     icon = "✅" if struct["overall"] == "PASS" else "❌"
     print(f"{icon} STRUCTURE:")
     print(f"   H1: {'✓' if struct['h1']['passed'] else '✗'} {struct['h1']['value'] or 'missing'}")
-    print(
-        f"   Intro: {'✓' if struct['intro']['passed'] else '✗'} ({struct['intro']['words']} words)"
-    )
-    print(
-        f"   H2 count: {'✓' if struct['h2_count']['passed'] else '✗'} ({struct['h2_count']['count']})"
-    )
+    print(f"   Intro: {'✓' if struct['intro']['passed'] else '✗'} ({struct['intro']['words']} words)")
+    print(f"   H2 count: {'✓' if struct['h2_count']['passed'] else '✗'} ({struct['h2_count']['count']})")
     print()
 
     # Primary Keyword
@@ -1212,18 +1201,14 @@ def print_results(results: dict):
         core = cov["core"]
         comm = cov["commercial"]
         if core.get("target") is None:
-            print(
-                f"   ┌─ Core (topic): {core['found']}/{core['total']} ({core['coverage_percent']}%)"
-            )
+            print(f"   ┌─ Core (topic): {core['found']}/{core['total']} ({core['coverage_percent']}%)")
         else:
             print(
                 f"   ┌─ Core (topic): {core['found']}/{core['total']} ({core['coverage_percent']}%) target={core['target']}%"
             )
         if core["missing_keywords"]:
             print(f"   │  Missing: {', '.join(core['missing_keywords'][:5])}...")
-        print(
-            f"   └─ Commercial: {comm['found']}/{comm['total']} ({comm['coverage_percent']}%) [INFO only]"
-        )
+        print(f"   └─ Commercial: {comm['found']}/{comm['total']} ({comm['coverage_percent']}%) [INFO only]")
         if comm["missing_keywords"]:
             print(f"      → For meta: {', '.join(comm['missing_keywords'][:3])}...")
     else:
@@ -1243,12 +1228,8 @@ def print_results(results: dict):
     print(f"{icon} QUALITY:")
     if qual["water"]["value"] is not None:
         print(f"   Water: {qual['water']['value']}% ({qual['water']['status']})")
-        print(
-            f"   Classic Nausea: {qual['nausea_classic']['value']} ({qual['nausea_classic']['status']})"
-        )
-        print(
-            f"   Academic Nausea: {qual['nausea_academic']['value']}% ({qual['nausea_academic']['status']})"
-        )
+        print(f"   Classic Nausea: {qual['nausea_classic']['value']} ({qual['nausea_classic']['status']})")
+        print(f"   Academic Nausea: {qual['nausea_academic']['value']}% ({qual['nausea_academic']['status']})")
     else:
         print(f"   {qual.get('note', 'Unavailable')}")
     print()

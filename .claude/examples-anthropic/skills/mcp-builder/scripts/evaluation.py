@@ -115,11 +115,7 @@ async def agent_loop(
         tool_start_ts = time.time()
         try:
             tool_result = await connection.call_tool(tool_name, tool_input)
-            tool_response = (
-                json.dumps(tool_result)
-                if isinstance(tool_result, (dict, list))
-                else str(tool_result)
-            )
+            tool_response = json.dumps(tool_result) if isinstance(tool_result, (dict, list)) else str(tool_result)
         except Exception as e:
             tool_response = f"Error executing tool {tool_name}: {str(e)}\n"
             tool_response += traceback.format_exc()
@@ -347,12 +343,8 @@ Examples:
 
     stdio_group = parser.add_argument_group("stdio options")
     stdio_group.add_argument("-c", "--command", help="Command to run MCP server (stdio only)")
-    stdio_group.add_argument(
-        "-a", "--args", nargs="+", help="Arguments for the command (stdio only)"
-    )
-    stdio_group.add_argument(
-        "-e", "--env", nargs="+", help="Environment variables in KEY=VALUE format (stdio only)"
-    )
+    stdio_group.add_argument("-a", "--args", nargs="+", help="Arguments for the command (stdio only)")
+    stdio_group.add_argument("-e", "--env", nargs="+", help="Environment variables in KEY=VALUE format (stdio only)")
 
     remote_group = parser.add_argument_group("sse/http options")
     remote_group.add_argument("-u", "--url", help="MCP server URL (sse/http only)")
@@ -364,9 +356,7 @@ Examples:
         help="HTTP headers in 'Key: Value' format (sse/http only)",
     )
 
-    parser.add_argument(
-        "-o", "--output", type=Path, help="Output file for evaluation report (default: stdout)"
-    )
+    parser.add_argument("-o", "--output", type=Path, help="Output file for evaluation report (default: stdout)")
 
     args = parser.parse_args()
 

@@ -307,11 +307,7 @@ def main(argv: list[str] | None = None) -> int:
     print("FINAL REPORT", file=sys.stderr)
     print("=" * 80, file=sys.stderr)
 
-    status = (
-        "SUCCESS"
-        if len(urls_validated) >= 5
-        else ("WARNING" if len(urls_validated) >= 3 else "FAIL")
-    )
+    status = "SUCCESS" if len(urls_validated) >= 5 else ("WARNING" if len(urls_validated) >= 3 else "FAIL")
 
     report = {
         "status": status,

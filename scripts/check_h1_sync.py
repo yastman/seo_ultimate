@@ -108,9 +108,7 @@ def check_sync(fix: bool = False):
                     if "meta_h1" in data:
                         data["meta_h1"] = clean_md
 
-                    json_file.write_text(
-                        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
-                    )
+                    json_file.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
                     print(f"   ✅ FIXED: JSON обновлен (было: '{old_h1}')")
                 except Exception as e:
                     print(f"   ❌ ERROR fixing: {e}")

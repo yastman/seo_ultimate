@@ -5,9 +5,7 @@ from collections import defaultdict
 from datetime import date
 
 # Configuration
-CATEGORIES_DIR = (
-    r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"
-)
+CATEGORIES_DIR = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"
 
 # Synonyms for normalization
 AUTO_SYNONYMS = ["авто", "автомобиля", "машины", "машина", "автомобиль", "в авто", "для авто"]

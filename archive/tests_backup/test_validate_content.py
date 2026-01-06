@@ -323,9 +323,7 @@ def test_validate_content_integration(mock_blacklist, mock_quality, mock_exists,
 
 def test_semantic_match_singular_plural():
     """Test that singular/plural variations are matched."""
-    text = (
-        "# Чернители шин для автомобиля\n\nЧернители помогают вернуть цвет резине и защищают от UV."
-    )
+    text = "# Чернители шин для автомобиля\n\nЧернители помогают вернуть цвет резине и защищают от UV."
     result = check_primary_keyword_semantic(text, "чернитель резины")
     # Should match via stem "чернител"
     assert result["semantic_h1"] is True
@@ -628,14 +626,10 @@ def test_validate_content_semantic_override(tmp_path, monkeypatch):
             "confidence": 80,
         },
     )
-    monkeypatch.setattr(
-        vc, "check_keyword_coverage", lambda _t, _k: {"overall": "PASS", "passed": True}
-    )
+    monkeypatch.setattr(vc, "check_keyword_coverage", lambda _t, _k: {"overall": "PASS", "passed": True})
     monkeypatch.setattr(vc, "check_quality", lambda _t, **kw: {"overall": "PASS"})
     monkeypatch.setattr(vc, "check_blacklist_phrases", lambda _t: {"overall": "PASS"})
-    monkeypatch.setattr(
-        vc, "check_length", lambda _t: {"status": "OK", "words": 200, "chars_no_spaces": 1000}
-    )
+    monkeypatch.setattr(vc, "check_length", lambda _t: {"status": "OK", "words": 200, "chars_no_spaces": 1000})
     monkeypatch.setattr(vc, "check_content_standards", lambda _t: {"overall": "OK", "issues": []})
     monkeypatch.setattr(vc, "check_grammar", lambda _t: {"overall": "PASS"})
     monkeypatch.setattr(vc, "check_markdown_lint", lambda _p: {"overall": "PASS"})
@@ -905,9 +899,7 @@ def test_check_strict_blacklist_only_paths(monkeypatch):
     res = vc.check_strict_blacklist_only("text")
     assert res["overall"] == "FAIL"
 
-    monkeypatch.setattr(
-        vc, "check_blacklist", lambda _t: (_ for _ in ()).throw(RuntimeError("boom"))
-    )
+    monkeypatch.setattr(vc, "check_blacklist", lambda _t: (_ for _ in ()).throw(RuntimeError("boom")))
     res = vc.check_strict_blacklist_only("text")
     assert res["overall"] == "ERROR"
 
@@ -1087,14 +1079,10 @@ def test_validate_content_collects_blockers(tmp_path, monkeypatch):
             "confidence": 0,
         },
     )
-    monkeypatch.setattr(
-        vc, "check_keyword_coverage", lambda *_a, **_kw: {"overall": "PASS", "passed": True}
-    )
+    monkeypatch.setattr(vc, "check_keyword_coverage", lambda *_a, **_kw: {"overall": "PASS", "passed": True})
     monkeypatch.setattr(vc, "check_quality", lambda _t, **kw: {"overall": "FAIL"})
     monkeypatch.setattr(vc, "check_blacklist_phrases", lambda _t: {"overall": "FAIL"})
-    monkeypatch.setattr(
-        vc, "check_length", lambda _t: {"status": "OK", "words": 200, "chars_no_spaces": 1000}
-    )
+    monkeypatch.setattr(vc, "check_length", lambda _t: {"status": "OK", "words": 200, "chars_no_spaces": 1000})
     monkeypatch.setattr(vc, "check_content_standards", lambda _t: {"overall": "OK", "issues": []})
     monkeypatch.setattr(vc, "check_grammar", lambda _t: {"overall": "PASS"})
     monkeypatch.setattr(vc, "check_markdown_lint", lambda _p: {"overall": "PASS"})
@@ -1135,9 +1123,7 @@ def test_validate_content_collects_warnings(tmp_path, monkeypatch):
             "frequency": {"count": 1, "status": "OK"},
         },
     )
-    monkeypatch.setattr(
-        vc, "check_keyword_coverage", lambda *_a, **_kw: {"overall": "WARNING", "passed": False}
-    )
+    monkeypatch.setattr(vc, "check_keyword_coverage", lambda *_a, **_kw: {"overall": "WARNING", "passed": False})
     monkeypatch.setattr(vc, "check_quality", lambda _t, **kw: {"overall": "WARNING"})
     monkeypatch.setattr(vc, "check_blacklist_phrases", lambda _t: {"overall": "WARNING"})
     monkeypatch.setattr(
@@ -1145,9 +1131,7 @@ def test_validate_content_collects_warnings(tmp_path, monkeypatch):
         "check_length",
         lambda _t: {"status": "WARNING_SHORT", "words": 10, "chars_no_spaces": 20},
     )
-    monkeypatch.setattr(
-        vc, "check_content_standards", lambda _t: {"overall": "WARNING", "issues": ["x"]}
-    )
+    monkeypatch.setattr(vc, "check_content_standards", lambda _t: {"overall": "WARNING", "issues": ["x"]})
     monkeypatch.setattr(vc, "check_grammar", lambda _t: {"overall": "WARNING"})
     monkeypatch.setattr(vc, "check_markdown_lint", lambda _p: {"overall": "WARNING"})
 

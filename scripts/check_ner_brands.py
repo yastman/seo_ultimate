@@ -324,9 +324,7 @@ def check_blacklist(text: str) -> dict:
                 start = max(0, match.start() - 30)
                 end = min(len(text), match.end() + 30)
                 context = text[start:end].replace("\n", " ")
-                found_brands.append(
-                    {"entity": brand, "type": "BRAND", "context": f"...{context}..."}
-                )
+                found_brands.append({"entity": brand, "type": "BRAND", "context": f"...{context}..."})
 
     # Проверка городов (с фильтрацией false positives)
     for city in CITY_BLACKLIST:
@@ -349,9 +347,7 @@ def check_blacklist(text: str) -> dict:
                 start = max(0, match.start() - 30)
                 end = min(len(text), match.end() + 30)
                 context = text[start:end].replace("\n", " ")
-                found_strict.append(
-                    {"entity": phrase, "type": "STRICT_BLACKLIST", "context": f"...{context}..."}
-                )
+                found_strict.append({"entity": phrase, "type": "STRICT_BLACKLIST", "context": f"...{context}..."})
 
     # Проверка AI-fluff
     for pattern in AI_FLUFF_PATTERNS:
@@ -360,9 +356,7 @@ def check_blacklist(text: str) -> dict:
             start = max(0, match.start() - 20)
             end = min(len(text), match.end() + 20)
             context = text[start:end].replace("\n", " ")
-            found_ai_fluff.append(
-                {"entity": match.group(), "type": "AI_FLUFF", "context": f"...{context}..."}
-            )
+            found_ai_fluff.append({"entity": match.group(), "type": "AI_FLUFF", "context": f"...{context}..."})
 
     return {
         "brands": found_brands,
@@ -435,22 +429,14 @@ def analyze_file(filepath: str, output_json: bool = False) -> int:
             "brands_count": len(blacklist_results["brands"]),
             "cities_count": len(blacklist_results["cities"]),
             "ai_fluff_count": len(blacklist_results["ai_fluff"]),
-            "ner_org_count": len(
-                [e for e in ner_results.get("ner_entities", []) if e["type"] == "ORG"]
-            ),
-            "ner_loc_count": len(
-                [e for e in ner_results.get("ner_entities", []) if e["type"] == "LOC"]
-            ),
-            "ner_per_count": len(
-                [e for e in ner_results.get("ner_entities", []) if e["type"] == "PER"]
-            ),
+            "ner_org_count": len([e for e in ner_results.get("ner_entities", []) if e["type"] == "ORG"]),
+            "ner_loc_count": len([e for e in ner_results.get("ner_entities", []) if e["type"] == "LOC"]),
+            "ner_per_count": len([e for e in ner_results.get("ner_entities", []) if e["type"] == "PER"]),
         },
     }
 
     total_issues = (
-        results["summary"]["brands_count"]
-        + results["summary"]["cities_count"]
-        + results["summary"]["ai_fluff_count"]
+        results["summary"]["brands_count"] + results["summary"]["cities_count"] + results["summary"]["ai_fluff_count"]
     )
 
     results["summary"]["total_issues"] = total_issues

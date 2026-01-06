@@ -128,9 +128,7 @@ def write_children(writer, node):
             writer.writerow([])
             write_children(writer, child)
         elif child.type in ["L3", "Filter", "Cluster"]:
-            prefix = (
-                "L3: " if child.type == "L3" else ("SEO-Фильтр: " if child.type == "Filter" else "")
-            )
+            prefix = "L3: " if child.type == "L3" else ("SEO-Фильтр: " if child.type == "Filter" else "")
             writer.writerow([f"{prefix}{child.name}", child.info, ""])
             write_children(writer, child)
         elif child.type == "Keyword":

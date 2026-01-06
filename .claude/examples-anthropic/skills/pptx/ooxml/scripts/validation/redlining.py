@@ -38,14 +38,10 @@ class RedliningValidator:
 
             # Filter to only include changes by Claude
             claude_del_elements = [
-                elem
-                for elem in del_elements
-                if elem.get(f"{{{self.namespaces['w']}}}author") == "Claude"
+                elem for elem in del_elements if elem.get(f"{{{self.namespaces['w']}}}author") == "Claude"
             ]
             claude_ins_elements = [
-                elem
-                for elem in ins_elements
-                if elem.get(f"{{{self.namespaces['w']}}}author") == "Claude"
+                elem for elem in ins_elements if elem.get(f"{{{self.namespaces['w']}}}author") == "Claude"
             ]
 
             # Redlining validation is only needed if tracked changes by Claude have been used.

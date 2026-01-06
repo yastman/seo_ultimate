@@ -9,9 +9,7 @@ together to create animation frames.
 from PIL import Image, ImageDraw, ImageFont
 
 
-def create_blank_frame(
-    width: int, height: int, color: tuple[int, int, int] = (255, 255, 255)
-) -> Image.Image:
+def create_blank_frame(width: int, height: int, color: tuple[int, int, int] = (255, 255, 255)) -> Image.Image:
     """
     Create a blank frame with solid color background.
 

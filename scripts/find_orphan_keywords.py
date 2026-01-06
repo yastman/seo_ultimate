@@ -284,9 +284,7 @@ def main():
     print("=" * 60)
 
     # Sort by total volume
-    sorted_cats = sorted(
-        by_category.items(), key=lambda x: sum(k["volume"] for k in x[1]), reverse=True
-    )
+    sorted_cats = sorted(by_category.items(), key=lambda x: sum(k["volume"] for k in x[1]), reverse=True)
 
     for slug, keywords in sorted_cats:
         total_vol = sum(k["volume"] for k in keywords)
@@ -370,21 +368,13 @@ def distribute_orphans(by_category: dict[str, list], dry_run: bool = True) -> in
                     )
             elif volume >= 200:
                 if len(added["primary"]) < 5:
-                    added["primary"].append(
-                        {"keyword": keyword, "volume": volume, "cluster": "main"}
-                    )
+                    added["primary"].append({"keyword": keyword, "volume": volume, "cluster": "main"})
                 else:
-                    added["secondary"].append(
-                        {"keyword": keyword, "volume": volume, "cluster": "related"}
-                    )
+                    added["secondary"].append({"keyword": keyword, "volume": volume, "cluster": "related"})
             elif volume >= 30:
-                added["secondary"].append(
-                    {"keyword": keyword, "volume": volume, "cluster": "related"}
-                )
+                added["secondary"].append({"keyword": keyword, "volume": volume, "cluster": "related"})
             else:
-                added["supporting"].append(
-                    {"keyword": keyword, "volume": volume, "cluster": "long_tail"}
-                )
+                added["supporting"].append({"keyword": keyword, "volume": volume, "cluster": "long_tail"})
 
         # Merge with existing
         for cat in ["primary", "secondary", "supporting", "commercial"]:
@@ -395,14 +385,9 @@ def distribute_orphans(by_category: dict[str, list], dry_run: bool = True) -> in
             kw_data[cat].sort(key=lambda x: x["volume"], reverse=True)
 
         # Update stats
-        total_kws = sum(
-            len(kw_data.get(cat, []))
-            for cat in ["primary", "secondary", "supporting", "commercial"]
-        )
+        total_kws = sum(len(kw_data.get(cat, [])) for cat in ["primary", "secondary", "supporting", "commercial"])
         total_vol = sum(
-            kw["volume"]
-            for cat in ["primary", "secondary", "supporting", "commercial"]
-            for kw in kw_data.get(cat, [])
+            kw["volume"] for cat in ["primary", "secondary", "supporting", "commercial"] for kw in kw_data.get(cat, [])
         )
 
         if "stats" in data:

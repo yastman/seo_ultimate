@@ -12,9 +12,7 @@ L2_FORBIDDEN_PATTERNS = {
     "voski": [r"тверд", r"жидк", r"горяч", r"быстр"],
     "sredstva-dlya-stekol": [r"очистител"],
     "sredstva-dlya-diskov-i-shin": [r"очистител", r"чернител"],
-    "polirovalnye-pasty": [
-        r"паст"
-    ],  # Wait, this IS the category for pastes, but maybe check for machine/pads?
+    "polirovalnye-pasty": [r"паст"],  # Wait, this IS the category for pastes, but maybe check for machine/pads?
 }
 
 

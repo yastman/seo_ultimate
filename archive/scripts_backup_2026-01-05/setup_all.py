@@ -136,9 +136,7 @@ def create_task_file(slug: str, tier: str, keywords_count: int, dry_run: bool = 
     return task_file
 
 
-def create_keywords_json(
-    slug: str, tier: str, keywords_raw: list[dict], dry_run: bool = False
-) -> Path | None:
+def create_keywords_json(slug: str, tier: str, keywords_raw: list[dict], dry_run: bool = False) -> Path | None:
     """
     Generate keywords JSON for category.
 
@@ -186,9 +184,7 @@ def get_all_categories_with_keywords() -> dict[str, list[dict]]:
     return result
 
 
-def setup_category(
-    slug: str, keywords: list[dict], force: bool = False, dry_run: bool = False
-) -> dict:
+def setup_category(slug: str, keywords: list[dict], force: bool = False, dry_run: bool = False) -> dict:
     """
     Setup single category: folders + task file + keywords JSON.
 

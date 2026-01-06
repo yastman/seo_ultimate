@@ -69,8 +69,5 @@ def test_blacklist_patterns():
 def test_quality_thresholds_logic():
     """Verify logical consistency of thresholds."""
     # min < max
-    assert (
-        config.QUALITY_THRESHOLDS["water_target_min"]
-        < config.QUALITY_THRESHOLDS["water_target_max"]
-    )
+    assert config.QUALITY_THRESHOLDS["water_target_min"] < config.QUALITY_THRESHOLDS["water_target_max"]
     assert config.QUALITY_THRESHOLDS["words_soft_min"] < config.QUALITY_THRESHOLDS["words_soft_max"]

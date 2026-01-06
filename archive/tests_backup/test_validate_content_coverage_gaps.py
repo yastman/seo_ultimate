@@ -181,9 +181,7 @@ def test_validate_content_seo_warning_suppression_guard_branch(monkeypatch, tmp_
     monkeypatch.setattr(mod, "check_keyword_coverage", lambda _t, _kws: {"overall": "PASS"})
     monkeypatch.setattr(mod, "check_quality", lambda _t, lang="ru": {"overall": "PASS"})
     monkeypatch.setattr(mod, "check_blacklist_phrases", lambda _t: {"overall": "PASS"})
-    monkeypatch.setattr(
-        mod, "check_length", lambda _t, keywords_count=None: {"status": "WARNING: short"}
-    )
+    monkeypatch.setattr(mod, "check_length", lambda _t, keywords_count=None: {"status": "WARNING: short"})
     monkeypatch.setattr(mod, "check_grammar", lambda _t: {"overall": "PASS"})
     monkeypatch.setattr(mod, "check_markdown_lint", lambda _p: {"overall": "PASS"})
 
@@ -221,9 +219,7 @@ def test_check_quality_exception_sets_error(monkeypatch):
 def test_check_blacklist_phrases_exception_sets_error(monkeypatch):
     import validate_content as mod
 
-    monkeypatch.setattr(
-        mod, "check_blacklist", lambda _t: (_ for _ in ()).throw(RuntimeError("boom"))
-    )
+    monkeypatch.setattr(mod, "check_blacklist", lambda _t: (_ for _ in ()).throw(RuntimeError("boom")))
     res = mod.check_blacklist_phrases("текст")
     assert "error" in res
 
@@ -239,9 +235,7 @@ def test_check_strict_blacklist_only_unavailable(monkeypatch):
 def test_check_length_get_adaptive_requirements_exception_is_swallowed(monkeypatch):
     import validate_content as mod
 
-    monkeypatch.setattr(
-        mod, "get_adaptive_requirements", lambda _n: (_ for _ in ()).throw(RuntimeError("boom"))
-    )
+    monkeypatch.setattr(mod, "get_adaptive_requirements", lambda _n: (_ for _ in ()).throw(RuntimeError("boom")))
     res = mod.check_length("слово " * 10, keywords_count=10)
     assert res["recommended_words"] == (150, 600)
 

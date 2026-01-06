@@ -72,9 +72,7 @@ class BaseSchemaValidator:
 
     # Common OOXML namespaces used across validators
     PACKAGE_RELATIONSHIPS_NAMESPACE = "http://schemas.openxmlformats.org/package/2006/relationships"
-    OFFICE_RELATIONSHIPS_NAMESPACE = (
-        "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
-    )
+    OFFICE_RELATIONSHIPS_NAMESPACE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
     CONTENT_TYPES_NAMESPACE = "http://schemas.openxmlformats.org/package/2006/content-types"
 
     # Folders where we should clean ignorable namespaces
@@ -127,13 +125,9 @@ class BaseSchemaValidator:
                 # Try to parse the XML file
                 lxml.etree.parse(str(xml_file))
             except lxml.etree.XMLSyntaxError as e:
-                errors.append(
-                    f"  {xml_file.relative_to(self.unpacked_dir)}: Line {e.lineno}: {e.msg}"
-                )
+                errors.append(f"  {xml_file.relative_to(self.unpacked_dir)}: Line {e.lineno}: {e.msg}")
             except Exception as e:
-                errors.append(
-                    f"  {xml_file.relative_to(self.unpacked_dir)}: Unexpected error: {str(e)}"
-                )
+                errors.append(f"  {xml_file.relative_to(self.unpacked_dir)}: Unexpected error: {str(e)}")
 
         if errors:
             print(f"FAILED - Found {len(errors)} XML violations:")
@@ -157,8 +151,7 @@ class BaseSchemaValidator:
                 for attr_val in [v for k, v in root.attrib.items() if k.endswith("Ignorable")]:
                     undeclared = set(attr_val.split()) - declared
                     errors.extend(
-                        f"  {xml_file.relative_to(self.unpacked_dir)}: "
-                        f"Namespace '{ns}' in Ignorable but not declared"
+                        f"  {xml_file.relative_to(self.unpacked_dir)}: Namespace '{ns}' in Ignorable but not declared"
                         for ns in undeclared
                     )
             except lxml.etree.XMLSyntaxError:
@@ -184,9 +177,7 @@ class BaseSchemaValidator:
                 file_ids = {}  # Track IDs that must be unique within this file
 
                 # Remove all mc:AlternateContent elements from the tree
-                mc_elements = root.xpath(
-                    ".//mc:AlternateContent", namespaces={"mc": self.MC_NAMESPACE}
-                )
+                mc_elements = root.xpath(".//mc:AlternateContent", namespaces={"mc": self.MC_NAMESPACE})
                 for elem in mc_elements:
                     elem.getparent().remove(elem)
 
@@ -202,9 +193,7 @@ class BaseSchemaValidator:
                         # Look for the specified attribute
                         id_value = None
                         for attr, value in elem.attrib.items():
-                            attr_local = (
-                                attr.split("}")[-1].lower() if "}" in attr else attr.lower()
-                            )
+                            attr_local = attr.split("}")[-1].lower() if "}" in attr else attr.lower()
                             if attr_local == attr_name:
                                 id_value = value
                                 break
@@ -272,9 +261,7 @@ class BaseSchemaValidator:
         all_files = []
         for file_path in self.unpacked_dir.rglob("*"):
             if (
-                file_path.is_file()
-                and file_path.name != "[Content_Types].xml"
-                and not file_path.name.endswith(".rels")
+                file_path.is_file() and file_path.name != "[Content_Types].xml" and not file_path.name.endswith(".rels")
             ):  # This file is not referenced by .rels
                 all_files.append(file_path.resolve())
 
@@ -328,9 +315,7 @@ class BaseSchemaValidator:
                 if broken_refs:
                     rel_path = rels_file.relative_to(self.unpacked_dir)
                     for broken_ref, line_num in broken_refs:
-                        errors.append(
-                            f"  {rel_path}: Line {line_num}: Broken reference to {broken_ref}"
-                        )
+                        errors.append(f"  {rel_path}: Line {line_num}: Broken reference to {broken_ref}")
 
             except Exception as e:
                 rel_path = rels_file.relative_to(self.unpacked_dir)
@@ -388,9 +373,7 @@ class BaseSchemaValidator:
                 rels_root = lxml.etree.parse(str(rels_file)).getroot()
                 rid_to_type = {}
 
-                for rel in rels_root.findall(
-                    f".//{{{self.PACKAGE_RELATIONSHIPS_NAMESPACE}}}Relationship"
-                ):
+                for rel in rels_root.findall(f".//{{{self.PACKAGE_RELATIONSHIPS_NAMESPACE}}}Relationship"):
                     rid = rel.get("Id")
                     rel_type = rel.get("Type", "")
                     if rid:
@@ -546,9 +529,7 @@ class BaseSchemaValidator:
                 path_str = str(xml_file.relative_to(self.unpacked_dir)).replace("\\", "/")
 
                 # Skip non-content files
-                if any(
-                    skip in path_str for skip in [".rels", "[Content_Types]", "docProps/", "_rels/"]
-                ):
+                if any(skip in path_str for skip in [".rels", "[Content_Types]", "docProps/", "_rels/"]):
                     continue
 
                 try:
@@ -556,9 +537,7 @@ class BaseSchemaValidator:
                     root_name = root_tag.split("}")[-1] if "}" in root_tag else root_tag
 
                     if root_name in declarable_roots and path_str not in declared_parts:
-                        errors.append(
-                            f"  {path_str}: File with <{root_name}> root not declared in [Content_Types].xml"
-                        )
+                        errors.append(f"  {path_str}: File with <{root_name}> root not declared in [Content_Types].xml")
 
                 except Exception:
                     continue  # Skip unparseable files
@@ -664,9 +643,7 @@ class BaseSchemaValidator:
             # Has new errors
             new_errors.append(f"  {relative_path}: {len(new_file_errors)} new error(s)")
             for error in list(new_file_errors)[:3]:  # Show first 3 errors
-                new_errors.append(
-                    f"    - {error[:250]}..." if len(error) > 250 else f"    - {error}"
-                )
+                new_errors.append(f"    - {error[:250]}..." if len(error) > 250 else f"    - {error}")
 
         # Print summary
         if self.verbose:

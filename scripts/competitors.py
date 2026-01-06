@@ -24,7 +24,7 @@ import pandas as pd
 
 # Try imports, fallback for different envs
 try:
-    from scripts.seo_utils import fix_ua_in_url, is_blacklisted_domain, slugify
+    from scripts.seo_utils import is_blacklisted_domain
 except ImportError:
     # If running from scripts dir directly
     sys.path.append(str(Path(__file__).parent.parent))

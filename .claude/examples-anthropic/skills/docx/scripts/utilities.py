@@ -125,10 +125,7 @@ class XMLEditor:
 
             # Check attrs filter
             if attrs is not None:
-                if not all(
-                    elem.getAttribute(attr_name) == attr_value
-                    for attr_name, attr_value in attrs.items()
-                ):
+                if not all(elem.getAttribute(attr_name) == attr_value for attr_name, attr_value in attrs.items()):
                     continue
 
             # Check contains filter

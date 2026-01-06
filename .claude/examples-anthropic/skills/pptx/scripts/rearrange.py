@@ -97,9 +97,7 @@ def duplicate_slide(pres, index):
         # Using the element's own xpath method without namespaces argument
         blips = new_el.xpath(".//a:blip[@r:embed]")
         for blip in blips:
-            old_rId = blip.get(
-                "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed"
-            )
+            old_rId = blip.get("{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed")
             if old_rId in image_rels:
                 # Create a new relationship in the destination slide for this image
                 old_rel = image_rels[old_rId]

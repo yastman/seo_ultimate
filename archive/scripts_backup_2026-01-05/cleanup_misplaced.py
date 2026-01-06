@@ -114,19 +114,13 @@ def remove_keywords_from_category(slug: str, keywords_to_remove: list[str]) -> i
         if category not in kw_data:
             continue
         original_len = len(kw_data[category])
-        kw_data[category] = [
-            kw for kw in kw_data[category] if kw["keyword"].lower() not in keywords_set
-        ]
+        kw_data[category] = [kw for kw in kw_data[category] if kw["keyword"].lower() not in keywords_set]
         removed += original_len - len(kw_data[category])
 
     # Update stats
-    total_kws = sum(
-        len(kw_data.get(cat, [])) for cat in ["primary", "secondary", "supporting", "commercial"]
-    )
+    total_kws = sum(len(kw_data.get(cat, [])) for cat in ["primary", "secondary", "supporting", "commercial"])
     total_vol = sum(
-        kw["volume"]
-        for cat in ["primary", "secondary", "supporting", "commercial"]
-        for kw in kw_data.get(cat, [])
+        kw["volume"] for cat in ["primary", "secondary", "supporting", "commercial"] for kw in kw_data.get(cat, [])
     )
 
     if "stats" in data:

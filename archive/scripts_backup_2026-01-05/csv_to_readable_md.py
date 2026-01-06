@@ -171,11 +171,7 @@ class SemanticsParser:
 
                 # Explicit "Category" line
                 if col1.lower().startswith("категория") or col1.lower() == "категория":
-                    parent_name = (
-                        current_l2.name
-                        if current_l2
-                        else (current_l1.name if current_l1 else "Root")
-                    )
+                    parent_name = current_l2.name if current_l2 else (current_l1.name if current_l1 else "Root")
                     cluster_name = f"General ({parent_name})"
                     cluster_node = Node(cluster_name, "Cluster")
 
@@ -197,11 +193,7 @@ class SemanticsParser:
                 # B) Col2 is a digit >= 5 (smaller blocks are assumed to be lists inside a larger block, unless explicitly marked)
 
                 is_valid_header_count = False
-                if (
-                    col2
-                    and (not col3 or col3 == "0")
-                    and ("/" in col2 or (col2.isdigit() and int(col2) >= 5))
-                ):
+                if col2 and (not col3 or col3 == "0") and ("/" in col2 or (col2.isdigit() and int(col2) >= 5)):
                     is_valid_header_count = True
 
                 if is_valid_header_count:
@@ -239,9 +231,7 @@ class SemanticsParser:
                         if current_l3:
                             active_container = current_l3
                         else:
-                            active_container = self._ensure_direct_keywords_container(
-                                current_l1, current_l2
-                            )
+                            active_container = self._ensure_direct_keywords_container(current_l1, current_l2)
 
                     if active_container:
                         active_container.add_keyword(col1, volume)
@@ -249,9 +239,7 @@ class SemanticsParser:
                     else:
                         # Should technically be handled by _ensure_direct_keywords_container,
                         # but if no L1 exists at all:
-                        self.orphans.append(
-                            {"keyword": col1, "volume": volume, "context": last_header}
-                        )
+                        self.orphans.append({"keyword": col1, "volume": volume, "context": last_header})
                     continue
 
     def _ensure_direct_keywords_container(self, l1: Node | None, l2: Node | None) -> Node | None:
@@ -285,9 +273,7 @@ class SemanticsParser:
         """Ensure all CSV keywords were processed"""
         if self.csv_total_count != self.parsed_count:
             lost = self.csv_total_count - self.parsed_count
-            print(
-                f"⚠️ VALIDATION FAILED: CSV={self.csv_total_count}, Parsed={self.parsed_count}, Lost={lost}"
-            )
+            print(f"⚠️ VALIDATION FAILED: CSV={self.csv_total_count}, Parsed={self.parsed_count}, Lost={lost}")
             # Allow script to proceed but Warn heavily, maybe return False
             return False
         print(f"✅ Validation OK: Parsed {self.parsed_count}/{self.csv_total_count} (100%)")
@@ -338,9 +324,7 @@ class SemanticsParser:
                 )
 
             f.write("## 📊 Сводка\n\n")
-            f.write(
-                f"- **Валидация**: {validation_icon} CSV: {self.csv_total_count} | Парсер: {self.parsed_count}\n"
-            )
+            f.write(f"- **Валидация**: {validation_icon} CSV: {self.csv_total_count} | Парсер: {self.parsed_count}\n")
             f.write(
                 f"- **Структура**: L1: {len(self.tree)} | Кластеров: {total_clusters} | Фильтров: {total_filters}\n"
             )

@@ -78,9 +78,7 @@ def parse_csv(file_path):
             stripped_cell = row[0].strip()
 
             # Pattern for "L1: Name", "L2: Name", "SEO-Фильтр: Name"
-            if ":" in stripped_cell and (
-                stripped_cell.startswith("L") or stripped_cell.startswith("SEO")
-            ):
+            if ":" in stripped_cell and (stripped_cell.startswith("L") or stripped_cell.startswith("SEO")):
                 parts = stripped_cell.split(":", 1)
                 cat_name = (
                     parts[1].strip().split(",")[0]
@@ -114,9 +112,7 @@ def parse_csv(file_path):
 
 
 def main():
-    project_categories_path = (
-        r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"
-    )
+    project_categories_path = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"
     csv_path = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\Структура _Ultimate.csv"
 
     existing_categories = get_project_categories(project_categories_path)

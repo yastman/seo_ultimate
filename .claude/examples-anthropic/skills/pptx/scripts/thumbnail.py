@@ -198,9 +198,7 @@ def convert_to_images(pptx_path, temp_dir, dpi):
     total_slides = len(prs.slides)
 
     # Find hidden slides (1-based indexing for display)
-    hidden_slides = {
-        idx + 1 for idx, slide in enumerate(prs.slides) if slide.element.get("show") == "0"
-    }
+    hidden_slides = {idx + 1 for idx, slide in enumerate(prs.slides) if slide.element.get("show") == "0"}
 
     print(f"Total slides: {total_slides}")
     if hidden_slides:
@@ -286,9 +284,7 @@ def create_grids(
         chunk_images = image_paths[start_idx:end_idx]
 
         # Create grid for this chunk
-        grid = create_grid(
-            chunk_images, cols, width, start_idx, placeholder_regions, slide_dimensions
-        )
+        grid = create_grid(chunk_images, cols, width, start_idx, placeholder_regions, slide_dimensions)
 
         # Generate output filename
         if len(image_paths) <= max_images_per_grid:
@@ -400,9 +396,7 @@ def create_grid(
 
                     # Draw highlight outline with red color and thick stroke
                     # Using a bright red outline instead of fill
-                    stroke_width = max(
-                        5, min(orig_w, orig_h) // 150
-                    )  # Thicker proportional stroke width
+                    stroke_width = max(5, min(orig_w, orig_h) // 150)  # Thicker proportional stroke width
                     overlay_draw.rectangle(
                         [(px_left, px_top), (px_left + px_width, px_top + px_height)],
                         outline=(255, 0, 0, 255),  # Bright red, fully opaque

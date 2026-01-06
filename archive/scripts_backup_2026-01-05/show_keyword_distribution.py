@@ -81,9 +81,7 @@ def format_table(category_name: str, tier: str, keywords: list[dict]) -> str:
     lines = []
     lines.append(f"\n📊 Таблица распределения ключей: {category_name} (Tier {tier})")
     lines.append("=" * 120)
-    lines.append(
-        f"{'Ключевое слово':<45} {'Freq':>6} {'Rel.Freq':>9} {'Role':<12} {'Куда вставлять':<30}"
-    )
+    lines.append(f"{'Ключевое слово':<45} {'Freq':>6} {'Rel.Freq':>9} {'Role':<12} {'Куда вставлять':<30}")
     lines.append("-" * 120)
 
     for kw in keywords:
@@ -116,17 +114,13 @@ def format_stats(data: dict, keywords: list[dict]) -> str:
         lines.append(f"   Max volume: {data['max_volume']}")
 
     if "competitor_metadata" in data and isinstance(data["competitor_metadata"], dict):
-        lines.append(
-            f"\n🔗 Primary SERP URLs: {data['competitor_metadata'].get('primary_serp_count', 0)}"
-        )
+        lines.append(f"\n🔗 Primary SERP URLs: {data['competitor_metadata'].get('primary_serp_count', 0)}")
 
     return "\n".join(lines) + "\n"
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description="Show keyword distribution for a category JSON file"
-    )
+    parser = argparse.ArgumentParser(description="Show keyword distribution for a category JSON file")
     parser.add_argument("category_json", help="Path to category JSON")
     return parser
 

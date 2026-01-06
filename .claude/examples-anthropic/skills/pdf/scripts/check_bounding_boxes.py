@@ -34,9 +34,7 @@ def get_bounding_box_messages(fields_json_stream) -> list[str]:
         # This is O(N^2); we can optimize if it becomes a problem.
         for j in range(i + 1, len(rects_and_fields)):
             rj = rects_and_fields[j]
-            if ri.field["page_number"] == rj.field["page_number"] and rects_intersect(
-                ri.rect, rj.rect
-            ):
+            if ri.field["page_number"] == rj.field["page_number"] and rects_intersect(ri.rect, rj.rect):
                 has_error = True
                 if ri.field is rj.field:
                     messages.append(

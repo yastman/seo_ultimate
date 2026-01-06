@@ -139,12 +139,7 @@ def read_semantics_csv(csv_path: str) -> dict[str, list[dict]]:
             # Real CSV sometimes has unprefixed boundary rows like: "категория,16,"
             # If we are inside an L3 block, treat this as the end of the block.
             count_str = row[1].strip() if len(row) > 1 else ""
-            if (
-                current_l3
-                and phrase.lower() == "категория"
-                and count_str.isdigit()
-                and not volume_str
-            ):
+            if current_l3 and phrase.lower() == "категория" and count_str.isdigit() and not volume_str:
                 current_l3 = None
                 continue
 
@@ -409,9 +404,7 @@ def generate_full_json(slug: str, tier: str, keywords_raw: list[dict]) -> dict:
 
     for kw_type in ["primary", "secondary", "supporting"]:
         for kw in classified[kw_type]:
-            kw_obj = build_keyword_object(
-                kw["keyword"], kw["volume"], kw_type, all_kw_strings, total_volume, tier
-            )
+            kw_obj = build_keyword_object(kw["keyword"], kw["volume"], kw_type, all_kw_strings, total_volume, tier)
             keywords[kw_type].append(kw_obj)
 
     # Read meta_patterns if available
@@ -422,9 +415,7 @@ def generate_full_json(slug: str, tier: str, keywords_raw: list[dict]) -> dict:
         # Convert h2_themes to semantic entities
         for theme in meta_patterns["h2_themes"]:
             if isinstance(theme, str) and len(theme) > 5:
-                semantic_entities.append(
-                    {"main": theme, "related": [], "source": "competitors_h2_themes"}
-                )
+                semantic_entities.append({"main": theme, "related": [], "source": "competitors_h2_themes"})
 
     # Get tier targets
     tier_targets = get_tier_targets(tier)
@@ -533,9 +524,7 @@ def main():
     print(f"   PRIMARY:    {result['stats']['primary_count']} keywords")
     print(f"   SECONDARY:  {result['stats']['secondary_count']} keywords")
     print(f"   SUPPORTING: {result['stats']['supporting_count']} keywords")
-    print(
-        f"   Total:      {result['stats']['total_keywords']} keywords, volume {result['stats']['total_volume']}"
-    )
+    print(f"   Total:      {result['stats']['total_keywords']} keywords, volume {result['stats']['total_volume']}")
 
 
 if __name__ == "__main__":

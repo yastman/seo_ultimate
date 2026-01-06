@@ -235,9 +235,7 @@ def apply_replacements(pptx_file: str, json_file: str, output_file: str):
         for error in errors:
             print(f"  - {error}")
         print("\nPlease check the inventory and update your replacement JSON.")
-        print(
-            "You can regenerate the inventory with: python inventory.py <input.pptx> <output.json>"
-        )
+        print("You can regenerate the inventory with: python inventory.py <input.pptx> <output.json>")
         raise ValueError(f"Found {len(errors)} validation error(s)")
 
     # Track statistics
@@ -338,9 +336,7 @@ def apply_replacements(pptx_file: str, json_file: str, output_file: str):
             for warning in warnings:
                 print(f"  - {warning}")
         print("\nPlease fix these issues before saving.")
-        raise ValueError(
-            f"Found {len(overflow_errors)} overflow error(s) and {len(warnings)} warning(s)"
-        )
+        raise ValueError(f"Found {len(overflow_errors)} overflow error(s) and {len(warnings)} warning(s)")
 
     # Save the presentation
     prs.save(output_file)

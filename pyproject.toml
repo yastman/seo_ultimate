@@ -28,12 +28,18 @@ module = ["natasha.*", "pymorphy2.*", "pandas.*", "mysql.connector.*", "markdown
 ignore_missing_imports = true
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "B", "I"]
-ignore = []
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"archive/*" = ["E402", "E722", "E741", "E721", "F401", "F811", "F841", "B007", "B905"]
+".claude/examples-anthropic/*" = ["E402", "E722", "E741", "E721", "B007", "B905"]
+".github_repos/*" = ["E402", "E722", "E741", "E721", "F401", "F811", "F841", "B007", "B905"]
+"tests/*" = ["E402"]
 
 [tool.ruff.format]
 quote-style = "double"

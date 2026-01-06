@@ -317,9 +317,7 @@ class QualityCheck:
             academic_nausea_fail = metrics["academic_nausea"] > 12.0
 
             # Blockers (останавливают workflow)
-            water_blocker = (
-                metrics["water"] < water_blocker_low or metrics["water"] >= water_blocker_high
-            )
+            water_blocker = metrics["water"] < water_blocker_low or metrics["water"] >= water_blocker_high
             classic_blocker_hit = metrics["classic_nausea"] >= classic_blocker
 
             if academic_nausea_fail or water_blocker or classic_blocker_hit:
@@ -346,9 +344,7 @@ class QualityCheck:
 
             # Print metrics
             print(f"   Water: {metrics['water']:.1f}% (target: {water_min:.0f}-{water_max:.0f}%)")
-            print(
-                f"   Classic Nausea: {metrics['classic_nausea']:.2f} (target: ≤{classic_max:.1f})"
-            )
+            print(f"   Classic Nausea: {metrics['classic_nausea']:.2f} (target: ≤{classic_max:.1f})")
             print(
                 f"   Academic Nausea: {metrics['academic_nausea']:.1f}% (target: {academic_min:.1f}-{academic_max:.1f}%)"
             )
@@ -446,8 +442,7 @@ class QualityCheck:
                 self.print_result(
                     "Keyword Density",
                     "WARN",
-                    f"Density: {metrics.get('density', 'N/A')}%, "
-                    f"Coverage: {metrics.get('coverage', 'N/A')}%",
+                    f"Density: {metrics.get('density', 'N/A')}%, Coverage: {metrics.get('coverage', 'N/A')}%",
                 )
             else:
                 self.results["keywords"]["status"] = "FAIL"
@@ -556,9 +551,7 @@ class QualityCheck:
             # Determine status
             if strict_count > 0:
                 self.results["ner"]["status"] = "FAIL"
-                self.print_result(
-                    "NER & Blacklist", "FAIL", f"Found {strict_count} CRITICAL blacklist phrases"
-                )
+                self.print_result("NER & Blacklist", "FAIL", f"Found {strict_count} CRITICAL blacklist phrases")
                 return ("FAIL", findings)
             elif total_issues == 0:
                 self.results["ner"]["status"] = "PASS"
@@ -815,9 +808,7 @@ class QualityCheck:
 def build_parser() -> "argparse.ArgumentParser":
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Quality Runner — Python Orchestrator (7 checks — v7.4 Hybrid)"
-    )
+    parser = argparse.ArgumentParser(description="Quality Runner — Python Orchestrator (7 checks — v7.4 Hybrid)")
     parser.add_argument("file_path", help="Path to Markdown file")
     parser.add_argument("keyword", help="Main keyword")
     parser.add_argument("tier", choices=["A", "B", "C"], help="Content Tier (A, B, C)")
