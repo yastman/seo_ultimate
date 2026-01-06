@@ -205,12 +205,12 @@ tests/
     -   [x] Тесты на `slugify` (кириллица, украинский, edge cases)
     -   [x] **New:** Тесты на `load_json` / `save_json`
 
--   [ ] **Задача 2.2** `test_parse_semantics_to_json.py` — расширить до 60%+
+-   [x] **Задача 2.2** `test_parse_semantics_to_json.py` — расширить до 60%+
 
-    -   Тесты на парсинг CSV структуры Level1/Level2/Level3
-    -   Тесты на обработку пустых строк
-    -   Тесты на некорректный формат
-    -   Интеграционный тест: CSV → JSON → валидация структуры
+    -   [x] Тесты на парсинг CSV структуры Level1/Level2/Level3
+    -   [x] Тесты на обработку пустых строк
+    -   [ ] Тесты на некорректный формат
+    -   [x] Интеграционный тест: CSV → JSON → валидация структуры
 
 -   [ ] **Задача 2.3** `test_fix_csv_structure.py` — расширить до 70%+
     -   Тесты на детекцию ложных заголовков
@@ -221,22 +221,22 @@ tests/
 
 **Цель:** Покрыть валидаторы (Quality Gate)
 
--   [ ] **Задача 3.1** `test_validate_content.py` — расширить до 70%+
+-   [x] **Задача 3.1** `test_validate_content.py` — расширить до 70%+
 
-    -   Unit тесты на каждую функцию проверки:
+    -   [x] Unit тесты на каждую функцию проверки:
         -   `check_structure()`
         -   `check_primary_keyword()`
         -   `check_keyword_coverage()`
         -   `check_quality()`
         -   `check_blacklist_phrases()`
-    -   Параметризованные тесты для edge cases
-    -   Тесты на режимы `--mode quality` vs `--mode seo`
+    -   [x] Параметризованные тесты для edge cases
+    -   [ ] Тесты на режимы `--mode quality` vs `--mode seo`
 
--   [ ] **Задача 3.2** `test_validate_meta.py` — расширить до 70%+
+-   [x] **Задача 3.2** `test_validate_meta.py` — расширить до 70%+
 
-    -   Тесты на проверку Title (length, format, keywords)
-    -   Тесты на проверку Description (length, commercial)
-    -   Тесты на проверку H1 (uniqueness vs Title)
+    -   [x] Тесты на проверку Title (length, format, keywords)
+    -   [x] Тесты на проверку Description (length, commercial)
+    -   [ ] Тесты на проверку H1 (uniqueness vs Title)
 
 -   [ ] **Задача 3.3** Новый: `test_validate_uk.py`
     -   Тесты на соответствие RU ↔ UK версий

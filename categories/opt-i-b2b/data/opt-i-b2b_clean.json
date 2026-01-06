@@ -1,0 +1,25 @@
+{
+  "id": "opt-i-b2b",
+  "name": "Опт и B2B",
+  "type": "category",
+  "parent_id": null,
+  "keywords": [
+    {
+      "keyword": "автохимия от производителя",
+      "volume": 10
+    },
+    {
+      "keyword": "автохимия производство",
+      "volume": 10
+    },
+    {
+      "keyword": "производители автохимии украина",
+      "volume": 10
+    },
+    {
+      "keyword": "автохимия поставщики",
+      "volume": 10
+    }
+  ],
+  "source": "STRUCTURE.md"
+}
