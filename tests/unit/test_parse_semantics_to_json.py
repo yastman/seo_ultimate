@@ -50,7 +50,10 @@ class TestKeywordClassification:
         assert classified["supporting"][0]["keyword"] == "low"
 
     def test_classify_keywords_promotion(self):
-        """Test that the highest volume supporting keyword is promoted if no primary/secondary exist."""
+        """
+        Test that the highest volume supporting keyword is promoted
+        if no primary/secondary exist.
+        """
         keywords = [
             {"keyword": "low1", "volume": 90},
             {"keyword": "low2", "volume": 50},
