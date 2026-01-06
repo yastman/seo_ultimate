@@ -2,7 +2,7 @@
   "id": "apparaty-tornador",
   "name": "Аппараты Tornador",
   "type": "category",
-  "parent_id": "oborudovanie-l2",
+  "parent_id": "oborudovanie",
   "keywords": [
     {
       "keyword": "торнадор",
@@ -104,5 +104,6 @@
       "keyword": "профессиональная химчистка салона авто tornador",
       "volume": 0
     }
-  ]
+  ],
+  "source": "checklist"
 }
