@@ -193,9 +193,7 @@ def restore_category(slug: str) -> bool:
     data["keywords"] = clustered
 
     # Update stats
-    total_kws = sum(
-        len(clustered[cat]) for cat in ["primary", "secondary", "supporting", "commercial"]
-    )
+    total_kws = sum(len(clustered[cat]) for cat in ["primary", "secondary", "supporting", "commercial"])
     total_vol = sum(kw["volume"] for cat in clustered.values() for kw in cat)
     data["stats"] = {"before": len(keywords), "after": total_kws, "total_volume": total_vol}
 

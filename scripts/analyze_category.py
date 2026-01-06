@@ -199,11 +199,7 @@ except ImportError:
         ]
 
         def get_commercial_modifiers(lang="ru"):
-            return (
-                _COMMERCIAL_MODIFIERS_UK_FALLBACK
-                if lang == "uk"
-                else _COMMERCIAL_MODIFIERS_FALLBACK
-            )
+            return _COMMERCIAL_MODIFIERS_UK_FALLBACK if lang == "uk" else _COMMERCIAL_MODIFIERS_FALLBACK
 
 
 # Backwards-compatible exports for tests/legacy imports.
@@ -259,12 +255,7 @@ def read_semantics_csv(csv_path: str) -> dict[str, list[dict]]:
 
             # Skip boundary rows
             count_str = row[1].strip() if len(row) > 1 else ""
-            if (
-                current_l3
-                and phrase.lower() == "категория"
-                and count_str.isdigit()
-                and not volume_str
-            ):
+            if current_l3 and phrase.lower() == "категория" and count_str.isdigit() and not volume_str:
                 current_l3 = None
                 continue
 
@@ -297,9 +288,7 @@ def is_commercial_keyword(keyword: str, lang: str = "ru") -> bool:
     return any(mod in kw_lower for mod in modifiers)
 
 
-def split_keywords_by_intent(
-    keywords: list[dict], lang: str = "ru"
-) -> tuple[list[dict], list[dict]]:
+def split_keywords_by_intent(keywords: list[dict], lang: str = "ru") -> tuple[list[dict], list[dict]]:
     """
     Split keywords into core (topic/editorial) and commercial (transactional).
 
@@ -502,9 +491,7 @@ def analyze_category(slug: str, lang: str = "ru") -> dict:
     keywords_raw, source, extra_data = load_keywords_for_slug(slug, lang)
 
     if not keywords_raw:
-        return {
-            "error": f"No keywords found for slug: {slug} (lang={lang}). Run seo-clean or parse CSV first."
-        }
+        return {"error": f"No keywords found for slug: {slug} (lang={lang}). Run seo-clean or parse CSV first."}
 
     # Analyze
     keyword_analysis = analyze_keywords(keywords_raw, lang)
@@ -535,9 +522,7 @@ def analyze_category(slug: str, lang: str = "ru") -> dict:
             "all_keywords": keyword_analysis["all_keywords"][:20],  # Top 20 for display
             # v8.4: Split by intent for coverage calculation
             "core_keywords": [kw["keyword"] for kw in keyword_analysis["core_keywords"]],
-            "commercial_keywords": [
-                kw["keyword"] for kw in keyword_analysis["commercial_keywords"]
-            ],
+            "commercial_keywords": [kw["keyword"] for kw in keyword_analysis["commercial_keywords"]],
         },
         "content": {
             "format": keyword_analysis["content_format"],
@@ -602,9 +587,7 @@ def list_all_categories():
     results.sort(key=lambda x: -x["count"])
 
     # Print table
-    print(
-        f"{'Slug':<25} {'Keywords':>8} {'Volume':>7} {'Depth':<10} {'Format':<12} {'Words':<10} {'Cluster'}"
-    )
+    print(f"{'Slug':<25} {'Keywords':>8} {'Volume':>7} {'Depth':<10} {'Format':<12} {'Words':<10} {'Cluster'}")
     print("-" * 90)
 
     for r in results:
@@ -675,9 +658,7 @@ def main():
             "raw_json": "Raw JSON",
             "csv": "CSV fallback",
         }
-        print(
-            f"📂 SOURCE: {source_emoji.get(meta['source'], '?')} {source_label.get(meta['source'], meta['source'])}"
-        )
+        print(f"📂 SOURCE: {source_emoji.get(meta['source'], '?')} {source_label.get(meta['source'], meta['source'])}")
         if meta.get("needs_clean"):
             print(f"   ⚠️  Рекомендуется: clean {result['meta']['slug']}")
         print()
@@ -710,9 +691,7 @@ def main():
             titles = result["seo_titles"]
             print("📌 SEO TITLES:")
             print(f'   H1: "{titles["h1"]}" (vol: {titles["h1_volume"]})')
-            print(
-                f'   Main keyword: "{titles["main_keyword"]}" (vol: {titles["main_keyword_volume"]})'
-            )
+            print(f'   Main keyword: "{titles["main_keyword"]}" (vol: {titles["main_keyword_volume"]})')
             print()
 
         content = result["content"]

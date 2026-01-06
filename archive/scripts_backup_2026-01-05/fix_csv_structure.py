@@ -60,11 +60,7 @@ def fix_csv():
 
             if col2.isdigit():
                 val = int(col2)
-                if (
-                    1 <= val <= 4
-                    and (not col3 or col3 == "0")
-                    and not is_explicit_marker(col1, col2)
-                ):
+                if 1 <= val <= 4 and (not col3 or col3 == "0") and not is_explicit_marker(col1, col2):
                     should_fix = True
 
             if should_fix:

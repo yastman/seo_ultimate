@@ -81,9 +81,7 @@ def save_batch_log(log: dict):
         json.dump(log, f, ensure_ascii=False, indent=2)
 
 
-def update_category_status(
-    log: dict, slug: str, stage: str, status: str, details: dict | None = None
-):
+def update_category_status(log: dict, slug: str, stage: str, status: str, details: dict | None = None):
     """Update category status in batch log."""
     if slug not in log["categories"]:
         log["categories"][slug] = {"first_run": datetime.now(UTC).isoformat(), "runs": []}
@@ -368,9 +366,7 @@ def generate_fix_prompt(slug: str, issues: list[str], content: str) -> str:
         fix_instructions.append("- Снизить тошноту: использовать синонимы для самого частого слова")
 
     if "coverage_low" in issues:
-        fix_instructions.append(
-            "- Повысить coverage: добавить больше ключевых слов естественно в текст"
-        )
+        fix_instructions.append("- Повысить coverage: добавить больше ключевых слов естественно в текст")
 
     if "h1_missing" in issues:
         fix_instructions.append("- Добавить H1 с primary keyword в начало")
@@ -443,9 +439,7 @@ def attempt_self_heal(slug: str, validation: dict, attempt: int = 1) -> tuple[bo
 # =============================================================================
 
 
-def process_category(
-    slug: str, log: dict, analyze_only: bool = False, self_heal: bool = True
-) -> bool:
+def process_category(slug: str, log: dict, analyze_only: bool = False, self_heal: bool = True) -> bool:
     """Process a single category through the pipeline."""
     print(f"\n{'=' * 60}")
     print(f"Processing: {slug}")
@@ -578,9 +572,7 @@ def list_all_categories():
 
         clean_mark = "" if status["has_clean_json"] else "" if status["has_raw_json"] else ""
 
-        print(
-            f"{slug:<25} {cat['keywords_count']:>8} {status['stage']:<18} {status['last_status']:<12} {clean_mark}"
-        )
+        print(f"{slug:<25} {cat['keywords_count']:>8} {status['stage']:<18} {status['last_status']:<12} {clean_mark}")
 
     print("-" * 80)
     print(f"Total: {len(categories)} categories")

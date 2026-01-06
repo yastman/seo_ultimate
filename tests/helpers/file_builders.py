@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 import yaml  # type: ignore
 
@@ -25,7 +25,7 @@ class CategoryBuilder:
             "description": "Default description.",
             "h1": "Default H1",
         }
-        self._keywords: List[Dict[str, Any]] = [{"keyword": "main keyword", "volume": 100}]
+        self._keywords: Any = {"primary": [{"keyword": "main keyword", "volume": 100}]}
         self._content: Optional[str] = None
         self._research: Optional[str] = None
         self._clean_json_extra: Dict[str, Any] = {}
@@ -42,17 +42,26 @@ class CategoryBuilder:
         self._meta = {"title": title, "description": description, "h1": h1}
         return self
 
-    def with_keywords(self, keywords: List[Any]) -> "CategoryBuilder":
+    def with_keywords(self, keywords: Any) -> "CategoryBuilder":
         """
-        Принимает список строк или словарей {"keyword": "...", "volume": ...}
+        Принимает:
+        - Список строк или словарей (авто-конвертация в {"primary": [...]})
+        - Словарь {cluster: [keywords]} (используется как есть)
         """
+        if isinstance(keywords, dict):
+            self._keywords = keywords
+            return self
+
+        # Normalize list elements
         normalized = []
         for k in keywords:
             if isinstance(k, str):
                 normalized.append({"keyword": k, "volume": 10})
             else:
                 normalized.append(k)
-        self._keywords = normalized
+
+        # Default to "primary" cluster if flat list provided
+        self._keywords = {"primary": normalized}
         return self
 
     def with_content(self, markdown_text: str) -> "CategoryBuilder":
@@ -88,9 +97,7 @@ class CategoryBuilder:
             **self._clean_json_extra,
         }
         clean_file = data_dir / f"{self._slug}_clean.json"
-        clean_file.write_text(
-            json.dumps(clean_data, ensure_ascii=False, indent=2), encoding="utf-8"
-        )
+        clean_file.write_text(json.dumps(clean_data, ensure_ascii=False, indent=2), encoding="utf-8")
 
         # 3. Create content/
         if self._content is not None:

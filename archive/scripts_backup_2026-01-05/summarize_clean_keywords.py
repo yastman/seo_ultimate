@@ -3,9 +3,7 @@ from pathlib import Path
 
 
 def generate_keywords_summary():
-    categories_dir = Path(
-        r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"
-    )
+    categories_dir = Path(r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories")
     clean_files = list(categories_dir.glob("**/data/*_clean.json"))
 
     md_output = "# Сводка ключевых слов (Clean JSON)\n\n"

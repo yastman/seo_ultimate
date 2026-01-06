@@ -167,9 +167,7 @@ def filter_rows_by_mapping_and_keywords(
             filtered.append(row)
 
     if keyword_mismatches:
-        print(
-            f"⚠️  WARNING: {len(keyword_mismatches)} URLs in mapping but no keyword match in Title/H1"
-        )
+        print(f"⚠️  WARNING: {len(keyword_mismatches)} URLs in mapping but no keyword match in Title/H1")
 
     return filtered
 
@@ -220,9 +218,7 @@ def calculate_meta_patterns(rows: list[dict], h2_themes: list[str]) -> dict:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(
-        description="Filter MEGA competitors CSV for a specific category"
-    )
+    parser = argparse.ArgumentParser(description="Filter MEGA competitors CSV for a specific category")
     parser.add_argument("slug", help="Category slug (e.g. aktivnaya-pena)")
     parser.add_argument(
         "--mega-csv",
@@ -278,11 +274,7 @@ def main() -> int:
         print(f"❌ Category JSON not found: {data_json}", file=sys.stderr)
         return 2
 
-    output_dir = (
-        base_dir / f"categories/{slug}/competitors"
-        if not args.output_dir
-        else base_dir / args.output_dir
-    )
+    output_dir = base_dir / f"categories/{slug}/competitors" if not args.output_dir else base_dir / args.output_dir
     output_dir.mkdir(parents=True, exist_ok=True)
 
     competitors_csv = output_dir / "meta_competitors.csv"
@@ -366,9 +358,7 @@ def main() -> int:
                 tier = data.get("tier", "B")
                 tier_minimums = {"A": 5, "B": 4, "C": 3}
                 min_competitors = tier_minimums.get(tier, 4)
-                print(
-                    f"ℹ️  Auto-detected tier from JSON: Tier {tier} = {min_competitors} competitors"
-                )
+                print(f"ℹ️  Auto-detected tier from JSON: Tier {tier} = {min_competitors} competitors")
         except Exception:
             min_competitors = 4  # Default fallback
             print(f"ℹ️  Using default minimum: {min_competitors} competitors")

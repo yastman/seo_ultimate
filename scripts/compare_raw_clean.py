@@ -281,9 +281,7 @@ def compare_keywords(csv_kws: list[dict], clean_kws: list[dict]) -> dict:
     }
 
 
-def fix_clean_json(
-    slug: str, clean_data: dict, csv_kws: list[dict], result: dict
-) -> tuple[bool, str]:
+def fix_clean_json(slug: str, clean_data: dict, csv_kws: list[dict], result: dict) -> tuple[bool, str]:
     """
     Исправляет _clean.json:
     - Удаляет ключи, которых нет в CSV (added)
@@ -332,13 +330,9 @@ def fix_clean_json(
         kw_data[category] = new_list
 
     # Update stats
-    total_kws = sum(
-        len(kw_data.get(cat, [])) for cat in ["primary", "secondary", "supporting", "commercial"]
-    )
+    total_kws = sum(len(kw_data.get(cat, [])) for cat in ["primary", "secondary", "supporting", "commercial"])
     total_vol = sum(
-        kw["volume"]
-        for cat in ["primary", "secondary", "supporting", "commercial"]
-        for kw in kw_data.get(cat, [])
+        kw["volume"] for cat in ["primary", "secondary", "supporting", "commercial"] for kw in kw_data.get(cat, [])
     )
 
     if "stats" in clean_data:
@@ -353,9 +347,7 @@ def fix_clean_json(
     with open(path, "w", encoding="utf-8") as f:
         json.dump(clean_data, f, ensure_ascii=False, indent=2)
 
-    return True, f"{len(changes)} changes: " + "; ".join(changes[:3]) + (
-        "..." if len(changes) > 3 else ""
-    )
+    return True, f"{len(changes)} changes: " + "; ".join(changes[:3]) + ("..." if len(changes) > 3 else "")
 
 
 def main():
@@ -410,9 +402,7 @@ def main():
             if has_real_issues:
                 print(f"❌ {slug}: MISMATCH")
             else:
-                print(
-                    f"✅ {slug}: OK ({len(clean_kws)} keywords, {len(result['removed'])} filtered)"
-                )
+                print(f"✅ {slug}: OK ({len(clean_kws)} keywords, {len(result['removed'])} filtered)")
                 continue
 
             if result["added"]:
@@ -429,9 +419,7 @@ def main():
                 if len(result["volume_changed"]) > 3:
                     print(f"      ... and {len(result['volume_changed']) - 3} more")
 
-            issues.append(
-                {"slug": slug, "result": result, "csv_kws": csv_kws, "clean_data": clean_data}
-            )
+            issues.append({"slug": slug, "result": result, "csv_kws": csv_kws, "clean_data": clean_data})
 
     print(f"\n{'=' * 60}")
     ok_count = len(slugs) - len(issues) - len(no_csv_data)
@@ -442,9 +430,7 @@ def main():
         fixed = 0
         for issue in issues:
             slug = issue["slug"]
-            success, msg = fix_clean_json(
-                slug, issue["clean_data"], issue["csv_kws"], issue["result"]
-            )
+            success, msg = fix_clean_json(slug, issue["clean_data"], issue["csv_kws"], issue["result"])
             if success:
                 print(f"   ✅ {slug}: {msg}")
                 fixed += 1

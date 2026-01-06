@@ -156,9 +156,7 @@ def parse_structure(file_path):
         if m_l3:
             name, vol = m_l3.groups()
             slug = slugify(name)
-            parent = (
-                current_l2["slug"] if current_l2 else (current_l1["slug"] if current_l1 else "root")
-            )
+            parent = current_l2["slug"] if current_l2 else (current_l1["slug"] if current_l1 else "root")
             node = {
                 "type": "L3",
                 "name": name,
@@ -186,9 +184,7 @@ def parse_structure(file_path):
                     clean_name = m.group(1)
 
             slug = slugify(clean_name)
-            parent = (
-                current_l3["slug"] if current_l3 else (current_l2["slug"] if current_l2 else "root")
-            )
+            parent = current_l3["slug"] if current_l3 else (current_l2["slug"] if current_l2 else "root")
             node = {
                 "type": "Cluster",
                 "name": clean_name,
@@ -513,9 +509,7 @@ def update_master_checklist(nodes, statuses):
         s = statuses.get(node["slug"], {})
         # Safety fallback
         if not s:
-            s = dict.fromkeys(
-                ["init", "meta", "research", "content", "uk", "quality", "deploy"], False
-            )
+            s = dict.fromkeys(["init", "meta", "research", "content", "uk", "quality", "deploy"], False)
 
         row = f"| {i} | `{node['slug']}` | {node['name']} | {node['type']} | {node['parent']} | {node['volume']} | {len(node['keywords'])} | {icon(s['init'])} | {icon(s['meta'])} | {icon(s['research'])} | {icon(s['content'])} | {icon(s['uk'])} | {icon(s['quality'])} | {icon(s['deploy'])} |"
         rows.append(row)
@@ -595,9 +589,7 @@ def update_pipeline_status(nodes, statuses):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true", help="Regenerate all task files")
-    parser.add_argument(
-        "--sync", action="store_true", help="Sync statuses without overwriting task files"
-    )
+    parser.add_argument("--sync", action="store_true", help="Sync statuses without overwriting task files")
     args = parser.parse_args()
 
     # Default behavior if no args? The user prompt implies we should support these modes.

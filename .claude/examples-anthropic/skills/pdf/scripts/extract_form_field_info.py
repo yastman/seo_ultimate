@@ -126,9 +126,7 @@ def get_field_info(reader: PdfReader):
         if "page" in field_info:
             fields_with_location.append(field_info)
         else:
-            print(
-                f"Unable to determine location for field id: {field_info.get('field_id')}, ignoring"
-            )
+            print(f"Unable to determine location for field id: {field_info.get('field_id')}, ignoring")
 
     # Sort by page number, then Y position (flipped in PDF coordinate system), then X.
     def sort_key(f):

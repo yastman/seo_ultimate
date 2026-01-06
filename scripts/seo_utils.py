@@ -482,9 +482,7 @@ def count_chars_no_spaces(content: str) -> int:
 # ============================================================================
 
 
-def count_keyword_occurrences(
-    text: str, keyword: str, variations: dict[str, list[str]]
-) -> tuple[int, int]:
+def count_keyword_occurrences(text: str, keyword: str, variations: dict[str, list[str]]) -> tuple[int, int]:
     """
     Подсчёт exact и partial вхождений keyword с fallback
 

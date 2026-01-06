@@ -68,9 +68,7 @@ def load_stopwords(lang="ru"):
 
     # Fallback для UK на RU, если UK файл отсутствует
     if lang == "uk" and not stopwords_file.exists():
-        stopwords_file = (
-            Path(__file__).parent.parent / "uk" / "data" / "stopwords" / "stopwords-uk.txt"
-        )
+        stopwords_file = Path(__file__).parent.parent / "uk" / "data" / "stopwords" / "stopwords-uk.txt"
 
     if stopwords_file.exists():
         with open(stopwords_file, encoding="utf-8") as f:
@@ -251,9 +249,7 @@ def calculate_metrics_from_text(text: str, lang: str = "ru") -> dict:
         return None
 
     # Извлечь только русские слова
-    russian_tokens = [
-        token for token in doc.tokens if re.match(r"[а-яё]+", token.text.lower(), re.UNICODE)
-    ]
+    russian_tokens = [token for token in doc.tokens if re.match(r"[а-яё]+", token.text.lower(), re.UNICODE)]
 
     if not russian_tokens:
         print("❌ Текст не содержит русских слов")
@@ -290,9 +286,7 @@ def calculate_metrics_from_text(text: str, lang: str = "ru") -> dict:
 
     # 3. КЛАССИЧЕСКАЯ ТОШНОТА
     lemma_counts = Counter(lemmas)
-    significant_lemma_counts = {
-        lemma: count for lemma, count in lemma_counts.items() if lemma not in stopwords
-    }
+    significant_lemma_counts = {lemma: count for lemma, count in lemma_counts.items() if lemma not in stopwords}
 
     if significant_lemma_counts:
         most_common_lemma, max_frequency = max(significant_lemma_counts.items(), key=lambda x: x[1])
@@ -302,11 +296,7 @@ def calculate_metrics_from_text(text: str, lang: str = "ru") -> dict:
     classic_nausea = math.sqrt(max_frequency)
 
     # 4. АКАДЕМИЧЕСКАЯ ТОШНОТА (Advego-like)
-    significant_lemmas = {
-        lemma: count
-        for lemma, count in lemma_counts.items()
-        if count > 1 and lemma not in stopwords
-    }
+    significant_lemmas = {lemma: count for lemma, count in lemma_counts.items() if count > 1 and lemma not in stopwords}
 
     if significant_lemmas:
         total_significant = sum(significant_lemmas.values())
@@ -370,9 +360,7 @@ def check_water(file_path, target_min=40, target_max=60):
 
     # 1. ВОДА
     print(f"💧 ВОДА (Адвего): {metrics['water_percent']:.1f}%")
-    print(
-        f"   Raw (Natasha): {metrics['water_percent_raw']:.1f}% × 2.4 = {metrics['water_percent']:.1f}%"
-    )
+    print(f"   Raw (Natasha): {metrics['water_percent_raw']:.1f}% × 2.4 = {metrics['water_percent']:.1f}%")
     print(f"   Стоп-слова: {metrics['water_count']} из {metrics['total_words']}")
     print(f"   Цель: {target_min}-{target_max}%")
 
@@ -392,9 +380,7 @@ def check_water(file_path, target_min=40, target_max=60):
 
     # 2. КЛАССИЧЕСКАЯ ТОШНОТА
     print(f"🤢 КЛАССИЧЕСКАЯ ТОШНОТА: {metrics['classic_nausea']:.2f}")
-    print(
-        f"   Самое частое слово: '{metrics['most_common_lemma']}' ({metrics['max_frequency']} раз)"
-    )
+    print(f"   Самое частое слово: '{metrics['most_common_lemma']}' ({metrics['max_frequency']} раз)")
     print("   Цель: ≤3.5 (BLOCKER >4.0)")
 
     if metrics["classic_nausea"] <= 3.5:
@@ -427,9 +413,7 @@ def check_water(file_path, target_min=40, target_max=60):
     elif metrics["academic_nausea"] < ACADEMIC_MIN:
         print(f'   🟦 INFO: Текст "сухой" ({metrics["academic_nausea"]:.1f}% < {ACADEMIC_MIN}%)')
     elif ACADEMIC_MAX < metrics["academic_nausea"] <= 12.0:
-        print(
-            f"   ⚠️ WARNING: Начинается переспам ({metrics['academic_nausea']:.1f}% > {ACADEMIC_MAX}%)"
-        )
+        print(f"   ⚠️ WARNING: Начинается переспам ({metrics['academic_nausea']:.1f}% > {ACADEMIC_MAX}%)")
     else:
         print(f"   ❌ BLOCKER: Критический переспам ({metrics['academic_nausea']:.1f}% > 12%)")
 

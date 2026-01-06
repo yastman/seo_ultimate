@@ -283,9 +283,7 @@ class TestAdditionalCoverage:
     def test_occurrences_target_volume_mid_branch(self):
         assert calculate_occurrences_target(60, "B") == 2
 
-    def test_generate_full_json_adds_semantic_entities_from_meta_patterns(
-        self, tmp_path: Path, monkeypatch
-    ):
+    def test_generate_full_json_adds_semantic_entities_from_meta_patterns(self, tmp_path: Path, monkeypatch):
         slug = "test-slug"
         (tmp_path / "categories" / slug / "competitors").mkdir(parents=True)
         (tmp_path / "categories" / slug / "competitors" / "meta_patterns.json").write_text(
@@ -435,9 +433,7 @@ class TestGenerateFullJson:
         assert result["stats"]["total_keywords"] == total
 
         counted = (
-            result["stats"]["primary_count"]
-            + result["stats"]["secondary_count"]
-            + result["stats"]["supporting_count"]
+            result["stats"]["primary_count"] + result["stats"]["secondary_count"] + result["stats"]["supporting_count"]
         )
         assert counted == total
 

@@ -273,9 +273,7 @@ def check_keyword_density_and_distribution(
             density_target_str = kw_obj.get("density_target", "0%")
 
             # Считаем сколько раз этот keyword найден в unique matches
-            kw_count = sum(
-                1 for m in unique_matches if any(k["keyword"] == keyword for k in m["keywords"])
-            )
+            kw_count = sum(1 for m in unique_matches if any(k["keyword"] == keyword for k in m["keywords"]))
 
             # Density для информации (не для блокировки)
             actual_density = (kw_count / word_count) * 100 if word_count > 0 else 0.0
@@ -335,13 +333,9 @@ def check_keyword_density_and_distribution(
         density_warning = 2.5
 
     if density > density_blocker:
-        result["errors"].append(
-            f"❌ BLOCKER: Total density {density:.2f}% (>{density_blocker}% — спам)"
-        )
+        result["errors"].append(f"❌ BLOCKER: Total density {density:.2f}% (>{density_blocker}% — спам)")
     elif density > density_warning:
-        result["warnings"].append(
-            f"⚠️ REVIEW: Total density {density:.2f}% (высоковато, target ≤{density_warning}%)"
-        )
+        result["warnings"].append(f"⚠️ REVIEW: Total density {density:.2f}% (высоковато, target ≤{density_warning}%)")
 
     # Coverage — смягчённые требования для overlapping keywords
     coverage_min = 40.0  # Было 50%, снижено для overlapping
@@ -605,9 +599,7 @@ def check_internal_links(md: str) -> tuple[bool, str]:
     all_links = re.findall(r"\[([^\]]+)\]\(([^\)]+)\)", md)
 
     # Внутренние ссылки начинаются с / или с доменом ultimate.net.ua
-    internal_links = [
-        link for link in all_links if link[1].startswith("/") or "ultimate.net.ua" in link[1]
-    ]
+    internal_links = [link for link in all_links if link[1].startswith("/") or "ultimate.net.ua" in link[1]]
 
     link_count = len(internal_links)
 
@@ -851,12 +843,8 @@ def check_content(md_file: str, keyword: str, tier: str = "B") -> dict:
     # Critical checks
     critical_checks = ["h1", "intro", "h2_intent", "keyword_natural", "internal_links"]
 
-    all_blocker_pass = all(
-        results["checks"][check]["pass"] for check in blocker_checks if check in results["checks"]
-    )
-    all_critical_pass = all(
-        results["checks"][check]["pass"] for check in critical_checks if check in results["checks"]
-    )
+    all_blocker_pass = all(results["checks"][check]["pass"] for check in blocker_checks if check in results["checks"])
+    all_critical_pass = all(results["checks"][check]["pass"] for check in critical_checks if check in results["checks"])
 
     density_severity = results["checks"].get("density_distribution", {}).get("severity", "PASS")
 
@@ -865,9 +853,7 @@ def check_content(md_file: str, keyword: str, tier: str = "B") -> dict:
     else:
         optional_checks = ["word_count", "first_100"]
         optional_pass = sum(
-            1
-            for check in optional_checks
-            if check in results["checks"] and results["checks"][check]["pass"]
+            1 for check in optional_checks if check in results["checks"] and results["checks"][check]["pass"]
         )
 
         if density_severity == "REVIEW" or optional_pass < len(optional_checks) * 0.7:
@@ -883,9 +869,7 @@ def print_report(results: dict):
     print(f"\n{'=' * 70}")
     print(f"📄 ПРОВЕРКА: {results['file']}")
     print(f"🎯 TIER: {results['tier']}")
-    print(
-        f"📊 Слов: {results['word_count']} | Символов (без пробелов): {results.get('char_count_no_spaces', 'N/A')}"
-    )
+    print(f"📊 Слов: {results['word_count']} | Символов (без пробелов): {results.get('char_count_no_spaces', 'N/A')}")
     print(f"{'=' * 70}\n")
 
     for check_name, check_data in results["checks"].items():

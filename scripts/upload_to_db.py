@@ -93,9 +93,7 @@ def build_html_table(lines):
     # Пропускаем разделитель (вторая строка с ---|---)
     rows = [line for line in lines[2:] if "|" in line]
 
-    html = [
-        '<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">'
-    ]
+    html = ['<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">']
 
     # Заголовок
     cols = [c.strip() for c in header.split("|") if c.strip()]
@@ -240,9 +238,7 @@ def load_category_data(slug, lang="ru"):
 def update_database(data, dry_run=False):
     """Обновляет БД"""
     if dry_run:
-        print(
-            f"\n[DRY RUN] Категория {data['slug']} (ID={data['category_id']}, lang_id={data['language_id']})"
-        )
+        print(f"\n[DRY RUN] Категория {data['slug']} (ID={data['category_id']}, lang_id={data['language_id']})")
         print(f"  meta_h1: {data['meta_h1']}")
         print(f"  meta_title: {data['meta_title'][:60]}...")
         print(f"  description: {len(data['description'])} символов")

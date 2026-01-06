@@ -72,9 +72,7 @@ class TestOldStructureHandling:
         assert "активная пена" in out
         assert "primary" in out.lower()
 
-    def test_old_structure_shows_statistics(
-        self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
-    ):
+    def test_old_structure_shows_statistics(self, tmp_path: Path, capsys: pytest.CaptureFixture[str]):
         data = {
             "category_name_ru": "Test",
             "tier": "B",
@@ -101,12 +99,8 @@ class TestNewStructureHandling:
             "category_name_ru": "Активная пена",
             "tier": "A",
             "keywords": {
-                "primary": [
-                    {"keyword": "активная пена", "occurrences_target": 15, "density_target": "2.5%"}
-                ],
-                "secondary": [
-                    {"keyword": "пена для мойки", "occurrences_target": 8, "density_target": "1.2%"}
-                ],
+                "primary": [{"keyword": "активная пена", "occurrences_target": 15, "density_target": "2.5%"}],
+                "secondary": [{"keyword": "пена для мойки", "occurrences_target": 8, "density_target": "1.2%"}],
                 "supporting": [
                     {
                         "keyword": "бесконтактная мойка",
@@ -125,17 +119,11 @@ class TestNewStructureHandling:
         assert "Detected NEW structure" in out
         assert "активная пена" in out
 
-    def test_new_structure_converts_density(
-        self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
-    ):
+    def test_new_structure_converts_density(self, tmp_path: Path, capsys: pytest.CaptureFixture[str]):
         data = {
             "category": "Test",
             "tier": "B",
-            "keywords": {
-                "primary": [
-                    {"keyword": "test keyword", "occurrences_target": 10, "density_target": "2.5%"}
-                ]
-            },
+            "keywords": {"primary": [{"keyword": "test keyword", "occurrences_target": 10, "density_target": "2.5%"}]},
         }
         json_file = tmp_path / "test_density.json"
         json_file.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")

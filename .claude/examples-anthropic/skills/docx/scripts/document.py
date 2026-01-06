@@ -457,9 +457,7 @@ class DocxXMLEditor(XMLEditor):
 
         # Add <w:ins/> to w:rPr
         ins_marker = doc.createElement("w:ins")
-        rPr.insertBefore(ins_marker, rPr.firstChild) if rPr.firstChild else rPr.appendChild(
-            ins_marker
-        )
+        rPr.insertBefore(ins_marker, rPr.firstChild) if rPr.firstChild else rPr.appendChild(ins_marker)
 
         # Wrap all non-pPr children in <w:ins>
         ins_wrapper = doc.createElement("w:ins")
@@ -544,9 +542,7 @@ class DocxXMLEditor(XMLEditor):
 
                 # Add <w:del/> marker
                 del_marker = self.dom.createElement("w:del")
-                rPr.insertBefore(del_marker, rPr.firstChild) if rPr.firstChild else rPr.appendChild(
-                    del_marker
-                )
+                rPr.insertBefore(del_marker, rPr.firstChild) if rPr.firstChild else rPr.appendChild(del_marker)
 
             # Convert w:t → w:delText in all runs
             for t_elem in list(elem.getElementsByTagName("w:t")):
@@ -779,12 +775,8 @@ class Document:
         timestamp = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
         # Add comment ranges to document.xml immediately
-        parent_start_elem = self._document.get_node(
-            tag="w:commentRangeStart", attrs={"w:id": str(parent_comment_id)}
-        )
-        parent_ref_elem = self._document.get_node(
-            tag="w:commentReference", attrs={"w:id": str(parent_comment_id)}
-        )
+        parent_start_elem = self._document.get_node(tag="w:commentRangeStart", attrs={"w:id": str(parent_comment_id)})
+        parent_ref_elem = self._document.get_node(tag="w:commentReference", attrs={"w:id": str(parent_comment_id)})
 
         self._document.insert_after(parent_start_elem, self._comment_range_start_xml(comment_id))
         parent_ref_run = parent_ref_elem.parentNode
@@ -822,12 +814,8 @@ class Document:
             ValueError: If validation fails.
         """
         # Create validators with current state
-        schema_validator = DOCXSchemaValidator(
-            self.unpacked_path, self.original_docx, verbose=False
-        )
-        redlining_validator = RedliningValidator(
-            self.unpacked_path, self.original_docx, verbose=False
-        )
+        schema_validator = DOCXSchemaValidator(self.unpacked_path, self.original_docx, verbose=False)
+        redlining_validator = RedliningValidator(self.unpacked_path, self.original_docx, verbose=False)
 
         # Run validations
         if not schema_validator.validate():
@@ -1202,9 +1190,7 @@ class Document:
         ]
 
         for rel_id, rel_type, target in rels:
-            rel_xml = (
-                f'<{prefix}Relationship Id="rId{rel_id}" Type="{rel_type}" Target="{target}"/>'
-            )
+            rel_xml = f'<{prefix}Relationship Id="rId{rel_id}" Type="{rel_type}" Target="{target}"/>'
             editor.append_to(root, rel_xml)
 
     def _ensure_comment_content_types(self):

@@ -132,9 +132,7 @@ def process_category(file_path):
 
         # Determine target section (highest priority in the group)
         min_prio = min(e["priority"] for e in group)
-        target_section = (
-            "primary" if min_prio == 0 else "secondary" if min_prio == 1 else "supporting"
-        )
+        target_section = "primary" if min_prio == 0 else "secondary" if min_prio == 1 else "supporting"
 
         # Add to target list
         # We construct a new item to be safe, or use the winner's data
@@ -197,9 +195,7 @@ def process_category(file_path):
     data["clustering_notes"]["merged"] = sorted(set(existing_merges))
 
     # Update Stats
-    data["stats"]["after"] = (
-        len(final_primary) + len(final_secondary) + len(final_supporting) + len(final_commercial)
-    )
+    data["stats"]["after"] = len(final_primary) + len(final_secondary) + len(final_supporting) + len(final_commercial)
     # Recalculate total volume? Might be nice but not strictly requested.
 
     # Save file

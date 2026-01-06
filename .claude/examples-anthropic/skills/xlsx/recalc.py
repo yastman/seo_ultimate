@@ -17,9 +17,7 @@ from openpyxl import load_workbook
 def setup_libreoffice_macro():
     """Setup LibreOffice macro for recalculation if not already configured"""
     if platform.system() == "Darwin":
-        macro_dir = os.path.expanduser(
-            "~/Library/Application Support/LibreOffice/4/user/basic/Standard"
-        )
+        macro_dir = os.path.expanduser("~/Library/Application Support/LibreOffice/4/user/basic/Standard")
     else:
         macro_dir = os.path.expanduser("~/.config/libreoffice/4/user/basic/Standard")
 
@@ -31,9 +29,7 @@ def setup_libreoffice_macro():
                 return True
 
     if not os.path.exists(macro_dir):
-        subprocess.run(
-            ["soffice", "--headless", "--terminate_after_init"], capture_output=True, timeout=10
-        )
+        subprocess.run(["soffice", "--headless", "--terminate_after_init"], capture_output=True, timeout=10)
         os.makedirs(macro_dir, exist_ok=True)
 
     macro_content = """<?xml version="1.0" encoding="UTF-8"?>
@@ -87,9 +83,7 @@ def recalc(filename, timeout=30):
         if platform.system() == "Darwin":
             # Check if gtimeout is available on macOS
             try:
-                subprocess.run(
-                    ["gtimeout", "--version"], capture_output=True, timeout=1, check=False
-                )
+                subprocess.run(["gtimeout", "--version"], capture_output=True, timeout=1, check=False)
                 timeout_cmd = "gtimeout"
             except (FileNotFoundError, subprocess.TimeoutExpired):
                 pass

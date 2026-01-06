@@ -41,9 +41,7 @@ class TestGetH1FromJson:
 
 
 class TestCheckSync:
-    def test_check_sync_counts_and_prints(
-        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
-    ):
+    def test_check_sync_counts_and_prints(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
         categories = tmp_path / "categories"
         categories.mkdir()
 
@@ -78,9 +76,7 @@ class TestCheckSync:
         slug_ok = "ok"
         (categories / slug_ok / "content").mkdir(parents=True)
         (categories / slug_ok / "meta").mkdir(parents=True)
-        (categories / slug_ok / "content" / f"{slug_ok}_ru.md").write_text(
-            "# Same\n", encoding="utf-8"
-        )
+        (categories / slug_ok / "content" / f"{slug_ok}_ru.md").write_text("# Same\n", encoding="utf-8")
         (categories / slug_ok / "meta" / f"{slug_ok}_meta.json").write_text(
             json.dumps({"h1": "Same"}, ensure_ascii=False),
             encoding="utf-8",
@@ -90,9 +86,7 @@ class TestCheckSync:
         slug_bad = "bad"
         (categories / slug_bad / "content").mkdir(parents=True)
         (categories / slug_bad / "meta").mkdir(parents=True)
-        (categories / slug_bad / "content" / f"{slug_bad}_ru.md").write_text(
-            "# New H1\n", encoding="utf-8"
-        )
+        (categories / slug_bad / "content" / f"{slug_bad}_ru.md").write_text("# New H1\n", encoding="utf-8")
         (categories / slug_bad / "meta" / f"{slug_bad}_meta.json").write_text(
             json.dumps({"h1": "Old H1", "meta_h1": "Old H1"}, ensure_ascii=False),
             encoding="utf-8",
@@ -106,9 +100,7 @@ class TestCheckSync:
         assert "👉 Используйте --fix" in out
         assert "H1 не найден" in out
 
-    def test_check_sync_fix_updates_json(
-        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
-    ):
+    def test_check_sync_fix_updates_json(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
         categories = tmp_path / "categories"
         slug = "cat"
 
@@ -133,9 +125,7 @@ class TestCheckSync:
         assert updated["h1"] == "New H1"
         assert updated["meta_h1"] == "New H1"
 
-    def test_check_sync_fix_error_is_reported(
-        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
-    ):
+    def test_check_sync_fix_error_is_reported(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
         categories = tmp_path / "categories"
         slug = "cat"
 

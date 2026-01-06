@@ -179,7 +179,7 @@ def generate_report():
         details_list = []
         for c in result["changes"]:
             w = c["winner"]
-            l_str = ", ".join([f"`{l['keyword']}` ({l['volume']})" for l in c["losers"]])
+            l_str = ", ".join([f"`{loser['keyword']}` ({loser['volume']})" for loser in c["losers"]])
             details_list.append(f"**Keep**: `{w['keyword']}` ({w['volume']}) vs **Drop**: {l_str}")
 
         details_str = "<br>".join(details_list)

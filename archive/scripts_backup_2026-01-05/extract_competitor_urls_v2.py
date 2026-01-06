@@ -116,12 +116,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Извлечение конкурентов из SERP для ВЧ ключей")
     parser.add_argument("--slug", type=str, required=True, help="Категория для обработки (L3 slug)")
     parser.add_argument("--top-n", type=int, default=3, help="Количество ВЧ ключей (default: 3)")
-    parser.add_argument(
-        "--max-urls", type=int, default=10, help="Максимум URL на категорию (default: 10)"
-    )
-    parser.add_argument(
-        "--max-per-domain", type=int, default=2, help="Максимум URL на домен (default: 2)"
-    )
+    parser.add_argument("--max-urls", type=int, default=10, help="Максимум URL на категорию (default: 10)")
+    parser.add_argument("--max-per-domain", type=int, default=2, help="Максимум URL на домен (default: 2)")
     parser.add_argument(
         "--serp-file",
         type=str,
@@ -230,9 +226,7 @@ def select_vch_keywords(clusters_df: pd.DataFrame, top_n: int) -> pd.DataFrame:
         group_sorted = group.sort_values("volume", ascending=False)
         selected = group_sorted.head(top_n)
         vch_keywords_list.append(selected)
-        keywords_preview = ", ".join(
-            [f"{row['keyword']} ({row['volume']})" for _, row in selected.iterrows()]
-        )
+        keywords_preview = ", ".join([f"{row['keyword']} ({row['volume']})" for _, row in selected.iterrows()])
         print(f"   ✓ {l3_name}: топ-{len(selected)} ВЧ ключей")
         print(f"      {keywords_preview}")
 
@@ -329,15 +323,11 @@ def write_outputs(
         main_output_file.parent.mkdir(parents=True, exist_ok=True)
         main_output_file.write_text("\n".join(row["competitor_urls"]) + "\n", encoding="utf-8")
 
-        (sf_urls_dir / filename).write_text(
-            "\n".join(row["competitor_urls"]) + "\n", encoding="utf-8"
-        )
+        (sf_urls_dir / filename).write_text("\n".join(row["competitor_urls"]) + "\n", encoding="utf-8")
 
         category_source_dir = categories_dir / category_slug / "competitors" / ".source"
         category_source_dir.mkdir(parents=True, exist_ok=True)
-        (category_source_dir / "urls.txt").write_text(
-            "\n".join(row["competitor_urls"]) + "\n", encoding="utf-8"
-        )
+        (category_source_dir / "urls.txt").write_text("\n".join(row["competitor_urls"]) + "\n", encoding="utf-8")
 
         logs_dir = categories_dir / category_slug / "competitors" / ".logs"
         logs_dir.mkdir(parents=True, exist_ok=True)
@@ -362,14 +352,10 @@ def write_outputs(
         )
 
     all_unique_urls = sorted({url for urls in l3_competitors["competitor_urls"] for url in urls})
-    (output_dir / "screaming_frog_urls_ALL.txt").write_text(
-        "\n".join(all_unique_urls) + "\n", encoding="utf-8"
-    )
+    (output_dir / "screaming_frog_urls_ALL.txt").write_text("\n".join(all_unique_urls) + "\n", encoding="utf-8")
 
     competitors_detailed = l3_competitors.copy()
-    competitors_detailed["competitor_urls_str"] = competitors_detailed["competitor_urls"].apply(
-        lambda x: "\n".join(x)
-    )
+    competitors_detailed["competitor_urls_str"] = competitors_detailed["competitor_urls"].apply(lambda x: "\n".join(x))
     competitors_detailed[
         [
             "l1",
@@ -445,9 +431,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     clusters_df = target_category
-    print(
-        f"\n✅ Фильтрация: работаем только с категорией '{clusters_df['l3'].iloc[0]}' ({len(clusters_df)} ключей)"
-    )
+    print(f"\n✅ Фильтрация: работаем только с категорией '{clusters_df['l3'].iloc[0]}' ({len(clusters_df)} ключей)")
 
     print(f"\n🔍 Фильтруем топ-{args.top_n} ВЧ ключей для каждой категории...")
     vch_keywords = select_vch_keywords(clusters_df, args.top_n)

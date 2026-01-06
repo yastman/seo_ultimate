@@ -169,9 +169,7 @@ def aggregate_clean_urls(cluster_files: dict[str, dict[str, Path | None]]) -> tu
         print(f"   {slug}: {len(urls)} clean URLs")
 
     unique_urls = list(url_map.values())
-    duplicates_removed = sum(
-        len(read_urls_from_file(f["clean"])) for f in cluster_files.values()
-    ) - len(unique_urls)
+    duplicates_removed = sum(len(read_urls_from_file(f["clean"])) for f in cluster_files.values()) - len(unique_urls)
 
     return unique_urls, duplicates_removed
 
@@ -204,9 +202,7 @@ def aggregate_url_maps(cluster_files: dict[str, dict[str, Path | None]]) -> list
     return all_mappings
 
 
-def save_mega_files(
-    output_dir: Path, raw_urls: list[str], clean_urls: list[str], url_mappings: list[dict]
-) -> None:
+def save_mega_files(output_dir: Path, raw_urls: list[str], clean_urls: list[str], url_mappings: list[dict]) -> None:
     """Сохраняет MEGA файлы."""
     # Создать output dir
     output_dir.mkdir(parents=True, exist_ok=True)

@@ -228,9 +228,7 @@ def validate_title(title: str, primary_keywords: list[str] | None = None) -> dic
         results["checks"]["no_colon"]["passed"] = True
         results["checks"]["no_colon"]["message"] = "OK (no colon)"
     else:
-        results["checks"]["no_colon"]["message"] = (
-            "Contains colon (:) - replace with 'для' or brackets"
-        )
+        results["checks"]["no_colon"]["message"] = "Contains colon (:) - replace with 'для' or brackets"
 
     # 3. Primary keyword check (with stem matching)
     if primary_keywords:
@@ -255,9 +253,7 @@ def validate_title(title: str, primary_keywords: list[str] | None = None) -> dic
 
     # Overall
     all_passed = all(c["passed"] for c in results["checks"].values())
-    critical_passed = (
-        results["checks"]["no_colon"]["passed"] and results["checks"]["primary_keyword"]["passed"]
-    )
+    critical_passed = results["checks"]["no_colon"]["passed"] and results["checks"]["primary_keyword"]["passed"]
 
     if all_passed:
         results["overall"] = "PASS"
@@ -269,9 +265,7 @@ def validate_title(title: str, primary_keywords: list[str] | None = None) -> dic
     return results
 
 
-def validate_description(
-    description: str, primary_keywords: list[str] | None = None
-) -> dict[str, Any]:
+def validate_description(description: str, primary_keywords: list[str] | None = None) -> dict[str, Any]:
     """
     Validate meta description.
 
@@ -307,9 +301,7 @@ def validate_description(
         results["checks"]["length"]["message"] = f"Too short ({desc_length} < {DESC_MIN_LENGTH})"
     else:
         results["checks"]["length"]["passed"] = True  # Warning only
-        results["checks"]["length"]["message"] = (
-            f"Slightly long ({desc_length} > {DESC_MAX_LENGTH})"
-        )
+        results["checks"]["length"]["message"] = f"Slightly long ({desc_length} > {DESC_MAX_LENGTH})"
 
     # 2. Primary keyword check (with stem matching)
     if primary_keywords:
@@ -349,9 +341,7 @@ def validate_description(
 
     # Overall
     all_passed = all(c["passed"] for c in results["checks"].values())
-    critical_passed = (
-        results["checks"]["primary_keyword"]["passed"] and results["checks"]["producer"]["passed"]
-    )
+    critical_passed = results["checks"]["primary_keyword"]["passed"] and results["checks"]["producer"]["passed"]
 
     if all_passed:
         results["overall"] = "PASS"
@@ -581,11 +571,7 @@ def main():
 
             if not output_json:
                 # Print short status
-                icon = (
-                    "✅"
-                    if results["overall"] == "PASS"
-                    else ("⚠️" if results["overall"] == "WARNING" else "❌")
-                )
+                icon = "✅" if results["overall"] == "PASS" else ("⚠️" if results["overall"] == "WARNING" else "❌")
                 print(f"{icon} {meta_path}")
 
         if output_json:

@@ -29,9 +29,7 @@ def test_setup_category_force_overwrites(tmp_path: Path, monkeypatch):
     (mod.CATEGORIES_DIR / slug).mkdir(parents=True, exist_ok=True)
 
     # Avoid depending on parse_semantics_to_json internals.
-    monkeypatch.setattr(
-        mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}}
-    )
+    monkeypatch.setattr(mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}})
 
     result = mod.setup_category(slug, [{"keyword": "x", "volume": 1}], force=True)
     assert result["status"] == "created"
@@ -43,9 +41,7 @@ def test_setup_all_aggregates_results(tmp_path: Path, monkeypatch):
     monkeypatch.setattr(mod, "CATEGORIES_DIR", tmp_path / "categories")
     monkeypatch.setattr(mod, "PROJECT_ROOT", tmp_path)
 
-    monkeypatch.setattr(
-        mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}}
-    )
+    monkeypatch.setattr(mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}})
     monkeypatch.setattr(
         mod,
         "get_all_categories_with_keywords",
@@ -92,12 +88,8 @@ def test_main_list_mode(tmp_path: Path, monkeypatch, capsys):
 def test_main_dry_run(tmp_path: Path, monkeypatch, capsys):
     monkeypatch.setattr(mod, "CATEGORIES_DIR", tmp_path / "categories")
     monkeypatch.setattr(mod, "PROJECT_ROOT", tmp_path)
-    monkeypatch.setattr(
-        mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}}
-    )
-    monkeypatch.setattr(
-        mod, "get_all_categories_with_keywords", lambda: {"a": [{"keyword": "x", "volume": 1}]}
-    )
+    monkeypatch.setattr(mod, "generate_full_json", lambda *_a, **_k: {"tier": "C", "keywords": {"primary": []}})
+    monkeypatch.setattr(mod, "get_all_categories_with_keywords", lambda: {"a": [{"keyword": "x", "volume": 1}]})
 
     rc = mod.main(["--dry-run"])
     out = capsys.readouterr().out

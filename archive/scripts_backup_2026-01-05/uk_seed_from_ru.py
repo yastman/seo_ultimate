@@ -78,9 +78,7 @@ def build_uk_clean_json(ru: dict[str, Any]) -> dict[str, Any]:
             seo_titles["main_keyword_ru"] = seo_titles.get("main_keyword", "")
         seo_titles["h1"] = ""
         seo_titles["main_keyword"] = ""
-        seo_titles.setdefault(
-            "note", "UK seed: fill h1/main_keyword in Ukrainian; keep *_ru for traceability."
-        )
+        seo_titles.setdefault("note", "UK seed: fill h1/main_keyword in Ukrainian; keep *_ru for traceability.")
         # meta is optional; keep, but encourage UK rewrite
         if "meta" in seo_titles and "meta_ru" not in seo_titles:
             seo_titles["meta_ru"] = _deepcopy_json(seo_titles.get("meta", {}))
@@ -132,12 +130,8 @@ def build_translation_prompt(slug: str, uk: dict[str, Any]) -> str:
     # seo = uk.get("seo_titles") or {}
     kw = uk.get("keywords") or {}
     primary_ru = [x.get("keyword_ru", "") for x in (kw.get("primary") or []) if isinstance(x, dict)]
-    secondary_ru = [
-        x.get("keyword_ru", "") for x in (kw.get("secondary") or []) if isinstance(x, dict)
-    ]
-    supporting_ru = [
-        x.get("keyword_ru", "") for x in (kw.get("supporting") or []) if isinstance(x, dict)
-    ]
+    secondary_ru = [x.get("keyword_ru", "") for x in (kw.get("secondary") or []) if isinstance(x, dict)]
+    supporting_ru = [x.get("keyword_ru", "") for x in (kw.get("supporting") or []) if isinstance(x, dict)]
 
     entity_ru = uk.get("entity_dictionary_ru") or {}
 

@@ -123,22 +123,10 @@ def find_partial_intersections(keyword_map: dict[str, list[dict]]) -> list[dict]
                             {
                                 "short_kw": short_kw,
                                 "cat_1": c1,
-                                "vol_1": max(
-                                    [
-                                        x["volume"]
-                                        for x in keyword_map[short_kw]
-                                        if x["category"] == c1
-                                    ]
-                                ),
+                                "vol_1": max([x["volume"] for x in keyword_map[short_kw] if x["category"] == c1]),
                                 "long_kw": long_kw,
                                 "cat_2": c2,
-                                "vol_2": max(
-                                    [
-                                        x["volume"]
-                                        for x in keyword_map[long_kw]
-                                        if x["category"] == c2
-                                    ]
-                                ),
+                                "vol_2": max([x["volume"] for x in keyword_map[long_kw] if x["category"] == c2]),
                             }
                         )
 
@@ -228,12 +216,8 @@ def generate_report(ru_path, ua_path):
 
 
 if __name__ == "__main__":
-    ru_path = (
-        r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"
-    )
-    ua_path = (
-        r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\uk\categories"
-    )
+    ru_path = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"
+    ua_path = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\uk\categories"
 
     report = generate_report(ru_path, ua_path)
     print(report)

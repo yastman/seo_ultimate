@@ -44,9 +44,7 @@ def test_load_batch_log_existing_file(tmp_path):
     import batch_generate as bg
 
     log_path = tmp_path / "batch_log.json"
-    log_path.write_text(
-        '{"total_processed": 5, "categories": {"a": {"last_status": "PASS"}}}', encoding="utf-8"
-    )
+    log_path.write_text('{"total_processed": 5, "categories": {"a": {"last_status": "PASS"}}}', encoding="utf-8")
     with patch.object(bg, "BATCH_LOG", log_path):
         loaded = bg.load_batch_log()
     assert loaded["total_processed"] == 5
@@ -160,9 +158,7 @@ def test_run_validate_fail(mock_run):
 @patch("subprocess.run")
 def test_run_validate_parses_json_success(mock_run):
     with patch("pathlib.Path.exists", return_value=True):
-        mock_run.return_value = MagicMock(
-            returncode=0, stdout='{"summary": {"overall": "WARNING"}}', stderr=""
-        )
+        mock_run.return_value = MagicMock(returncode=0, stdout='{"summary": {"overall": "WARNING"}}', stderr="")
         success, data = run_validate("slug", "kw")
         assert success is True
         assert data["status"] == "WARNING"
@@ -289,9 +285,7 @@ def test_process_category_content_missing_marks_pending(mock_update, mock_analyz
 @patch("batch_generate.run_validate")
 @patch("batch_generate.attempt_self_heal")
 @patch("batch_generate.update_category_status")
-def test_process_category_self_heal_success(
-    mock_update, mock_heal, mock_validate, mock_analyze, tmp_path
-):
+def test_process_category_self_heal_success(mock_update, mock_heal, mock_validate, mock_analyze, tmp_path):
     import batch_generate as bg
 
     slug = "slug"
@@ -306,9 +300,7 @@ def test_process_category_self_heal_success(
     mock_heal.return_value = (True, "ok")
 
     with patch.object(bg, "CATEGORIES_DIR", tmp_path):
-        assert (
-            process_category(slug, {"categories": {}}, analyze_only=False, self_heal=True) is True
-        )
+        assert process_category(slug, {"categories": {}}, analyze_only=False, self_heal=True) is True
     assert mock_heal.called
     assert mock_validate.call_count == 2
 
@@ -474,9 +466,7 @@ def test_cli_no_args_prints_doc_and_exits_0(capsys):
 def test_cli_resume_no_failed_prints_message(monkeypatch, capsys):
     import batch_generate as bg
 
-    monkeypatch.setattr(
-        bg, "load_batch_log", MagicMock(return_value={"categories": {"a": {"last_status": "PASS"}}})
-    )
+    monkeypatch.setattr(bg, "load_batch_log", MagicMock(return_value={"categories": {"a": {"last_status": "PASS"}}}))
     monkeypatch.setattr(sys, "argv", ["batch_generate.py", "--resume"])
     bg.main()
     assert "No failed categories" in capsys.readouterr().out
@@ -518,11 +508,7 @@ def test_cli_resume_processes_last_failed(monkeypatch):
     monkeypatch.setattr(
         bg,
         "load_batch_log",
-        MagicMock(
-            return_value={
-                "categories": {"a": {"last_status": "PASS"}, "b": {"last_status": "FAIL"}}
-            }
-        ),
+        MagicMock(return_value={"categories": {"a": {"last_status": "PASS"}, "b": {"last_status": "FAIL"}}}),
     )
 
     monkeypatch.setattr(sys, "argv", ["batch_generate.py", "--resume"])
@@ -580,9 +566,7 @@ def test_generate_fix_prompt_includes_all_issue_types():
 def test_attempt_self_heal_max_attempts():
     import batch_generate as bg
 
-    ok, msg = bg.attempt_self_heal(
-        "slug", {"output": "Water > 80%"}, attempt=bg.MAX_HEALING_ATTEMPTS + 1
-    )
+    ok, msg = bg.attempt_self_heal("slug", {"output": "Water > 80%"}, attempt=bg.MAX_HEALING_ATTEMPTS + 1)
     assert ok is False
     assert "Max healing attempts" in msg
 
@@ -616,13 +600,8 @@ def test_process_category_warning_status(mock_update, mock_validate, mock_analyz
     mock_validate.return_value = (True, {"status": "WARNING"})
 
     with patch.object(bg, "CATEGORIES_DIR", tmp_path):
-        assert (
-            bg.process_category(slug, {"categories": {}}, analyze_only=False, self_heal=False)
-            is True
-        )
-    mock_update.assert_any_call(
-        {"categories": {}}, slug, "validate", "WARNING", {"status": "WARNING"}
-    )
+        assert bg.process_category(slug, {"categories": {}}, analyze_only=False, self_heal=False) is True
+    mock_update.assert_any_call({"categories": {}}, slug, "validate", "WARNING", {"status": "WARNING"})
 
 
 @patch("batch_generate.run_analyze")

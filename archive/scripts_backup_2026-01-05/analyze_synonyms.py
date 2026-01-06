@@ -4,10 +4,10 @@ import re
 from collections import defaultdict
 
 # Configuration
-CATEGORIES_DIR = (
-    r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"
+CATEGORIES_DIR = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\categories"
+REPORT_FILE = (
+    r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\tasks\synonym_cleanup_report.md"
 )
-REPORT_FILE = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\tasks\synonym_cleanup_report.md"
 
 # Synonyms for normalization
 AUTO_SYNONYMS = ["авто", "автомобиля", "машины", "машина", "автомобиль", "в авто", "для авто"]

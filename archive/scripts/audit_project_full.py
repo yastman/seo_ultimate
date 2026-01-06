@@ -77,9 +77,7 @@ def get_csv_categories():
                 # Actually `seo_utils` has L3_TO_SLUG which is populated from the OTHER csv.
                 # We might need to guess slugs or just check if "slugified" version exists.
 
-                slug = slugify(
-                    name
-                )  # This is rudimentary (just spaces), won't handle cyrillic->latin
+                slug = slugify(name)  # This is rudimentary (just spaces), won't handle cyrillic->latin
                 categories.append({"name": name, "raw_slug": slug})
 
     return categories
@@ -104,9 +102,7 @@ def check_structure():
 
     print("\n[AUDIT] Checking existing folders status:")
 
-    print(
-        f"{'Slug':<30} | {'RU Clean':<8} | {'RU Meta':<8} | {'RU Cont':<8} | {'UK Meta':<8} | {'UK Cont':<8}"
-    )
+    print(f"{'Slug':<30} | {'RU Clean':<8} | {'RU Meta':<8} | {'RU Cont':<8} | {'UK Meta':<8} | {'UK Cont':<8}")
     print("-" * 90)
 
     # Union of all known slugs from file system
@@ -118,32 +114,12 @@ def check_structure():
         ru_path = RU_ROOT / slug
         uk_path = UK_ROOT / slug
 
-        ru_clean = (
-            (ru_path / "data" / f"{slug}_clean.json").exists()
-            if (ru_path / "data").exists()
-            else False
-        )
-        ru_meta = (
-            (ru_path / "meta" / f"{slug}_meta.json").exists()
-            if (ru_path / "meta").exists()
-            else False
-        )
-        ru_content = (
-            (ru_path / "content" / f"{slug}_ru.md").exists()
-            if (ru_path / "content").exists()
-            else False
-        )
+        ru_clean = (ru_path / "data" / f"{slug}_clean.json").exists() if (ru_path / "data").exists() else False
+        ru_meta = (ru_path / "meta" / f"{slug}_meta.json").exists() if (ru_path / "meta").exists() else False
+        ru_content = (ru_path / "content" / f"{slug}_ru.md").exists() if (ru_path / "content").exists() else False
 
-        uk_meta = (
-            (uk_path / "meta" / f"{slug}_meta.json").exists()
-            if (uk_path / "meta").exists()
-            else False
-        )
-        uk_content = (
-            (uk_path / "content" / f"{slug}_uk.md").exists()
-            if (uk_path / "content").exists()
-            else False
-        )
+        uk_meta = (uk_path / "meta" / f"{slug}_meta.json").exists() if (uk_path / "meta").exists() else False
+        uk_content = (uk_path / "content" / f"{slug}_uk.md").exists() if (uk_path / "content").exists() else False
 
         res = [
             "OK" if ru_clean else "MISS",
@@ -155,19 +131,13 @@ def check_structure():
 
         # Check for critical missing pieces (Init should have Clean+Meta)
         if "MISS" in [res[0], res[1], res[3]]:
-            print(
-                f"{slug:<30} | {res[0]:<8} | {res[1]:<8} | {res[2]:<8} | {res[3]:<8} | {res[4]:<8} <--- ISSUE"
-            )
+            print(f"{slug:<30} | {res[0]:<8} | {res[1]:<8} | {res[2]:<8} | {res[3]:<8} | {res[4]:<8} <--- ISSUE")
             issues.append(slug)
         else:
-            print(
-                f"{slug:<30} | {res[0]:<8} | {res[1]:<8} | {res[2]:<8} | {res[3]:<8} | {res[4]:<8}"
-            )
+            print(f"{slug:<30} | {res[0]:<8} | {res[1]:<8} | {res[2]:<8} | {res[3]:<8} | {res[4]:<8}")
 
     if not issues:
-        print(
-            "\nSUCCESS: All existing category folders have basic required files (Clean data + Meta)."
-        )
+        print("\nSUCCESS: All existing category folders have basic required files (Clean data + Meta).")
     else:
         print(f"\nWARNING: Found {len(issues)} categories with missing base files.")
 

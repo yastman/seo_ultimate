@@ -80,9 +80,7 @@ class TestRowsAndCsv:
             ),
             encoding="utf-8",
         )
-        (uk_categories / slug / "content" / f"{slug}_uk.md").write_text(
-            "# H1\n\ntext", encoding="utf-8"
-        )
+        (uk_categories / slug / "content" / f"{slug}_uk.md").write_text("# H1\n\ntext", encoding="utf-8")
 
         monkeypatch.setattr(exp, "ROOT", root)
         monkeypatch.setattr(exp, "UK_CATEGORIES_DIR", uk_categories)
@@ -146,9 +144,7 @@ class TestRowsAndCsv:
 
 
 class TestMain:
-    def test_main_writes_output(
-        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
-    ):
+    def test_main_writes_output(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
         root = tmp_path
         uk_categories = root / "uk" / "categories"
         slug = "s1"

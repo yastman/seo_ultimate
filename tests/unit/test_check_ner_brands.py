@@ -98,9 +98,7 @@ Frontmatter
     def test_analyze_file_safe_pass(self):
         # Create a clean temporary file
         temp_file = Path("temp_safe_test.md")
-        temp_file.write_text(
-            "Хороший текст про полировку автомобиля. Без брендов.", encoding="utf-8"
-        )
+        temp_file.write_text("Хороший текст про полировку автомобиля. Без брендов.", encoding="utf-8")
 
         try:
             # Mock print to suppress output

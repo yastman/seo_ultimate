@@ -387,9 +387,7 @@ class ShapeData:
         self.shape_id: str = ""  # Will be set after sorting
 
         # Get slide dimensions from slide object
-        self.slide_width_emu, self.slide_height_emu = (
-            self.get_slide_dimensions(slide) if slide else (None, None)
-        )
+        self.slide_width_emu, self.slide_height_emu = self.get_slide_dimensions(slide) if slide else (None, None)
 
         # Get placeholder type if applicable
         self.placeholder_type: str | None = None
@@ -406,16 +404,8 @@ class ShapeData:
 
         # Get position information
         # Use absolute positions if provided (for shapes in groups), otherwise use shape's position
-        left_emu = (
-            absolute_left
-            if absolute_left is not None
-            else (shape.left if hasattr(shape, "left") else 0)
-        )
-        top_emu = (
-            absolute_top
-            if absolute_top is not None
-            else (shape.top if hasattr(shape, "top") else 0)
-        )
+        left_emu = absolute_left if absolute_left is not None else (shape.left if hasattr(shape, "left") else 0)
+        top_emu = absolute_top if absolute_top is not None else (shape.top if hasattr(shape, "top") else 0)
 
         self.left: float = round(self.emu_to_inches(left_emu), 2)  # type: ignore
         self.top: float = round(self.emu_to_inches(top_emu), 2)  # type: ignore
@@ -438,9 +428,7 @@ class ShapeData:
         self.frame_overflow_bottom: float | None = None
         self.slide_overflow_right: float | None = None
         self.slide_overflow_bottom: float | None = None
-        self.overlapping_shapes: dict[
-            str, float
-        ] = {}  # Dict of shape_id -> overlap area in sq inches
+        self.overlapping_shapes: dict[str, float] = {}  # Dict of shape_id -> overlap area in sq inches
         self.warnings: list[str] = []
         self._estimate_frame_overflow()
         self._calculate_slide_overflow()
@@ -769,9 +757,7 @@ def collect_shapes_with_absolute_positions(
 
         # Process children with accumulated offsets
         for child in shape.shapes:  # type: ignore
-            result.extend(
-                collect_shapes_with_absolute_positions(child, abs_group_left, abs_group_top)
-            )
+            result.extend(collect_shapes_with_absolute_positions(child, abs_group_left, abs_group_top))
         return result
 
     # Regular shape - check if it has valid text
@@ -886,9 +872,7 @@ def detect_overlaps(shapes: list[ShapeData]) -> None:
                 shape2.overlapping_shapes[shape1.shape_id] = overlap_area
 
 
-def extract_text_inventory(
-    pptx_path: Path, prs: Any | None = None, issues_only: bool = False
-) -> InventoryData:
+def extract_text_inventory(pptx_path: Path, prs: Any | None = None, issues_only: bool = False) -> InventoryData:
     """Extract text content from all slides in a PowerPoint presentation.
 
     Args:
@@ -942,9 +926,7 @@ def extract_text_inventory(
             continue
 
         # Create slide inventory using the stable shape IDs
-        inventory[f"slide-{slide_idx}"] = {
-            shape_data.shape_id: shape_data for shape_data in sorted_shapes
-        }
+        inventory[f"slide-{slide_idx}"] = {shape_data.shape_id: shape_data for shape_data in sorted_shapes}
 
     return inventory
 
@@ -968,9 +950,7 @@ def get_inventory_as_dict(pptx_path: Path, issues_only: bool = False) -> Invento
     # Convert ShapeData objects to dictionaries
     dict_inventory: InventoryDict = {}
     for slide_key, shapes in inventory.items():
-        dict_inventory[slide_key] = {
-            shape_key: shape_data.to_dict() for shape_key, shape_data in shapes.items()
-        }
+        dict_inventory[slide_key] = {shape_key: shape_data.to_dict() for shape_key, shape_data in shapes.items()}
 
     return dict_inventory
 
@@ -983,9 +963,7 @@ def save_inventory(inventory: InventoryData, output_path: Path) -> None:
     # Convert ShapeData objects to dictionaries
     json_inventory: InventoryDict = {}
     for slide_key, shapes in inventory.items():
-        json_inventory[slide_key] = {
-            shape_key: shape_data.to_dict() for shape_key, shape_data in shapes.items()
-        }
+        json_inventory[slide_key] = {shape_key: shape_data.to_dict() for shape_key, shape_data in shapes.items()}
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(json_inventory, f, indent=2, ensure_ascii=False)

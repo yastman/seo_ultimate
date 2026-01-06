@@ -94,9 +94,7 @@ class TestValidateDescription:
         assert result["checks"]["wholesale"]["passed"]
 
     def test_missing_producer(self):
-        desc = (
-            "Хороший шампунь для машины, купить можно у нас в магазине с доставкой." + "а" * 50
-        )  # length ok
+        desc = "Хороший шампунь для машины, купить можно у нас в магазине с доставкой." + "а" * 50  # length ok
         result = validate_description(desc)
         assert not result["checks"]["producer"]["passed"]
 

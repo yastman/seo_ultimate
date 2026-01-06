@@ -35,9 +35,7 @@ def update_catalog_structure():
         print("WARNING: apparaty-tornador not found in json!")
 
     # 3. Verify 'oborudovanie' L1 exists
-    oborudovanie_exists = any(
-        item["id"] == "oborudovanie" and item["level"] == "L1" for item in new_data
-    )
+    oborudovanie_exists = any(item["id"] == "oborudovanie" and item["level"] == "L1" for item in new_data)
     if not oborudovanie_exists:
         print("WARNING: oborudovanie (L1) not found!")
 

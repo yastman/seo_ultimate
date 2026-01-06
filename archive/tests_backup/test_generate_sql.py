@@ -154,9 +154,7 @@ class TestEscapeSql:
 
 
 class TestGenerateUpdateSql:
-    def test_generate_update_sql_missing_content_returns_warning_comment(
-        self, tmp_path: Path, monkeypatch
-    ):
+    def test_generate_update_sql_missing_content_returns_warning_comment(self, tmp_path: Path, monkeypatch):
         slug = "missing"
         project_dir = tmp_path
         monkeypatch.setattr(gen, "PROJECT_DIR", project_dir)
@@ -236,9 +234,7 @@ class TestTableHelpers:
 
 
 class TestMain:
-    def test_main_writes_output_file(
-        self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]
-    ):
+    def test_main_writes_output_file(self, tmp_path: Path, monkeypatch, capsys: pytest.CaptureFixture[str]):
         slug = "test-slug"
         cat_id = 1
 

@@ -492,9 +492,7 @@ def check_url_accessibility(url: str, timeout: int = 5, max_retries: int = 3) ->
 # ============================================================================
 
 
-def count_keyword_occurrences(
-    text: str, keyword: str, variations: dict[str, list[str]]
-) -> tuple[int, int]:
+def count_keyword_occurrences(text: str, keyword: str, variations: dict[str, list[str]]) -> tuple[int, int]:
     """
     Подсчёт exact и partial вхождений keyword с fallback
 

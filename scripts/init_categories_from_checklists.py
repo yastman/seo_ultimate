@@ -295,9 +295,7 @@ def generate_all_keywords_json(catalog):
         }
 
     # Sort by total_volume descending
-    sorted_keywords = dict(
-        sorted(all_keywords.items(), key=lambda x: x[1]["total_volume"], reverse=True)
-    )
+    sorted_keywords = dict(sorted(all_keywords.items(), key=lambda x: x[1]["total_volume"], reverse=True))
 
     with open(ALL_KEYWORDS_PATH, "w", encoding="utf-8") as f:
         json.dump(sorted_keywords, f, ensure_ascii=False, indent=2)

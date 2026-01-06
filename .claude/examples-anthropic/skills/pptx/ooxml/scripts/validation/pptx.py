@@ -155,17 +155,13 @@ class PPTXSchemaValidator(BaseSchemaValidator):
 
                 # Build a set of valid relationship IDs that point to slide layouts
                 valid_layout_rids = set()
-                for rel in rels_root.findall(
-                    f".//{{{self.PACKAGE_RELATIONSHIPS_NAMESPACE}}}Relationship"
-                ):
+                for rel in rels_root.findall(f".//{{{self.PACKAGE_RELATIONSHIPS_NAMESPACE}}}Relationship"):
                     rel_type = rel.get("Type", "")
                     if "slideLayout" in rel_type:
                         valid_layout_rids.add(rel.get("Id"))
 
                 # Find all sldLayoutId elements in the slide master
-                for sld_layout_id in root.findall(
-                    f".//{{{self.PRESENTATIONML_NAMESPACE}}}sldLayoutId"
-                ):
+                for sld_layout_id in root.findall(f".//{{{self.PRESENTATIONML_NAMESPACE}}}sldLayoutId"):
                     r_id = sld_layout_id.get(f"{{{self.OFFICE_RELATIONSHIPS_NAMESPACE}}}id")
                     layout_id = sld_layout_id.get("id")
 
@@ -183,9 +179,7 @@ class PPTXSchemaValidator(BaseSchemaValidator):
             print(f"FAILED - Found {len(errors)} slide layout ID validation errors:")
             for error in errors:
                 print(error)
-            print(
-                "Remove invalid references or add missing slide layouts to the relationships file."
-            )
+            print("Remove invalid references or add missing slide layouts to the relationships file.")
             return False
         else:
             if self.verbose:
@@ -206,9 +200,7 @@ class PPTXSchemaValidator(BaseSchemaValidator):
                 # Find all slideLayout relationships
                 layout_rels = [
                     rel
-                    for rel in root.findall(
-                        f".//{{{self.PACKAGE_RELATIONSHIPS_NAMESPACE}}}Relationship"
-                    )
+                    for rel in root.findall(f".//{{{self.PACKAGE_RELATIONSHIPS_NAMESPACE}}}Relationship")
                     if "slideLayout" in rel.get("Type", "")
                 ]
 
@@ -251,9 +243,7 @@ class PPTXSchemaValidator(BaseSchemaValidator):
                 root = lxml.etree.parse(str(rels_file)).getroot()
 
                 # Find all notesSlide relationships
-                for rel in root.findall(
-                    f".//{{{self.PACKAGE_RELATIONSHIPS_NAMESPACE}}}Relationship"
-                ):
+                for rel in root.findall(f".//{{{self.PACKAGE_RELATIONSHIPS_NAMESPACE}}}Relationship"):
                     rel_type = rel.get("Type", "")
                     if "notesSlide" in rel_type:
                         target = rel.get("Target", "")
@@ -266,9 +256,7 @@ class PPTXSchemaValidator(BaseSchemaValidator):
 
                             if normalized_target not in notes_slide_references:
                                 notes_slide_references[normalized_target] = []
-                            notes_slide_references[normalized_target].append(
-                                (slide_name, rels_file)
-                            )
+                            notes_slide_references[normalized_target].append((slide_name, rels_file))
 
             except (lxml.etree.XMLSyntaxError, Exception) as e:
                 errors.append(f"  {rels_file.relative_to(self.unpacked_dir)}: Error: {e}")
@@ -277,9 +265,7 @@ class PPTXSchemaValidator(BaseSchemaValidator):
         for target, references in notes_slide_references.items():
             if len(references) > 1:
                 slide_names = [ref[0] for ref in references]
-                errors.append(
-                    f"  Notes slide '{target}' is referenced by multiple slides: {', '.join(slide_names)}"
-                )
+                errors.append(f"  Notes slide '{target}' is referenced by multiple slides: {', '.join(slide_names)}")
                 for slide_name, rels_file in references:
                     errors.append(f"    - {rels_file.relative_to(self.unpacked_dir)}")
 

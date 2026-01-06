@@ -91,9 +91,7 @@ def parse_csv(filepath):
             is_keyword = False
             if col3 and any(c.isdigit() for c in col3):
                 is_keyword = True
-            elif (
-                col1 and not col2 and not col3 and current_block and current_block.type == "Keyword"
-            ):
+            elif col1 and not col2 and not col3 and current_block and current_block.type == "Keyword":
                 # Heuristic for cases where col3 might be missing but it looks like keyword flow
                 is_keyword = True
 
@@ -486,9 +484,7 @@ def transform_structure(root):
             # Tornador/Equipment check
             # If keyword is in L3: Tornador BUT is 'equipment' -> Move to General
             if (
-                kw.parent
-                and kw.parent.name.startswith("Tornador")
-                or kw.parent.name.startswith("Аппараты")
+                kw.parent and kw.parent.name.startswith("Tornador") or kw.parent.name.startswith("Аппараты")
             ) and "оборудование" in name:
                 kw.parent.remove_child(kw)
                 equip_general.add_child(kw)
@@ -514,11 +510,7 @@ def transform_structure(root):
         is_empty = not node.children
         if (
             is_empty
-            and (
-                node.type in ["Cluster", "L3", "Filter"]
-                or node.type == "L2"
-                and node.name not in allow_empty
-            )
+            and (node.type in ["Cluster", "L3", "Filter"] or node.type == "L2" and node.name not in allow_empty)
             and node.parent
         ):
             node.parent.remove_child(node)

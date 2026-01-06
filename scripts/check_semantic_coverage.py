@@ -32,7 +32,7 @@ def scan_json_keywords():
                     for kw in keywords:
                         kw_norm = kw.strip().lower()
                         kw_map[kw_norm] = slug
-                except:
+                except Exception:
                     pass
     return kw_map
 
@@ -135,9 +135,7 @@ def analyze_coverage():
     if len(missing_kws) == 0 and total_structure_kws > 0:
         report.append("\n✅ **ALL CLEAR:** Все ключи из STRUCTURE.md находятся в JSON-файлах.")
     elif total_structure_kws == 0:
-        report.append(
-            "\n⚠️ **ERROR:** Не удалось прочитать ключи из STRUCTURE.md (проблемы парсинга?)"
-        )
+        report.append("\n⚠️ **ERROR:** Не удалось прочитать ключи из STRUCTURE.md (проблемы парсинга?)")
     else:
         report.append("\n⚠️ **ATTENTION:** Есть потерянные ключи.")
 

@@ -53,9 +53,7 @@ class GIFBuilder:
         for frame in frames:
             self.add_frame(frame)
 
-    def optimize_colors(
-        self, num_colors: int = 128, use_global_palette: bool = True
-    ) -> list[np.ndarray]:
+    def optimize_colors(self, num_colors: int = 128, use_global_palette: bool = True) -> list[np.ndarray]:
         """
         Reduce colors in all frames using quantization.
 

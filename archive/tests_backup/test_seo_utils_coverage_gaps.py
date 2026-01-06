@@ -70,9 +70,7 @@ def test_get_l3_name_returns_none_when_missing():
 
 
 def test_check_url_accessibility_generic_exception_returns_false(monkeypatch):
-    monkeypatch.setattr(
-        su.requests, "head", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("boom"))
-    )
+    monkeypatch.setattr(su.requests, "head", lambda *_a, **_k: (_ for _ in ()).throw(RuntimeError("boom")))
     assert su.check_url_accessibility("https://example.com") is False
 
 

@@ -147,9 +147,7 @@ def get_all_categories() -> list[str]:
     return sorted(categories)
 
 
-def find_exact_duplicates(
-    categories: list[str], verbose: bool = False
-) -> dict[str, list[tuple[str, str, int]]]:
+def find_exact_duplicates(categories: list[str], verbose: bool = False) -> dict[str, list[tuple[str, str, int]]]:
     """
     Найти точные дубликаты ключей между категориями.
     Возвращает: {keyword: [(category, type, volume), ...]}
@@ -257,9 +255,7 @@ def find_misplaced_by_intent(categories: list[str], verbose: bool = False) -> li
     return misplaced
 
 
-def print_report(
-    duplicates: dict, hierarchy_conflicts: list, misplaced: list, verbose: bool = False
-):
+def print_report(duplicates: dict, hierarchy_conflicts: list, misplaced: list, verbose: bool = False):
     """Вывести отчёт в консоль"""
 
     print("\n" + "=" * 80)
@@ -272,9 +268,7 @@ def print_report(
 
     if duplicates:
         # Сортируем по суммарному volume
-        sorted_dups = sorted(
-            duplicates.items(), key=lambda x: max(loc[2] for loc in x[1]), reverse=True
-        )
+        sorted_dups = sorted(duplicates.items(), key=lambda x: max(loc[2] for loc in x[1]), reverse=True)
 
         for kw, locations in sorted_dups[:50]:  # Топ-50
             max_vol = max(loc[2] for loc in locations)
@@ -335,9 +329,7 @@ def export_to_json(duplicates: dict, hierarchy_conflicts: list, misplaced: list)
         "duplicates": [
             {
                 "keyword": kw,
-                "locations": [
-                    {"category": loc[0], "type": loc[1], "volume": loc[2]} for loc in locs
-                ],
+                "locations": [{"category": loc[0], "type": loc[1], "volume": loc[2]} for loc in locs],
             }
             for kw, locs in duplicates.items()
         ],
