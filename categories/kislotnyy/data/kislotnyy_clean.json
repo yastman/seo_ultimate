@@ -1,16 +1,20 @@
 {
   "id": "kislotnyy",
-  "name": "Кислотный",
-  "type": "filter",
+  "name": "Кислотные шампуни",
+  "type": "category",
   "parent_id": "avtoshampuni",
   "keywords": [
-    {
-      "keyword": "кислотный шампунь для авто",
-      "volume": 70
-    },
     {
       "keyword": "кислотный автошампунь",
       "volume": 20
     }
-  ]
+  ],
+  "synonyms": [
+    {
+      "keyword": "кислотный шампунь для авто",
+      "volume": 70
+    }
+  ],
+  "total_volume": 90,
+  "source": "STRUCTURE.md"
 }

@@ -3,5 +3,9 @@
   "name": "Автошампуни",
   "type": "category",
   "parent_id": "moyka-i-eksterer",
-  "keywords": []
+    {"keyword": "кислотный шампунь для авто", "volume": 70},
+    {"keyword": "кислотный автошампунь", "volume": 20}
+  ],
+  "synonyms": [],
+  "source": "merged from kislotnyy filter"
 }
