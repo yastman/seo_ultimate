@@ -1,0 +1,19 @@
+{
+  "id": "keramika-dlya-diskov",
+  "name": "Керамика для дисков",
+  "type": "category",
+  "parent_id": "sredstva-dlya-diskov-i-shin",
+  "keywords": [
+    {
+      "keyword": "защитное покрытие для дисков",
+      "volume": 10
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "защитное покрытие для литых дисков",
+      "volume": 10
+    }
+  ],
+  "source": "STRUCTURE.md"
+}

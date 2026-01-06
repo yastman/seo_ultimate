@@ -1,0 +1,23 @@
+{
+  "id": "ukhod-za-naruzhnym-plastikom",
+  "name": "Уход за наружным пластиком",
+  "type": "category",
+  "parent_id": "ochistiteli-kuzova",
+  "keywords": [
+    {
+      "keyword": "полироль для наружного пластика",
+      "volume": 10
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "полироль для наружного пластика автомобиля",
+      "volume": 40
+    },
+    {
+      "keyword": "полироль для наружного пластика авто",
+      "volume": 40
+    }
+  ],
+  "source": "STRUCTURE.md"
+}
