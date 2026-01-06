@@ -5,16 +5,19 @@
   "parent_id": "ochistiteli-kuzova",
   "keywords": [
     {
-      "keyword": "купить антибитум для авто",
-      "volume": 20
-    },
-    {
       "keyword": "антибитум купить",
       "volume": 10
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "купить антибитум для авто",
+      "volume": 20
     },
     {
       "keyword": "антибитум цена",
       "volume": 10
     }
-  ]
+  ],
+  "source": "checklist"
 }

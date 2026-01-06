@@ -4,29 +4,12 @@
   "type": "category",
   "parent_id": "sredstva-dlya-diskov-i-shin",
   "keywords": [
-    {
-      "keyword": "очиститель шин",
-      "volume": 70
-    },
-    {
-      "keyword": "очиститель резины",
-      "volume": 10
-    },
-    {
-      "keyword": "средство для чистки шин",
-      "volume": 10
-    },
-    {
-      "keyword": "средство для очистки резины",
-      "volume": 10
-    },
-    {
-      "keyword": "защитное покрытие для дисков",
-      "volume": 10
-    },
-    {
-      "keyword": "защитное покрытие для литых дисков",
-      "volume": 10
-    }
-  ]
+    {"keyword": "очиститель шин", "volume": 70},
+    {"keyword": "очиститель резины", "volume": 10}
+  ],
+  "synonyms": [
+    {"keyword": "средство для чистки шин", "volume": 10},
+    {"keyword": "средство для очистки резины", "volume": 10}
+  ],
+  "source": "STRUCTURE.md"
 }
