@@ -35,14 +35,17 @@ repos:
   #   hooks:
   #     - id: yamllint
 
-  # TOML & Basic
-  # - repo: https://github.com/pre-commit/pre-commit-hooks
-  #   rev: v5.0.0
-  #   hooks:
-  #     - id: check-toml
-  #     - id: check-json
-  #     - id: trailing-whitespace
-  #     - id: end-of-file-fixer
+  # Basic checks (JSON, TOML, whitespace)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-json
+        exclude: ^(\.vscode/|\.claude/)
+      - id: check-toml
+      - id: trailing-whitespace
+        exclude: ^(archive/|.*\.csv$|.*\.md$)
+      - id: end-of-file-fixer
+        exclude: ^(archive/|.*\.csv$)
 
 # Default config
 default_language_version:

@@ -9,7 +9,7 @@ class CategoryBuilder:
     """
     Builder для создания тестовой структуры категории.
     Позволяет создавать папки, meta.json, clean.json и контент-файлы.
-    
+
     Example:
         path = CategoryBuilder() \
             .with_slug("test-cat") \
