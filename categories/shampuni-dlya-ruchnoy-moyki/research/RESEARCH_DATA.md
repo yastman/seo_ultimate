@@ -1,4 +1,4 @@
-# Research: Шампунь для ручной мойки (dlya-ruchnoy-moyki)
+# Research: Шампунь для ручной мойки (shampuni-dlya-ruchnoy-moyki)
 
 ## 1. Базовая матрица поиска
 

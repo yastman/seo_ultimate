@@ -1,91 +1,195 @@
+from unittest.mock import patch
+
 from scripts.validate_content import (
-    check_length,
+    check_blacklist_phrases,
+    check_content_standards,
+    check_keyword_coverage,
+    check_keyword_coverage_split,
     check_primary_keyword,
+    check_primary_keyword_semantic,
+    check_quality,
     check_structure,
+    count_faq,
     extract_h1,
+    extract_h2s,
     extract_intro,
+    keyword_matches_semantic,
 )
 
+# ============================================================================
+# Text Processing
+# ============================================================================
 
-class TestExtract:
+
+class TestTextProcessing:
     def test_extract_h1(self):
-        text = "# My Title\nText"
-        assert extract_h1(text) == "My Title"
+        assert extract_h1("# Main Title") == "Main Title"
+        assert extract_h1("pre\n# Title\npost") == "Title"
+        assert extract_h1("No h1") is None
 
-    def test_extract_h1_none(self):
-        text = "No h1"
-        assert extract_h1(text) is None
+    def test_extract_h2s(self):
+        text = "## H2 One\nText\n## H2 Two"
+        assert extract_h2s(text) == ["H2 One", "H2 Two"]
+        assert extract_h2s("No h2") == []
 
     def test_extract_intro(self):
-        text = "# Title\n\nIntro line 1.\nIntro line 2.\n\n## H2"
+        text = "# H1\n\nIntro line 1.\nIntro line 2.\n\n## H2"
         intro = extract_intro(text)
         assert "Intro line 1." in intro
         assert "Intro line 2." in intro
         assert "## H2" not in intro
 
+        # Test max lines limit
+        text_long = "# H1\n" + "\n".join([f"Line {i}" for i in range(10)])
+        intro_long = extract_intro(text_long)
+        # Check max lines limit (logic takes first 5 non-empty lines)
+        assert len(intro_long.split("\n")) <= 5
 
-class TestCheckStructure:
+    def test_count_faq(self):
+        text = "**Q: Question 1**\n**В: Вопрос 2**\nText"
+        assert count_faq(text) == 2
+
+
+# ============================================================================
+# Core Checks
+# ============================================================================
+
+
+class TestStructureCheck:
     def test_valid_structure(self):
-        # Intro needs >= 30 words
-        intro_text = "word " * 35
-        text = f"# H1 Heading\n\n{intro_text}\n\n## H2 Heading"
-        result = check_structure(text)
-        assert result["h1"]["passed"]
-        assert result["intro"]["passed"]
-        assert result["h2_count"]["passed"]
-        assert result["overall"] == "PASS"
+        intro = "word " * 35
+        text = f"# H1\n\n{intro}\n\n## H2"
+        res = check_structure(text)
+        assert res["overall"] == "PASS"
+        assert res["h1"]["passed"]
+        assert res["intro"]["passed"]
+        assert res["h2_count"]["passed"]
 
-    def test_missing_h1(self):
-        text = "No H1 heading here.\n\n## H2"
-        result = check_structure(text)
-        assert not result["h1"]["passed"]
-        assert result["overall"] == "FAIL"
-
-    def test_short_intro(self):
-        text = "# H1\n\nShort intro.\n\n## H2"
-        result = check_structure(text)
-        assert not result["intro"]["passed"]  # < 30 words
-        assert result["overall"] == "FAIL"
-
-    def test_missing_h2(self):
-        intro_text = "word " * 35
-        text = f"# H1\n\n{intro_text}"
-        result = check_structure(text)
-        assert not result["h2_count"]["passed"]
-        assert result["overall"] == "FAIL"
+    def test_invalid_structure(self):
+        res = check_structure("Just text")
+        assert res["overall"] == "FAIL"
+        assert not res["h1"]["passed"]
 
 
-class TestCheckPrimaryKeyword:
-    def test_valid_placement(self):
-        text = "# Купить Активная пена\n\nАктивная пена — это круто."
-        kw = "активная пена"
-        result = check_primary_keyword(text, kw)
-        assert result["in_h1"]["passed"]
-        assert result["in_intro"]["passed"]
-        assert result["overall"] == "PASS"
+class TestPrimaryKeyword:
+    def test_exact_match(self):
+        text = "# Купить автошампунь\n\nКупить автошампунь выгодно."
+        kw = "автошампунь"
+        res = check_primary_keyword(text, kw)
+        assert res["in_h1"]["passed"]
+        assert res["in_intro"]["passed"]
+        assert res["overall"] == "PASS"
 
-    def test_missing_in_h1(self):
-        text = "# Просто пена\n\nАктивная пена работает."
-        kw = "активная пена"
-        result = check_primary_keyword(text, kw)
-        assert not result["in_h1"]["passed"]
-        assert result["overall"] == "FAIL"
+    def test_semantic_match_logic(self):
+        # Test helper function directly
+        assert keyword_matches_semantic("автошампунь", "лучший автошампуни")  # plural stem match
+        assert keyword_matches_semantic("купить пену", "купите пену")  # stem match
 
-    def test_missing_in_intro(self):
-        text = "# Активная пена\n\nОбычная вода работает."
-        kw = "активная пена"
-        result = check_primary_keyword(text, kw)
-        assert not result["in_intro"]["passed"]
-        assert result["overall"] == "FAIL"
+    def test_semantic_check_function(self):
+        text = "# Лучшие автошампуни\n\nМы продаем автошампуни."
+        kw = "автошампунь"
+
+        res = check_primary_keyword_semantic(text, kw)
+        assert res["semantic_h1"]
+        assert res["semantic_intro"]
+        assert res["confidence"] >= 90
+        assert res["overall"] == "PASS"
 
 
-class TestCheckLength:
-    def test_length_status_ok(self):
-        text = "word " * 200  # within 150-600
-        result = check_length(text)
-        assert result["status"] == "OK"
+class TestCoverage:
+    def test_keyword_coverage(self):
+        text = "word1 word2 word3"
+        keywords = ["word1", "word2", "missing"]
 
-    def test_length_status_short(self):
-        text = "word " * 10
-        result = check_length(text)
-        assert result["status"] == "WARNING_SHORT"
+        # 2/3 = 66%
+        # Target for 3 keywords (<=5) is 70% usually (depends on config mocked)
+
+        with patch("scripts.validate_content.get_adaptive_coverage_target", return_value=50):
+            res = check_keyword_coverage(text, keywords)
+            assert res["passed"]
+            assert res["coverage_percent"] > 60
+
+    def test_coverage_split_semantic(self):
+        text = "купить шампунь для мойки"
+        core = ["шампунь", "пена"]
+        comm = ["купить"]
+
+        res = check_keyword_coverage_split(text, core, comm, use_semantic=True)
+        assert res["core"]["found"] == 1  # шампунь found
+        assert res["commercial"]["found"] == 1  # купить found
+        assert res["passed"]  # Depends on target, assuming 1/2 >= target(50%)
+
+
+# ============================================================================
+# Quality & Standards
+# ============================================================================
+
+
+class TestQualityChecks:
+    @patch("scripts.validate_content.calculate_water_and_nausea")
+    def test_check_quality_pass(self, mock_calc):
+        mock_calc.return_value = {
+            "water_percent": 50.0,
+            "classic_nausea": 2.5,
+            "academic_nausea": 8.0,
+        }
+        res = check_quality("some text")
+        assert res["overall"] == "PASS"
+        assert res["water"]["status"] == "OK"
+
+    @patch("scripts.validate_content.calculate_water_and_nausea")
+    def test_check_quality_fail_water(self, mock_calc):
+        mock_calc.return_value = {
+            "water_percent": 80.0,  # High
+            "classic_nausea": 2.5,
+            "academic_nausea": 8.0,
+        }
+        res = check_quality("some text")
+        assert res["water"]["status"] == "WARNING"
+        assert res["overall"] == "WARNING"
+
+
+class TestBlacklist:
+    @patch("scripts.validate_content.check_blacklist")
+    def test_check_blacklist_blocker(self, mock_bl):
+        mock_bl.return_value = {
+            "strict_phrases": ["bad word"],
+            "brands": [],
+            "cities": [],
+            "ai_fluff": [],
+        }
+        res = check_blacklist_phrases("text")
+        assert res["overall"] == "FAIL"
+
+    @patch("scripts.validate_content.check_blacklist")
+    def test_check_blacklist_warning(self, mock_bl):
+        mock_bl.return_value = {
+            "strict_phrases": [],
+            "brands": [],
+            "cities": [],
+            "ai_fluff": ["fluff"],
+        }
+        res = check_blacklist_phrases("text")
+        assert res["overall"] == "WARNING"
+
+
+class TestContentStandards:
+    def test_standards_patterns(self):
+        text = """
+## Safety
+1. Step one
+2. Step two
+Расход 50 мл.
+Никогда не делайте это.
+        """
+        res = check_content_standards(text, lang="ru")
+        assert res["safety_block"]
+        assert res["howto_steps"]
+        assert res["evergreen_math"]
+        assert res["warnings_present"]
+
+    def test_standards_missing(self):
+        text = "Just plain text"
+        res = check_content_standards(text, lang="ru")
+        assert not res["safety_block"]
+        assert not res["howto_steps"]

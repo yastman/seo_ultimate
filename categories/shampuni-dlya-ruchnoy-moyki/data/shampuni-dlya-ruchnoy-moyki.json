@@ -2,7 +2,7 @@
   "schema_version": "3.0.0",
   "generated_at": "2025-12-17T16:30:54.942296Z",
   "generator_script": "parse_semantics_to_json.py",
-  "slug": "dlya-ruchnoy-moyki",
+  "slug": "shampuni-dlya-ruchnoy-moyki",
   "category_name_ru": "Для ручной мойки",
   "tier": "B",
   "language": "ru",
