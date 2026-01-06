@@ -1,0 +1,31 @@
+{
+  "id": "dlya-stekol",
+  "name": "Микрофибра для стекол",
+  "type": "category",
+  "parent_id": "mikrofibra-i-tryapki",
+  "keywords": [
+    {
+      "keyword": "тряпка для стекла автомобиля",
+      "volume": 50
+    },
+    {
+      "keyword": "тряпка для стекол авто",
+      "volume": 20
+    },
+    {
+      "keyword": "тряпка для стекол автомобиля",
+      "volume": 20
+    },
+    {
+      "keyword": "тряпка для стекол машины",
+      "volume": 10
+    },
+    {
+      "keyword": "тряпка для автомобильных стекол",
+      "volume": 10
+    }
+  ],
+  "synonyms": [],
+  "total_volume": 110,
+  "source": "STRUCTURE.md"
+}
