@@ -1,0 +1,36 @@
+{
+  "id": "podarochnyy",
+  "name": "Подарочные наборы",
+  "type": "category",
+  "parent_id": "nabory",
+  "keywords": [
+    {
+      "keyword": "подарочные наборы в машину",
+      "volume": 90
+    },
+    {
+      "keyword": "подарочные наборы для автомобилиста",
+      "volume": 90
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "подарочные наборы для мужчин в машину",
+      "volume": 140
+    },
+    {
+      "keyword": "набор для автомобилиста подарок",
+      "volume": 30
+    },
+    {
+      "keyword": "подарочный набор для авто",
+      "volume": 20
+    },
+    {
+      "keyword": "подарочные наборы для автомобиля",
+      "volume": 10
+    }
+  ],
+  "total_volume": 380,
+  "source": "STRUCTURE.md"
+}
