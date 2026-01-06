@@ -4,44 +4,30 @@
   "type": "category",
   "parent_id": "zashchitnye-pokrytiya",
   "keywords": [
-    {
-      "keyword": "силант",
-      "volume": 50
-    },
-    {
-      "keyword": "силанты для авто",
-      "volume": 40
-    }
+    {"keyword": "силант", "volume": 50},
+    {"keyword": "силанты для авто", "volume": 40},
+    {"keyword": "силант для авто", "volume": 30}
   ],
   "synonyms": [
-    {
-      "keyword": "силант для авто",
-      "volume": 30
-    },
-    {
-      "keyword": "силант для кузова",
-      "volume": 10
-    },
-    {
-      "keyword": "силант автомобиль",
-      "volume": 10
-    },
-    {
-      "keyword": "силант покрытие",
-      "volume": 10
-    },
-    {
-      "keyword": "автомобиль силант цена",
-      "volume": 10
-    },
-    {
-      "keyword": "купить силант",
-      "volume": 10
-    },
-    {
-      "keyword": "силант цена",
-      "volume": 10
-    }
+    {"keyword": "силант для кузова", "volume": 10},
+    {"keyword": "силант автомобиль", "volume": 10},
+    {"keyword": "силант покрытие", "volume": 10},
+    {"keyword": "купить силант", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "автомобиль силант цена", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "силант цена", "volume": 10, "use_in": "meta_only"}
+  ],
+  "entities": [
+    "полимерный силант",
+    "синтетический герметик",
+    "paint sealant",
+    "долговременная защита",
+    "гидрофобный эффект"
+  ],
+  "micro_intents": [
+    "силант или воск — что лучше",
+    "как наносить силант на авто",
+    "сколько держится силант",
+    "силант или керамика — в чём разница"
   ],
   "source": "checklist"
 }
