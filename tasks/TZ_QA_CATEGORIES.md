@@ -140,7 +140,7 @@
 ## Следующие шаги
 
 1. [x] Ручная проверка всех категорий
-2. [ ] **Исправить `apparaty-tornador`:** `parent_id` → `"oborudovanie"`
-3. [ ] **Исправить `oborudovanie`:** `parent_id` → `null`
-4. [ ] Коммит с исправлениями
-5. [ ] Обновить `PIPELINE_STATUS.md`
+2. [x] **Исправить `apparaty-tornador`:** `parent_id` → `"oborudovanie"`
+3. [x] **Исправить `oborudovanie`:** `parent_id` → `null`
+4. [x] Коммит с исправлениями
+5. [x] Обновить `PIPELINE_STATUS.md`
