@@ -3,5 +3,53 @@
   "name": "Антидождь",
   "type": "category",
   "parent_id": "sredstva-dlya-stekol",
-  "keywords": []
+  "keywords": [
+    {
+      "keyword": "антидождь для авто",
+      "volume": 80
+    },
+    {
+      "keyword": "антидождь для автомобиля",
+      "volume": 320
+    },
+    {
+      "keyword": "антидождь на лобовое стекло",
+      "volume": 10
+    },
+    {
+      "keyword": "покрытие для лобового стекла",
+      "volume": 10
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "средство антидождь купить",
+      "volume": 1000
+    },
+    {
+      "keyword": "антидождь авто купить",
+      "volume": 700
+    },
+    {
+      "keyword": "антидождь цена",
+      "volume": 200
+    },
+    {
+      "keyword": "купить антидождь",
+      "volume": 110
+    },
+    {
+      "keyword": "антидождь для зеркал авто",
+      "volume": 20
+    },
+    {
+      "keyword": "купить антидождь для стекол авто",
+      "volume": 10
+    },
+    {
+      "keyword": "антидождь для авто украина",
+      "volume": 10
+    }
+  ],
+  "source": "STRUCTURE.md"
 }
