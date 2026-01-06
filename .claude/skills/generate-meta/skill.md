@@ -7,28 +7,52 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 
 ---
 
-## December 2025 SEO Rules
+## January 2026 SEO Rules
 
 | Параметр | Значение | Источник |
 |----------|----------|----------|
 | Title | **50-60 chars** | Zyppy Q1 2025 |
+| Title formula | **{ВЧ} — купить** (Front-loading) | Ahrefs 2025 |
 | Title rewrites | 76% переписывается | McAlpin Q1 2025 |
 | Description | **120-160 chars** | Best practice |
 | H1 | **БЕЗ "Купить"** | John Mueller 2025 |
 | Keyword density | НЕ фактор | John Mueller 2025 |
-| Commercial modifiers | **Обязательно в Title** | Ahrefs, BigCommerce |
+| Commercial modifiers | **После ВЧ в Title** | Ahrefs, BigCommerce |
+
+---
+
+## 🎯 Главное правило: Front-Loading
+
+**Google ранжирует по тому, что стоит В НАЧАЛЕ Title.**
+
+```
+✅ {ВЧ Ключ} — купить, цены | Ultimate     ← ВЧ первым
+❌ Купить {ВЧ Ключ} | Ultimate              ← "Купить" первым = НЕПРАВИЛЬНО
+```
+
+---
+
+## JSON → Meta Mapping
+
+Читай `_clean.json` и используй:
+
+| JSON поле | Куда идёт |
+|-----------|-----------|
+| `keywords[0]` (max volume) | **Title начало, H1** |
+| `synonyms` с `meta_only` | **Title хвост** ("купить X") |
+| `synonyms` без `meta_only` | Description, H2 |
 
 ---
 
 ## Title (50-60 chars)
 
-**Формула RU:** `{Primary} — купить, цены | Ultimate`
-**Формула UK:** `{Primary} — купити, ціни | Ultimate`
+**Формула RU:** `{ВЧ Ключ} — купить, цены | Ultimate`
+**Формула UK:** `{ВЧ Ключ} — купити, ціни | Ultimate`
 
 **Правила:**
 
-- Primary keyword **В НАЧАЛО**
-- Commercial modifiers ("купить/купити", "цены/ціни") **ОБЯЗАТЕЛЬНО**
+- **ВЧ keyword В НАЧАЛО** (Front-loading!)
+- Commercial modifiers **ПОСЛЕ** ВЧ ("купить/купити", "цены/ціни")
 - Бренд **В КОНЕЦ** `| Ultimate`
 - **БЕЗ двоеточий** (Google заменяет на дефис в 41%)
 - Скобки только для **синонимов с разными корнями**
@@ -36,10 +60,13 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 **Примеры:**
 
 ```
-✅ Чорнитель шин — купити, ціни | Ultimate          (42 chars)
-✅ Активна піна для миття авто — купити | Ultimate  (48 chars)
-❌ Чернители резины: купить в Киеве                 (нет бренда, двоеточие)
-❌ Чорнитель шин (Матовий ефект) | Ultimate         (нет коммерции)
+✅ Чорнитель шин — купити, ціни | Ultimate              (40 chars)
+✅ Активна піна для миття авто — купити | Ultimate      (48 chars)
+✅ Очищувач дисків — купити в Україні | Ultimate        (46 chars)
+
+❌ Купити чорнитель шин в Україні | Ultimate            (Купити первым!)
+❌ Чорнитель шин | Ultimate                              (нет коммерции)
+❌ Чернители резины: купить в Киеве                     (двоеточие, нет бренда)
 ```
 
 ---
@@ -68,7 +95,7 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 
 ## H1 (чистый, без коммерции)
 
-**Формула:** `{Primary keyword} для авто`
+**Формула:** `{ВЧ keyword}` или `{ВЧ keyword} для авто`
 
 **Правила:**
 
@@ -79,6 +106,7 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 ```
 ✅ H1: Чорнитель шин
 ✅ H1: Активна піна для безконтактного миття
+
 ❌ H1: Купити чорнитель шин
 ❌ H1: Чорнитель шин — купити | Ultimate
 ```
@@ -92,10 +120,10 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
   "slug": "{slug}",
   "language": "ru",
   "meta": {
-    "title": "{Title 50-60 chars}",
+    "title": "{ВЧ Ключ} — купить, цены | Ultimate",
     "description": "{Description 120-160 chars}"
   },
-  "h1": "{H1 без купить}",
+  "h1": "{ВЧ Ключ без купить}",
   "keywords_in_content": {
     "primary": ["keyword1", "keyword2"],
     "secondary": ["keyword3", "keyword4"],
@@ -112,9 +140,14 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 
 ## Workflow
 
-1. Прочитать `categories/{slug}/data/{slug}_clean.json` — primary keyword
+1. Прочитать `categories/{slug}/data/{slug}_clean.json`
+   - `keywords[0]` = Primary (max volume) → Title начало, H1
+   - `synonyms` с `meta_only` → проверить наличие коммерческих
 2. Найти товары в `products_with_descriptions.md` — типы, объёмы
-3. Применить формулы Title, Description, H1
+3. Применить формулы:
+   - Title: `{Primary} — купить, цены | Ultimate`
+   - H1: `{Primary}` (чистый)
+   - Description: `{Primary} от производителя Ultimate. {Types}. {Volumes}. Опт и розница.`
 4. Сохранить в `categories/{slug}/meta/{slug}_meta.json`
 5. Валидация: `python3 scripts/validate_meta.py {path}`
 
@@ -123,8 +156,8 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 ## Validation Checklist
 
 - [ ] Title: 50-60 chars
-- [ ] Title: Primary keyword в начале
-- [ ] Title: Содержит "купить/купити"
+- [ ] Title: **ВЧ keyword в начале** (НЕ "Купить" первым!)
+- [ ] Title: Содержит "купить/купити" ПОСЛЕ ВЧ
 - [ ] Title: Без двоеточия
 - [ ] Description: 120-160 chars
 - [ ] Description: Без emoji
@@ -138,6 +171,7 @@ description: Generates SEO meta tags (title, description, h1) for Ultimate.net.u
 | RU | UK |
 |----|-----|
 | Купить | Купити |
+| цены | ціни |
 | в Украине | в Україні |
 | производителя | виробника |
 | опт и розница | опт і роздріб |
@@ -157,4 +191,4 @@ Status: ready for /seo-research
 
 ---
 
-**Version:** 9.0 — December 2025
+**Version:** 10.0 — January 2026
