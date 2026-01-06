@@ -3,5 +3,8 @@
   "name": "Наборы",
   "type": "category",
   "parent_id": "aksessuary",
-  "keywords": []
+  "keywords": [],
+  "synonyms": [],
+  "source": "hub_no_keywords",
+  "note": "L2 хаб — ключи в дочерних L3: nabory-dlya-moyki, nabory-dlya-salona"
 }

@@ -9,6 +9,12 @@
       "volume": 3600
     },
     {
+      "keyword": "tornador",
+      "volume": 140
+    }
+  ],
+  "synonyms": [
+    {
       "keyword": "купить торнадор",
       "volume": 390
     },
@@ -19,10 +25,6 @@
     {
       "keyword": "торнадор химчистка",
       "volume": 210
-    },
-    {
-      "keyword": "tornador",
-      "volume": 140
     },
     {
       "keyword": "купить торнадор для химчистки",
