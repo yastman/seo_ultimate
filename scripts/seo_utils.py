@@ -23,6 +23,7 @@ RULES 2025 v8.0 (Google December 2025 Update — Adaptive Approach):
 - get_adaptive_requirements() - NEW: адаптивные требования по keywords count
 """
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -238,6 +239,45 @@ def get_l3_name(slug: str) -> str | None:
         L3 name or None if not found
     """
     return SLUG_TO_L3.get(slug)
+
+
+# ============================================================================
+# JSON / File Utils
+# ============================================================================
+
+
+def load_json(path: Path | str) -> dict[str, Any]:
+    """
+    Safely load JSON file.
+
+    Args:
+        path: Path to JSON file
+
+    Returns:
+        Dictionary with data or empty dict on error
+
+    Raises:
+        FileNotFoundError: if strict=True (not implied here, but good to know)
+    """
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Error loading JSON {path}: {e}", file=sys.stderr)
+        return {}
+
+
+def save_json(data: dict[str, Any], path: Path | str, indent: int = 2) -> None:
+    """
+    Save dictionary to JSON file with utf-8 encoding.
+
+    Args:
+        data: Data to save
+        path: Path to output file
+        indent: Indentation level
+    """
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=indent)
 
 
 # ============================================================================
