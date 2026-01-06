@@ -85,12 +85,12 @@
 
 ### L1: Полировка (polirovka)
 
--   [ ] `polirovka` (Полировка)
--   [ ] `polirovalnye-mashinki` (Полировальные машинки)
--   [ ] `akkumulyatornaya` (Аккумуляторные машинки)
--   [ ] `polirovalnye-pasty` (Полировальные пасты)
--   [ ] `polirovalnye-krugi` (Полировальные круги)
--   [ ] `mekhovye` (Меховые круги)
+-   [x] `polirovka` (Полировка)
+-   [x] `polirovalnye-mashinki` (Полировальные машинки)
+-   [x] `akkumulyatornaya` (Аккумуляторные машинки)
+-   [x] `polirovalnye-pasty` (Полировальные пасты)
+-   [x] `polirovalnye-krugi` (Полировальные круги)
+-   [x] `mekhovye` (Меховые круги)
 
 ### L1: Уход за интерьером (ukhod-za-intererom)
 
@@ -105,22 +105,22 @@
 
 ### L1: Защитные покрытия (zashchitnye-pokrytiya)
 
--   [ ] `zashchitnye-pokrytiya` (Защитные покрытия)
--   [ ] `voski` (Воски)
--   [ ] `tverdyy-vosk` (Твердый воск)
--   [ ] `zhidkiy-vosk` (Жидкий воск)
--   [ ] `keramika-i-zhidkoe-steklo` (Керамика и жидкое стекло)
--   [ ] `kvik-deteylery` (Квик-детейлеры)
--   [ ] `silanty` (Силанты)
+-   [x] `zashchitnye-pokrytiya` (Защитные покрытия)
+-   [x] `voski` (Воски)
+-   [x] `tverdyy-vosk` (Твердый воск)
+-   [x] `zhidkiy-vosk` (Жидкий воск)
+-   [x] `keramika-i-zhidkoe-steklo` (Керамика и жидкое стекло)
+-   [x] `kvik-deteylery` (Квик-детейлеры)
+-   [x] `silanty` (Силанты)
 
 ### L1: Оборудование (oborudovanie)
 
--   [ ] `oborudovanie` (Оборудование)
--   [ ] `apparaty-tornador` (Аппараты Tornador)
+-   [x] `oborudovanie` (Оборудование)
+-   [x] `apparaty-tornador` (Аппараты Tornador)
 
 ### L1: Опт и B2B (opt-i-b2b)
 
--   [ ] `opt-i-b2b` (Опт и B2B)
+-   [x] `opt-i-b2b` (Опт и B2B)
 
 ---
 
