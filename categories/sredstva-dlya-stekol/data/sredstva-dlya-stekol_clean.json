@@ -3,5 +3,7 @@
   "name": "Средства для стекол",
   "type": "category",
   "parent_id": "moyka-i-eksterer",
-  "keywords": []
+  "keywords": [],
+  "synonyms": [],
+  "note": "L2 hub - тряпка keywords moved to mikrofibra-i-tryapki"
 }
