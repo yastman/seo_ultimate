@@ -3,7 +3,26 @@
   "name": "Средства для стекол",
   "type": "category",
   "parent_id": "moyka-i-eksterer",
-  "keywords": [],
-  "synonyms": [],
-  "note": "L2 hub - тряпка keywords moved to mikrofibra-i-tryapki"
+  "keywords": [
+    {"keyword": "средства для стекол авто", "volume": 50},
+    {"keyword": "химия для стекол автомобиля", "volume": 30},
+    {"keyword": "автохимия для стекол", "volume": 20}
+  ],
+  "synonyms": [
+    {"keyword": "средства для автомобильных стекол", "volume": 10},
+    {"keyword": "уход за стеклами авто", "volume": 10},
+    {"keyword": "купить средства для стекол", "volume": 10, "use_in": "meta_only"}
+  ],
+  "entities": [
+    "лобовое стекло",
+    "боковые стёкла",
+    "заднее стекло",
+    "антидождь", "очиститель", "полироль"
+  ],
+  "micro_intents": [
+    "как ухаживать за стеклами авто",
+    "какие средства для стекол бывают",
+    "чем очистить стекло от разводов"
+  ],
+  "source": "generated"
 }
