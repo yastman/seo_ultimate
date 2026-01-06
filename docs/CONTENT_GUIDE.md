@@ -1,6 +1,6 @@
 # SEO Guide — Ultimate.net.ua
 
-## Version 21.0 | January 2026 | E-commerce Category Pages
+## Version 21.1 | January 2026 | E-commerce Category Pages
 
 ---
 
@@ -14,9 +14,10 @@
 | **Title formula**        | "Купить X"           | **"{ВЧ} — купить"** (Front-loading)                           | Ahrefs 2025         |
 | **FAQ Schema**           | Использовать         | **Убрать** (не работает для e-commerce)                       | Google Aug 2023     |
 | **Content length**       | По количеству ключей | **По анализу конкурентов**                                    | Semrush 2025        |
-| **AI Overviews**         | Новое                | **87% e-commerce запросов**                                   | Onely 2025          |
-| **Commercial modifiers** | Опционально          | **Обязательно в Title** (после ВЧ)                            | Ahrefs, BigCommerce |
-| **og:title**             | Дублировать title    | **Оптимизировать отдельно** (Google использует как source)    | Google 2025         |
+| **AI Overviews**         | Новое                | **61.7% e-commerce** (AI Mode shopping)                       | SE Ranking 2026     |
+| **Commercial modifiers** | Опционально          | **В Title после ВЧ** (77% удаляются при rewrite)              | Ahrefs, McAlpin     |
+| **og:title**             | Дублировать title    | **Оптимизировать отдельно** (Google использует как source)    | Google Aug 2024     |
+| **Dec 2025 Core Update** | —                    | **52% e-commerce затронуты**, нужен firsthand experience      | Almcorp 2025        |
 | **JSON structure**       | keywords only        | **keywords + synonyms + entities + micro_intents**            | SEO 2026            |
 
 ---
@@ -385,14 +386,16 @@ UK: {Категорія} від виробника Ultimate. {Типи това�
 
 ## 🤖 AI Overviews & AEO
 
-### Статистика 2025
+### Статистика (November 2025)
 
 | Метрика                           | Значение                       |
 | --------------------------------- | ------------------------------ |
-| E-commerce запросы с AI Overview  | **87%**                        |
-| Все запросы с AI Overview         | 13.14% (рост с 6.49% в январе) |
-| Correlation organic → AI Overview | Только **11%**                 |
+| E-commerce с AI Mode shopping     | **61.7%**                      |
+| Все запросы с AI Overview         | 15.69% (volatile: 6.49% → 24.61% → 15.69%) |
+| Transactional queries growth      | **+603.5%**                    |
 | CTR drop для позиций ниже #3      | **-27%**                       |
+
+**Важно:** AI Overviews — динамичная система. Google экспериментирует и отключает для некоторых queries.
 
 ### Стратегия для AI Overviews
 
@@ -424,6 +427,29 @@ AI не читает текст как человек. Он сканирует *
 
 ## 📊 Google Updates Impact
 
+### 🔴 December 2025 Core Update (11 дек 2025 — 1 янв 2026)
+
+**Критичный для e-commerce:**
+
+- **52% e-commerce сайтов** затронуты
+- **67% YMYL сайтов** затронуты
+- **Recovery timeline:** 4-8 месяцев (дольше обычного)
+
+**Требования для recovery:**
+
+| Требование | Что делать |
+|------------|------------|
+| **Firsthand experience** | Реальное использование продукта, не generic descriptions |
+| **Оригинальные media** | Свои фото/видео, не от производителя |
+| **Конкретные данные** | Расход в мл, время в минутах, результаты тестов |
+| **Comparison data** | Реальное сравнение типов/продуктов |
+
+**Что пессимизируется:**
+
+- ❌ Только manufacturer descriptions → **-67% трафика**
+- ❌ "Best X" списки без реального тестирования → **-71% трафика**
+- ❌ Generic "широкий ассортимент" контент
+
 ### December 2024 Core Update
 
 - **52% e-commerce сайтов** затронуты
@@ -439,13 +465,14 @@ AI не читает текст как человек. Он сканирует *
 - AI-контент без человеческой редактуры → **87% negative impact**
 - Дубликаты manufacturer descriptions → пессимизация
 
-### Что делать
+### Что делать (E-E-A-T Checklist)
 
-1. ✅ Уникальные описания категорий (не copy-paste)
-2. ✅ Trust signals на странице (возврат, доставка, контакты)
-3. ✅ Author credentials где возможно
-4. ✅ Даты обновления контента
-5. ❌ "Портянки" SEO-текста внизу страницы
+1. ✅ **Firsthand experience** — реальные данные использования
+2. ✅ **Конкретные цифры** — расход, время, пропорции
+3. ✅ **Уникальные описания** — не copy-paste от производителя
+4. ✅ **Trust signals** — возврат, доставка, контакты
+5. ✅ **Даты обновления** — показать актуальность
+6. ❌ **"Портянки" SEO-текста** — убрать стены текста внизу
 
 ---
 
@@ -523,23 +550,27 @@ AI не читает текст как человек. Он сканирует *
 
 **Google Officials:**
 
-- John Mueller — Keyword density, H1, Title tags, Front-loading
-- Gary Illyes — AI Overviews, Originality 2025
+- John Mueller — Keyword density, H1, Title tags, Consistency (Nov 2025)
+- Gary Illyes — AI Overviews, Originality (July 2025)
 
 **Research:**
 
 - Zyppy — Title rewrite study (76%)
-- Onely — AI Overviews e-commerce (87%)
-- Semrush — AI Overviews growth
+- McAlpin Q1 2025 — Title rewrites, 77% commercial keywords removed
+- SE Ranking 2026 — 61.7% e-commerce AI Mode shopping
+- Semrush Nov 2025 — AI Overviews volatility (15.69%)
 - Ahrefs — Category page optimization, Front-loading principle
-- EnrichLabs — Keyword density analysis
+- EnrichLabs — Keyword density analysis (0.04% average)
+- Almcorp — December 2025 Core Update impact
 
 **Updates:**
 
+- Google December 2025 Core Update (11 Dec - 1 Jan 2026)
 - Google December 2024 Core Update
 - Google March 2024 Core Update (HCU integration)
 - FAQ Rich Results restriction (August 2023)
+- og:title as source (August 2024)
 
 ---
 
-**Version:** 21.0 | **Updated:** 2026-01-06 | **For:** Ultimate.net.ua
+**Version:** 21.1 | **Updated:** 2026-01-06 | **For:** Ultimate.net.ua
