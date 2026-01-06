@@ -39,17 +39,16 @@ class TestValidateDescription:
         assert re.search(pattern, text)
 
     def test_valid_desc(self):
-        desc = "Купить активную пену для бесконтактной мойки от производителя Ultimate. Опт и розница, доставка по Украине. Эффективное удаление грязи."
+        desc = (
+            "Купить активную пену для бесконтактной мойки от производителя Ultimate. "
+            "Опт и розница, доставка по Украине. Эффективное удаление грязи."
+        )
         keywords = ["активная пена"]
         result = validate_description(desc, keywords)
-        with open("debug_result.txt", "w", encoding="utf-8") as f:
-            import pprint
-
-            f.write(pprint.pformat(result))
+        
         assert result["overall"] == "PASS"
         assert result["checks"]["producer"]["passed"]
         assert result["checks"]["wholesale"]["passed"]
-        assert result["overall"] == "PASS"
 
     def test_missing_producer(self):
         desc = (
@@ -62,10 +61,16 @@ class TestValidateDescription:
 class TestValidateMetaFile:
     def test_valid_file(self, tmp_path):
         meta_file = tmp_path / "test_meta.json"
+        
+        desc = (
+            "Купить активную пену для бесконтактной мойки от производителя Ultimate. "
+            "Опт и розница, доставка по Украине. Эффективное удаление грязи."
+        )
+        
         content = {
             "meta": {
                 "title": "Купить Активная пена для мойки авто (5л) | Ultimate",
-                "description": "Купить активную пену для бесконтактной мойки от производителя Ultimate. Опт и розница, доставка по Украине. Эффективное удаление грязи.",
+                "description": desc,
             },
             "h1": "Активная пена",
             "keywords_in_content": {"primary": ["активная пена"]},
@@ -73,10 +78,6 @@ class TestValidateMetaFile:
         meta_file.write_text(json.dumps(content, ensure_ascii=False), encoding="utf-8")
 
         result = validate_meta_file(str(meta_file))
-        if result["overall"] != "PASS":
-            import pprint
-
-            pprint.pprint(result)
         assert result["overall"] == "PASS"
 
     def test_missing_file(self):

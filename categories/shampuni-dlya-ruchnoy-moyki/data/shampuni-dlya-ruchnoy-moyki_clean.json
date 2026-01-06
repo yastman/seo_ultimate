@@ -1,0 +1,27 @@
+{
+  "id": "shampuni-dlya-ruchnoy-moyki",
+  "name": "Шампуни для ручной мойки",
+  "type": "category",
+  "parent_id": "avtoshampuni",
+  "keywords": [
+    {
+      "keyword": "шампунь для ручной мойки",
+      "volume": 10
+    },
+    {
+      "keyword": "автошампунь для ручной мойки",
+      "volume": 390
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "автомобильный шампунь для ручной мойки",
+      "volume": 70
+    },
+    {
+      "keyword": "купить автошампунь для ручной мойки",
+      "volume": 20
+    }
+  ],
+  "source": "migrated_from_legacy"
+}
