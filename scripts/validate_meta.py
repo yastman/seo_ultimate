@@ -52,6 +52,8 @@ PRODUCER_PATTERNS = [
     r"от производителя",
     r"виробника ultimate",
     r"производителя ultimate",
+    r"в інтернет-магазині ultimate",
+    r"в интернет-магазине ultimate",
 ]
 WHOLESALE_PATTERNS = [r"опт\b", r"роздріб", r"розница", r"оптом"]
 MARKETING_FLUFF = [
