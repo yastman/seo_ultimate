@@ -1,6 +1,6 @@
 ---
 name: deploy-to-opencart
-description: Deploy SEO meta tags and content to Ultimate.net.ua OpenCart database via VPS. Updates category descriptions, titles, H1, HTML content. Use when you see /deploy, залей на сайт, деплой мета, обнови на сайте.
+description: Use when you see /deploy, залей на сайт, деплой мета, обнови на сайте. (project)
 ---
 
 # Deploy to OpenCart — Ultimate.net.ua

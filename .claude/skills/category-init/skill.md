@@ -1,6 +1,6 @@
 ---
 name: category-init
-description: Initialize new SEO category structure for Ultimate.net.ua. Creates folder hierarchy, extracts keywords from CSV, generates clustered _clean.json. Use when you see /category-init, создай категорию, инициализируй категорию, новая категория, подготовь папку для категории.
+description: Use when you see /category-init, создай категорию, инициализируй категорию, новая категория, подготовь папку для категории. (project)
 ---
 
 # Category Init v2.0

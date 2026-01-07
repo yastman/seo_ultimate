@@ -1,6 +1,6 @@
 ---
 name: generate-meta
-description: Generates SEO meta tags (title, description, h1) for Ultimate.net.ua categories in Russian and Ukrainian. Extracts real product data from products_with_descriptions.md. Use when you see /generate-meta, генерируй мета, создай мета теги, оновити мета, обнови мета.
+description: Use when you see /generate-meta, генерируй мета, создай мета теги, оновити мета, обнови мета. (project)
 ---
 
 # Meta Tag Generator for Ultimate.net.ua
