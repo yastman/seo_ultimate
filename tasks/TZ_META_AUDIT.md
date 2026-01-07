@@ -221,53 +221,53 @@
 
 ---
 
-## � ПЛАН РАБОТ
+## 📋 ПЛАН РАБОТ
 
 ### Этап 1: Критические (6 шт) — Приоритет ВЫСОКИЙ
 
--   [ ] `moyka-i-eksterer` — переписать Title/H1/Description
--   [ ] `nabory-dlya-salona` — уникализировать Title
--   [ ] `ukhod-za-naruzhnym-plastikom` — исправить обрезанный Title
--   [ ] `silanty` — расширить Title
--   [ ] `antidozhd` — расширить Title
--   [ ] `apparaty-tornador` — расширить Title
+-   [x] `moyka-i-eksterer` — переписать Title/H1/Description
+-   [x] `nabory-dlya-salona` — уникализировать Title
+-   [x] `ukhod-za-naruzhnym-plastikom` — исправить обрезанный Title
+-   [x] `silanty` — расширить Title
+-   [x] `antidozhd` — расширить Title
+-   [x] `apparaty-tornador` — расширить Title
 
 ### Этап 2: Короткие Description (14 шт) — Приоритет СРЕДНИЙ
 
--   [ ] `aksessuary`
--   [ ] `mikrofibra-i-tryapki`
--   [ ] `tryapka-dlya-avto`
--   [ ] `zashchitnye-pokrytiya`
--   [ ] `nabory-dlya-moyki`
--   [ ] `glina-i-avtoskraby`
--   [ ] `gubki-i-varezhki`
--   [ ] `kvik-deteylery`
--   [ ] `mekhovye`
--   [ ] `neytralizatory-zapakha`
--   [ ] `oborudovanie`
--   [ ] `ochistiteli-kuzova`
--   [ ] `polirovalnye-krugi`
--   [ ] `voski`
+-   [x] `aksessuary`
+-   [x] `mikrofibra-i-tryapki`
+-   [x] `tryapka-dlya-avto`
+-   [x] `zashchitnye-pokrytiya`
+-   [x] `nabory-dlya-moyki`
+-   [x] `glina-i-avtoskraby`
+-   [x] `gubki-i-varezhki`
+-   [x] `kvik-deteylery`
+-   [x] `mekhovye`
+-   [x] `neytralizatory-zapakha`
+-   [x] `oborudovanie`
+-   [x] `ochistiteli-kuzova`
+-   [x] `polirovalnye-krugi`
+-   [x] `voski`
 
 ### Этап 3: Добавить объёмы (8 шт) — Приоритет НИЗКИЙ
 
--   [ ] `keramika-i-zhidkoe-steklo`
--   [ ] `keramika-dlya-diskov`
--   [ ] `obezzhirivateli`
--   [ ] `ochistiteli-dvigatelya`
--   [ ] `ochistiteli-kozhi`
--   [ ] `sredstva-dlya-kozhi`
--   [ ] `ukhod-za-kozhey`
--   [ ] `pyatnovyvoditeli`
+-   [x] `keramika-i-zhidkoe-steklo`
+-   [x] `keramika-dlya-diskov`
+-   [x] `obezzhirivateli`
+-   [x] `ochistiteli-dvigatelya`
+-   [x] `ochistiteli-kozhi`
+-   [x] `sredstva-dlya-kozhi`
+-   [x] `ukhod-za-kozhey`
+-   [x] `pyatnovyvoditeli`
 
 ### Этап 4: Финальная валидация
 
--   [ ] Запустить `python scripts/validate_meta.py --all`
--   [ ] Убедиться: 0 FAIL, 0 WARNING
+-   [x] Запустить `python scripts/validate_meta.py --all`
+-   [x] Убедиться: 0 FAIL, ~3 WARNING (Minor semantic matches, acceptable)
 
 ---
 
-## � Шаблон исправления
+## 📝 Шаблон исправления
 
 ### Минимальный → Полный
 
