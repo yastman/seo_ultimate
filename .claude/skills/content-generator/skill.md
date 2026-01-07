@@ -1,6 +1,6 @@
 ---
 name: content-generator
-description: Generate SEO content for Ultimate.net.ua categories. Creates structured text with intro, comparison table, how-to, FAQ. Uses research data and meta tags. Use when you see /content-generator, напиши текст, сгенерируй контент, создай контент для категории.
+description: Use when you see /content-generator, напиши текст, сгенерируй контент, создай контент для категории. (project)
 ---
 
 # Content Generator for Ultimate.net.ua

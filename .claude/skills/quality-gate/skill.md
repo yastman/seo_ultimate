@@ -1,6 +1,6 @@
 ---
 name: quality-gate
-description: Final quality check before deployment. Validates all category files (data, meta, content) for both RU and UK versions. Runs validation scripts, checks SEO requirements, produces PASS/FAIL report. Use when you see /quality-gate, проверь категорию, финальная проверка, валидация перед деплоем.
+description: Use when you see /quality-gate, проверь категорию, финальная проверка, валидация перед деплоем. (project)
 ---
 
 # Quality Gate

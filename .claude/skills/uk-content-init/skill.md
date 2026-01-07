@@ -1,6 +1,6 @@
 ---
 name: uk-content-init
-description: Initialize Ukrainian category structure and translate SEO keywords from Russian. Analyzes Russian keywords JSON, creates folder structure, translates terms preserving search intent, generates meta tags and research context. Use when preparing Ukrainian version for categories like antimoshka, cherniteli-shin, aktivnaya-pena, or when you see підготуй UK, створи українську версію, переклади ключі на українську.
+description: Use when preparing Ukrainian version for categories like antimoshka, cherniteli-shin, aktivnaya-pena, or when you see підготуй UK, створи українську версію, переклади ключі на українську. (project)
 ---
 
 # Ukrainian Content Initializer

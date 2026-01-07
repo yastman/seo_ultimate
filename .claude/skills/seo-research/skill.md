@@ -1,6 +1,6 @@
 ---
 name: seo-research
-description: Research category data for SEO content creation. Gathers product info, competitors, use cases via web search. Creates RESEARCH_DATA.md with 8 mandatory blocks. Use when you see /seo-research, исследуй категорию, собери данные, ресёрч для категории.
+description: Use when you see /seo-research, исследуй категорию, собери данные, ресёрч для категории. (project)
 ---
 
 # SEO Research for Ultimate.net.ua
