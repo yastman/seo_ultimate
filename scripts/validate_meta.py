@@ -335,11 +335,20 @@ def validate_description(description: str, primary_keywords: list[str] | None = 
     else:
         results["checks"]["producer"]["message"] = "Missing 'від виробника Ultimate'"
 
-    # 4. Wholesale check
+    # Check if this is a "shop" pattern (no Ultimate products) vs "producer" pattern
+    is_shop_pattern = bool(
+        re.search(r"в інтернет-магазині ultimate", desc_lower) or re.search(r"в интернет-магазине ultimate", desc_lower)
+    )
+
+    # 4. Wholesale check - only required for producer pattern (Ultimate products)
     wholesale_found = any(re.search(p, desc_lower) for p in WHOLESALE_PATTERNS)
     if wholesale_found:
         results["checks"]["wholesale"]["passed"] = True
         results["checks"]["wholesale"]["message"] = "OK (contains 'опт/роздріб')"
+    elif is_shop_pattern:
+        # Shop pattern doesn't require wholesale
+        results["checks"]["wholesale"]["passed"] = True
+        results["checks"]["wholesale"]["message"] = "OK (shop pattern, wholesale not required)"
     else:
         results["checks"]["wholesale"]["message"] = "Missing 'Опт і роздріб'"
 
