@@ -262,10 +262,10 @@
 
 ### Этап 4: Финальная валидация
 
--   -   [x] **Final Validation**
--   [x] Run `validate_meta.py --all`.
--   [x] Ensure 100% PASS logic.
--   [x] **Enrichment**: Updated descriptions to include specific product types (e.g., "Active foam: alkaline vs neutral", "Hand wash: acid vs ceramic") instead of generic terms.FAIL, ~3 WARNING (Minor semantic matches, acceptable)
+-   [x] **Final Validation**
+    -   [x] Run `validate_meta.py --all`.
+    -   [x] Ensure 100% PASS logic.
+    -   [x] **Enrichment**: Updated descriptions to include specific product types (e.g., "Active foam: alkaline vs neutral", "Hand wash: acid vs ceramic") instead of generic terms.
 
 ---
 
