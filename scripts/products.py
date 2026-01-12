@@ -41,16 +41,17 @@ CATEGORIES_MAP = {
     427: ("sredstva-dlya-khimchistki-salona", "Хімчистка салону"),
     431: ("neytralizatory-zapakha", "Засоби від запаху"),
     428: ("ukhod-za-kozhey", "Догляд за шкірою"),
-    432: ("polirovka", "Поліровка"),
+    457: ("polirovka", "Полірування"),
     461: ("polirovalnye-mashinki", "Полірувальні машинки"),
-    434: ("polirovalnye-pasty", "Полірувальні пасти"),
+    458: ("polirovalnye-pasty", "Полірувальні пасти"),
     459: ("polirovalnye-krugi", "Полірувальні круги"),
     436: ("kvik-deteylery", "Швидкий блиск/Полімер"),
-    437: ("silanty", "Силанти"),
-    438: ("voski", "Воски"),
+    438: ("silanty", "Силанти"),
+    437: ("voski", "Тверді воски"),
     439: ("keramika-i-zhidkoe-steklo", "Нанокераміка / Рідке скло"),
-    440: ("zashchitnye-pokrytiya", "Захисні покриття"),
+    435: ("zashchitnye-pokrytiya", "Захист"),
     466: ("apparaty-tornador", "Апарати Tornador"),
+    462: ("oborudovanie", "Обладнання"),
 }
 
 

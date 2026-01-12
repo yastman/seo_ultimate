@@ -5,7 +5,7 @@
 
 ---
 
-## Прогресс: 30/60
+## Прогресс: 32/60
 
 ### Группа 1: Автохимия — моющие средства (18)
 
@@ -46,11 +46,11 @@
 -   [x] poliroli-dlya-plastika ✅
 -   [x] ukhod-za-intererom ✅
 -   [x] ukhod-za-kozhey ✅
--   [ ] ukhod-za-naruzhnym-plastikom
+-   [x] ukhod-za-naruzhnym-plastikom ✅
 
 ### Группа 4: Полировка (5)
 
--   [ ] polirovalnye-pasty
+-   [x] polirovalnye-pasty ✅
 -   [ ] polirovalnye-krugi
 -   [ ] polirovalnye-mashinki
 -   [ ] polirovka
@@ -104,9 +104,11 @@
 
 ## Лог выполнения
 
-| Дата       | Категория              | Статус                |
-| ---------- | ---------------------- | --------------------- |
-| 2026-01-12 | cherniteli-shin        | ✅ Было готово        |
-| 2026-01-12 | poliroli-dlya-plastika | ✅ Research generated |
-| 2026-01-12 | ukhod-za-intererom     | ✅ Research generated |
-| 2026-01-12 | ukhod-za-kozhey        | ✅ Research generated |
+| Дата       | Категория                    | Статус                |
+| ---------- | ---------------------------- | --------------------- |
+| 2026-01-12 | cherniteli-shin              | ✅ Было готово        |
+| 2026-01-12 | poliroli-dlya-plastika       | ✅ Research generated |
+| 2026-01-12 | ukhod-za-intererom           | ✅ Research generated |
+| 2026-01-12 | ukhod-za-kozhey              | ✅ Research generated |
+| 2026-01-12 | ukhod-za-naruzhnym-plastikom | ✅ Research generated |
+| 2026-01-12 | polirovalnye-pasty           | ✅ Research generated |
