@@ -5,7 +5,7 @@
 
 ---
 
-## Прогресс: 32/60
+## Прогресс: 33/60
 
 ### Группа 1: Автохимия — моющие средства (18)
 
@@ -51,7 +51,7 @@
 ### Группа 4: Полировка (5)
 
 -   [x] polirovalnye-pasty ✅
--   [ ] polirovalnye-krugi
+-   [x] polirovalnye-krugi ✅
 -   [ ] polirovalnye-mashinki
 -   [ ] polirovka
 -   [ ] glina-i-avtoskraby
@@ -112,3 +112,4 @@
 | 2026-01-12 | ukhod-za-kozhey              | ✅ Research generated |
 | 2026-01-12 | ukhod-za-naruzhnym-plastikom | ✅ Research generated |
 | 2026-01-12 | polirovalnye-pasty           | ✅ Research generated |
+| 2026-01-12 | polirovalnye-krugi           | ✅ Research generated |
