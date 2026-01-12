@@ -1,6 +1,7 @@
 {
   "_comment": "Источник правды: slug → category_id. Обновлять при добавлении категорий.",
   "_source": "data/generated/PRODUCTS_LIST.md (## Название (ID: NNN))",
+  "_types": "categories: slug(string) → id(number). id_to_name_uk: id(string) → name_uk(string). При поиске: String(id).",
   "categories": {
     "aktivnaya-pena": 415,
     "antimoshka": 417,
