@@ -5,7 +5,7 @@
 
 ---
 
-## Прогресс: 28/60
+## Прогресс: 30/60
 
 ### Группа 1: Автохимия — моющие средства (18)
 
@@ -45,7 +45,7 @@
 -   [x] cherniteli-shin ✅ (уже готово)
 -   [x] poliroli-dlya-plastika ✅
 -   [x] ukhod-za-intererom ✅
--   [ ] ukhod-za-kozhey
+-   [x] ukhod-za-kozhey ✅
 -   [ ] ukhod-za-naruzhnym-plastikom
 
 ### Группа 4: Полировка (5)
@@ -109,3 +109,4 @@
 | 2026-01-12 | cherniteli-shin        | ✅ Было готово        |
 | 2026-01-12 | poliroli-dlya-plastika | ✅ Research generated |
 | 2026-01-12 | ukhod-za-intererom     | ✅ Research generated |
+| 2026-01-12 | ukhod-za-kozhey        | ✅ Research generated |
