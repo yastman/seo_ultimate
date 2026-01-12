@@ -5,7 +5,7 @@
 
 ---
 
-## Прогресс: 33/60
+## Прогресс: 36/60
 
 ### Группа 1: Автохимия — моющие средства (18)
 
@@ -52,9 +52,9 @@
 
 -   [x] polirovalnye-pasty ✅
 -   [x] polirovalnye-krugi ✅
--   [ ] polirovalnye-mashinki
--   [ ] polirovka
--   [ ] glina-i-avtoskraby
+-   [x] polirovalnye-mashinki ✅
+-   [x] polirovka ✅
+-   [x] glina-i-avtoskraby ✅
 
 ### Группа 5: Инструменты и оборудование (8)
 
@@ -97,8 +97,8 @@
 
 ## Текущая работа
 
-**Категория:** —
-**Статус:** —
+**Категория:** raspyliteli-i-penniki
+**Статус:** В работе
 
 ---
 
@@ -113,3 +113,6 @@
 | 2026-01-12 | ukhod-za-naruzhnym-plastikom | ✅ Research generated |
 | 2026-01-12 | polirovalnye-pasty           | ✅ Research generated |
 | 2026-01-12 | polirovalnye-krugi           | ✅ Research generated |
+| 2026-01-12 | polirovalnye-mashinki        | ✅ Research generated |
+| 2026-01-12 | polirovka                    | ✅ Research generated |
+| 2026-01-12 | glina-i-avtoskraby           | ✅ Research generated |
