@@ -50,6 +50,7 @@ CATEGORIES_MAP = {
     437: ("voski", "Тверді воски"),
     439: ("keramika-i-zhidkoe-steklo", "Нанокераміка / Рідке скло"),
     435: ("zashchitnye-pokrytiya", "Захист"),
+    447: ("raspyliteli-i-penniki", "Розпилювачі, тригери, пінники"),
     466: ("apparaty-tornador", "Апарати Tornador"),
     462: ("oborudovanie", "Обладнання"),
 }
