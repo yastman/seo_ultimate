@@ -1,5 +1,10 @@
 import re
+import sys
 from pathlib import Path
+
+# Force UTF-8 for output
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 sql_file = Path(
     r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт\data\dumps\ultimate_net_ua_backup.sql"
