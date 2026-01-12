@@ -1,8 +1,9 @@
 {
-  "_comment": "Источник правды: slug → category_id. Обновлять при добавлении категорий.",
+  "_comment": "slug → section_id из PRODUCTS_LIST.md. НЕ путать с OpenCart category_id!",
   "_source": "data/generated/PRODUCTS_LIST.md (## Название (ID: NNN))",
-  "_types": "categories: slug(string) → id(number). id_to_name_uk: id(string) → name_uk(string). При поиске: String(id).",
-  "categories": {
+  "_warning": "antimoshka и antibitum имеют общий section_id=417. При извлечении ассортимента фильтровать по keywords.",
+  "_types": "sections: slug(string) → id(number). id_to_name_uk: id(string) → name_uk(string).",
+  "sections": {
     "aktivnaya-pena": 415,
     "antimoshka": 417,
     "antibitum": 417,
