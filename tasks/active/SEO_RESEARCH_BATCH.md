@@ -38,13 +38,13 @@
 -   [x] silanty ✅
 -   [x] kvik-deteylery ✅
 -   [x] zashchitnye-pokrytiya ✅
--   [x] antidozhd ✅
+-   [x] antidozh ✅
 
 ### Группа 3: Уход за поверхностями (5)
 
 -   [x] cherniteli-shin ✅ (уже готово)
 -   [x] poliroli-dlya-plastika ✅
--   [ ] ukhod-za-intererom
+-   [x] ukhod-za-intererom ✅
 -   [ ] ukhod-za-kozhey
 -   [ ] ukhod-za-naruzhnym-plastikom
 
@@ -104,6 +104,8 @@
 
 ## Лог выполнения
 
-| Дата       | Категория       | Статус         |
-| ---------- | --------------- | -------------- |
-| 2026-01-12 | cherniteli-shin | ✅ Было готово |
+| Дата       | Категория              | Статус                |
+| ---------- | ---------------------- | --------------------- |
+| 2026-01-12 | cherniteli-shin        | ✅ Было готово        |
+| 2026-01-12 | poliroli-dlya-plastika | ✅ Research generated |
+| 2026-01-12 | ukhod-za-intererom     | ✅ Research generated |
