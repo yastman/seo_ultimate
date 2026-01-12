@@ -1,60 +1,131 @@
-# Research Prompt: polirovalnye-pasty (Полировальные пасты)
+# Полировальные пасты (polirovalnye-pasty) — SEO Research (Buyer Guide)
 
-## Context
+## ТЗ для Perplexity Deep Research
 
-**Project:** Ultimate.net.ua — Specialist e-commerce store for auto detailing and car care.
-**Category:** polirovalnye-pasty (Полировальные пасты)
-**Target Audience:** Professional detailers and advanced car owners with polishing machines.
+**Задача:** Собрать экспертные данные с источниками для создания buyer guide по полировальным пастам для ЛКП автомобиля (абразивные, финишные, одношаговые).
 
-## Objective
+**Как работать:** Загрузи ВЕСЬ этот файл в Perplexity → Deep Research. Ответ верни в формате раздела "Шаблон вывода" в конце файла.
 
-Conduct deep SEO research for "Car polishing compounds/pastes". Focus on the hierarchy of abrasiveness, choosing the right combination of pad and paste, and professional workflows.
+---
 
-## Semantic Core (RU/UK)
+## Контекст
 
-**Main Keywords:**
+| Параметр          | Значение                                                 |
+| ----------------- | -------------------------------------------------------- |
+| Тип страницы      | Категория интернет-магазина                              |
+| Название          | Полировальные пасты                                      |
+| Slug              | polirovalnye-pasty                                       |
+| Parent            | polirovka                                                |
+| Язык контента     | Русский (Украина)                                        |
+| Целевая аудитория | Профессиональные детейлеры, маляры, продвинутые любители |
 
--   полировочная паста (1600)
--   полировочная паста для авто (590)
--   паста для полировки (320)
--   полировочная паста для авто от царапин (260)
+---
 
-**Synonyms & LSI:**
+## Семантическое ядро
 
--   абразивная паста для авто
--   финишная паста для полировки
--   паста для полировки кузова
--   одношаговая полировочная паста
--   паста для машинной полировки
+### Основные ключевые слова
 
-## Product Insights (What we sell)
+| Ключ                                | Объём |
+| ----------------------------------- | ----- |
+| полировальная паста для авто        | 1000  |
+| паста для полировки авто            | 1000  |
+| абразивная паста для полировки авто | 590   |
+| паста для полировки кузова          | 110   |
+| финишная полировальная паста        | 90    |
+| полировочная паста для машины       | 90    |
 
--   **Top Brands:** ZviZZer, 3D (ACA 510, 520), Koch-Chemie.
--   **Heavy Cut:** 3D ACA 510 Premium Rubbing Compound (fast removal of deep scratches).
--   **Fine Cut:** ZviZZer Fine Cut FC 2000 (removing holograms and light defects).
--   **One-Step:** Products that combine cutting and finishing properties.
--   **Workflow:** Matching the color/density of the ZviZZer pad with the corresponding paste.
+### Entities (сущности для контента)
 
-## Research Objectives
+-   абразивность (Heavy Cut / Fine Cut)
+-   режущая способность
+-   блеск (gloss)
+-   разрушающиеся абразивы (diminishing abrasives)
+-   неразрушающиеся абразивы (non-diminishing)
+-   пыльность состава (dusting)
+-   время работы (cycle time)
+-   филлеры (fillers / маскировка)
 
-1. **Abrasiveness Scale:** Explain the difference between Heavy Cut, Medium Cut, and Fine/Ultra Fine Cut.
-2. **One-Step Polishing:** Pros and cons of the one-step approach for daily drivers vs show cars.
-3. **Compound vs Polish:** Clarifying the terminology (Compounds for cutting, Polishes for finishing).
-4. **Pad & Paste Synergy:** How to pick the right pad (hard/soft, foam/wool) for a specific paste.
-5. **Dusting and Curing:** Factors like "low dust" formulas and "working time" of the paste.
-6. **FAQ Candidates:**
-    - "How to choose a paste for a novice?"
-    - "Can I polish by hand with machine pastes?"
-    - "Does it remove all scratches?" (Managing expectations).
+### Вопросы пользователей (micro_intents)
 
-## Output Format
+-   как выбрать пасту для полировки авто
+-   какая паста лучше убирает глубокие царапины
+-   отличие абразивной пасты от финишной
+-   можно ли полировать пастой вручную
 
-Generate a structured report in **Russian** following the template:
+---
 
-1. **Intent & User Needs:** Identifying the type of damage (scratches, haze, holograms).
-2. **Classification of Pastes:** Detailed breakdown by grain size/abrasiveness.
-3. **Selection Guide:** Choosing based on paint hardness (ceramic clear coats vs soft Japanese paints).
-4. **Professional Workflow:** The correct technique (area size, speed, pressure).
-5. **Common Mistakes:** Overheating the paint, using dirty pads, not cleaning residue.
-6. **FAQ:** 3-5 technical questions.
-7. **Expert Recommendations:** Insights on 3D and ZviZZer systems.
+## Product Insights (из описаний товаров)
+
+| Характеристика | Из описаний                               |
+| -------------- | ----------------------------------------- |
+| Бренды         | ZviZZer, Liquid Elements, 3D, Koch-Chemie |
+| Линейки        | От Heavy Cut до Ultra Fine / One-Step     |
+| Особенности    | Низкая пыльность, отсутствие силикона     |
+
+---
+
+## Промпт для исследования (11 блоков)
+
+### Блок 1: Что это и зачем
+
+1. Принцип работы полировальной пасты: как абразивы снимают слой лака.
+2. Почему важно подбирать пасту под тип лака (твердый/мягкий)?
+
+### Блок 2: Виды и типы паст
+
+-   **Heavy Cut (Грубые/Абразивные):** удаление глубоких рисок и оксидного слоя.
+-   **Medium / One-Step:** коррекция и финиш за один проход.
+-   **Finish / Anti-Hologram:** максимальный блеск, удаление голограмм.
+
+### Блок 3: Технологии абразива
+
+1. DAT (Diminishing Abrasive Technology) — как работают и кому подходят.
+2. SMAT (Super Micro Abrasive Technology) — преимущества стабильного реза.
+
+### Блок 4: Правила выбора
+
+-   Паста для твердых лаков (немецкие авто) vs мягких (японские).
+-   Выбор пасты под тип машинки (роторная vs эксцентрик).
+
+### Блок 5: Нанесение и работа
+
+1. "Разнос" пасты по поверхности.
+2. Температурный режим: риск перегрева лака.
+3. Очистка остатков (Panel Wipe) для проверки результата.
+
+### Блок 6: Ошибки
+
+1. Работа грязным кругом.
+2. Использование слишком большого количества пасты (забивание круга).
+3. Полировка на горячем кузове или под солнцем.
+
+### Блок 6а: Спорные утверждения — запрос на PROOF
+
+1. "Пасты с филлерами (маскировкой) — это обман покупателя".
+2. "Универсальной пасты не существует".
+
+### Блок 7: FAQ новичка
+
+1. Нужна ли вода при полировке современными пастами?
+2. Можно ли убрать царапину до металла?
+3. Что будет, если не смыть пасту после работы?
+
+### Блок 8: Troubleshooting
+
+1. Паста быстро сохнет и пылит.
+2. Паста "липнет" к лаку и тяжело вытирается.
+
+### Блок 9: Совместимость
+
+1. Совместимость пасты и полировального круга (согласно системе производителя).
+
+### Блок 10: Практические цифры
+
+1. Средний расход пасты на седан.
+2. Время выработки одного "прохода".
+
+---
+
+## Шаблон вывода
+
+(Аналогично предыдущим)

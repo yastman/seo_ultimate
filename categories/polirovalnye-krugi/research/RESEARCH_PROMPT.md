@@ -1,65 +1,130 @@
-# Research Prompt: polirovalnye-krugi (Полировальные круги)
+# Полировальные круги (polirovalnye-krugi) — SEO Research (Buyer Guide)
 
-## Context
+## ТЗ для Perplexity Deep Research
 
-**Project:** Ultimate.net.ua — Specialist e-commerce store for auto detailing and car care.
-**Category:** polirovalnye-krugi (Полировальные круги)
-**Target Audience:** Enthusiasts and professionals selecting the right pads for rotary and dual-action machines.
+**Задача:** Собрать экспертные данные с источниками для создания buyer guide по полировальным кругам (падам) для механической полировки авто.
 
-## Objective
+**Как работать:** Загрузи ВЕСЬ этот файл в Perplexity → Deep Research. Ответ верни в формате раздела "Шаблон вывода" в конце файла.
 
-Conduct deep SEO research on "Car polishing pads (circles)". Focus on materials (foam, wool, microfiber), densities/hardness levels, diameters, and compatibility with machines.
+---
 
-## Semantic Core (RU/UK)
+## Контекст
 
-**Main Keywords:**
+| Параметр          | Значение                            |
+| ----------------- | ----------------------------------- |
+| Тип страницы      | Категория интернет-магазина         |
+| Название          | Полировальные круги                 |
+| Slug              | polirovalnye-krugi                  |
+| Parent            | polirovka                           |
+| Язык контента     | Русский (Украина)                   |
+| Целевая аудитория | Детейлеры-профессионалы, энтузиасты |
 
--   круг для полировки авто (720)
--   круги для полировки автомобиля (590)
--   круги для полировки (480)
--   полировальные круги (390)
+---
 
-**Synonyms & LSI:**
+## Семантическое ядро
 
--   полировальные диски для авто
--   меховой круг для полировки
--   поролоновый полировальный круг
--   микрофибровый круг
--   полировальные круги на липучке
--   диски для полировальной машинки
+### Основные ключевые слова
 
-## Product Insights (What we sell)
+| Ключ                           | Объём |
+| ------------------------------ | ----- |
+| круг для полировки авто        | 720   |
+| круги для полировки автомобиля | 590   |
+| круги для полировки            | 480   |
+| полировальные круги            | 390   |
+| набор для полировки авто       | 480   |
 
--   **ZviZZer (Professional System):**
-    -   **THERMO Allrounder/Trapez:** Heat-resistant foam, reduces heat build-up.
-    -   **Hybrid Wool:** Mix of microfiber and wool for maximum cutting.
-    -   **Microfiber Pads:** High cut with a better finish than wool.
-    -   **Color Coding:** Blue (Extra Hard), Red (Hard), Orange (Medium), Yellow (Soft), Green (Ultra Soft).
--   **Pads 99:**
-    -   **Sandwich Pads:** Multi-layer construction for durability and vibration reduction.
-    -   **Twister Pads:** Optimized for orbital machines with Open-Cell technology.
--   **Sizes:** 75мм, 125мм, 150мм (backing plate compatibility).
+### Entities (сущности для контента)
 
-## Research Objectives
+-   поролоновый круг (foam pad)
+-   меховой круг (wool pad / sheepskin)
+-   микрофибровый круг (microfiber pad)
+-   жесткость (hard/medium/soft)
+-   диаметр (75/125/150 мм)
+-   открытая и закрытая ячейка (open/closed cell)
+-   термостойкость (ZviZZer Thermo)
+-   липучка (Velcro)
 
-1. **Material Guide:** Deep dive into Foam (porolon), Wool (natural/hybrid), and Microfiber. When to use which?
-2. **Hardness Levels:** Explain the traditional color coding (e.g., European vs American systems if applicable, but focus on ZviZZer).
-3. **Heat Management:** Why heat is the enemy and how specialized pads like ZviZZer THERMO solve this.
-4. **Machine Compatibility:** Rotary (classic pads) vs Dual Action/Orbital (Trapezoidal/Ventilated pads).
-5. **Pad Maintenance:** How to clean pads (brushes, washing, air blowing) to make them last longer.
-6. **FAQ Candidates:**
-    - "Can I use one pad for the whole car?" (No, explains saturations/heat).
-    - "How to choose a pad based on the paste?"
-    - "Wool or Microfiber for heavy cutting?"
+### Вопросы пользователей (micro_intents)
 
-## Output Format
+-   как выбрать круг для полировки автомобиля
+-   мех или поролон: что лучше для реза
+-   какой диаметр круга выбрать
+-   как мыть полировальные круги
 
-Generate a structured report in **Russian** following the template:
+---
 
-1. **Intent & Problem Awareness:** Recognizing the role of the pad as the "interface" between machine and paint.
-2. **Classification by Material:** Foam vs Wool vs Microfiber comparison.
-3. **The Importance of Hardness:** How it affects "Cut" and "Finish".
-4. **Diameter & Machine Guide:** Backing plate sizes and machine types.
-5. **Care & Lifecycle:** Washing, cleaning, and storage.
-6. **FAQ:** 3-5 user questions.
-7. **Expert Recommendations:** Focus on ZviZZer Thermo as a high-tech solution.
+## Product Insights (из описаний товаров)
+
+| Характеристика | Из описаний                                   |
+| -------------- | --------------------------------------------- |
+| Бренды         | ZviZZer, Liquid Elements, Pads 99             |
+| Типы           | Трапециевидные, THERMO, стандартные           |
+| Системы        | Цветовая кодировка жесткости (ZviZZer system) |
+
+---
+
+## Промпт для исследования (11 блоков)
+
+### Блок 1: Роль круга в полировке
+
+1. Почему круг важнее пасты (или так же важен)? Как жесткость влияет на съем лака.
+2. Теплоотвод: почему перегрев круга убивает его и лак.
+
+### Блок 2: Материалы (Классификация)
+
+-   **Поролон:** Разница между открытой и закрытой ячейкой.
+-   **Мех:** Натуральный vs Гибридный. Почему мех холоднее при работе?
+-   **Микрофибра:** Особенности работы на эксцентриковых машинках.
+
+### Блок 3: Геометрия и конструкция
+
+1. Трапеция vs Прямой борт: безопасность ребер.
+2. Центральное отверстие: зачем оно нужно (охлаждение, центровка).
+3. Интерфейсный слой: роль прослойки в гашении вибраций.
+
+### Блок 4: Выбор под инструмент
+
+-   Круги для ротора vs Для эксцентрика (DA). В чем ключевое отличие?
+-   Соотношение размера подложки и круга.
+
+### Блок 5: Система жесткости (Цвета)
+
+1. Разбор стандартной палитры (на примере ZviZZer или классической европейской).
+2. Как не перепутать круги в процессе работы.
+
+### Блок 6: Уход и ресурс
+
+1. Чистка в процессе работы (щетка, воздух).
+2. Как правильно мыть и сушить круги, чтобы не развалилась липучка.
+3. Сколько машин выдерживает один качественный круг?
+
+### Блок 6а: Спорные утверждения — запрос на PROOF
+
+1. "Меховой круг всегда оставляет больше голограмм, чем поролон".
+2. "Поролон с закрытой ячейкой быстрее перегревает лак".
+
+### Блок 7: FAQ новичка
+
+1. Сколько кругов нужно на одну машину?
+2. Можно ли использовать один круг для разных паст?
+3. В чем преимущество термостойких кругов (ZviZZer Thermo)?
+
+### Блок 8: Troubleshooting
+
+1. Липучка (велькро) отклеивается от поролона.
+2. Круг "разрывается" по центру на эксцентрике.
+
+### Блок 9: Совместимость
+
+1. Подбор круга под конкретную "шапку" абразива (Step 1, 2, 3).
+
+### Блок 10: Практические цифры
+
+1. Рабочая температура круга.
+2. Оптимальные обороты для разных типов материалов.
+
+---
+
+## Шаблон вывода
+
+...

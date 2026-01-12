@@ -1,65 +1,131 @@
-# Research Prompt: poliroli-dlya-plastika (Полироли для пластика)
+# Полироли для пластика (poliroli-dlya-plastika) — SEO Research (Buyer Guide)
 
-## Context
+## ТЗ для Perplexity Deep Research
 
-**Project:** Ultimate.net.ua — Specialist e-commerce store for auto detailing and car care.
-**Category:** poliroli-dlya-plastika (Полироли для пластика)
-**Target Audience:** Car enthusiasts and professional detailers in Ukraine.
+**Задача:** Собрать экспертные данные с источниками для создания buyer guide по полиролям и средствам для ухода за пластиком интерьера автомобиля.
 
-## Objective
+**Как работать:** Загрузи ВЕСЬ этот файл в Perplexity → Deep Research. Ответ верни в формате раздела "Шаблон вывода" в конце файла.
 
-Conduct deep SEO research to understanding user intent, key topics, and helpful content structure for the "Plastic Polishes" category. Focus on interior plastics, dashboard care, and different finishes (matte vs gloss).
+---
 
-## Semantic Core (RU/UK)
+## Контекст
 
-**Main Keywords:**
+| Параметр          | Значение                    |
+| ----------------- | --------------------------- |
+| Тип страницы      | Категория интернет-магазина |
+| Название          | Полироли для пластика       |
+| Slug              | poliroli-dlya-plastika      |
+| Parent            | ukhod-za-intererom          |
+| Язык контента     | Русский (Украина)           |
+| Целевая аудитория | Автовладельцы, детейлеры    |
 
--   полироль для салона автомобиля (390)
--   полироль для пластика автомобиля (320)
--   полироль для пластику авто (320)
--   полироль для торпеды (260)
--   полироль для панели авто (170)
+---
 
-**Synonyms & LSI:**
+## Семантическое ядро
 
--   полироль для торпедо авто (140)
--   полироль для панели автомобиля (70)
--   полироль для пластика салона (20)
--   средство для ухода за пластиком авто (20)
--   матовый полироль для торпеды
--   глянцевый полироль
+### Основные ключевые слова
 
-## Product Insights (What we sell)
+| Ключ                                | Объём |
+| ----------------------------------- | ----- |
+| полироль для пластика авто          | 1600  |
+| полироль для пластика               | 1600  |
+| полироль для торпеды                | 320   |
+| матовая полироль для пластика       | 210   |
+| чистящее средство для пластика авто | 90    |
+| средство для чистки пластика        | 90    |
 
--   **Matte Solutions:** Gtechniq C6 Matte Dash AB (antibacterial, 100% matte), Ultimate MattInteriorDressing CD4 (color restoration, antistatic), Koch-Chemie Top Star (natural look, UV protection).
--   **Maintenance:** Ultimate Interior Detailer (quick cleanup for dust and fingerprints).
--   **Protection:** Ultimate Top Plast (conservation).
--   **Pro Tip:** Koch-Chemie Top Star is best for smooth surfaces (Mercedes, BMW, Audi); for ribbed plastic (Opel, Ford), glossier products like Cocpit-Super are often preferred.
+### Entities (сущности для контента)
 
-## Research Objectives
+-   матовый эффект (matte finish)
+-   глянцевый эффект (gloss finish)
+-   антистатический эффект (dust repellent)
+-   торпедо / приборная панель
+-   защита от UV-излучения
+-   очиститель-полироль (2-в-1)
 
-1. **User Intent Analysis:**
-    - What problems are users trying to solve? (Dust, fading, scratches, glare from dash).
-    - "Matte vs Gloss" debate: When to use which?
-2. **Buying Guide Data:**
-    - How to choose: factors like antistatic properties, UV protection, presence of fragrance.
-    - Types: Spray, milk (creams), gels.
-3. **Internal vs External Plastic:** Briefly touch upon differences (though this category is primarily for interior).
-4. **Step-by-Step Instructions:** Best practices for applying polish (cleaning first, microfiber choice).
-5. **Common Mistakes:** Applying too much (greasy residue), applying on glass/transparent plastic.
-6. **FAQ Candidates:**
-    - "How often should I use it?"
-    - "Can it fix scratches?"
-    - "Does it protect against the sun?"
+### Вопросы пользователей (micro_intents)
 
-## Output Format
+-   как выбрать матовую полироль для авто
+-   чем лучше полировать пластик в салоне
+-   как убрать царапины на пластике в салоне
+-   полироль или очиститель: что сначала
 
-Generate a structured report in **Russian** following the template:
+---
 
-1. **Intent & Problems:** Intro intent, user pain points.
-2. **Selection Criteria:** Guide on how to choose.
-3. **Types of Products:** Categorization.
-4. **Execution/How-to:** Best practices.
-5. **Mistakes:** What to avoid.
-6. **FAQ:** 3-5 popular questions.
-7. **Expert Tips:** Professional insights.
+## Product Insights (из описаний товаров)
+
+| Характеристика    | Из описаний                                      |
+| ----------------- | ------------------------------------------------ |
+| Бренды            | Ultimate (Cockpit Matte), Meguiar's, Koch-Chemie |
+| Визуальный эффект | Преимущественно матовый/натуральный              |
+| Особенности       | Антистатик, приятные ароматы                     |
+
+---
+
+## Промпт для исследования (11 блоков)
+
+### Блок 1: Что это и зачем
+
+1. Что такое полироль (дрессинг) для пластика и его роль в детейлинге интерьера?
+2. Почему пластик в салоне выгорает и становится хрупким?
+
+### Блок 2: Виды и типы средств
+
+1. Глянцевые vs Матовые полироли: психологическое восприятие и практичность.
+2. Водная основа vs Силиконовая основа: безопасность и липкость.
+3. Очистители-полироли (AIO) vs чистые консерванты.
+
+### Блок 3: Как выбрать
+
+-   Как выбрать средство для новых авто?
+-   Какое средство лучше скрывает мелкие царапины?
+-   Выбор аромата и его стойкость.
+
+### Блок 4: Правила нанесения
+
+1. Обязательная предварительная очистка (APC).
+2. Нанесение на аппликатор, а не на панель (защита стекла).
+3. Располировка микрофиброй.
+
+### Блок 5: Критические ошибки
+
+1. Использование жирных глянцевых средств на торпедо (блики на стекле).
+2. Нанесение на грязную поверхность.
+3. Использование силиконовых средств на руле и педалях (скользкость).
+
+### Блок 6: Безопасность
+
+1. Безопасность для датчиков и экранов мультимедиа.
+2. Аллергические реакции на отдушки.
+
+### Блок 6а: Спорные утверждения — запрос на PROOF
+
+1. "Полироль может убрать глубокие царапины на пластике".
+2. "Силиконовые полироли ускоряют растрескивание пластика".
+
+### Блок 7: FAQ новичка
+
+1. Можно ли полировать руль?
+2. Как часто обновлять защиту пластика?
+3. Поможет ли полироль от "сверчков" в панели?
+
+### Блок 8: Troubleshooting
+
+1. Появились белые пятна после высыхания.
+2. Поверхность осталась липкой и притягивает пыль.
+
+### Блок 9: Совместимость
+
+1. Можно ли использовать полироль для интерьера на внешнем пластике?
+2. Совместимость с софт-тач (soft-touch) покрытиями.
+
+### Блок 10: Практические цифры
+
+1. Срок действия антистатического эффекта.
+2. Расход средства на одну полную обработку салона.
+
+---
+
+## Шаблон вывода
+
+(Верни структурированный Markdown ответ для RESEARCH_DATA.md)

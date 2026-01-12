@@ -1,59 +1,132 @@
-# Research Prompt: ukhod-za-kozhey (Уход за кожей)
+# Уход за кожей (ukhod-za-kozhey) — SEO Research (Buyer Guide)
 
-## Context
+## ТЗ для Perplexity Deep Research
 
-**Project:** Ultimate.net.ua — Specialist e-commerce store for auto detailing and car care.
-**Category:** ukhod-za-kozhey (Уход за кожей)
-**Target Audience:** Owners of cars with premium leather interiors, looking for high-end maintenance.
+**Задача:** Собрать экспертные данные с источниками для создания buyer guide по очистке, защите и восстановлению кожаного салона автомобиля.
 
-## Objective
+**Как работать:** Загрузи ВЕСЬ этот файл в Perplexity → Deep Research. Ответ верни в формате раздела "Шаблон вывода" в конце файла.
 
-Conduct deep SEO research on "Leather care for cars". This involves cleaning, conditioning, and long-term protection of natural and synthetic leathers.
+---
 
-## Semantic Core (RU/UK)
+## Контекст
 
-**Main Keywords:**
+| Параметр          | Значение                                         |
+| ----------------- | ------------------------------------------------ |
+| Тип страницы      | Категория интернет-магазина                      |
+| Название          | Уход за кожей                                    |
+| Slug              | ukhod-za-kozhey                                  |
+| Parent            | ukhod-za-intererom                               |
+| Язык контента     | Русский (Украина)                                |
+| Целевая аудитория | Автовладельцы, владельцы премиум-авто, детейлеры |
 
--   уход за кожей авто (210)
--   полироль для кожи (170)
--   крем для кожи авто (70)
--   набор для ухода за кожей авто (30)
+---
 
-**Synonyms & LSI:**
+## Семантическое ядро
 
--   очиститель кожи автомобиля
--   кондиционер для кожаного салона
--   лосьон для кожи в машину
--   защита кожи от трещин
--   восстановление мягкости кожи
+### Основные ключевые слова
 
-## Product Insights (What we sell)
+| Ключ                             | Объём |
+| -------------------------------- | ----- |
+| уход за кожаным салоном авто     | 590   |
+| средство для ухода за кожей авто | 210   |
+| средство для чистки кожи авто    | 210   |
+| чистка кожаного салона           | 140   |
+| очиститель кожи авто             | 110   |
+| кондиционер для кожи авто        | 90    |
 
--   **Conditioners/Balms:** Ultimate Leather Balsam (water-based), Ultimate Leather Cream SP8 (nutrient fats), Koch-Chemie Leather Star (oil-water emulsion with resins).
--   **Cleaning:** Ultimate Easy Leather (universal for all types including suede/nappa).
--   **Specialized:** Furniture Clinic Leather Revive (for hard, old leather), Furniture Clinic Stain Remover.
--   **Protection:** Protective creams that restore "new leather" scent and prevent peeling.
+### Entities (сущности для контента)
 
-## Research Objectives
+-   анилиновая и полуанилиновая кожа
+-   экокожа / кожзам (synthetic leather)
+-   кондиционер для кожи (conditioner)
+-   очиститель кожи (cleaner)
+-   защитный крем (shield/cream)
+-   керамика для кожи (leather coating)
+-   PH-нейтральный состав
 
-1. **Material Varieties:** Difference in care for Nappa, Suede, Alcantara, Perforated leather.
-2. **Key Steps:** Importance of the Clean -> Condition -> Protect cycle.
-3. **Problem Solving:** How to prevent/fix cracking, fading, and "shiny" grease build-up.
-4. **Product Comparison:** Cream vs Spray vs Balm — when to use which.
-5. **Safety:** pH-neutrality and its importance for long-term leather health.
-6. **FAQ Candidates:**
-    - "Should new leather be conditioned?"
-    - "How to clean perforated seats without clogging holes?"
-    - "Can I use baby wipes on car leather?" (Strict No).
+### Вопросы пользователей (micro_intents)
 
-## Output Format
+-   как почистить белую кожу в машине
+-   чем отличается кондиционер от очистителя кожи
+-   как убрать потертости на коже салона
+-   можно ли использовать детский крем для кожи авто
 
-Generate a structured report in **Russian** following the template:
+---
 
-1. **Intent & Pain Points:** Why people look for leather care.
-2. **Leather Types & Care Specifics:** Differences between nappa, perforated, etc.
-3. **Selection Guide:** How to choose between cream, balm, and conditioner.
-4. **Maintenance Workflow:** Recommended steps for a perfect result.
-5. **Myths & Mistakes:** Common misconceptions.
-6. **FAQ:** 3-5 popular user questions.
-7. **Expert Recommendations:** Tips based on our specific products.
+## Product Insights (из описаний товаров)
+
+| Характеристика | Из описаний                                     |
+| -------------- | ----------------------------------------------- |
+| Бренды         | Ultimate, Meguiar's, Gtechniq (L1), Koch-Chemie |
+| Форматы        | Пены, лосьоны, защитные составы                 |
+| Эффекты        | Восстановление эластичности, матовый финиш      |
+
+---
+
+## Промпт для исследования (11 блоков)
+
+### Блок 1: Особенности современной кожи в авто
+
+1. Чем отличается кожа в авто 90-х от современных систем с защитным полимерным слоем?
+2. Почему кожа со временем трескается и лоснится (эффект "блестящей кожи")?
+
+### Блок 2: Очистка кожи
+
+1. Зачем нужна пенная очистка (пенообразователь)?
+2. Важность PH-нейтральных составов для сохранения защитного лака кожи.
+3. Инструменты: щетка с натуральным ворсом vs искусственным.
+
+### Блок 3: Консервация и защита
+
+1. Кондиционеры: увлажнение и эластичность.
+2. Защитные кремы (Leather Shield): защита от окрашивания джинсами.
+3. Керамические покрытия для кожи: срок службы и паропроницаемость.
+
+### Блок 4: Этапы ухода
+
+1. Подготовка (удаление песка из пор).
+2. Нанесение состава и работа щеткой.
+3. Правильное удаление остатков грязи и химии.
+4. Финальная защита.
+
+### Блок 5: Критические ошибки
+
+1. Использование меламиновых губок (стирают защитный слой).
+2. Применение хозяйственного мыла.
+3. Нанесение кондиционера на грязную кожу (запечатывание грязи в порах).
+
+### Блок 6: Особенности материалов
+
+1. Уход за перфорированной кожей (риск заливания химии в отверстия).
+2. Уход за экокожей и кожзамом — нужны ли кондиционеры с маслами?
+
+### Блок 6а: Спорные утверждения — запрос на PROOF
+
+1. "Кожу в современном авто не нужно увлажнять, она покрыта лаком".
+2. "Детский крем или глицерин — лучшая альтернатива дорогой химии".
+
+### Блок 7: FAQ новичка
+
+1. Почему после чистки кожа стала матовой?
+2. Как убрать синеву от джинсов?
+3. Поможет ли кондиционер от трещин?
+
+### Блок 8: Troubleshooting
+
+1. Кожа стала липкой.
+2. Изменение цвета кожи после состава (потемнение).
+
+### Блок 9: Совместимость
+
+1. Можно ли использовать средства для кожи на виниле и пластике?
+
+### Блок 10: Практические цифры
+
+1. Как часто делать чистку при ежедневной эксплуатации?
+2. Время высыхания защитных кремов.
+
+---
+
+## Шаблон вывода
+
+(Аналогично cherniteli-shin)

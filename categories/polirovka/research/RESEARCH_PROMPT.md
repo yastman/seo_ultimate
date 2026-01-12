@@ -1,64 +1,127 @@
-# Research Prompt: polirovka (Полировка)
+# Полировка (polirovka) — SEO Research (Buyer Guide)
 
-## Context
+## ТЗ для Perplexity Deep Research
 
-**Project:** Ultimate.net.ua — Specialist e-commerce store for auto detailing and car care.
-**Category:** polirovka (Полировка) — General Parent Category.
-**Target Audience:** Car owners interested in DIY polishing and professional detailers looking for a full system.
+**Задача:** Собрать комплексные данные по теме профессиональной и любительской полировки ЛКП автомобиля (системный подход, технологии, основы).
 
-## Objective
+**Как работать:** Загрузи ВЕСЬ этот файл в Perplexity → Deep Research. Ответ верни в формате раздела "Шаблон вывода" в конце файла.
 
-Conduct deep SEO research on "General car polishing". This category serves as the entry point for all polishing subcategories (pastes, pads, machines). Focus on the "system" approach and choosing the right entry point.
+---
 
-## Semantic Core (RU/UK)
+## Контекст
 
-**Main Keywords:**
+| Параметр          | Значение                               |
+| ----------------- | -------------------------------------- |
+| Тип страницы      | Главная категория (L1)                 |
+| Название          | Полировка                              |
+| Slug              | polirovka                              |
+| Parent            | —                                      |
+| Язык контента     | Русский (Украина)                      |
+| Целевая аудитория | Все, кто хочет восстановить блеск авто |
 
--   полировка авто (2400)
--   полировка автомобиля (1000)
--   полировка кузова (480)
+---
 
-**Synonyms & LSI:**
+## Семантическое ядро
 
--   полировка машины
--   средства для полировки авто
--   полировка своими руками
--   всё для полировки автомобиля
--   технологии полировки
+### Основные ключевые слова
 
-## Product Insights (What we sell)
+| Ключ                 | Объём |
+| -------------------- | ----- |
+| полировка авто       | 2400  |
+| полировка автомобиля | 1000  |
+| полировка кузова     | 480   |
+| полировка машины     | 170   |
 
--   **Holistic Systems:** ZviZZer (Pads + Pastes), Liquid Elements (Machines + Pads + Pastes).
--   **Subcategories:**
-    -   Machines (Rotary/DA).
-    -   Compounds (Heavy/Medium/Fine).
-    -   Pads (Foam/Wool/Microfiber).
-    -   Accessories (Masking tape, microfibers, degreasers).
+### Entities (сущности для контента)
 
-## Research Objectives
+-   абразивная коррекция (paint correction)
+-   восстановление блеска
+-   удаление царапин и оксидного слоя
+-   толщина ЛКП (микрон)
+-   голограммы (holograms)
+-   детейлинг-мойка (подготовка)
 
-1. **The 'System' Philosophy:** Why it's important to use compatible pads and pastes (e.g., ZviZZer color-coded system).
-2. **Types of Polishing:**
-    - Deep abrasive polishing (restoring heavily damaged paint).
-    - Light/Finish polishing (adding gloss, removing holograms).
-    - One-step (correcting and finishing in one go).
-3. **Paint Management:** Understanding clear coat thickness and why "polishing forever" isn't possible.
-4. **Tools of the Trade:** A brief overview of what a "Starter Kit" should include.
-5. **Preparation:** The importance of chemical and mechanical decontamination before polishing.
-6. **FAQ Candidates:**
-    - "How often can a car be polished?"
-    - "Do I really need a machine?"
-    - "Difference between wax and polish?" (Crucial LSI clarification).
-    - "How to protect the result?" (Transition to ceramic coatings).
+### Вопросы пользователей (micro_intents)
 
-## Output Format
+-   что нужно для самостоятельной полировки авто
+-   виды полировки: восстановительная vs защитная
+-   сколько времени занимает полировка всей машины
+-   безопасно ли полировать старое авто
 
-Generate a structured report in **Russian** following the template:
+---
 
-1. **Intent & Psychology:** Why people polish cars (value boost, aesthetics).
-2. **Modern Detailing Philosophy:** The "Least Aggressive Method" (LAM) principle.
-3. **Polishing Stages:** Comprehensive breakdown from prep to final wipe.
-4. **Toolbox Overview:** Machines, pads, pastes, and safety gear.
-5. **Myths and Reality:** Clearing up common misconceptions.
-6. **FAQ:** 3-5 broad questions.
-7. **Cross-Selling Guide:** How polishing fits with protection (ceramics/waxes).
+## Product Insights (из описаний товаров)
+
+| Характеристика | Из описаний                                     |
+| -------------- | ----------------------------------------------- |
+| Подкатегории   | Машинки, Пасты, Круги, Глина                    |
+| Системность    | Акцент на использовании продуктов одной линейки |
+
+---
+
+## Промпт для исследования (11 блоков)
+
+### Блок 1: Что такое полировка ЛКП
+
+1. Определение полировки как процесса абразивного выравнивания лака.
+2. Почему лак со временем тускнеет (мойки, UV, царапины)?
+
+### Блок 2: Виды полировки
+
+1. Восстановительная (глубокая): когда нужна и в чем риски.
+2. Легкая (финишная/антиголограммная): для придания блеска.
+3. Локальная полировка (фар, стоек, отдельных царапин).
+
+### Блок 3: Измерение ЛКП
+
+1. Зачем нужен толщиномер?
+2. Понятие безопасного предела снятия лака (сколько микрон можно снимать).
+
+### Блок 4: Этапы системного подхода
+
+1. Деликатная мойка и дезактивация (химия).
+2. Механическая чистка (глина/автоскраб).
+3. Маскировка (скотч).
+4. Процесс коррекции.
+5. Финиш и защита.
+
+### Блок 5: Критические ошибки
+
+1. Полировка грязного кузова.
+2. Пробитие лака на ребрах.
+3. Перегрев пластика.
+
+### Блок 6: Освещение в полировке
+
+1. Почему нельзя полировать без правильного света?
+2. Виды детейлинг-фонарей (CRI).
+
+### Блок 6а: Спорные утверждения — запрос на PROOF
+
+1. "Полировка делает лак тоньше и слабее".
+2. "Ручная полировка неэффективна для удаления серьезных дефектов".
+
+### Блок 7: FAQ новичка
+
+1. Сколько раз можно полировать машину?
+2. Можно ли убрать пастой сколы?
+3. В чем разница между полировкой и воскованием?
+
+### Блок 8: Troubleshooting
+
+1. После полировки вылезли новые царапины (просадка пасты).
+2. Появились голограммы на солнце.
+
+### Блок 9: Совместимость
+
+1. Подготовка поверхности под керамику после полировки.
+
+### Блок 10: Практические цифры
+
+1. Примерная толщина заводского лака и допустимый износ.
+
+---
+
+## Шаблон вывода
+
+...

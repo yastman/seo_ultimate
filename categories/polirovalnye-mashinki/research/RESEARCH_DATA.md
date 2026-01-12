@@ -1,61 +1,54 @@
-# Research Data: polirovalnye-mashinki
+# Research Data: Полировальные машинки (polirovalnye-mashinki)
 
-## 1. Intent, Problems & Benefits
+## 1. Интент, Проблемы и Преимущества
 
-**Main Intent:** Acquisition of a tool to automate the polishing process, improve result quality, and reduce physical fatigue.
-**User Problems:**
+**Основной интент:** Автоматизация процесса полировки для повышения качества, скорости и уменьшения физической нагрузки.
+**Проблемы пользователей:**
 
--   Fear of "burning" the clear coat.
--   Holograms left by previous (often rotary) work.
--   Inability to reach tight spots (mirrors, grilles).
--   Heavy vibrations causing hand numbness.
--   Cord getting in the way (scratching the car).
+-   Страх "прожечь" лак.
+-   Вибрации, от которых немеют руки.
+-   Сложность работы в узких местах.
+-   Провод, который вечно мешает и рискует поцарапать машину.
 
-**Benefits:**
+**Преимущества профи-инструмента:**
 
--   Dramatic time saving compared to hand polishing.
--   Uniform result across the whole panel.
--   Ability to use professional compounds and pads.
--   Versatility (can also apply waxes and sealants).
+-   Поддержание стабильных оборотов под нагрузкой.
+-   Низкий уровень шума и вибраций.
+-   Плавный старт (паста не разлетается при включении).
+-   Долгая беспрерывная работа без перегрева.
 
-## 2. Rotary vs Dual Action (DA)
+## 2. Ротор vs Эксцентрик (DA)
 
--   **Rotary (Роторная):** Single axis rotation. Very powerful, high heat. Best for cutting deep defects. High risk of burning through edges. Leaves holograms.
--   **Dual Action (Эксцентриковая/DA):** Rotates and orbits simultaneously. Safest for beginners. Low heat build-up. Hologram-free finish. Stops rotating if too much pressure is applied (safety feature).
+-   **Роторная (Rotary):** Вращение вокруг одной оси. Очень мощная, высокая скорость реза. Требует навыка, легко перегреть лак. Оставляет голограммы.
+-   **Эксцентриковая (DA):** Вращение + орбитальный ход. Максимально безопасна. Не оставляет голограмм. При сильном нажатии диск останавливается (защита). Идеальна для финиша и новичков.
 
-## 3. The "Throw" Guide (Orbital Stroke)
+## 3. Ход эксцентра (Stroke/Throw)
 
--   **8-10mm:** Small stroke, easy to control. Great for starters or applying protection.
--   **15mm:** The professional standard. Best balance between cutting power and ability to follow body contours.
--   **21mm:** Large "swing". Maximum coverage for large flat panels. Harder to use on curved surfaces like fenders.
+-   **8-10 мм:** Малый ход, легче контролировать на изгибах. Хорош для финиша.
+-   **15 мм:** "Золотой стандарт" детейлера. Универсален для большинства задач.
+-   **21 мм:** Максимальный охват. Для быстрой работы по огромным плоским деталям (капоты, крыши).
 
-## 4. Cordless (Battery) vs Corded
+## 4. Аккумуляторные технологии
 
--   **Corded:** Limitless run time, usually more power for the price, lighter (no battery weight). Good for full-day shop work.
--   **Cordless:** Ultimate freedom. No risk of cord scratching the car. Perfect for interior, mobile detailing, or quick "spot" jobs. _Liquid Elements A1000/A2000_ lead this segment.
+-   **Liquid Elements A1000 / A2000:** Прорыв в детейлинге. Позволяют работать без проводов. Мини-машинки незаменимы для зеркал, фар и интерьера.
+-   **Система зарядки:** Современные литий-ионные батареи заряжаются быстрее, чем разряжаются в процессе работы, обеспечивая "бесконечный" цикл с двумя АКБ.
 
-## 5. Mini & Specialized Machines
+## 5. Основные характеристики при выборе
 
--   **Mini DA/Rotary:** Use 1-3 inch pads. Mandatory for bumpers, mirrors, A-pillars, and interior trims.
--   **Nano/Pico (A800 Pico):** For the most intricate parts (emblems, interior door handle surrounds).
+-   **Константная электроника:** Машинка не должна замедляться, когда вы прикладываете рабочее давление.
+-   **Вес:** Легкие машинки удобнее на вертикальных плоскостях (двери, крылья).
+-   **Длина кабеля:** Профессионалам нужно 5 метров и более.
 
-## 6. Safety & Success Tips
+## 6. FAQ (Топ-5)
 
-1. **Always start with DA:** If you are a beginner, do not buy a Rotary machine as your first tool.
-2. **Speed management:** More speed is not always more cut. Most work is done at speeds 3-4 (out of 6).
-3. **Flat is key:** Keep the pad perfectly flat on the surface for even heat and cut.
-4. **Cord management:** Always put the cord over your shoulder to keep it away from the paint.
+1. **Какая машинка лучше для новичка?** (Эксцентриковая с ходом 15мм, например Liquid Elements T4200).
+2. **Нужна ли роторная машинка?** (Только если вы занимаетесь глубокой коррекцией твердых лаков и имеете опыт).
+3. **Что такое "голограммы" и как их избежать?** (Это следы от ротора, эксцентрик их не оставляет).
+4. **Зачем нужны мини-машинки?** (Для зон, где стандартный круг 125мм просто не поместится).
+5. **Как долго служат щетки?** (В профессиональных моделях — от года интенсивной работы, часто идут в комплекте для замены).
 
-## 7. FAQ (Top 5)
+## 7. Советы экспертов
 
-1. **Какая машинка лучше для новичка?** (Dual Action with 15mm stroke - e.g., T4200).
-2. **Что такое эксцентрик?** (Simple explanation of the orbital movement).
-3. **Можно ли сжечь лак машинкой?** (With Rotary - easily. With DA - very hard, but possible on plastic edges).
-4. **Зачем нужны маленькие машинки (мини)?** (For areas where a 125mm pad simply doesn't fit).
-5. **Как долго живет аккумулятор?** (Usually 30-45 mins per battery, with 2 batteries usually allowing continuous work as one charges).
-
-## 8. Expert Tips (Liquid Elements Focus)
-
--   **Ergonomics:** LE machines are known for low vibration levels, which is crucial for professional health (preventing carpal tunnel).
--   **Constant Speed Electronics:** Ensure the machine doesn't bog down when you apply light pressure.
--   **A1000 V4 Versatility:** It can be switched between Rotary and DA modes, making it the most versatile mini-tool on the market.
+-   **Уход:** Продувайте машинку сжатым воздухом после каждой работы (особенно вентиляцию мотора).
+-   **Смазка:** Раз в полгода стоит проверять и при необходимости обновлять смазку в редукторе.
+-   **Безопасность:** Вешайте провод через плечо, чтобы он не касался ЛКП во время работы.

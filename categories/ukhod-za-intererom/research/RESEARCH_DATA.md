@@ -1,60 +1,54 @@
-# Research Data: ukhod-za-intererom
+# Research Data: Уход за интерьером (ukhod-za-intererom)
 
-## 1. Intent, Problems & Benefits
+## 1. Интент, Проблемы и Преимущества
 
-**Main Intent:** Total car interior maintenance — from deep cleaning to long-term protection and hygiene.
-**User Problems:**
+**Основной интент:** Создание чистой, безопасной и приятной среды внутри автомобиля. Сохранение материалов отделки от износа.
+**Проблемы пользователей:**
 
--   Dirty upholstery and carpets.
--   Accumulated dust and bacteria (health risk).
--   Fading materials (UV damage).
--   Unpleasant smells (tobacco, food, moisture).
--   Confusion about which product to use for which material.
+-   Грязь и пятна на текстиле/коже.
+-   Неприятные запахи (табак, еда, сырость).
+-   Запыленность труднодоступных мест (воздуховоды, щели).
+-   Выгорание и растрескивание пластика.
 
-**Benefits:**
+**Преимущества:**
 
--   High resale value (well-preserved interior).
--   Health and comfort (clean air, no allergens).
--   Aesthetic pleasure (new car feeling).
--   Protection against future spills and stains.
+-   Гигиена: отсутствие бактерий в системе кондиционирования.
+-   Эстетика: матовый, "заводской" вид поверхностей.
+-   Комфорт: отсутствие посторонних запахов.
+-   Ликвидность: ухоженный салон значительно повышает цену при продаже.
 
-## 2. The Detailing Philosophy (Workflow)
+## 2. Основные зоны и материалы
 
-1. **Air Purging & Dry Cleanup:** Using Tornadors or brushes with vacuuming.
-2. **Wet Cleaning (Химчистка):** Using APCs and specialized textile/leather cleaners.
-3. **Conditioning & Protection (Консервация):** Applying dressings to plastic and balms to leather.
-4. **Final Touch:** Glass cleaning and odor neutralization.
+1. **Текстиль/Алькантара:** Требуют глубокой вытяжки грязи и консервации для защиты от воды.
+2. **Кожа:** Очистка пор и увлажнение для предотвращения трещин.
+3. **Пластик/Винил:** Очистка от жира и UV-защита (дрессинги).
+4. **Стекла:** Удаление жирного налета изнутри для идеальной видимости ночью.
 
-## 3. Care by Material Type
+## 3. Инструментарий детейлера
 
--   **Leather:** Needs pH-neutral cleaners and conditioners to prevent cracking.
--   **Textile:** Needs extraction cleaning or high-foam cleaners to lift dirt.
--   **Plastic/Vinyl:** Needs UV-blockers and antistatic agents.
--   **Alcantara:** Needs extremely gentle, non-greasy cleaners (e.g., Koch Pol Star).
+-   **Кисти с мягким ворсом:** Для безопасной очистки кнопок и решеток.
+-   **Микрофибры разной плотности:** Короткий ворс для пластика, длинный для деликатных вставок.
+-   **Щетки для кожи и текстиля:** Специальная жесткость для эффективной работы химии.
+-   **Пенный дозатор:** Экономит химию и предотвращает переувлажнение материала.
 
-## 4. Essential Tools
+## 4. Пошаговая схема ухода
 
--   **Brushes:** Horsehair (leather), stiff nylon (carpets), soft detailing brushes (buttons, vents).
--   **Microfibers:** Short pile for cleaning, pearl weave for glass, high-absorbency for drying.
--   **Tornador:** For professionals — deep cleaning with compressed air.
+1. **Сухая уборка:** Мощный пылесос (не забываем про швы сидений).
+2. **Влажная очистка:** Работа с APC (универсальным очистителем) или спецсоставами.
+3. **Нейтрализация:** Удаление остатков химии влажной чистой фиброй.
+4. **Консервация:** Нанесение защитных составов (дрессинг для пластика, крем для кожи).
+5. **Финальные штрихи:** Очистка стекол и зеркал.
 
-## 5. Common Mistakes
+## 5. FAQ (Топ-5)
 
--   Using a lot of water on electrical components (buttons, displays).
--   Scrubbing delicate materials (leather/alcantara) too hard.
--   Not vacuuming thoroughly before wet cleaning (turns dust into mud).
--   Using "all-in-one" cheap supermarket wipes that leave a sticky residue.
+1. **Как убрать запах из машины?** (Нужна комплексная чистка источника + озонирование или использование нейтрализаторов запаха).
+2. **Можно ли использовать бытовые средства для дома?** (Нет, они имеют слишком агрессивный pH и могут оставить несмываемые пятна).
+3. **Зачем нужна матовая полироль?** (Глянцевая дает блики на лобовом стекле от торпедо и выглядит "дешево").
+4. **Как почистить экраны мультимедиа?** (Только специальными составами и чистой фиброй, чтобы не поцарапать антибликовое покрытие).
+5. **Что делать, если пролил молоко/кофе?** (Немедленно промокните фиброй и сделайте локальную химчистку, пока грязь не закисла).
 
-## 6. FAQ (Top 5)
+## 6. Советы экспертов
 
-1. **Можно ли использовать бытовую химию для салона авто?** (Explanation of pH levels and potential damage to car plastics).
-2. **Как быстро высушить салон после химчистки?** (Importance of ventilation and dehumidifiers).
-3. **Как убрать запах сигарет навсегда?** (Difference between masking and neutralizing/oiling/ozonation).
-4. **Что делать, если пролил кофе на сиденье?** (First aid for spills).
-5. **Безопасны ли средства для салона для детей и домашних животных?** (Focus on eco-friendly and fast-evaporating formulas).
-
-## 7. Expert Tips
-
--   **Gtechniq I2 Tri-Clean:** Use it on high-touch areas (door handles, steering wheel) for total bacteria kill.
--   **Leather Care:** Clean leather should be matte, not shiny. If it's shiny, it's greasy/dirty.
--   **Odor Control:** Change the cabin filter before doing deep odor neutralization.
+-   **Берегите кнопки:** Никогда не распыляйте очиститель прямо на кнопки — только на кисть или фибру.
+-   **Цветовая кодировка:** Метьте фибры для разных зон (красная — для грязи, желтая — для кожи), чтобы не переносить жир и грязь.
+-   **Аромат:** Качественный уход не должен пахнуть "химозой" — только чистым материалом или легкой отдушкой.

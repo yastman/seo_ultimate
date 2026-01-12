@@ -1,61 +1,51 @@
-# Research Data: ukhod-za-kozhey
+# Research Data: Уход за кожей (ukhod-za-kozhey)
 
-## 1. Intent, Problems & Benefits
+## 1. Интент, Проблемы и Преимущества
 
-**Main Intent:** Preservation of soft, matte, and durable leather upholstery.
-**User Problems:**
+**Основной интент:** Восстановление первоначального вида и тактильных ощущений от кожаного салона, предотвращение его преждевременного старения.
+**Проблемы пользователей:**
 
--   Cracking and peeling (drying out).
--   Dye transfer (from jeans).
--   "Greasy shine" (dirty leather).
--   Spills soaking into perforated areas.
--   Loss of that "new leather" smell.
+-   Кожа "залоснилась" и стала блестящей (признак глубокой грязи и жира).
+-   Появились трещины и потертости.
+-   Окрашивание кожи джинсами (особенно на светлых салонах).
+-   Потеря мягкости и эластичности.
 
-**Benefits:**
+**Преимущества:**
 
--   Prevents expensive reupholstery.
--   Maintains luxury look and comfort.
--   High interior resale value.
--   Easier cleaning in the future (protective layer).
+-   Благородный матовый вид.
+-   Приятный запах натуральной кожи.
+-   Стойкость к загрязнениям (после консервации).
+-   Предотвращение дорогостоящей перетяжки салона.
 
-## 2. Decision Tree (How to Choose)
+## 2. Современные типы кожи
 
--   **Age of Leather:** New cars need light protection (balms); Old cars need deep conditioning (creams/star).
--   **Type of Finish:** Matte finish is always the goal.
--   **Problem Type:** Hardness needs Revive; Dirt needs Easy Leather; Maintenance needs Protection Cream.
--   **Application:** For perforations, use foams or thin milks to avoid clogging.
+-   **Натуральная кожа с покрытием (Coated):** 90% современных авто. Имеет защитный полимерный лак. Требует очистки и легкой защиты.
+-   **Экокожа / Кожзам:** По сути — винил на тканевой основе. Не требует "питания" жирами, но нуждается в UV-защите.
 
-## 3. Product Types
+## 3. Этапы правильного ухода
 
-1. **Mild Cleaners:** Ph-neutral, safe for daily use.
-2. **Nutrient Creams:** Contain oils and fats to keep leather elastic.
-3. **Protection Sealants:** Modern Resins/Ceramics for leather — best for dye transfer protection.
+1. **Подготовка:** Тщательный пылесос швов, где скапливается песок (абразив, который рвет кожу).
+2. **Очистка:** Нанесение пены через дозатор на щетку. Работа круговыми движениями без сильного нажима.
+3. **Удаление грязи:** Сбор грязной пены влажной микрофиброй.
+4. **Защита (Консервация):** Нанесение крема-лосьона или кварцевого состава (керамики).
 
-## 4. Maintenance Workflow
+## 4. Очистка vs Питание
 
-1. **Thorough Dusting:** Vacuum seams and perforations.
-2. **Deep Cleaning:** Agitate cleaner with a horsehair brush. Wipe with a damp microfiber.
-3. **Resting:** Let the leather dry completely.
-4. **Conditioning:** Apply cream in thin layers. Let it soak in for 15-30 mins.
-5. **Final Wipe:** Remove excess product for a perfect matte finish.
+-   **Очиститель:** Удаляет потожировые следы и грязь из пор.
+-   **Кондиционер:** Смягчает кожу.
+-   **Защитный крем:** Создает барьер от трения и UV.
+    _Важно:_ Нанесение кондиционера на немытую кожу лишь "запечатывает" грязь внутри.
 
-## 5. Common Mistakes
+## 5. FAQ (Топ-5)
 
--   Using aggressive APCs (high pH) that strip natural oils.
--   Applying product directly onto the seat (causes spotting).
--   Using silicone-based "gloss" sprays (makes leather slippery and shiny).
--   Neglecting perforated areas (leads to hardening from within).
+1. **Можно ли использовать хозяйственное мыло?** (Нет, щелочь в мыле разрушает защитный лак кожи, она станет жесткой и быстрее треснет).
+2. **Как часто чистить кожу?** (Для водительского сиденья — раз в 2-3 месяца, для всего салона — 2 раза в год).
+3. **Что делать с перфорацией?** (Используйте только пену, чтобы жидкость не затекала внутрь и не вызывала гниение набивки сидений).
+4. **Как убрать синеву от джинсов?** (Нужен специализированный очиститель кожи. Если не помогло сразу — поможет только Leather Shield в будущем).
+5. **Можно ли использовать детский крем?** (Категорически нет! Он рассчитан на живую кожу, а в автокоже он просто создаст липкую пленку, которая соберет всю грязь).
 
-## 6. FAQ (Top 5)
+## 6. Советы экспертов
 
-1. **Чем крем отличается от кондиционера?** (Conditioner is for maintenance, Cream is for deep nutrition).
-2. **Как убрать следы от джинсов?** (Need for barrier protection and special stain removers).
-3. **Как часто нужно ухаживать за кожей в машине?** (Every 3-6 months depending on usage).
-4. **Безопасно ли средство для экокожи?** (Usually yes, but protection needs are different).
-5. **Нужно ли кондиционировать новые сиденья?** (Yes, to create a barrier against dirt and UV).
-
-## 7. Expert Tips (Product Specific)
-
--   **Ultimate Leather Balsam:** Best for those who love the "smell of luxury".
--   **Koch-Chemie Leather Star:** Best for "reviving" slightly hardened leather in older cars.
--   **Perforation Tip:** Always apply product to the brush/applicator and work it into the fibers first, never pour it on the seat.
+-   **Матовый финиш:** Чистая кожа в авто всегда матовая. Если она блестит — она грязная.
+-   **Инструмент:** Используйте щетку с натуральным ворсом (конский волос) — она эффективнее вычищает поры и не царапает поверхность.
+-   **Керамика:** Для новых светлых салонов керамика для кожи — лучший способ сохранить цвет на 1-2 года.

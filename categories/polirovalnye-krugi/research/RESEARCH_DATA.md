@@ -1,62 +1,61 @@
-# Research Data: polirovalnye-krugi
+# Research Data: Полировальные круги (polirovalnye-krugi)
 
-## 1. Intent, Problems & Benefits
+## 1. Интент, Проблемы и Преимущества
 
-**Main Intent:** Selection of the optimal "mechanical interface" for paint correction — balancing defect removal and surface safety.
-**User Problems:**
+**Основной интент:** Выбор оптимального "механического интерфейса" для коррекции краски — баланс между скоростью удаления дефектов и качеством финиша.
+**Проблемы пользователей:**
 
--   Overheating the paint (burn-through risk).
--   Pads falling apart (delamination due to heat/vibration).
--   Finding the right size for a specific machine.
--   Choosing between hundreds of colors and materials.
--   Marring/Haze left by overly aggressive pads.
+-   Перегрев лака (риск прижечь поверхность).
+-   Разрушение круга в процессе (отклеивание липучки, разрыв поролона).
+-   Голограммы после использования меха.
+-   Трудности при полировке ребер и сложной формы бамперов.
 
-**Benefits:**
+**Преимущества профи-кругов:**
 
--   Faster work (higher productivity).
--   Better finish (fewer steps needed).
--   Protection of the paint from excessive heat.
--   Cost-effectiveness (long-lasting professional pads like ZviZZer Thermo).
+-   Стабильность формы при нагреве.
+-   Долговечность (выдерживают многократные мойки).
+-   Точное соответствие заявленной жесткости.
+-   Центровка и отсутствие вибраций.
 
-## 2. Materials Classification
+## 2. Классификация материалов
 
--   **Foam (Поролон):** The most versatile. Closed-cell (stiff) for cutting, Open-cell (soft) for finishing.
--   **Wool (Мех):** Natural sheepskins or hybrid mixes. Unbeatable for heavy cutting on hard clear coats. Generates less friction heat but can be messy.
--   **Microfiber (Микрофибра):** Aggressive cutting with a surprisingly good finish. Best for Dual Action machines.
+1. **Поролоновые (Foam):** Самые популярные.
+    - Закрытая ячейка (плотные): для грубого реза.
+    - Открытая ячейка (продуваемые): для финиша и работы с меньшим нагревом.
+2. **Меховые (Wool):** Натуральная овчина или гибриды. Обладают максимальным режущим эффектом, но требуют последующего финиша поролоном.
+3. **Микрофибровые (Microfiber):** Отличный вариант для эксцентриковых машин. Высокая скорость работы при хорошем качестве поверхности.
 
-## 3. Decision Tree (Hardness & Color)
+## 3. Таблица жесткости (на примере ZviZZer)
 
-_Using the ZviZZer / European System:_
+-   **Blue/Red (Экстремально жесткий / Жесткий):** Для удаления глубоких царапин.
+-   **Orange (Средний):** Универсальный, "одношаговый".
+-   **Yellow (Мягкий):** Для блеска и удаления голограмм.
+-   **Green (Ультра-мягкий):** Для нанесения защитных составов и восков.
 
--   **Blue/Red (Extreme/Heavy Cut):** Paired with heavy compounds. For deep scratches.
--   **Orange (Medium/One-Step):** The "workhorse". For moderate defects.
--   **Yellow (Fine/Finish):** For gloss enhancement and hologram removal.
--   **Green (Ultra Fine):** For applying glazes, waxes, and final jeweling.
+## 4. Размеры и совместимость
 
-## 4. Size & Compatibility Guide
+-   **75-80 мм:** Для бамперов, стоек и зеркал.
+-   **125-130 мм:** Стандарт для большинства работ (под подложку 125мм).
+-   **150 мм:** Для больших плоских панелей (капот, крыша).
+-   _Важно:_ Круг должен быть чуть больше подложки (например, 140мм для 125мм подложки), чтобы защитить края от удара машинкой.
 
--   **75-80mm (3 inches):** For bumpers, mirrors, pillars, and tight areas.
--   **125-130mm (5 inches):** The industry standard for DA and Rotary machines. Best balance.
--   **150-160mm (6 inches):** For large flat panels (hoods, roofs), mainly for Rotary pros.
--   **Backing Plate:** The pad must always be slightly larger than the backing plate (e.g., 140mm pad for 125mm plate) for edge protection.
+## 5. Уход и хранение
 
-## 5. Cleaning & Care
+1. **Во время работы:** Чистите круг щеткой или сжатым воздухом после каждого прохода.
+2. **Мойка:** Только вручную или в специальных установках со специальным шампунем. Не используйте агрессивную химию.
+3. **Сушка:** Липучкой (Velcro) вверх, в тени, естественным путем.
+4. **Хранение:** В закрытых пакетах, чтобы исключить попадание песка и пыли в поры.
 
-1. **In-process cleaning:** Use a pad brush or compressed air (Tornador style) after every section.
-2. **End-of-day wash:** Use specialized pad cleaners. Do not use dish soap (can degrade foam).
-3. **Drying:** Air dry with the Velcro side up. Never use high heat or direct sun.
-4. **Retention:** If the Velcro side is peeling, the pad is dead (fire hazard/projectiles).
+## 6. FAQ (Топ-5)
 
-## 6. FAQ (Top 5)
+1. **Сколько кругов нужно на одну машину?** (Минимум 3-5 штук одного типа, так как в процессе круг забивается и нагревается, его нужно менять на свежий).
+2. **Можно ли использовать один круг для разных паст?** (Крайне не рекомендуется — остатки грубой пасты в круге испортят финишный этап).
+3. **Почему круг "крошится"?** (Обычно из-за перегрева или работы по острым краям деталей).
+4. **Мех или поролон для финиша?** (Для финиша — только поролон).
+5. **В чем преимущество трапециевидных кругов?** (Они безопаснее на эксцентриках, так как подложка утоплена в поролон).
 
-1. **Сколько кругов нужно на одну машину?** (Pros use 3-5 pads per step per car to avoid saturation and overheating).
-2. **Как часто нужно менять круг во время работы?** (Every 2-3 panels, or when it feels "heavy" and hot).
-3. **Почему круг рвется по центру?** (Overheating on DA machines — "Thermo" pads fix this with a center hole).
-4. **Можно ли стирать круги в стиральной машинке?** (Not recommended for high-quality detailing pads; hand washing is better).
-5. **В чем разница между классическим кругом и трапецией?** (Trapezoidal pads are safer for DA machines as they prevent backing plate contact with edges).
+## 7. Советы экспертов
 
-## 7. Expert Tips (Thermo System)
-
--   **ZviZZer Thermo:** These pads do not soften when they get hot. Traditional foam becomes "mushy" after 15 minutes, losing its cutting power. Thermo pads stay stiff and consistent.
--   **Hybrid Wool:** Use it when foam isn't enough, but you want to avoid the mess of traditional long-hair wool.
--   **Vibration reduction:** Sandwich pads (multi-layer) dramatically reduce the fatigue on the operator's hands during long shifts.
+-   **ZviZZer THERMO:** Эти круги не размягчаются при нагреве, сохраняя силу реза на 100% времени.
+-   **Подготовка:** Перед первым использованием нанесите чуть больше пасты («пропитка»), затем работайте стандартными 4-5 каплями.
+-   **Безопасность:** Не прижимайте круг краем — полируйте всей плоскостью.

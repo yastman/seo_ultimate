@@ -1,60 +1,53 @@
-# Research Data: polirovka
+# Research Data: Полировка (polirovka)
 
-## 1. Intent, Problems & Benefits
+## 1. Интент, Проблемы и Преимущества
 
-**Main Intent:** Total restoration of the car's visual appeal and preparation of the surface for long-term protective coatings.
-**User Problems:**
+**Основной интент:** Комплексное восстановление эстетики автомобиля и защита кузова от агрессивного воздействия среды.
+**Проблемы пользователей:**
 
--   Scratched and dull paint (loss of pride in ownership).
--   Low resale value due to poor paint condition.
--   Misunderstanding the difference between "masking" defects (wax) and "removing" defects (polishing).
--   Fear of damaging the paint (especially DIYers).
+-   Ухудшение внешнего вида (матовость, царапины).
+-   Налипание грязи (шершавая поверхность).
+-   Падение рыночной стоимости авто.
+-   Необходимость подготовки под керамические покрытия.
 
-**Benefits:**
+**Преимущества:**
 
--   Restores the "showroom shine".
--   Removes permanent surface contaminants and oxidation.
--   Creates a perfectly flat surface for ceramic/graphene coatings to bond.
--   Significant increase in vehicle resale value.
+-   Глубокий, "мокрый" блеск.
+-   Идеально гладкая поверхность.
+-   Повышение гидрофобности (самоочистки) после нанесения защиты.
+-   Психологический комфорт от вождения "нового" автомобиля.
 
-## 2. The Detailing Philosophy: LAM (Least Aggressive Method)
+## 2. Философия детейлинг-полировки
 
--   **The Principle:** Always start with the least aggressive pad and paste combination that gets the job done.
--   **Why?** Every polishing step removes a thin layer of clear coat. Saving as much clear coat as possible ensures the paint's longevity.
+-   **Метод "Минимальной агрессии":** Всегда начинаем с самого мягкого круга и пасты. Цель — сохранить максимум заводского лака.
+-   **Толщина лака:** Современные авто имеют всего 30-50 микрон лака. Каждая агрессивная полировка снимает 3-5 микрон.
 
-## 3. Polishing Workflow (The "Big Picture")
+## 3. Этапы процесса
 
-1. **Chemical Decontamination:** Iron and Tar removal.
-2. **Mechanical Decontamination:** Clay bar or auto-scrub (removes embedded particles).
-3. **Masking:** Taping off sensitive areas (rubber, unpainted plastic).
-4. **Correction Stage:** Cutting out deep defects.
-5. **Polishing Stage:** Removing haze and refining the finish.
-6. **Finishing Stage:** Absolute gloss and hologram removal.
-7. **Panel Wipe:** Removing polish oils with IPA to reveal the true state of the paint.
+1. **Тщательная мойка:** Удаление песка и поверхностной грязи.
+2. **Химическая очистка:** Удаление битума и металлических вкраплений.
+3. **Механическая очистка:** Глина для идеальной гладкости.
+4. **Маскировка:** Защита пластика, резинок и фар малярным скотчем.
+5. **Коррекция:** Удаление глубоких дефектов.
+6. **Финиш:** Придание глянца.
+7. **Проверка:** Контроль результата ярким светом.
 
-## 4. Equipment & Materials
+## 4. Оборудование и материалы
 
--   **Machines:** Dual Action (Safe, all-purpose) vs Rotary (Fast, correction-focused).
--   **Abrasives:** Heavy Cut (fast removal), Medium/One-step, and Finish/Anti-hologram.
--   **Interfacial Tools:** Wool (max cut), Microfiber (high cut/finish balance), Foam (versatile).
--   **Control:** High CRI flashlights or sunlight-simulating detailing lamps.
+-   **Толщиномер:** Обязательный прибор для проверки остатка лака.
+-   **Освещение:** Источники с высоким индексом цветопередачи (CRI), имитирующие солнечный свет.
+-   **Химия:** Абразивные системы (ZviZZer, 3D), лубриканты, антисиликоны.
 
-## 5. Decision Support (Myths vs Reality)
+## 5. FAQ (Топ-5)
 
--   **Myth:** "Polishing removes all scratches." -> **Reality:** If a scratch is through the clear coat (you can feel it with a nail), only painting helps.
--   **Myth:** "Machine polishing is always dangerous." -> **Reality:** Modern DA machines are very safe and hard to damage the paint with.
--   **Myth:** "Polish and Wax are the same." -> **Reality:** Polish cleans/cuts the surface; Wax protects the surface.
+1. **Сколько времени занимает полировка?** (От 6-8 часов для легкого финиша до 2-3 дней для глубокой коррекции).
+2. **Как часто можно полировать?** (Зависит от остатка лака, обычно 3-5 полноценных коррекций за жизнь авто).
+3. **Нужно ли полировать новую машину?** (Да, предпродажная подготовка часто оставляет дефекты, а легкая полировка добавит блеска).
+4. **Удаляет ли полировка сколы?** (Нет, сколы нужно подкрашивать; полировка может лишь сгладить их края).
+5. **Можно ли полировать зимой?** (Да, но только в теплом, сухом и чистом помещении).
 
-## 6. FAQ (Top 5)
+## 6. Советы экспертов
 
-1. **Сколько раз можно полировать машину?** (Depends on factory clear coat thickness; usually 3-5 aggressive sessions, or dozens of light finishings).
-2. **Можно ли полировать машину на солнце?** (No, chemicals dry out and stick to the paint, results become uneven).
-3. **Нужно ли полировать новую машину?** (Yes, a "New Car Prep" often involves light polishing to remove transport damage and oxidation).
-4. **Что лучше для новичка — ручная или машинная полировка?** (Machine DA is safer and much more effective than hand polishing).
-5. **Как долго держится эффект?** (Effect is permanent since defects are removed, but the paint can get new scratches if not washed properly).
-
-## 7. Expert Recommendations
-
--   **System Thinking:** Use a single brand system (like ZviZZer) when starting out. Their chemists designed the pads and pastes to work perfectly together.
--   **Lighting:** You cannot polish what you cannot see. Invest in a good detailing light.
--   **Protection:** Polishing leaves the paint "naked". Always apply a wax, sealant, or ceramic coating immediately after finishing.
+-   **Не спешите:** Полировка не терпит суеты. Плохая очистка перед работой приведет к тому, что вы будете "полировать песком".
+-   **Комплексность:** Никогда не оставляйте лак "голым" после полировки. Обязательно нанесите хотя бы воск или силант.
+-   **Контроль:** Пользуйтесь фонариком Scangrip или его аналогами — обычный свет в гараже скрывает 70% голограмм.

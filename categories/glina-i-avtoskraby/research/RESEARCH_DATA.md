@@ -1,59 +1,58 @@
-# Research Data: glina-i-avtoskraby
+# Research Data: Глина и автоскрабы (glina-i-avtoskraby)
 
-## 1. Intent, Problems & Benefits
+## 1. Интент, Проблемы и Преимущества
 
-**Main Intent:** Deep mechanical cleaning of the paintwork to achieve a "smooth as glass" surface before polishing or coating.
-**User Problems:**
+**Основной интент:** Глубокая очистка пор лака от вкраплений, которые не удаляются при обычной мойке.
+**Проблемы пользователей:**
 
--   Paint feels rough or "sandpapery" even after a thorough wash.
--   Embedded rail dust (orange dots) or tree sap that doesn't come off.
--   Paint overspray from a nearby body shop.
--   Fear of scratching the paint while trying to clean it.
+-   Шершавый на ощупь кузов ("наждачка").
+-   Рыжие точки на белом лаке (металлические вкрапления).
+-   Опыл краски после кузовного ремонта.
+-   Плохая работа восков и керамики (не ложатся на грязный лак).
 
-**Benefits:**
+**Преимущества:**
 
--   Reveals the true condition of the clear coat.
--   Prevents contaminants from clogging polishing pads (making polishing safer and faster).
--   Allows waxes and ceramics to bond much better, increasing their durability.
--   Restores reflectivity by removing micro-obstructions on the surface.
+-   Идеально гладкая поверхность.
+-   Повышение эффективности полировки (круг не забивается грязью из пор).
+-   Продление срока службы защитных покрытий в 1.5-2 раза.
+-   Безопасное удаление битума и древесной смолы.
 
-## 2. Clay Bar vs Auto-scrub (Comparison)
+## 2. Глина vs Автоскраб (Сравнение)
 
--   **Traditional Clay (Глина):** Absorbs dirt into itself. Requires constant folding. If dropped, it's garbage. Better for extremely delicate/soft paints as it provides more tactile feedback.
--   **Auto-scrub (Спонжи, рукавицы):** Synthetic polymer layer that "shaves" off the contaminants. Can be rinsed if dropped. Works faster for larger areas. More durable (can do 20-50 cars).
+-   **Традиционная глина:** Эффективно "втягивает" грязь в себя. Требует разминания и складывания. _Критический минус:_ если уронили на пол — брусок на выброс.
+-   **Автоскраб (Полимерный слой):** Работает быстрее. Если уронили — достаточно сполоснуть водой. Служит в десятки раз дольше (до 50-100 машин).
 
-## 3. Aggressiveness Levels
+## 3. Абразивность (Жесткость)
 
--   **Fine (Мягкая):** Safe for regular maintenance. Minimum risk of marring.
--   **Medium (Средняя):** For cars that haven't been cleaned for years. Might leave slight haze (marring) that needs light polishing afterwards.
--   **Heavy (Жёсткая):** For heavy overspray and industrial fallout. Post-polishing is mandatory.
+-   **Fine (Мягкая/Голубая):** Самая безопасная. Минимум риска оставить матовость (марринг). Идеально для подготовки под воск.
+-   **Medium (Средняя/Синяя):** Для автомобилей, которые не чистились годами. Может потребовать легкой финишной полировки.
+-   **Heavy (Жесткая):** Для удаления опыла краски и серьезных индустриальных загрязнений. Всегда требует полировки после себя.
 
-## 4. Successful Workflow
+## 4. Пошаговый алгоритм
 
-1. **Pre-wash:** Remove all loose dirt.
-2. **Chemical Decon:** Use an Iron Remover to dissolve metal particles (reduces the work for the clay).
-3. **Lubrication:** Heavily spray a dedicated clay lubricant.
-4. **Slide, Don't Press:** Gently glide the clay/scrub in straight lines. Listen for the "scratchy" sound — it goes away as the surface becomes clean.
-5. **Knead & Fold:** (For clay only) Fold frequently to a clean side.
-6. **Rinse & Dry:** Remove lubricant residue.
+1. **Детальная мойка:** Уберите все, что смывается водой и шампунем.
+2. **Химическая дезактивация:** Используйте Iron Remover (для металла) и Tar Remover (для битума). Чем меньше работы останется глине, тем безопаснее.
+3. **Лубрикация:** Обильно нанесите специальный лубрикант. Никогда не работайте "на сухую".
+4. **Очистка:** Легкими движениями без давления водите глиной по поверхности. Когда звук "скрежета" исчез — поверхность чистая.
+5. **Промывка:** Смойте остатки лубриканта и высушите авто.
 
-## 5. Common Mistakes
+## 5. Типичные ошибки
 
--   **Insufficient Lube:** Causes "clay marring" (scratches from the clay itself).
--   **Using dropped clay:** One grain of sand inside the clay will ruin the whole panel.
--   **Working on hot paint:** Lubricant dries, clay sticks and leaves streaks.
--   **Using aggressive clay on soft paint:** Thinking "harder is faster" — it just creates more work for polishing.
+-   **Экономия лубриканта:** Главная причина царапин.
+-   **Работа на горячем кузове:** Лубрикант сохнет, глина липнет и пачкает лак.
+-   **Давление:** Глина должна скользить, а не "тереть".
+-   **Грязная глина:** Если пропустили складку и работаете грязной стороной — вы царапаете лак.
 
-## 6. FAQ (Top 5)
+## 6. FAQ (Топ-5)
 
-1. **Как часто нужно чистить кузов глиной?** (Usually 1-2 times a year, or always before polishing/ceramic coating).
-2. **Как понять, что пора использовать глину (тест с пакетом)?** (Put your hand in a thin plastic sandwich bag and slide over clean, wet paint. If it feels bumpy, you need clay).
-3. **Можно ли использовать воду в качестве лубриканта?** (No, water doesn't provide enough surface tension/glide — you risk scratching).
-4. **Удаляет ли глина воск с машины?** (Yes, mechanical cleaning will strip most existing waxes and sealants).
-5. **Можно ли использовать глину для стекол?** (Yes, it's excellent for removing stubborn film and water deposits from glass).
+1. **Удаляет ли глина царапины?** (Нет, она удаляет только _выступающие_ загрязнения. Сама может оставить микро-риску на мягком лаке).
+2. **Можно ли использовать воду вместо лубриканта?** (Нежелательно. Вода не дает нужного скольжения — глина будет "спотыкаться" и царапать).
+3. **Зачем нужна глина перед полировкой?** (Если не убрать вкрапления, они попадут под полировальный круг и будут работать как наждачная бумага).
+4. **Как хранить глину?** (В герметичной банке, сбрызнув лубрикантом, чтобы не засохла).
+5. **Можно ли использовать глину для лобового стекла?** (Да, это отличный способ убрать водный камень и налет перед нанесением антидождя).
 
-## 7. Expert Tips
+## 7. Советы экспертов
 
--   **Storage:** Store clay in a small airtight container with a splash of lubricant to keep it soft.
--   **Warmth:** If the clay is stiff (in winter), put it in warm water for a few minutes to make it pliable.
--   **Auto-scrub Pad:** Pro-tip: Use an auto-scrub pad on a DA machine at very low speed with plenty of lubricant for ultra-fast decontamination.
+-   **Тест с пакетом:** Наденьте на руку тонкий полиэтиленовый пакет и проведите по чистому мокрому лаку. Вы почувствуете все бугорки, которые нужно убрать глиной.
+-   **Тепло:** Зимой глина дубеет. Положите ее в теплую воду перед работой — она станет мягкой и безопасной.
+-   **Автоскраб-рукавица:** Для больших объемов (крыша, капот) рукавица экономит до 70% времени по сравнению с бруском.
