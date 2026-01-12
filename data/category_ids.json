@@ -1,0 +1,28 @@
+{
+  "_comment": "Источник правды: slug → category_id. Обновлять при добавлении категорий.",
+  "_source": "data/generated/PRODUCTS_LIST.md (## Название (ID: NNN))",
+  "categories": {
+    "aktivnaya-pena": 415,
+    "antimoshka": 417,
+    "antibitum": 417,
+    "ochistiteli-stekol": 418,
+    "ochistiteli-diskov": 419,
+    "ochistiteli-shin": 420,
+    "cherniteli-shin": 421,
+    "glina-i-avtoskraby": 423,
+    "gubki-i-varezhki": 453,
+    "shampuni-dlya-ruchnoy-moyki": 412,
+    "dlya-ruchnoy-moyki": 412
+  },
+  "id_to_name_uk": {
+    "415": "Активна піна",
+    "412": "Для ручного миття",
+    "418": "Очищувач скла",
+    "419": "Очищувач дисків",
+    "420": "Засоби для шин",
+    "421": "Чорнитель гуми",
+    "423": "Глина та автоскраби",
+    "417": "Очищення кузова (антибітум, антимошка)",
+    "453": "Губки та рукавиці"
+  }
+}
