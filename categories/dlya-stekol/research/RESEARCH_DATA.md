@@ -1,5 +1,11 @@
-# Research: dlya-stekol
+# Research Data: dlya stekol
 
-## Status: PENDING
+## Sources
+| # | URL | Тип | Что подтверждает |
+|---|-----|-----|------------------|
 
-<!-- Run /seo-research dlya-stekol -->
+## Блок 1-10: ...
+
+(заполняется после Perplexity research)
+
+**Дата:** YYYY-MM-DD

@@ -23,7 +23,7 @@ from pathlib import Path
 # =============================================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-SQL_FILE = PROJECT_ROOT / "ultimate_net_ua_backup.sql"
+SQL_FILE = PROJECT_ROOT / "data" / "dumps" / "ultimate_net_ua_backup.sql"
 
 # Category mapping: category_id -> (slug, uk_name)
 CATEGORIES_MAP = {
@@ -32,10 +32,25 @@ CATEGORIES_MAP = {
     418: ("ochistiteli-stekol", "Очищувач скла"),
     419: ("ochistiteli-diskov", "Очищувач дисків"),
     420: ("ochistiteli-shin", "Засоби для шин"),
-    421: ("cherniteli-shin", "Чорнитель гуми"),
+    421: ("cherniteli-shin", "Чорнитель гуми / Зовнішній пластик"),
     423: ("glina-i-avtoskraby", "Глина та автоскраби"),
     417: ("antibitum-antimoshka", "Очищення кузова (антибітум, антимошка)"),
     453: ("gubki-i-varezhki", "Губки та рукавиці"),
+    425: ("ukhod-za-intererom", "Догляд за інтер'єром"),
+    429: ("poliroli-dlya-plastika", "Догляд за пластиком (Поліролі)"),
+    427: ("sredstva-dlya-khimchistki-salona", "Хімчистка салону"),
+    431: ("neytralizatory-zapakha", "Засоби від запаху"),
+    428: ("ukhod-za-kozhey", "Догляд за шкірою"),
+    432: ("polirovka", "Поліровка"),
+    461: ("polirovalnye-mashinki", "Полірувальні машинки"),
+    434: ("polirovalnye-pasty", "Полірувальні пасти"),
+    459: ("polirovalnye-krugi", "Полірувальні круги"),
+    436: ("kvik-deteylery", "Швидкий блиск/Полімер"),
+    437: ("silanty", "Силанти"),
+    438: ("voski", "Воски"),
+    439: ("keramika-i-zhidkoe-steklo", "Нанокераміка / Рідке скло"),
+    440: ("zashchitnye-pokrytiya", "Захисні покриття"),
+    466: ("apparaty-tornador", "Апарати Tornador"),
 }
 
 
@@ -110,16 +125,16 @@ def extract_product_data(sql_content, product_ids, include_desc=False):
     return products
 
 
-def list_products(include_desc=False):
+def list_products(include_desc=False, output_file=None):
     print("Loading SQL...")
     content = check_sql_file()
 
     cat_products = extract_product_to_category(content)
 
-    print("# Products by Category (UK)\n")
+    lines = ["# Products by Category (UK)\n"]
 
     for cat_id, (_slug, uk_name) in CATEGORIES_MAP.items():
-        print(f"## {uk_name} (ID: {cat_id})")
+        lines.append(f"## {uk_name} (ID: {cat_id})")
 
         if cat_id in cat_products:
             pids = cat_products[cat_id]
@@ -128,16 +143,24 @@ def list_products(include_desc=False):
             if products:
                 # Sort by name
                 for _pid, data in sorted(products.items(), key=lambda x: x[1]["name"]):
-                    print(f"- **{data['name']}**")
+                    lines.append(f"- **{data['name']}**")
                     if include_desc and data["desc"]:
-                        print(f"  {data['desc']}")
+                        lines.append(f"  {data['desc']}")
                     if include_desc:
-                        print()
+                        lines.append("")
             else:
-                print("*No products found*")
+                lines.append("*No products found*")
         else:
-            print("*No products found*")
-        print()
+            lines.append("*No products found*")
+        lines.append("")
+
+    output = "\n".join(lines)
+    if output_file:
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write(output)
+        print(f"✅ Saved to {output_file}")
+    else:
+        print(content)
 
 
 # =============================================================================
@@ -175,6 +198,7 @@ def main():
     # Command: list
     p_list = subparsers.add_parser("list", help="List products by category")
     p_list.add_argument("--desc", action="store_true", help="Include descriptions")
+    p_list.add_argument("--output", help="Output file path")
 
     # Command: find
     p_find = subparsers.add_parser("find", help="Find category ID by name")
@@ -183,7 +207,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "list":
-        list_products(include_desc=args.desc)
+        list_products(include_desc=args.desc, output_file=args.output)
     elif args.command == "find":
         find_category_id(args.query)
     else:

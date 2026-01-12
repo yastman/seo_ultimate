@@ -1,9 +1,14 @@
-# Research: avtoshampuni
+# Research Data: Автошампуни (avtoshampuni)
 
-## Status: PENDING
+## Sources
+| # | URL | Тип источника | Что подтверждает |
+|---|-----|---------------|------------------|
 
-## Type: L2
+## Блок 1-10: ...
 
-## Parent: Мойка и Экстерьер
+(заполняется после Perplexity research)
 
-## Primary: шампунь для авто (480), автошампунь (200)
+## Notes
+-
+
+**Дата:** YYYY-MM-DD
