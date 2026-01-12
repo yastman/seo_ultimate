@@ -60,12 +60,26 @@ description: >-
 `categories/{slug}/data/{slug}_clean.json` → name, keywords, entities, micro_intents, parent_id
 
 ### category_ids.json
-`data/category_ids.json` → slug → category_id
+`data/category_ids.json` → slug → section_id
+
+> ⚠️ **Это ID секций из PRODUCTS_LIST.md, НЕ OpenCart category_id!**
+> OpenCart ID другие (например antibitum=474, antimoshka=475 в deploy).
 
 Если slug отсутствует: поискать похожий или найти по UK-названию, добавить в JSON.
 
 ### PRODUCTS_LIST.md
-`data/generated/PRODUCTS_LIST.md` → искать `## ... (ID: {category_id})`
+`data/generated/PRODUCTS_LIST.md` → искать `## ... (ID: {section_id})`
+
+### Если несколько slug → один section_id
+
+Когда разные категории (например antimoshka и antibitum) указывают на один ID (417):
+1. Читай ВСЕ товары секции
+2. Фильтруй по ключевым словам категории (из `_clean.json` keywords)
+3. В ассортимент включай только товары, релевантные текущей категории
+
+**Пример:** Секция 417 содержит и "очиститель битума" и "очиститель от насекомых".
+Для antimoshka → только товары с "насекомых/мошка/мух".
+Для antibitum → только товары с "битум/смола/гудрон".
 
 ---
 
@@ -271,4 +285,4 @@ categories/{slug}/research/
 
 ---
 
-**Version:** 9.0 — January 2026
+**Version:** 9.1 — January 2026
