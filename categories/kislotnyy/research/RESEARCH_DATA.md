@@ -1,5 +1,11 @@
-# Research: kislotnyy
+# Research Data: kislotnyy
 
-## Status: PENDING
+## Sources
+| # | URL | Тип | Что подтверждает |
+|---|-----|-----|------------------|
 
-<!-- Run /seo-research kislotnyy -->
+## Блок 1-10: ...
+
+(заполняется после Perplexity research)
+
+**Дата:** YYYY-MM-DD

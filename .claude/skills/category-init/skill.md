@@ -3,23 +3,27 @@ name: category-init
 description: Use when you see /category-init, создай категорию, инициализируй категорию, новая категория, подготовь папку для категории. (project)
 ---
 
-# Category Init v2.0
+# Category Init v3.0
 
-Initialize new category for SEO content pipeline with **proper keyword clustering**.
+Initialize new category folder + minimal data for SEO content pipeline.
+
+Цель: чтобы категория была готова к следующему шагу `/generate-meta {slug}` и дальнейшему `/seo-research` и `/content-generator`.
 
 ---
 
-## Проблема, которую решаем
+## Source of truth (SSOT)
 
-CSV содержит 50+ сырых ключей с дублями:
+Единственный источник правды по семантике и структуре — `Структура _Ultimate.csv` (см. `docs/WORKFLOW_SEMANTICS.md`).
 
-- "пена для мойки авто" (1300)
-- "пена для мойки автомобиля" (1300)
-- "активная пена для мойки авто" (1000)
+Если ты добавляешь новую категорию или меняешь ключи — сначала правь CSV, затем запускай:
 
-Это **одно и то же** — нельзя использовать все в тексте (переспам).
+```bash
+python3 scripts/fix_csv_structure.py
+python3 scripts/csv_to_readable_md.py
+```
 
-**Решение:** Кластеризация до 10-15 уникальных ключей с правилами использования.
+Чеклисты задач генерируются из `data/generated/STRUCTURE.md`:
+`python3 scripts/generate_checklists.py`
 
 ---
 
@@ -31,194 +35,93 @@ CSV содержит 50+ сырых ключей с дублями:
 Input: slug (e.g., "aktivnaya-pena", "cherniteli-shin")
 Validate:
 - slug is kebab-case (lowercase, hyphens)
-- slug exists in Структура _Ultimate.csv
-- folder categories/{slug}/ does not exist
+- slug exists in Структура _Ultimate.csv (SSOT)
+- folder categories/{slug}/ exists or can be created
 ```
 
-### Step 2: Find Category in CSV
+### Step 2: Ensure checklist exists (recommended)
 
-Parse `Структура _Ultimate.csv`:
+Проверь, что есть `tasks/categories/{slug}.md`.
 
-- Find L2/L3 category matching slug
-- Extract ALL keywords with search volumes
-- Note parent L1 and L2 categories
-
-CSV structure:
-
-```
-L1: Мойка и Экстерьер,24/338,
-L2: Автошампуни,5/59,
-L3: Активная пена,52,
-keyword1,,volume
-keyword2,,volume
-```
-
-### Step 3: Create Folder Structure
+Если файла нет — сгенерируй чеклисты:
 
 ```bash
+python3 scripts/generate_checklists.py
+```
+
+После генерации открой `tasks/categories/{slug}.md` и проверь секцию Keywords (ключи + volume).
+
+### Step 3: Create category folders
+
+Создай структуру папок категории:
+
+```text
 categories/{slug}/
-├── data/
-│   └── {slug}_clean.json    # Clustered keywords
-├── meta/
-│   └── {slug}_meta.json     # Meta tags template
-├── content/
-│   └── {slug}_ru.md         # Content (empty)
-└── research/
-    └── RESEARCH_DATA.md     # Research template
+  data/
+  meta/
+  content/
+  research/
 ```
 
-### Step 4: Cluster Keywords (КРИТИЧЕСКИ ВАЖНО!)
+### Step 4: Create or refresh `data/{slug}_clean.json`
 
-**Цель:** Сократить 50+ ключей до 10-15 уникальных
+#### Режим A (recommended): из чеклистов
 
-#### 4.1 Слияние дублей
+Запусти инициализацию данных из `tasks/categories/*.md`:
 
-Объединяем семантически идентичные ключи:
-
-```
-"пена для мойки авто" (1300)
-"пена для мойки автомобиля" (1300)
-"активная пена для мойки авто" (1000)
-→ ОДИН ключ: "активная пена" (main cluster)
+```bash
+python3 scripts/init_categories_from_checklists.py
 ```
 
-#### 4.2 Выделение Commercial
+Этот скрипт создаёт/обновляет `categories/{slug}/data/{slug}_clean.json` (и другие категории тоже).
 
-Все ключи с "купить/цена/заказать" → отдельная группа с `use_in: "meta_only"`:
+#### Режим B (manual): вручную (если нужен точечный init)
+
+Создай `categories/{slug}/data/{slug}_clean.json` в формате проекта (list-схема):
 
 ```json
 {
-  "keyword": "купить активную пену",
-  "volume": 210,
-  "cluster": "commercial",
-  "use_in": "meta_only"  // ← НЕ использовать в тексте!
+  "id": "{slug}",
+  "name": "{Category Name}",
+  "type": "category",
+  "parent_id": "{parent_slug}",
+  "keywords": [
+    {"keyword": "вч ключ 1", "volume": 1000},
+    {"keyword": "вч ключ 2", "volume": 800}
+  ],
+  "synonyms": [
+    {"keyword": "вариант формулировки", "volume": 120},
+    {"keyword": "купить ...", "volume": 90, "use_in": "meta_only"}
+  ],
+  "entities": ["тип товара", "форма", "объём", "материал"],
+  "micro_intents": ["как выбрать", "как использовать", "ошибки"],
+  "source": "manual"
 }
 ```
 
-#### 4.3 Семантические кластеры
+**Правила:**
+- `keywords[0]` = primary keyword (макс volume) для Title/H1/Description.
+- `synonyms` с `use_in: "meta_only"` — только для мета (не в H1 и не в body).
 
-| Кластер | Описание | Пример |
-|---------|----------|--------|
-| main | Основной запрос категории | "активная пена" |
-| method | Способ/метод применения | "для бесконтактной мойки" |
-| equipment | Оборудование | "для минимойки", "для керхера" |
-| material | Материал/поверхность | "для ткани", "для кожи" |
-| B2B | Профессиональное | "для автомойки", "профессиональная" |
-| pro | Премиум сегмент | "профессиональная химия" |
-| product_type | Разные продукты в одной категории | "нанокерамика" vs "жидкое стекло" |
-| spelling_variant | Вариант написания | "нано керамика" vs "нанокерамика" |
-| commercial | Транзакционный | "купить", "цена" |
+### Step 5: Create templates (stubs)
 
-> ⚠️ **ВАЖНО:** `synonym` используется ТОЛЬКО для настоящих синонимов (одно и то же).
-> Для разных продуктов в одной категории используйте `product_type`!
+Создай минимальные шаблоны, чтобы пайплайн был непрерывным:
 
-### Step 5: Generate _clean.json
-
-**Формат файла:**
+**meta/{slug}_meta.json**
 
 ```json
-{
-  "slug": "aktivnaya-pena",
-  "language": "ru",
-  "clustered_at": "2025-12-30",
-
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "активная пена",
-        "volume": 170,
-        "cluster": "main"
-      },
-      {
-        "keyword": "пена для мойки автомобиля",
-        "volume": 140,
-        "cluster": "main"
-      }
-    ],
-
-    "secondary": [
-      {
-        "keyword": "активная пена для бесконтактной мойки",
-        "volume": 30,
-        "cluster": "method"
-      },
-      {
-        "keyword": "пена для автомойки",
-        "volume": 20,
-        "cluster": "B2B"
-      }
-    ],
-
-    "supporting": [
-      {
-        "keyword": "шампунь для бесконтактной мойки",
-        "volume": 10,
-        "cluster": "product_type",
-        "note": "шампунь ≠ пена, разные продукты"
-      },
-      {
-        "keyword": "пена для минимойки",
-        "volume": 10,
-        "cluster": "equipment"
-      },
-      {
-        "keyword": "профессиональная пена для мойки авто",
-        "volume": 10,
-        "cluster": "pro"
-      }
-    ],
-
-    "commercial": [
-      {
-        "keyword": "купить пену для мойки авто",
-        "volume": 40,
-        "cluster": "commercial",
-        "use_in": "meta_only"
-      },
-      {
-        "keyword": "купить активную пену",
-        "volume": 20,
-        "cluster": "commercial",
-        "use_in": "meta_only"
-      }
-    ]
-  },
-
-  "stats": {
-    "before": 52,
-    "after": 12
-  },
-
-  "usage_rules": {
-    "primary": "H1 + intro (первые 150 слов)",
-    "secondary": "H2 заголовки, buying guide (выбор, виды, применение)",
-    "supporting": "FAQ, таблицы, естественные упоминания в тексте",
-    "commercial": "ТОЛЬКО meta title/description, НЕ в текст статьи!"
-  },
-
-  "clustering_notes": {
-    "merged_main": [
-      "пена для мойки авто (1300)",
-      "активная пена для мойки авто (1000)",
-      "активная пена для мойки автомобиля (880)"
-    ],
-    "merged_commercial": [
-      "купить активную пену для мойки авто (210)",
-      "купить активную пену для мойки автомобиля (170)"
-    ]
-  }
-}
+{"slug": "{slug}", "language": "ru", "meta": {"title": "", "description": ""}, "h1": "", "status": "template"}
 ```
 
-### Step 6: Create Templates
+**content/{slug}_ru.md**
 
-**meta/{slug}_meta.json:**
+```markdown
+# {H1}
 
-```json
-{"slug": "{slug}", "language": "ru", "status": "template"}
+<!-- Status: DRAFT -->
 ```
 
-**research/RESEARCH_DATA.md:**
+**research/RESEARCH_DATA.md**
 
 ```markdown
 # Research: {slug}
@@ -226,45 +129,16 @@ categories/{slug}/
 ## Status: PENDING
 ```
 
-### Step 7: Validate Output
+### Step 6: Validate output
 
 Check:
 
 - [ ] JSON is valid
-- [ ] Keywords clustered (before > after в stats)
-- [ ] Commercial имеют `use_in: "meta_only"`
-- [ ] usage_rules присутствуют
-- [ ] clustering_notes показывают логику слияния
-- [ ] Итого 10-15 уникальных ключей (не 50+)
-
----
-
-## Правила кластеризации
-
-### Primary (2-3 ключа)
-
-- Главный запрос категории
-- Самый высокий volume после слияния дублей
-- Использовать в H1 и intro
-
-### Secondary (3-5 ключей)
-
-- Вариации по методу/оборудованию/сегменту
-- Volume 20-100
-- Для H2 заголовков
-
-### Supporting (5-7 ключей)
-
-- Long-tail запросы
-- Синонимы
-- Volume 10-20
-- Для FAQ и таблиц
-
-### Commercial (2-4 ключа)
-
-- ВСЕ с "купить/цена/заказать"
-- **ОБЯЗАТЕЛЬНО** `use_in: "meta_only"`
-- НИКОГДА не использовать в тексте статьи
+- [ ] `categories/{slug}/data/{slug}_clean.json` содержит `keywords` (list)
+- [ ] `keywords[0].keyword` заполнен (primary keyword)
+- [ ] `synonyms` с `use_in: "meta_only"` не будут использоваться в H1/тексте
+- [ ] Папки `meta/ content/ research/` существуют
+- [ ] Созданы stub-файлы (meta/content/research)
 
 ---
 
@@ -272,12 +146,11 @@ Check:
 
 ```
 categories/{slug}/
-  - data/{slug}_clean.json (CLUSTERED, 10-15 keywords)
-  - meta/{slug}_meta.json (template)
-  - content/{slug}_ru.md (empty)
-  - research/RESEARCH_DATA.md (template)
+  - data/{slug}_clean.json (keywords + optional synonyms/entities/micro_intents)
+  - meta/{slug}_meta.json (template/stub)
+  - content/{slug}_ru.md (stub)
+  - research/RESEARCH_DATA.md (stub)
 
-Stats: 52 raw → 12 clustered keywords
 Status: ready for /generate-meta
 ```
 
@@ -289,5 +162,5 @@ After category-init, run `/generate-meta {slug}` to generate meta tags.
 
 ---
 
-**Version:** 2.0 — December 2025
-**Change:** Added proper clustering format with usage_rules and clustering_notes
+**Version:** 3.0 — January 2026
+**Change:** Align category-init with current project SSOT + scripts (`generate_checklists.py`, `init_categories_from_checklists.py`) and list-schema `_clean.json`.
