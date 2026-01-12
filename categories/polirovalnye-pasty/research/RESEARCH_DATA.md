@@ -1,62 +1,58 @@
-# Research Data: polirovalnye-pasty
+# Research Data: Полировальные пасты (polirovalnye-pasty)
 
-## 1. Intent, Problems & Benefits
+## 1. Интент, Проблемы и Преимущества
 
-**Main Intent:** Scientific removal of paint defects (scratches, swirl marks, oxidation) to restore mirror-like gloss and transparency of the clear coat.
-**User Problems:**
+**Основной интент:** Выбор абразивного состава для удаления дефектов ЛКП (царапины, окисление, голограммы) и восстановления зеркального блеска.
+**Проблемы пользователей:**
 
--   Swirl marks (cobwebs) visible under sunlight.
--   Deep scratches that don't go to the primer but are visible.
--   Hazy or oxidized paint (loss of color depth).
--   Holograms left after improper previous polishing.
--   Water spots and bird dropping etchings.
+-   "Паутина" царапин, видимая на солнце.
+-   Мутный лак (потеря глубины цвета).
+-   Глубокие царапины, не дошедшие до грунта.
+-   Голограммы после некачественной предыдущей полировки.
 
-**Benefits:**
+**Преимущества профи-паст:**
 
--   Professional "as-new" finish.
--   Preparation for ceramic coatings or waxes (proper adhesion).
--   Enhanced color depth and metallic flake pop.
--   Smooth surface that repels dirt better.
+-   Быстрое достижение результата без перегрева поверхности.
+-   Отсутствие силиконов и филлеров (честный результат, а не маскировка).
+-   Низкое пылеобразование (чистота в студии).
+-   Легкое удаление остатков пасты.
 
-## 2. Classification of Polishing Compounds
+## 2. Классификация паст
 
--   **Heavy Cut (Compounds):** Large abrasive particles. For removing P1200-P1500 sand marks, deep scratches, and heavy oxidation.
--   **Medium Cut (Polishes):** Balanced removal and finish. For moderate swirls and light scratches.
--   **Fine/Finish Cut:** Ultra-fine particles. For removing holograms, adding maximum gloss, and preparing for protection.
--   **Micro-Fine/Antihologram:** For the most delicate finishing steps, especially on dark colors.
--   **One-Step (AIO):** Diminishing abrasives that start as heavy cut and break down into fine polish.
+1. **Heavy Cut (Грубые):** Максимальный рез. Удаляют риску P1200-P1500. Для сильно поврежденных лаков.
+2. **Medium Cut / One-Step (Среднешаговые / Одношаговые):** Баланс реза и финиша. Идеальны для эксцентриковых машин и умеренных дефектов.
+3. **Finish / Anti-Hologram (Финишные):** Минимальный абразив. Удаляют голограммы, придают максимальный блеск.
+4. **Micro-Fine:** Для самых мягких лаков и супер-финиша.
 
-## 3. Decision Tree (Selection Guide)
+## 3. Технологии абразива
 
--   **Paint Hardness:** German cars (hard paint) need aggressive compounds (3D ACA 510); Japanese cars (soft paint) need gentler approaches to avoid marring.
--   **Machine Type:** Dual Action (DA) machines are safer and work best with modern emulsions; Rotary machines are faster but generate more heat.
--   **Defect Depth:** If you can feel the scratch with a fingernail, a paste might not remove it completely.
+-   **Разрушающийся абразив (DAT):** Частицы дробятся в процессе, становясь мельче. Требуют полной выработки цикла.
+-   **Постоянный абразив (SMAT):** Размер частиц не меняется. Позволяют работать столько, сколько нужно для достижения эффекта.
 
-## 4. Professional Workflow
+## 4. Алгоритм успешной полировки
 
-1. **Decontamination:** Wash, Iron removal, and Clay bar are mandatory before any polishing!
-2. **Masking:** Protect rubber, plastic trim, and emblems with masking tape.
-3. **Test Spot:** Always test the least aggressive combination first.
-4. **Section Work:** Work in small areas (40x40 cm). Use 4-5 drops of paste.
-5. **Clean the Pad:** Clean the pad after every section to prevent abrasive clumping.
+1. **Тестовое пятно (Test Spot):** Всегда начинайте с самой мягкой связки (круг+паста).
+2. **Очистка круга:** Чистите круг после каждого прохода.
+3. **Контроль:** Используйте обезжириватель (IPA) для проверки, реально ли удалена царапина.
+4. **Техника:** Работайте секциями 40х40 см, перекрывая проходы на 50%.
 
-## 5. Common Mistakes
+## 5. Типичные ошибки
 
--   Polishing in the sun or on a hot hood (paste dries out too fast).
--   Using too much paste (pads get saturated and stop cutting).
--   Not cleaning the polish residue between steps (hides remaining defects).
--   Crossing "dirty" and "clean" steps (using the same microfiber for heavy cut and finish).
+-   Слишком много пасты (круг забивается и перестает резать).
+-   Полировка под прямым солнцем (паста моментально сохнет).
+-   Смешивание паст на одном круге.
+-   Превышение давления на машинку (риск пробития лака).
 
-## 6. FAQ (Top 5)
+## 6. FAQ (Топ-5)
 
-1. **Можно ли использовать пасту без машинки (вручную)?** (Hard work, low efficiency for defect removal, only for very light cleaning/gloss).
-2. **Как понять, какая паста мне нужна?** (Explanation of the "Test Spot" method).
-3. **Удаляет ли паста глубокие царапины до металла?** (No, only clear coat defects).
-4. **Нужно ли смывать пасту после работы?** (Yes, using IPA or specialized degreasers to check results).
-5. **Что такое голограммы и как их убрать?** (Result of rotary polishing, removed by fine antihologram pastes).
+1. **Можно ли использовать пасту вручную?** (Можно, но эффект будет только по блеску, царапины убрать почти невозможно).
+2. **Нужно ли смывать пасту водой?** (Нет, используются специальные составы-антисиликоны или изопропиловый спирт).
+3. **Уберет ли паста царапину, которую цепляет ноготь?** (Скорее всего нет, здесь уже может потребоваться подкраска или шлифовка).
+4. **В чем разница между пастой и полиролем?** (Паста — это абразив для коррекции; полироль — часто более общее название, нередко со встроенной защитой/воском).
+5. **Как долго хранятся пасты?** (Обычно 2-3 года, важно не допускать заморозки).
 
-## 7. Expert Tips (Brand Systems)
+## 7. Советы экспертов
 
--   **ZviZZer System:** Color-coded simplicity. Red pad + Red paste = Heavy Cut. Yellow pad + Yellow paste = Fine Cut.
--   **3D ACA 510/520:** Non-diminishing abrasives (NDA). They don't break down, allowing for a longer working time and consistent cut.
--   **Low Dust:** Modern premium pastes like ZviZZer produce almost no dust, keeping the shop clean and reducing cleanup time.
+-   **Система ZviZZer:** Используйте цветовое соответствие (Красная паста = Красный круг). Это исключает ошибки выбора.
+-   **3D ACA 510/520:** Отличный выбор для твердых немецких лаков, работают быстро и чисто.
+-   **Низкие обороты:** Начинайте на низких оборотах для распределения пасты, затем повышайте для основной работы.

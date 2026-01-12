@@ -1,60 +1,127 @@
-# Research Prompt: glina-i-avtoskraby (Глина и автоскрабы)
+# Глина и автоскрабы (glina-i-avtoskraby) — SEO Research (Buyer Guide)
 
-## Context
+## ТЗ для Perplexity Deep Research
 
-**Project:** Ultimate.net.ua — Specialist e-commerce store for auto detailing and car care.
-**Category:** glina-i-avtoskraby (Глина и автоскрабы)
-**Target Audience:** Enthusiasts and professionals performing "Deep Cleaning" of the paint before polishing or applying protection.
+**Задача:** Собрать экспертные данные по механической очистке ЛКП (дезактивации) с помощью синтетической глины и автоскрабов.
 
-## Objective
+**Как работать:** Загрузи ВЕСЬ этот файл в Perplexity → Deep Research. Ответ верни в формате раздела "Шаблон вывода" в конце файла.
 
-Conduct deep SEO research for "Mechanical paint decontamination using Clay Bars and Auto-scrubs". Focus on removing "industrial fallout", overspray, and tree sap that washing can't touch.
+---
 
-## Semantic Core (RU/UK)
+## Контекст
 
-**Main Keywords:**
+| Параметр          | Значение                                              |
+| ----------------- | ----------------------------------------------------- |
+| Тип страницы      | Категория                                             |
+| Название          | Глина и автоскрабы                                    |
+| Slug              | glina-i-avtoskraby                                    |
+| Parent            | ochistiteli-kuzova                                    |
+| Язык контента     | Русский (Украина)                                     |
+| Целевая аудитория | Детейлеры и автовладельцы, готовящие авто к полировке |
 
--   глина для авто (390)
--   синяя глина для авто (140)
--   автоскраб (90)
--   глина для чистки авто (50)
+---
 
-**Synonyms & LSI:**
+## Семантическое ядро
 
--   автомобильная глина для кузова
--   глина для полировки автомобиля
--   глина для очистки лкп
--   автоскраб рукавица
--   лубрикант для глины
+### Основные ключевые слова
 
-## Product Insights (What we sell)
+| Ключ                        | Объём |
+| --------------------------- | ----- |
+| глина для авто              | 390   |
+| синяя глина для авто        | 140   |
+| автоскраб                   | 90    |
+| глина для чистки авто       | 50    |
+| глина для чистки автомобиля | 40    |
 
--   **Traditional Clay Bars:** Yellow Clay, Blue Clay (100g). Different aggressiveness levels.
--   **Modern Auto-scrubs:** Clay sponges, Clay pads (for machines or hand use), Clay mitts/towels.
--   **Lubrication:** Importance of using a dedicated clay lubricant (or highly diluted shampoo) to avoid scratching.
+### Entities (сущности для контента)
 
-## Research Objectives
+-   вкрапления (fallout / contaminants)
+-   битум и древесная смола
+-   опыл краски (overspray)
+-   лубрикант для глины (clay lube)
+-   автоскраб-рукавица (clay mitt)
+-   степень абразивности (fine/medium/heavy)
 
-1. **Contamination Types:** Explain what "embedded contaminants" are (rail dust, iron fallout, tree sap, tar) and why they need mechanical removal.
-2. **Clay vs Auto-scrub:** Detailed comparison. Why auto-scrubs are faster and can be rinsed if dropped, whereas clay must be thrown away.
-3. **Aggressiveness (Fine/Medium/Heavy):** When to use each level. Danger of marring with heavy clay.
-4. **The Lubrication Rule:** Why you should NEVER use clay on a dry surface or just water.
-5. **Shelf Life and Storage:** How to keep clay from drying out and how many cars one bar can do.
-6. **FAQ Candidates:**
-    - "Does clay remove scratches?" (No, explains it removes _protruding_ debris).
-    - "Can I use soapy water as a lubricant?"
-    - "What happens if I drop the clay on the floor?" (The "Death" of clay).
-    - "How to know if the paint needs claying?" (The "Plastic Bag Test").
+### Вопросы пользователей (micro_intents)
 
-## Output Format
+-   как пользоваться глиной для авто
+-   синяя или голубая глина — в чем разница
+-   глина или автоскраб: что лучше выбрать
+-   можно ли использовать воду вместо лубриканта
 
-Generate a structured report in **Russian** following the template:
+---
 
-1. **Intent & Problem Identification:** Explaining the "Feeling" of dirty paint (sandpaper texture).
-2. **Clay Bar 101:** Material, types (Fine/Medium), and use cases.
-3. **The Rise of Auto-scrubs:** Technology behind polymer "clay" coatings on sponges/mitts.
-4. **Step-by-Step Decontamination:** Washing -> Chemical prep -> Mechanical claying -> Drying.
-5. **The Importance of Lubricants:** Science of surface tension and glide.
-6. **Common Mistakes:** Dropped clay, inadequate lubrication, using on hot surfaces.
-7. **FAQ:** 3-5 practical questions.
-8. **Expert Recommendations:** Comparison of traditional bars vs modern sponges.
+## Product Insights (из описаний товаров)
+
+| Характеристика | Из описаний                                       |
+| -------------- | ------------------------------------------------- |
+| Ассортимент    | Бруски глины по 100г, круги для машинок, рукавицы |
+| Бренды         | Liquid Elements, 3D, Kwazar                       |
+
+---
+
+## Промпт для исследования (11 блоков)
+
+### Блок 1: Что такое механическая очистка (Clay Bar)
+
+1. Какую роль играет глина в процессе очистки (удаление торчащих из лака вкраплений)?
+2. Почему обычная мойка не убирает эти вкрапления?
+
+### Блок 2: Глина vs Автоскраб
+
+1. Классическая глина: плюсы и минусы (впитывание грязи, риск уронить).
+2. Современные автоскрабы (полимерные): скорость работы, возможность промывки.
+
+### Блок 3: Степени абразивности
+
+1. Мягкая (Fine) — для регулярного ухода.
+2. Средняя (Medium) — стандарт для детейлинга.
+3. Жесткая (Heavy) — для сильных загрязнений и опыла.
+
+### Блок 4: Лубриканты
+
+1. Зачем нужен специализированный лубрикант?
+2. Почему шампуни или вода могут быть плохим выбором (разрушение глины, недостаток скольжения).
+
+### Блок 5: Пошаговая инструкция
+
+1. Подготовка лака (химическая чистка).
+2. Работа глиной: движения, давление.
+3. Как понять, что поверхность очищена («пластиковый пакет» тест).
+
+### Блок 6: Критические ошибки
+
+1. Использование упавшей на пол глины.
+2. Недостаток лубрикации (царапины).
+3. Использование на горячей поверхности.
+
+### Блок 6а: Спорные утверждения — запрос на PROOF
+
+1. "Глина всегда царапает лак и требует последующей полировки" (Нужно уточнение про Fine глина).
+2. "Автоскраб работает эффективнее глины на старых авто".
+
+### Блок 7: FAQ новичка
+
+1. Сколько раз можно использовать один кусочек глины?
+2. Нужно ли смывать лубрикант после работы?
+3. Можно ли чистить стекла и хром глиной?
+
+### Блок 8: Troubleshooting
+
+1. Глина оставляет "мазки" на лаке.
+2. Автоскраб липнет к поверхности.
+
+### Блок 9: Совместимость
+
+1. Подготовка под защитные покрытия (воски, керамика).
+
+### Блок 10: Практические цифры
+
+1. Время очистки одного автомобиля (среднее).
+2. Количество машин, которое можно пройти одним автоскрабом.
+
+---
+
+## Шаблон вывода
+
+...

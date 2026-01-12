@@ -1,59 +1,55 @@
-# Research Data: poliroli-dlya-plastika
+# Research Data: Полироли для пластика (poliroli-dlya-plastika)
 
-## 1. Intent, Problems & Benefits
+## 1. Интент, Проблемы и Преимущества
 
-**Main Intent:** Restoration of appearance and protection of interior plastic elements.
-**User Problems:**
+**Основной интент:** Восстановление внешнего вида пластиковых панелей салона и их защита от старения и выгорания.
+**Проблемы пользователей:**
 
--   Faded dash/torpedo due to UV.
--   Dust accumulation (static).
--   Greasy fingerprints.
--   Scratches on smooth plastic.
--   Performance: Dash reflection in the windshield (glare).
+-   Выцветший, серый пластик на торпедо.
+-   Белые следы от воска или химии после мойки.
+-   Оседание большого количества пыли на панелях (статический заряд).
+-   Мелкие царапины и потертости.
 
-**Benefits:**
+**Преимущества:**
 
--   Original "factory" look (especially with matte finishes).
--   UV protection prevents cracking.
--   Antistatic effect keeps it cleaner for longer.
--   Pleasant interior scent.
+-   Глубокий, насыщенный цвет.
+-   Антистатический эффект (салон дольше остается чистым).
+-   Приятный аромат "нового авто" или парфюма.
+-   Защита от UV-лучей (пластик не становится хрупким).
 
-## 2. Decision Tree (How to Choose)
+## 2. Глянец vs Мат (Что выбрать?)
 
--   **Finish:** Matte (modern, no glare) vs. Gloss (classic, high shine).
--   **Material:** Soft-touch plastic, hard plastic, vinyl.
--   **Form-factor:** Spray (quick), Milk/Cream (deep care), Gel (long-lasting protection).
--   **Added features:** Antibacterial properties, antistatic effect.
+-   **Глянцевые составы:** Визуально делают салон ярче, но создают сильные блики на лобовом стекле, что мешает вождению. Часто оставляют жирный след.
+-   **Матовые составы:** Современный стандарт детейлинга. Сохраняют естественную текстуру пластика ("заводской вид"), не бликуют, не оставляют жирных следов.
 
-## 3. Product Types & Hierarchy
+## 3. Виды составов
 
-1. **Quick Detailers:** For daily/weekly maintenance (dust removal).
-2. **Restorers/Dressings:** For old, faded plastic (deep color recovery).
-3. **Protectants:** Focused on UV and mechanical protection.
+1. **Очистители (Interior Cleaners):** Для удаления грязи и жира.
+2. **Консерванты / Дрессинги (Dressings):** Для питания и защиты после очистки.
+3. **Составы 2-в-1:** Сочетают легкую очистку и защиту. Подходят для регулярного ухода.
 
-## 4. Helpful Structure (Step-by-Step)
+## 4. Этапы применения
 
-1. **Cleaning:** Use an APC (All Purpose Cleaner) first to remove old grease.
-2. **Application:** Apply on a microfiber applicator, not directly on the panel.
-3. **Buffing:** Wait for a few minutes and buff with a clean microfiber for a uniform finish.
+1. **Подготовка:** Очистка пластика кистью или фиброй со слабым универсальным очистителем (APC).
+2. **Нанесение:** Нанесите полироль на поролоновый или микрофибровый аппликатор.
+3. **Располировка:** Равномерно распределите по пластику, через 2-3 минуты протрите чистой сухой фиброй для удаления излишков.
 
-## 5. Common Mistakes
+## 5. Типичные ошибки
 
--   Applying on steering wheel or pedals (safety hazard — slippery).
--   Using gloss polishes on the dash top (creates blinding reflections).
--   Applying on a hot surface (uneven drying/streaks).
--   Using silicone-heavy "cheap" sprays that attract more dust.
+-   **Нанесение на руль и педали:** Слишком скользко — это небезопасно!
+-   **Распыление прямо на торпедо:** Химия попадает на лобовое стекло, оставляя трудноудаляемые пятна.
+-   **Работа по горячему пластику:** Состав сохнет пятнами.
 
-## 6. FAQ (Top 5)
+## 6. FAQ (Топ-5)
 
-1. **Чем отличается матовая полироль от глянцевой?** (Explanation of aesthetic and glare).
-2. **Можно ли убрать царапины на пластике полиролью?** (Masking vs removal).
-3. **Как часто нужно полировать торпеду?** (Recommendations for frequency).
-4. **Безопасны ли полироли для электроники и экранов?** (Warning about sensitive layers).
-5. **Нужно ли мыть пластик перед полировкой?** (Importance of base cleaning).
+1. **Как убрать царапины на пластике?** (Полироль может скрыть совсем мелкие "волоски". Глубокие царапины она не уберет — здесь поможет только структурная покраска или замена).
+2. **Почему пластик липкий после полироли?** (Либо использован дешевый бюджетный состав на основе вазелинового масла, либо нанесен слишком толстый слой без располировки).
+3. **Безопасно ли это для экранов?** (Нет, для мультимедиа и "рояльного лака" используйте специализированные составы).
+4. **Как долго держится эффект?** (В среднем 2-4 недели, антистатический эффект — около 7-10 дней).
+5. **Можно ли использовать полироль для дома?** (Да, отлично подходит профессиональная автохимия для мебели с пластиковыми элементами).
 
-## 7. Expert Tips (Product Specific)
+## 7. Советы экспертов
 
--   **Gtechniq C6:** Best for brand new cars to keep them matte.
--   **Koch-Chemie Top Star:** The "gold standard" for European car textures.
--   **Matt vs Gloss rule:** If the windshield angle is steep, only use matte to avoid glare.
+-   **Матовый финиш:** Для премиального вида выбирайте составы вроде _Ultimate Cockpit Matte_ или _Koch-Chemie Refresh Cockpit Care_.
+-   **Антистатик:** Если вы живете в пыльном регионе, ищите в составе явное упоминание антистатических добавок.
+-   **Подготовка:** Качественный результат на 70% зависит от того, насколько хорошо вы вычистили пластик до нанесения защиты.

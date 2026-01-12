@@ -1,60 +1,126 @@
-# Research Prompt: ukhod-za-intererom (Уход за интерьером)
+# Уход за интерьером (ukhod-za-intererom) — SEO Research (Buyer Guide)
 
-## Context
+## ТЗ для Perplexity Deep Research
 
-**Project:** Ultimate.net.ua — Specialist e-commerce store for auto detailing and car care.
-**Category:** ukhod-za-intererom (Уход за интерьером) — L1 Parent category.
-**Target Audience:** Car owners and pro detailers looking for comprehensive solutions for car interior.
+**Задача:** Собрать экспертные данные с источниками для создания комплексного buyer guide по общему уходу за интерьером автомобиля (чистка, консервация, гигиена).
 
-## Objective
+**Как работать:** Загрузи ВЕСЬ этот файл в Perplexity → Deep Research. Ответ верни в формате раздела "Шаблон вывода" в конце файла.
 
-Conduct deep SEO research for the broad "Car Interior Care" topic. This category covers everything from cleaning fabrics and leather to protecting plastic and removing odors.
+---
 
-## Semantic Core (RU/UK)
+## Контекст
 
-**Main Keywords:**
+| Параметр          | Значение                                  |
+| ----------------- | ----------------------------------------- |
+| Тип страницы      | Категория интернет-магазина               |
+| Название          | Уход за интерьером                        |
+| Slug              | ukhod-za-intererom                        |
+| Parent            | — (L1 Category)                           |
+| Язык контента     | Русский (Украина)                         |
+| Целевая аудитория | Автовладельцы, профессиональные детейлеры |
 
--   химчистка салона авто (320)
--   уход за салоном авто (170)
--   средства для салона автомобиля (90)
--   автохимия для салона (30)
+---
 
-**Synonyms & LSI:**
+## Семантическое ядро
 
--   уход за интерьером автомобиля
--   чистота в салоне машины
--   защита салона от износа
--   средства для чистки сидений
+### Основные ключевые слова
 
-## Product Insights (Scope)
+| Ключ                          | Объём |
+| ----------------------------- | ----- |
+| уход за салоном авто          | 590   |
+| уход за интерьером автомобиля | 140   |
+| средства для чистки салона    | 110   |
+| химия для чистки салона       | 90    |
+| чистка салона автомобиля      | 90    |
 
-This is a parent category including:
+### Entities (сущности для контента)
 
--   **Cleaners:** APCs (Ultimate Multi Clean), textile cleaners, leather cleaners (Ultimate Easy Leather).
--   **Protectants:** Plastic dressings (Gtechniq C6, Top Plast), leather balms (Ultimate Leather Balsam).
--   **Odor Control:** Ultimate Odor Killer.
--   **Tools:** Interior brushes, microfibers, applicators.
+-   детейлинг интерьера (interior detailing)
+-   химчистка (deep cleaning)
+-   консервация материалов
+-   гигиена и дезинфекция
+-   кисти и микрофибры
+-   APC (All Purpose Cleaner)
 
-## Research Objectives
+### Вопросы пользователей (micro_intents)
 
-1. **Holistic Approach:** Define the 3 main stages: Cleaning -> Protection -> Maintenance.
-2. **Material Specifics:** Briefly highlight care for different materials (Leather vs Fabric vs Alcantara vs Plastic).
-3. **Health & Hygiene:** Focus on sanitization, bacteria removal (e.g., Gtechniq I2), and allergy-safe products.
-4. **Tool Selection:** Which brushes/microfibers are needed for a full interior detail.
-5. **Seasonal Care:** Summer (UV protection) vs Winter (moisture and salt removal from carpets).
-6. **FAQ Candidates:**
-    - "How often should I do a full interior detail?"
-    - "Can I use household cleaners?" (Anti-recommendation).
-    - "How to remove stubborn stains (coffee, oil)?"
+-   с чего начать уход за салоном
+-   как поддерживать чистоту в машине
+-   как убрать неприятный запах в салоне
+-   какие средства нужны для комплексного ухода
 
-## Output Format
+---
 
-Generate a structured report in **Russian** following the template:
+## Product Insights (из описаний товаров)
 
-1. **Intent & Overall Strategy:** The "Detailing Approach" to interior.
-2. **Key Material Care:** Brief guides for Leather, Textile, Plastic.
-3. **Tool Guide:** Essential accessories for interior care.
-4. **Hygiene & Comfort:** Micro-intents about smells and bacteria.
-5. **Step-by-Step Overview:** General workflow.
-6. **Mistakes:** Common blunders in interior cleaning.
-7. **FAQ:** 3-5 high-level questions.
+| Характеристика | Из описаний                                     |
+| -------------- | ----------------------------------------------- |
+| Ассортимент    | Очистители, кондиционеры, кисти, нейтрализаторы |
+| Бренды         | Ultimate, Koch-Chemie, Meguiar's, Gtechniq      |
+
+---
+
+## Промпт для исследования (11 блоков)
+
+### Блок 1: Философия ухода
+
+1. Почему уход за интерьером — это не только эстетика, но и здоровье (бактерии, аллергены)?
+2. Разница между регулярной уборкой и глубоким детейлингом интерьера.
+
+### Блок 2: Группы материалов и их специфика
+
+1. Как ухаживать за разными поверхностями: ткань, кожа, винил, пластик, дерево, металл/рояльный лак.
+2. Универсальные очистители (APC) против специализированных составов.
+
+### Блок 3: Инструментарий
+
+1. Роль правильных микрофибр (короткий vs длинный ворс).
+2. Зачем нужны детейлинг-кисти и щеточки?
+3. Вспомогательное оборудование (пылесосы, парогенераторы, торнадоры).
+
+### Блок 4: Этапы правильной уборки
+
+1. Сухая уборка (пылесос).
+2. Влажная очистка (деликатные составы).
+3. Консервация и защита (дрессинги, керамика).
+
+### Блок 5: Ошибки при уходе
+
+1. Использование бытовой химии (фери, хлорка).
+2. Переувлажнение электроники и блоков кнопок.
+3. Использование жестких щеток на деликатных поверхностях.
+
+### Блок 6: Безопасность и гигиена
+
+1. Нейтрализация запахов vs маскировка ароматизаторами.
+2. Дезинфекция кондиционера и воздуховодов.
+
+### Блок 6а: Спорные утверждения — запрос на PROOF
+
+1. "Солнечный свет разрушает интерьер быстрее, чем грязь".
+2. "Парогенератор безопасен для любого потолка авто" (Проблема отклеивания потолков).
+
+### Блок 7: FAQ новичка
+
+1. Как часто нужно делать глубокую чистку?
+2. Можно ли мыть потолок самостоятельно?
+3. Что делать, если пролил кофе на сиденье?
+
+### Блок 8: Troubleshooting
+
+1. Белесые пятна на пластике после чистки.
+2. Разводы на мониторе мультимедиа.
+
+### Блок 9: Совместимость
+
+1. Совместимость составов с современными экологичными материалами (веган-кожа, рециклированные ткани).
+
+### Блок 10: Расход и экономичность
+
+1. Почему концентрат выгоднее готового продукта.
+
+---
+
+## Шаблон вывода
+
+(Аналогично cherniteli-shin)

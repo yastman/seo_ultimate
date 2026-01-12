@@ -1,69 +1,131 @@
-# Research Prompt: polirovalnye-mashinki (Полировальные машинки)
+# Полировальные машинки (polirovalnye-mashinki) — SEO Research (Buyer Guide)
 
-## Context
+## ТЗ для Perplexity Deep Research
 
-**Project:** Ultimate.net.ua — Specialist e-commerce store for auto detailing and car care.
-**Category:** polirovalnye-mashinki (Полировальные машинки)
-**Target Audience:** Detailing professionals and hobbyists looking to buy their first or upgraded machine.
+**Задача:** Собрать экспертные данные с источниками для создания buyer guide по полировальным машинкам для детейлинга (роторные, эксцентриковые, аккумуляторные).
 
-## Objective
+**Как работать:** Загрузи ВЕСЬ этот файл в Perplexity → Deep Research. Ответ верни в формате раздела "Шаблон вывода" в конце файла.
 
-Conduct deep SEO research for "Car polishing machines". Focus on the difference between Rotary and Dual Action (DA), battery-powered vs corded, and orbital strokes (8mm, 15mm, 21mm).
+---
 
-## Semantic Core (RU/UK)
+## Контекст
 
-**Main Keywords:**
+| Параметр          | Значение                                            |
+| ----------------- | --------------------------------------------------- |
+| Тип страницы      | Категория интернет-магазина                         |
+| Название          | Полировальные машинки                               |
+| Slug              | polirovalnye-mashinki                               |
+| Parent            | polirovka                                           |
+| Язык контента     | Русский (Украина)                                   |
+| Целевая аудитория | Профессионалы, владельцы ищущие инструмент для себя |
 
--   полировочная машинка (8100)
--   полировальная машина для полировки авто (260)
--   полировочная машинка для полировки авто (260)
--   аккумуляторная полировальная машина (260)
+---
 
-**Synonyms & LSI:**
+## Семантическое ядро
 
--   машинка для полировки авто
--   эксцентриковая полировальная машинка
--   роторная полировальная машина
--   орбитальная полировальная машинка
--   мини полировальная машинка на аккумуляторе
--   купить полировочную машинку для детейлинга
+### Основные ключевые слова
 
-## Product Insights (What we sell)
+| Ключ                                    | Объём |
+| --------------------------------------- | ----- |
+| полировочная машинка                    | 8100  |
+| купить полировочную машинку             | 880   |
+| купить полировочную машинку для авто    | 320   |
+| аккумуляторная полировальная машина     | 260   |
+| полировальная машина для полировки авто | 260   |
 
--   **Top Brand:** Liquid Elements (Germany).
--   **Dual Action (DA):**
-    -   T2000 V4 (Standard).
-    -   T4200 / T4500 (15mm stroke — the "sweet spot" for versatility).
-    -   T5200 (21mm stroke — for large flat panels).
--   **Rotary:** Terminator V2 (for heavy cutting and professionals).
--   **Battery/Cordless:**
-    -   A1000 V4 (Mini, for tight spots).
-    -   A2000 Professional.
-    -   A800 Pico (super mini for vents and interior emblems).
--   **Value Proposition:** German engineering, Japanese motors/electronics, excellent ergonomics.
+### Entities (сущности для контента)
 
-## Research Objectives
+-   роторная машинка (rotary)
+-   эксцентриковая / двойного действия (DA - Dual Action)
+-   ход эксцентрика (stroke/throw: 8, 15, 21 мм)
+-   обороты в минуту (RPM / OPM)
+-   константная электроника (поддержание оборотов)
+-   плавный пуск (soft start)
+-   аккумуляторный инструмент (cordless)
+-   нано-полировка (nano/pico polishers)
 
-1. **Rotary vs Dual Action (DA):** Detailed comparison. Why DA is safer for beginners (stops under pressure, less heat). Why Rotary is faster for deep defects.
-2. **Orbital Stroke (Throw):** What is the difference between 8mm, 15mm, and 21mm? Which one to choose for a single-machine setup?
-3. **Cordless Revolution:** Battery life, power consistency, and the freedom of motion.
-4. **Mini Machines:** Why every detailer needs an A1000 or A800 for "spot polishing" (mirrors, pillars, interior).
-5. **Technical Specs:** Importance of constant speed electronics, soft start, and ergonomics (vibration reduction).
-6. **FAQ Candidates:**
-    - "Can I burn the paint with a DA machine?"
-    - "Which machine is best for a beginner?"
-    - "15mm or 21mm — what's the difference?"
-    - "How often to change brushes (for corded)?"
+### Вопросы пользователей (micro_intents)
 
-## Output Format
+-   какую полировальную машинку выбрать новичку
+-   роторная или эксцентриковая: в чем разница
+-   что значит ход эксцентрика 15мм и 21мм
+-   лучшая аккумуляторная машинка для детейлинга
 
-Generate a structured report in **Russian** following the template:
+---
 
-1. **Intent & Use Cases:** From DIY to Pro.
-2. **DA vs Rotary:** The ultimate battle guide.
-3. **The 'Throw' Guide:** 8/15/21mm comparison.
-4. **Cordless vs Corded:** Pros and cons.
-5. **Mini & Nano Polishing:** Specialized tools section.
-6. **Safety & Tips:** How to avoid paint damage.
-7. **FAQ:** 3-5 high-intent questions.
-8. **Expert Recommendations:** Focus on Liquid Elements lineup.
+## Product Insights (из описаний товаров)
+
+| Характеристика | Из описаний                                      |
+| -------------- | ------------------------------------------------ |
+| Бренды         | Liquid Elements (T2000, T4200, T5000, A1000)     |
+| Типы           | Сетевые (220В) и аккумуляторные (12В)            |
+| Особенности    | Немецкий дизайн, японские подшипники, эргономика |
+
+---
+
+## Промпт для исследования (11 блоков)
+
+### Блок 1: Типы привода
+
+1. Ротор (Rotary): сила реза против риска пробития лака.
+2. Эксцентрик (DA): почему это стандарт безопасности и финиша без голограмм.
+3. Планетарный привод (forced rotation): гибрид силы и безопасности.
+
+### Блок 2: Ход эксцентрика (Throw)
+
+1. 8-9 мм: для узких мест и новичков.
+2. 12-15 мм: идеальный баланс (Total Rounder).
+3. 21 мм: работа по большим плоскостям.
+
+### Блок 3: Электроника и ТТХ
+
+1. Почему важна поддержка оборотов под нагрузкой?
+2. Роль вентиляции и перегрева инструмента.
+3. Оптимальная мощность в Ваттах для разных задач.
+
+### Блок 4: Аккумуляторные технологии
+
+1. Преимущества свободы от провода.
+2. Время работы vs Время зарядки (система с 2 АКБ).
+3. Нано-машинки (A1000 Pico/Nano) — незаменимый инструмент для деталей.
+
+### Блок 5: Эргономика
+
+1. Вес и вибрация: влияние на здоровье детейлера.
+2. Длина сетевого шнура (почему 5-8 метров — это важно).
+
+### Блок 6: Обслуживание
+
+1. Замена щеток (в сетевых моделях).
+2. Смазка редуктора.
+3. Продувка от пыли.
+
+### Блок 6а: Спорные утверждения — запрос на PROOF
+
+1. "Аккумуляторные машинки слабее сетевых".
+2. "Эксцентриком невозможно перегреть лак".
+
+### Блок 7: FAQ новичка
+
+1. Хватит ли одной машинки на всю машину?
+2. Можно ли полировать фары машинкой для кузова?
+3. Что такое "стопор" эксцентрика при сильном нажатии?
+
+### Блок 8: Troubleshooting
+
+1. Машинка сильно вибрирует.
+2. Машинка греется в районе редуктора.
+
+### Блок 9: Совместимость
+
+1. Подбор подложек (backing plates) разного диаметра.
+
+### Блок 10: Практические цифры
+
+1. Сравнение КПД разных типов машинок.
+
+---
+
+## Шаблон вывода
+
+...
