@@ -1,70 +1,59 @@
-# Уход за кожей (ukhod-za-kozhey) — SEO Research
+# Research Prompt: ukhod-za-kozhey (Уход за кожей)
 
-## ТЗ для Perplexity Deep Research
+## Context
 
-**Задача:** Buyer guide по теме "Уход за кожей".
+**Project:** Ultimate.net.ua — Specialist e-commerce store for auto detailing and car care.
+**Category:** ukhod-za-kozhey (Уход за кожей)
+**Target Audience:** Owners of cars with premium leather interiors, looking for high-end maintenance.
 
----
+## Objective
 
-## Контекст
+Conduct deep SEO research on "Leather care for cars". This involves cleaning, conditioning, and long-term protection of natural and synthetic leathers.
 
-| Параметр | Значение |
-| -------- | -------- |
-| Название | Уход за кожей |
-| Slug | ukhod-za-kozhey |
-| Parent | sredstva-dlya-kozhi |
+## Semantic Core (RU/UK)
 
----
+**Main Keywords:**
 
-## Семантическое ядро
+-   уход за кожей авто (210)
+-   полироль для кожи (170)
+-   крем для кожи авто (70)
+-   набор для ухода за кожей авто (30)
 
-(см. ukhod-za-kozhey_clean.json)
+**Synonyms & LSI:**
 
----
+-   очиститель кожи автомобиля
+-   кондиционер для кожаного салона
+-   лосьон для кожи в машину
+-   защита кожи от трещин
+-   восстановление мягкости кожи
 
-## Промпт для исследования
+## Product Insights (What we sell)
 
-### Блок 1: Что это и зачем
+-   **Conditioners/Balms:** Ultimate Leather Balsam (water-based), Ultimate Leather Cream SP8 (nutrient fats), Koch-Chemie Leather Star (oil-water emulsion with resins).
+-   **Cleaning:** Ultimate Easy Leather (universal for all types including suede/nappa).
+-   **Specialized:** Furniture Clinic Leather Revive (for hard, old leather), Furniture Clinic Stain Remover.
+-   **Protection:** Protective creams that restore "new leather" scent and prevent peeling.
 
-1. Что это за категория товаров?
-2. Какие проблемы решает?
-3. Для кого предназначено?
+## Research Objectives
 
-### Блок 2: Виды и типы
+1. **Material Varieties:** Difference in care for Nappa, Suede, Alcantara, Perforated leather.
+2. **Key Steps:** Importance of the Clean -> Condition -> Protect cycle.
+3. **Problem Solving:** How to prevent/fix cracking, fading, and "shiny" grease build-up.
+4. **Product Comparison:** Cream vs Spray vs Balm — when to use which.
+5. **Safety:** pH-neutrality and its importance for long-term leather health.
+6. **FAQ Candidates:**
+    - "Should new leather be conditioned?"
+    - "How to clean perforated seats without clogging holes?"
+    - "Can I use baby wipes on car leather?" (Strict No).
 
-(классификация по осям)
+## Output Format
 
-### Блок 3: Как выбрать
+Generate a structured report in **Russian** following the template:
 
-(сценарии "если X → выбирай Y")
-
-### Блок 4: Как использовать
-
-(пошаговая инструкция)
-
-### Блок 5: Критические ошибки
-
-| Ошибка | Последствие | Как правильно |
-
-### Блок 6: Безопасность
-
-### Блок 6а: Спорные утверждения
-
-### Блок 7: FAQ
-
-### Блок 8-10: Troubleshooting, Совместимость, Цифры
-
----
-
-## Шаблон вывода
-
-```markdown
-# Research Data: Уход за кожей
-
-## Sources
-| # | URL | Тип | Что подтверждает |
-
-## Блок 1-10: ...
-
-**Дата:** YYYY-MM-DD
-```
+1. **Intent & Pain Points:** Why people look for leather care.
+2. **Leather Types & Care Specifics:** Differences between nappa, perforated, etc.
+3. **Selection Guide:** How to choose between cream, balm, and conditioner.
+4. **Maintenance Workflow:** Recommended steps for a perfect result.
+5. **Myths & Mistakes:** Common misconceptions.
+6. **FAQ:** 3-5 popular user questions.
+7. **Expert Recommendations:** Tips based on our specific products.
