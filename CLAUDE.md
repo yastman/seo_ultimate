@@ -87,4 +87,15 @@ python scripts/md_to_html.py categories/{slug}/content/{slug}_ru.md
 
 ---
 
-**Version:** 26.0 (Refactored)
+## Git
+
+**После любых изменений файлов — делать коммит.**
+
+```bash
+git add <files>
+git commit -m "feat/fix/docs: краткое описание"
+```
+
+---
+
+**Version:** 27.0
