@@ -17,15 +17,33 @@ Ultimate.net.ua — интернет-магазин автохимии и дет
 
 ## Скиллы
 
-| Когда | Команда |
-|-------|---------|
-| Новая категория | `/category-init {slug}` |
-| Мета-теги | `/generate-meta {slug}` |
-| Исследование | `/seo-research {slug}` |
-| Контент | `/content-generator {slug}` |
-| Украинская версия | `/uk-content-init {slug}` |
-| Проверка | `/quality-gate {slug}` |
-| Деплой | `/deploy-to-opencart {slug}` |
+| Когда             | Команда                      |
+| ----------------- | ---------------------------- |
+| Новая категория   | `/category-init {slug}`      |
+| Мета-теги         | `/generate-meta {slug}`      |
+| Исследование      | `/seo-research {slug}`       |
+| Контент           | `/content-generator {slug}`  |
+| Украинская версия | `/uk-content-init {slug}`    |
+| Проверка          | `/quality-gate {slug}`       |
+| Деплой            | `/deploy-to-opencart {slug}` |
+
+---
+
+## Команды
+
+```bash
+# Тесты
+pytest                        # Все
+pytest -k "test_meta"         # По имени
+
+# Линтинг
+ruff check scripts/
+ruff format scripts/
+
+# Валидация
+python scripts/validate_meta.py --all
+python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
+```
 
 ---
 
@@ -38,13 +56,13 @@ Ultimate.net.ua — интернет-магазин автохимии и дет
 
 ## Навигация
 
-| Что | Где |
-|-----|-----|
-| Статус задач | `tasks/MASTER_CHECKLIST.md` |
-| SEO-гайд | `docs/CONTENT_GUIDE.md` |
-| Данные категорий | `categories/{slug}/` |
-| Скрипты | `scripts/` |
+| Что              | Где                         |
+| ---------------- | --------------------------- |
+| Статус задач     | `tasks/MASTER_CHECKLIST.md` |
+| SEO-гайд         | `docs/CONTENT_GUIDE.md`     |
+| Данные категорий | `categories/{slug}/`        |
+| Скрипты          | `scripts/`                  |
 
 ---
 
-**Version:** 29.0
+**Version:** 30.0
