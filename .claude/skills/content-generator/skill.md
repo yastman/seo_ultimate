@@ -7,7 +7,7 @@ description: >-
   напиши описание категории. ВАЖНО: использовать ПОСЛЕ завершения /seo-research.
 ---
 
-# Content Generator v2.3
+# Content Generator v2.5
 
 ## Quick Start
 
@@ -17,6 +17,31 @@ description: >-
 
 **Input:** `_clean.json` + `_meta.json` + research/*.md (как справка)
 **Output:** `categories/{slug}/content/{slug}_ru.md`
+
+---
+
+## ⚠️ ПЕРВЫЙ ШАГ: Определить тип страницы
+
+Перед написанием контента **ОБЯЗАТЕЛЬНО** проверить `parent_id` в `_clean.json`:
+
+```json
+// Hub Page (L1) — родительская категория
+{ "parent_id": null }
+
+// Product Page (L2/L3) — товарная категория
+{ "parent_id": "aksessuary" }
+```
+
+| Тип | Условие | Шаблон |
+|-----|---------|--------|
+| **Hub Page** | `parent_id = null` | См. [references/hub-pages.md](references/hub-pages.md) |
+| **Product Page** | `parent_id ≠ null` | Buyer Guide (ниже) |
+
+**Для Hub Page:**
+- H2 по процессам, НЕ по типам товаров
+- Без детальных гайдов (каннибализация L2!)
+- FAQ из micro_intents, общие вопросы
+- 2000-2500 знаков б/п
 
 ---
 
@@ -67,10 +92,26 @@ description: >-
 
 ```
 1. Read data        → _clean.json (keywords, entities, micro_intents)
-2. Read meta        → _meta.json (H1 + keywords_in_content)
-3. Find research    → research/*.md (как справка, не копировать!)
-4. Write content    → по структуре ниже + LSI-ключи
-5. Validate         → см. ниже
+2. Check parent_id  → null = Hub Page, иначе = Product Page
+3. If Hub Page      → читать references/hub-pages.md, найти подкатегории в catalog_structure.json
+4. Read meta        → _meta.json (H1 + keywords_in_content)
+5. Find research    → research/*.md (как справка, не копировать!)
+6. Write content    → Hub: по процессам | Product: buyer guide
+7. Check density    → check_keyword_density.py (stem ≤2.5%)
+8. Check nausea     → check_water_natasha.py (тошнота ≤3.5)
+9. Fix spam         → заменить тематические слова на синонимы
+10. Validate        → validate_content.py --mode seo
+```
+
+**Для Hub Page (шаг 3):**
+```bash
+# Найти подкатегории
+cat data/catalog_structure.json | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+children = [c for c in data if c.get('parent_id') == '{slug}']
+for c in children: print(f\"{c['id']}: {c['name']}\")
+"
 ```
 
 **Поиск research файла:**
@@ -222,6 +263,82 @@ python3 scripts/validate_content.py categories/cherniteli-shin/content/chernitel
 
 ---
 
+## Контроль тошноты и переспама
+
+### Пороговые значения
+
+| Метрика | Цель | Блокер |
+|---------|------|--------|
+| Stem-группа ключа | ≤2.5% | >3.0% = SPAM |
+| Классическая тошнота | ≤3.5 | >4.0 |
+| Вода | 40-65% | >75% |
+
+### Команды проверки
+
+```bash
+# Плотность ключей и переспам
+python3 scripts/check_keyword_density.py categories/{slug}/content/{slug}_ru.md
+
+# Тошнота и вода (Natasha)
+python3 scripts/check_water_natasha.py categories/{slug}/content/{slug}_ru.md
+```
+
+### Как избежать переспама
+
+**Проблема:** Stem-группа (машин*, аккумулятор*) превышает 2.5%
+
+**Решение:** Заменить часть вхождений на синонимы.
+
+**Правило:** Целевые ключи из `_clean.json` НЕ заменять. Заменять только тематические слова, которые не являются ключами.
+
+### LSI-синонимы для разбавления
+
+**Инструменты/оборудование:**
+| Слово | Синонимы |
+|-------|----------|
+| машинка/машина | инструмент, устройство, вариант, модель |
+| аккумулятор | АКБ, элемент питания, источник питания |
+| батарея | АКБ, заряд, Li-Ion ячейка |
+| сетевая | проводная, от розетки |
+| беспроводная | автономная, мобильная |
+
+**Автохимия/детейлинг:**
+| Слово | Синонимы |
+|-------|----------|
+| средство | состав, продукт, препарат |
+| нанесение | обработка, применение |
+| поверхность | покрытие, основа, материал |
+| защита | барьер, слой, покрытие |
+| блеск | глянец, сияние, финиш |
+| чистка | очистка, удаление, обработка |
+
+**Автомобиль:**
+| Слово | Синонимы |
+|-------|----------|
+| автомобиль | авто, машина, транспорт |
+| кузов | поверхность, панели, детали |
+| колесо | диск, шина (контекстно) |
+| салон | интерьер, внутренняя часть |
+
+**Процессы:**
+| Слово | Синонимы |
+|-------|----------|
+| работа | процесс, использование, эксплуатация |
+| полировка | обработка, коррекция (контекстно) |
+| мойка | очистка, уход |
+
+### Как снизить тошноту
+
+Если классическая тошнота >3.5 (слово X повторяется слишком часто):
+
+1. Определить виновника через `check_water_natasha.py`
+2. Если это НЕ целевой ключ — заменить часть на синонимы
+3. Если это целевой ключ — добавить LSI-слова для разбавления (увеличить общее кол-во слов)
+
+**Пример:** "батарея" 13 раз → заменить 4 на "АКБ", "заряд", "Li-Ion ячейка" → тошнота 3.61 → 3.32 ✅
+
+---
+
 ## Validation Checklist
 
 ### Структура
@@ -235,6 +352,11 @@ python3 scripts/validate_content.py categories/cherniteli-shin/content/chernitel
 - [ ] Primary keyword в H1 и intro
 - [ ] Secondary keywords — 1x каждый, естественно
 - [ ] Без "коммерческих" ключей в body (купить, цена, заказать)
+
+### Тошнота и переспам
+- [ ] **Stem-группы ≤2.5%** (проверить `check_keyword_density.py`)
+- [ ] **Классическая тошнота ≤3.5** (проверить `check_water_natasha.py`)
+- [ ] **Тематические слова разбавлены синонимами** (батарея→АКБ, машинка→инструмент)
 
 ### Качество контента
 - [ ] **Нет спорных утверждений без смягчения**
@@ -260,4 +382,4 @@ python3 scripts/validate_content.py categories/cherniteli-shin/content/chernitel
 
 ---
 
-**Version:** 2.3 — January 2026
+**Version:** 2.5 — January 2026 (добавлена поддержка Hub Pages, проверка parent_id)
