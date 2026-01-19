@@ -60,13 +60,16 @@ python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
 
 ## Навигация
 
-| Что              | Где                         |
-| ---------------- | --------------------------- |
-| Статус задач     | `tasks/MASTER_CHECKLIST.md` |
-| SEO-гайд         | `docs/CONTENT_GUIDE.md`     |
-| Данные категорий | `categories/{slug}/`        |
-| Скрипты          | `scripts/`                  |
+| Что              | Где                          |
+| ---------------- | ---------------------------- |
+| Задачи (обзор)   | `tasks/README.md`            |
+| Research TODO    | `tasks/TODO_RESEARCH.md`     |
+| Content TODO     | `tasks/TODO_CONTENT.md`      |
+| Аудит категорий  | `tasks/CONTENT_STATUS.md`    |
+| SEO-гайд         | `docs/CONTENT_GUIDE.md`      |
+| Данные категорий | `categories/{slug}/`         |
+| Скрипты          | `scripts/`                   |
 
 ---
 
-**Version:** 31.0
+**Version:** 32.0
