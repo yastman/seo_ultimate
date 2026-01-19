@@ -17,7 +17,7 @@
 
 Эти категории готовы к генерации — research есть.
 
-- [ ] `malyarniy-skotch` → `aksessuary/malyarniy-skotch` (research 5KB)
+- [x] `malyarniy-skotch` → `aksessuary/malyarniy-skotch` (research 5KB) ✅ ready for content
 - [ ] `vedra-i-emkosti` → `aksessuary/vedra-i-emkosti` (research 5KB)
 - [ ] `ukhod-za-naruzhnym-plastikom` → `moyka-i-eksterer/ochistiteli-kuzova/ukhod-za-naruzhnym-plastikom` (research 6KB)
 - [ ] `mekhovye` → `polirovka/polirovalnye-krugi/mekhovye` (research 6KB)
