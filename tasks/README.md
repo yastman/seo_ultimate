@@ -45,15 +45,15 @@
 
 | Этап | Готово | Осталось |
 |------|--------|----------|
-| Research | ~20 | ~27 |
-| Content | ~28 | ~6 готовы к генерации, ~21 ждут research |
+| Research | 31 | 15 |
+| Content | 31 | 6 готовы к генерации, 15 ждут research |
 
 ---
 
 ## Следующие действия
 
 1. **Сейчас можно:** Генерировать контент для 6 категорий (есть research)
-   - malyarniy-skotch, vedra-i-emkosti, ukhod-za-naruzhnym-plastikom
-   - mekhovye, poliroli-dlya-plastika, ukhod-za-kozhey
+   - vedra-i-emkosti, ukhod-za-naruzhnym-plastikom, mekhovye
+   - poliroli-dlya-plastika, ukhod-za-kozhey, ukhod-za-intererom
 
-2. **Нужен research:** 27 категорий — см. TODO_RESEARCH.md
+2. **Нужен research:** 15 категорий — см. TODO_RESEARCH.md
