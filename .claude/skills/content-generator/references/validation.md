@@ -46,7 +46,7 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{pri
 - [ ] H1 без "Купить"
 - [ ] H2 по секциям (навигационные)
 - [ ] **H3 в FAQ = `micro_intents` из `_clean.json`** (если есть)
-- [ ] Intro 30-50 слов (без "мы предлагаем")
+- [ ] Intro 40-60 слов (без "мы предлагаем")
 
 ---
 
