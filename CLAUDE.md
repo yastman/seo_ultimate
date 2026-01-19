@@ -50,7 +50,11 @@ python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
 ## Правила
 
 - **Context7 MCP** — использовать для документации библиотек/API без запроса
-- **Git** — коммит после любых изменений файлов
+- **Git коммиты — ОБЯЗАТЕЛЬНО после каждой правки:**
+  - Коммит сразу после редактирования/создания любого файла
+  - Не накапливать изменения — коммитить атомарно
+  - Формат: `тип(область): описание` (feat, fix, docs, refactor)
+  - Пример: `docs(keramika): update meta tags`
 
 ---
 
@@ -65,4 +69,4 @@ python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
 
 ---
 
-**Version:** 30.0
+**Version:** 31.0
