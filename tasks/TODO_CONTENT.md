@@ -13,86 +13,62 @@
 
 ---
 
-## Приоритет 1: Есть research, нет контента
+## Приоритет 1: Есть research, нет контента (8 категорий)
 
-Эти категории готовы к генерации — research есть.
-
-- [x] `malyarniy-skotch` → `aksessuary/malyarniy-skotch` (research 5KB) ✅ ready for content
-- [ ] `vedra-i-emkosti` → `aksessuary/vedra-i-emkosti` (research 5KB)
-- [ ] `ukhod-za-naruzhnym-plastikom` → `moyka-i-eksterer/ochistiteli-kuzova/ukhod-za-naruzhnym-plastikom` (research 6KB)
-- [ ] `mekhovye` → `polirovka/polirovalnye-krugi/mekhovye` (research 6KB)
-- [ ] `poliroli-dlya-plastika` → `ukhod-za-intererom/poliroli-dlya-plastika` (research 5KB)
-- [ ] `ukhod-za-kozhey` → `ukhod-za-intererom/sredstva-dlya-kozhi/ukhod-za-kozhey` (research 5KB)
+- [ ] `neytralizatory-zapakha` → research 34KB
+- [ ] `akkumulyatornaya` → research 22KB
+- [ ] `ukhod-za-naruzhnym-plastikom` → research 6KB
+- [ ] `mekhovye` → research 6KB
+- [ ] `poliroli-dlya-plastika` → research 5KB
+- [ ] `ukhod-za-kozhey` → research 5KB
+- [ ] `ukhod-za-intererom` → research 5KB (L1 hub)
+- [ ] `vedra-i-emkosti` → нужен research
 
 ---
 
-## Приоритет 2: Обновить контент после нового research
+## Приоритет 2: Нужен research сначала (9 категорий)
 
-После получения research из TODO_RESEARCH.md — обновить контент:
-
-- [ ] `antibitum` — ждёт research
-- [ ] `antimoshka` — ждёт research
-- [ ] `obezzhirivateli` — ждёт research
-- [ ] `ochistiteli-dvigatelya` — ждёт research
-- [ ] `ochistiteli-diskov` — ждёт research
-- [ ] `ochistiteli-shin` — ждёт research
 - [ ] `antidozhd` — ждёт research
-- [ ] `ochistiteli-stekol` — ждёт research
-- [ ] `omyvatel` — ждёт research
-- [ ] `pyatnovyvoditeli` — ждёт research
-- [ ] `sredstva-dlya-khimchistki-salona` — ждёт research
-- [ ] `ochistiteli-kozhi` — ждёт research
-- [ ] `keramika-i-zhidkoe-steklo` — ждёт research
-- [ ] `aktivnaya-pena` — ждёт research
-- [ ] `shampuni-dlya-ruchnoy-moyki` — ждёт research
-
----
-
-## Приоритет 3: Новый контент (после research)
-
-- [ ] `kislotnyy` — ждёт research
-- [ ] `keramika-dlya-diskov` — ждёт research
-- [ ] `polirol-dlya-stekla` — ждёт research
-- [ ] `akkumulyatornaya` — ждёт research
-- [ ] `neytralizatory-zapakha` — ждёт research
 - [ ] `zashchitnye-pokrytiya` (L1) — ждёт research
+- [ ] `keramika-dlya-diskov` — ждёт research
+- [ ] `kislotnyy` — ждёт research
 - [ ] `kvik-deteylery` — ждёт research
-- [ ] `silanty` — ждёт research
-- [ ] `tverdyy-vosk` — ждёт research
 - [ ] `zhidkiy-vosk` — ждёт research
+- [ ] `tverdyy-vosk` — ждёт research
+- [ ] `silanty` — ждёт research
 - [ ] `podarochnyy` — ждёт research
-- [ ] `opt-i-b2b` — ждёт research
-- [ ] `ukhod-za-intererom` (L1) — ждёт research
 
 ---
 
-## Готово (контент >1KB)
+## Готово (контент ≥2KB) — 30 категорий
 
-✅ aksessuary (5KB)
-✅ aksessuary-dlya-naneseniya-sredstv (6KB)
-✅ gubki-i-varezhki (9KB)
-✅ mikrofibra-i-tryapki (9KB)
-✅ raspyliteli-i-penniki (8KB)
-✅ moyka-i-eksterer (5KB)
-✅ avtoshampuni (3KB)
-✅ aktivnaya-pena (5KB)
-✅ shampuni-dlya-ruchnoy-moyki (6KB)
-✅ antibitum (7KB)
-✅ antimoshka (8KB)
-✅ glina-i-avtoskraby (8KB)
-✅ obezzhirivateli (8KB)
-✅ ochistiteli-dvigatelya (6KB)
 ✅ cherniteli-shin (13KB)
 ✅ ochistiteli-diskov (10KB)
+✅ apparaty-tornador (10KB)
+✅ mikrofibra-i-tryapki (9KB)
+✅ aktivnaya-pena (9KB)
+✅ gubki-i-varezhki (9KB)
+✅ sredstva-dlya-khimchistki-salona (8KB)
 ✅ ochistiteli-shin (8KB)
+✅ antimoshka (8KB)
 ✅ antidozhd (8KB)
 ✅ ochistiteli-stekol (8KB)
-✅ omyvatel (5KB)
-✅ oborudovanie (5KB)
-✅ apparaty-tornador (10KB)
-✅ polirovka (5KB)
+✅ glina-i-avtoskraby (8KB)
+✅ shampuni-dlya-ruchnoy-moyki (8KB)
+✅ obezzhirivateli (8KB)
+✅ raspyliteli-i-penniki (8KB)
+✅ aksessuary-dlya-naneseniya-sredstv (7KB)
+✅ ochistiteli-kozhi (7KB)
+✅ antibitum (7KB)
+✅ malyarniy-skotch (6KB)
+✅ keramika-i-zhidkoe-steklo (6KB)
 ✅ polirovalnye-pasty (6KB)
 ✅ pyatnovyvoditeli (6KB)
-✅ sredstva-dlya-khimchistki-salona (6KB)
-✅ ochistiteli-kozhi (7KB)
-✅ keramika-i-zhidkoe-steklo (6KB)
+✅ ochistiteli-dvigatelya (6KB)
+✅ omyvatel (5KB)
+✅ oborudovanie (5KB)
+✅ moyka-i-eksterer (5KB)
+✅ aksessuary (5KB)
+✅ sredstva-dlya-kozhi (5KB)
+✅ polirovka (5KB)
+✅ avtoshampuni (3KB)
