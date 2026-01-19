@@ -1,21 +1,13 @@
 # Task Management
 
-**[← Назад в корень](../README.md)**
-
-Система управления задачами и документацией проекта.
+**Обновлено:** 2026-01-19
 
 ---
 
-## Структура
+## Текущий этап: Research → Content
 
 ```
-tasks/
-├── active/             # Активные ТЗ (в работе)
-├── completed/          # Выполненные ТЗ
-├── reference/          # Справочники и планы
-├── categories/         # Чеклисты категорий
-├── stages/             # Описание этапов (SOP)
-└── reports/            # Отчёты
+/seo-research → Perplexity → /content-generator → /quality-gate → /deploy
 ```
 
 ---
@@ -24,70 +16,42 @@ tasks/
 
 | Файл | Назначение |
 |------|------------|
-| **[`reference/ROADMAP.md`](reference/ROADMAP.md)** | **Главный план работ** |
-| **[`PIPELINE_STATUS.md`](PIPELINE_STATUS.md)** | Статус категорий |
-| **[`MASTER_CHECKLIST.md`](MASTER_CHECKLIST.md)** | Полный список категорий |
+| **[`CONTENT_STATUS.md`](CONTENT_STATUS.md)** | Статус research/content по категориям |
+| **[`active/README.md`](active/README.md)** | Текущие задачи и очереди |
+| [`MASTER_CHECKLIST.md`](MASTER_CHECKLIST.md) | Полный список категорий (устаревает) |
 
 ---
 
-## Текущий статус
+## Структура
 
 ```
-Этап 0 (чистка tasks/) ✅
-    ↓
-Этап 1 (аудит кластеров) ✅
-    ↓
-Этап 2 (миграция ключей) ✅
-    ↓
-Этап 3 (структура каталога) ✅
-    ↓
-Этап 4 (чистка синонимов) ← ТЕКУЩИЙ
-    ↓
-Этап 5-7 (контент, UK, деплой)
+tasks/
+├── CONTENT_STATUS.md   # Актуальный статус категорий
+├── active/             # Текущие задачи и справочники
+├── completed/          # Архив выполненных ТЗ
+├── reference/          # Справочные документы
+├── categories/         # Чеклисты по категориям (legacy)
+├── stages/             # Описание этапов (SOP)
+└── reports/            # Отчёты
 ```
 
 ---
 
-## Активные ТЗ (`active/`)
+## Статус (2026-01-19)
 
-### Приоритетные (текущие этапы)
-
-| Файл | Этап | Статус | Описание |
-|------|------|--------|----------|
-| **`TZ_SYNONYM_CLEANUP.md`** | 4 | ⬜ К выполнению | Batch-чистка синонимов |
-
-### На паузе (после этапов 3-4)
-
-| Файл | Статус | Описание |
-|------|--------|----------|
-| `TZ_PROJECT_RESTRUCTURE.md` | ⏸️ | Реструктуризация проекта |
-| `TZ_SCRIPTS_REFACTORING.md` | ⏸️ | Рефакторинг скриптов |
-| `TZ_SCRIPTS_QUALITY_IMPROVEMENT.md` | ⏸️ | Улучшение качества скриптов |
-| `TZ_PROJECT_CLEANUP.md` | ⏸️ | Чистка проекта |
-| `TZ_STRUCTURE_ALIGNMENT.md` | ⏸️ | Выравнивание структуры |
-| `STRUCTURE_CHANGES_PLAN.md` | ⏸️ | План изменений структуры |
-
----
-
-## Выполненные ТЗ (`completed/`)
-
-| Файл | Дата | Описание |
-|------|------|----------|
-| `TZ_CLUSTER_AUDIT.md` | 2026-01-05 | Аудит кластеров |
-| `TZ_KEYWORD_MIGRATION.md` | 2026-01-05 | Миграция ключей (3 раунда) |
-| `TZ_MIGRATION_FIX.md` | 2026-01-05 | Исправление миграции |
-| `TZ_CATALOG_GENERATION.md` | 2026-01-05 | Генерация структуры каталога |
-| `KEYWORD_MIGRATION.md` | 2026-01-05 | Отчёт по миграции |
+| Метрика | Значение |
+|---------|----------|
+| Research готов | ~20 категорий |
+| Research заглушка | ~27 категорий |
+| Content готов | ~31 файлов |
+| Content нужен | ~23 категории |
 
 ---
 
 ## Workflow
 
-1. **Смотри ROADMAP** → `reference/ROADMAP.md`
-2. **Текущий этап** → выполняй по чеклисту
-3. **Отмечай** → `[x]` выполненные пункты
-4. **Переноси** → выполненные ТЗ в `completed/`
-
----
-
-**Updated:** 2026-01-05
+1. Открой `CONTENT_STATUS.md` — смотри что нужно
+2. Для research: `/seo-research {slug}` → Perplexity → сохрани в `RESEARCH_DATA.md`
+3. Для content: `/content-generator {slug}`
+4. Проверка: `/quality-gate {slug}`
+5. Деплой: `/deploy-to-opencart {slug}`
