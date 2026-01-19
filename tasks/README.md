@@ -12,30 +12,48 @@
 
 ---
 
-## Файлы
+## Файлы задач
 
-| Файл | Назначение |
+| Файл | Что делать |
 |------|------------|
-| **[`CONTENT_STATUS.md`](CONTENT_STATUS.md)** | Статус research/content по всем категориям |
-| [`active/README.md`](active/README.md) | Очереди на обработку |
-
----
-
-## Статус (2026-01-19)
-
-| Метрика | Значение |
-|---------|----------|
-| Research готов (>2KB) | ~20 категорий |
-| Research заглушка (<2KB) | ~27 категорий |
-| Content готов (>1KB) | ~31 файлов |
-| Content нужен | ~23 категории |
+| **[`TODO_RESEARCH.md`](TODO_RESEARCH.md)** | Чеклист категорий для research через Perplexity |
+| **[`TODO_CONTENT.md`](TODO_CONTENT.md)** | Чеклист категорий для генерации контента |
+| [`CONTENT_STATUS.md`](CONTENT_STATUS.md) | Детальный аудит всех категорий |
 
 ---
 
 ## Workflow
 
-1. Смотри **`CONTENT_STATUS.md`** — что нужно сделать
-2. Research: `/seo-research {slug}` → Perplexity Deep Research → сохрани `RESEARCH_DATA.md`
-3. Content: `/content-generator {slug}`
-4. Проверка: `/quality-gate {slug}`
-5. Деплой: `/deploy-to-opencart {slug}`
+### 1. Research (TODO_RESEARCH.md)
+```
+/seo-research {slug} → копируем промпт в Perplexity → сохраняем в RESEARCH_DATA.md
+```
+
+### 2. Content (TODO_CONTENT.md)
+```
+/content-generator {slug} → проверяем результат
+```
+
+### 3. Проверка и деплой
+```
+/quality-gate {slug} → /deploy-to-opencart {slug}
+```
+
+---
+
+## Статус (2026-01-19)
+
+| Этап | Готово | Осталось |
+|------|--------|----------|
+| Research | ~20 | ~27 |
+| Content | ~28 | ~6 готовы к генерации, ~21 ждут research |
+
+---
+
+## Следующие действия
+
+1. **Сейчас можно:** Генерировать контент для 6 категорий (есть research)
+   - malyarniy-skotch, vedra-i-emkosti, ukhod-za-naruzhnym-plastikom
+   - mekhovye, poliroli-dlya-plastika, ukhod-za-kozhey
+
+2. **Нужен research:** 27 категорий — см. TODO_RESEARCH.md
