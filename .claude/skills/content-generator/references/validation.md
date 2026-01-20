@@ -44,8 +44,8 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{pri
 
 - [ ] **H1 = `name` из `_clean.json`** (не primary keyword!)
 - [ ] H1 без "Купить"
-- [ ] H2 по секциям (навигационные)
-- [ ] **H3 в FAQ = `micro_intents` из `_clean.json`** (если есть)
+- [ ] **H2 содержит secondary keyword** (минимум 1 H2)
+- [ ] H3 в FAQ — вопросы про выбор (из RESEARCH_DATA.md или шаблоны)
 - [ ] Intro 40-60 слов (без "мы предлагаем")
 
 ---
@@ -54,12 +54,12 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{pri
 
 | Источник | Где | Проверить |
 |----------|-----|-----------|
-| `keywords[0]` (primary) | H1 + intro + текст | 2-3 раза |
-| `keywords[1-2]` | H2 или первый абзац | 1 каждый |
-| `keywords[3+]` | Таблицы, FAQ, итог | 1 каждый |
+| `keywords_in_content.primary[0]` | H1 + intro | BLOCKER если нет |
+| `keywords_in_content.primary[1-2]` | Intro или body | 1 каждый |
+| `keywords_in_content.secondary` | **H2 заголовки** | Минимум 1 H2 |
+| `keywords_in_content.supporting` | Таблицы, body, FAQ | 1-2 |
 | `synonyms` (без meta_only) | По тексту | 1-2 |
 | `entities` | Таблицы, FAQ | 3-4 минимум |
-| `micro_intents` | **H3 в FAQ** | все покрыты |
 
 **Проверка покрытия:**
 ```bash
@@ -95,4 +95,4 @@ grep -i "ключ1\|ключ2\|ключ3" categories/{slug}/content/{slug}_ru.md
 
 ---
 
-**Version:** 1.0 — January 2026
+**Version:** 1.1 — January 2026 (убраны micro_intents, уточнено распределение ключей)
