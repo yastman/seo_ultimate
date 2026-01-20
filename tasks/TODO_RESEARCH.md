@@ -14,21 +14,30 @@
 
 ---
 
-## TODO: Нужен research (9 категорий)
+## TODO: Нужен research (0 категорий)
 
-- [ ] `antidozhd` → `moyka-i-eksterer/sredstva-dlya-stekol/antidozhd`
-- [ ] `zashchitnye-pokrytiya` → `zashchitnye-pokrytiya` (L1 hub)
-- [ ] `keramika-dlya-diskov` → `moyka-i-eksterer/sredstva-dlya-diskov-i-shin/keramika-dlya-diskov`
-- [ ] `kislotnyy` → `moyka-i-eksterer/avtoshampuni/kislotnyy`
-- [ ] `kvik-deteylery` → `zashchitnye-pokrytiya/kvik-deteylery`
-- [ ] `zhidkiy-vosk` → `zashchitnye-pokrytiya/voski/zhidkiy-vosk`
-- [ ] `tverdyy-vosk` → `zashchitnye-pokrytiya/voski/tverdyy-vosk`
-- [ ] `silanty` → `zashchitnye-pokrytiya/silanty`
-- [ ] `podarochnyy` → `aksessuary/nabory/podarochnyy`
+✅ Все категории имеют RESEARCH_PROMPT.md
 
 ---
 
-## Готово (research ≥2KB) — 37 категорий
+## В процессе: ждёт Perplexity (2 категории)
+
+- [ ] `zashchitnye-pokrytiya` → `zashchitnye-pokrytiya` (L1 hub) — RESEARCH_PROMPT.md готов
+- [ ] `nabory` → `aksessuary/nabory` (объединённая) — RESEARCH_PROMPT.md готов
+
+---
+
+## Готово (research ≥2KB) — 45 категорий
+
+✅ antidozhd (5.5KB) — moyka-i-eksterer/sredstva-dlya-stekol/antidozhd
+✅ keramika-dlya-diskov (5.2KB) — moyka-i-eksterer/sredstva-dlya-diskov-i-shin/keramika-dlya-diskov
+✅ kislotnyy (2KB) — moyka-i-eksterer/avtoshampuni/kislotnyy
+✅ kvik-deteylery (5.7KB) — zashchitnye-pokrytiya/kvik-deteylery
+✅ zhidkiy-vosk (5.6KB) — zashchitnye-pokrytiya/voski/zhidkiy-vosk
+✅ tverdyy-vosk (3.4KB) — zashchitnye-pokrytiya/voski/tverdyy-vosk
+✅ silanty (3.1KB) — zashchitnye-pokrytiya/silanty
+✅ podarochnyy (5.3KB) — aksessuary/nabory/podarochnyy
+✅ vedra-i-emkosti (9.9KB) — aksessuary/vedra-i-emkosti
 
 ✅ obezzhirivateli (48KB)
 ✅ apparaty-tornador (48KB)
