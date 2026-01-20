@@ -19,6 +19,7 @@
     {"keyword": "купить антидождь", "volume": 110, "use_in": "meta_only"},
     {"keyword": "купить антидождь для стекол авто", "volume": 10, "use_in": "meta_only"}
   ],
+  "variations": [],
   "entities": [
     "лобовое стекло",
     "боковые зеркала",

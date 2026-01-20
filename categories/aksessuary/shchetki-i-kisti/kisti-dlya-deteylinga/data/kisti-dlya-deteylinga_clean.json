@@ -30,6 +30,7 @@
     {"keyword": "купить щетки для детейлинга", "volume": 10, "use_in": "meta_only"},
     {"keyword": "купить кисти для детейлинга", "volume": 10, "use_in": "meta_only"}
   ],
+  "variations": [],
   "entities": [
     "кисть с мягким ворсом",
     "кисть с жёстким ворсом",

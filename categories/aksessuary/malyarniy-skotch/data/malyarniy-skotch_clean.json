@@ -20,6 +20,7 @@
     {"keyword": "малярный скотч цена", "volume": 70, "use_in": "meta_only"},
     {"keyword": "малярная лента купить", "volume": 50, "use_in": "meta_only"}
   ],
+  "variations": [],
   "entities": [
     "маскировка при полировке",
     "защита пластика",
