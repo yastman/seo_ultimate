@@ -1,13 +1,13 @@
 # Tasks
 
-**Обновлено:** 2026-01-19
+**Обновлено:** 2026-01-20
 
 ---
 
-## Текущий этап: Research → Content
+## Текущий этап: Content Generation
 
 ```
-/seo-research → Perplexity → /content-generator → /quality-gate → /deploy
+/content-generator → /quality-gate → /deploy
 ```
 
 ---
@@ -41,19 +41,26 @@
 
 ---
 
-## Статус (2026-01-19)
+## Статус (2026-01-20)
 
 | Этап | Готово | Осталось |
 |------|--------|----------|
-| Research | 31 | 15 |
-| Content | 31 | 6 готовы к генерации, 15 ждут research |
+| Research | 45 | 1 ждёт Perplexity (zashchitnye-pokrytiya) |
+| Content | 30 | 16 готовы к генерации |
 
 ---
 
 ## Следующие действия
 
-1. **Сейчас можно:** Генерировать контент для 6 категорий (есть research)
-   - vedra-i-emkosti, ukhod-za-naruzhnym-plastikom, mekhovye
-   - poliroli-dlya-plastika, ukhod-za-kozhey, ukhod-za-intererom
+1. **Сейчас можно:** Генерировать контент для **16 категорий** (есть research)
 
-2. **Нужен research:** 15 категорий — см. TODO_RESEARCH.md
+   **Приоритет 1 (нет контента):**
+   - neytralizatory-zapakha, akkumulyatornaya, ukhod-za-naruzhnym-plastikom
+   - mekhovye, poliroli-dlya-plastika, ukhod-za-kozhey
+   - ukhod-za-intererom, vedra-i-emkosti
+
+   **Приоритет 2 (research добавлен недавно):**
+   - antidozhd, keramika-dlya-diskov, kislotnyy, kvik-deteylery
+   - zhidkiy-vosk, tverdyy-vosk, silanty, podarochnyy
+
+2. **Ждёт Perplexity:** zashchitnye-pokrytiya (L1 hub) — RESEARCH_PROMPT.md готов
