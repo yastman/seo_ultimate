@@ -9,11 +9,13 @@
     {"keyword": "ведро для детейлинга", "volume": 30}
   ],
   "synonyms": [
-    {"keyword": "ведро для мытья машины", "volume": 10},
     {"keyword": "ведро с сеткой для мойки", "volume": 10},
     {"keyword": "профессиональное ведро для мойки", "volume": 10},
     {"keyword": "купить ведро для мойки авто", "volume": 10, "use_in": "meta_only"},
     {"keyword": "ведро для мойки автомобиля купить", "volume": 0, "use_in": "meta_only"}
+  ],
+  "variations": [
+    {"keyword": "ведро для мытья машины", "volume": 10, "parent": "ведро для мойки автомобиля"}
   ],
   "entities": [
     "грязеуловитель (Grit Guard)",

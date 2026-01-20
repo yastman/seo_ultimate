@@ -16,6 +16,7 @@
     {"keyword": "купить антибитум для авто", "volume": 20, "use_in": "meta_only"},
     {"keyword": "антибитум цена", "volume": 10, "use_in": "meta_only"}
   ],
+  "variations": [],
   "entities": [
     "битумные пятна",
     "смола",

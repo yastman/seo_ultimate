@@ -10,11 +10,13 @@
   ],
   "synonyms": [
     {"keyword": "силант для кузова", "volume": 10},
-    {"keyword": "силант автомобиль", "volume": 10},
     {"keyword": "силант покрытие", "volume": 10},
     {"keyword": "купить силант", "volume": 10, "use_in": "meta_only"},
     {"keyword": "автомобиль силант цена", "volume": 10, "use_in": "meta_only"},
     {"keyword": "силант цена", "volume": 10, "use_in": "meta_only"}
+  ],
+  "variations": [
+    {"keyword": "силант автомобиль", "volume": 10, "parent": "силанты для авто"}
   ],
   "entities": [
     "полимерный силант",

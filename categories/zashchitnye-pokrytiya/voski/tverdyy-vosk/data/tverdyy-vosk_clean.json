@@ -8,7 +8,6 @@
     {"keyword": "твёрдый воск", "volume": 390}
   ],
   "synonyms": [
-    {"keyword": "твёрдый воск для машины", "volume": 10},
     {"keyword": "твёрдый воск для полировки авто", "volume": 10},
     {"keyword": "купить твёрдый воск для авто", "volume": 210, "use_in": "meta_only"},
     {"keyword": "купить воск для машины", "volume": 30, "use_in": "meta_only"},
@@ -18,6 +17,9 @@
     {"keyword": "твёрдый воск купить", "volume": 10, "use_in": "meta_only"},
     {"keyword": "твёрдый воск для автомобиля цена", "volume": 10, "use_in": "meta_only"},
     {"keyword": "твёрдый воск цена", "volume": 10, "use_in": "meta_only"}
+  ],
+  "variations": [
+    {"keyword": "твёрдый воск для машины", "volume": 10, "parent": "твёрдый воск для авто"}
   ],
   "entities": [
     "воск карнауба",

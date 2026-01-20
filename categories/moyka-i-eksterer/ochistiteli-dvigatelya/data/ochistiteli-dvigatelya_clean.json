@@ -28,6 +28,7 @@
     {"keyword": "химия для мойки двигателя цена", "volume": 10, "use_in": "meta_only"},
     {"keyword": "очиститель двигателя цена", "volume": 10, "use_in": "meta_only"}
   ],
+  "variations": [],
   "entities": [
     "подкапотное пространство",
     "моторный отсек",

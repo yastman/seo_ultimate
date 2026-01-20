@@ -19,6 +19,7 @@
     {"keyword": "купить щетку для мытья машины", "volume": 90, "use_in": "meta_only"},
     {"keyword": "щетка для мытья машины цена", "volume": 10, "use_in": "meta_only"}
   ],
+  "variations": [],
   "entities": [
     "мягкая щетина",
     "телескопическая ручка",

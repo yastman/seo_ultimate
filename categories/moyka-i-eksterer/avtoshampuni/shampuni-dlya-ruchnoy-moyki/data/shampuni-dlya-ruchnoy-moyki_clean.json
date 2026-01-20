@@ -14,6 +14,7 @@
     {"keyword": "купить автошампунь для ручной мойки", "volume": 20, "use_in": "meta_only"},
     {"keyword": "шампунь для ручной мойки цена", "volume": 10, "use_in": "meta_only"}
   ],
+  "variations": [],
   "entities": [
     "ведро и губка",
     "двухфазная мойка",

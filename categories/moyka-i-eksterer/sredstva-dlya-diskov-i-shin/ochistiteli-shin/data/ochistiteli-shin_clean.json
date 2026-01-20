@@ -13,6 +13,7 @@
     {"keyword": "очиститель для покрышек", "volume": 10},
     {"keyword": "купить очиститель шин", "volume": 10, "use_in": "meta_only"}
   ],
+  "variations": [],
   "entities": [
     "боковина шины",
     "резина",
