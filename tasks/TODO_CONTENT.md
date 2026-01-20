@@ -13,35 +13,40 @@
 
 ---
 
-## Приоритет 1: Есть research, нет контента (8 категорий)
+## TODO: Готовы к генерации контента (2 категории)
 
-- [ ] `neytralizatory-zapakha` → research 34KB
-- [ ] `akkumulyatornaya` → research 22KB
-- [ ] `ukhod-za-naruzhnym-plastikom` → research 6KB
-- [ ] `mekhovye` → research 6KB
-- [ ] `poliroli-dlya-plastika` → research 5KB
-- [ ] `ukhod-za-kozhey` → research 5KB
-- [ ] `ukhod-za-intererom` → research 5KB (L1 hub)
-- [ ] `vedra-i-emkosti` → нужен research
+### Приоритет 2 — research готов (недавно добавлены)
+
+- [ ] `antidozhd` → research 5.5KB
+- [ ] `kislotnyy` → research 2KB
 
 ---
 
-## Приоритет 2: Нужен research сначала (9 категорий)
+## Готово (контент ≥2KB) — 50 категорий
 
-- [ ] `antidozhd` — ждёт research
-- [ ] `zashchitnye-pokrytiya` (L1) — ждёт research
-- [ ] `keramika-dlya-diskov` — ждёт research
-- [ ] `kislotnyy` — ждёт research
-- [ ] `kvik-deteylery` — ждёт research
-- [ ] `zhidkiy-vosk` — ждёт research
-- [ ] `tverdyy-vosk` — ждёт research
-- [ ] `silanty` — ждёт research
-- [ ] `podarochnyy` — ждёт research
+### Batch 2026-01-20 (20 категорий)
+✅ neytralizatory-zapakha (10KB)
+✅ nabory (18KB)
+✅ akkumulyatornaya (11KB)
+✅ voski (11KB)
+✅ zhidkiy-vosk (9KB)
+✅ tverdyy-vosk (14KB)
+✅ zashchitnye-pokrytiya (8KB) — Hub
+✅ polirol-dlya-stekla (11KB)
+✅ vedra-i-emkosti (12KB)
+✅ opt-i-b2b (7KB) — Hub
+✅ mekhovye (6KB)
+✅ keramika-dlya-diskov (8KB)
+✅ kvik-deteylery (8KB)
+✅ ukhod-za-naruzhnym-plastikom (12KB)
+✅ kisti-dlya-deteylinga (8KB)
+✅ shchetka-dlya-moyki-avto (12KB)
+✅ poliroli-dlya-plastika (8KB)
+✅ ukhod-za-kozhey (7KB)
+✅ ukhod-za-intererom (7KB) — Hub
+✅ silanty (11KB)
 
----
-
-## Готово (контент ≥2KB) — 30 категорий
-
+### Ранее готовые (30 категорий)
 ✅ cherniteli-shin (13KB)
 ✅ ochistiteli-diskov (10KB)
 ✅ apparaty-tornador (10KB)
