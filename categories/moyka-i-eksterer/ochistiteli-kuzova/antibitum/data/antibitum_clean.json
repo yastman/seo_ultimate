@@ -5,10 +5,10 @@
   "parent_id": "ochistiteli-kuzova",
   "keywords": [
     {"keyword": "антибитум", "volume": 50},
-    {"keyword": "антибитум для авто", "volume": 40},
-    {"keyword": "средство от битума", "volume": 30}
+    {"keyword": "антибитум для авто", "volume": 40}
   ],
   "synonyms": [
+    {"keyword": "средство от битума", "volume": 30},
     {"keyword": "очиститель битума", "volume": 20},
     {"keyword": "удалитель битума", "volume": 20},
     {"keyword": "средство от битумных пятен", "volume": 10},

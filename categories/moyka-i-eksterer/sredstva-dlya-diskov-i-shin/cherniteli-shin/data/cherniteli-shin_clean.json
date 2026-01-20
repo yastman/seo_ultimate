@@ -6,12 +6,12 @@
   "keywords": [
     {"keyword": "чернитель резины", "volume": 1000},
     {"keyword": "чернение резины", "volume": 390},
-    {"keyword": "полироль для колес", "volume": 170},
     {"keyword": "средства для чернения шин", "volume": 90},
-    {"keyword": "полироль для шин", "volume": 90},
     {"keyword": "чернитель колёс", "volume": 50}
   ],
   "synonyms": [
+    {"keyword": "полироль для колес", "volume": 170},
+    {"keyword": "полироль для шин", "volume": 90},
     {"keyword": "чернение колес", "volume": 40},
     {"keyword": "полироль для резины", "volume": 30},
     {"keyword": "полироль для резины автомобиля", "volume": 20},

@@ -5,10 +5,10 @@
   "parent_id": "sredstva-dlya-diskov-i-shin",
   "keywords": [
     {"keyword": "очиститель шин", "volume": 70},
-    {"keyword": "очиститель резины", "volume": 10},
-    {"keyword": "средство для чистки шин", "volume": 10}
+    {"keyword": "очиститель резины", "volume": 10}
   ],
   "synonyms": [
+    {"keyword": "средство для чистки шин", "volume": 10},
     {"keyword": "средство для очистки резины", "volume": 10},
     {"keyword": "очиститель для покрышек", "volume": 10},
     {"keyword": "купить очиститель шин", "volume": 10, "use_in": "meta_only"}
