@@ -4,11 +4,11 @@
   "type": "category",
   "parent_id": "sredstva-dlya-diskov-i-shin",
   "keywords": [
-    {"keyword": "химия для дисков", "volume": 70},
-    {"keyword": "средства для чистки дисков", "volume": 50},
-    {"keyword": "очиститель дисков", "volume": 20}
+    {"keyword": "химия для дисков", "volume": 70}
   ],
   "synonyms": [
+    {"keyword": "средства для чистки дисков", "volume": 50},
+    {"keyword": "очиститель дисков", "volume": 20},
     {"keyword": "средство для дисков", "volume": 20},
     {"keyword": "средство для чистки дисков автомобиля", "volume": 20},
     {"keyword": "химия для чистки дисков", "volume": 20},
