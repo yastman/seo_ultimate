@@ -18,6 +18,24 @@ model: sonnet
 ✅ "воск для авто" → "Воск для авто"       OK
 ```
 
+## Схемы _clean.json
+
+**Поддерживаются 2 формата `categories/{slug}/data/{slug}_clean.json`:**
+
+### List-схема (часто в новых категориях):
+```json
+"keywords": [{"keyword": "воск для авто", "volume": 1000}]
+```
+→ `{primary_keyword}` = `keywords[0].keyword`
+
+### Dict-схема (встречается после кластеризации):
+```json
+"keywords": {"primary": [{"keyword": "очиститель дисков", "volume": 70}]}
+```
+→ `{primary_keyword}` = `keywords.primary[0].keyword`
+
+Если ни один формат не найден — это проблема данных, мета генерировать нельзя.
+
 ## Workflow
 
 1. **Прочитай** `categories/{slug}/data/{slug}_clean.json`:
