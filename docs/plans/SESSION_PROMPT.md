@@ -1,42 +1,63 @@
-# Session Prompt: Batch Content Generation
+# Session Prompt: Content Revision Execution
 
 Скопируй этот промпт в новую сессию Claude Code:
 
 ---
 
 ```
-Выполни план генерации контента для 20 категорий.
+/superpowers:executing-plans
 
-## План
-docs/plans/2026-01-20-batch-content-execution.md
+Выполни план ревизии контента из docs/plans/2026-01-21-content-revision-plan.md
 
-## Задача
-Сгенерировать SEO-контент (buyer guide) для 20 категорий через параллельные субагенты.
+## Контекст
 
-## Как выполнять
-Используй скилл /superpowers:executing-plans для пошагового выполнения плана.
+- 50 категорий интернет-магазина Ultimate.net.ua (автохимия и детейлинг)
+- Тексты и мета-теги написаны субагентами, нужна ручная проверка
+- Стандарты: content-generator v3.2, generate-meta
 
-## Ключевые моменты
-1. **4 волны** по 6/6/6/2 категории
-2. **Субагенты** — используй Task tool с subagent_type="content-generator"
-3. **Параллельно** — запускай 6 субагентов одновременно в одном сообщении
-4. **Валидация** — после каждой волны проверяй результаты
-5. **Фиксы** — если FAIL, исправляй до 3 попыток
+## Текущий прогресс
 
-## Чекпоинты
-- После Task 0: все 20 категорий имеют входные файлы
-- После Task 2: Wave 1 (6 категорий) готово
-- После Task 4: Wave 2 (6 категорий) готово
-- После Task 6: Wave 3 (6 категорий) готово
-- После Task 8: Wave 4 (2 категории) готово
-- После Task 9: финальный аудит 20/20
+- ✅ moyka-i-eksterer — PASS (уже проверена)
+- ⬜ avtoshampuni — следующая категория
 
-## При проблемах
-- Если субагент зависает — проверь путь к категории
-- Если валидация FAIL — читай ошибку, исправляй конкретную проблему
-- Если research маленький — используй шаблоны FAQ
+## Workflow на категорию
 
-Начни с Task 0: Pre-flight Verification.
+1. Read: _clean.json, _meta.json, *_ru.md
+2. Validate: 4 скрипта параллельно (validate_meta, validate_content, check_keyword_density, check_water_natasha)
+3. Checklist: v3.2 (H1=name, intro 30-60, таблица, FAQ, no how-to, H2+secondary, entities, RU-first)
+4. Verdict: PASS / WARNING / BLOCKER
+5. Fix: если нужно
+6. Re-validate: после фикса
+
+## Критерии
+
+BLOCKER (обязательный фикс):
+- H1 ≠ name
+- How-to секции
+- Stem >3.0%
+- Тошнота >4.0
+
+WARNING (желательно):
+- H2 без secondary keyword
+- Вода >75%
+- Англицизмы без RU-first
+
+## Начни с
+
+Batch 1, категория #2: avtoshampuni (Hub Page)
+Path: categories/moyka-i-eksterer/avtoshampuni/
+
+Показывай результат проверки каждой категории в формате таблицы:
+
+| Проверка | Статус | Комментарий |
+|----------|--------|-------------|
+| Meta | ✅/⚠️/❌ | ... |
+| Content SEO | ✅/⚠️/❌ | ... |
+| Keyword Density | ✅/⚠️/❌ | ... |
+| Тошнота/Вода | ✅/⚠️/❌ | ... |
+| Ручной чеклист | ✅/⚠️/❌ | ... |
+
+После каждой категории спрашивай: "Переходим к следующей?"
 ```
 
 ---
@@ -45,4 +66,4 @@ docs/plans/2026-01-20-batch-content-execution.md
 
 1. Открой новую сессию Claude Code в этой директории
 2. Вставь промпт выше
-3. Claude загрузит план и начнёт выполнение с Task 0
+3. Claude активирует executing-plans и начнёт с avtoshampuni
