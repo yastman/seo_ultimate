@@ -10,7 +10,7 @@ Ultimate.net.ua — интернет-магазин автохимии и дет
 ## Pipeline
 
 ```
-/category-init → /generate-meta → /seo-research → /content-generator → /uk-content-init → /quality-gate → /deploy
+/category-init → /generate-meta → /seo-research → /content-generator → content-reviewer → /uk-content-init → /quality-gate → /deploy
 ```
 
 ---
@@ -23,6 +23,7 @@ Ultimate.net.ua — интернет-магазин автохимии и дет
 | Нужны Title/Description/H1 | `/generate-meta {slug}` | Генерирует мета-теги на основе семантики |
 | Нужен промпт для Perplexity | `/seo-research {slug}` | Анализирует товары, создаёт RESEARCH_PROMPT.md |
 | Нужен текст категории | `/content-generator {slug}` | Генерирует buyer guide контент |
+| Нужна ревизия контента | `content-reviewer {path}` | Проверяет и исправляет контент по плану v3.0 |
 | Нужна украинская версия | `/uk-content-init {slug}` | Переводит ключи и контент на украинский |
 | Готов к деплою, нужна проверка | `/quality-gate {slug}` | Валидирует все файлы перед публикацией |
 | Всё готово, нужно залить на сайт | `/deploy-to-opencart {slug}` | Деплоит мета и контент в OpenCart |
@@ -98,4 +99,4 @@ python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
 
 ---
 
-**Version:** 33.0
+**Version:** 34.0
