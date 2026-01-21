@@ -253,6 +253,43 @@ model: sonnet
 \`\`\`
 ```
 
+## Критерий "готово"
+
+- [ ] Product Insights содержит только явно указанное в описаниях (не домыслы)
+- [ ] При shared section — отфильтрованы релевантные товары
+- [ ] Блок 2 использует независимые оси классификации (не смешивать носитель/актив)
+- [ ] Блок 6а содержит спорные утверждения для данной категории
+- [ ] Шаблон вывода добавлен в конец промпта
+- [ ] RESEARCH_PROMPT.md готов для загрузки в Perplexity целиком
+
+## Search Query Templates
+
+### Русский
+```
+{product} преимущества
+{product} виды типы
+как выбрать {product}
+{product} инструкция по применению
+{product} ошибки при использовании
+{product} расход на автомобиль
+{product} сколько держится
+{product} совместимость с керамикой
+{product} разводы что делать
+```
+
+### English (for detailing forums)
+```
+{product} benefits
+{product} types
+how to choose {product}
+{product} application guide
+{product} mistakes to avoid
+{product} coverage
+{product} durability
+{product} safe for PPF
+{product} troubleshooting
+```
+
 ## Output
 
 ```
