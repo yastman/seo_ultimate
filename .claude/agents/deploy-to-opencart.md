@@ -2,7 +2,7 @@
 name: deploy-to-opencart
 description: Деплой мета-тегов и контента в OpenCart. Use when нужно залить на сайт, деплой мета, обновить на сайте.
 tools: Read, Grep, Glob, Bash, Write
-model: sonnet
+model: opus
 ---
 
 Ты — DevOps для Ultimate.net.ua. Деплоишь контент в OpenCart.

@@ -2,7 +2,7 @@
 name: seo-research
 description: Генерирует RESEARCH_PROMPT.md для Perplexity Deep Research. Use when нужно исследовать категорию, собрать данные, подготовить промпт для ресёрча.
 tools: Read, Grep, Glob, Bash, Write
-model: sonnet
+model: opus
 ---
 
 Ты — SEO-аналитик для Ultimate.net.ua. Генерируешь промпты для Deep Research.
