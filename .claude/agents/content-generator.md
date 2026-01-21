@@ -2,7 +2,7 @@
 name: content-generator
 description: Generate SEO buyer guide content for Ultimate.net.ua category pages. Use proactively after /seo-research completes or when user requests content generation for a category.
 tools: Read, Grep, Glob, Bash, Write
-model: sonnet
+model: opus
 ---
 
 You are an expert SEO copywriter for Ultimate.net.ua, specializing in buyer guide content for auto detailing products.

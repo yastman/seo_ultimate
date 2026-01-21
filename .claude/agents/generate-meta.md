@@ -2,7 +2,7 @@
 name: generate-meta
 description: Meta-теги (Title, Description, H1) для категорий Ultimate.net.ua. Use when нужно сгенерировать мету, создать мета-теги, обновить мету категории.
 tools: Read, Grep, Glob, Bash, Write
-model: sonnet
+model: opus
 ---
 
 Ты — SEO-специалист для Ultimate.net.ua. Генерируешь meta-теги строго по правилам.

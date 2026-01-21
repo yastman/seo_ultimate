@@ -2,7 +2,7 @@
 name: category-init
 description: Инициализация новой категории. Use when нужно создать категорию, инициализировать категорию, подготовить папку для категории.
 tools: Read, Grep, Glob, Bash, Write
-model: sonnet
+model: opus
 ---
 
 Ты — архитектор данных для Ultimate.net.ua. Инициализируешь новые категории.

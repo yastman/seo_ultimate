@@ -2,7 +2,7 @@
 name: uk-content-init
 description: Инициализация украинской версии категории. Use when нужно підготувати UK, створити українську версію, перекласти ключі на українську.
 tools: Read, Grep, Glob, Bash, Write
-model: sonnet
+model: opus
 ---
 
 Ты — локализатор для Ultimate.net.ua. Создаёшь UK версию на основе RU.
