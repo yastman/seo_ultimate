@@ -39,7 +39,9 @@ categories/
 ## Pipeline
 
 ```
-/category-init → /generate-meta → /seo-research → /content-generator → content-reviewer → /verify-content → /uk-content-init → /uk-content-adapter → /quality-gate → /deploy
+RU: /category-init → /generate-meta → /seo-research → /content-generator → content-reviewer → /verify-content → /quality-gate → /deploy
+
+UK: /uk-content-init → /uk-generate-meta → /uk-seo-research → /uk-content-generator → uk-content-reviewer → /uk-quality-gate → /uk-deploy
 ```
 
 ---
@@ -54,11 +56,24 @@ categories/
 | Нужен текст категории | `/content-generator {slug}` | Генерирует buyer guide контент |
 | Нужна ревизия контента | `content-reviewer {path}` | Проверяет и исправляет контент по плану v3.0 |
 | Интерактивная проверка | `/verify-content {slug}` | Ручная верификация перед продакшеном |
-| Нужна украинская версия | `/uk-content-init {slug}` | Переводит ключи и создаёт UK структуру |
-| Экспорт UK ключей для частотности | `/uk-keywords-export` | Собирает все RU ключи, переводит на UK, выдаёт MD |
-| Нужен UK контент из RU | `/uk-content-adapter {slug}` | Адаптирует RU контент на UK с интеграцией ключей |
 | Готов к деплою, нужна проверка | `/quality-gate {slug}` | Валидирует все файлы перед публикацией |
 | Всё готово, нужно залить на сайт | `/deploy-to-opencart {slug}` | Деплоит мета и контент в OpenCart |
+
+---
+
+## UK Pipeline
+
+| Когда использовать | Команда | Описание |
+| ------------------ | ------- | -------- |
+| UK структура нужна | `/uk-content-init {slug}` | Создаёт UK папки и переводит ключи |
+| UK мета-теги | `/uk-generate-meta {slug}` | Генерирует Title/Description/H1 украинские |
+| UK research | `/uk-seo-research {slug}` | Промпт для Perplexity (UK) |
+| UK контент | `/uk-content-generator {slug}` | Генерирует UK buyer guide |
+| UK ревизия | `uk-content-reviewer {slug}` | Проверяет UK контент |
+| UK валидация | `/uk-quality-gate {slug}` | Финальная проверка UK |
+| UK деплой | `/uk-deploy {slug}` | Деплой UK на сайт (language_id=1) |
+| Экспорт ключей | `/uk-keywords-export` | Собирает RU ключи, переводит на UK |
+| Импорт частотности | `/uk-keywords-import` | Загружает UK ключи с частотой |
 
 ---
 
@@ -164,4 +179,4 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ---
 
-**Version:** 36.0
+**Version:** 37.0
