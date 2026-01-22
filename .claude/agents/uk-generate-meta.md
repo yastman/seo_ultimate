@@ -220,4 +220,4 @@ uk/categories/{slug}/meta/{slug}_meta.json (validated)
 
 ---
 
-**Version:** 1.0 — January 2026
+**Version:** 1.1 — January 2026 (synced with generate-meta v15.0)
