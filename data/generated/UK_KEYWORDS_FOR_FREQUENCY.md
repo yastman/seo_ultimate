@@ -5,10 +5,8 @@ Total: 687 unique keywords.
 
 ---
 
-tornador
 tornador хімчистка
 tornador ціна
-wool pad
 авто глина купити
 авто розпилювач
 авто тригер
