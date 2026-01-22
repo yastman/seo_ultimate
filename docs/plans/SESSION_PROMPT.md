@@ -1,69 +1,39 @@
-# Session Prompt: Content Revision Execution
+# Session Prompt: UK Pipeline Implementation
 
-Скопируй этот промпт в новую сессию Claude Code:
+## Для новой сессии Claude Code
+
+Скопируй и вставь в новую сессию:
 
 ---
 
 ```
-/superpowers:executing-plans
+/superpowers:executing-plans docs/plans/2026-01-22-uk-pipeline-implementation.md
 
-Выполни план ревизии контента из docs/plans/2026-01-21-content-revision-plan.md
+Контекст: Создаём полный UK pipeline для Ultimate.net.ua — скиллы и субагенты для украинских категорий. UK pipeline должен зеркалить RU pipeline.
 
-## Контекст
+Используй:
+- skill-creator для создания скиллов (Tasks 2-5)
+- subagent-creator для создания субагентов (Tasks 6-9)
 
-- 50 категорий интернет-магазина Ultimate.net.ua (автохимия и детейлинг)
-- Тексты и мета-теги написаны субагентами, нужна ручная проверка
-- Стандарты: content-generator v3.2, generate-meta
-
-## Текущий прогресс
-
-- ✅ moyka-i-eksterer — PASS (уже проверена)
-- ⬜ avtoshampuni — следующая категория
-
-## Workflow на категорию
-
-1. Read: _clean.json, _meta.json, *_ru.md
-2. Validate: 4 скрипта параллельно (validate_meta, validate_content, check_keyword_density, check_water_natasha)
-3. Checklist: v3.2 (H1=name, intro 30-60, таблица, FAQ, no how-to, H2+secondary, entities, RU-first)
-4. Verdict: PASS / WARNING / BLOCKER
-5. Fix: если нужно
-6. Re-validate: после фикса
-
-## Критерии
-
-BLOCKER (обязательный фикс):
-- H1 ≠ name
-- How-to секции
-- Stem >3.0%
-- Тошнота >4.0
-
-WARNING (желательно):
-- H2 без secondary keyword
-- Вода >75%
-- Англицизмы без RU-first
-
-## Начни с
-
-Batch 1, категория #2: avtoshampuni (Hub Page)
-Path: categories/moyka-i-eksterer/avtoshampuni/
-
-Показывай результат проверки каждой категории в формате таблицы:
-
-| Проверка | Статус | Комментарий |
-|----------|--------|-------------|
-| Meta | ✅/⚠️/❌ | ... |
-| Content SEO | ✅/⚠️/❌ | ... |
-| Keyword Density | ✅/⚠️/❌ | ... |
-| Тошнота/Вода | ✅/⚠️/❌ | ... |
-| Ручной чеклист | ✅/⚠️/❌ | ... |
-
-После каждой категории спрашивай: "Переходим к следующей?"
+Начни с Task 1 (удаление uk-content-adapter).
 ```
 
 ---
 
-**Как использовать:**
+## Альтернатива: Ручной запуск
 
-1. Открой новую сессию Claude Code в этой директории
-2. Вставь промпт выше
-3. Claude активирует executing-plans и начнёт с avtoshampuni
+Если executing-plans недоступен:
+
+```
+Выполни план из docs/plans/2026-01-22-uk-pipeline-implementation.md
+
+Порядок:
+1. Task 1: rm -rf .claude/skills/uk-content-adapter/ && rm .claude/agents/uk-content-adapter.md
+2. Tasks 2-5: /skill-creator для каждого UK скилла
+3. Tasks 6-9: /subagent-creator для каждого UK агента
+4. Task 10: Синхронизировать uk-generate-meta
+5. Task 11: Обновить CLAUDE.md
+6. Task 12: Финальная проверка
+
+Коммить после каждого таска.
+```

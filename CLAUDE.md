@@ -7,10 +7,39 @@ Ultimate.net.ua — интернет-магазин автохимии и дет
 
 ---
 
+## Архитектура данных
+
+### Иерархия категорий
+```
+categories/
+├── {L1-slug}/                    # Корневая категория (aksessuary, moyka-i-eksterer)
+│   ├── data/                     # {L1}_clean.json — семантика L1
+│   ├── meta/                     # {L1}_meta.json — мета-теги L1
+│   ├── content/                  # {L1}_ru.md, {L1}_uk.md
+│   ├── research/                 # RESEARCH_PROMPT.md, RESEARCH_DATA.md
+│   └── {L2-slug}/                # Дочерняя категория
+│       ├── data/, meta/, content/, research/
+│       └── {L3-slug}/            # Листовая категория (товары)
+│           └── data/, meta/, content/, research/
+```
+
+### Файлы категории
+
+| Файл | Назначение |
+|------|------------|
+| `{slug}_clean.json` | Семантическое ядро: keywords, synonyms, entities, micro_intents |
+| `{slug}_meta.json` | Title, Description, H1, keywords_in_content |
+| `{slug}_ru.md` | Контент на русском (buyer guide формат) |
+| `{slug}_uk.md` | Контент на украинском |
+| `RESEARCH_PROMPT.md` | Промпт для Perplexity Deep Research |
+| `RESEARCH_DATA.md` | Результаты research |
+
+---
+
 ## Pipeline
 
 ```
-/category-init → /generate-meta → /seo-research → /content-generator → content-reviewer → /uk-content-init → /quality-gate → /deploy
+/category-init → /generate-meta → /seo-research → /content-generator → content-reviewer → /verify-content → /uk-content-init → /uk-content-adapter → /quality-gate → /deploy
 ```
 
 ---
@@ -24,7 +53,10 @@ Ultimate.net.ua — интернет-магазин автохимии и дет
 | Нужен промпт для Perplexity | `/seo-research {slug}` | Анализирует товары, создаёт RESEARCH_PROMPT.md |
 | Нужен текст категории | `/content-generator {slug}` | Генерирует buyer guide контент |
 | Нужна ревизия контента | `content-reviewer {path}` | Проверяет и исправляет контент по плану v3.0 |
-| Нужна украинская версия | `/uk-content-init {slug}` | Переводит ключи и контент на украинский |
+| Интерактивная проверка | `/verify-content {slug}` | Ручная верификация перед продакшеном |
+| Нужна украинская версия | `/uk-content-init {slug}` | Переводит ключи и создаёт UK структуру |
+| Экспорт UK ключей для частотности | `/uk-keywords-export` | Собирает все RU ключи, переводит на UK, выдаёт MD |
+| Нужен UK контент из RU | `/uk-content-adapter {slug}` | Адаптирует RU контент на UK с интеграцией ключей |
 | Готов к деплою, нужна проверка | `/quality-gate {slug}` | Валидирует все файлы перед публикацией |
 | Всё готово, нужно залить на сайт | `/deploy-to-opencart {slug}` | Деплоит мета и контент в OpenCart |
 
@@ -75,6 +107,39 @@ ruff format scripts/
 # Валидация
 python scripts/validate_meta.py --all
 python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
+python scripts/validate_uk.py categories/{slug}/content/{slug}_uk.md
+python scripts/check_seo_structure.py categories/{slug}/
+
+# Аудит
+python scripts/audit_keyword_consistency.py   # Проверка ключей в meta vs clean
+python scripts/check_h1_sync.py               # Синхронизация H1 между файлами
+```
+
+---
+
+## Формат JSON файлов
+
+### _clean.json (семантика)
+```json
+{
+  "id": "aktivnaya-pena",
+  "name": "Активная пена",
+  "keywords": [{"keyword": "...", "volume": 1000}],
+  "synonyms": [{"keyword": "...", "volume": 100, "use_in": "meta_only"}],
+  "entities": ["концентрат", "pH нейтральный"],
+  "micro_intents": ["как разводить", "расход"]
+}
+```
+
+### _meta.json (мета-теги)
+```json
+{
+  "slug": "aktivnaya-pena",
+  "language": "ru",
+  "meta": {"title": "...", "description": "..."},
+  "h1": "...",
+  "keywords_in_content": {"primary": [], "secondary": [], "supporting": []}
+}
 ```
 
 ---
@@ -99,4 +164,4 @@ python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
 
 ---
 
-**Version:** 34.0
+**Version:** 36.0
