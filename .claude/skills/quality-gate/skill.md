@@ -213,11 +213,91 @@ Status: FAIL → fix issues first
 
 ---
 
+## UK Support (--lang uk)
+
+При вызове с `--lang uk` (например: `/quality-gate aktivnaya-pena --lang uk`):
+
+### UK Paths
+
+```
+uk/categories/{slug}/
+├── data/{slug}_clean.json      # UK ключі з частотністю
+├── meta/{slug}_meta.json       # UK мета-теги
+└── content/{slug}_uk.md        # UK контент
+```
+
+### UK Validation Commands
+
+```bash
+# Meta validation
+python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
+
+# Content validation
+python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}" --mode seo
+
+# Keyword density
+python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md
+```
+
+### UK-Specific Checks
+
+| Check | Rule | Detection |
+|-------|------|-----------|
+| Title contains "Купити" | BLOCKER | Grep for "Купити" in title |
+| H1 does NOT contain "Купити" | BLOCKER | H1 should be clean keyword |
+| резина → гума | BLOCKER | Search for "резина" (should be 0 matches) |
+| мойка → миття | BLOCKER | Search for "мойка" (should be 0 matches) |
+| стекло → скло | BLOCKER | Search for "стекло" (should be 0 matches) |
+| чернитель → чорнитель | WARNING | Search for "чернитель" |
+| очиститель → очищувач | WARNING | Search for "очиститель" |
+
+### UK Terminology Validation
+
+```bash
+# Check for RU terms that should be UK
+grep -c "резина" uk/categories/{slug}/content/{slug}_uk.md  # Should be 0
+grep -c "мойка" uk/categories/{slug}/content/{slug}_uk.md   # Should be 0
+grep -c "стекло" uk/categories/{slug}/content/{slug}_uk.md  # Should be 0
+```
+
+### UK Meta Rules
+
+| Field | UK Rule | Example |
+|-------|---------|---------|
+| Title | "Купити" ОБОВ'ЯЗКОВО | "Купити активну піну в Україні \| Ultimate" |
+| Title length | 50-60 chars | |
+| Description | 100-160 chars | "{keyword} від виробника Ultimate. {types}. Опт і роздріб." |
+| H1 | БЕЗ "Купити" | "Активна піна" |
+
+### UK Pass Criteria
+
+**PASS** requires ALL of:
+
+| Criterion | Required |
+|-----------|----------|
+| Data valid JSON | ✅ |
+| Title 50-60 chars | ✅ |
+| Title contains "Купити" | ✅ |
+| Description 100-160 | ✅ |
+| H1 no "Купити" | ✅ |
+| No "резина" (use "гума") | ✅ |
+| No "мойка" (use "миття") | ✅ |
+| No "стекло" (use "скло") | ✅ |
+| UK keywords integrated | ✅ |
+
+---
+
 ## Next Step
 
-If PASS: `/deploy-to-opencart {slug}`
+If PASS: `/deploy-to-opencart {slug}` or `/deploy-to-opencart {slug} --lang uk`
 If FAIL: Fix issues, then run `/quality-gate {slug}` again
 
 ---
 
-**Version:** 1.0 — December 2025
+**Version:** 2.0 — January 2026
+
+**Changelog v2.0:**
+- Added full UK support with `--lang uk` flag
+- UK-specific terminology checks (резина→гума, мойка→миття, стекло→скло)
+- UK meta rules (Купити in Title, not in H1)
+- UK validation commands and paths
