@@ -27,7 +27,7 @@ categories/
 
 | Файл | Назначение |
 |------|------------|
-| `{slug}_clean.json` | Семантическое ядро: keywords, synonyms, entities, micro_intents |
+| `{slug}_clean.json` | Семантическое ядро: keywords, synonyms, micro_intents |
 | `{slug}_meta.json` | Title, Description, H1, keywords_in_content |
 | `{slug}_ru.md` | Контент на русском (buyer guide формат) |
 | `{slug}_uk.md` | Контент на украинском |
@@ -141,10 +141,11 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
   "name": "Активная пена",
   "keywords": [{"keyword": "...", "volume": 1000}],
   "synonyms": [{"keyword": "...", "volume": 100, "use_in": "meta_only"}],
-  "entities": ["концентрат", "pH нейтральный"],
   "micro_intents": ["как разводить", "расход"]
 }
 ```
+
+> **Примечание:** Поле `entities` в `_clean.json` сгенерировано автоматически и не используется для контента. Профессиональные термины (E-E-A-T) берутся из `RESEARCH_DATA.md`.
 
 ### _meta.json (мета-теги)
 ```json
@@ -179,4 +180,4 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ---
 
-**Version:** 37.0
+**Version:** 38.0

@@ -62,7 +62,6 @@ python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{pri
 | `keywords_in_content.secondary` | **H2 заголовки** | Минимум 1 H2 |
 | `keywords_in_content.supporting` | Таблицы, body, FAQ | 1-2 |
 | `synonyms` (без meta_only) | По тексту | 1-2 |
-| `entities` | Таблицы, FAQ | 3-4 минимум |
 
 **Проверка покрытия:**
 ```bash
@@ -77,7 +76,7 @@ grep -i "ключ1\|ключ2\|ключ3" categories/{slug}/content/{slug}_ru.md
 - [ ] **Нет брендов/процентов/точных цифр**
 - [ ] **RU-first:** русский термин первым, англ. в скобках
 - [ ] **Без "коммерческих" ключей в body** (купить, цена, заказать)
-- [ ] **3-4 entity-термина** из `_clean.json` → `entities`
+- [ ] **Профтермины из RESEARCH_DATA.md** (3-4 шт, НЕ из entities)
 
 ---
 

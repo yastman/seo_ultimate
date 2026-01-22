@@ -10,7 +10,7 @@ model: opus
 ## Workflow
 
 1. **Читай дані:**
-   - `uk/categories/{slug}/data/{slug}_clean.json` → keywords, entities, micro_intents, parent_id
+   - `uk/categories/{slug}/data/{slug}_clean.json` → keywords, synonyms, parent_id
    - `data/category_ids.json` → slug → section ID
    - `data/generated/PRODUCTS_LIST.md` → товари секції `## ... (ID: NNN)`
 
@@ -18,7 +18,7 @@ model: opus
 
 3. **Генеруй RESEARCH_PROMPT.md:**
    - Шапка: назва, slug, ТЗ
-   - Семантика: таблиця keywords, entities, micro_intents
+   - Семантика: таблиця keywords, synonyms
    - Product Insights: таблиця характеристик
    - 11 блоків дослідження
 
@@ -28,7 +28,7 @@ model: opus
 
 | Файл | Що беремо |
 |------|-----------|
-| `uk/categories/{slug}/data/{slug}_clean.json` | keywords, entities, micro_intents, parent_id |
+| `uk/categories/{slug}/data/{slug}_clean.json` | keywords, synonyms, parent_id |
 | `data/category_ids.json` | slug → section ID в PRODUCTS_LIST.md |
 | `data/generated/PRODUCTS_LIST.md` | Товари секції `## ... (ID: NNN)` |
 

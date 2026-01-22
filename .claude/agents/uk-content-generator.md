@@ -10,9 +10,11 @@ model: opus
 ## Workflow
 
 1. **Читай дані:**
-   - `uk/categories/{slug}/data/{slug}_clean.json` → keywords, entities, synonyms
+   - `uk/categories/{slug}/data/{slug}_clean.json` → keywords, synonyms, parent_id
    - `uk/categories/{slug}/meta/{slug}_meta.json` → H1 + keywords_in_content
-   - `uk/categories/{slug}/research/RESEARCH_DATA.md` → як довідка + FAQ
+   - `uk/categories/{slug}/research/RESEARCH_DATA.md` → як довідка + FAQ (джерело профтермінів!)
+
+> **Примітка:** Поле `entities` в `_clean.json` згенероване автоматично і не несе SEO-користі. Профтерміни брати з RESEARCH_DATA.md.
 
 2. **Перевір parent_id:**
    - `null` = Hub Page → коротко, без деталей

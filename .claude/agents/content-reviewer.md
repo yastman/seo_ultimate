@@ -38,6 +38,7 @@ cat categories/{path}/content/{slug}_ru.md
 ```
 
 **Extract:**
+
 - `name` → H1 должен = name (множественное число!)
 - `parent_id` → null=Hub Page, else=Product Page
 - `keywords_in_content.primary/secondary/supporting` → для проверки покрытия
@@ -60,6 +61,7 @@ python3 scripts/check_water_natasha.py categories/{path}/content/{slug}_ru.md
 4. Подсчитать: найдено/всего для каждой группы
 
 **Критерии:**
+
 - ✅ PASS: все primary, ≥80% secondary/supporting
 - ⚠️ WARNING: 1-2 primary отсутствуют или <80% остальных
 - ❌ BLOCKER: >2 primary отсутствуют
@@ -69,51 +71,52 @@ python3 scripts/check_water_natasha.py categories/{path}/content/{slug}_ru.md
 ### Step 4: Facts vs Research (ручная проверка)
 
 1. Прочитать RESEARCH_DATA.md, выделить 5-7 ключевых фактов:
-   - Классификация (типы продукта)
-   - Расход / дозировка
-   - Совместимость / ограничения
-   - Меры предосторожности (Safety)
-   - Лайфхаки
+    - Классификация (типы продукта)
+    - Расход / дозировка
+    - Совместимость / ограничения
+    - Меры предосторожности (Safety)
+    - Лайфхаки
 2. Для каждого факта проверить в контенте:
-   - ✅ Присутствует (может быть перефразирован)
-   - ⚠️ Отсутствует (важный факт пропущен)
-   - ❌ Противоречит (контент говорит обратное)
+    - ✅ Присутствует (может быть перефразирован)
+    - ⚠️ Отсутствует (важный факт пропущен)
+    - ❌ Противоречит (контент говорит обратное)
 3. Проверить контент на факты, которых НЕТ в research (выдуманные?)
 
 **Критерии:**
+
 - ✅ PASS: Нет противоречий, ключевые факты использованы
 - ⚠️ WARNING: 1-2 важных факта пропущены
 - ❌ BLOCKER: Противоречия или выдуманные факты
 
 ### Step 5: Qualitative Buyer Guide Review (6 критериев)
 
-| # | Критерий | Как проверить | Severity |
-|---|----------|---------------|----------|
-| 1 | **Intro ≠ определение** | Не начинается с "X — это Y, которое..." | BLOCKER |
-| 2 | **Обращения к читателю** | Есть "вам", "если вы", "вам подойдёт" | WARNING |
-| 3 | **Паттерны "Если X → Y"** | Подсчитать количество (≥3) | WARNING |
-| 4 | **Таблицы не дублируют** | Сравнить контент таблиц | WARNING |
-| 5 | **FAQ не дублирует таблицы** | Вопрос уже есть в таблице? | BLOCKER |
-| 6 | **Секции buyer-oriented** | "К покупке или к использованию?" | BLOCKER |
+| #   | Критерий                     | Как проверить                           | Severity |
+| --- | ---------------------------- | --------------------------------------- | -------- |
+| 1   | **Intro ≠ определение**      | Не начинается с "X — это Y, которое..." | BLOCKER  |
+| 2   | **Обращения к читателю**     | Есть "вам", "если вы", "вам подойдёт"   | WARNING  |
+| 3   | **Паттерны "Если X → Y"**    | Подсчитать количество (≥3)              | WARNING  |
+| 4   | **Таблицы не дублируют**     | Сравнить контент таблиц                 | WARNING  |
+| 5   | **FAQ не дублирует таблицы** | Вопрос уже есть в таблице?              | BLOCKER  |
+| 6   | **Секции buyer-oriented**    | "К покупке или к использованию?"        | BLOCKER  |
 
 ### Step 6: Fill verdict table
 
-| Критерий | Результат | Примечание |
-|----------|-----------|------------|
-| Meta | ✅/❌ | |
-| Density | ✅/⚠️/❌ | stem max X% |
-| Тошнота | ✅/⚠️/❌ | classic X |
-| Вода | ✅/⚠️ | X% |
-| Academic | ✅/⚠️ | X% |
-| H1=name | ✅/❌ | |
-| Intro | ✅/❌ | buyer guide/определение |
-| Обращения | ✅/⚠️ | есть/нет |
-| Паттерны | ✅/⚠️ | X шт |
-| Таблицы | ✅/⚠️ | дубль/уникальные |
-| FAQ | ✅/❌ | дубль/уникальные |
-| **Keywords** | ✅/⚠️/❌ | primary X/X, secondary X/X |
-| **Facts** | ✅/⚠️/❌ | vs RESEARCH_DATA.md |
-| **VERDICT** | **✅/⚠️/❌** | |
+| Критерий     | Результат    | Примечание                 |
+| ------------ | ------------ | -------------------------- |
+| Meta         | ✅/❌        |                            |
+| Density      | ✅/⚠️/❌     | stem max X%                |
+| Тошнота      | ✅/⚠️/❌     | classic X                  |
+| Вода         | ✅/⚠️        | X%                         |
+| Academic     | ✅/⚠️        | X%                         |
+| H1=name      | ✅/❌        |                            |
+| Intro        | ✅/❌        | buyer guide/определение    |
+| Обращения    | ✅/⚠️        | есть/нет                   |
+| Паттерны     | ✅/⚠️        | X шт                       |
+| Таблицы      | ✅/⚠️        | дубль/уникальные           |
+| FAQ          | ✅/❌        | дубль/уникальные           |
+| **Keywords** | ✅/⚠️/❌     | primary X/X, secondary X/X |
+| **Facts**    | ✅/⚠️/❌     | vs RESEARCH_DATA.md        |
+| **VERDICT**  | **✅/⚠️/❌** |                            |
 
 ### Step 7: Fix if needed (Edit tool)
 
@@ -123,31 +126,31 @@ python3 scripts/check_water_natasha.py categories/{path}/content/{slug}_ru.md
 
 ## BLOCKER Fixes (must)
 
-| Issue | Detection | Fix |
-|-------|-----------|-----|
-| H1 ≠ name | H1 должен = name (мн.ч.) | Replace H1 in content |
-| How-to sections | H2/H3: "Как наносить", "Техника применения" | Delete or convert to 1-2 sentences |
-| Stem >3.0% | check_keyword_density.py | Replace with synonyms |
-| Nausea >4.0 | check_water_natasha.py | Add variety, use synonyms |
-| Intro = определение | "X — это Y, которое..." | Rewrite: польза + сценарий выбора |
-| FAQ дублирует таблицу | Same question in table | Replace with unique question |
-| Противоречие с Research | Факт в контенте ≠ RESEARCH_DATA | Fix to match research |
-| Выдуманный факт | Утверждение не из research | Remove |
-| >2 primary missing | Keywords coverage | Add missing keywords organically |
+| Issue                   | Detection                                   | Fix                                |
+| ----------------------- | ------------------------------------------- | ---------------------------------- |
+| H1 ≠ name               | H1 должен = name (мн.ч.)                    | Replace H1 in content              |
+| How-to sections         | H2/H3: "Как наносить", "Техника применения" | Delete or convert to 1-2 sentences |
+| Stem >3.0%              | check_keyword_density.py                    | Replace with synonyms              |
+| Nausea >4.0             | check_water_natasha.py                      | Add variety, use synonyms          |
+| Intro = определение     | "X — это Y, которое..."                     | Rewrite: польза + сценарий выбора  |
+| FAQ дублирует таблицу   | Same question in table                      | Replace with unique question       |
+| Противоречие с Research | Факт в контенте ≠ RESEARCH_DATA             | Fix to match research              |
+| Выдуманный факт         | Утверждение не из research                  | Remove                             |
+| >2 primary missing      | Keywords coverage                           | Add missing keywords organically   |
 
 ## WARNING Fixes (should)
 
-| Issue | Detection | Fix |
-|-------|-----------|-----|
-| No H2 with secondary | Manual check vs _meta.json | Rewrite 1 H2 |
-| Water >75% | check_water_natasha.py | Remove filler words |
-| Academic <6% | check_water_natasha.py | Add reader engagement, scenarios |
-| <3 паттернов "Если X → Y" | Count patterns | Add choice scenarios |
-| Нет обращений к читателю | Search "вам", "если вы" | Add reader addressing |
-| Таблицы дублируют друг друга | Compare content | Merge or differentiate |
-| 1-2 primary missing | Keywords coverage | Add missing keywords |
-| <80% secondary/supporting | Keywords coverage | Add missing keywords |
-| Важный факт пропущен | Facts vs Research | Add fact from research |
+| Issue                        | Detection                   | Fix                              |
+| ---------------------------- | --------------------------- | -------------------------------- |
+| No H2 with secondary         | Manual check vs \_meta.json | Rewrite 1 H2                     |
+| Water >75%                   | check_water_natasha.py      | Remove filler words              |
+| Academic <7%                 | check_water_natasha.py      | Add reader engagement, scenarios, "вам/если вы" |
+| <3 паттернов "Если X → Y"    | Count patterns              | Add choice scenarios             |
+| Нет обращений к читателю     | Search "вам", "если вы"     | Add reader addressing            |
+| Таблицы дублируют друг друга | Compare content             | Merge or differentiate           |
+| 1-2 primary missing          | Keywords coverage           | Add missing keywords             |
+| <80% secondary/supporting    | Keywords coverage           | Add missing keywords             |
+| Важный факт пропущен         | Facts vs Research           | Add fact from research           |
 
 ---
 
@@ -155,26 +158,26 @@ python3 scripts/check_water_natasha.py categories/{path}/content/{slug}_ru.md
 
 **BLOCKER:** Эти H2/H3 = how-to контент. Удалить или переделать!
 
-| ❌ Запрещено | ✅ Альтернатива |
-|-------------|-----------------|
-| "Как наносить {X}" | Убрать или "Что учесть при выборе" |
-| "Профессиональный подход к нанесению" | "Что влияет на результат" |
-| "Техника применения" | Убрать секцию |
-| "Подготовка поверхности" | 1 фраза в intro максимум |
-| "Ошибки при нанесении" | "На что смотреть на этикетке" |
-| "Пошаговая инструкция" | Удалить полностью |
+| ❌ Запрещено                          | ✅ Альтернатива                    |
+| ------------------------------------- | ---------------------------------- |
+| "Как наносить {X}"                    | Убрать или "Что учесть при выборе" |
+| "Профессиональный подход к нанесению" | "Что влияет на результат"          |
+| "Техника применения"                  | Убрать секцию                      |
+| "Подготовка поверхности"              | 1 фраза в intro максимум           |
+| "Ошибки при нанесении"                | "На что смотреть на этикетке"      |
+| "Пошаговая инструкция"                | Удалить полностью                  |
 
 ---
 
 ## Synonyms for spam reduction
 
-| Слово | Синонимы |
-|-------|----------|
-| средство | состав, продукт, препарат |
-| очиститель | состав, продукт, химия |
+| Слово       | Синонимы                   |
+| ----------- | -------------------------- |
+| средство    | состав, продукт, препарат  |
+| очиститель  | состав, продукт, химия     |
 | поверхность | покрытие, основа, материал |
-| защита | барьер, слой, покрытие |
-| автомобиль | авто, машина, транспорт |
+| защита      | барьер, слой, покрытие     |
+| автомобиль  | авто, машина, транспорт    |
 
 ---
 
@@ -237,11 +240,11 @@ RESEARCH_DATA.md:
 
 ### Verdict Table
 
-| Критерий | Результат | Примечание |
-|----------|-----------|------------|
-| Meta | ✅ | |
-| Density | ✅ | stem max 2.1% |
-| ... | ... | ... |
+| Критерий | Результат | Примечание    |
+| -------- | --------- | ------------- |
+| Meta     | ✅        |               |
+| Density  | ✅        | stem max 2.1% |
+| ...      | ...       | ...           |
 
 ### Исправления (если были)
 
@@ -263,6 +266,8 @@ RESEARCH_DATA.md:
 ## ВАЖНО
 
 1. **НЕ коммитить** — только Edit файлы. Коммит делается вручную.
-2. **RESEARCH_DATA.md — источник истины** для фактов. При противоречии — контент неправ.
-3. **Одна категория за вызов** — не пытаться делать батч.
-4. **Buyer guide, не how-to** — секции про применение = удалить.
+2. **RESEARCH_DATA.md — источник истины** для фактов и профтерминов (E-E-A-T).
+3. **entities в _clean.json НЕ использовать** — они автогенерированные и не несут SEO-пользы.
+4. **Одна категория за вызов** — не пытаться делать батч.
+5. **Buyer guide, не how-to** — секции про применение = удалить.
+6. **Academic ≥7%** — если ниже, добавить обращения к читателю ("вам", "если вы").
