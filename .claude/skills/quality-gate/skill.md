@@ -70,19 +70,29 @@ python scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 
 ```bash
 python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
+python scripts/check_keyword_density.py categories/{slug}/content/{slug}_ru.md
+python scripts/check_water_natasha.py categories/{slug}/content/{slug}_ru.md
 ```
 
 **Checks:**
 
 - [ ] Has H1 (first line starts with #)
-- [ ] Intro: 30-60 words
-- [ ] Has comparison table
-- [ ] Has how-to section with numbered steps
-- [ ] Has FAQ (3-5 questions)
-- [ ] Word count appropriate (300-800)
+- [ ] H1 = `name` из _clean.json (множественное число)
+- [ ] Intro: 30-60 words (buyer guide, НЕ определение "X — это...")
+- [ ] Has comparison table (3 колонки: Задача → Тип → Почему)
+- [ ] Has "Если X → Y" patterns (≥3 шт)
+- [ ] Has FAQ (3-5 questions, не дублируют таблицы)
+- [ ] **НЕТ how-to секций** (BLOCKER!)
+- [ ] Word count appropriate (400-700)
 - [ ] No brand names/prices
 - [ ] Primary keyword in first 100 words
 - [ ] Secondary keywords used naturally
+- [ ] Stem-группа ≤2.5% (BLOCKER >3.0%)
+- [ ] Классическая тошнота ≤3.5 (BLOCKER >4.0)
+- [ ] **Academic ≥7%** (WARNING <7%)
+- [ ] Вода 40-65% (WARNING >75%)
+
+> **Примечание:** entities в _clean.json автогенерированные — НЕ использовать для контента. Профтермины берутся из RESEARCH_DATA.md.
 
 ### 4. SEO Structure Check
 
@@ -294,7 +304,16 @@ If FAIL: Fix issues, then run `/quality-gate {slug}` again
 
 ---
 
-**Version:** 2.0 — January 2026
+**Version:** 3.0 — January 2026
+
+**Changelog v3.0:**
+- REMOVED: "Has how-to section" (how-to секции запрещены в buyer guide)
+- ADDED: check_keyword_density.py и check_water_natasha.py в валидацию
+- ADDED: Academic ≥7% (WARNING <7%)
+- ADDED: Stem-группа ≤2.5%, тошнота ≤3.5
+- ADDED: Примечание про entities (не использовать, профтермины из RESEARCH_DATA.md)
+- ADDED: Паттерны "Если X → Y" (≥3 шт)
+- UPDATED: Word count 400-700 (было 300-800)
 
 **Changelog v2.0:**
 - Added full UK support with `--lang uk` flag

@@ -10,7 +10,7 @@ model: opus
 ## Workflow
 
 1. **Читай данные:**
-   - `categories/{slug}/data/{slug}_clean.json` → keywords, entities, micro_intents, parent_id
+   - `categories/{slug}/data/{slug}_clean.json` → keywords, synonyms, parent_id
    - `data/category_ids.json` → slug → section ID
    - `data/generated/PRODUCTS_LIST.md` → товары секции `## ... (ID: NNN)`
 
@@ -18,7 +18,7 @@ model: opus
 
 | Файл | Что берём |
 |------|-----------|
-| `categories/{slug}/data/{slug}_clean.json` | keywords, entities, micro_intents, parent_id |
+| `categories/{slug}/data/{slug}_clean.json` | keywords, synonyms, parent_id |
 | `data/category_ids.json` | slug → section ID в PRODUCTS_LIST.md |
 | `data/generated/PRODUCTS_LIST.md` | Товары секции `## ... (ID: NNN)` |
 
@@ -45,7 +45,7 @@ model: opus
 
 3. **Генерируй RESEARCH_PROMPT.md:**
    - Шапка: название, slug, ТЗ
-   - Семантика: таблица keywords, entities, micro_intents
+   - Семантика: таблица keywords, synonyms
    - Product Insights: таблица характеристик
    - 11 блоков исследования (что это, виды, как выбрать, применение, ошибки, безопасность, спорные утверждения, FAQ, troubleshooting, совместимость, цифры)
 
