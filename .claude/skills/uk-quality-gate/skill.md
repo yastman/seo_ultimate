@@ -104,7 +104,7 @@ grep -c "стекло" uk/categories/{slug}/content/{slug}_uk.md  # Має бу�
 ### 5. Keyword Density
 
 ```bash
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md
+python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 ```
 
 **Пороги:**
@@ -168,7 +168,13 @@ python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 grep -E "резина|мойка|стекло" uk/categories/{slug}/content/{slug}_uk.md
 
 # Keyword density
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md
+python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+
+# H1 sync check
+python3 scripts/check_h1_sync.py --lang uk
+
+# Semantic coverage check
+python3 scripts/check_semantic_coverage.py --lang uk
 ```
 
 ### Step 2: Generate Report
@@ -276,7 +282,12 @@ If FAIL: Fix issues, then run /uk-quality-gate {slug} again
 
 ---
 
-**Version:** 2.0 — January 2026 (parity with quality-gate v3.0)
+**Version:** 2.1 — January 2026 (added --lang uk to validation scripts)
+
+**Changelog v2.1:**
+- Added `--lang uk` to check_keyword_density.py calls
+- Added check_h1_sync.py --lang uk validation
+- Added check_semantic_coverage.py --lang uk validation
 
 **Changelog v2.0:**
 - Додано check_seo_structure.py валідацію
