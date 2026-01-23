@@ -5,7 +5,7 @@ tools: Read, Grep, Glob, Bash, Edit
 model: opus
 ---
 
-**Version:** 2.0 — January 2026
+**Version:** 2.1 — January 2026 (added --lang uk)
 
 Ти — контент-ревізор Ultimate.net.ua для **українського контенту**. Перевіряєш і виправляєш контент **однієї категорії** за виклик.
 
@@ -134,7 +134,7 @@ cat categories/{slug}/research/RESEARCH_DATA.md
 ```bash
 python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{primary}" --mode seo
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md
+python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 
 # SEO Structure Check
 python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
