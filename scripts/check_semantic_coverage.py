@@ -1,3 +1,4 @@
+import argparse
 import json
 import os
 import re
@@ -146,5 +147,99 @@ def analyze_coverage():
     print(f"Coverage report generated at {output_path}")
 
 
+def get_project_root():
+    """Get project root in a cross-platform way."""
+    return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def load_uk_keywords() -> dict[str, str]:
+    """Load keywords from uk_keywords.json. Returns kw -> slug mapping."""
+    project_root = get_project_root()
+    uk_keywords_path = os.path.join(project_root, "uk", "data", "uk_keywords.json")
+    if not os.path.exists(uk_keywords_path):
+        print(f"ERROR: UK keywords file not found: {uk_keywords_path}")
+        return {}
+
+    with open(uk_keywords_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    kw_map = {}
+    for slug, cat_data in data.get("categories", {}).items():
+        for kw_item in cat_data.get("keywords", []):
+            kw_map[kw_item["keyword"].strip().lower()] = slug
+    return kw_map
+
+
+def scan_uk_json_keywords() -> dict[str, str]:
+    """Scan uk/categories/ for keywords in _clean.json files."""
+    project_root = get_project_root()
+    uk_categories_dir = os.path.join(project_root, "uk", "categories")
+    kw_map = {}
+
+    for root, _dirs, files in os.walk(uk_categories_dir):
+        for file in files:
+            if file.endswith("_clean.json"):
+                path = os.path.join(root, file)
+                try:
+                    with open(path, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    slug = data.get("id") or data.get("slug")
+
+                    keywords = []
+                    if isinstance(data.get("keywords"), list):
+                        keywords = [k["keyword"] for k in data["keywords"]]
+
+                    for kw in keywords:
+                        kw_map[kw.strip().lower()] = slug
+                except Exception:
+                    pass
+    return kw_map
+
+
+def analyze_uk_coverage():
+    """Analyze UK keyword coverage: uk_keywords.json vs uk/categories/_clean.json"""
+    project_root = get_project_root()
+    source_kws = load_uk_keywords()  # kw -> slug from uk_keywords.json
+    json_kws = scan_uk_json_keywords()  # kw -> slug from _clean.json files
+
+    report = []
+    report.append("# UK Semantic Coverage: uk_keywords.json vs _clean.json")
+    report.append("")
+
+    missing_in_json = []
+    for kw, slug in source_kws.items():
+        if kw not in json_kws:
+            missing_in_json.append((kw, slug))
+
+    if missing_in_json:
+        report.append("## ❌ Keywords in uk_keywords.json but NOT in _clean.json files:")
+        for kw, slug in sorted(missing_in_json, key=lambda x: x[1]):
+            report.append(f"- `{kw}` (should be in {slug})")
+        report.append("")
+
+    report.append("## Итог")
+    report.append(f"- Всего в uk_keywords.json: **{len(source_kws)}**")
+    report.append(f"- Найдено в _clean.json: **{len(json_kws)}**")
+    report.append(f"- Потеряно: **{len(missing_in_json)}**")
+
+    if len(missing_in_json) == 0:
+        report.append("\n✅ **ALL CLEAR:** Все UK ключи распределены.")
+    else:
+        report.append("\n⚠️ **ATTENTION:** Есть нераспределённые UK ключи.")
+
+    output_path = os.path.join(project_root, "tasks", "reports", "SEMANTIC_COVERAGE_CHECK_UK.md")
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(report))
+
+    print(f"UK coverage report: {output_path}")
+
+
 if __name__ == "__main__":
-    analyze_coverage()
+    parser = argparse.ArgumentParser(description="Check semantic coverage")
+    parser.add_argument("--lang", choices=["ru", "uk"], default="ru", help="Language: ru (default) or uk")
+    args = parser.parse_args()
+
+    if args.lang == "uk":
+        analyze_uk_coverage()
+    else:
+        analyze_coverage()
