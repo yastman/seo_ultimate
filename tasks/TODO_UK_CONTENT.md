@@ -26,65 +26,74 @@
 
 ---
 
+## Легенда
+
+- `[x]` — полный цикл завершён (init + meta + content + review + quality-gate)
+- `[~]` — init + meta готово, content pending
+- `[ ]` — не начато
+
+---
+
 ## Фаза 2: L3 Categories (листовые)
 
 - [x] aktivnaya-pena
 - [x] antibitum
 - [x] antimoshka
-- [ ] antidozhd
-- [ ] akkumulyatornaya
-- [ ] cherniteli-shin
-- [ ] glina-i-avtoskraby
-- [ ] gubki-i-varezhki
-- [ ] keramika-dlya-diskov
-- [ ] kisti-dlya-deteylinga
-- [ ] malyarniy-skotch
-- [ ] mekhovye
-- [ ] nabory
-- [ ] neytralizatory-zapakha
-- [ ] obezzhirivateli
-- [ ] ochistiteli-diskov
-- [ ] ochistiteli-dvigatelya
-- [ ] ochistiteli-kozhi
-- [ ] ochistiteli-shin
-- [ ] ochistiteli-stekol
-- [ ] omyvatel
-- [ ] polirol-dlya-stekla
-- [ ] poliroli-dlya-plastika
-- [ ] polirovalnye-pasty
-- [ ] pyatnovyvoditeli
-- [ ] raspyliteli-i-penniki
-- [ ] shampuni-dlya-ruchnoy-moyki
-- [ ] shchetka-dlya-moyki-avto
-- [ ] silanty
-- [ ] sredstva-dlya-khimchistki-salona
-- [ ] tverdyy-vosk
-- [ ] ukhod-za-kozhey
-- [ ] ukhod-za-naruzhnym-plastikom
-- [ ] vedra-i-emkosti
-- [ ] zhidkiy-vosk
+- [~] antidozhd — init + meta done
+- [~] akkumulyatornaya — init + meta done
+- [~] cherniteli-shin — init + meta done
+- [~] glina-i-avtoskraby — init + meta done
+- [~] gubki-i-varezhki — init + meta done
+- [~] keramika-dlya-diskov — init + meta done
+- [~] kisti-dlya-deteylinga — init + meta done
+- [~] malyarniy-skotch — init + meta done
+- [~] mekhovye — init + meta done
+- [~] nabory — init + meta done
+- [~] neytralizatory-zapakha — init + meta done
+- [~] obezzhirivateli — init + meta done
+- [~] ochistiteli-diskov — init + meta done
+- [~] ochistiteli-dvigatelya — init + meta done
+- [~] ochistiteli-kozhi — init + meta done
+- [~] ochistiteli-shin — init + meta done
+- [~] ochistiteli-stekol — init + meta done
+- [~] omyvatel — init + meta done
+- [~] polirol-dlya-stekla — init + meta done
+- [~] poliroli-dlya-plastika — init + meta done
+- [~] polirovalnye-pasty — init + meta done
+- [~] pyatnovyvoditeli — init + meta done
+- [~] raspyliteli-i-penniki — init + meta done
+- [~] shampuni-dlya-ruchnoy-moyki — init + meta done
+- [~] shchetka-dlya-moyki-avto — init + meta done
+- [~] silanty — init + meta done
+- [~] sredstva-dlya-khimchistki-salona — init + meta done
+- [~] tverdyy-vosk — init + meta done
+- [~] ukhod-za-kozhey — init + meta done
+- [~] ukhod-za-naruzhnym-plastikom — init + meta done
+- [~] vedra-i-emkosti — init + meta done
+- [~] zhidkiy-vosk — init + meta done
 
 ## Фаза 2: L2 Categories
 
-- [ ] aksessuary-dlya-naneseniya-sredstv
-- [ ] apparaty-tornador
-- [ ] avtoshampuni
-- [ ] keramika-i-zhidkoe-steklo
-- [ ] kvik-deteylery
-- [ ] mikrofibra-i-tryapki
-- [ ] sredstva-dlya-kozhi
-- [ ] voski
+- [~] aksessuary-dlya-naneseniya-sredstv — init + meta done
+- [~] apparaty-tornador — init + meta done
+- [~] avtoshampuni — init + meta done
+- [~] keramika-i-zhidkoe-steklo — init + meta done
+- [~] kvik-deteylery — init + meta done
+- [~] mikrofibra-i-tryapki — init + meta done
+- [~] sredstva-dlya-kozhi — init + meta done
+- [~] voski — init + meta done
 
 ## Фаза 2: L1 Categories (хабы)
 
-- [ ] aksessuary
-- [ ] moyka-i-eksterer
-- [ ] oborudovanie
-- [ ] opt-i-b2b
-- [ ] polirovka
-- [ ] ukhod-za-intererom
-- [ ] zashchitnye-pokrytiya
+- [~] aksessuary — init + meta done
+- [~] moyka-i-eksterer — init + meta done
+- [~] oborudovanie — init + meta done
+- [~] opt-i-b2b — init + meta done
+- [~] polirovka — init + meta done
+- [~] ukhod-za-intererom — init + meta done
+- [~] zashchitnye-pokrytiya — init + meta done
 
 ---
 
-**Progress:** 3/50
+**Progress:** 3/50 (content ready) | 50/50 (init + meta)
+**Last batch:** 2026-01-23 — 47 categories init + meta + research copied
