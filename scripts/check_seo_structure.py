@@ -29,9 +29,11 @@ def detect_language(file_path: str) -> str:
         file_path: Путь к файлу
 
     Returns:
-        'uk' если путь содержит uk/categories/, иначе 'ru'
+        'uk' если путь содержит uk/categories/ или uk\\categories\\, иначе 'ru'
     """
-    if "uk/categories/" in file_path or "/uk/" in file_path or "\\uk\\" in file_path:
+    # Normalize path separators for consistent matching
+    normalized = file_path.replace("\\", "/")
+    if "uk/categories/" in normalized or "/uk/" in normalized:
         return "uk"
     return "ru"
 
