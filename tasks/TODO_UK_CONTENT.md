@@ -20,10 +20,9 @@
 
 ## Фаза 1: Сбор ключей
 
-- [ ] `/uk-keywords-export` выполнен
-- [ ] Частотность собрана (KeySO/Serpstat)
-- [ ] `/uk-keywords-import` выполнен
-- [ ] `uk/data/uk_keywords.json` создан
+- [x] `/uk-keywords-export` выполнен
+- [ ] Частотность собрана (KeySO/Serpstat) — **PENDING** (RU fallback используется)
+- [x] `uk/data/uk_keywords.json` создан (50 категорий, RU volume как fallback)
 
 ---
 

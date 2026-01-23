@@ -93,3 +93,4 @@ nul
 # Coverage
 coverage.json
 artifacts/
+qdrant_storage/
