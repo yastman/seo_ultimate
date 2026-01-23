@@ -155,7 +155,7 @@ Buyer guide = допомога у **виборі та покупці**, НЕ і�
 6. Write content    → Hub: за процесами | Product: buyer guide (комерційний інтент!)
 7. Check H2         → **мінімум 2 H2 містять secondary keyword**
 8. Check patterns   → **мінімум 3 патерни "Якщо X → Y"**
-9. Check density    → check_keyword_density.py (stem ≤2.5%)
+9. Check density    → python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk (stem ≤2.5%)
 10. Check nausea    → check_water_natasha.py (тошнота ≤3.5, **academic ≥7%**)
 11. Check SEO       → **check_seo_structure.py** (H2 keywords, intro check)
 12. Fix spam        → замінити тематичні слова на синоніми (uk-lsi-synonyms.md)
@@ -355,7 +355,7 @@ Validated: python3 scripts/validate_uk.py {path}
 
 ---
 
-**Version:** 2.0 — January 2026 (parity with content-generator v3.3)
+**Version:** 2.1 — January 2026 (added --lang uk to validation)
 
 **Changelog v2.0:**
 - Додано References секцію (посилання на RU references + UK-specific)
