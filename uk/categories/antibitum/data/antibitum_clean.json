@@ -1,0 +1,59 @@
+{
+  "id": "antibitum",
+  "name": "Антибітум",
+  "language": "uk",
+  "type": "category",
+  "parent_id": "ochistiteli-kuzova",
+  "keywords": [
+    {
+      "keyword": "антибітум",
+      "volume": 50
+    },
+    {
+      "keyword": "антибітум для авто",
+      "volume": 40
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "засіб від битума",
+      "volume": 30
+    },
+    {
+      "keyword": "очищувач битума",
+      "volume": 20
+    },
+    {
+      "keyword": "видаляч битума",
+      "volume": 20
+    },
+    {
+      "keyword": "засіб від битумных плям",
+      "volume": 10
+    },
+    {
+      "keyword": "купити антибітум для авто",
+      "volume": 20,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "антибітум купити",
+      "volume": 10,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "антибітум ціна",
+      "volume": 10,
+      "use_in": "meta_only"
+    }
+  ],
+  "variations": [],
+  "entities": [],
+  "micro_intents": [
+    "як видалити битум з кузова",
+    "чим відмити бітумні плями",
+    "безпечний чи антибітум для лаку",
+    "як правильно наносити антибітум"
+  ],
+  "source_ru": "categories/moyka-i-eksterer/ochistiteli-kuzova/antibitum/data/antibitum_clean.json"
+}
