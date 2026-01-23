@@ -88,6 +88,10 @@ UK: /uk-content-init → /uk-generate-meta → /uk-seo-research → /uk-content-
 | Экспорт ключей | `/uk-keywords-export` | Собирает RU ключи, переводит на UK |
 | Импорт частотности | `/uk-keywords-import` | Загружает UK ключи с частотой |
 
+> **Note:** UK skills updated to v2.0 (January 2026) — тепер на паритеті з RU pipeline.
+> - uk-content-generator v2.0: References, check_seo_structure.py, Academic ≥7%, H2 keyword мін. 2
+> - uk-quality-gate v2.0: check_seo_structure.py, Description 120-160, Word count 400-700
+
 ---
 
 ## Superpowers скиллы
@@ -191,8 +195,9 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 | SEO-гайд         | `docs/CONTENT_GUIDE.md`    |
 | Данные категорий | `categories/{slug}/`       |
 | UK ключи (база)  | `uk/data/uk_keywords.json` |
+| UK синоніми        | `.claude/skills/uk-content-generator/references/uk-lsi-synonyms.md` |
 | Скрипты          | `scripts/`                 |
 
 ---
 
-**Version:** 39.0
+**Version:** 40.0
