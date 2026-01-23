@@ -36,11 +36,26 @@ from typing import Any
 try:
     from snowballstemmer import stemmer as snowball_stemmer
 
-    STEMMER = snowball_stemmer("russian")
+    STEMMER_RU = snowball_stemmer("russian")
+    # Ukrainian stemmer: try Ukrainian, fall back to Russian (similar morphology)
+    try:
+        STEMMER_UK = snowball_stemmer("ukrainian")
+    except KeyError:
+        # Snowball doesn't have Ukrainian, use Russian as fallback
+        STEMMER_UK = STEMMER_RU
     HAS_STEMMER = True
 except ImportError:
     HAS_STEMMER = False
-    STEMMER = None
+    STEMMER_RU = None
+    STEMMER_UK = None
+
+
+def get_stemmer(lang: str = "ru"):
+    """Return stemmer for specified language."""
+    if lang == "uk":
+        return STEMMER_UK
+    return STEMMER_RU
+
 
 # Fix Windows encoding
 if sys.platform == "win32":
@@ -183,6 +198,132 @@ STOPWORDS_RU = {
     "тобой",
 }
 
+# Ukrainian stopwords
+STOPWORDS_UK = {
+    "і",
+    "в",
+    "на",
+    "з",
+    "по",
+    "для",
+    "із",
+    "до",
+    "у",
+    "о",
+    "від",
+    "за",
+    "при",
+    "не",
+    "але",
+    "а",
+    "ж",
+    "то",
+    "це",
+    "як",
+    "що",
+    "так",
+    "все",
+    "він",
+    "вона",
+    "вони",
+    "ми",
+    "ви",
+    "його",
+    "її",
+    "їх",
+    "або",
+    "якщо",
+    "тільки",
+    "вже",
+    "ще",
+    "би",
+    "чи",
+    "без",
+    "під",
+    "над",
+    "між",
+    "через",
+    "після",
+    "перед",
+    "біля",
+    "більше",
+    "менше",
+    "також",
+    "теж",
+    "дуже",
+    "може",
+    "можна",
+    "потрібно",
+    "є",
+    "був",
+    "була",
+    "були",
+    "буде",
+    "який",
+    "яка",
+    "яке",
+    "які",
+    "цей",
+    "ця",
+    "ці",
+    "той",
+    "та",
+    "ті",
+    "свій",
+    "своя",
+    "свої",
+    "наш",
+    "ваш",
+    "сам",
+    "самий",
+    "весь",
+    "вся",
+    "кожен",
+    "будь",
+    "інший",
+    "такий",
+    "щоб",
+    "тому",
+    "коли",
+    "де",
+    "куди",
+    "звідки",
+    "чому",
+    "навіщо",
+    "скільки",
+    "хто",
+    "чого",
+    "кого",
+    "кому",
+    "чим",
+    "ким",
+    "ним",
+    "ній",
+    "них",
+    "йому",
+    "їй",
+    "їм",
+    "вам",
+    "нам",
+    "себе",
+    "собі",
+    "собою",
+    "мені",
+    "мене",
+    "мною",
+    "тебе",
+    "тобі",
+    "тобою",
+}
+
+
+def get_stopwords(lang: str = "ru") -> set[str]:
+    """Return stopwords for specified language."""
+    if lang == "uk":
+        return STOPWORDS_UK
+    return STOPWORDS_RU
+
+
 # Legacy: Common Russian word stems for grouping (fallback if no stemmer)
 STEM_PATTERNS = {
     "аккумулятор": r"аккумулятор\w*",
@@ -259,9 +400,10 @@ def tokenize(text: str) -> list[str]:
     return words
 
 
-def remove_stopwords(words: list[str]) -> list[str]:
+def remove_stopwords(words: list[str], lang: str = "ru") -> list[str]:
     """Remove stopwords from word list."""
-    return [w for w in words if w not in STOPWORDS_RU and len(w) > 2]
+    stopwords = get_stopwords(lang)
+    return [w for w in words if w not in stopwords and len(w) > 2]
 
 
 # =============================================================================
@@ -275,7 +417,7 @@ def count_word_frequencies(words: list[str], top_n: int = 30) -> list[tuple[str,
     return counter.most_common(top_n)
 
 
-def count_stem_frequencies(words: list[str]) -> dict[str, dict]:
+def count_stem_frequencies(words: list[str], lang: str = "ru") -> dict[str, dict]:
     """
     Count frequencies by stem (root) using Snowball Stemmer.
 
@@ -284,7 +426,10 @@ def count_stem_frequencies(words: list[str]) -> dict[str, dict]:
     v3.0: Count ALL words (including stopwords) for accurate density.
     Stopwords are only excluded from stem grouping display, not from counting.
     """
-    if HAS_STEMMER and STEMMER:
+    stemmer = get_stemmer(lang)
+    stopwords = get_stopwords(lang)
+
+    if HAS_STEMMER and stemmer:
         # Новый метод: полный стемминг всех слов
         stem_groups: dict[str, dict] = {}
 
@@ -293,10 +438,10 @@ def count_stem_frequencies(words: list[str]) -> dict[str, dict]:
             if len(word) < 3:
                 continue
 
-            stem = STEMMER.stemWord(word)
+            stem = stemmer.stemWord(word)
 
             # Не группируем стоп-слова в отчёт, но они уже учтены в total_words
-            if word in STOPWORDS_RU:
+            if word in stopwords:
                 continue
 
             if stem not in stem_groups:
@@ -391,11 +536,11 @@ def get_density_status(density: float) -> str:
 # =============================================================================
 
 
-def analyze_text(text: str, top_n: int = 20, slug: str | None = None) -> dict[str, Any]:
+def analyze_text(text: str, top_n: int = 20, slug: str | None = None, lang: str = "ru") -> dict[str, Any]:
     """Full keyword density analysis of text."""
     clean_text = clean_markdown(text)
     all_words = tokenize(clean_text)
-    words = remove_stopwords(all_words)
+    words = remove_stopwords(all_words, lang)
 
     total_words = len(all_words)
     content_words = len(words)
@@ -404,7 +549,7 @@ def analyze_text(text: str, top_n: int = 20, slug: str | None = None) -> dict[st
     word_freq = count_word_frequencies(words, top_n)
 
     # Stem frequencies
-    stem_freq = count_stem_frequencies(all_words)
+    stem_freq = count_stem_frequencies(all_words, lang)
 
     # Substring analysis (user's methodology) - if slug provided
     substring_analysis = None
@@ -649,6 +794,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--with-keywords", metavar="SLUG", help="Load keywords from category slug")
     parser.add_argument("--top", type=int, default=20, help="Number of top words to show (default: 20)")
     parser.add_argument("--json", action="store_true", help="Output as JSON")
+    parser.add_argument("--lang", choices=["ru", "uk"], default="ru", help="Language: ru (default) or uk")
     return parser
 
 
@@ -674,7 +820,7 @@ def main(argv: list[str] | None = None) -> int:
                 break
 
     # Main analysis
-    analysis = analyze_text(text, top_n=args.top, slug=slug)
+    analysis = analyze_text(text, top_n=args.top, slug=slug, lang=args.lang)
 
     # Check specific keywords if slug provided
     keywords_check = None
