@@ -51,21 +51,29 @@ def get_h1_from_json(json_path: Path) -> str | None:
         return None
 
 
-def check_sync(fix: bool = False):
+def check_sync(fix: bool = False, lang: str = "ru"):
     """Проверяет все категории на синхронизацию H1."""
-    print(f"🔍 Проверка синхронизации H1 в {CATEGORIES_DIR}...\n")
+    # Select paths based on language
+    if lang == "uk":
+        categories_dir = Path(__file__).parent.parent / "uk" / "categories"
+        content_suffix = "_uk.md"
+    else:
+        categories_dir = CATEGORIES_DIR
+        content_suffix = "_ru.md"
+
+    print(f"🔍 Проверка синхронизации H1 в {categories_dir} ({lang.upper()})...\n")
 
     issues_count = 0
     synced_count = 0
     missing_count = 0
 
     # Проходим по всем папкам категорий
-    for category_dir in sorted(CATEGORIES_DIR.iterdir()):
+    for category_dir in sorted(categories_dir.iterdir()):
         if not category_dir.is_dir() or category_dir.name.startswith("."):
             continue
 
         slug = category_dir.name
-        md_file = category_dir / "content" / f"{slug}_ru.md"
+        md_file = category_dir / "content" / f"{slug}{content_suffix}"
         json_file = category_dir / "meta" / f"{slug}_meta.json"
 
         # Проверяем наличие файлов
@@ -127,6 +135,7 @@ def check_sync(fix: bool = False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Check H1 sync between MD and JSON")
     parser.add_argument("--fix", action="store_true", help="Update JSON to match Markdown H1")
+    parser.add_argument("--lang", choices=["ru", "uk"], default="ru", help="Language: ru (default) or uk")
     args = parser.parse_args()
 
-    check_sync(args.fix)
+    check_sync(args.fix, args.lang)
