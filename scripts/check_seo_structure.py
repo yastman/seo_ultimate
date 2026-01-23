@@ -21,6 +21,21 @@ import sys
 from pathlib import Path
 
 
+def detect_language(file_path: str) -> str:
+    """
+    Определяет язык по пути файла.
+
+    Args:
+        file_path: Путь к файлу
+
+    Returns:
+        'uk' если путь содержит uk/categories/, иначе 'ru'
+    """
+    if "uk/categories/" in file_path or "/uk/" in file_path or "\\uk\\" in file_path:
+        return "uk"
+    return "ru"
+
+
 def normalize_keyword(keyword: str) -> str:
     """Нормализация keyword для поиска (lowercase, убрать лишние пробелы)"""
     return " ".join(keyword.lower().split())
@@ -122,16 +137,59 @@ def get_russian_word_stems(keyword: str) -> list[str]:
     return stems
 
 
-def check_keywords_in_h2(text: str, keyword: str) -> dict:
+def get_ukrainian_word_stems(keyword: str) -> list[str]:
+    """
+    Получает основы слов для поиска с учётом украинских падежей.
+
+    Украинские окончания:
+    - Существительные: -а, -и, -у, -ою, -ої, -ам, -ах
+    - Прилагательные: -ий, -а, -е, -ого, -ому, -им, -ій, -ої
+    - Глаголы: -ти, -ть, -ння, -ють, -ає
+
+    Для "активна піна" вернёт: ["активн", "пін"]
+    Это позволит найти: активна/активну/активної + піна/піну/піни/піною
+    """
+    words = keyword.lower().split()
+    stems = []
+
+    for word in words:
+        if len(word) <= 3:
+            stems.append(word)
+        elif len(word) <= 5:
+            stems.append(word[:-1])  # убираем 1 символ
+        else:
+            stems.append(word[:-2])  # убираем 2 символа (окончание)
+
+    return stems
+
+
+def get_word_stems(keyword: str, lang: str = "ru") -> list[str]:
+    """
+    Универсальный стеммер — делегирует в RU или UK версию.
+
+    Args:
+        keyword: Ключевое слово или фраза
+        lang: 'ru' или 'uk'
+
+    Returns:
+        Список основ слов
+    """
+    if lang == "uk":
+        return get_ukrainian_word_stems(keyword)
+    return get_russian_word_stems(keyword)
+
+
+def check_keywords_in_h2(text: str, keyword: str, lang: str = "ru") -> dict:
     """
     Проверка 2: Keywords в H2 заголовках
 
     Требование: минимум 2 из H2 должны содержать keyword или вариацию
-    Учитывает русские падежи через стемминг.
+    Учитывает падежи через стемминг (RU или UK).
 
     Args:
         text: Полный текст
         keyword: Main keyword
+        lang: 'ru' или 'uk' для выбора стеммера
 
     Returns:
         Dict с результатами
@@ -142,7 +200,7 @@ def check_keywords_in_h2(text: str, keyword: str) -> dict:
 
     keyword_lower = normalize_keyword(keyword)
     keyword_words = keyword_lower.split()
-    keyword_stems = get_russian_word_stems(keyword)
+    keyword_stems = get_word_stems(keyword, lang)
 
     h2_with_keyword = []
     h2_without_keyword = []
@@ -243,13 +301,16 @@ def check_seo_structure(file_path: str, keyword: str) -> tuple[str, dict]:
     Returns:
         (status, results) где status = 'PASS'/'WARN'/'FAIL'
     """
+    # Определяем язык по пути файла
+    lang = detect_language(file_path)
+
     # Читаем файл
     with open(file_path, encoding="utf-8") as f:
         text = f.read()
 
     # Запускаем проверки
     intro_check = check_keyword_in_intro(text, keyword)
-    h2_check = check_keywords_in_h2(text, keyword)
+    h2_check = check_keywords_in_h2(text, keyword, lang)
     freq_check = check_keyword_frequency(text, keyword)
 
     results = {"intro": intro_check, "h2": h2_check, "frequency": freq_check}
@@ -287,11 +348,13 @@ def main(argv: list[str] | None = None) -> int:
         print(f"❌ File not found: {file_path}")
         return 2
 
+    lang = detect_language(file_path)
     print(f"\n{'=' * 60}")
     print("SEO Structure Check")
     print(f"{'=' * 60}")
     print(f"File: {file_path}")
     print(f"Keyword: {keyword}")
+    print(f"Language: {lang.upper()}")
     print(f"{'=' * 60}\n")
 
     status, results = check_seo_structure(file_path, keyword)
