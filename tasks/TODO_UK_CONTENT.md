@@ -28,9 +28,9 @@
 
 ## Фаза 2: L3 Categories (листовые)
 
-- [ ] aktivnaya-pena
-- [ ] antibitum
-- [ ] antimoshka
+- [x] aktivnaya-pena
+- [x] antibitum
+- [x] antimoshka
 - [ ] antidozhd
 - [ ] akkumulyatornaya
 - [ ] cherniteli-shin
@@ -87,4 +87,4 @@
 
 ---
 
-**Progress:** 0/50
+**Progress:** 3/50
