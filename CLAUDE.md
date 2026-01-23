@@ -23,6 +23,19 @@ categories/
 │           └── data/, meta/, content/, research/
 ```
 
+### UK структура (зеркало RU)
+```
+uk/
+├── data/
+│   └── uk_keywords.json          # База UK ключей (из RU с переводом)
+└── categories/
+    └── {slug}/
+        ├── data/{slug}_clean.json   # UK семантика
+        ├── meta/{slug}_meta.json    # UK мета-теги
+        ├── content/{slug}_uk.md     # UK контент
+        └── research/CONTEXT.md      # Ссылка на RU research
+```
+
 ### Файлы категории
 
 | Файл | Назначение |
@@ -168,16 +181,18 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ## Навигация
 
-| Что              | Где                       |
-| ---------------- | ------------------------- |
-| Задачи (обзор)   | `tasks/README.md`         |
-| Research TODO    | `tasks/TODO_RESEARCH.md`  |
-| Content TODO     | `tasks/TODO_CONTENT.md`   |
-| Аудит категорий  | `tasks/CONTENT_STATUS.md` |
-| SEO-гайд         | `docs/CONTENT_GUIDE.md`   |
-| Данные категорий | `categories/{slug}/`      |
-| Скрипты          | `scripts/`                |
+| Что              | Где                        |
+| ---------------- | -------------------------- |
+| Задачи (обзор)   | `tasks/README.md`          |
+| Research TODO    | `tasks/TODO_RESEARCH.md`   |
+| Content TODO     | `tasks/TODO_CONTENT.md`    |
+| UK TODO          | `tasks/TODO_UK_CONTENT.md` |
+| Аудит категорий  | `tasks/CONTENT_STATUS.md`  |
+| SEO-гайд         | `docs/CONTENT_GUIDE.md`    |
+| Данные категорий | `categories/{slug}/`       |
+| UK ключи (база)  | `uk/data/uk_keywords.json` |
+| Скрипты          | `scripts/`                 |
 
 ---
 
-**Version:** 38.0
+**Version:** 39.0
