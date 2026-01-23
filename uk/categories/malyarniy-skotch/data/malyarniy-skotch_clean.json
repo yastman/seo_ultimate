@@ -1,0 +1,83 @@
+{
+  "slug": "malyarniy-skotch",
+  "language": "uk",
+  "category_name_uk": "Малярний скотч",
+  "category_name_ru": "Малярный скотч",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "малярные скотчи",
+        "keyword_ru": "малярные скотчи",
+        "volume": 100
+      },
+      {
+        "keyword": "малярный скотч",
+        "keyword_ru": "малярный скотч",
+        "volume": 100
+      },
+      {
+        "keyword": "скотч малярний",
+        "keyword_ru": "скотч малярний",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "малярная лента",
+        "keyword_ru": "малярная лента",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "скотч малярный автомобильный",
+        "keyword_ru": "скотч малярный автомобильный",
+        "volume": 20
+      },
+      {
+        "keyword": "малярный скотч для авто",
+        "keyword_ru": "малярный скотч для авто",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити малярний скотч",
+        "keyword_ru": "купить малярный скотч",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

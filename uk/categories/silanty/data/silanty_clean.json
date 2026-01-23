@@ -1,0 +1,83 @@
+{
+  "slug": "silanty",
+  "language": "uk",
+  "category_name_uk": "Силанти",
+  "category_name_ru": "Силанты",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "силант",
+        "keyword_ru": "силант",
+        "volume": 100
+      },
+      {
+        "keyword": "силанты для авто",
+        "keyword_ru": "силанты для авто",
+        "volume": 100
+      },
+      {
+        "keyword": "силант для авто",
+        "keyword_ru": "силант для авто",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "силант для кузова",
+        "keyword_ru": "силант для кузова",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "полимерный силант",
+        "keyword_ru": "полимерный силант",
+        "volume": 20
+      },
+      {
+        "keyword": "синтетический герметик",
+        "keyword_ru": "синтетический герметик",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити силанти",
+        "keyword_ru": "купить силанты",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

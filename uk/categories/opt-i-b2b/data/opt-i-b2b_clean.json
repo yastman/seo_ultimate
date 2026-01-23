@@ -1,0 +1,93 @@
+{
+  "slug": "opt-i-b2b",
+  "language": "uk",
+  "category_name_uk": "Опт та B2B",
+  "category_name_ru": "Опт и B2B",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "автохимия от производителя",
+        "keyword_ru": "автохимия от производителя",
+        "volume": 100
+      },
+      {
+        "keyword": "автохимия производство",
+        "keyword_ru": "автохимия производство",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "автохимия поставщики",
+        "keyword_ru": "автохимия поставщики",
+        "volume": 50
+      },
+      {
+        "keyword": "автохимия оптом",
+        "keyword_ru": "автохимия оптом",
+        "volume": 50
+      },
+      {
+        "keyword": "детейлінг химия оптом",
+        "keyword_ru": "детейлинг химия оптом",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "производители автохимии україна",
+        "keyword_ru": "производители автохимии украина",
+        "volume": 20
+      },
+      {
+        "keyword": "автохимия для автомойки",
+        "keyword_ru": "автохимия для автомойки",
+        "volume": 20
+      },
+      {
+        "keyword": "дилерские условия автохимия",
+        "keyword_ru": "дилерские условия автохимия",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити опт та b2b",
+        "keyword_ru": "купить опт и b2b",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

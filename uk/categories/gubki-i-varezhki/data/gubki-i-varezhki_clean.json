@@ -1,0 +1,93 @@
+{
+  "slug": "gubki-i-varezhki",
+  "language": "uk",
+  "category_name_uk": "Губки та рукавички",
+  "category_name_ru": "Губки и варежки",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "мочалка для автомобиля",
+        "keyword_ru": "мочалка для автомобиля",
+        "volume": 100
+      },
+      {
+        "keyword": "мочалка для авто",
+        "keyword_ru": "мочалка для авто",
+        "volume": 100
+      },
+      {
+        "keyword": "губка для авто",
+        "keyword_ru": "губка для авто",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "перчатка для мойки авто",
+        "keyword_ru": "перчатка для мойки авто",
+        "volume": 50
+      },
+      {
+        "keyword": "губка для мойки авто",
+        "keyword_ru": "губка для мойки авто",
+        "volume": 50
+      },
+      {
+        "keyword": "рукавичка для мойки авто",
+        "keyword_ru": "варежка для мойки авто",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "мочалка для машины",
+        "keyword_ru": "мочалка для машины",
+        "volume": 20
+      },
+      {
+        "keyword": "губки для мытья машины",
+        "keyword_ru": "губки для мытья машины",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити губки та рукавички",
+        "keyword_ru": "купить губки и варежки",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "slug": "keramika-dlya-diskov",
+  "language": "uk",
+  "category_name_uk": "Кераміка для дисків",
+  "category_name_ru": "Керамика для дисков",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "захистное покритте для дисков",
+        "keyword_ru": "защитное покрытие для дисков",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "кераміка для дисков",
+        "keyword_ru": "керамика для дисков",
+        "volume": 50
+      },
+      {
+        "keyword": "нанокераміка для дисков",
+        "keyword_ru": "нанокерамика для дисков",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "захиста от пыли",
+        "keyword_ru": "защита от пыли",
+        "volume": 20
+      },
+      {
+        "keyword": "гидрофобный эффект",
+        "keyword_ru": "гидрофобный эффект",
+        "volume": 20
+      },
+      {
+        "keyword": "термостойкость",
+        "keyword_ru": "термостойкость",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити кераміка для дисків",
+        "keyword_ru": "купить керамика для дисков",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "slug": "zashchitnye-pokrytiya",
+  "language": "uk",
+  "category_name_uk": "Захисні покриття",
+  "category_name_ru": "Защитные покрытия",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "захистные покриття для авто",
+        "keyword_ru": "защитные покрытия для авто",
+        "volume": 100
+      },
+      {
+        "keyword": "покритте для автомобиля",
+        "keyword_ru": "покрытие для автомобиля",
+        "volume": 100
+      }
+    ],
+    "secondary": [],
+    "supporting": [],
+    "commercial": [
+      {
+        "keyword": "купити захисні покриття",
+        "keyword_ru": "купить защитные покрытия",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

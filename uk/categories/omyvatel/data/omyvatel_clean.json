@@ -1,0 +1,113 @@
+{
+  "slug": "omyvatel",
+  "language": "uk",
+  "category_name_uk": "Омивач",
+  "category_name_ru": "Омыватель",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "омивачель стекла зимний",
+        "keyword_ru": "омыватель стекла зимний",
+        "volume": 100
+      },
+      {
+        "keyword": "омивачель стекла",
+        "keyword_ru": "омыватель стекла",
+        "volume": 100
+      },
+      {
+        "keyword": "зимний омивачель",
+        "keyword_ru": "зимний омыватель",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "омивачель лобового стекла",
+        "keyword_ru": "омыватель лобового стекла",
+        "volume": 50
+      },
+      {
+        "keyword": "склоомивачель",
+        "keyword_ru": "стеклоомыватель",
+        "volume": 50
+      },
+      {
+        "keyword": "омивачель летний",
+        "keyword_ru": "омыватель летний",
+        "volume": 50
+      },
+      {
+        "keyword": "склоомивачель зимний",
+        "keyword_ru": "стеклоомыватель зимний",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "омивачель для стекол",
+        "keyword_ru": "омыватель для стекол",
+        "volume": 20
+      },
+      {
+        "keyword": "омивачель-антимошка",
+        "keyword_ru": "омыватель-антимошка",
+        "volume": 20
+      },
+      {
+        "keyword": "концентрат омивачеля",
+        "keyword_ru": "концентрат омывателя",
+        "volume": 20
+      },
+      {
+        "keyword": "температура замерзания",
+        "keyword_ru": "температура замерзания",
+        "volume": 20
+      },
+      {
+        "keyword": "всесезонный состав",
+        "keyword_ru": "всесезонный состав",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити омивач",
+        "keyword_ru": "купить омыватель",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

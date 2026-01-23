@@ -1,0 +1,83 @@
+{
+  "slug": "shchetka-dlya-moyki-avto",
+  "language": "uk",
+  "category_name_uk": "Щітка для миття авто",
+  "category_name_ru": "Щётка для мойки авто",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "щітка для мойки авто",
+        "keyword_ru": "щетка для мойки авто",
+        "volume": 100
+      },
+      {
+        "keyword": "щітка для мытья машины",
+        "keyword_ru": "щетка для мытья машины",
+        "volume": 100
+      },
+      {
+        "keyword": "щітка для мытья авто",
+        "keyword_ru": "щетка для мытья авто",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "мягкие щітки для мытья машины",
+        "keyword_ru": "мягкие щетки для мытья машины",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "щітка для мытья автомобиля",
+        "keyword_ru": "щетка для мытья автомобиля",
+        "volume": 20
+      },
+      {
+        "keyword": "щітка для мытья дисков авто",
+        "keyword_ru": "щетка для мытья дисков авто",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити щітка для миття авто",
+        "keyword_ru": "купить щётка для мойки авто",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

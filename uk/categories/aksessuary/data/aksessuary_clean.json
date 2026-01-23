@@ -1,0 +1,208 @@
+{
+  "slug": "aksessuary",
+  "language": "uk",
+  "category_name_uk": "Аксесуари",
+  "category_name_ru": "Аксессуары",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "а",
+        "keyword_ru": "а",
+        "volume": 100
+      },
+      {
+        "keyword": "к",
+        "keyword_ru": "к",
+        "volume": 100
+      },
+      {
+        "keyword": "с",
+        "keyword_ru": "с",
+        "volume": 100
+      },
+      {
+        "keyword": "е",
+        "keyword_ru": "е",
+        "volume": 100
+      },
+      {
+        "keyword": "с",
+        "keyword_ru": "с",
+        "volume": 100
+      },
+      {
+        "keyword": "с",
+        "keyword_ru": "с",
+        "volume": 100
+      },
+      {
+        "keyword": "у",
+        "keyword_ru": "у",
+        "volume": 100
+      },
+      {
+        "keyword": "а",
+        "keyword_ru": "а",
+        "volume": 100
+      },
+      {
+        "keyword": "р",
+        "keyword_ru": "р",
+        "volume": 100
+      },
+      {
+        "keyword": "ы",
+        "keyword_ru": "ы",
+        "volume": 100
+      },
+      {
+        "keyword": " ",
+        "keyword_ru": " ",
+        "volume": 100
+      },
+      {
+        "keyword": "д",
+        "keyword_ru": "д",
+        "volume": 100
+      },
+      {
+        "keyword": "л",
+        "keyword_ru": "л",
+        "volume": 100
+      },
+      {
+        "keyword": "я",
+        "keyword_ru": "я",
+        "volume": 100
+      },
+      {
+        "keyword": " ",
+        "keyword_ru": " ",
+        "volume": 100
+      },
+      {
+        "keyword": "м",
+        "keyword_ru": "м",
+        "volume": 100
+      },
+      {
+        "keyword": "о",
+        "keyword_ru": "о",
+        "volume": 100
+      },
+      {
+        "keyword": "й",
+        "keyword_ru": "й",
+        "volume": 100
+      },
+      {
+        "keyword": "к",
+        "keyword_ru": "к",
+        "volume": 100
+      },
+      {
+        "keyword": "и",
+        "keyword_ru": "и",
+        "volume": 100
+      },
+      {
+        "keyword": " ",
+        "keyword_ru": " ",
+        "volume": 100
+      },
+      {
+        "keyword": "а",
+        "keyword_ru": "а",
+        "volume": 100
+      },
+      {
+        "keyword": "в",
+        "keyword_ru": "в",
+        "volume": 100
+      },
+      {
+        "keyword": "т",
+        "keyword_ru": "т",
+        "volume": 100
+      },
+      {
+        "keyword": "о",
+        "keyword_ru": "о",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "аксесуары для детейлінга",
+        "keyword_ru": "аксессуары для детейлинга",
+        "volume": 50
+      },
+      {
+        "keyword": "все для мойки авто",
+        "keyword_ru": "все для мойки авто",
+        "volume": 50
+      },
+      {
+        "keyword": "инвентарь для мойки авто",
+        "keyword_ru": "инвентарь для мойки авто",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "аксесуары по уходу за автомобилем",
+        "keyword_ru": "аксессуары по уходу за автомобилем",
+        "volume": 20
+      },
+      {
+        "keyword": "принадлежности для мойки авто",
+        "keyword_ru": "принадлежности для мойки авто",
+        "volume": 20
+      },
+      {
+        "keyword": "базовый набір для мойки",
+        "keyword_ru": "базовый набор для мойки",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити аксесуари",
+        "keyword_ru": "купить аксессуары",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

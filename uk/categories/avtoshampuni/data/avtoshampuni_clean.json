@@ -1,0 +1,98 @@
+{
+  "slug": "avtoshampuni",
+  "language": "uk",
+  "category_name_uk": "Автошампуні",
+  "category_name_ru": "Автошампуни",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "автошампунь",
+        "keyword_ru": "автошампунь",
+        "volume": 100
+      },
+      {
+        "keyword": "шампунь для авто",
+        "keyword_ru": "шампунь для авто",
+        "volume": 100
+      },
+      {
+        "keyword": "шампунь для мойки авто",
+        "keyword_ru": "шампунь для мойки авто",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "шампунь для мойки авто",
+        "keyword_ru": "шампунь для мойки авто",
+        "volume": 50
+      },
+      {
+        "keyword": "шампунь для автомойки",
+        "keyword_ru": "шампунь для автомойки",
+        "volume": 50
+      },
+      {
+        "keyword": "шампунь для моек высокого давления",
+        "keyword_ru": "шампунь для моек высокого давления",
+        "volume": 50
+      },
+      {
+        "keyword": "автомобильный шампунь",
+        "keyword_ru": "автомобильный шампунь",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "шампунь для машины",
+        "keyword_ru": "шампунь для машины",
+        "volume": 20
+      },
+      {
+        "keyword": "шампунь для минимойки",
+        "keyword_ru": "шампунь для минимойки",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити автошампуні",
+        "keyword_ru": "купить автошампуни",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

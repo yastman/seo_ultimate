@@ -1,0 +1,98 @@
+{
+  "slug": "cherniteli-shin",
+  "language": "uk",
+  "category_name_uk": "Чорнителі шин",
+  "category_name_ru": "Чернители шин",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "чорнитель резины",
+        "keyword_ru": "чернитель резины",
+        "volume": 100
+      },
+      {
+        "keyword": "чернение резины",
+        "keyword_ru": "чернение резины",
+        "volume": 100
+      },
+      {
+        "keyword": "поліроль для колес",
+        "keyword_ru": "полироль для колес",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "чернение резины",
+        "keyword_ru": "чернение резины",
+        "volume": 50
+      },
+      {
+        "keyword": "поліроль для колес",
+        "keyword_ru": "полироль для колес",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "поліроль для шин",
+        "keyword_ru": "полироль для шин",
+        "volume": 20
+      },
+      {
+        "keyword": "средства для чернения шин",
+        "keyword_ru": "средства для чернения шин",
+        "volume": 20
+      },
+      {
+        "keyword": "купити чорнитель резины",
+        "keyword_ru": "купить чернитель резины",
+        "volume": 20
+      },
+      {
+        "keyword": "чорнитель колёс",
+        "keyword_ru": "чернитель колёс",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити чорнителі шин",
+        "keyword_ru": "купить чернители шин",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}
