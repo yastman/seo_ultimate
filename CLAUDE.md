@@ -140,7 +140,13 @@ ruff format scripts/
 python scripts/validate_meta.py --all
 python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
 python scripts/validate_uk.py categories/{slug}/content/{slug}_uk.md
-python scripts/check_seo_structure.py categories/{slug}/
+python scripts/check_seo_structure.py categories/{slug}/content/{slug}_ru.md "main keyword"
+python scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "ключове слово"  # UK auto-detected
+
+# Валидация (UK)
+python scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+python scripts/check_h1_sync.py --lang uk
+python scripts/check_semantic_coverage.py --lang uk
 
 # Аудит
 python scripts/audit_keyword_consistency.py   # Проверка ключей в meta vs clean
@@ -200,4 +206,4 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ---
 
-**Version:** 40.0
+**Version:** 42.0
