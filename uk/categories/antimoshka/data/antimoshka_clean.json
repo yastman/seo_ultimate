@@ -1,0 +1,57 @@
+{
+  "id": "antimoshka",
+  "name": "Антимошка",
+  "language": "uk",
+  "type": "category",
+  "parent_id": "ochistiteli-kuzova",
+  "keywords": [
+    {
+      "keyword": "антимошка",
+      "volume": 320
+    },
+    {
+      "keyword": "антимошка для авто",
+      "volume": 320
+    },
+    {
+      "keyword": "засіб від мошек на авто",
+      "volume": 50
+    },
+    {
+      "keyword": "антимошка на мийці",
+      "volume": 30
+    },
+    {
+      "keyword": "концентрат антимошка",
+      "volume": 20
+    },
+    {
+      "keyword": "антимошка на мийці самообслуговування",
+      "volume": 20
+    },
+    {
+      "keyword": "антимошка спрей",
+      "volume": 10
+    },
+    {
+      "keyword": "очищувач від насекомых",
+      "volume": 10
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "купити антимошку",
+      "volume": 20,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "антимошка ціна",
+      "volume": 10,
+      "use_in": "meta_only"
+    }
+  ],
+  "variations": [],
+  "entities": [],
+  "micro_intents": [],
+  "source_ru": "categories/moyka-i-eksterer/ochistiteli-kuzova/antimoshka/data/antimoshka_clean.json"
+}
