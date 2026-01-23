@@ -246,7 +246,13 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}" --mode seo
 
 # Keyword density
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md
+python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+
+# H1 sync check
+python3 scripts/check_h1_sync.py --lang uk
+
+# Semantic coverage
+python3 scripts/check_semantic_coverage.py --lang uk
 ```
 
 ### UK-Specific Checks
