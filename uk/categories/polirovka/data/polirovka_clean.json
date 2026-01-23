@@ -1,0 +1,93 @@
+{
+  "slug": "polirovka",
+  "language": "uk",
+  "category_name_uk": "Полірування",
+  "category_name_ru": "Полировка",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "полірування авто",
+        "keyword_ru": "полировка авто",
+        "volume": 100
+      },
+      {
+        "keyword": "полірування автомобиля",
+        "keyword_ru": "полировка автомобиля",
+        "volume": 100
+      },
+      {
+        "keyword": "полірування кузова",
+        "keyword_ru": "полировка кузова",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "средства для полировки авто",
+        "keyword_ru": "средства для полировки авто",
+        "volume": 50
+      },
+      {
+        "keyword": "полірування машины",
+        "keyword_ru": "полировка машины",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "полірувальная машинка",
+        "keyword_ru": "полировальная машинка",
+        "volume": 20
+      },
+      {
+        "keyword": "полірувальные круги",
+        "keyword_ru": "полировальные круги",
+        "volume": 20
+      },
+      {
+        "keyword": "полірувальные пасты",
+        "keyword_ru": "полировальные пасты",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити полірування",
+        "keyword_ru": "купить полировка",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

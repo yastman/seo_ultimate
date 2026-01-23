@@ -1,0 +1,93 @@
+{
+  "slug": "tverdyy-vosk",
+  "language": "uk",
+  "category_name_uk": "Твердий віск",
+  "category_name_ru": "Твёрдый воск",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "твердый віск для авто",
+        "keyword_ru": "твёрдый воск для авто",
+        "volume": 100
+      },
+      {
+        "keyword": "твердый віск",
+        "keyword_ru": "твёрдый воск",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "твердый віск для полировки авто",
+        "keyword_ru": "твёрдый воск для полировки авто",
+        "volume": 50
+      },
+      {
+        "keyword": "віск карнауба",
+        "keyword_ru": "воск карнауба",
+        "volume": 50
+      },
+      {
+        "keyword": "паста-віск",
+        "keyword_ru": "паста-воск",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "твердый віск для машины",
+        "keyword_ru": "твёрдый воск для машины",
+        "volume": 20
+      },
+      {
+        "keyword": "аппликатор для віска",
+        "keyword_ru": "аппликатор для воска",
+        "volume": 20
+      },
+      {
+        "keyword": "долговременная захиста",
+        "keyword_ru": "долговременная защита",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити твердий віск",
+        "keyword_ru": "купить твёрдый воск",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

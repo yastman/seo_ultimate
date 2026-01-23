@@ -1,0 +1,88 @@
+{
+  "slug": "ochistiteli-shin",
+  "language": "uk",
+  "category_name_uk": "Очищувачі шин",
+  "category_name_ru": "Очистители шин",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "очищувач шин",
+        "keyword_ru": "очиститель шин",
+        "volume": 100
+      },
+      {
+        "keyword": "очищувач резины",
+        "keyword_ru": "очиститель резины",
+        "volume": 100
+      },
+      {
+        "keyword": "засіб для чистки шин",
+        "keyword_ru": "средство для чистки шин",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "засіб для чистки шин",
+        "keyword_ru": "средство для чистки шин",
+        "volume": 50
+      },
+      {
+        "keyword": "щелочная химия для шин",
+        "keyword_ru": "щелочная химия для шин",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "очистка резины",
+        "keyword_ru": "очистка резины",
+        "volume": 20
+      },
+      {
+        "keyword": "засіб для очистки шин",
+        "keyword_ru": "средство для очистки шин",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити очищувачі шин",
+        "keyword_ru": "купить очистители шин",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

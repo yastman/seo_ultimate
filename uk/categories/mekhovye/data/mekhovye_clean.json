@@ -1,0 +1,93 @@
+{
+  "slug": "mekhovye",
+  "language": "uk",
+  "category_name_uk": "Хутряні круги",
+  "category_name_ru": "Меховые круги",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "шерстяной круг для полировки",
+        "keyword_ru": "шерстяной круг для полировки",
+        "volume": 100
+      },
+      {
+        "keyword": "хутряний круг для полировки",
+        "keyword_ru": "меховой круг для полировки",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "шерстяной круг на полірувальную машинку",
+        "keyword_ru": "шерстяной круг на полировальную машинку",
+        "volume": 50
+      },
+      {
+        "keyword": "круг из шерсти для полировки",
+        "keyword_ru": "круг из шерсти для полировки",
+        "volume": 50
+      },
+      {
+        "keyword": "хутряний круг для полировки авто",
+        "keyword_ru": "меховой круг для полировки авто",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "натуральная шерсть",
+        "keyword_ru": "натуральная шерсть",
+        "volume": 20
+      },
+      {
+        "keyword": "синтетический мех",
+        "keyword_ru": "синтетический мех",
+        "volume": 20
+      },
+      {
+        "keyword": "wool pad",
+        "keyword_ru": "wool pad",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити хутряні круги",
+        "keyword_ru": "купить меховые круги",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

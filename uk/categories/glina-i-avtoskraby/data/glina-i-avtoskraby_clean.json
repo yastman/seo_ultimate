@@ -1,0 +1,108 @@
+{
+  "slug": "glina-i-avtoskraby",
+  "language": "uk",
+  "category_name_uk": "Глина та автоскраби",
+  "category_name_ru": "Глина и автоскрабы",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "глина для авто",
+        "keyword_ru": "глина для авто",
+        "volume": 100
+      },
+      {
+        "keyword": "синяя глина для авто",
+        "keyword_ru": "синяя глина для авто",
+        "volume": 100
+      },
+      {
+        "keyword": "автоскраб",
+        "keyword_ru": "автоскраб",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "глина для чистки авто",
+        "keyword_ru": "глина для чистки авто",
+        "volume": 50
+      },
+      {
+        "keyword": "автомобильная глина",
+        "keyword_ru": "автомобильная глина",
+        "volume": 50
+      },
+      {
+        "keyword": "глина для кузова автомобиля",
+        "keyword_ru": "глина для кузова автомобиля",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "глина для полировки автомобиля",
+        "keyword_ru": "глина для полировки автомобиля",
+        "volume": 20
+      },
+      {
+        "keyword": "очищающая глина для авто",
+        "keyword_ru": "очищающая глина для авто",
+        "volume": 20
+      },
+      {
+        "keyword": "глина для кузова",
+        "keyword_ru": "глина для кузова",
+        "volume": 20
+      },
+      {
+        "keyword": "clay bar",
+        "keyword_ru": "clay bar",
+        "volume": 20
+      },
+      {
+        "keyword": "детейлінг-брусок",
+        "keyword_ru": "детейлинг-брусок",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити глина та автоскраби",
+        "keyword_ru": "купить глина и автоскрабы",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}

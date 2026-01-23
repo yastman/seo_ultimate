@@ -1,0 +1,73 @@
+{
+  "slug": "pyatnovyvoditeli",
+  "language": "uk",
+  "category_name_uk": "Плямовивідники",
+  "category_name_ru": "Пятновыводители",
+  "keywords": {
+    "primary": [
+      {
+        "keyword": "плямовыводитель",
+        "keyword_ru": "пятновыводитель",
+        "volume": 100
+      },
+      {
+        "keyword": "плямовыводитель для авто",
+        "keyword_ru": "пятновыводитель для авто",
+        "volume": 100
+      }
+    ],
+    "secondary": [
+      {
+        "keyword": "плямовыводитель для салона авто",
+        "keyword_ru": "пятновыводитель для салона авто",
+        "volume": 50
+      }
+    ],
+    "supporting": [
+      {
+        "keyword": "плямовыводитель для сидений авто",
+        "keyword_ru": "пятновыводитель для сидений авто",
+        "volume": 20
+      }
+    ],
+    "commercial": [
+      {
+        "keyword": "купити плямовивідники",
+        "keyword_ru": "купить пятновыводители",
+        "volume": 100,
+        "use_in": "meta_only"
+      }
+    ]
+  },
+  "translation_notes": {
+    "adapted_terms": [
+      [
+        "резина",
+        "гума"
+      ],
+      [
+        "средство",
+        "засіб"
+      ],
+      [
+        "мойка",
+        "миття"
+      ],
+      [
+        "стекло",
+        "скло"
+      ],
+      [
+        "чернитель",
+        "чорнитель"
+      ]
+    ],
+    "kept_original": [
+      "pH",
+      "PPF",
+      "APC",
+      "SiO2"
+    ],
+    "intent_preserved": true
+  }
+}
