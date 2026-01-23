@@ -5,7 +5,7 @@ description: >-
   Use when /uk-quality-gate, перевір UK категорію, фінальна перевірка UK, валідація UK перед деплоєм.
 ---
 
-# UK Quality Gate v1.0
+# UK Quality Gate v2.0
 
 Фінальна валідація перед деплоєм в OpenCart (language_id=1).
 
@@ -51,7 +51,7 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 | Title | 50-60 chars | ✅ |
 | Title | Містить "Купити" | ✅ |
 | Title | Primary keyword на початку | ✅ |
-| Description | 100-160 chars | ✅ |
+| Description | 120-160 chars | ✅ |
 | Description | Без emojis | ✅ |
 | H1 | БЕЗ "Купити" | ✅ |
 | H1 | ≠ Title | ✅ |
@@ -60,6 +60,12 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 
 ```bash
 python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}" --mode seo
+
+# SEO structure check
+python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
+
+# Natasha check for academic nausea
+python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 ```
 
 **Перевірки:**
@@ -68,9 +74,12 @@ python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{
 - [ ] Intro: 30-60 слів
 - [ ] Has comparison table
 - [ ] Has FAQ (3-5 питань)
-- [ ] Word count: 300-800
+- [ ] Word count: 400-700
 - [ ] No brand names/prices
 - [ ] Primary keyword у перших 100 словах
+- [ ] **H2 з keyword: мінімум 2** (check_seo_structure.py)
+- [ ] **Патерни "Якщо X → Y": мінімум 3**
+- [ ] **Academic ≥7%** (check_water_natasha.py)
 
 ### 4. UK Terminology Check (BLOCKER)
 
@@ -105,6 +114,34 @@ python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.
 | Stem-група ключа | ≤2.5% | >3.0% |
 | Класична тошнота | ≤3.5 | >4.0 |
 
+### 6. SEO Structure Check
+
+```bash
+python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
+```
+
+**Перевірки:**
+
+| Перевірка | Правило | BLOCKER |
+|-----------|---------|---------|
+| Keyword в INTRO | Перші 150 символів | ✅ |
+| H2 з keyword | Мінімум 2 H2 | ⚠️ WARN |
+| Keyword frequency | 3-7 разів (не >10 SPAM) | ✅ |
+
+### 7. Academic Nausea Check
+
+```bash
+python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
+```
+
+**Пороги:**
+
+| Метрика | Ціль | BLOCKER |
+|---------|------|---------|
+| Академічна тошнота | **≥7%** | <6% = сухий текст |
+| Класична тошнота | ≤3.5 | >4.0 |
+| Вода | 40-65% | >75% |
+
 ---
 
 ## Workflow
@@ -120,6 +157,12 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 
 # Content validation
 python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}" --mode seo
+
+# SEO structure
+python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
+
+# Academic nausea
+python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 
 # UK terminology
 grep -E "резина|мойка|стекло" uk/categories/{slug}/content/{slug}_uk.md
@@ -145,6 +188,8 @@ python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.
 | Content | ✅/❌ | X words, Y keywords |
 | UK Terminology | ✅/❌ | No RU terms found / Found: резина, мойка |
 | Keyword Density | ✅/❌ | Stem: X%, Nausea: Y |
+| SEO Structure | ✅/❌ | H2 with keyword: X, Intro keyword: ✅/❌ |
+| Academic Nausea | ✅/❌ | Academic: X%, Water: Y% |
 
 ## Issues Found
 
@@ -179,13 +224,17 @@ uk/categories/{slug}/QUALITY_REPORT.md
 | Data valid JSON | ✅ |
 | Title 50-60 chars | ✅ |
 | Title містить "Купити" | ✅ |
-| Description 100-160 | ✅ |
+| Description 120-160 | ✅ |
 | H1 БЕЗ "Купити" | ✅ |
 | Немає "резина" (use "гума") | ✅ |
 | Немає "мойка" (use "миття") | ✅ |
 | Немає "стекло" (use "скло") | ✅ |
 | UK keywords integrated | ✅ |
 | Stem ≤2.5% | ✅ |
+| H2 з keyword мін. 2 | ✅ |
+| Патерни "Якщо X→Y" ≥3 | ✅ |
+| Academic ≥7% | ⚠️ |
+| Word count 400-700 | ✅ |
 
 ---
 
@@ -200,6 +249,10 @@ uk/categories/{slug}/QUALITY_REPORT.md
 | Found "мойка" | Замінити на "миття" |
 | Missing FAQ | Додати 3-5 FAQ питань |
 | Stem >2.5% | Розбавити синонімами |
+| Word count >700 | Скоротити до 500-700 слів |
+| H2 без keyword | Додати secondary keyword в 2+ H2 |
+| Academic <7% | Додати звернення "вам", "якщо ви" |
+| Немає "Якщо X→Y" | Додати 3+ сценарії вибору |
 
 ---
 
@@ -223,4 +276,12 @@ If FAIL: Fix issues, then run /uk-quality-gate {slug} again
 
 ---
 
-**Version:** 1.0 — January 2026 (based on quality-gate v2.0)
+**Version:** 2.0 — January 2026 (parity with quality-gate v3.0)
+
+**Changelog v2.0:**
+- Додано check_seo_structure.py валідацію
+- Додано H2 keyword check (мін. 2)
+- Додано Academic ≥7% вимогу
+- Description length: 120-160 (було 100-160)
+- Додано "Якщо X→Y" patterns check (≥3)
+- Word count: 400-700 (було 300-800)
