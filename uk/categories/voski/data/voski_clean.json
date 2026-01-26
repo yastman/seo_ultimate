@@ -18,30 +18,9 @@
       "use_in": "meta_only",
       "source_ru": "купить воск для авто",
       "_original_category": "voski"
-    },
-    {
-      "keyword": "купити віск для автомобіля",
-      "volume": 320,
-      "use_in": "meta_only",
-      "source_ru": "купить воск для автомобиля",
-      "_original_category": "voski"
-    },
-    {
-      "keyword": "віск для машини",
-      "volume": 210,
-      "use_in": "content",
-      "source_ru": "воск для машины",
-      "_original_category": "voski"
     }
   ],
   "supporting_keywords": [
-    {
-      "keyword": "віск автомобільний",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "воск автомобильный",
-      "_original_category": "voski"
-    },
     {
       "keyword": "віск для полірування авто",
       "volume": 90,
@@ -83,6 +62,29 @@
       "use_in": "content",
       "source_ru": "жидкий воск для автомобиля",
       "_original_category": "zhidkiy-vosk"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "купити віск для автомобіля",
+      "volume": 320,
+      "use_in": "lsi",
+      "variant_of": "купити віск для авто",
+      "source_ru": "купить воск для автомобиля"
+    },
+    {
+      "keyword": "віск для машини",
+      "volume": 210,
+      "use_in": "lsi",
+      "variant_of": "віск для авто",
+      "source_ru": "воск для машины"
+    },
+    {
+      "keyword": "віск автомобільний",
+      "volume": 90,
+      "use_in": "lsi",
+      "variant_of": "віск для авто",
+      "source_ru": "воск автомобильный"
     }
   ],
   "all_keywords_count": 11
