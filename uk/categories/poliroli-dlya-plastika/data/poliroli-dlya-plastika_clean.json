@@ -2,15 +2,16 @@
   "id": "poliroli-dlya-plastika",
   "language": "uk",
   "total_volume": 2020,
-  "keywords": [],
-  "secondary_keywords": [
+  "keywords": [
     {
       "keyword": "поліроль для салону автомобіля",
       "volume": 390,
       "use_in": "content",
       "source_ru": "полироль для салона автомобиля",
       "_original_category": "poliroli-dlya-plastika"
-    },
+    }
+  ],
+  "secondary_keywords": [
     {
       "keyword": "поліроль для пластику автомобіля",
       "volume": 320,

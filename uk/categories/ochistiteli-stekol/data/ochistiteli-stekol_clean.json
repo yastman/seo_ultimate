@@ -2,8 +2,7 @@
   "id": "ochistiteli-stekol",
   "language": "uk",
   "total_volume": 280,
-  "keywords": [],
-  "secondary_keywords": [
+  "keywords": [
     {
       "keyword": "очищувач скла авто",
       "volume": 170,
@@ -12,6 +11,7 @@
       "_original_category": "ochistiteli-stekol"
     }
   ],
+  "secondary_keywords": [],
   "supporting_keywords": [
     {
       "keyword": "засіб для скла авто",
