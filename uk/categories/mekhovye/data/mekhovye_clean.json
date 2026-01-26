@@ -2,16 +2,17 @@
   "id": "mekhovye",
   "language": "uk",
   "total_volume": 130,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "шерстяной круг для полірування",
       "volume": 50,
       "use_in": "content",
       "source_ru": "шерстяной круг для полировки",
       "_original_category": "mekhovye"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "хутряний круг для полірування",
       "volume": 20,

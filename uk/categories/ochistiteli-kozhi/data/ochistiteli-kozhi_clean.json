@@ -2,16 +2,17 @@
   "id": "ochistiteli-kozhi",
   "language": "uk",
   "total_volume": 290,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "засіб для чистки шкіри авто",
       "volume": 70,
       "use_in": "content",
       "source_ru": "средство для чистки кожи авто",
       "_original_category": "ochistiteli-kozhi"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "засоби для чистки шкіри автомобіля",
       "volume": 70,

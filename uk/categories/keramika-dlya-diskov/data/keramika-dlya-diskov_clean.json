@@ -2,16 +2,17 @@
   "id": "keramika-dlya-diskov",
   "language": "uk",
   "total_volume": 40,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "захисне покриття для дисків",
       "volume": 10,
       "use_in": "content",
       "source_ru": "защитное покрытие для дисков",
       "_original_category": "keramika-dlya-diskov"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "захисне покриття для литых дисків",
       "volume": 10,

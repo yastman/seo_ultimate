@@ -2,16 +2,17 @@
   "id": "vedra-i-emkosti",
   "language": "uk",
   "total_volume": 250,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "відро для миття автомобіля",
       "volume": 90,
       "use_in": "content",
       "source_ru": "ведро для мойки автомобиля",
       "_original_category": "vedra-i-emkosti"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "відра для миття авто",
       "volume": 90,

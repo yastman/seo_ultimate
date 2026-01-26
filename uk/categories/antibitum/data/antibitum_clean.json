@@ -2,16 +2,17 @@
   "id": "antibitum",
   "language": "uk",
   "total_volume": 210,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "антибітум",
       "volume": 50,
       "use_in": "content",
       "source_ru": "антибитум",
       "_original_category": "antibitum"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "антибітум для авто",
       "volume": 40,

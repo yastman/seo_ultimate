@@ -2,16 +2,17 @@
   "id": "opt-i-b2b",
   "language": "uk",
   "total_volume": 60,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "автохімія від виробника",
       "volume": 10,
       "use_in": "content",
       "source_ru": "автохимия от производителя",
       "_original_category": "opt-i-b2b"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "автохімія виробництво",
       "volume": 10,
