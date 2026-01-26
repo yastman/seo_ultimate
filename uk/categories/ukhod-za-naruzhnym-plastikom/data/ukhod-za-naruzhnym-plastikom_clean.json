@@ -1,77 +1,52 @@
 {
-  "slug": "ukhod-za-naruzhnym-plastikom",
+  "id": "ukhod-za-naruzhnym-plastikom",
   "language": "uk",
-  "category_name_uk": "Догляд за зовнішнім пластиком",
-  "category_name_ru": "Уход за наружным пластиком",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "поліроль для зовнішнього пластику автомобіля",
-        "keyword_ru": "полироль для наружного пластика автомобиля",
-        "volume": 100
-      },
-      {
-        "keyword": "поліроль для зовнішнього пластику авто",
-        "keyword_ru": "полироль для наружного пластика авто",
-        "volume": 100
-      },
-      {
-        "keyword": "поліроль для зовнішнього пластику",
-        "keyword_ru": "полироль для наружного пластика",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "відновлювач пластику авто",
-        "keyword_ru": "восстановитель пластика авто",
-        "volume": 50
-      },
-      {
-        "keyword": "чорнитель для зовнішнього пластику",
-        "keyword_ru": "чернитель для наружного пластика",
-        "volume": 50
-      },
-      {
-        "keyword": "догляд за бамперами",
-        "keyword_ru": "уход за бамперами",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "відновлювач пластику",
-        "keyword_ru": "восстановитель пластика",
-        "volume": 20
-      },
-      {
-        "keyword": "чорнитель пластику",
-        "keyword_ru": "чернитель пластика",
-        "volume": 20
-      },
-      {
-        "keyword": "захист від вигорання",
-        "keyword_ru": "защита от выгорания",
-        "volume": 20
-      },
-      {
-        "keyword": "UV-захист для пластику",
-        "keyword_ru": "UV-защита для пластика",
-        "volume": 20
-      },
-      {
-        "keyword": "молдинги та бампери",
-        "keyword_ru": "молдинги и бамперы",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити догляд за зовнішнім пластиком",
-        "keyword_ru": "купить уход за наружным пластиком",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  }
+  "total_volume": 120,
+  "keywords": [],
+  "secondary_keywords": [],
+  "supporting_keywords": [
+    {
+      "keyword": "поліроль для зовнішнього пластику автомобіля",
+      "volume": 40,
+      "use_in": "content",
+      "source_ru": "полироль для наружного пластика автомобиля",
+      "_original_category": "ukhod-za-naruzhnym-plastikom"
+    },
+    {
+      "keyword": "поліроль для зовнішнього пластику авто",
+      "volume": 40,
+      "use_in": "content",
+      "source_ru": "полироль для наружного пластика авто",
+      "_original_category": "ukhod-za-naruzhnym-plastikom"
+    },
+    {
+      "keyword": "поліроль для зовнішнього пластику",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "полироль для наружного пластика",
+      "_original_category": "ukhod-za-naruzhnym-plastikom"
+    },
+    {
+      "keyword": "відновлювач пластику авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "восстановитель пластика авто",
+      "_original_category": "ukhod-za-naruzhnym-plastikom"
+    },
+    {
+      "keyword": "чорнитель для зовнішнього пластику",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "чернитель для наружного пластика",
+      "_original_category": "ukhod-za-naruzhnym-plastikom"
+    },
+    {
+      "keyword": "догляд за бамперами",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "уход за бамперами",
+      "_original_category": "ukhod-za-naruzhnym-plastikom"
+    }
+  ],
+  "all_keywords_count": 6
 }

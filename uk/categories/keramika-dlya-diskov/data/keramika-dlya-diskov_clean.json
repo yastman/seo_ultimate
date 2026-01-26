@@ -1,67 +1,38 @@
 {
-  "slug": "keramika-dlya-diskov",
+  "id": "keramika-dlya-diskov",
   "language": "uk",
-  "category_name_uk": "Кераміка для дисків",
-  "category_name_ru": "Керамика для дисков",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "кераміка для дисків",
-        "keyword_ru": "керамика для дисков",
-        "volume": 100
-      },
-      {
-        "keyword": "захисне покриття для дисків",
-        "keyword_ru": "защитное покрытие для дисков",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "нанокераміка для дисків",
-        "keyword_ru": "нанокерамика для дисков",
-        "volume": 50
-      },
-      {
-        "keyword": "керамічний захист дисків",
-        "keyword_ru": "керамическая защита дисков",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "захист від пилу",
-        "keyword_ru": "защита от пыли",
-        "volume": 20
-      },
-      {
-        "keyword": "гідрофобний ефект",
-        "keyword_ru": "гидрофобный эффект",
-        "volume": 20
-      },
-      {
-        "keyword": "термостійкість",
-        "keyword_ru": "термостойкость",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити кераміку для дисків",
-        "keyword_ru": "купить керамику для дисков",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["защитное", "захисне"],
-      ["покрытие", "покриття"],
-      ["гидрофобный", "гідрофобний"],
-      ["термостойкость", "термостійкість"]
-    ],
-    "kept_original": ["SiO2"],
-    "intent_preserved": true
-  }
+  "total_volume": 40,
+  "keywords": [],
+  "secondary_keywords": [],
+  "supporting_keywords": [
+    {
+      "keyword": "захисне покриття для дисків",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "защитное покрытие для дисков",
+      "_original_category": "keramika-dlya-diskov"
+    },
+    {
+      "keyword": "захисне покриття для литых дисків",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "защитное покрытие для литых дисков",
+      "_original_category": "keramika-dlya-diskov"
+    },
+    {
+      "keyword": "кераміка для колёсных дисків",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "керамика для колёсных дисков",
+      "_original_category": "keramika-dlya-diskov"
+    },
+    {
+      "keyword": "нанокерамика для дисків",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "нанокерамика для дисков",
+      "_original_category": "keramika-dlya-diskov"
+    }
+  ],
+  "all_keywords_count": 4
 }

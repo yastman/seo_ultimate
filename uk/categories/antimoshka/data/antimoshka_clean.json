@@ -5,23 +5,77 @@
   "keywords": [],
   "secondary_keywords": [
     {
-      "keyword": "очищувач слідів комах",
-      "volume": 320
+      "keyword": "антимошка",
+      "volume": 320,
+      "use_in": "content",
+      "source_ru": "антимошка",
+      "_original_category": "antimoshka"
     },
     {
       "keyword": "антимошка для авто",
-      "volume": 260
-    },
-    {
-      "keyword": "засіб від комах",
-      "volume": 140
+      "volume": 320,
+      "use_in": "content",
+      "source_ru": "антимошка для авто",
+      "_original_category": "antimoshka"
     }
   ],
   "supporting_keywords": [
     {
-      "keyword": "засіб для видалення комах",
-      "volume": 90
+      "keyword": "засіб від мошек на авто",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "средство от мошек на авто",
+      "_original_category": "antimoshka"
+    },
+    {
+      "keyword": "антимошка на мийці",
+      "volume": 30,
+      "use_in": "content",
+      "source_ru": "антимошка на мойке",
+      "_original_category": "antimoshka"
+    },
+    {
+      "keyword": "концентрат антимошка",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "концентрат антимошка",
+      "_original_category": "antimoshka"
+    },
+    {
+      "keyword": "антимошка на мийці самообслуговування",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "антимошка на мойке самообслуживания",
+      "_original_category": "antimoshka"
+    },
+    {
+      "keyword": "купити антимошку",
+      "volume": 20,
+      "use_in": "meta_only",
+      "source_ru": "купить антимошку",
+      "_original_category": "antimoshka"
+    },
+    {
+      "keyword": "антимошка спрей",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "антимошка спрей",
+      "_original_category": "antimoshka"
+    },
+    {
+      "keyword": "очищувач від насекомых",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "очиститель от насекомых",
+      "_original_category": "antimoshka"
+    },
+    {
+      "keyword": "антимошка ціна",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "антимошка цена",
+      "_original_category": "antimoshka"
     }
   ],
-  "all_keywords_count": 4
+  "all_keywords_count": 10
 }

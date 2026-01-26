@@ -1,80 +1,80 @@
 {
   "id": "ochistiteli-diskov",
   "language": "uk",
-  "total_volume": 2650,
-  "keywords": [
-    {
-      "keyword": "очищувач дисків",
-      "volume": 590
-    }
-  ],
-  "secondary_keywords": [
-    {
-      "keyword": "засіб для чищення дисків автомобіля",
-      "volume": 320
-    },
-    {
-      "keyword": "засіб для чищення дисків",
-      "volume": 260
-    },
-    {
-      "keyword": "очищувач для дисків",
-      "volume": 260
-    },
-    {
-      "keyword": "засіб для очищення дисків",
-      "volume": 210
-    },
-    {
-      "keyword": "очищувач колісних дисків",
-      "volume": 170
-    },
-    {
-      "keyword": "засоби для чищення дисків авто",
-      "volume": 140
-    },
-    {
-      "keyword": "хімія для чищення дисків",
-      "volume": 140
-    },
-    {
-      "keyword": "щітка для дисків",
-      "volume": 140
-    }
-  ],
+  "total_volume": 270,
+  "keywords": [],
+  "secondary_keywords": [],
   "supporting_keywords": [
     {
-      "keyword": "очищувач гальмівних дисків",
-      "volume": 90
-    },
-    {
       "keyword": "хімія для дисків",
-      "volume": 90
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "химия для дисков",
+      "_original_category": "ochistiteli-diskov"
     },
     {
-      "keyword": "очищувач дисків авто",
-      "volume": 70
+      "keyword": "засоби для чистки дисків",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "средства для чистки дисков",
+      "_original_category": "ochistiteli-diskov"
     },
     {
-      "keyword": "засіб для видалення іржі з авто",
-      "volume": 50
+      "keyword": "очищувач дисків",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "очиститель дисков",
+      "_original_category": "ochistiteli-diskov"
     },
     {
-      "keyword": "засіб для очищення дисків від іржі",
-      "volume": 40
+      "keyword": "засіб для дисків",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "средство для дисков",
+      "_original_category": "ochistiteli-diskov"
     },
     {
-      "keyword": "очищувач коліс",
-      "volume": 40
+      "keyword": "засіб для чистки дисків автомобіля",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "средство для чистки дисков автомобиля",
+      "_original_category": "ochistiteli-diskov"
     },
     {
-      "keyword": "очищувач іржі",
-      "volume": 30
+      "keyword": "хімія для чистки дисків",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "химия для чистки дисков",
+      "_original_category": "ochistiteli-diskov"
     },
     {
-      "keyword": "засіб для чищення дисків",
-      "volume": 10
+      "keyword": "хімія для миття дисків",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "химия для мойки дисков",
+      "_original_category": "ochistiteli-diskov"
+    },
+    {
+      "keyword": "засіб для миття дисків",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "средство для мойки дисков",
+      "_original_category": "ochistiteli-diskov"
+    },
+    {
+      "keyword": "хімія для дисків автомобіля",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "химия для дисков автомобиля",
+      "_original_category": "ochistiteli-diskov"
+    },
+    {
+      "keyword": "очищувач колесных дисків",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "очиститель колесных дисков",
+      "_original_category": "ochistiteli-diskov"
     }
   ],
-  "all_keywords_count": 17
+  "all_keywords_count": 10
 }

@@ -1,23 +1,82 @@
 {
   "id": "tverdyy-vosk",
   "language": "uk",
-  "total_volume": 1360,
+  "total_volume": 1690,
   "keywords": [
     {
-      "keyword": "твердий віск для авто",
-      "volume": 1300
+      "keyword": "твёрдый віск для авто",
+      "volume": 1000,
+      "use_in": "content",
+      "source_ru": "твёрдый воск для авто",
+      "_original_category": "tverdyy-vosk"
     }
   ],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "secondary_keywords": [
     {
-      "keyword": "твердий віск",
-      "volume": 40
+      "keyword": "твёрдый віск",
+      "volume": 390,
+      "use_in": "content",
+      "source_ru": "твёрдый воск",
+      "_original_category": "tverdyy-vosk"
     },
     {
-      "keyword": "віск",
-      "volume": 20
+      "keyword": "купити твёрдый віск для авто",
+      "volume": 210,
+      "use_in": "meta_only",
+      "source_ru": "купить твёрдый воск для авто",
+      "_original_category": "tverdyy-vosk"
     }
   ],
-  "all_keywords_count": 3
+  "supporting_keywords": [
+    {
+      "keyword": "купити віск для машини",
+      "volume": 30,
+      "use_in": "meta_only",
+      "source_ru": "купить воск для машины",
+      "_original_category": "tverdyy-vosk"
+    },
+    {
+      "keyword": "твёрдый віск для полірування авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "твёрдый воск для полировки авто",
+      "_original_category": "tverdyy-vosk"
+    },
+    {
+      "keyword": "купити твёрдый віск для авто в украине",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "купить твёрдый воск для авто в украине",
+      "_original_category": "tverdyy-vosk"
+    },
+    {
+      "keyword": "твёрдый віск для авто ціна",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "твёрдый воск для авто цена",
+      "_original_category": "tverdyy-vosk"
+    },
+    {
+      "keyword": "купити твёрдый віск для машини",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "купить твёрдый воск для машины",
+      "_original_category": "tverdyy-vosk"
+    },
+    {
+      "keyword": "твёрдый віск купити",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "твёрдый воск купить",
+      "_original_category": "tverdyy-vosk"
+    },
+    {
+      "keyword": "твёрдый віск для автомобіля ціна",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "твёрдый воск для автомобиля цена",
+      "_original_category": "tverdyy-vosk"
+    }
+  ],
+  "all_keywords_count": 10
 }

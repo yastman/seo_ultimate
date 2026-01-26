@@ -1,22 +1,67 @@
 {
   "id": "sredstva-dlya-kozhi",
   "language": "uk",
-  "total_volume": 390,
+  "total_volume": 960,
   "keywords": [],
   "secondary_keywords": [
     {
-      "keyword": "поліроль для шкіри авто",
-      "volume": 170
+      "keyword": "засіб для шкіри авто",
+      "volume": 280,
+      "use_in": "content",
+      "source_ru": "средство для кожи авто",
+      "_original_category": "sredstva-dlya-kozhi"
     },
     {
-      "keyword": "засіб для догляду за шкірою авто",
-      "volume": 110
+      "keyword": "засоби для шкіри авто",
+      "volume": 280,
+      "use_in": "content",
+      "source_ru": "средства для кожи авто",
+      "_original_category": "sredstva-dlya-kozhi"
     },
     {
-      "keyword": "засіб для чищення шкіряного салону",
-      "volume": 110
+      "keyword": "засоби для шкіри автомобіля",
+      "volume": 140,
+      "use_in": "content",
+      "source_ru": "средства для кожи автомобиля",
+      "_original_category": "sredstva-dlya-kozhi"
     }
   ],
-  "supporting_keywords": [],
-  "all_keywords_count": 3
+  "supporting_keywords": [
+    {
+      "keyword": "засіб для шкіри салону автомобіля",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "средство для кожи салона автомобиля",
+      "_original_category": "sredstva-dlya-kozhi"
+    },
+    {
+      "keyword": "хімія для шкіри авто",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "химия для кожи авто",
+      "_original_category": "sredstva-dlya-kozhi"
+    },
+    {
+      "keyword": "засіб для шкіряного салону",
+      "volume": 40,
+      "use_in": "content",
+      "source_ru": "средство для кожаного салона",
+      "_original_category": "sredstva-dlya-kozhi"
+    },
+    {
+      "keyword": "засоби для шкіри салону автомобіля",
+      "volume": 30,
+      "use_in": "content",
+      "source_ru": "средства для кожи салона автомобиля",
+      "_original_category": "sredstva-dlya-kozhi"
+    },
+    {
+      "keyword": "засоби по догляду за шкірою автомобіля",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "средства по уходу за кожей автомобиля",
+      "_original_category": "ukhod-za-kozhey"
+    }
+  ],
+  "all_keywords_count": 8
 }

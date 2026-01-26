@@ -1,48 +1,81 @@
 {
   "id": "glina-i-avtoskraby",
   "language": "uk",
-  "total_volume": 2190,
-  "keywords": [
-    {
-      "keyword": "глина для авто",
-      "volume": 590
-    }
-  ],
+  "total_volume": 810,
+  "keywords": [],
   "secondary_keywords": [
     {
-      "keyword": "поглинач запахів",
-      "volume": 480
+      "keyword": "глина для авто",
+      "volume": 390,
+      "use_in": "content",
+      "source_ru": "глина для авто",
+      "_original_category": "glina-i-avtoskraby"
     },
     {
-      "keyword": "глина для очищення кузова",
-      "volume": 320
-    },
-    {
-      "keyword": "синя глина для авто",
-      "volume": 320
-    },
-    {
-      "keyword": "глина для чистки авто",
-      "volume": 140
-    },
-    {
-      "keyword": "синя глина",
-      "volume": 110
+      "keyword": "синяя глина для авто",
+      "volume": 140,
+      "use_in": "content",
+      "source_ru": "синяя глина для авто",
+      "_original_category": "glina-i-avtoskraby"
     }
   ],
   "supporting_keywords": [
     {
       "keyword": "автоскраб",
-      "volume": 90
+      "volume": 90,
+      "use_in": "content",
+      "source_ru": "автоскраб",
+      "_original_category": "glina-i-avtoskraby"
     },
     {
-      "keyword": "глина для авто купити",
-      "volume": 90
+      "keyword": "глина для чистки авто",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "глина для чистки авто",
+      "_original_category": "glina-i-avtoskraby"
     },
     {
-      "keyword": "синя глина 3м",
-      "volume": 50
+      "keyword": "глина для чистки автомобіля",
+      "volume": 40,
+      "use_in": "content",
+      "source_ru": "глина для чистки автомобиля",
+      "_original_category": "glina-i-avtoskraby"
+    },
+    {
+      "keyword": "голубая глина для авто",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "голубая глина для авто",
+      "_original_category": "glina-i-avtoskraby"
+    },
+    {
+      "keyword": "автомобільна глина",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "автомобильная глина",
+      "_original_category": "glina-i-avtoskraby"
+    },
+    {
+      "keyword": "глина для кузова автомобіля",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "глина для кузова автомобиля",
+      "_original_category": "glina-i-avtoskraby"
+    },
+    {
+      "keyword": "глина для полірування автомобіля",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "глина для полировки автомобиля",
+      "_original_category": "glina-i-avtoskraby"
+    },
+    {
+      "keyword": "купити синюю глину для авто",
+      "volume": 20,
+      "use_in": "meta_only",
+      "source_ru": "купить синюю глину для авто",
+      "_original_category": "glina-i-avtoskraby"
     }
   ],
-  "all_keywords_count": 9
+  "all_keywords_count": 10
 }

@@ -1,14 +1,82 @@
 {
   "id": "polirovalnye-pasty",
   "language": "uk",
-  "total_volume": 390,
-  "keywords": [],
-  "secondary_keywords": [
+  "total_volume": 3610,
+  "keywords": [
     {
-      "keyword": "полірувальна паста",
-      "volume": 390
+      "keyword": "полировочная паста",
+      "volume": 1600,
+      "use_in": "content",
+      "source_ru": "полировочная паста",
+      "_original_category": "polirovalnye-pasty"
+    },
+    {
+      "keyword": "полировочная паста для авто",
+      "volume": 590,
+      "use_in": "content",
+      "source_ru": "полировочная паста для авто",
+      "_original_category": "polirovalnye-pasty"
     }
   ],
-  "supporting_keywords": [],
-  "all_keywords_count": 1
+  "secondary_keywords": [
+    {
+      "keyword": "паста для полірування",
+      "volume": 320,
+      "use_in": "content",
+      "source_ru": "паста для полировки",
+      "_original_category": "polirovalnye-pasty"
+    },
+    {
+      "keyword": "полировочная паста для авто від царапин",
+      "volume": 260,
+      "use_in": "content",
+      "source_ru": "полировочная паста для авто от царапин",
+      "_original_category": "polirovalnye-pasty"
+    },
+    {
+      "keyword": "купити пасту для полірування авто",
+      "volume": 260,
+      "use_in": "meta_only",
+      "source_ru": "купить пасту для полировки авто",
+      "_original_category": "polirovalnye-pasty"
+    },
+    {
+      "keyword": "полировочная паста для автомобіля",
+      "volume": 170,
+      "use_in": "content",
+      "source_ru": "полировочная паста для автомобиля",
+      "_original_category": "polirovalnye-pasty"
+    },
+    {
+      "keyword": "купити полировочную пасту",
+      "volume": 140,
+      "use_in": "meta_only",
+      "source_ru": "купить полировочную пасту",
+      "_original_category": "polirovalnye-pasty"
+    },
+    {
+      "keyword": "купити полировочную пасту для автомобіля",
+      "volume": 110,
+      "use_in": "meta_only",
+      "source_ru": "купить полировочную пасту для автомобиля",
+      "_original_category": "polirovalnye-pasty"
+    },
+    {
+      "keyword": "купити полировочную пасту для авто",
+      "volume": 110,
+      "use_in": "meta_only",
+      "source_ru": "купить полировочную пасту для авто",
+      "_original_category": "polirovalnye-pasty"
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "паста для автомобіля",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "паста для автомобиля",
+      "_original_category": "polirovalnye-pasty"
+    }
+  ],
+  "all_keywords_count": 10
 }

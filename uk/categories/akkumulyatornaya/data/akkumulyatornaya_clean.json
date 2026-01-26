@@ -1,92 +1,67 @@
 {
-  "slug": "akkumulyatornaya",
+  "id": "akkumulyatornaya",
   "language": "uk",
-  "category_name_uk": "Акумуляторні полірувальні машинки",
-  "category_name_ru": "Аккумуляторные полировальные машинки",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "акумуляторна полірувальна машинка",
-        "keyword_ru": "аккумуляторная полировальная машинка",
-        "volume": 100
-      },
-      {
-        "keyword": "полірувальна машинка на акумуляторі",
-        "keyword_ru": "полировальная машинка на аккумуляторе",
-        "volume": 100
-      },
-      {
-        "keyword": "акумуляторні полірувальні машинки",
-        "keyword_ru": "аккумуляторные полировальные машинки",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "бездротова полірувальна машинка",
-        "keyword_ru": "беспроводная полировальная машинка",
-        "volume": 50
-      },
-      {
-        "keyword": "акумуляторна машинка для авто",
-        "keyword_ru": "аккумуляторная машинка для авто",
-        "volume": 50
-      },
-      {
-        "keyword": "полірування авто на акумуляторі",
-        "keyword_ru": "полировка авто на аккумуляторе",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "літій-іонний акумулятор",
-        "keyword_ru": "литий-ионный аккумулятор",
-        "volume": 20
-      },
-      {
-        "keyword": "ємність батареї",
-        "keyword_ru": "ёмкость батареи",
-        "volume": 20
-      },
-      {
-        "keyword": "час роботи від заряду",
-        "keyword_ru": "время работы от заряда",
-        "volume": 20
-      },
-      {
-        "keyword": "змінні батареї",
-        "keyword_ru": "сменные батареи",
-        "volume": 20
-      },
-      {
-        "keyword": "виїзний детейлінг",
-        "keyword_ru": "выездной детейлинг",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити акумуляторні полірувальні машинки",
-        "keyword_ru": "купить аккумуляторные полировальные машинки",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["полировальная", "полірувальна"],
-      ["аккумуляторная", "акумуляторна"],
-      ["беспроводная", "бездротова"],
-      ["выездной", "виїзний"]
-    ],
-    "kept_original": [
-      "pH",
-      "PPF",
-      "APC",
-      "SiO2"
-    ],
-    "intent_preserved": true
-  }
+  "total_volume": 930,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "акумуляторна полірувальна машина",
+      "volume": 260,
+      "use_in": "content",
+      "source_ru": "аккумуляторная полировальная машина",
+      "_original_category": "akkumulyatornaya"
+    },
+    {
+      "keyword": "полірувальна машина на аккумуляторе",
+      "volume": 260,
+      "use_in": "content",
+      "source_ru": "полировальная машина на аккумуляторе",
+      "_original_category": "akkumulyatornaya"
+    },
+    {
+      "keyword": "полірувальна машинка на аккумуляторе",
+      "volume": 260,
+      "use_in": "content",
+      "source_ru": "полировальная машинка на аккумуляторе",
+      "_original_category": "akkumulyatornaya"
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "акумуляторна полірувальна машина для авто",
+      "volume": 90,
+      "use_in": "content",
+      "source_ru": "аккумуляторная полировальная машина для авто",
+      "_original_category": "akkumulyatornaya"
+    },
+    {
+      "keyword": "полірувальна машина для авто на аккумуляторе",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "полировальная машина для авто на аккумуляторе",
+      "_original_category": "akkumulyatornaya"
+    },
+    {
+      "keyword": "купити аккумуляторную полировальную машинку",
+      "volume": 20,
+      "use_in": "meta_only",
+      "source_ru": "купить аккумуляторную полировальную машинку",
+      "_original_category": "akkumulyatornaya"
+    },
+    {
+      "keyword": "полировочная машинка на аккумуляторе",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "полировочная машинка на аккумуляторе",
+      "_original_category": "akkumulyatornaya"
+    },
+    {
+      "keyword": "машинка для полірування авто на аккумуляторе",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "машинка для полировки авто на аккумуляторе",
+      "_original_category": "akkumulyatornaya"
+    }
+  ],
+  "all_keywords_count": 8
 }

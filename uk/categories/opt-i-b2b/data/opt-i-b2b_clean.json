@@ -1,63 +1,52 @@
 {
-  "slug": "opt-i-b2b",
+  "id": "opt-i-b2b",
   "language": "uk",
-  "parent_id": null,
-  "category_name_uk": "Опт та B2B",
-  "category_name_ru": "Опт и B2B",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "автохімія від виробника",
-        "keyword_ru": "автохимия от производителя",
-        "volume": 100
-      },
-      {
-        "keyword": "автохімія оптом",
-        "keyword_ru": "автохимия оптом",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "автохімія виробництво",
-        "keyword_ru": "автохимия производство",
-        "volume": 50
-      },
-      {
-        "keyword": "автохімія постачальники",
-        "keyword_ru": "автохимия поставщики",
-        "volume": 50
-      },
-      {
-        "keyword": "детейлінг хімія оптом",
-        "keyword_ru": "детейлинг химия оптом",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "виробники автохімії Україна",
-        "keyword_ru": "производители автохимии украина",
-        "volume": 20
-      },
-      {
-        "keyword": "автохімія для автомийки",
-        "keyword_ru": "автохимия для автомойки",
-        "volume": 20
-      },
-      {
-        "keyword": "дилерські умови автохімія",
-        "keyword_ru": "дилерские условия автохимия",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити автохімію оптом",
-        "keyword_ru": "купить автохимию оптом",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  }
+  "total_volume": 60,
+  "keywords": [],
+  "secondary_keywords": [],
+  "supporting_keywords": [
+    {
+      "keyword": "автохімія від виробника",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "автохимия от производителя",
+      "_original_category": "opt-i-b2b"
+    },
+    {
+      "keyword": "автохімія виробництво",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "автохимия производство",
+      "_original_category": "opt-i-b2b"
+    },
+    {
+      "keyword": "автохімія постачальники",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "автохимия поставщики",
+      "_original_category": "opt-i-b2b"
+    },
+    {
+      "keyword": "производители автохимии украина",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "производители автохимии украина",
+      "_original_category": "opt-i-b2b"
+    },
+    {
+      "keyword": "автохімія оптом",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "автохимия оптом",
+      "_original_category": "opt-i-b2b"
+    },
+    {
+      "keyword": "детейлінг хімія оптом",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "детейлинг химия оптом",
+      "_original_category": "opt-i-b2b"
+    }
+  ],
+  "all_keywords_count": 6
 }

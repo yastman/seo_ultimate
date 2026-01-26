@@ -1,67 +1,66 @@
 {
-  "slug": "mekhovye",
+  "id": "mekhovye",
   "language": "uk",
-  "category_name_uk": "Хутряні круги",
-  "category_name_ru": "Меховые круги",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "хутряний круг для полірування",
-        "keyword_ru": "меховой круг для полировки",
-        "volume": 100
-      },
-      {
-        "keyword": "шерстяний круг для полірування",
-        "keyword_ru": "шерстяной круг для полировки",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "вовняний круг",
-        "keyword_ru": "шерстяной круг",
-        "volume": 50
-      },
-      {
-        "keyword": "круг з натуральної шерсті",
-        "keyword_ru": "круг из натуральной шерсти",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "натуральна шерсть",
-        "keyword_ru": "натуральная шерсть",
-        "volume": 20
-      },
-      {
-        "keyword": "синтетичне хутро",
-        "keyword_ru": "синтетический мех",
-        "volume": 20
-      },
-      {
-        "keyword": "wool pad",
-        "keyword_ru": "wool pad",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити хутряні круги",
-        "keyword_ru": "купить меховые круги",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["меховой", "хутряний"],
-      ["шерстяной", "шерстяний/вовняний"],
-      ["полировки", "полірування"],
-      ["синтетический мех", "синтетичне хутро"]
-    ],
-    "kept_original": ["wool pad"],
-    "intent_preserved": true
-  }
+  "total_volume": 130,
+  "keywords": [],
+  "secondary_keywords": [],
+  "supporting_keywords": [
+    {
+      "keyword": "шерстяной круг для полірування",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "шерстяной круг для полировки",
+      "_original_category": "mekhovye"
+    },
+    {
+      "keyword": "хутряний круг для полірування",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "меховой круг для полировки",
+      "_original_category": "mekhovye"
+    },
+    {
+      "keyword": "хутряний круг для полірування авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "меховой круг для полировки авто",
+      "_original_category": "mekhovye"
+    },
+    {
+      "keyword": "шерстяной круг на полировальную машинку",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "шерстяной круг на полировальную машинку",
+      "_original_category": "mekhovye"
+    },
+    {
+      "keyword": "круг из шерсти для полірування",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "круг из шерсти для полировки",
+      "_original_category": "mekhovye"
+    },
+    {
+      "keyword": "wool pad",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "wool pad",
+      "_original_category": "mekhovye"
+    },
+    {
+      "keyword": "купити хутряний круг для полірування",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "купить меховой круг для полировки",
+      "_original_category": "mekhovye"
+    },
+    {
+      "keyword": "шерстяной круг для полірування ціна",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "шерстяной круг для полировки цена",
+      "_original_category": "mekhovye"
+    }
+  ],
+  "all_keywords_count": 8
 }

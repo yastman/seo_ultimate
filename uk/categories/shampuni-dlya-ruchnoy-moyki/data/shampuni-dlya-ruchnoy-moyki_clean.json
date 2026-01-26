@@ -1,69 +1,60 @@
 {
-  "slug": "shampuni-dlya-ruchnoy-moyki",
+  "id": "shampuni-dlya-ruchnoy-moyki",
   "language": "uk",
-  "category_name_uk": "Шампуні для ручного миття",
-  "category_name_ru": "Шампуни для ручной мойки",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "автошампунь для ручного миття",
-        "keyword_ru": "автошампунь для ручной мойки",
-        "volume": 100
-      },
-      {
-        "keyword": "шампунь для ручного миття авто",
-        "keyword_ru": "шампунь для ручной мойки авто",
-        "volume": 100
-      },
-      {
-        "keyword": "автомобільний шампунь для ручного миття",
-        "keyword_ru": "автомобильный шампунь для ручной мойки",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "шампунь для миття авто вручну",
-        "keyword_ru": "шампунь для мытья авто вручную",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "керамічний шампунь",
-        "keyword_ru": "керамический шампунь",
-        "volume": 20
-      },
-      {
-        "keyword": "нано шампунь",
-        "keyword_ru": "нано шампунь",
-        "volume": 20
-      },
-      {
-        "keyword": "нейтральний шампунь",
-        "keyword_ru": "нейтральный шампунь",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити шампуні для ручного миття",
-        "keyword_ru": "купить шампуни для ручной мойки",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["мойки", "миття"],
-      ["мытья", "миття"],
-      ["вручную", "вручну"],
-      ["автомобильный", "автомобільний"],
-      ["керамический", "керамічний"],
-      ["нейтральный", "нейтральний"]
-    ],
-    "kept_original": ["pH", "nано"],
-    "intent_preserved": true
-  }
+  "total_volume": 620,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "автошампунь для ручної миття",
+      "volume": 390,
+      "use_in": "content",
+      "source_ru": "автошампунь для ручной мойки",
+      "_original_category": "shampuni-dlya-ruchnoy-moyki"
+    },
+    {
+      "keyword": "шампунь для ручної миття авто",
+      "volume": 110,
+      "use_in": "content",
+      "source_ru": "шампунь для ручной мойки авто",
+      "_original_category": "shampuni-dlya-ruchnoy-moyki"
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "автомобільний шампунь для ручної миття",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "автомобильный шампунь для ручной мойки",
+      "_original_category": "shampuni-dlya-ruchnoy-moyki"
+    },
+    {
+      "keyword": "купити автошампунь для ручної миття",
+      "volume": 20,
+      "use_in": "meta_only",
+      "source_ru": "купить автошампунь для ручной мойки",
+      "_original_category": "shampuni-dlya-ruchnoy-moyki"
+    },
+    {
+      "keyword": "шампунь для ручної миття",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "шампунь для ручной мойки",
+      "_original_category": "shampuni-dlya-ruchnoy-moyki"
+    },
+    {
+      "keyword": "шампунь для миття авто вручную",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "шампунь для мытья авто вручную",
+      "_original_category": "shampuni-dlya-ruchnoy-moyki"
+    },
+    {
+      "keyword": "шампунь для ручної миття ціна",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "шампунь для ручной мойки цена",
+      "_original_category": "shampuni-dlya-ruchnoy-moyki"
+    }
+  ],
+  "all_keywords_count": 7
 }

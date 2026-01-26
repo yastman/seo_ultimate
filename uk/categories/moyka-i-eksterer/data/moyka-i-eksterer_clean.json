@@ -1,236 +1,81 @@
 {
   "id": "moyka-i-eksterer",
   "language": "uk",
-  "total_volume": 13430,
-  "keywords": [
-    {
-      "keyword": "піна для миття авто",
-      "volume": 1300
-    },
-    {
-      "keyword": "піна для миття автомобіля",
-      "volume": 1300
-    },
-    {
-      "keyword": "хімія для миття авто",
-      "volume": 1000
-    },
-    {
-      "keyword": "щітка для миття авто",
-      "volume": 1000
-    },
-    {
-      "keyword": "віск для миття авто",
-      "volume": 720
-    }
-  ],
+  "total_volume": 870,
+  "keywords": [],
   "secondary_keywords": [
     {
-      "keyword": "засіб для миття двигуна",
-      "volume": 480
+      "keyword": "хімія для миття авто",
+      "volume": 260,
+      "use_in": "content",
+      "source_ru": "химия для мойки авто",
+      "_original_category": "moyka-i-eksterer"
     },
     {
-      "keyword": "набір для миття авто",
-      "volume": 480
-    },
-    {
-      "keyword": "хімія для миття двигуна",
-      "volume": 480
-    },
-    {
-      "keyword": "щітка для миття машини",
-      "volume": 480
-    },
-    {
-      "keyword": "автохімія для миття авто",
-      "volume": 390
-    },
-    {
-      "keyword": "активна піна для миття авто",
-      "volume": 390
-    },
-    {
-      "keyword": "автохімія для салону",
-      "volume": 320
-    },
-    {
-      "keyword": "засоби для миття авто",
-      "volume": 320
-    },
-    {
-      "keyword": "засіб для миття автомобіля",
-      "volume": 320
-    },
-    {
-      "keyword": "автохімія для автомийки",
-      "volume": 260
-    },
-    {
-      "keyword": "губки для миття авто",
-      "volume": 260
-    },
-    {
-      "keyword": "засіб для миття дисків",
-      "volume": 260
-    },
-    {
-      "keyword": "хімія для миття автомобіля",
-      "volume": 260
-    },
-    {
-      "keyword": "щітка для миття автомобіля",
-      "volume": 260
-    },
-    {
-      "keyword": "шампунь для миття машини",
-      "volume": 210
-    },
-    {
-      "keyword": "автохімія інтернет магазин",
-      "volume": 170
-    },
-    {
-      "keyword": "відро для миття авто",
-      "volume": 170
-    },
-    {
-      "keyword": "засіб для миття скла авто",
-      "volume": 170
-    },
-    {
-      "keyword": "автохімія для двигуна",
-      "volume": 140
-    },
-    {
-      "keyword": "засіб для миття машини",
-      "volume": 140
-    },
-    {
-      "keyword": "хімія для безконтактної мийки",
-      "volume": 140
-    },
-    {
-      "keyword": "шампунь для миття авто",
-      "volume": 140
-    },
-    {
-      "keyword": "ганчірка для миття авто",
-      "volume": 110
-    },
-    {
-      "keyword": "губка для миття машини",
-      "volume": 110
-    },
-    {
-      "keyword": "засіб для миття салону",
-      "volume": 110
-    },
-    {
-      "keyword": "хімія для мийки самообслуговування",
-      "volume": 110
+      "keyword": "купити химию для миття авто",
+      "volume": 260,
+      "use_in": "meta_only",
+      "source_ru": "купить химию для мойки авто",
+      "_original_category": "moyka-i-eksterer"
     }
   ],
   "supporting_keywords": [
     {
-      "keyword": "гель для миття авто",
-      "volume": 90
+      "keyword": "засіб для миття авто",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "средство для мойки авто",
+      "_original_category": "moyka-i-eksterer"
     },
     {
-      "keyword": "засоби для мийки самообслуговування",
-      "volume": 90
+      "keyword": "хімія для миття",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "химия для мойки",
+      "_original_category": "moyka-i-eksterer"
     },
     {
-      "keyword": "засіб для миття двигуна автомобіля",
-      "volume": 90
+      "keyword": "автохімія для миття",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "автохимия для мойки",
+      "_original_category": "moyka-i-eksterer"
     },
     {
-      "keyword": "преміум автохімія",
-      "volume": 90
+      "keyword": "автохімія для миття авто",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "автохимия для мойки авто",
+      "_original_category": "moyka-i-eksterer"
     },
     {
-      "keyword": "професійна автохімія",
-      "volume": 90
+      "keyword": "хімія для миття машини",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "химия для мойки машины",
+      "_original_category": "moyka-i-eksterer"
     },
     {
-      "keyword": "хімія для авто",
-      "volume": 90
+      "keyword": "купити автохимию для миття авто",
+      "volume": 20,
+      "use_in": "meta_only",
+      "source_ru": "купить автохимию для мойки авто",
+      "_original_category": "moyka-i-eksterer"
     },
     {
-      "keyword": "щітка для миття дисків",
-      "volume": 90
+      "keyword": "хімія для миття автомобіля",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "химия для мойки автомобиля",
+      "_original_category": "moyka-i-eksterer"
     },
     {
-      "keyword": "засіб для миття кузова",
-      "volume": 70
-    },
-    {
-      "keyword": "хімія для миття двигуна своїми руками",
-      "volume": 70
-    },
-    {
-      "keyword": "щітка для миття коліс",
-      "volume": 70
-    },
-    {
-      "keyword": "автохімія для кузова",
-      "volume": 50
-    },
-    {
-      "keyword": "засіб для миття авто без води",
-      "volume": 50
-    },
-    {
-      "keyword": "преміум мийка",
-      "volume": 50
-    },
-    {
-      "keyword": "рукавиця для миття авто",
-      "volume": 50
-    },
-    {
-      "keyword": "хімія для мийки",
-      "volume": 50
-    },
-    {
-      "keyword": "автохімія київ",
-      "volume": 40
-    },
-    {
-      "keyword": "засоби для миття двигуна",
-      "volume": 40
-    },
-    {
-      "keyword": "засіб для миття вікон авто",
-      "volume": 40
-    },
-    {
-      "keyword": "рідина для миття двигуна",
-      "volume": 40
-    },
-    {
-      "keyword": "хімія для автомийки",
-      "volume": 40
-    },
-    {
-      "keyword": "активна піна для миття",
-      "volume": 30
-    },
-    {
-      "keyword": "засіб для миття салону авто",
-      "volume": 30
-    },
-    {
-      "keyword": "набір для миття машини",
-      "volume": 30
-    },
-    {
-      "keyword": "хімія для миття салону",
-      "volume": 30
-    },
-    {
-      "keyword": "автохімія",
-      "volume": 20
+      "keyword": "автохімія для миття автомобіля",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "автохимия для мойки автомобиля",
+      "_original_category": "moyka-i-eksterer"
     }
   ],
-  "all_keywords_count": 56
+  "all_keywords_count": 10
 }

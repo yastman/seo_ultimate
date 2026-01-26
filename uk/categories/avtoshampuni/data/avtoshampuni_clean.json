@@ -1,68 +1,82 @@
 {
   "id": "avtoshampuni",
   "language": "uk",
-  "total_volume": 1940,
+  "total_volume": 1960,
   "keywords": [
     {
       "keyword": "автошампунь",
-      "volume": 590
+      "volume": 1000,
+      "use_in": "content",
+      "source_ru": "автошампунь",
+      "_original_category": "avtoshampuni"
+    },
+    {
+      "keyword": "шампунь для авто",
+      "volume": 500,
+      "use_in": "content",
+      "source_ru": "шампунь для авто",
+      "_original_category": "avtoshampuni"
     }
   ],
   "secondary_keywords": [
     {
-      "keyword": "шампунь для авто",
-      "volume": 390
-    },
-    {
-      "keyword": "автошампунь для ручної мийки",
-      "volume": 210
-    },
-    {
-      "keyword": "шампунь для ручної мийки авто",
-      "volume": 170
-    },
-    {
-      "keyword": "автошампунь з воском",
-      "volume": 110
-    },
-    {
-      "keyword": "шампунь для безконтактної мийки",
-      "volume": 110
+      "keyword": "шампунь для миття авто",
+      "volume": 110,
+      "use_in": "content",
+      "source_ru": "шампунь для мойки авто",
+      "_original_category": "avtoshampuni"
     }
   ],
   "supporting_keywords": [
     {
-      "keyword": "шампунь для ручної мийки",
-      "volume": 90
+      "keyword": "купити автошампунь",
+      "volume": 90,
+      "use_in": "meta_only",
+      "source_ru": "купить автошампунь",
+      "_original_category": "avtoshampuni"
     },
     {
-      "keyword": "автошампунь для безконтактної мийки",
-      "volume": 70
+      "keyword": "автомобільний шампунь",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "автомобильный шампунь",
+      "_original_category": "avtoshampuni"
     },
     {
-      "keyword": "шампунь для автомобіля",
-      "volume": 50
+      "keyword": "шампунь для автомийки",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "шампунь для автомойки",
+      "_original_category": "avtoshampuni"
     },
     {
-      "keyword": "шампунь концентрат для авто",
-      "volume": 40
+      "keyword": "шампунь для моек высокого давления",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "шампунь для моек высокого давления",
+      "_original_category": "avtoshampuni"
     },
     {
-      "keyword": "автошампунь ціна",
-      "volume": 30
+      "keyword": "купити шампунь для авто",
+      "volume": 50,
+      "use_in": "meta_only",
+      "source_ru": "купить шампунь для авто",
+      "_original_category": "avtoshampuni"
     },
     {
-      "keyword": "автошампунь купити",
-      "volume": 30
+      "keyword": "шампунь для машини",
+      "volume": 40,
+      "use_in": "content",
+      "source_ru": "шампунь для машины",
+      "_original_category": "avtoshampuni"
     },
     {
-      "keyword": "сухий шампунь для авто",
-      "volume": 30
-    },
-    {
-      "keyword": "шампунь",
-      "volume": 20
+      "keyword": "моющее засіб для авто",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "моющее средство для авто",
+      "_original_category": "avtoshampuni"
     }
   ],
-  "all_keywords_count": 14
+  "all_keywords_count": 10
 }

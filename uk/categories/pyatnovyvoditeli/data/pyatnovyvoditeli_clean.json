@@ -1,14 +1,68 @@
 {
   "id": "pyatnovyvoditeli",
   "language": "uk",
-  "total_volume": 2400,
+  "total_volume": 2570,
   "keywords": [
     {
       "keyword": "плямовивідник",
-      "volume": 2400
+      "volume": 2400,
+      "use_in": "content",
+      "source_ru": "пятновыводитель",
+      "_original_category": "pyatnovyvoditeli"
     }
   ],
-  "secondary_keywords": [],
-  "supporting_keywords": [],
-  "all_keywords_count": 1
+  "secondary_keywords": [
+    {
+      "keyword": "купити плямовивідник",
+      "volume": 110,
+      "use_in": "meta_only",
+      "source_ru": "купить пятновыводитель",
+      "_original_category": "pyatnovyvoditeli"
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "плямовивідник для авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "пятновыводитель для авто",
+      "_original_category": "pyatnovyvoditeli"
+    },
+    {
+      "keyword": "плямовивідник для салону авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "пятновыводитель для салона авто",
+      "_original_category": "pyatnovyvoditeli"
+    },
+    {
+      "keyword": "плямовивідник для сидений авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "пятновыводитель для сидений авто",
+      "_original_category": "pyatnovyvoditeli"
+    },
+    {
+      "keyword": "плямовивідник для автомобіля",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "пятновыводитель для автомобиля",
+      "_original_category": "pyatnovyvoditeli"
+    },
+    {
+      "keyword": "плямовивідник для машини",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "пятновыводитель для машины",
+      "_original_category": "pyatnovyvoditeli"
+    },
+    {
+      "keyword": "плямовивідник для салону автомобіля",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "пятновыводитель для салона автомобиля",
+      "_original_category": "pyatnovyvoditeli"
+    }
+  ],
+  "all_keywords_count": 8
 }

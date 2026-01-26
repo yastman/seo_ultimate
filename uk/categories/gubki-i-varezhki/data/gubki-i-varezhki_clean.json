@@ -1,35 +1,81 @@
 {
   "id": "gubki-i-varezhki",
   "language": "uk",
-  "total_volume": 870,
-  "keywords": [
+  "total_volume": 1340,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "мочалка для автомобіля",
+      "volume": 320,
+      "use_in": "content",
+      "source_ru": "мочалка для автомобиля",
+      "_original_category": "gubki-i-varezhki"
+    },
+    {
+      "keyword": "мочалка для авто",
+      "volume": 320,
+      "use_in": "content",
+      "source_ru": "мочалка для авто",
+      "_original_category": "gubki-i-varezhki"
+    },
     {
       "keyword": "губка для авто",
-      "volume": 590
+      "volume": 110,
+      "use_in": "content",
+      "source_ru": "губка для авто",
+      "_original_category": "gubki-i-varezhki"
+    },
+    {
+      "keyword": "губки для автомобіля",
+      "volume": 110,
+      "use_in": "content",
+      "source_ru": "губки для автомобиля",
+      "_original_category": "gubki-i-varezhki"
     }
   ],
-  "secondary_keywords": [],
   "supporting_keywords": [
     {
-      "keyword": "губка меламінова",
-      "volume": 90
+      "keyword": "перчатка для миття авто",
+      "volume": 90,
+      "use_in": "content",
+      "source_ru": "перчатка для мойки авто",
+      "_original_category": "gubki-i-varezhki"
     },
     {
-      "keyword": "губка для автомийки",
-      "volume": 70
+      "keyword": "мочалка для машини",
+      "volume": 90,
+      "use_in": "content",
+      "source_ru": "мочалка для машины",
+      "_original_category": "gubki-i-varezhki"
     },
     {
-      "keyword": "рукавиця з овчини",
-      "volume": 70
+      "keyword": "перчатка для миття автомобіля",
+      "volume": 90,
+      "use_in": "content",
+      "source_ru": "перчатка для мойки автомобиля",
+      "_original_category": "gubki-i-varezhki"
     },
     {
-      "keyword": "губка автомобільна",
-      "volume": 30
+      "keyword": "губка для миття авто",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "губка для мойки авто",
+      "_original_category": "gubki-i-varezhki"
     },
     {
-      "keyword": "губка",
-      "volume": 20
+      "keyword": "губки для миття машини",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "губки для мытья машины",
+      "_original_category": "gubki-i-varezhki"
+    },
+    {
+      "keyword": "губки для миття автомобіля",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "губки для мойки автомобиля",
+      "_original_category": "gubki-i-varezhki"
     }
   ],
-  "all_keywords_count": 6
+  "all_keywords_count": 10
 }

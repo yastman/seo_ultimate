@@ -1,14 +1,45 @@
 {
   "id": "zashchitnye-pokrytiya",
   "language": "uk",
-  "total_volume": 50,
+  "total_volume": 110,
   "keywords": [],
   "secondary_keywords": [],
   "supporting_keywords": [
     {
-      "keyword": "керамічний лак для авто",
-      "volume": 50
+      "keyword": "защитные покрытия для авто",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "защитные покрытия для авто",
+      "_original_category": "zashchitnye-pokrytiya"
+    },
+    {
+      "keyword": "покриття для автомобіля",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "покрытие для автомобиля",
+      "_original_category": "zashchitnye-pokrytiya"
+    },
+    {
+      "keyword": "захисне покриття на машину купити",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "защитное покрытие на машину купить",
+      "_original_category": "zashchitnye-pokrytiya"
+    },
+    {
+      "keyword": "купити захисне покриття для авто",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "купить защитное покрытие для авто",
+      "_original_category": "zashchitnye-pokrytiya"
+    },
+    {
+      "keyword": "защитные покрытия автомобіля",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "защитные покрытия автомобиля",
+      "_original_category": "zashchitnye-pokrytiya"
     }
   ],
-  "all_keywords_count": 1
+  "all_keywords_count": 5
 }

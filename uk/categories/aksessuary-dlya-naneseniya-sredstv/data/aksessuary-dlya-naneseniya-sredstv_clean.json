@@ -1,68 +1,81 @@
 {
-  "slug": "aksessuary-dlya-naneseniya-sredstv",
+  "id": "aksessuary-dlya-naneseniya-sredstv",
   "language": "uk",
-  "category_name_uk": "Аксесуари для нанесення засобів",
-  "category_name_ru": "Аксессуары для нанесения средств",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "губка для полірування автомобіля",
-        "keyword_ru": "губка для полировки автомобиля",
-        "volume": 100
-      },
-      {
-        "keyword": "губка для полірування авто",
-        "keyword_ru": "губка для полировки авто",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "ганчірки для полірування авто",
-        "keyword_ru": "тряпки для полировки авто",
-        "volume": 50
-      },
-      {
-        "keyword": "аплікатор для авто",
-        "keyword_ru": "аппликатор для авто",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "серветки для полірування авто",
-        "keyword_ru": "салфетки для полировки авто",
-        "volume": 20
-      },
-      {
-        "keyword": "губка з мікрофібри для авто",
-        "keyword_ru": "губка из микрофибры для авто",
-        "volume": 20
-      },
-      {
-        "keyword": "полірувальна губка для авто",
-        "keyword_ru": "полировочная губка для авто",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити аксесуари для нанесення засобів",
-        "keyword_ru": "купить аксессуары для нанесения средств",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["резина", "гума"],
-      ["средство", "засіб"],
-      ["мойка", "миття"],
-      ["стекло", "скло"],
-      ["чернитель", "чорнитель"]
-    ],
-    "kept_original": ["pH", "PPF", "APC", "SiO2"],
-    "intent_preserved": true
-  }
+  "total_volume": 500,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "губка для полірування автомобіля",
+      "volume": 170,
+      "use_in": "content",
+      "source_ru": "губка для полировки автомобиля",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    },
+    {
+      "keyword": "губка для полірування авто",
+      "volume": 170,
+      "use_in": "content",
+      "source_ru": "губка для полировки авто",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "ганчірки для полірування авто",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "тряпки для полировки авто",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    },
+    {
+      "keyword": "аплікатор для авто",
+      "volume": 30,
+      "use_in": "content",
+      "source_ru": "аппликатор для авто",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    },
+    {
+      "keyword": "салфетки для полірування авто",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "салфетки для полировки авто",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    },
+    {
+      "keyword": "купити губку для полірування авто",
+      "volume": 20,
+      "use_in": "meta_only",
+      "source_ru": "купить губку для полировки авто",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    },
+    {
+      "keyword": "губка из мікрофібри для авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "губка из микрофибры для авто",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    },
+    {
+      "keyword": "губка для ручної полірування авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "губка для ручной полировки авто",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    },
+    {
+      "keyword": "губка для салону авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "губка для салона авто",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    },
+    {
+      "keyword": "полировочная губка для авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "полировочная губка для авто",
+      "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+    }
+  ],
+  "all_keywords_count": 10
 }
