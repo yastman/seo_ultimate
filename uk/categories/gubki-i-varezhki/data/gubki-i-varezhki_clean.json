@@ -2,15 +2,16 @@
   "id": "gubki-i-varezhki",
   "language": "uk",
   "total_volume": 1340,
-  "keywords": [],
-  "secondary_keywords": [
+  "keywords": [
     {
       "keyword": "мочалка для автомобіля",
       "volume": 320,
       "use_in": "content",
       "source_ru": "мочалка для автомобиля",
       "_original_category": "gubki-i-varezhki"
-    },
+    }
+  ],
+  "secondary_keywords": [
     {
       "keyword": "мочалка для авто",
       "volume": 320,
