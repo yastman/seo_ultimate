@@ -2,16 +2,17 @@
   "id": "zashchitnye-pokrytiya",
   "language": "uk",
   "total_volume": 110,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "защитные покрытия для авто",
       "volume": 70,
       "use_in": "content",
       "source_ru": "защитные покрытия для авто",
       "_original_category": "zashchitnye-pokrytiya"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "покриття для автомобіля",
       "volume": 10,

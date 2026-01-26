@@ -2,16 +2,17 @@
   "id": "ochistiteli-diskov",
   "language": "uk",
   "total_volume": 270,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "хімія для дисків",
       "volume": 70,
       "use_in": "content",
       "source_ru": "химия для дисков",
       "_original_category": "ochistiteli-diskov"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "засоби для чистки дисків",
       "volume": 50,

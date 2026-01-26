@@ -2,16 +2,17 @@
   "id": "oborudovanie",
   "language": "uk",
   "total_volume": 170,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "обладнання для хімчистки авто",
       "volume": 90,
       "use_in": "content",
       "source_ru": "оборудование для химчистки авто",
       "_original_category": "oborudovanie"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "обладнання для моек авто",
       "volume": 10,

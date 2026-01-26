@@ -2,16 +2,17 @@
   "id": "ochistiteli-shin",
   "language": "uk",
   "total_volume": 120,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "очищувач шин",
       "volume": 70,
       "use_in": "content",
       "source_ru": "очиститель шин",
       "_original_category": "ochistiteli-shin"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "очищувач гуми",
       "volume": 10,

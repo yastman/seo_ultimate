@@ -2,16 +2,17 @@
   "id": "silanty",
   "language": "uk",
   "total_volume": 180,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "силант",
       "volume": 50,
       "use_in": "content",
       "source_ru": "силант",
       "_original_category": "silanty"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "силанти для авто",
       "volume": 40,

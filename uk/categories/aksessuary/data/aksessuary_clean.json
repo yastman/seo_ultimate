@@ -2,16 +2,17 @@
   "id": "aksessuary",
   "language": "uk",
   "total_volume": 230,
-  "keywords": [],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "keywords": [
     {
       "keyword": "аксесуари для миття авто",
       "volume": 50,
       "use_in": "content",
       "source_ru": "аксессуары для мойки авто",
       "_original_category": "aksessuary"
-    },
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
     {
       "keyword": "все для миття авто",
       "volume": 50,
