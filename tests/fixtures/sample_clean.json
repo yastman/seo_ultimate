@@ -1,0 +1,13 @@
+{
+  "id": "test-category",
+  "name": "Тестовая категория",
+  "parent_id": "parent-slug",
+  "keywords": [
+    {"keyword": "тестовый ключ", "volume": 1000},
+    {"keyword": "второй ключ", "volume": 500}
+  ],
+  "synonyms": [
+    {"keyword": "синоним", "volume": 100, "use_in": "content"}
+  ],
+  "micro_intents": ["как выбрать", "какой лучше"]
+}
