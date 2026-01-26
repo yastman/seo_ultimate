@@ -2,17 +2,18 @@
   "id": "kvik-deteylery",
   "language": "uk",
   "total_volume": 570,
-  "keywords": [],
-  "secondary_keywords": [
+  "keywords": [
     {
-      "keyword": "полимер для авто",
+      "keyword": "полімер для авто",
       "volume": 140,
       "use_in": "content",
       "source_ru": "полимер для авто",
       "_original_category": "kvik-deteylery"
-    },
+    }
+  ],
+  "secondary_keywords": [
     {
-      "keyword": "холодный віск для автомобіля",
+      "keyword": "холодний віск для автомобіля",
       "volume": 110,
       "use_in": "content",
       "source_ru": "холодный воск для автомобиля",
