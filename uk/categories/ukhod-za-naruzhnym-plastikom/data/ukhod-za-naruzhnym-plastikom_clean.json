@@ -14,20 +14,6 @@
   "secondary_keywords": [],
   "supporting_keywords": [
     {
-      "keyword": "поліроль для зовнішнього пластику авто",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "полироль для наружного пластика авто",
-      "_original_category": "ukhod-za-naruzhnym-plastikom"
-    },
-    {
-      "keyword": "поліроль для зовнішнього пластику",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "полироль для наружного пластика",
-      "_original_category": "ukhod-za-naruzhnym-plastikom"
-    },
-    {
       "keyword": "відновлювач пластику авто",
       "volume": 10,
       "use_in": "content",
@@ -47,6 +33,22 @@
       "use_in": "content",
       "source_ru": "уход за бамперами",
       "_original_category": "ukhod-za-naruzhnym-plastikom"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "поліроль для зовнішнього пластику авто",
+      "volume": 40,
+      "use_in": "lsi",
+      "variant_of": "поліроль для зовнішнього пластику автомобіля",
+      "source_ru": "полироль для наружного пластика авто"
+    },
+    {
+      "keyword": "поліроль для зовнішнього пластику",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "поліроль для зовнішнього пластику автомобіля",
+      "source_ru": "полироль для наружного пластика"
     }
   ],
   "all_keywords_count": 6
