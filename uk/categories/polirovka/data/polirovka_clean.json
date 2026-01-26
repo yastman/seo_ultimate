@@ -9,13 +9,6 @@
       "use_in": "content",
       "source_ru": "полировка авто",
       "_original_category": "polirovka"
-    },
-    {
-      "keyword": "полірування автомобіля",
-      "volume": 1000,
-      "use_in": "content",
-      "source_ru": "полировка автомобиля",
-      "_original_category": "polirovka"
     }
   ],
   "secondary_keywords": [
@@ -24,13 +17,6 @@
       "volume": 480,
       "use_in": "content",
       "source_ru": "полировка кузова",
-      "_original_category": "polirovka"
-    },
-    {
-      "keyword": "полірування машини",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "полировка машины",
       "_original_category": "polirovka"
     }
   ],
@@ -55,6 +41,22 @@
       "use_in": "content",
       "source_ru": "всё для полировки",
       "_original_category": "polirovka"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "полірування автомобіля",
+      "volume": 1000,
+      "use_in": "lsi",
+      "variant_of": "полірування авто",
+      "source_ru": "полировка автомобиля"
+    },
+    {
+      "keyword": "полірування машини",
+      "volume": 170,
+      "use_in": "lsi",
+      "variant_of": "полірування авто",
+      "source_ru": "полировка машины"
     }
   ],
   "all_keywords_count": 7
