@@ -5,24 +5,10 @@
   "keywords": [],
   "secondary_keywords": [
     {
-      "keyword": "засіб для шкіри авто",
-      "volume": 280,
-      "use_in": "content",
-      "source_ru": "средство для кожи авто",
-      "_original_category": "sredstva-dlya-kozhi"
-    },
-    {
       "keyword": "засоби для шкіри авто",
       "volume": 280,
       "use_in": "content",
       "source_ru": "средства для кожи авто",
-      "_original_category": "sredstva-dlya-kozhi"
-    },
-    {
-      "keyword": "засоби для шкіри автомобіля",
-      "volume": 140,
-      "use_in": "content",
-      "source_ru": "средства для кожи автомобиля",
       "_original_category": "sredstva-dlya-kozhi"
     }
   ],
@@ -49,18 +35,34 @@
       "_original_category": "sredstva-dlya-kozhi"
     },
     {
-      "keyword": "засоби для шкіри салону автомобіля",
-      "volume": 30,
-      "use_in": "content",
-      "source_ru": "средства для кожи салона автомобиля",
-      "_original_category": "sredstva-dlya-kozhi"
-    },
-    {
       "keyword": "засоби по догляду за шкірою автомобіля",
       "volume": 70,
       "use_in": "content",
       "source_ru": "средства по уходу за кожей автомобиля",
       "_original_category": "ukhod-za-kozhey"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "засіб для шкіри авто",
+      "volume": 280,
+      "use_in": "lsi",
+      "variant_of": "засоби для шкіри авто",
+      "source_ru": "средство для кожи авто"
+    },
+    {
+      "keyword": "засоби для шкіри автомобіля",
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "засоби для шкіри авто",
+      "source_ru": "средства для кожи автомобиля"
+    },
+    {
+      "keyword": "засоби для шкіри салону автомобіля",
+      "volume": 30,
+      "use_in": "lsi",
+      "variant_of": "засіб для шкіри салону автомобіля",
+      "source_ru": "средства для кожи салона автомобиля"
     }
   ],
   "all_keywords_count": 8
