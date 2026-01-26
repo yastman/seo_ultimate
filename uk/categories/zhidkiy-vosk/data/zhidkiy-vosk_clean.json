@@ -10,13 +10,6 @@
       "use_in": "content",
       "source_ru": "жидкий воск для авто",
       "_original_category": "zhidkiy-vosk"
-    },
-    {
-      "keyword": "рідкий віск",
-      "volume": 320,
-      "use_in": "content",
-      "source_ru": "жидкий воск",
-      "_original_category": "zhidkiy-vosk"
     }
   ],
   "supporting_keywords": [
@@ -25,20 +18,6 @@
       "volume": 70,
       "use_in": "meta_only",
       "source_ru": "купить жидкий воск для авто",
-      "_original_category": "zhidkiy-vosk"
-    },
-    {
-      "keyword": "купити рідкий віск",
-      "volume": 40,
-      "use_in": "meta_only",
-      "source_ru": "купить жидкий воск",
-      "_original_category": "zhidkiy-vosk"
-    },
-    {
-      "keyword": "купити рідкий віск для автомобіля",
-      "volume": 20,
-      "use_in": "meta_only",
-      "source_ru": "купить жидкий воск для автомобиля",
       "_original_category": "zhidkiy-vosk"
     },
     {
@@ -61,13 +40,36 @@
       "use_in": "content",
       "source_ru": "жидкий воск для автомойки",
       "_original_category": "zhidkiy-vosk"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "рідкий віск",
+      "volume": 320,
+      "use_in": "lsi",
+      "variant_of": "рідкий віск для авто",
+      "source_ru": "жидкий воск"
+    },
+    {
+      "keyword": "купити рідкий віск",
+      "volume": 40,
+      "use_in": "lsi",
+      "variant_of": "купити рідкий віск для авто",
+      "source_ru": "купить жидкий воск"
+    },
+    {
+      "keyword": "купити рідкий віск для автомобіля",
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "купити рідкий віск для авто",
+      "source_ru": "купить жидкий воск для автомобиля"
     },
     {
       "keyword": "купити рідкий віск для машини",
       "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "купить жидкий воск для машины",
-      "_original_category": "zhidkiy-vosk"
+      "use_in": "lsi",
+      "variant_of": "купити рідкий віск для авто",
+      "source_ru": "купить жидкий воск для машины"
     }
   ],
   "all_keywords_count": 9
