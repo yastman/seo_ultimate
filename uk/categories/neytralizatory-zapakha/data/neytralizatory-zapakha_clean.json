@@ -1,62 +1,27 @@
 {
-  "slug": "neytralizatory-zapakha",
+  "id": "neytralizatory-zapakha",
   "language": "uk",
-  "category_name_uk": "Нейтралізатори запаху",
-  "category_name_ru": "Нейтрализаторы запаха",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "нейтралізатор запаху",
-        "keyword_ru": "нейтрализатор запаха",
-        "volume": 100
-      },
-      {
-        "keyword": "поглинач запаху",
-        "keyword_ru": "поглотитель запаха",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "нейтралізатор запаху в автомобілі",
-        "keyword_ru": "нейтрализатор запаха в автомобиле",
-        "volume": 50
-      },
-      {
-        "keyword": "професійний нейтралізатор запаху",
-        "keyword_ru": "профессиональный нейтрализатор запаха",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "усувач запаху",
-        "keyword_ru": "устранитель запаха",
-        "volume": 20
-      },
-      {
-        "keyword": "нейтралізатор запаху в салоні авто",
-        "keyword_ru": "нейтрализатор запаха в салоне авто",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити нейтралізатори запаху",
-        "keyword_ru": "купить нейтрализаторы запаха",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["нейтрализатор", "нейтралізатор"],
-      ["поглотитель", "поглинач"],
-      ["устранитель", "усувач"],
-      ["запаха", "запаху"]
-    ],
-    "kept_original": ["pH"],
-    "intent_preserved": true
-  }
+  "total_volume": 400,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "нейтралізатор запахів",
+      "volume": 170
+    },
+    {
+      "keyword": "ароматизатор в машину",
+      "volume": 110
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "нейтралізатор запаху в авто",
+      "volume": 90
+    },
+    {
+      "keyword": "засіб для видалення запаху",
+      "volume": 30
+    }
+  ],
+  "all_keywords_count": 4
 }

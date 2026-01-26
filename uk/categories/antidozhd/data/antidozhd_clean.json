@@ -1,88 +1,72 @@
 {
-  "slug": "antidozhd",
+  "id": "antidozhd",
   "language": "uk",
-  "category_name_uk": "Антидощ",
-  "category_name_ru": "Антидождь",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "антидождь",
-        "keyword_ru": "антидождь",
-        "volume": 100
-      },
-      {
-        "keyword": "антидождь для автомобиля",
-        "keyword_ru": "антидождь для автомобиля",
-        "volume": 100
-      },
-      {
-        "keyword": "антидождь для авто",
-        "keyword_ru": "антидождь для авто",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "гидрофобное покритте для стекла",
-        "keyword_ru": "гидрофобное покрытие для стекла",
-        "volume": 50
-      },
-      {
-        "keyword": "покритте для лобового стекла",
-        "keyword_ru": "покрытие для лобового стекла",
-        "volume": 50
-      },
-      {
-        "keyword": "антидождь на лобовое скло",
-        "keyword_ru": "антидождь на лобовое стекло",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "антидождь для зеркал авто",
-        "keyword_ru": "антидождь для зеркал авто",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити антидощ",
-        "keyword_ru": "купить антидождь",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      [
-        "резина",
-        "гума"
-      ],
-      [
-        "средство",
-        "засіб"
-      ],
-      [
-        "мойка",
-        "миття"
-      ],
-      [
-        "стекло",
-        "скло"
-      ],
-      [
-        "чернитель",
-        "чорнитель"
-      ]
-    ],
-    "kept_original": [
-      "pH",
-      "PPF",
-      "APC",
-      "SiO2"
-    ],
-    "intent_preserved": true
-  }
+  "total_volume": 4000,
+  "keywords": [
+    {
+      "keyword": "антидощ",
+      "volume": 1900
+    }
+  ],
+  "secondary_keywords": [
+    {
+      "keyword": "антидощ для авто",
+      "volume": 480
+    },
+    {
+      "keyword": "антидощ для скла авто",
+      "volume": 390
+    },
+    {
+      "keyword": "антидощ для автомобіля",
+      "volume": 320
+    },
+    {
+      "keyword": "антидощ на лобове скло",
+      "volume": 170
+    },
+    {
+      "keyword": "розморожувач скла",
+      "volume": 170
+    },
+    {
+      "keyword": "антизапотівач скла",
+      "volume": 140
+    },
+    {
+      "keyword": "засіб антидощ",
+      "volume": 140
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "антидощ для скла",
+      "volume": 70
+    },
+    {
+      "keyword": "антидощ купити",
+      "volume": 50
+    },
+    {
+      "keyword": "антизапотівач",
+      "volume": 40
+    },
+    {
+      "keyword": "гідрофобне покриття",
+      "volume": 40
+    },
+    {
+      "keyword": "антидощ відгуки",
+      "volume": 30
+    },
+    {
+      "keyword": "засіб від запотівання скла",
+      "volume": 30
+    },
+    {
+      "keyword": "розморожувач замків",
+      "volume": 30
+    }
+  ],
+  "all_keywords_count": 15
 }

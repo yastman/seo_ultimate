@@ -1,98 +1,76 @@
 {
-  "slug": "voski",
+  "id": "voski",
   "language": "uk",
-  "category_name_uk": "Воски",
-  "category_name_ru": "Воски",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "віск для авто",
-        "keyword_ru": "воск для авто",
-        "volume": 100
-      },
-      {
-        "keyword": "віск для машини",
-        "keyword_ru": "воск для машины",
-        "volume": 100
-      },
-      {
-        "keyword": "віск автомобільний",
-        "keyword_ru": "воск автомобильный",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "віск для полірування авто",
-        "keyword_ru": "воск для полировки авто",
-        "volume": 50
-      },
-      {
-        "keyword": "віск для кузова авто",
-        "keyword_ru": "воск для кузова авто",
-        "volume": 50
-      },
-      {
-        "keyword": "восковий поліроль для авто",
-        "keyword_ru": "восковый полироль для авто",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "віск для миття авто",
-        "keyword_ru": "воск для мойки авто",
-        "volume": 20
-      },
-      {
-        "keyword": "натуральний віск",
-        "keyword_ru": "натуральный воск",
-        "volume": 20
-      },
-      {
-        "keyword": "синтетичний віск",
-        "keyword_ru": "синтетический воск",
-        "volume": 20
-      },
-      {
-        "keyword": "рідкий віск",
-        "keyword_ru": "жидкий воск",
-        "volume": 20
-      },
-      {
-        "keyword": "твердий віск",
-        "keyword_ru": "твёрдый воск",
-        "volume": 20
-      },
-      {
-        "keyword": "спрей-віск",
-        "keyword_ru": "спрей-воск",
-        "volume": 20
-      },
-      {
-        "keyword": "гібридний віск",
-        "keyword_ru": "гибридный воск",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити воски",
-        "keyword_ru": "купить воски",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["резина", "гума"],
-      ["средство", "засіб"],
-      ["мойка", "миття"],
-      ["стекло", "скло"],
-      ["чернитель", "чорнитель"]
-    ],
-    "kept_original": ["pH", "PPF", "APC", "SiO2"],
-    "intent_preserved": true
-  }
+  "total_volume": 3450,
+  "keywords": [
+    {
+      "keyword": "віск для авто",
+      "volume": 1000
+    },
+    {
+      "keyword": "віск для автомобіля",
+      "volume": 720
+    }
+  ],
+  "secondary_keywords": [
+    {
+      "keyword": "віск для кузова авто",
+      "volume": 480
+    },
+    {
+      "keyword": "рідкий віск для авто",
+      "volume": 320
+    },
+    {
+      "keyword": "віск автомобільний",
+      "volume": 210
+    },
+    {
+      "keyword": "віск для сушки авто",
+      "volume": 140
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "віск для чорних авто",
+      "volume": 90
+    },
+    {
+      "keyword": "холодний віск для авто",
+      "volume": 90
+    },
+    {
+      "keyword": "віск карнауба",
+      "volume": 70
+    },
+    {
+      "keyword": "поліроль з воском",
+      "volume": 70
+    },
+    {
+      "keyword": "шампунь з ефектом воску",
+      "volume": 70
+    },
+    {
+      "keyword": "віск для авто ціна",
+      "volume": 50
+    },
+    {
+      "keyword": "губка для нанесення воску",
+      "volume": 50
+    },
+    {
+      "keyword": "віск для авто рідкий",
+      "volume": 40
+    },
+    {
+      "keyword": "віск для авто як користуватися",
+      "volume": 30
+    },
+    {
+      "keyword": "гарячий віск для авто",
+      "volume": 20
+    }
+  ],
+  "all_keywords_count": 16
 }

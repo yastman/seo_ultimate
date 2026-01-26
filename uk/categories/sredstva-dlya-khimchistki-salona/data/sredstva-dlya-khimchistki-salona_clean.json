@@ -1,67 +1,40 @@
 {
-  "slug": "sredstva-dlya-khimchistki-salona",
+  "id": "sredstva-dlya-khimchistki-salona",
   "language": "uk",
-  "category_name_uk": "Засоби для хімчистки салону",
-  "category_name_ru": "Средства для химчистки салона",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "засіб для хімчистки салону",
-        "keyword_ru": "средство для химчистки салона",
-        "volume": 100
-      },
-      {
-        "keyword": "хімія для чищення салону",
-        "keyword_ru": "химия для чистки салона",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "засоби для хімчистки салону автомобіля",
-        "keyword_ru": "средства для химчистки салона автомобиля",
-        "volume": 50
-      },
-      {
-        "keyword": "очищувач салону",
-        "keyword_ru": "очиститель салона",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "очищувач тканини",
-        "keyword_ru": "очиститель ткани",
-        "volume": 20
-      },
-      {
-        "keyword": "очищувач стелі",
-        "keyword_ru": "очиститель потолка",
-        "volume": 20
-      },
-      {
-        "keyword": "універсальний очищувач",
-        "keyword_ru": "универсальный очиститель",
-        "volume": 20
-      },
-      {
-        "keyword": "пінний очищувач",
-        "keyword_ru": "пенный очиститель",
-        "volume": 20
-      },
-      {
-        "keyword": "концентрат для хімчистки",
-        "keyword_ru": "концентрат для химчистки",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити засоби для хімчистки салону",
-        "keyword_ru": "купить средства для химчистки салона",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  }
+  "total_volume": 3670,
+  "keywords": [
+    {
+      "keyword": "засоби для хімчистки салону автомобіля",
+      "volume": 1000
+    },
+    {
+      "keyword": "хімія для хімчистки салону автомобіля",
+      "volume": 1000
+    },
+    {
+      "keyword": "хімія для хімчистки салону",
+      "volume": 720
+    }
+  ],
+  "secondary_keywords": [
+    {
+      "keyword": "засіб для хімчистки салону авто",
+      "volume": 480
+    },
+    {
+      "keyword": "засіб для хімчистки салону автомобіля",
+      "volume": 260
+    },
+    {
+      "keyword": "засіб для хімчистки салону",
+      "volume": 140
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "професійна хімія для хімчистки салону",
+      "volume": 70
+    }
+  ],
+  "all_keywords_count": 7
 }

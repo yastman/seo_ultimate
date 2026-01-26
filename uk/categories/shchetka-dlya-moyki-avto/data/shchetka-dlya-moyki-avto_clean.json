@@ -1,47 +1,27 @@
 {
-  "slug": "shchetka-dlya-moyki-avto",
+  "id": "shchetka-dlya-moyki-avto",
   "language": "uk",
-  "category_name_uk": "Щітка для миття авто",
-  "category_name_ru": "Щётка для мойки авто",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "щітка для миття авто",
-        "keyword_ru": "щетка для мойки авто",
-        "volume": 100
-      },
-      {
-        "keyword": "щітка для миття машини",
-        "keyword_ru": "щетка для мытья машины",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "м'які щітки для миття машини",
-        "keyword_ru": "мягкие щетки для мытья машины",
-        "volume": 50
-      },
-      {
-        "keyword": "щітка для миття дисків",
-        "keyword_ru": "щетка для мытья дисков авто",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "щітка для миття автомобіля",
-        "keyword_ru": "щетка для мытья автомобиля",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити щітку для миття авто",
-        "keyword_ru": "купить щётку для мойки авто",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  }
+  "total_volume": 530,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "щітка для хімчистки авто",
+      "volume": 210
+    },
+    {
+      "keyword": "щітка для видалення шерсті",
+      "volume": 170
+    },
+    {
+      "keyword": "щітка для снігу",
+      "volume": 110
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "щітка для пилу в авто",
+      "volume": 40
+    }
+  ],
+  "all_keywords_count": 4
 }

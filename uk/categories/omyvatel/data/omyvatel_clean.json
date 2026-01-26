@@ -1,79 +1,23 @@
 {
-  "slug": "omyvatel",
+  "id": "omyvatel",
   "language": "uk",
-  "category_name_uk": "Омивач",
-  "category_name_ru": "Омыватель",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "омивач скла",
-        "keyword_ru": "омыватель стекла",
-        "volume": 100
-      },
-      {
-        "keyword": "зимовий омивач",
-        "keyword_ru": "зимний омыватель",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "омивач лобового скла",
-        "keyword_ru": "омыватель лобового стекла",
-        "volume": 50
-      },
-      {
-        "keyword": "склоомивач",
-        "keyword_ru": "стеклоомыватель",
-        "volume": 50
-      },
-      {
-        "keyword": "літній омивач",
-        "keyword_ru": "омыватель летний",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "омивач-антимошка",
-        "keyword_ru": "омыватель-антимошка",
-        "volume": 20
-      },
-      {
-        "keyword": "концентрат омивача",
-        "keyword_ru": "концентрат омывателя",
-        "volume": 20
-      },
-      {
-        "keyword": "температура замерзання",
-        "keyword_ru": "температура замерзания",
-        "volume": 20
-      },
-      {
-        "keyword": "всесезонний склад",
-        "keyword_ru": "всесезонный состав",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити омивач",
-        "keyword_ru": "купить омыватель",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["омыватель", "омивач"],
-      ["стекло", "скло"],
-      ["зимний", "зимовий"],
-      ["летний", "літній"],
-      ["замерзания", "замерзання"],
-      ["состав", "склад"]
-    ],
-    "kept_original": [],
-    "intent_preserved": true
-  }
+  "total_volume": 2050,
+  "keywords": [
+    {
+      "keyword": "омивач скла",
+      "volume": 1300
+    },
+    {
+      "keyword": "зимовий омивач скла",
+      "volume": 720
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
+    {
+      "keyword": "літній омивач",
+      "volume": 30
+    }
+  ],
+  "all_keywords_count": 3
 }

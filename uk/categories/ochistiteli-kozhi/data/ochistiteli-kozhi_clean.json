@@ -1,73 +1,31 @@
 {
-  "slug": "ochistiteli-kozhi",
+  "id": "ochistiteli-kozhi",
   "language": "uk",
-  "category_name_uk": "Очищувачі шкіри",
-  "category_name_ru": "Очистители кожи",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "очищувач шкіри",
-        "keyword_ru": "очиститель кожи",
-        "volume": 100
-      },
-      {
-        "keyword": "засіб для чищення шкіри авто",
-        "keyword_ru": "средство для чистки кожи авто",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "очищувач шкіри салону",
-        "keyword_ru": "очиститель кожи салона автомобиля",
-        "volume": 50
-      },
-      {
-        "keyword": "засіб для чищення шкіряного салону",
-        "keyword_ru": "средства для чистки кожаного салона автомобиля",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "хімія для чищення шкіри",
-        "keyword_ru": "химия для чистки кожи авто",
-        "volume": 20
-      },
-      {
-        "keyword": "пінний очищувач",
-        "keyword_ru": "пенный очиститель",
-        "volume": 20
-      },
-      {
-        "keyword": "pH-нейтральний очищувач",
-        "keyword_ru": "pH-нейтральный очиститель",
-        "volume": 20
-      },
-      {
-        "keyword": "leather cleaner",
-        "keyword_ru": "leather cleaner",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити очищувачі шкіри",
-        "keyword_ru": "купить очистители кожи",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["очиститель", "очищувач"],
-      ["чистка", "чищення"],
-      ["кожаного", "шкіряного"],
-      ["пенный", "пінний"],
-      ["нейтральный", "нейтральний"]
-    ],
-    "kept_original": ["pH", "leather cleaner"],
-    "intent_preserved": true
-  }
+  "total_volume": 740,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "очищувач шкіри авто",
+      "volume": 320
+    },
+    {
+      "keyword": "засіб для чищення шкіри авто",
+      "volume": 210
+    },
+    {
+      "keyword": "очищувач для шкіри авто",
+      "volume": 140
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "засіб для очищення шкіри",
+      "volume": 50
+    },
+    {
+      "keyword": "засіб для чищення шкіри",
+      "volume": 20
+    }
+  ],
+  "all_keywords_count": 5
 }

@@ -1,83 +1,68 @@
 {
-  "slug": "cherniteli-shin",
+  "id": "cherniteli-shin",
   "language": "uk",
-  "category_name_uk": "Чорнителі шин",
-  "category_name_ru": "Чернители шин",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "чорнитель шин",
-        "keyword_ru": "чернитель шин",
-        "volume": 100
-      },
-      {
-        "keyword": "чорніння шин",
-        "keyword_ru": "чернение шин",
-        "volume": 100
-      },
-      {
-        "keyword": "чорнитель гуми",
-        "keyword_ru": "чернитель резины",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "засіб для чорніння шин",
-        "keyword_ru": "средство для чернения шин",
-        "volume": 50
-      },
-      {
-        "keyword": "поліроль для шин",
-        "keyword_ru": "полироль для шин",
-        "volume": 50
-      },
-      {
-        "keyword": "блиск для шин",
-        "keyword_ru": "блеск для шин",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "гель для шин",
-        "keyword_ru": "гель для шин",
-        "volume": 20
-      },
-      {
-        "keyword": "спрей для шин",
-        "keyword_ru": "спрей для шин",
-        "volume": 20
-      },
-      {
-        "keyword": "силіконовий чорнитель",
-        "keyword_ru": "силиконовый чернитель",
-        "volume": 20
-      },
-      {
-        "keyword": "водний чорнитель",
-        "keyword_ru": "водный чернитель",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити чорнитель шин",
-        "keyword_ru": "купить чернитель шин",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["резина", "гума"],
-      ["чернитель", "чорнитель"],
-      ["чернение", "чорніння"],
-      ["блеск", "блиск"],
-      ["средство", "засіб"]
-    ],
-    "kept_original": ["pH", "SiO2"],
-    "intent_preserved": true
-  }
+  "total_volume": 2090,
+  "keywords": [
+    {
+      "keyword": "поліроль для шин",
+      "volume": 590
+    }
+  ],
+  "secondary_keywords": [
+    {
+      "keyword": "чорніння гуми",
+      "volume": 390
+    },
+    {
+      "keyword": "очищувач гуми",
+      "volume": 260
+    },
+    {
+      "keyword": "засіб для чорніння гуми",
+      "volume": 210
+    },
+    {
+      "keyword": "засоби для чорніння шин",
+      "volume": 110
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "відновлювач гуми",
+      "volume": 90
+    },
+    {
+      "keyword": "засіб для догляду за гумою",
+      "volume": 90
+    },
+    {
+      "keyword": "рідка гума для авто",
+      "volume": 90
+    },
+    {
+      "keyword": "силікон для авто",
+      "volume": 70
+    },
+    {
+      "keyword": "засіб для догляду за шинами",
+      "volume": 50
+    },
+    {
+      "keyword": "чорнитель гуми",
+      "volume": 50
+    },
+    {
+      "keyword": "хімія для чорніння гуми",
+      "volume": 40
+    },
+    {
+      "keyword": "засіб для очищення гуми",
+      "volume": 30
+    },
+    {
+      "keyword": "засіб для чорніння гуми",
+      "volume": 20
+    }
+  ],
+  "all_keywords_count": 14
 }

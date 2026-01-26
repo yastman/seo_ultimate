@@ -1,58 +1,14 @@
 {
-  "slug": "zashchitnye-pokrytiya",
+  "id": "zashchitnye-pokrytiya",
   "language": "uk",
-  "category_name_uk": "Захисні покриття",
-  "category_name_ru": "Защитные покрытия",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "захисні покриття для авто",
-        "keyword_ru": "защитные покрытия для авто",
-        "volume": 100
-      },
-      {
-        "keyword": "покриття для автомобіля",
-        "keyword_ru": "покрытие для автомобиля",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "захист кузова авто",
-        "keyword_ru": "защита кузова авто",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "керамічне покриття",
-        "keyword_ru": "керамическое покрытие",
-        "volume": 20
-      },
-      {
-        "keyword": "полімерний захист",
-        "keyword_ru": "полимерная защита",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити захисні покриття",
-        "keyword_ru": "купить защитные покрытия",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["резина", "гума"],
-      ["средство", "засіб"],
-      ["мойка", "миття"],
-      ["стекло", "скло"],
-      ["чернитель", "чорнитель"]
-    ],
-    "kept_original": ["pH", "PPF", "APC", "SiO2"],
-    "intent_preserved": true
-  }
+  "total_volume": 50,
+  "keywords": [],
+  "secondary_keywords": [],
+  "supporting_keywords": [
+    {
+      "keyword": "керамічний лак для авто",
+      "volume": 50
+    }
+  ],
+  "all_keywords_count": 1
 }

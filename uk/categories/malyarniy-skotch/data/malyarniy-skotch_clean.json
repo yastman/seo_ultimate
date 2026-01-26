@@ -1,66 +1,23 @@
 {
-  "slug": "malyarniy-skotch",
+  "id": "malyarniy-skotch",
   "language": "uk",
-  "category_name_uk": "Малярний скотч",
-  "category_name_ru": "Малярный скотч",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "малярний скотч",
-        "keyword_ru": "малярный скотч",
-        "volume": 100
-      },
-      {
-        "keyword": "малярна стрічка",
-        "keyword_ru": "малярная лента",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "скотч для полірування",
-        "keyword_ru": "скотч для полировки",
-        "volume": 50
-      },
-      {
-        "keyword": "захисна стрічка для авто",
-        "keyword_ru": "защитная лента для авто",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "автомобільний скотч",
-        "keyword_ru": "автомобильный скотч",
-        "volume": 20
-      },
-      {
-        "keyword": "маскувальна стрічка",
-        "keyword_ru": "маскировочная лента",
-        "volume": 20
-      },
-      {
-        "keyword": "masking tape",
-        "keyword_ru": "masking tape",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити малярний скотч",
-        "keyword_ru": "купить малярный скотч",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["малярный", "малярний"],
-      ["лента", "стрічка"],
-      ["маскировочная", "маскувальна"]
-    ],
-    "kept_original": ["masking tape"],
-    "intent_preserved": true
-  }
+  "total_volume": 2210,
+  "keywords": [
+    {
+      "keyword": "скотч малярний",
+      "volume": 1300
+    },
+    {
+      "keyword": "малярна стрічка",
+      "volume": 880
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [
+    {
+      "keyword": "очищувач слідів скотчу",
+      "volume": 30
+    }
+  ],
+  "all_keywords_count": 3
 }
