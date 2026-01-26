@@ -28,18 +28,20 @@
       "_original_category": "ukhod-za-intererom"
     },
     {
-      "keyword": "догляд за салоном автомобіля",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "уход за салоном автомобиля",
-      "_original_category": "ukhod-za-intererom"
-    },
-    {
       "keyword": "чистка салону машини",
       "volume": 20,
       "use_in": "content",
       "source_ru": "чистка салона машины",
       "_original_category": "ukhod-za-intererom"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "догляд за салоном автомобіля",
+      "volume": 50,
+      "use_in": "lsi",
+      "variant_of": "догляд за салоном авто",
+      "source_ru": "уход за салоном автомобиля"
     }
   ],
   "all_keywords_count": 5
