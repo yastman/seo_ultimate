@@ -88,9 +88,13 @@ UK: /uk-content-init → /uk-generate-meta → /uk-seo-research → /uk-content-
 | Экспорт ключей | `/uk-keywords-export` | Собирает RU ключи, переводит на UK |
 | Импорт частотности | `/uk-keywords-import` | Загружает UK ключи с частотой |
 
-> **Note:** UK skills updated to v2.0 (January 2026) — тепер на паритеті з RU pipeline.
-> - uk-content-generator v2.0: References, check_seo_structure.py, Academic ≥7%, H2 keyword мін. 2
-> - uk-quality-gate v2.0: check_seo_structure.py, Description 120-160, Word count 400-700
+> **Note:** UK skills synced to v3.0 (January 2026) — повний паритет з RU pipeline.
+> - uk-content-generator v3.3: Синхронізовано з RU, entities прибрано, профтерміни з RESEARCH_DATA.md
+> - uk-generate-meta v15.0: IRON RULE, Producer/Shop patterns, List/Dict schema support
+> - uk-quality-gate v3.0: docs links, keywords_in_content sync, розширена термінологія
+> - uk-seo-research v13.0: 11 блоків, спірні твердження, незалежні осі класифікації
+> - uk-deploy-to-opencart v3.0: Паритет з RU, language_id=1
+> - uk-content-reviewer v2.0: NEW — ревізія UK контенту, UK термінологія check
 
 ---
 
@@ -206,4 +210,4 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ---
 
-**Version:** 42.0
+**Version:** 43.0
