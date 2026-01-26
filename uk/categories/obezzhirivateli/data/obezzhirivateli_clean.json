@@ -21,13 +21,6 @@
       "_original_category": "obezzhirivateli"
     },
     {
-      "keyword": "купити знежирювач для автомобіля",
-      "volume": 70,
-      "use_in": "meta_only",
-      "source_ru": "купить обезжириватель для автомобиля",
-      "_original_category": "obezzhirivateli"
-    },
-    {
       "keyword": "знежирювач для кузова авто",
       "volume": 30,
       "use_in": "content",
@@ -39,13 +32,6 @@
       "volume": 20,
       "use_in": "content",
       "source_ru": "обезжириватель для авто перед полировкой",
-      "_original_category": "obezzhirivateli"
-    },
-    {
-      "keyword": "знежирювач автомобільний",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "обезжириватель автомобильный",
       "_original_category": "obezzhirivateli"
     },
     {
@@ -68,13 +54,29 @@
       "use_in": "content",
       "source_ru": "обезжириватель для полировки авто",
       "_original_category": "obezzhirivateli"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "купити знежирювач для автомобіля",
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "купити знежирювач для авто",
+      "source_ru": "купить обезжириватель для автомобиля"
+    },
+    {
+      "keyword": "знежирювач автомобільний",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "знежирювач для авто",
+      "source_ru": "обезжириватель автомобильный"
     },
     {
       "keyword": "знежирювач кузова автомобіля",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "обезжириватель кузова автомобиля",
-      "_original_category": "obezzhirivateli"
+      "use_in": "lsi",
+      "variant_of": "знежирювач для кузова авто",
+      "source_ru": "обезжириватель кузова автомобиля"
     }
   ],
   "all_keywords_count": 10
