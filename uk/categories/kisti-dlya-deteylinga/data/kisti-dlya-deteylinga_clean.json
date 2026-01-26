@@ -2,8 +2,7 @@
   "id": "kisti-dlya-deteylinga",
   "language": "uk",
   "total_volume": 610,
-  "keywords": [],
-  "secondary_keywords": [
+  "keywords": [
     {
       "keyword": "щітка для детейлінгу",
       "volume": 210,
@@ -12,6 +11,7 @@
       "_original_category": "kisti-dlya-deteylinga"
     }
   ],
+  "secondary_keywords": [],
   "supporting_keywords": [
     {
       "keyword": "щітка для чистки салону автомобіля",
