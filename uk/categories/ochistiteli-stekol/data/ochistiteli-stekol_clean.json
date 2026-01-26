@@ -21,38 +21,10 @@
       "_original_category": "ochistiteli-stekol"
     },
     {
-      "keyword": "засіб для автомобильных скла",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "средство для автомобильных стекол",
-      "_original_category": "ochistiteli-stekol"
-    },
-    {
       "keyword": "очищувач лобового скла",
       "volume": 10,
       "use_in": "content",
       "source_ru": "очиститель лобового стекла",
-      "_original_category": "ochistiteli-stekol"
-    },
-    {
-      "keyword": "очищувач скла автомобіля",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "очиститель стекол автомобиля",
-      "_original_category": "ochistiteli-stekol"
-    },
-    {
-      "keyword": "засіб для очищення скла авто",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "средство для очистки стекол авто",
-      "_original_category": "ochistiteli-stekol"
-    },
-    {
-      "keyword": "засіб для чистки скла авто",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "средство для чистки стекол авто",
       "_original_category": "ochistiteli-stekol"
     },
     {
@@ -75,6 +47,36 @@
       "use_in": "meta_only",
       "source_ru": "очиститель стекол авто цена",
       "_original_category": "ochistiteli-stekol"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "очищувач скла автомобіля",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "очищувач скла авто",
+      "source_ru": "очиститель стекол автомобиля"
+    },
+    {
+      "keyword": "засіб для автомобильных скла",
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "засіб для скла авто",
+      "source_ru": "средство для автомобильных стекол"
+    },
+    {
+      "keyword": "засіб для очищення скла авто",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "засіб для скла авто",
+      "source_ru": "средство для очистки стекол авто"
+    },
+    {
+      "keyword": "засіб для чистки скла авто",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "засіб для скла авто",
+      "source_ru": "средство для чистки стекол авто"
     }
   ],
   "all_keywords_count": 10
