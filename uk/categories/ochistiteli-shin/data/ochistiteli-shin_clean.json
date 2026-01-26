@@ -14,31 +14,10 @@
   "secondary_keywords": [],
   "supporting_keywords": [
     {
-      "keyword": "очищувач гуми",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "очиститель резины",
-      "_original_category": "ochistiteli-shin"
-    },
-    {
       "keyword": "засіб для чистки шин",
       "volume": 10,
       "use_in": "content",
       "source_ru": "средство для чистки шин",
-      "_original_category": "ochistiteli-shin"
-    },
-    {
-      "keyword": "засіб для очищення гуми",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "средство для очистки резины",
-      "_original_category": "ochistiteli-shin"
-    },
-    {
-      "keyword": "очищувач для покрышек",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "очиститель для покрышек",
       "_original_category": "ochistiteli-shin"
     },
     {
@@ -47,6 +26,29 @@
       "use_in": "meta_only",
       "source_ru": "купить очиститель шин",
       "_original_category": "ochistiteli-shin"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "очищувач гуми",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "очищувач шин",
+      "source_ru": "очиститель резины"
+    },
+    {
+      "keyword": "очищувач для покрышек",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "очищувач шин",
+      "source_ru": "очиститель для покрышек"
+    },
+    {
+      "keyword": "засіб для очищення гуми",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "засіб для чистки шин",
+      "source_ru": "средство для очистки резины"
     }
   ],
   "all_keywords_count": 6
