@@ -41,27 +41,29 @@
       "use_in": "content",
       "source_ru": "пятновыводитель для сидений авто",
       "_original_category": "pyatnovyvoditeli"
-    },
+    }
+  ],
+  "synonyms": [
     {
       "keyword": "плямовивідник для автомобіля",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "пятновыводитель для автомобиля",
-      "_original_category": "pyatnovyvoditeli"
+      "use_in": "lsi",
+      "variant_of": "плямовивідник для авто",
+      "source_ru": "пятновыводитель для автомобиля"
     },
     {
       "keyword": "плямовивідник для машини",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "пятновыводитель для машины",
-      "_original_category": "pyatnovyvoditeli"
+      "use_in": "lsi",
+      "variant_of": "плямовивідник для авто",
+      "source_ru": "пятновыводитель для машины"
     },
     {
       "keyword": "плямовивідник для салону автомобіля",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "пятновыводитель для салона автомобиля",
-      "_original_category": "pyatnovyvoditeli"
+      "use_in": "lsi",
+      "variant_of": "плямовивідник для салону авто",
+      "source_ru": "пятновыводитель для салона автомобиля"
     }
   ],
   "all_keywords_count": 8
