@@ -31,20 +31,6 @@
       "use_in": "content",
       "source_ru": "очиститель двигателя от масла и грязи",
       "_original_category": "ochistiteli-dvigatelya"
-    },
-    {
-      "keyword": "засіб для миття двигуна",
-      "volume": 140,
-      "use_in": "content",
-      "source_ru": "средство для мытья двигателя",
-      "_original_category": "ochistiteli-dvigatelya"
-    },
-    {
-      "keyword": "очищувач двигуна від масляных загрязнений",
-      "volume": 110,
-      "use_in": "content",
-      "source_ru": "очиститель двигателя от масляных загрязнений",
-      "_original_category": "ochistiteli-dvigatelya"
     }
   ],
   "supporting_keywords": [
@@ -56,25 +42,41 @@
       "_original_category": "ochistiteli-dvigatelya"
     },
     {
-      "keyword": "хімія для мотора",
-      "volume": 70,
-      "use_in": "content",
-      "source_ru": "химия для мотора",
-      "_original_category": "ochistiteli-dvigatelya"
-    },
-    {
       "keyword": "купити очищувач двигуна",
       "volume": 50,
       "use_in": "meta_only",
       "source_ru": "купить очиститель двигателя",
       "_original_category": "ochistiteli-dvigatelya"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "засіб для миття двигуна",
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "засоби для миття двигуна",
+      "source_ru": "средство для мытья двигателя"
+    },
+    {
+      "keyword": "очищувач двигуна від масляных загрязнений",
+      "volume": 110,
+      "use_in": "lsi",
+      "variant_of": "очищувач двигуна від масла та грязи",
+      "source_ru": "очиститель двигателя от масляных загрязнений"
+    },
+    {
+      "keyword": "хімія для мотора",
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "хімія для миття двигуна",
+      "source_ru": "химия для мотора"
     },
     {
       "keyword": "хімія для миття мотора",
       "volume": 40,
-      "use_in": "content",
-      "source_ru": "химия для мойки мотора",
-      "_original_category": "ochistiteli-dvigatelya"
+      "use_in": "lsi",
+      "variant_of": "хімія для миття двигуна",
+      "source_ru": "химия для мойки мотора"
     }
   ],
   "all_keywords_count": 10
