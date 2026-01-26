@@ -14,13 +14,6 @@
   "secondary_keywords": [],
   "supporting_keywords": [
     {
-      "keyword": "засоби для чистки шкіри автомобіля",
-      "volume": 70,
-      "use_in": "content",
-      "source_ru": "средства для чистки кожи автомобиля",
-      "_original_category": "ochistiteli-kozhi"
-    },
-    {
       "keyword": "засоби для чистки шкіряного салону автомобіля",
       "volume": 40,
       "use_in": "content",
@@ -32,20 +25,6 @@
       "volume": 20,
       "use_in": "content",
       "source_ru": "химия для чистки кожи авто",
-      "_original_category": "ochistiteli-kozhi"
-    },
-    {
-      "keyword": "засіб для очищення шкіри авто",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "средство для очистки кожи авто",
-      "_original_category": "ochistiteli-kozhi"
-    },
-    {
-      "keyword": "засоби для чистки шкіряного салону",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "средства для чистки кожаного салона",
       "_original_category": "ochistiteli-kozhi"
     },
     {
@@ -61,20 +40,43 @@
       "use_in": "content",
       "source_ru": "очиститель кожи авто",
       "_original_category": "ochistiteli-kozhi"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "засоби для чистки шкіри автомобіля",
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "засіб для чистки шкіри авто",
+      "source_ru": "средства для чистки кожи автомобиля"
+    },
+    {
+      "keyword": "засіб для очищення шкіри авто",
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "засіб для чистки шкіри авто",
+      "source_ru": "средство для очистки кожи авто"
     },
     {
       "keyword": "краще засіб для чистки шкіри авто",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "лучшее средство для чистки кожи авто",
-      "_original_category": "ochistiteli-kozhi"
+      "use_in": "lsi",
+      "variant_of": "засіб для чистки шкіри авто",
+      "source_ru": "лучшее средство для чистки кожи авто"
+    },
+    {
+      "keyword": "засоби для чистки шкіряного салону",
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "засоби для чистки шкіряного салону автомобіля",
+      "source_ru": "средства для чистки кожаного салона"
     },
     {
       "keyword": "засіб для шкіри салону",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "средство для кожи салона",
-      "_original_category": "ochistiteli-kozhi"
+      "use_in": "lsi",
+      "variant_of": "засоби для чистки шкіряного салону автомобіля",
+      "source_ru": "средство для кожи салона"
     }
   ],
   "all_keywords_count": 10
