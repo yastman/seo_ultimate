@@ -5,6 +5,13 @@ description: Генерація українських мета-тегів (Titl
 
 # UK Meta Tag Generator for Ultimate.net.ua
 
+## Common Rules
+
+See [../shared/meta-rules.md](../shared/meta-rules.md) for IRON RULE and common meta patterns.
+
+This document contains **UK-specific** formulas only.
+
+
 ---
 
 ## January 2026 SEO Rules (UK)
@@ -354,6 +361,11 @@ Status: ready for /uk-content-generator
 ```
 
 ---
+
+**Version:** 15.1
+
+**Changelog v15.1:**
+- ADDED: Reference to shared/meta-rules.md for common rules
 
 **Version:** 15.0 — January 2026
 
