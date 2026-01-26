@@ -1,83 +1,48 @@
 {
-  "slug": "glina-i-avtoskraby",
+  "id": "glina-i-avtoskraby",
   "language": "uk",
-  "category_name_uk": "Глина та автоскраби",
-  "category_name_ru": "Глина и автоскрабы",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "глина для авто",
-        "keyword_ru": "глина для авто",
-        "volume": 100
-      },
-      {
-        "keyword": "синя глина для авто",
-        "keyword_ru": "синяя глина для авто",
-        "volume": 100
-      },
-      {
-        "keyword": "автоскраб",
-        "keyword_ru": "автоскраб",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "глина для очищення авто",
-        "keyword_ru": "глина для чистки авто",
-        "volume": 50
-      },
-      {
-        "keyword": "автомобільна глина",
-        "keyword_ru": "автомобильная глина",
-        "volume": 50
-      },
-      {
-        "keyword": "глина для кузова",
-        "keyword_ru": "глина для кузова",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "глина для полірування",
-        "keyword_ru": "глина для полировки",
-        "volume": 20
-      },
-      {
-        "keyword": "очищувальна глина",
-        "keyword_ru": "очищающая глина",
-        "volume": 20
-      },
-      {
-        "keyword": "clay bar",
-        "keyword_ru": "clay bar",
-        "volume": 20
-      },
-      {
-        "keyword": "детейлінг-брусок",
-        "keyword_ru": "детейлинг-брусок",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити глину для авто",
-        "keyword_ru": "купить глину для авто",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["синяя", "синя"],
-      ["жёлтая", "жовта"],
-      ["очищающая", "очищувальна"],
-      ["чистка", "очищення"],
-      ["полировка", "полірування"]
-    ],
-    "kept_original": ["clay bar", "pH"],
-    "intent_preserved": true
-  }
+  "total_volume": 2190,
+  "keywords": [
+    {
+      "keyword": "глина для авто",
+      "volume": 590
+    }
+  ],
+  "secondary_keywords": [
+    {
+      "keyword": "поглинач запахів",
+      "volume": 480
+    },
+    {
+      "keyword": "глина для очищення кузова",
+      "volume": 320
+    },
+    {
+      "keyword": "синя глина для авто",
+      "volume": 320
+    },
+    {
+      "keyword": "глина для чистки авто",
+      "volume": 140
+    },
+    {
+      "keyword": "синя глина",
+      "volume": 110
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "автоскраб",
+      "volume": 90
+    },
+    {
+      "keyword": "глина для авто купити",
+      "volume": 90
+    },
+    {
+      "keyword": "синя глина 3м",
+      "volume": 50
+    }
+  ],
+  "all_keywords_count": 9
 }

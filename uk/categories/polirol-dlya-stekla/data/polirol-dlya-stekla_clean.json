@@ -1,61 +1,14 @@
 {
-  "slug": "polirol-dlya-stekla",
+  "id": "polirol-dlya-stekla",
   "language": "uk",
-  "category_name_uk": "Поліроль для скла",
-  "category_name_ru": "Полироль для стекла",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "поліроль для скла",
-        "keyword_ru": "полироль для стекла",
-        "volume": 100
-      },
-      {
-        "keyword": "поліроль для скла авто",
-        "keyword_ru": "полироль для стекла авто",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "поліроль для автоскла",
-        "keyword_ru": "полироль для автостекла",
-        "volume": 50
-      },
-      {
-        "keyword": "засіб для полірування скла",
-        "keyword_ru": "средство для полировки стекла",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "засіб для полірування лобового скла",
-        "keyword_ru": "средство для полировки лобового стекла",
-        "volume": 20
-      },
-      {
-        "keyword": "паста для скла",
-        "keyword_ru": "паста для стекла",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити поліроль для скла",
-        "keyword_ru": "купить полироль для стекла",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["стекло", "скло"],
-      ["полировка", "полірування"],
-      ["автостекла", "автоскла"]
-    ],
-    "kept_original": [],
-    "intent_preserved": true
-  }
+  "total_volume": 260,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "поліроль для скла",
+      "volume": 260
+    }
+  ],
+  "supporting_keywords": [],
+  "all_keywords_count": 1
 }

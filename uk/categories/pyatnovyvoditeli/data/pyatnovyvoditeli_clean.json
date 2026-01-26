@@ -1,51 +1,14 @@
 {
-  "slug": "pyatnovyvoditeli",
+  "id": "pyatnovyvoditeli",
   "language": "uk",
-  "category_name_uk": "Плямовивідники",
-  "category_name_ru": "Пятновыводители",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "плямовивідник",
-        "keyword_ru": "пятновыводитель",
-        "volume": 100
-      },
-      {
-        "keyword": "плямовивідник для авто",
-        "keyword_ru": "пятновыводитель для авто",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "плямовивідник для салону авто",
-        "keyword_ru": "пятновыводитель для салона авто",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "плямовивідник для сидінь авто",
-        "keyword_ru": "пятновыводитель для сидений авто",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити плямовивідники",
-        "keyword_ru": "купить пятновыводители",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["пятновыводитель", "плямовивідник"],
-      ["салона", "салону"],
-      ["сидений", "сидінь"]
-    ],
-    "kept_original": [],
-    "intent_preserved": true
-  }
+  "total_volume": 2400,
+  "keywords": [
+    {
+      "keyword": "плямовивідник",
+      "volume": 2400
+    }
+  ],
+  "secondary_keywords": [],
+  "supporting_keywords": [],
+  "all_keywords_count": 1
 }

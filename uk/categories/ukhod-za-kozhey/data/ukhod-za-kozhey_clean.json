@@ -1,62 +1,18 @@
 {
-  "slug": "ukhod-za-kozhey",
+  "id": "ukhod-za-kozhey",
   "language": "uk",
-  "category_name_uk": "Догляд за шкірою",
-  "category_name_ru": "Уход за кожей",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "догляд за шкірою авто",
-        "keyword_ru": "уход за кожей авто",
-        "volume": 100
-      },
-      {
-        "keyword": "догляд за шкірою автомобіля",
-        "keyword_ru": "уход за кожей автомобиля",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "засіб для догляду за шкірою авто",
-        "keyword_ru": "средство для ухода за кожей авто",
-        "volume": 50
-      },
-      {
-        "keyword": "кондиціонер для шкіри",
-        "keyword_ru": "кондиционер для кожи",
-        "volume": 50
-      },
-      {
-        "keyword": "крем для шкіри",
-        "keyword_ru": "крем для кожи",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "догляд за шкірою салону",
-        "keyword_ru": "уход за кожей салона",
-        "volume": 20
-      },
-      {
-        "keyword": "захисне покриття для шкіри",
-        "keyword_ru": "защитное покрытие для кожи",
-        "volume": 20
-      },
-      {
-        "keyword": "Leather Care Kit",
-        "keyword_ru": "Leather Care Kit",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити догляд за шкірою",
-        "keyword_ru": "купить уход за кожей",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  }
+  "total_volume": 430,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "очищувач кондиціонера",
+      "volume": 260
+    },
+    {
+      "keyword": "кондиціонер для шкіри авто",
+      "volume": 170
+    }
+  ],
+  "supporting_keywords": [],
+  "all_keywords_count": 2
 }

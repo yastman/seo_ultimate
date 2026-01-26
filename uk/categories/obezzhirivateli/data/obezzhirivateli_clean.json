@@ -1,61 +1,55 @@
 {
-  "slug": "obezzhirivateli",
+  "id": "obezzhirivateli",
   "language": "uk",
-  "category_name_uk": "Знежирювачі",
-  "category_name_ru": "Обезжириватели",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "знежирювач для авто",
-        "keyword_ru": "обезжириватель для авто",
-        "volume": 100
-      },
-      {
-        "keyword": "знежирювач для кузова",
-        "keyword_ru": "обезжириватель для кузова авто",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "знежирювач перед поліруванням",
-        "keyword_ru": "обезжириватель перед полировкой",
-        "volume": 50
-      },
-      {
-        "keyword": "знежирювач кузова перед поліруванням",
-        "keyword_ru": "обезжириватель кузова перед полировкой",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "знежирювач для полірування",
-        "keyword_ru": "обезжириватель для полировки авто",
-        "volume": 20
-      },
-      {
-        "keyword": "автомобільний знежирювач",
-        "keyword_ru": "обезжириватель автомобильный",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити знежирювачі",
-        "keyword_ru": "купить обезжириватели",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["обезжириватель", "знежирювач"],
-      ["полировка", "полірування"],
-      ["автомобильный", "автомобільний"]
-    ],
-    "kept_original": ["IPA"],
-    "intent_preserved": true
-  }
+  "total_volume": 1960,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "знежирювач для авто",
+      "volume": 390
+    },
+    {
+      "keyword": "знежирювач антисилікон",
+      "volume": 320
+    },
+    {
+      "keyword": "знежирювач кузова",
+      "volume": 320
+    },
+    {
+      "keyword": "знежирювач для кузова авто",
+      "volume": 260
+    },
+    {
+      "keyword": "знежирювач для авто перед фарбуванням",
+      "volume": 210
+    },
+    {
+      "keyword": "знежирювач універсальний",
+      "volume": 140
+    },
+    {
+      "keyword": "знежирювач для металу",
+      "volume": 110
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "знежирювач автомобіля",
+      "volume": 90
+    },
+    {
+      "keyword": "знежирювач антисиліконовий",
+      "volume": 50
+    },
+    {
+      "keyword": "знежирювач для авто ціна",
+      "volume": 40
+    },
+    {
+      "keyword": "знежирювач поверхні",
+      "volume": 30
+    }
+  ],
+  "all_keywords_count": 11
 }

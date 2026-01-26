@@ -1,67 +1,47 @@
 {
-  "slug": "nabory",
+  "id": "nabory",
   "language": "uk",
-  "category_name_uk": "Набори",
-  "category_name_ru": "Наборы",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "набори для авто",
-        "keyword_ru": "наборы для авто",
-        "volume": 100
-      },
-      {
-        "keyword": "набори для детейлінгу",
-        "keyword_ru": "наборы для детейлинга",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "набір для миття авто",
-        "keyword_ru": "набор для мойки авто",
-        "volume": 50
-      },
-      {
-        "keyword": "набір для догляду за авто",
-        "keyword_ru": "набор для ухода за авто",
-        "volume": 50
-      },
-      {
-        "keyword": "набір для хімчистки салону",
-        "keyword_ru": "набор для химчистки салона",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "подарунковий набір",
-        "keyword_ru": "подарочный набор",
-        "volume": 20
-      },
-      {
-        "keyword": "стартовий набір",
-        "keyword_ru": "стартовый набор",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити набори для авто",
-        "keyword_ru": "купить наборы для авто",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["наборы", "набори"],
-      ["мойка", "миття"],
-      ["уход", "догляд"],
-      ["подарочный", "подарунковий"]
-    ],
-    "kept_original": [],
-    "intent_preserved": true
-  }
+  "total_volume": 820,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "набір для хімчистки авто",
+      "volume": 260
+    },
+    {
+      "keyword": "набір автохімії",
+      "volume": 140
+    },
+    {
+      "keyword": "набір для дітейлінгу",
+      "volume": 110
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "набір для догляду за шкіряним салоном",
+      "volume": 90
+    },
+    {
+      "keyword": "набір щіток для дітейлінгу",
+      "volume": 70
+    },
+    {
+      "keyword": "набір мікрофібри",
+      "volume": 50
+    },
+    {
+      "keyword": "набір для догляду за авто",
+      "volume": 40
+    },
+    {
+      "keyword": "подарунковий набір для авто",
+      "volume": 40
+    },
+    {
+      "keyword": "набір",
+      "volume": 20
+    }
+  ],
+  "all_keywords_count": 9
 }

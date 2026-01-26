@@ -1,69 +1,48 @@
 {
-  "slug": "aksessuary",
+  "id": "aksessuary",
   "language": "uk",
-  "parent_id": null,
-  "category_name_uk": "Аксесуари",
-  "category_name_ru": "Аксессуары",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "аксесуари для миття авто",
-        "keyword_ru": "аксессуары для мойки авто",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "аксесуари для детейлінгу",
-        "keyword_ru": "аксессуары для детейлинга",
-        "volume": 50
-      },
-      {
-        "keyword": "все для миття авто",
-        "keyword_ru": "все для мойки авто",
-        "volume": 50
-      },
-      {
-        "keyword": "інвентар для миття авто",
-        "keyword_ru": "инвентарь для мойки авто",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "аксесуари для догляду за автомобілем",
-        "keyword_ru": "аксессуары по уходу за автомобилем",
-        "volume": 20
-      },
-      {
-        "keyword": "приладдя для миття авто",
-        "keyword_ru": "принадлежности для мойки авто",
-        "volume": 20
-      },
-      {
-        "keyword": "базовий набір для миття",
-        "keyword_ru": "базовый набор для мойки",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити аксесуари",
-        "keyword_ru": "купить аксессуары",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["резина", "гума"],
-      ["средство", "засіб"],
-      ["мойка", "миття"],
-      ["стекло", "скло"],
-      ["чернитель", "чорнитель"]
-    ],
-    "kept_original": ["pH", "PPF", "APC", "SiO2"],
-    "intent_preserved": true
-  }
+  "total_volume": 1680,
+  "keywords": [
+    {
+      "keyword": "автокосметика",
+      "volume": 590
+    }
+  ],
+  "secondary_keywords": [
+    {
+      "keyword": "засоби для догляду за авто",
+      "volume": 320
+    },
+    {
+      "keyword": "аксесуари для миття авто",
+      "volume": 170
+    },
+    {
+      "keyword": "засоби догляду за авто",
+      "volume": 170
+    },
+    {
+      "keyword": "автокосметика для авто",
+      "volume": 140
+    },
+    {
+      "keyword": "приладдя для миття авто",
+      "volume": 110
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "аксесуари для дітейлінгу",
+      "volume": 90
+    },
+    {
+      "keyword": "засоби для дітейлінгу",
+      "volume": 50
+    },
+    {
+      "keyword": "автокосметика для салону",
+      "volume": 40
+    }
+  ],
+  "all_keywords_count": 9
 }

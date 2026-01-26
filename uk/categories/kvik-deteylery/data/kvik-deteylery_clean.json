@@ -1,52 +1,14 @@
 {
-  "slug": "kvik-deteylery",
+  "id": "kvik-deteylery",
   "language": "uk",
-  "category_name_uk": "Квік-детейлери",
-  "category_name_ru": "Квик-детейлеры",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "квік-детейлер",
-        "keyword_ru": "квик-детейлер",
-        "volume": 100
-      },
-      {
-        "keyword": "холодний віск для авто",
-        "keyword_ru": "холодный воск для авто",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "швидкий віск для авто",
-        "keyword_ru": "быстрый воск для авто",
-        "volume": 50
-      },
-      {
-        "keyword": "швидкий блиск для авто",
-        "keyword_ru": "быстрый блеск для авто",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "quick detailer",
-        "keyword_ru": "quick detailer",
-        "volume": 20
-      },
-      {
-        "keyword": "полімер для авто",
-        "keyword_ru": "полимер для авто",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити квік-детейлер",
-        "keyword_ru": "купить квик-детейлер",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  }
+  "total_volume": 110,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "сухий туман для авто",
+      "volume": 110
+    }
+  ],
+  "supporting_keywords": [],
+  "all_keywords_count": 1
 }
