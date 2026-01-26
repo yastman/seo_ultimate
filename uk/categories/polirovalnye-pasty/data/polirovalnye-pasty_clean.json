@@ -20,13 +20,6 @@
   ],
   "secondary_keywords": [
     {
-      "keyword": "паста для полірування",
-      "volume": 320,
-      "use_in": "content",
-      "source_ru": "паста для полировки",
-      "_original_category": "polirovalnye-pasty"
-    },
-    {
       "keyword": "полірувальна паста для авто від царапин",
       "volume": 260,
       "use_in": "content",
@@ -41,41 +34,49 @@
       "_original_category": "polirovalnye-pasty"
     },
     {
-      "keyword": "полірувальна паста для автомобіля",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "полировочная паста для автомобиля",
-      "_original_category": "polirovalnye-pasty"
-    },
-    {
       "keyword": "купити полировочную пасту",
       "volume": 140,
       "use_in": "meta_only",
       "source_ru": "купить полировочную пасту",
       "_original_category": "polirovalnye-pasty"
+    }
+  ],
+  "supporting_keywords": [],
+  "synonyms": [
+    {
+      "keyword": "паста для полірування",
+      "volume": 320,
+      "use_in": "lsi",
+      "variant_of": "полірувальна паста",
+      "source_ru": "паста для полировки"
+    },
+    {
+      "keyword": "паста для автомобіля",
+      "volume": 50,
+      "use_in": "lsi",
+      "variant_of": "полірувальна паста",
+      "source_ru": "паста для автомобиля"
+    },
+    {
+      "keyword": "полірувальна паста для автомобіля",
+      "volume": 170,
+      "use_in": "lsi",
+      "variant_of": "полірувальна паста для авто",
+      "source_ru": "полировочная паста для автомобиля"
     },
     {
       "keyword": "купити полировочную пасту для автомобіля",
       "volume": 110,
-      "use_in": "meta_only",
-      "source_ru": "купить полировочную пасту для автомобиля",
-      "_original_category": "polirovalnye-pasty"
+      "use_in": "lsi",
+      "variant_of": "купити полировочную пасту",
+      "source_ru": "купить полировочную пасту для автомобиля"
     },
     {
       "keyword": "купити полировочную пасту для авто",
       "volume": 110,
-      "use_in": "meta_only",
-      "source_ru": "купить полировочную пасту для авто",
-      "_original_category": "polirovalnye-pasty"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "паста для автомобіля",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "паста для автомобиля",
-      "_original_category": "polirovalnye-pasty"
+      "use_in": "lsi",
+      "variant_of": "купити полировочную пасту",
+      "source_ru": "купить полировочную пасту для авто"
     }
   ],
   "all_keywords_count": 10
