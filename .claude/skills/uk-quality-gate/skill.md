@@ -5,7 +5,13 @@ description: >-
   Use when /uk-quality-gate, перевір UK категорію, фінальна перевірка UK, валідація UK перед деплоєм.
 ---
 
-# UK Quality Gate v3.0
+# UK Quality Gate v3.1
+
+## Common Rules
+
+See [../shared/validation-checklist.md](../shared/validation-checklist.md) for common validation rules.
+
+This document contains **UK-specific** additions only.
 
 Фінальна валідація перед деплоєм в OpenCart (language_id=1).
 
@@ -301,6 +307,11 @@ If FAIL: Fix issues, then run /uk-quality-gate {slug} again
 ```
 
 ---
+
+**Version:** 3.1
+
+**Changelog v3.1:**
+- ADDED: Reference to shared/validation-checklist.md for common rules
 
 **Version:** 3.0 — January 2026
 
