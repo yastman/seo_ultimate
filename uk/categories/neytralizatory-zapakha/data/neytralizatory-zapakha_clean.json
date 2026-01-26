@@ -32,13 +32,6 @@
       "use_in": "content",
       "source_ru": "профессиональный нейтрализатор запаха",
       "_original_category": "neytralizatory-zapakha"
-    },
-    {
-      "keyword": "нейтралізатор запаху в авто",
-      "volume": 140,
-      "use_in": "content",
-      "source_ru": "нейтрализатор запаха в авто",
-      "_original_category": "neytralizatory-zapakha"
     }
   ],
   "supporting_keywords": [
@@ -64,18 +57,27 @@
       "_original_category": "neytralizatory-zapakha"
     },
     {
-      "keyword": "нейтралізатор запахов в салоне авто",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "нейтрализатор запахов в салоне авто",
-      "_original_category": "neytralizatory-zapakha"
-    },
-    {
       "keyword": "нейтралізатор запаху автомобільний",
       "volume": 40,
       "use_in": "content",
       "source_ru": "нейтрализатор запаха автомобильный",
       "_original_category": "neytralizatory-zapakha"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "нейтралізатор запаху в авто",
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "нейтралізатор запаху в автомобиле",
+      "source_ru": "нейтрализатор запаха в авто"
+    },
+    {
+      "keyword": "нейтралізатор запахов в салоне авто",
+      "volume": 50,
+      "use_in": "lsi",
+      "variant_of": "нейтралізатор запаху в автомобиле",
+      "source_ru": "нейтрализатор запахов в салоне авто"
     }
   ],
   "all_keywords_count": 10

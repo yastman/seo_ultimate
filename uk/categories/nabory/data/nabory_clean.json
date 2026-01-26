@@ -33,13 +33,6 @@
       "_original_category": "nabory"
     },
     {
-      "keyword": "набір для догляду за авто",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "набор для ухода за авто",
-      "_original_category": "nabory"
-    },
-    {
       "keyword": "набір для хімчистки автомобіля",
       "volume": 170,
       "use_in": "content",
@@ -66,15 +59,24 @@
       "use_in": "content",
       "source_ru": "набор для чистки салона авто",
       "_original_category": "nabory"
+    }
+  ],
+  "supporting_keywords": [],
+  "synonyms": [
+    {
+      "keyword": "набір для догляду за авто",
+      "volume": 170,
+      "use_in": "lsi",
+      "variant_of": "набори для догляду за автомобілем",
+      "source_ru": "набор для ухода за авто"
     },
     {
       "keyword": "набір для хімчистки авто",
       "volume": 140,
-      "use_in": "content",
-      "source_ru": "набор для химчистки авто",
-      "_original_category": "nabory"
+      "use_in": "lsi",
+      "variant_of": "набір для хімчистки автомобіля",
+      "source_ru": "набор для химчистки авто"
     }
   ],
-  "supporting_keywords": [],
   "all_keywords_count": 10
 }

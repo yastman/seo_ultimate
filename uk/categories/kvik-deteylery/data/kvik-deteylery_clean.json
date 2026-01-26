@@ -29,13 +29,6 @@
       "_original_category": "kvik-deteylery"
     },
     {
-      "keyword": "холодный віск для авто",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "холодный воск для авто",
-      "_original_category": "kvik-deteylery"
-    },
-    {
       "keyword": "швидкий віск для авто",
       "volume": 40,
       "use_in": "content",
@@ -47,13 +40,6 @@
       "volume": 30,
       "use_in": "meta_only",
       "source_ru": "купить холодный воск для авто",
-      "_original_category": "kvik-deteylery"
-    },
-    {
-      "keyword": "купити холодный віск для автомобіля",
-      "volume": 30,
-      "use_in": "meta_only",
-      "source_ru": "купить холодный воск для автомобиля",
       "_original_category": "kvik-deteylery"
     },
     {
@@ -76,6 +62,22 @@
       "use_in": "content",
       "source_ru": "быстрый блеск для авто",
       "_original_category": "kvik-deteylery"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "холодный віск для авто",
+      "volume": 90,
+      "use_in": "lsi",
+      "variant_of": "холодний віск для автомобіля",
+      "source_ru": "холодный воск для авто"
+    },
+    {
+      "keyword": "купити холодный віск для автомобіля",
+      "volume": 30,
+      "use_in": "meta_only",
+      "variant_of": "купити холодный віск для авто",
+      "source_ru": "купить холодный воск для автомобиля"
     }
   ],
   "all_keywords_count": 10
