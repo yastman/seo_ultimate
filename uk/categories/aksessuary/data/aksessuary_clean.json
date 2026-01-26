@@ -21,13 +21,6 @@
       "_original_category": "aksessuary"
     },
     {
-      "keyword": "все для миття автомобілів",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "все для мойки автомобилей",
-      "_original_category": "aksessuary"
-    },
-    {
       "keyword": "аксесуари для детейлінгу",
       "volume": 20,
       "use_in": "content",
@@ -68,13 +61,22 @@
       "use_in": "meta_only",
       "source_ru": "купить аксессуары для мойки",
       "_original_category": "aksessuary"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "все для миття автомобілів",
+      "volume": 40,
+      "use_in": "lsi",
+      "variant_of": "все для миття авто",
+      "source_ru": "все для мойки автомобилей"
     },
     {
       "keyword": "все для миття машини",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "все для мойки машины",
-      "_original_category": "aksessuary"
+      "use_in": "lsi",
+      "variant_of": "все для миття авто",
+      "source_ru": "все для мойки машины"
     }
   ],
   "all_keywords_count": 10
