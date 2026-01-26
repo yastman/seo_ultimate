@@ -1,0 +1,14 @@
+{
+  "slug": "test-category",
+  "language": "ru",
+  "meta": {
+    "title": "Тестовый ключ — купить в интернет-магазине Ultimate",
+    "description": "Тестовый ключ от производителя Ultimate. Типы и формы — подробности. Опт и розница."
+  },
+  "h1": "Тестовый ключ",
+  "keywords_in_content": {
+    "primary": ["тестовый ключ"],
+    "secondary": ["второй ключ"],
+    "supporting": ["синоним"]
+  }
+}
