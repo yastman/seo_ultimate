@@ -26,55 +26,57 @@
       "use_in": "content",
       "source_ru": "очиститель дисков",
       "_original_category": "ochistiteli-diskov"
-    },
+    }
+  ],
+  "synonyms": [
     {
-      "keyword": "засіб для дисків",
+      "keyword": "хімія для дисків автомобіля",
       "volume": 20,
-      "use_in": "content",
-      "source_ru": "средство для дисков",
-      "_original_category": "ochistiteli-diskov"
-    },
-    {
-      "keyword": "засіб для чистки дисків автомобіля",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "средство для чистки дисков автомобиля",
-      "_original_category": "ochistiteli-diskov"
+      "use_in": "lsi",
+      "variant_of": "хімія для дисків",
+      "source_ru": "химия для дисков автомобиля"
     },
     {
       "keyword": "хімія для чистки дисків",
       "volume": 20,
-      "use_in": "content",
-      "source_ru": "химия для чистки дисков",
-      "_original_category": "ochistiteli-diskov"
+      "use_in": "lsi",
+      "variant_of": "хімія для дисків",
+      "source_ru": "химия для чистки дисков"
     },
     {
       "keyword": "хімія для миття дисків",
       "volume": 20,
-      "use_in": "content",
-      "source_ru": "химия для мойки дисков",
-      "_original_category": "ochistiteli-diskov"
+      "use_in": "lsi",
+      "variant_of": "хімія для дисків",
+      "source_ru": "химия для мойки дисков"
+    },
+    {
+      "keyword": "засіб для дисків",
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "засоби для чистки дисків",
+      "source_ru": "средство для дисков"
+    },
+    {
+      "keyword": "засіб для чистки дисків автомобіля",
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "засоби для чистки дисків",
+      "source_ru": "средство для чистки дисков автомобиля"
     },
     {
       "keyword": "засіб для миття дисків",
       "volume": 20,
-      "use_in": "content",
-      "source_ru": "средство для мойки дисков",
-      "_original_category": "ochistiteli-diskov"
-    },
-    {
-      "keyword": "хімія для дисків автомобіля",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "химия для дисков автомобиля",
-      "_original_category": "ochistiteli-diskov"
+      "use_in": "lsi",
+      "variant_of": "засоби для чистки дисків",
+      "source_ru": "средство для мойки дисков"
     },
     {
       "keyword": "очищувач колесных дисків",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "очиститель колесных дисков",
-      "_original_category": "ochistiteli-diskov"
+      "use_in": "lsi",
+      "variant_of": "очищувач дисків",
+      "source_ru": "очиститель колесных дисков"
     }
   ],
   "all_keywords_count": 10
