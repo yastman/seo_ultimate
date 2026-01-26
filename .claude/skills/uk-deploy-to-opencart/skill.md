@@ -182,5 +182,10 @@ Report:
 
 ---
 
-**Version:** 1.0 — January 2026 (based on deploy-to-opencart v3.0)
+**Version:** 3.0 — January 2026
+
+**Changelog v3.0:**
+- **Синхронізовано з RU deploy-to-opencart v3.0** — повний паритет
+- Версія оновлена з 1.0 до 3.0 для відповідності RU нумерації
+
 **Connection:** `ult` = `ssh -i ~/.ssh/server_key_new -p 41229 admin@193.169.188.9`
