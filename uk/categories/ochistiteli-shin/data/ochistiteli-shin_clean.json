@@ -1,14 +1,52 @@
 {
   "id": "ochistiteli-shin",
   "language": "uk",
-  "total_volume": 70,
+  "total_volume": 120,
   "keywords": [],
   "secondary_keywords": [],
   "supporting_keywords": [
     {
       "keyword": "очищувач шин",
-      "volume": 70
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "очиститель шин",
+      "_original_category": "ochistiteli-shin"
+    },
+    {
+      "keyword": "очищувач гуми",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "очиститель резины",
+      "_original_category": "ochistiteli-shin"
+    },
+    {
+      "keyword": "засіб для чистки шин",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "средство для чистки шин",
+      "_original_category": "ochistiteli-shin"
+    },
+    {
+      "keyword": "засіб для очищення гуми",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "средство для очистки резины",
+      "_original_category": "ochistiteli-shin"
+    },
+    {
+      "keyword": "очищувач для покрышек",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "очиститель для покрышек",
+      "_original_category": "ochistiteli-shin"
+    },
+    {
+      "keyword": "купити очищувач шин",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "купить очиститель шин",
+      "_original_category": "ochistiteli-shin"
     }
   ],
-  "all_keywords_count": 1
+  "all_keywords_count": 6
 }

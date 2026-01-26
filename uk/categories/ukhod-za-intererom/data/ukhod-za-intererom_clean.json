@@ -1,116 +1,46 @@
 {
   "id": "ukhod-za-intererom",
   "language": "uk",
-  "total_volume": 5350,
-  "keywords": [
-    {
-      "keyword": "хімчистка салону авто",
-      "volume": 1300
-    },
-    {
-      "keyword": "засіб для чищення салону автомобіля",
-      "volume": 590
-    },
-    {
-      "keyword": "очищувач салону",
-      "volume": 590
-    }
-  ],
+  "total_volume": 650,
+  "keywords": [],
   "secondary_keywords": [
     {
-      "keyword": "засіб для чищення салону",
-      "volume": 320
+      "keyword": "хімчистка салону авто",
+      "volume": 320,
+      "use_in": "content",
+      "source_ru": "химчистка салона авто",
+      "_original_category": "ukhod-za-intererom"
     },
     {
-      "keyword": "засіб для чищення сидінь автомобіля",
-      "volume": 320
-    },
-    {
-      "keyword": "хімія для салону авто",
-      "volume": 320
-    },
-    {
-      "keyword": "щітка для чищення салону авто",
-      "volume": 320
-    },
-    {
-      "keyword": "засоби для чищення салону авто",
-      "volume": 210
-    },
-    {
-      "keyword": "очищувач салону автомобіля",
-      "volume": 170
-    },
-    {
-      "keyword": "хімія для чищення салону авто",
-      "volume": 170
-    },
-    {
-      "keyword": "засіб для очищення салону",
-      "volume": 140
-    },
-    {
-      "keyword": "засіб для чищення тканинного салону",
-      "volume": 140
-    },
-    {
-      "keyword": "засіб для чищення алькантари",
-      "volume": 110
-    },
-    {
-      "keyword": "очищувач велюру",
-      "volume": 110
+      "keyword": "догляд за салоном авто",
+      "volume": 170,
+      "use_in": "content",
+      "source_ru": "уход за салоном авто",
+      "_original_category": "ukhod-za-intererom"
     }
   ],
   "supporting_keywords": [
     {
-      "keyword": "засіб для чищення ковроліну в авто",
-      "volume": 90
+      "keyword": "засоби для салону автомобіля",
+      "volume": 90,
+      "use_in": "content",
+      "source_ru": "средства для салона автомобиля",
+      "_original_category": "ukhod-za-intererom"
     },
     {
-      "keyword": "засіб для очищення тканини салону",
-      "volume": 70
+      "keyword": "догляд за салоном автомобіля",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "уход за салоном автомобиля",
+      "_original_category": "ukhod-za-intererom"
     },
     {
-      "keyword": "засіб для чищення стелі авто",
-      "volume": 70
-    },
-    {
-      "keyword": "засіб для чищення велюру",
-      "volume": 50
-    },
-    {
-      "keyword": "очищувач салону піна",
-      "volume": 50
-    },
-    {
-      "keyword": "щітка для чищення сидінь",
-      "volume": 50
-    },
-    {
-      "keyword": "пінний очищувач салону",
-      "volume": 40
-    },
-    {
-      "keyword": "засіб для чищення алькантари в авто",
-      "volume": 30
-    },
-    {
-      "keyword": "щітка для чищення килимків",
-      "volume": 30
-    },
-    {
-      "keyword": "очищувач",
-      "volume": 20
-    },
-    {
-      "keyword": "піна",
-      "volume": 20
-    },
-    {
-      "keyword": "щітка",
-      "volume": 20
+      "keyword": "чистка салону машини",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "чистка салона машины",
+      "_original_category": "ukhod-za-intererom"
     }
   ],
-  "all_keywords_count": 26
+  "all_keywords_count": 5
 }

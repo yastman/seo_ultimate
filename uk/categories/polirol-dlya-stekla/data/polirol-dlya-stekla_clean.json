@@ -1,14 +1,67 @@
 {
   "id": "polirol-dlya-stekla",
   "language": "uk",
-  "total_volume": 260,
-  "keywords": [],
-  "secondary_keywords": [
+  "total_volume": 850,
+  "keywords": [
     {
       "keyword": "поліроль для скла",
-      "volume": 260
+      "volume": 590,
+      "use_in": "content",
+      "source_ru": "полироль для стекла",
+      "_original_category": "polirol-dlya-stekla"
     }
   ],
-  "supporting_keywords": [],
-  "all_keywords_count": 1
+  "secondary_keywords": [],
+  "supporting_keywords": [
+    {
+      "keyword": "поліроль для скла авто",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "полироль для стекла авто",
+      "_original_category": "polirol-dlya-stekla"
+    },
+    {
+      "keyword": "поліроль для скла автомобіля",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "полироль для стекол автомобиля",
+      "_original_category": "polirol-dlya-stekla"
+    },
+    {
+      "keyword": "поліроль для автостекла",
+      "volume": 60,
+      "use_in": "content",
+      "source_ru": "полироль для автостекла",
+      "_original_category": "polirol-dlya-stekla"
+    },
+    {
+      "keyword": "засіб для полірування лобового скла",
+      "volume": 30,
+      "use_in": "content",
+      "source_ru": "средство для полировки лобового стекла",
+      "_original_category": "polirol-dlya-stekla"
+    },
+    {
+      "keyword": "засіб для полірування скла автомобіля",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "средство для полировки стекол автомобиля",
+      "_original_category": "polirol-dlya-stekla"
+    },
+    {
+      "keyword": "купити поліроль для скла авто",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "купить полироль для стекла авто",
+      "_original_category": "polirol-dlya-stekla"
+    },
+    {
+      "keyword": "поліроль для скла авто ціна",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "полироль для стекла авто цена",
+      "_original_category": "polirol-dlya-stekla"
+    }
+  ],
+  "all_keywords_count": 8
 }

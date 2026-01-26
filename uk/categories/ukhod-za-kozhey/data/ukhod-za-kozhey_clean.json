@@ -1,18 +1,74 @@
 {
   "id": "ukhod-za-kozhey",
   "language": "uk",
-  "total_volume": 430,
+  "total_volume": 1140,
   "keywords": [],
   "secondary_keywords": [
     {
-      "keyword": "очищувач кондиціонера",
-      "volume": 260
+      "keyword": "догляд за шкірою авто",
+      "volume": 210,
+      "use_in": "content",
+      "source_ru": "уход за кожей авто",
+      "_original_category": "ukhod-za-kozhey"
     },
     {
-      "keyword": "кондиціонер для шкіри авто",
-      "volume": 170
+      "keyword": "догляд за шкірою автомобіля",
+      "volume": 210,
+      "use_in": "content",
+      "source_ru": "уход за кожей автомобиля",
+      "_original_category": "ukhod-za-kozhey"
+    },
+    {
+      "keyword": "поліроль для шкіри",
+      "volume": 170,
+      "use_in": "content",
+      "source_ru": "полироль для кожи",
+      "_original_category": "ukhod-za-kozhey"
+    },
+    {
+      "keyword": "краще засіб по догляду за шкірою авто",
+      "volume": 140,
+      "use_in": "content",
+      "source_ru": "лучшее средство по уходу за кожей авто",
+      "_original_category": "ukhod-za-kozhey"
     }
   ],
-  "supporting_keywords": [],
-  "all_keywords_count": 2
+  "supporting_keywords": [
+    {
+      "keyword": "засіб по догляду за шкірою авто",
+      "volume": 90,
+      "use_in": "content",
+      "source_ru": "средство по уходу за кожей авто",
+      "_original_category": "ukhod-za-kozhey"
+    },
+    {
+      "keyword": "поліроль для шкіри авто",
+      "volume": 90,
+      "use_in": "content",
+      "source_ru": "полироль для кожи авто",
+      "_original_category": "ukhod-za-kozhey"
+    },
+    {
+      "keyword": "поліроль для шкіри автомобіля",
+      "volume": 90,
+      "use_in": "content",
+      "source_ru": "полироль для кожи автомобиля",
+      "_original_category": "ukhod-za-kozhey"
+    },
+    {
+      "keyword": "крем для шкіри авто",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "крем для кожи авто",
+      "_original_category": "ukhod-za-kozhey"
+    },
+    {
+      "keyword": "крем для шкіри автомобіля",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "крем для кожи автомобиля",
+      "_original_category": "ukhod-za-kozhey"
+    }
+  ],
+  "all_keywords_count": 9
 }

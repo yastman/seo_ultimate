@@ -1,78 +1,74 @@
 {
-  "slug": "zhidkiy-vosk",
+  "id": "zhidkiy-vosk",
   "language": "uk",
-  "category_name_uk": "Рідкий віск",
-  "category_name_ru": "Жидкий воск",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "рідкий віск для авто",
-        "keyword_ru": "жидкий воск для авто",
-        "volume": 100
-      },
-      {
-        "keyword": "рідкий віск",
-        "keyword_ru": "жидкий воск",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "спрей-віск",
-        "keyword_ru": "спрей-воск",
-        "volume": 50
-      },
-      {
-        "keyword": "віск для безконтактного миття",
-        "keyword_ru": "воск для бесконтактной мойки",
-        "volume": 50
-      },
-      {
-        "keyword": "рідкий чи твердий віск",
-        "keyword_ru": "жидкий или твёрдый воск",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "концентрат воску",
-        "keyword_ru": "концентрат воска",
-        "volume": 20
-      },
-      {
-        "keyword": "восковий шампунь",
-        "keyword_ru": "восковой шампунь",
-        "volume": 20
-      },
-      {
-        "keyword": "гідрофобний ефект",
-        "keyword_ru": "гидрофобный эффект",
-        "volume": 20
-      },
-      {
-        "keyword": "рідкий карнауба",
-        "keyword_ru": "жидкий карнауба",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити рідкий віск",
-        "keyword_ru": "купить жидкий воск",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["резина", "гума"],
-      ["средство", "засіб"],
-      ["мойка", "миття"],
-      ["стекло", "скло"],
-      ["чернитель", "чорнитель"]
-    ],
-    "kept_original": ["pH", "PPF", "APC", "SiO2"],
-    "intent_preserved": true
-  }
+  "total_volume": 970,
+  "keywords": [],
+  "secondary_keywords": [
+    {
+      "keyword": "рідкий віск для авто",
+      "volume": 480,
+      "use_in": "content",
+      "source_ru": "жидкий воск для авто",
+      "_original_category": "zhidkiy-vosk"
+    },
+    {
+      "keyword": "рідкий віск",
+      "volume": 320,
+      "use_in": "content",
+      "source_ru": "жидкий воск",
+      "_original_category": "zhidkiy-vosk"
+    }
+  ],
+  "supporting_keywords": [
+    {
+      "keyword": "купити рідкий віск для авто",
+      "volume": 70,
+      "use_in": "meta_only",
+      "source_ru": "купить жидкий воск для авто",
+      "_original_category": "zhidkiy-vosk"
+    },
+    {
+      "keyword": "купити рідкий віск",
+      "volume": 40,
+      "use_in": "meta_only",
+      "source_ru": "купить жидкий воск",
+      "_original_category": "zhidkiy-vosk"
+    },
+    {
+      "keyword": "купити рідкий віск для автомобіля",
+      "volume": 20,
+      "use_in": "meta_only",
+      "source_ru": "купить жидкий воск для автомобиля",
+      "_original_category": "zhidkiy-vosk"
+    },
+    {
+      "keyword": "рідкий віск для кузова",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "жидкий воск для кузова",
+      "_original_category": "zhidkiy-vosk"
+    },
+    {
+      "keyword": "рідкий віск для миття авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "жидкий воск для мойки авто",
+      "_original_category": "zhidkiy-vosk"
+    },
+    {
+      "keyword": "рідкий віск для автомийки",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "жидкий воск для автомойки",
+      "_original_category": "zhidkiy-vosk"
+    },
+    {
+      "keyword": "купити рідкий віск для машини",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "купить жидкий воск для машины",
+      "_original_category": "zhidkiy-vosk"
+    }
+  ],
+  "all_keywords_count": 9
 }

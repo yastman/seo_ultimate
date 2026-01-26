@@ -1,31 +1,80 @@
 {
   "id": "ochistiteli-kozhi",
   "language": "uk",
-  "total_volume": 740,
+  "total_volume": 290,
   "keywords": [],
-  "secondary_keywords": [
-    {
-      "keyword": "очищувач шкіри авто",
-      "volume": 320
-    },
-    {
-      "keyword": "засіб для чищення шкіри авто",
-      "volume": 210
-    },
-    {
-      "keyword": "очищувач для шкіри авто",
-      "volume": 140
-    }
-  ],
+  "secondary_keywords": [],
   "supporting_keywords": [
     {
-      "keyword": "засіб для очищення шкіри",
-      "volume": 50
+      "keyword": "засіб для чистки шкіри авто",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "средство для чистки кожи авто",
+      "_original_category": "ochistiteli-kozhi"
     },
     {
-      "keyword": "засіб для чищення шкіри",
-      "volume": 20
+      "keyword": "засоби для чистки шкіри автомобіля",
+      "volume": 70,
+      "use_in": "content",
+      "source_ru": "средства для чистки кожи автомобиля",
+      "_original_category": "ochistiteli-kozhi"
+    },
+    {
+      "keyword": "засоби для чистки шкіряного салону автомобіля",
+      "volume": 40,
+      "use_in": "content",
+      "source_ru": "средства для чистки кожаного салона автомобиля",
+      "_original_category": "ochistiteli-kozhi"
+    },
+    {
+      "keyword": "хімія для чистки шкіри авто",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "химия для чистки кожи авто",
+      "_original_category": "ochistiteli-kozhi"
+    },
+    {
+      "keyword": "засіб для очищення шкіри авто",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "средство для очистки кожи авто",
+      "_original_category": "ochistiteli-kozhi"
+    },
+    {
+      "keyword": "засоби для чистки шкіряного салону",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "средства для чистки кожаного салона",
+      "_original_category": "ochistiteli-kozhi"
+    },
+    {
+      "keyword": "купити очищувач шкіри авто",
+      "volume": 20,
+      "use_in": "meta_only",
+      "source_ru": "купить очиститель кожи авто",
+      "_original_category": "ochistiteli-kozhi"
+    },
+    {
+      "keyword": "очищувач шкіри авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "очиститель кожи авто",
+      "_original_category": "ochistiteli-kozhi"
+    },
+    {
+      "keyword": "краще засіб для чистки шкіри авто",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "лучшее средство для чистки кожи авто",
+      "_original_category": "ochistiteli-kozhi"
+    },
+    {
+      "keyword": "засіб для шкіри салону",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "средство для кожи салона",
+      "_original_category": "ochistiteli-kozhi"
     }
   ],
-  "all_keywords_count": 5
+  "all_keywords_count": 10
 }

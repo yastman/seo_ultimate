@@ -1,72 +1,82 @@
 {
   "id": "antidozhd",
   "language": "uk",
-  "total_volume": 4000,
+  "total_volume": 3660,
   "keywords": [
     {
       "keyword": "антидощ",
-      "volume": 1900
+      "volume": 1200,
+      "use_in": "content",
+      "source_ru": "антидождь",
+      "_original_category": "antidozhd"
+    },
+    {
+      "keyword": "засіб антидощ купити",
+      "volume": 1000,
+      "use_in": "meta_only",
+      "source_ru": "средство антидождь купить",
+      "_original_category": "antidozhd"
+    },
+    {
+      "keyword": "антидощ авто купити",
+      "volume": 700,
+      "use_in": "meta_only",
+      "source_ru": "антидождь авто купить",
+      "_original_category": "antidozhd"
     }
   ],
   "secondary_keywords": [
     {
-      "keyword": "антидощ для авто",
-      "volume": 480
-    },
-    {
-      "keyword": "антидощ для скла авто",
-      "volume": 390
-    },
-    {
       "keyword": "антидощ для автомобіля",
-      "volume": 320
+      "volume": 320,
+      "use_in": "content",
+      "source_ru": "антидождь для автомобиля",
+      "_original_category": "antidozhd"
     },
     {
-      "keyword": "антидощ на лобове скло",
-      "volume": 170
+      "keyword": "антидощ ціна",
+      "volume": 200,
+      "use_in": "meta_only",
+      "source_ru": "антидождь цена",
+      "_original_category": "antidozhd"
     },
     {
-      "keyword": "розморожувач скла",
-      "volume": 170
-    },
-    {
-      "keyword": "антизапотівач скла",
-      "volume": 140
-    },
-    {
-      "keyword": "засіб антидощ",
-      "volume": 140
+      "keyword": "купити антидощ",
+      "volume": 110,
+      "use_in": "meta_only",
+      "source_ru": "купить антидождь",
+      "_original_category": "antidozhd"
     }
   ],
   "supporting_keywords": [
     {
-      "keyword": "антидощ для скла",
-      "volume": 70
+      "keyword": "антидощ для авто",
+      "volume": 80,
+      "use_in": "content",
+      "source_ru": "антидождь для авто",
+      "_original_category": "antidozhd"
     },
     {
-      "keyword": "антидощ купити",
-      "volume": 50
+      "keyword": "антидощ для дзеркал авто",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "антидождь для зеркал авто",
+      "_original_category": "antidozhd"
     },
     {
-      "keyword": "антизапотівач",
-      "volume": 40
+      "keyword": "гідрофобне покриття для скла",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "гидрофобное покрытие для стекла",
+      "_original_category": "antidozhd"
     },
     {
-      "keyword": "гідрофобне покриття",
-      "volume": 40
-    },
-    {
-      "keyword": "антидощ відгуки",
-      "volume": 30
-    },
-    {
-      "keyword": "засіб від запотівання скла",
-      "volume": 30
-    },
-    {
-      "keyword": "розморожувач замків",
-      "volume": 30
+      "keyword": "антидощ на лобове скло",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "антидождь на лобовое стекло",
+      "_original_category": "antidozhd"
     }
   ],
-  "all_keywords_count": 15
+  "all_keywords_count": 10
 }

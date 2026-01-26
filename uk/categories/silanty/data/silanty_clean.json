@@ -1,63 +1,73 @@
 {
-  "slug": "silanty",
+  "id": "silanty",
   "language": "uk",
-  "category_name_uk": "Силанти",
-  "category_name_ru": "Силанты",
-  "keywords": {
-    "primary": [
-      {
-        "keyword": "силант",
-        "keyword_ru": "силант",
-        "volume": 100
-      },
-      {
-        "keyword": "силанти для авто",
-        "keyword_ru": "силанты для авто",
-        "volume": 100
-      },
-      {
-        "keyword": "силант для авто",
-        "keyword_ru": "силант для авто",
-        "volume": 100
-      }
-    ],
-    "secondary": [
-      {
-        "keyword": "силант для кузова",
-        "keyword_ru": "силант для кузова",
-        "volume": 50
-      }
-    ],
-    "supporting": [
-      {
-        "keyword": "полімерний силант",
-        "keyword_ru": "полимерный силант",
-        "volume": 20
-      },
-      {
-        "keyword": "синтетичний герметик",
-        "keyword_ru": "синтетический герметик",
-        "volume": 20
-      }
-    ],
-    "commercial": [
-      {
-        "keyword": "купити силанти",
-        "keyword_ru": "купить силанты",
-        "volume": 100,
-        "use_in": "meta_only"
-      }
-    ]
-  },
-  "translation_notes": {
-    "adapted_terms": [
-      ["резина", "гума"],
-      ["средство", "засіб"],
-      ["мойка", "миття"],
-      ["стекло", "скло"],
-      ["чернитель", "чорнитель"]
-    ],
-    "kept_original": ["pH", "PPF", "APC", "SiO2"],
-    "intent_preserved": true
-  }
+  "total_volume": 180,
+  "keywords": [],
+  "secondary_keywords": [],
+  "supporting_keywords": [
+    {
+      "keyword": "силант",
+      "volume": 50,
+      "use_in": "content",
+      "source_ru": "силант",
+      "_original_category": "silanty"
+    },
+    {
+      "keyword": "силанти для авто",
+      "volume": 40,
+      "use_in": "content",
+      "source_ru": "силанты для авто",
+      "_original_category": "silanty"
+    },
+    {
+      "keyword": "силант для авто",
+      "volume": 30,
+      "use_in": "content",
+      "source_ru": "силант для авто",
+      "_original_category": "silanty"
+    },
+    {
+      "keyword": "силант для кузова",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "силант для кузова",
+      "_original_category": "silanty"
+    },
+    {
+      "keyword": "силант покриття",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "силант покрытие",
+      "_original_category": "silanty"
+    },
+    {
+      "keyword": "купити силант",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "купить силант",
+      "_original_category": "silanty"
+    },
+    {
+      "keyword": "автомобіль силант ціна",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "автомобиль силант цена",
+      "_original_category": "silanty"
+    },
+    {
+      "keyword": "силант ціна",
+      "volume": 10,
+      "use_in": "meta_only",
+      "source_ru": "силант цена",
+      "_original_category": "silanty"
+    },
+    {
+      "keyword": "силант автомобіль",
+      "volume": 10,
+      "use_in": "content",
+      "source_ru": "силант автомобиль",
+      "_original_category": "silanty"
+    }
+  ],
+  "all_keywords_count": 9
 }
