@@ -5,9 +5,14 @@ description: >-
   Use when /uk-quality-gate, перевір UK категорію, фінальна перевірка UK, валідація UK перед деплоєм.
 ---
 
-# UK Quality Gate v2.0
+# UK Quality Gate v3.0
 
 Фінальна валідація перед деплоєм в OpenCart (language_id=1).
+
+**Документація:**
+
+- [docs/CONTENT_GUIDE.md](../../../docs/CONTENT_GUIDE.md) — SEO Guide v20.0 (правила валідації)
+- [docs/RESEARCH_GUIDE.md](../../../docs/RESEARCH_GUIDE.md) — Вимоги до research
 
 ---
 
@@ -35,7 +40,7 @@ python3 -c "import json; json.load(open('uk/categories/{slug}/data/{slug}_clean.
 
 - [ ] Valid JSON
 - [ ] Has primary keywords with volumes
-- [ ] Keywords clustered (primary, secondary, supporting)
+- [ ] Keywords clustered (primary, secondary, supporting, commercial)
 - [ ] Total keywords: 10-15
 
 ### 2. Meta Validation (_meta.json)
@@ -55,33 +60,54 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 | Description | Без emojis | ✅ |
 | H1 | БЕЗ "Купити" | ✅ |
 | H1 | ≠ Title | ✅ |
+| keywords_in_content | synced with data | ✅ |
 
 ### 3. Content Validation (_uk.md)
 
 ```bash
 python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}" --mode seo
-
-# SEO structure check
-python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
-
-# Natasha check for academic nausea
+python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 ```
 
 **Перевірки:**
 
 - [ ] Has H1 (перший рядок починається з #)
-- [ ] Intro: 30-60 слів
-- [ ] Has comparison table
-- [ ] Has FAQ (3-5 питань)
+- [ ] H1 = `name` з _clean.json (множина)
+- [ ] Intro: 30-60 слів (buyer guide, НЕ визначення "X — це...")
+- [ ] Has comparison table (3 колонки: Задача → Тип → Чому)
+- [ ] Has "Якщо X → Y" patterns (≥3 шт)
+- [ ] Has FAQ (3-5 питань, не дублюють таблиці)
+- [ ] **НЕТ how-to секцій** (BLOCKER!)
 - [ ] Word count: 400-700
 - [ ] No brand names/prices
 - [ ] Primary keyword у перших 100 словах
-- [ ] **H2 з keyword: мінімум 2** (check_seo_structure.py)
-- [ ] **Патерни "Якщо X → Y": мінімум 3**
-- [ ] **Academic ≥7%** (check_water_natasha.py)
+- [ ] Secondary keywords used naturally
+- [ ] Stem-група ≤2.5% (BLOCKER >3.0%)
+- [ ] Класична тошнота ≤3.5 (BLOCKER >4.0)
+- [ ] **Academic ≥7%** (WARNING <7%)
+- [ ] Вода 40-65% (WARNING >75%)
 
-### 4. UK Terminology Check (BLOCKER)
+> **Примітка:** entities в _clean.json автогенеровані — НЕ використовувати для контенту. Профтерміни беруться з RESEARCH_DATA.md.
+
+### 4. SEO Structure Check
+
+```bash
+python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
+```
+
+**Перевірки:**
+
+| Перевірка | Правило | BLOCKER |
+|-----------|---------|---------|
+| Keyword в INTRO | Перші 150 символів | ✅ |
+| H2 з keyword | Мінімум 2 H2 | ⚠️ WARN |
+| Keyword frequency | 3-7 разів (не >10 SPAM) | ✅ |
+| H1 exists | Matches meta | ✅ |
+| Tables formatted | Correctly | ✅ |
+| Lists formatted | Properly | ✅ |
+
+### 5. UK Terminology Check (BLOCKER)
 
 ```bash
 # Перевірка RU термінів, яких НЕ повинно бути
@@ -100,8 +126,11 @@ grep -c "стекло" uk/categories/{slug}/content/{slug}_uk.md  # Має бу�
 | покрытие | покриття | WARNING |
 | поверхность | поверхня | WARNING |
 | защита | захист | WARNING |
+| блеск | блиск | WARNING |
+| нанесение | нанесення | WARNING |
+| чистка | чищення | WARNING |
 
-### 5. Keyword Density
+### 6. Keyword Density
 
 ```bash
 python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
@@ -113,20 +142,6 @@ python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.
 |---------|------|---------|
 | Stem-група ключа | ≤2.5% | >3.0% |
 | Класична тошнота | ≤3.5 | >4.0 |
-
-### 6. SEO Structure Check
-
-```bash
-python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
-```
-
-**Перевірки:**
-
-| Перевірка | Правило | BLOCKER |
-|-----------|---------|---------|
-| Keyword в INTRO | Перші 150 символів | ✅ |
-| H2 з keyword | Мінімум 2 H2 | ⚠️ WARN |
-| Keyword frequency | 3-7 разів (не >10 SPAM) | ✅ |
 
 ### 7. Academic Nausea Check
 
@@ -232,9 +247,12 @@ uk/categories/{slug}/QUALITY_REPORT.md
 | Title містить "Купити" | ✅ |
 | Description 120-160 | ✅ |
 | H1 БЕЗ "Купити" | ✅ |
+| H1 ≠ Title | ✅ |
 | Немає "резина" (use "гума") | ✅ |
 | Немає "мойка" (use "миття") | ✅ |
 | Немає "стекло" (use "скло") | ✅ |
+| Content structured | ✅ |
+| No brands/prices | ✅ |
 | UK keywords integrated | ✅ |
 | Stem ≤2.5% | ✅ |
 | H2 з keyword мін. 2 | ✅ |
@@ -251,9 +269,11 @@ uk/categories/{slug}/QUALITY_REPORT.md
 | Title too long | Скоротити, використати абревіатури |
 | Title missing "Купити" | Додати комерційний модифікатор |
 | H1 has "Купити" | Видалити комерційне з H1 |
+| Description > 160 | Скоротити, прибрати зайве |
+| Missing FAQ | Додати 3-5 FAQ питань |
 | Found "резина" | Замінити на "гума" |
 | Found "мойка" | Замінити на "миття" |
-| Missing FAQ | Додати 3-5 FAQ питань |
+| Found "стекло" | Замінити на "скло" |
 | Stem >2.5% | Розбавити синонімами |
 | Word count >700 | Скоротити до 500-700 слів |
 | H2 без keyword | Додати secondary keyword в 2+ H2 |
@@ -282,7 +302,15 @@ If FAIL: Fix issues, then run /uk-quality-gate {slug} again
 
 ---
 
-**Version:** 2.1 — January 2026 (added --lang uk to validation scripts)
+**Version:** 3.0 — January 2026
+
+**Changelog v3.0:**
+- **Синхронізовано з RU v3.0** — повний паритет
+- ADDED: Посилання на docs/CONTENT_GUIDE.md та RESEARCH_GUIDE.md
+- ADDED: keywords_in_content synced with data check
+- ADDED: Примітка про entities (не використовувати, профтерміни з RESEARCH_DATA.md)
+- ADDED: Розширена таблиця термінології (блиск, нанесення, чищення)
+- ADDED: Більше деталей у Common Issues
 
 **Changelog v2.1:**
 - Added `--lang uk` to check_keyword_density.py calls
