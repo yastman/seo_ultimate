@@ -1,0 +1,1 @@
+../../content-generator/references/hub-pages.md

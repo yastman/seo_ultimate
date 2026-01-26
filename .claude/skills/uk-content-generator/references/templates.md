@@ -1,0 +1,1 @@
+../../content-generator/references/templates.md
