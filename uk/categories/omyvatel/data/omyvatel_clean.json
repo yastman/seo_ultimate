@@ -20,20 +20,6 @@
   ],
   "secondary_keywords": [
     {
-      "keyword": "зимовий омивач",
-      "volume": 320,
-      "use_in": "content",
-      "source_ru": "зимний омыватель",
-      "_original_category": "omyvatel"
-    },
-    {
-      "keyword": "омивач",
-      "volume": 260,
-      "use_in": "content",
-      "source_ru": "омыватель",
-      "_original_category": "omyvatel"
-    },
-    {
       "keyword": "купити омивач скла зимовий",
       "volume": 170,
       "use_in": "meta_only",
@@ -53,29 +39,45 @@
       "use_in": "content",
       "source_ru": "омыватель лобового стекла",
       "_original_category": "omyvatel"
-    },
-    {
-      "keyword": "стеклоомыватель",
-      "volume": 110,
-      "use_in": "content",
-      "source_ru": "стеклоомыватель",
-      "_original_category": "omyvatel"
     }
   ],
   "supporting_keywords": [
-    {
-      "keyword": "омивач для скла",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "омыватель для стекол",
-      "_original_category": "omyvatel"
-    },
     {
       "keyword": "купити омивач скла",
       "volume": 50,
       "use_in": "meta_only",
       "source_ru": "купить омыватель стекла",
       "_original_category": "omyvatel"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "зимовий омивач",
+      "volume": 320,
+      "use_in": "lsi",
+      "variant_of": "омивач скла зимовий",
+      "source_ru": "зимний омыватель"
+    },
+    {
+      "keyword": "омивач",
+      "volume": 260,
+      "use_in": "lsi",
+      "variant_of": "омивач скла",
+      "source_ru": "омыватель"
+    },
+    {
+      "keyword": "стеклоомыватель",
+      "volume": 110,
+      "use_in": "lsi",
+      "variant_of": "омивач скла",
+      "source_ru": "стеклоомыватель"
+    },
+    {
+      "keyword": "омивач для скла",
+      "volume": 50,
+      "use_in": "lsi",
+      "variant_of": "омивач скла",
+      "source_ru": "омыватель для стекол"
     }
   ],
   "all_keywords_count": 10
