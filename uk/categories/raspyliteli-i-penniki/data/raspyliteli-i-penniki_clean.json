@@ -68,13 +68,15 @@
       "use_in": "meta_only",
       "source_ru": "купить пенообразователь для мойки авто",
       "_original_category": "raspyliteli-i-penniki"
-    },
+    }
+  ],
+  "synonyms": [
     {
       "keyword": "помповый розпилювач для авто",
       "volume": 20,
-      "use_in": "content",
-      "source_ru": "помповый распылитель для авто",
-      "_original_category": "raspyliteli-i-penniki"
+      "use_in": "lsi",
+      "variant_of": "помповый розпилювач для миття авто",
+      "source_ru": "помповый распылитель для авто"
     }
   ],
   "all_keywords_count": 10
