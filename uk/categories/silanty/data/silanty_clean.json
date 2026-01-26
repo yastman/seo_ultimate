@@ -21,13 +21,6 @@
       "_original_category": "silanty"
     },
     {
-      "keyword": "силант для авто",
-      "volume": 30,
-      "use_in": "content",
-      "source_ru": "силант для авто",
-      "_original_category": "silanty"
-    },
-    {
       "keyword": "силант для кузова",
       "volume": 10,
       "use_in": "content",
@@ -61,13 +54,22 @@
       "use_in": "meta_only",
       "source_ru": "силант цена",
       "_original_category": "silanty"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "силант для авто",
+      "volume": 30,
+      "use_in": "lsi",
+      "variant_of": "силанти для авто",
+      "source_ru": "силант для авто"
     },
     {
       "keyword": "силант автомобіль",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "силант автомобиль",
-      "_original_category": "silanty"
+      "use_in": "lsi",
+      "variant_of": "силанти для авто",
+      "source_ru": "силант автомобиль"
     }
   ],
   "all_keywords_count": 9
