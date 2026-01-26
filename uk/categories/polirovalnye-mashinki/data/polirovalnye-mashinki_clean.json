@@ -6,13 +6,17 @@
   "secondary_keywords": [
     {
       "keyword": "полірувальна машинка для авто",
-      "volume": 140
+      "volume": 140,
+      "use_in": "content"
     }
   ],
-  "supporting_keywords": [
+  "supporting_keywords": [],
+  "synonyms": [
     {
       "keyword": "полірувальна машинка",
-      "volume": 70
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "полірувальна машинка для авто"
     }
   ],
   "all_keywords_count": 2
