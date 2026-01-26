@@ -21,24 +21,10 @@
       "_original_category": "mekhovye"
     },
     {
-      "keyword": "хутряний круг для полірування авто",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "меховой круг для полировки авто",
-      "_original_category": "mekhovye"
-    },
-    {
       "keyword": "шерстяной круг на полировальную машинку",
       "volume": 10,
       "use_in": "content",
       "source_ru": "шерстяной круг на полировальную машинку",
-      "_original_category": "mekhovye"
-    },
-    {
-      "keyword": "круг из шерсти для полірування",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "круг из шерсти для полировки",
       "_original_category": "mekhovye"
     },
     {
@@ -61,6 +47,22 @@
       "use_in": "meta_only",
       "source_ru": "шерстяной круг для полировки цена",
       "_original_category": "mekhovye"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "хутряний круг для полірування авто",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "хутряний круг для полірування",
+      "source_ru": "меховой круг для полировки авто"
+    },
+    {
+      "keyword": "круг из шерсти для полірування",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "шерстяной круг для полірування",
+      "source_ru": "круг из шерсти для полировки"
     }
   ],
   "all_keywords_count": 8

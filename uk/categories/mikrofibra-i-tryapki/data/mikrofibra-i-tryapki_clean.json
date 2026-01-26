@@ -16,13 +16,6 @@
       "use_in": "content",
       "source_ru": "тряпка для авто",
       "_original_category": "mikrofibra-i-tryapki"
-    },
-    {
-      "keyword": "ганчірки для автомобіля",
-      "volume": 1300,
-      "use_in": "content",
-      "source_ru": "тряпки для автомобиля",
-      "_original_category": "mikrofibra-i-tryapki"
     }
   ],
   "secondary_keywords": [
@@ -41,13 +34,6 @@
       "_original_category": "mikrofibra-i-tryapki"
     },
     {
-      "keyword": "тряпочки для машини",
-      "volume": 210,
-      "use_in": "content",
-      "source_ru": "тряпочки для машины",
-      "_original_category": "mikrofibra-i-tryapki"
-    },
-    {
       "keyword": "ганчірки для сушки авто",
       "volume": 170,
       "use_in": "content",
@@ -62,13 +48,6 @@
       "_original_category": "mikrofibra-i-tryapki"
     },
     {
-      "keyword": "ганчірки для сушки автомобіля",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "тряпки для сушки автомобиля",
-      "_original_category": "mikrofibra-i-tryapki"
-    },
-    {
       "keyword": "влаговпитывающая ганчірка для авто",
       "volume": 110,
       "use_in": "content",
@@ -77,5 +56,28 @@
     }
   ],
   "supporting_keywords": [],
+  "synonyms": [
+    {
+      "keyword": "ганчірки для автомобіля",
+      "volume": 1300,
+      "use_in": "lsi",
+      "variant_of": "ганчірка для авто",
+      "source_ru": "тряпки для автомобиля"
+    },
+    {
+      "keyword": "тряпочки для машини",
+      "volume": 210,
+      "use_in": "lsi",
+      "variant_of": "ганчірки для машини",
+      "source_ru": "тряпочки для машины"
+    },
+    {
+      "keyword": "ганчірки для сушки автомобіля",
+      "volume": 170,
+      "use_in": "lsi",
+      "variant_of": "ганчірки для сушки авто",
+      "source_ru": "тряпки для сушки автомобиля"
+    }
+  ],
   "all_keywords_count": 10
 }
