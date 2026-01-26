@@ -186,8 +186,15 @@ def scan_uk_json_keywords() -> dict[str, str]:
                     slug = data.get("id") or data.get("slug")
 
                     keywords = []
+                    # Primary keywords
                     if isinstance(data.get("keywords"), list):
-                        keywords = [k["keyword"] for k in data["keywords"]]
+                        keywords.extend([k["keyword"] for k in data["keywords"]])
+                    # Secondary keywords
+                    if isinstance(data.get("secondary_keywords"), list):
+                        keywords.extend([k["keyword"] for k in data["secondary_keywords"]])
+                    # Supporting keywords
+                    if isinstance(data.get("supporting_keywords"), list):
+                        keywords.extend([k["keyword"] for k in data["supporting_keywords"]])
 
                     for kw in keywords:
                         kw_map[kw.strip().lower()] = slug
