@@ -36,13 +36,6 @@
       "_original_category": "avtoshampuni"
     },
     {
-      "keyword": "автомобільний шампунь",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "автомобильный шампунь",
-      "_original_category": "avtoshampuni"
-    },
-    {
       "keyword": "шампунь для автомийки",
       "volume": 50,
       "use_in": "content",
@@ -64,18 +57,27 @@
       "_original_category": "avtoshampuni"
     },
     {
-      "keyword": "шампунь для машини",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "шампунь для машины",
-      "_original_category": "avtoshampuni"
-    },
-    {
       "keyword": "моющее засіб для авто",
       "volume": 20,
       "use_in": "content",
       "source_ru": "моющее средство для авто",
       "_original_category": "avtoshampuni"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "автомобільний шампунь",
+      "volume": 50,
+      "use_in": "lsi",
+      "variant_of": "автошампунь",
+      "source_ru": "автомобильный шампунь"
+    },
+    {
+      "keyword": "шампунь для машини",
+      "volume": 40,
+      "use_in": "lsi",
+      "variant_of": "шампунь для авто",
+      "source_ru": "шампунь для машины"
     }
   ],
   "all_keywords_count": 10

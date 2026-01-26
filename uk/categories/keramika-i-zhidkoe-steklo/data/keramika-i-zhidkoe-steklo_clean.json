@@ -27,13 +27,6 @@
       "_original_category": "keramika-i-zhidkoe-steklo"
     },
     {
-      "keyword": "нанокерамика для автомобіля",
-      "volume": 390,
-      "use_in": "content",
-      "source_ru": "нанокерамика для автомобиля",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    },
-    {
       "keyword": "керамічне покриття авто",
       "volume": 170,
       "use_in": "content",
@@ -76,6 +69,15 @@
       "use_in": "content",
       "source_ru": "жидкое стекло на машину",
       "_original_category": "keramika-i-zhidkoe-steklo"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "нанокерамика для автомобіля",
+      "volume": 390,
+      "use_in": "lsi",
+      "variant_of": "нанокерамика для авто",
+      "source_ru": "нанокерамика для автомобиля"
     }
   ],
   "all_keywords_count": 10

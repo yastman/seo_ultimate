@@ -13,24 +13,10 @@
   ],
   "secondary_keywords": [
     {
-      "keyword": "мочалка для авто",
-      "volume": 320,
-      "use_in": "content",
-      "source_ru": "мочалка для авто",
-      "_original_category": "gubki-i-varezhki"
-    },
-    {
       "keyword": "губка для авто",
       "volume": 110,
       "use_in": "content",
       "source_ru": "губка для авто",
-      "_original_category": "gubki-i-varezhki"
-    },
-    {
-      "keyword": "губки для автомобіля",
-      "volume": 110,
-      "use_in": "content",
-      "source_ru": "губки для автомобиля",
       "_original_category": "gubki-i-varezhki"
     }
   ],
@@ -43,39 +29,55 @@
       "_original_category": "gubki-i-varezhki"
     },
     {
-      "keyword": "мочалка для машини",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "мочалка для машины",
-      "_original_category": "gubki-i-varezhki"
-    },
-    {
-      "keyword": "перчатка для миття автомобіля",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "перчатка для мойки автомобиля",
-      "_original_category": "gubki-i-varezhki"
-    },
-    {
       "keyword": "губка для миття авто",
       "volume": 70,
       "use_in": "content",
       "source_ru": "губка для мойки авто",
       "_original_category": "gubki-i-varezhki"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "мочалка для авто",
+      "volume": 320,
+      "use_in": "lsi",
+      "variant_of": "мочалка для автомобіля",
+      "source_ru": "мочалка для авто"
+    },
+    {
+      "keyword": "губки для автомобіля",
+      "volume": 110,
+      "use_in": "lsi",
+      "variant_of": "губка для авто",
+      "source_ru": "губки для автомобиля"
+    },
+    {
+      "keyword": "мочалка для машини",
+      "volume": 90,
+      "use_in": "lsi",
+      "variant_of": "мочалка для автомобіля",
+      "source_ru": "мочалка для машины"
+    },
+    {
+      "keyword": "перчатка для миття автомобіля",
+      "volume": 90,
+      "use_in": "lsi",
+      "variant_of": "перчатка для миття авто",
+      "source_ru": "перчатка для мойки автомобиля"
     },
     {
       "keyword": "губки для миття машини",
       "volume": 70,
-      "use_in": "content",
-      "source_ru": "губки для мытья машины",
-      "_original_category": "gubki-i-varezhki"
+      "use_in": "lsi",
+      "variant_of": "губка для миття авто",
+      "source_ru": "губки для мытья машины"
     },
     {
       "keyword": "губки для миття автомобіля",
       "volume": 70,
-      "use_in": "content",
-      "source_ru": "губки для мойки автомобиля",
-      "_original_category": "gubki-i-varezhki"
+      "use_in": "lsi",
+      "variant_of": "губка для миття авто",
+      "source_ru": "губки для мойки автомобиля"
     }
   ],
   "all_keywords_count": 10

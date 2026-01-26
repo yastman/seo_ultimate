@@ -20,10 +20,10 @@
       "_original_category": "cherniteli-shin"
     },
     {
-      "keyword": "поліроль для колес",
-      "volume": 170,
+      "keyword": "поліроль для шин",
+      "volume": 90,
       "use_in": "content",
-      "source_ru": "полироль для колес",
+      "source_ru": "полироль для шин",
       "_original_category": "cherniteli-shin"
     }
   ],
@@ -33,13 +33,6 @@
       "volume": 90,
       "use_in": "content",
       "source_ru": "средства для чернения шин",
-      "_original_category": "cherniteli-shin"
-    },
-    {
-      "keyword": "поліроль для шин",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "полироль для шин",
       "_original_category": "cherniteli-shin"
     },
     {
@@ -64,18 +57,27 @@
       "_original_category": "cherniteli-shin"
     },
     {
-      "keyword": "поліроль для гуми",
-      "volume": 30,
-      "use_in": "content",
-      "source_ru": "полироль для резины",
-      "_original_category": "cherniteli-shin"
-    },
-    {
       "keyword": "чорнитель шин купити",
       "volume": 20,
       "use_in": "meta_only",
       "source_ru": "чернитель шин купить",
       "_original_category": "cherniteli-shin"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "поліроль для колес",
+      "volume": 170,
+      "use_in": "lsi",
+      "variant_of": "поліроль для шин",
+      "source_ru": "полироль для колес"
+    },
+    {
+      "keyword": "поліроль для гуми",
+      "volume": 30,
+      "use_in": "lsi",
+      "variant_of": "поліроль для шин",
+      "source_ru": "полироль для резины"
     }
   ],
   "all_keywords_count": 10
