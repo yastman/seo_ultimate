@@ -334,4 +334,8 @@ description: >-
 
 ---
 
-**Version:** 1.0 — January 2026 (based on seo-research v13.0)
+**Version:** 13.0 — January 2026
+
+**Changelog v13.0:**
+- **Синхронізовано з RU seo-research v13.0** — повний паритет
+- Версія оновлена з 1.0 до 13.0 для відповідності RU нумерації
