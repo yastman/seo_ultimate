@@ -2,15 +2,16 @@
   "id": "keramika-i-zhidkoe-steklo",
   "language": "uk",
   "total_volume": 2230,
-  "keywords": [],
-  "secondary_keywords": [
+  "keywords": [
     {
-      "keyword": "жидкое скло для автомобілів",
+      "keyword": "рідке скло для автомобілів",
       "volume": 480,
       "use_in": "content",
       "source_ru": "жидкое стекло для автомобилей",
       "_original_category": "keramika-i-zhidkoe-steklo"
-    },
+    }
+  ],
+  "secondary_keywords": [
     {
       "keyword": "нанокерамика",
       "volume": 480,
@@ -40,7 +41,7 @@
       "_original_category": "keramika-i-zhidkoe-steklo"
     },
     {
-      "keyword": "купити жидкое скло для авто",
+      "keyword": "купити рідке скло для авто",
       "volume": 140,
       "use_in": "meta_only",
       "source_ru": "купить жидкое стекло для авто",
