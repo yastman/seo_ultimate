@@ -21,20 +21,6 @@
       "_original_category": "polirol-dlya-stekla"
     },
     {
-      "keyword": "поліроль для скла автомобіля",
-      "volume": 70,
-      "use_in": "content",
-      "source_ru": "полироль для стекол автомобиля",
-      "_original_category": "polirol-dlya-stekla"
-    },
-    {
-      "keyword": "поліроль для автостекла",
-      "volume": 60,
-      "use_in": "content",
-      "source_ru": "полироль для автостекла",
-      "_original_category": "polirol-dlya-stekla"
-    },
-    {
       "keyword": "засіб для полірування лобового скла",
       "volume": 30,
       "use_in": "content",
@@ -61,6 +47,22 @@
       "use_in": "meta_only",
       "source_ru": "полироль для стекла авто цена",
       "_original_category": "polirol-dlya-stekla"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "поліроль для скла автомобіля",
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "поліроль для скла авто",
+      "source_ru": "полироль для стекол автомобиля"
+    },
+    {
+      "keyword": "поліроль для автостекла",
+      "volume": 60,
+      "use_in": "lsi",
+      "variant_of": "поліроль для скла авто",
+      "source_ru": "полироль для автостекла"
     }
   ],
   "all_keywords_count": 8
