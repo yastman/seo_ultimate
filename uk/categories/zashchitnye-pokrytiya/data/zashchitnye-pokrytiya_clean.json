@@ -14,32 +14,34 @@
   "secondary_keywords": [],
   "supporting_keywords": [
     {
-      "keyword": "покриття для автомобіля",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "покрытие для автомобиля",
-      "_original_category": "zashchitnye-pokrytiya"
-    },
-    {
-      "keyword": "захисне покриття на машину купити",
-      "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "защитное покрытие на машину купить",
-      "_original_category": "zashchitnye-pokrytiya"
-    },
-    {
       "keyword": "купити захисне покриття для авто",
       "volume": 10,
       "use_in": "meta_only",
       "source_ru": "купить защитное покрытие для авто",
       "_original_category": "zashchitnye-pokrytiya"
-    },
+    }
+  ],
+  "synonyms": [
     {
       "keyword": "защитные покрытия автомобіля",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "защитные покрытия автомобиля",
-      "_original_category": "zashchitnye-pokrytiya"
+      "use_in": "lsi",
+      "variant_of": "защитные покрытия для авто",
+      "source_ru": "защитные покрытия автомобиля"
+    },
+    {
+      "keyword": "покриття для автомобіля",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "защитные покрытия для авто",
+      "source_ru": "покрытие для автомобиля"
+    },
+    {
+      "keyword": "захисне покриття на машину купити",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "купити захисне покриття для авто",
+      "source_ru": "защитное покрытие на машину купить"
     }
   ],
   "all_keywords_count": 5
