@@ -20,13 +20,6 @@
       "_original_category": "sredstva-dlya-khimchistki-salona"
     },
     {
-      "keyword": "засіб для чистки салону автомобіля",
-      "volume": 390,
-      "use_in": "content",
-      "source_ru": "средство для чистки салона автомобиля",
-      "_original_category": "sredstva-dlya-khimchistki-salona"
-    },
-    {
       "keyword": "хімія для салону авто",
       "volume": 320,
       "use_in": "content",
@@ -34,31 +27,10 @@
       "_original_category": "sredstva-dlya-khimchistki-salona"
     },
     {
-      "keyword": "хімія для чистки салону автомобіля",
-      "volume": 260,
-      "use_in": "content",
-      "source_ru": "химия для чистки салона автомобиля",
-      "_original_category": "sredstva-dlya-khimchistki-salona"
-    },
-    {
-      "keyword": "хімія для салону автомобіля",
-      "volume": 260,
-      "use_in": "content",
-      "source_ru": "химия для салона автомобиля",
-      "_original_category": "sredstva-dlya-khimchistki-salona"
-    },
-    {
       "keyword": "засіб для хімчистки салону авто",
       "volume": 260,
       "use_in": "content",
       "source_ru": "средство для химчистки салона авто",
-      "_original_category": "sredstva-dlya-khimchistki-salona"
-    },
-    {
-      "keyword": "засіб для хімчистки салону автомобіля",
-      "volume": 260,
-      "use_in": "content",
-      "source_ru": "средство для химчистки салона автомобиля",
       "_original_category": "sredstva-dlya-khimchistki-salona"
     },
     {
@@ -83,14 +55,37 @@
       "use_in": "content",
       "source_ru": "оборудование для чистки салона автомобиля",
       "_original_category": "oborudovanie"
-    },
-    {
-      "keyword": "автохімія для салону",
-      "volume": 30,
-      "use_in": "content",
-      "source_ru": "автохимия для салона",
-      "_original_category": "ukhod-za-intererom"
     }
   ],
-  "all_keywords_count": 12
+  "synonyms": [
+    {
+      "keyword": "засіб для чистки салону автомобіля",
+      "volume": 390,
+      "use_in": "lsi",
+      "variant_of": "засіб для чистки салону авто",
+      "source_ru": "средство для чистки салона автомобиля"
+    },
+    {
+      "keyword": "хімія для салону автомобіля",
+      "volume": 260,
+      "use_in": "lsi",
+      "variant_of": "хімія для салону авто",
+      "source_ru": "химия для салона автомобиля"
+    },
+    {
+      "keyword": "хімія для чистки салону автомобіля",
+      "volume": 260,
+      "use_in": "lsi",
+      "variant_of": "хімія для чистки салону",
+      "source_ru": "химия для чистки салона автомобиля"
+    },
+    {
+      "keyword": "засіб для хімчистки салону автомобіля",
+      "volume": 260,
+      "use_in": "lsi",
+      "variant_of": "засіб для хімчистки салону авто",
+      "source_ru": "средство для химчистки салона автомобиля"
+    }
+  ],
+  "all_keywords_count": 11
 }
