@@ -1,0 +1,3423 @@
+{
+  "generated": "2026-01-26",
+  "method": "source_ru_to_ru_categories_match",
+  "total_keywords": 452,
+  "matched": 452,
+  "unmatched_count": 0,
+  "categories": {
+    "aksessuary": {
+      "keywords": [
+        {
+          "keyword": "аксесуари для миття авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "аксессуары для мойки авто",
+          "_original_category": "aksessuary"
+        },
+        {
+          "keyword": "все для миття авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "все для мойки авто",
+          "_original_category": "aksessuary"
+        },
+        {
+          "keyword": "все для миття автомобілів",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "все для мойки автомобилей",
+          "_original_category": "aksessuary"
+        },
+        {
+          "keyword": "аксесуари для детейлінгу",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "аксессуары для детейлинга",
+          "_original_category": "aksessuary"
+        },
+        {
+          "keyword": "аксесуари для автомийок",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "аксессуары для автомоек",
+          "_original_category": "aksessuary"
+        },
+        {
+          "keyword": "аксесуари по догляду за автомобілем",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "аксессуары по уходу за автомобилем",
+          "_original_category": "aksessuary"
+        },
+        {
+          "keyword": "инвентарь для миття авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "инвентарь для мойки авто",
+          "_original_category": "aksessuary"
+        },
+        {
+          "keyword": "принадлежности для миття авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "принадлежности для мойки авто",
+          "_original_category": "aksessuary"
+        },
+        {
+          "keyword": "купити аксесуари для миття",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить аксессуары для мойки",
+          "_original_category": "aksessuary"
+        },
+        {
+          "keyword": "все для миття машини",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "все для мойки машины",
+          "_original_category": "aksessuary"
+        }
+      ],
+      "total_volume": 230
+    },
+    "moyka-i-eksterer": {
+      "keywords": [
+        {
+          "keyword": "хімія для миття авто",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "химия для мойки авто",
+          "_original_category": "moyka-i-eksterer"
+        },
+        {
+          "keyword": "купити химию для миття авто",
+          "volume": 260,
+          "use_in": "meta_only",
+          "source_ru": "купить химию для мойки авто",
+          "_original_category": "moyka-i-eksterer"
+        },
+        {
+          "keyword": "засіб для миття авто",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "средство для мойки авто",
+          "_original_category": "moyka-i-eksterer"
+        },
+        {
+          "keyword": "хімія для миття",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "химия для мойки",
+          "_original_category": "moyka-i-eksterer"
+        },
+        {
+          "keyword": "автохімія для миття",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "автохимия для мойки",
+          "_original_category": "moyka-i-eksterer"
+        },
+        {
+          "keyword": "автохімія для миття авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "автохимия для мойки авто",
+          "_original_category": "moyka-i-eksterer"
+        },
+        {
+          "keyword": "хімія для миття машини",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "химия для мойки машины",
+          "_original_category": "moyka-i-eksterer"
+        },
+        {
+          "keyword": "купити автохимию для миття авто",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить автохимию для мойки авто",
+          "_original_category": "moyka-i-eksterer"
+        },
+        {
+          "keyword": "хімія для миття автомобіля",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "химия для мойки автомобиля",
+          "_original_category": "moyka-i-eksterer"
+        },
+        {
+          "keyword": "автохімія для миття автомобіля",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "автохимия для мойки автомобиля",
+          "_original_category": "moyka-i-eksterer"
+        }
+      ],
+      "total_volume": 870
+    },
+    "oborudovanie": {
+      "keywords": [
+        {
+          "keyword": "обладнання для хімчистки авто",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "оборудование для химчистки авто",
+          "_original_category": "oborudovanie"
+        },
+        {
+          "keyword": "обладнання для моек авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "оборудование для моек авто",
+          "_original_category": "oborudovanie"
+        },
+        {
+          "keyword": "обладнання для миття автомобілів",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "оборудование для мойки автомобилей",
+          "_original_category": "oborudovanie"
+        },
+        {
+          "keyword": "обладнання для хімчистки салонов авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "оборудование для химчистки салонов авто",
+          "_original_category": "oborudovanie"
+        },
+        {
+          "keyword": "обладнання для миття автомобілів цены",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "оборудование для мойки автомобилей цены",
+          "_original_category": "oborudovanie"
+        },
+        {
+          "keyword": "обладнання для миття машин цены",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "оборудование для мойки машин цены",
+          "_original_category": "oborudovanie"
+        },
+        {
+          "keyword": "обладнання для хімчистки авто купити",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "оборудование для химчистки авто купить",
+          "_original_category": "oborudovanie"
+        },
+        {
+          "keyword": "обладнання для хімчистки авто ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "оборудование для химчистки авто цена",
+          "_original_category": "oborudovanie"
+        },
+        {
+          "keyword": "обладнання для хімчистки машини",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "оборудование для химчистки машины",
+          "_original_category": "oborudovanie"
+        }
+      ],
+      "total_volume": 170
+    },
+    "sredstva-dlya-khimchistki-salona": {
+      "keywords": [
+        {
+          "keyword": "обладнання для чистки салону автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "оборудование для чистки салона автомобиля",
+          "_original_category": "oborudovanie"
+        },
+        {
+          "keyword": "автохімія для салону",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "автохимия для салона",
+          "_original_category": "ukhod-za-intererom"
+        },
+        {
+          "keyword": "хімія для чистки салону",
+          "volume": 590,
+          "use_in": "content",
+          "source_ru": "химия для чистки салона",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        },
+        {
+          "keyword": "засіб для чистки салону авто",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "средство для чистки салона авто",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        },
+        {
+          "keyword": "засіб для чистки салону автомобіля",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "средство для чистки салона автомобиля",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        },
+        {
+          "keyword": "хімія для салону авто",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "химия для салона авто",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        },
+        {
+          "keyword": "хімія для чистки салону автомобіля",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "химия для чистки салона автомобиля",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        },
+        {
+          "keyword": "хімія для салону автомобіля",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "химия для салона автомобиля",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        },
+        {
+          "keyword": "засіб для хімчистки салону авто",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "средство для химчистки салона авто",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        },
+        {
+          "keyword": "засіб для хімчистки салону автомобіля",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "средство для химчистки салона автомобиля",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        },
+        {
+          "keyword": "автохімія для салону",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "автохимия для салона",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        },
+        {
+          "keyword": "професійна хімія для чистки салону авто",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "профессиональная химия для чистки салона авто",
+          "_original_category": "sredstva-dlya-khimchistki-salona"
+        }
+      ],
+      "total_volume": 3190
+    },
+    "opt-i-b2b": {
+      "keywords": [
+        {
+          "keyword": "автохімія від виробника",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "автохимия от производителя",
+          "_original_category": "opt-i-b2b"
+        },
+        {
+          "keyword": "автохімія виробництво",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "автохимия производство",
+          "_original_category": "opt-i-b2b"
+        },
+        {
+          "keyword": "автохімія постачальники",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "автохимия поставщики",
+          "_original_category": "opt-i-b2b"
+        },
+        {
+          "keyword": "производители автохимии украина",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "производители автохимии украина",
+          "_original_category": "opt-i-b2b"
+        },
+        {
+          "keyword": "автохімія оптом",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "автохимия оптом",
+          "_original_category": "opt-i-b2b"
+        },
+        {
+          "keyword": "детейлінг хімія оптом",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "детейлинг химия оптом",
+          "_original_category": "opt-i-b2b"
+        }
+      ],
+      "total_volume": 60
+    },
+    "polirovka": {
+      "keywords": [
+        {
+          "keyword": "полірування авто",
+          "volume": 2400,
+          "use_in": "content",
+          "source_ru": "полировка авто",
+          "_original_category": "polirovka"
+        },
+        {
+          "keyword": "полірування автомобіля",
+          "volume": 1000,
+          "use_in": "content",
+          "source_ru": "полировка автомобиля",
+          "_original_category": "polirovka"
+        },
+        {
+          "keyword": "полірування кузова",
+          "volume": 480,
+          "use_in": "content",
+          "source_ru": "полировка кузова",
+          "_original_category": "polirovka"
+        },
+        {
+          "keyword": "полірування машини",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "полировка машины",
+          "_original_category": "polirovka"
+        },
+        {
+          "keyword": "засоби для полірування авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "средства для полировки авто",
+          "_original_category": "polirovka"
+        },
+        {
+          "keyword": "полірування авто своїми руками",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "полировка авто своими руками",
+          "_original_category": "polirovka"
+        },
+        {
+          "keyword": "все для полірування",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "всё для полировки",
+          "_original_category": "polirovka"
+        }
+      ],
+      "total_volume": 4160
+    },
+    "ukhod-za-intererom": {
+      "keywords": [
+        {
+          "keyword": "хімчистка салону авто",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "химчистка салона авто",
+          "_original_category": "ukhod-za-intererom"
+        },
+        {
+          "keyword": "догляд за салоном авто",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "уход за салоном авто",
+          "_original_category": "ukhod-za-intererom"
+        },
+        {
+          "keyword": "засоби для салону автомобіля",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "средства для салона автомобиля",
+          "_original_category": "ukhod-za-intererom"
+        },
+        {
+          "keyword": "догляд за салоном автомобіля",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "уход за салоном автомобиля",
+          "_original_category": "ukhod-za-intererom"
+        },
+        {
+          "keyword": "чистка салону машини",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "чистка салона машины",
+          "_original_category": "ukhod-za-intererom"
+        }
+      ],
+      "total_volume": 650
+    },
+    "zashchitnye-pokrytiya": {
+      "keywords": [
+        {
+          "keyword": "защитные покрытия для авто",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "защитные покрытия для авто",
+          "_original_category": "zashchitnye-pokrytiya"
+        },
+        {
+          "keyword": "покриття для автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "покрытие для автомобиля",
+          "_original_category": "zashchitnye-pokrytiya"
+        },
+        {
+          "keyword": "захисне покриття на машину купити",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "защитное покрытие на машину купить",
+          "_original_category": "zashchitnye-pokrytiya"
+        },
+        {
+          "keyword": "купити захисне покриття для авто",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить защитное покрытие для авто",
+          "_original_category": "zashchitnye-pokrytiya"
+        },
+        {
+          "keyword": "защитные покрытия автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "защитные покрытия автомобиля",
+          "_original_category": "zashchitnye-pokrytiya"
+        }
+      ],
+      "total_volume": 110
+    },
+    "aksessuary-dlya-naneseniya-sredstv": {
+      "keywords": [
+        {
+          "keyword": "губка для полірування автомобіля",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "губка для полировки автомобиля",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        },
+        {
+          "keyword": "губка для полірування авто",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "губка для полировки авто",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        },
+        {
+          "keyword": "ганчірки для полірування авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "тряпки для полировки авто",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        },
+        {
+          "keyword": "аплікатор для авто",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "аппликатор для авто",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        },
+        {
+          "keyword": "салфетки для полірування авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "салфетки для полировки авто",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        },
+        {
+          "keyword": "купити губку для полірування авто",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить губку для полировки авто",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        },
+        {
+          "keyword": "губка из мікрофібри для авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "губка из микрофибры для авто",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        },
+        {
+          "keyword": "губка для ручної полірування авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "губка для ручной полировки авто",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        },
+        {
+          "keyword": "губка для салону авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "губка для салона авто",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        },
+        {
+          "keyword": "полировочная губка для авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "полировочная губка для авто",
+          "_original_category": "aksessuary-dlya-naneseniya-sredstv"
+        }
+      ],
+      "total_volume": 500
+    },
+    "gubki-i-varezhki": {
+      "keywords": [
+        {
+          "keyword": "мочалка для автомобіля",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "мочалка для автомобиля",
+          "_original_category": "gubki-i-varezhki"
+        },
+        {
+          "keyword": "мочалка для авто",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "мочалка для авто",
+          "_original_category": "gubki-i-varezhki"
+        },
+        {
+          "keyword": "губка для авто",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "губка для авто",
+          "_original_category": "gubki-i-varezhki"
+        },
+        {
+          "keyword": "губки для автомобіля",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "губки для автомобиля",
+          "_original_category": "gubki-i-varezhki"
+        },
+        {
+          "keyword": "перчатка для миття авто",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "перчатка для мойки авто",
+          "_original_category": "gubki-i-varezhki"
+        },
+        {
+          "keyword": "мочалка для машини",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "мочалка для машины",
+          "_original_category": "gubki-i-varezhki"
+        },
+        {
+          "keyword": "перчатка для миття автомобіля",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "перчатка для мойки автомобиля",
+          "_original_category": "gubki-i-varezhki"
+        },
+        {
+          "keyword": "губка для миття авто",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "губка для мойки авто",
+          "_original_category": "gubki-i-varezhki"
+        },
+        {
+          "keyword": "губки для миття машини",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "губки для мытья машины",
+          "_original_category": "gubki-i-varezhki"
+        },
+        {
+          "keyword": "губки для миття автомобіля",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "губки для мойки автомобиля",
+          "_original_category": "gubki-i-varezhki"
+        }
+      ],
+      "total_volume": 1340
+    },
+    "malyarniy-skotch": {
+      "keywords": [
+        {
+          "keyword": "малярные скотчи",
+          "volume": 4400,
+          "use_in": "content",
+          "source_ru": "малярные скотчи",
+          "_original_category": "malyarniy-skotch"
+        },
+        {
+          "keyword": "малярний скотч",
+          "volume": 4400,
+          "use_in": "content",
+          "source_ru": "малярный скотч",
+          "_original_category": "malyarniy-skotch"
+        },
+        {
+          "keyword": "скотч малярний",
+          "volume": 1000,
+          "use_in": "content",
+          "source_ru": "скотч малярний",
+          "_original_category": "malyarniy-skotch"
+        },
+        {
+          "keyword": "купити малярний скотч",
+          "volume": 210,
+          "use_in": "meta_only",
+          "source_ru": "купить малярный скотч",
+          "_original_category": "malyarniy-skotch"
+        },
+        {
+          "keyword": "малярний скотч ціна",
+          "volume": 70,
+          "use_in": "meta_only",
+          "source_ru": "малярный скотч цена",
+          "_original_category": "malyarniy-skotch"
+        },
+        {
+          "keyword": "малярная лента",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "малярная лента",
+          "_original_category": "malyarniy-skotch"
+        },
+        {
+          "keyword": "малярная лента купити",
+          "volume": 50,
+          "use_in": "meta_only",
+          "source_ru": "малярная лента купить",
+          "_original_category": "malyarniy-skotch"
+        },
+        {
+          "keyword": "малярний скотч 10мм",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "малярный скотч 10мм",
+          "_original_category": "malyarniy-skotch"
+        },
+        {
+          "keyword": "малярний скотч 10 мм",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "малярный скотч 10 мм",
+          "_original_category": "malyarniy-skotch"
+        },
+        {
+          "keyword": "скотч малярний автомобільний",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "скотч малярный автомобильный",
+          "_original_category": "malyarniy-skotch"
+        }
+      ],
+      "total_volume": 10270
+    },
+    "mikrofibra-i-tryapki": {
+      "keywords": [
+        {
+          "keyword": "мікрофібра для авто",
+          "volume": 1300,
+          "use_in": "content",
+          "source_ru": "микрофибра для авто",
+          "_original_category": "mikrofibra-i-tryapki"
+        },
+        {
+          "keyword": "ганчірка для авто",
+          "volume": 1300,
+          "use_in": "content",
+          "source_ru": "тряпка для авто",
+          "_original_category": "mikrofibra-i-tryapki"
+        },
+        {
+          "keyword": "ганчірки для автомобіля",
+          "volume": 1300,
+          "use_in": "content",
+          "source_ru": "тряпки для автомобиля",
+          "_original_category": "mikrofibra-i-tryapki"
+        },
+        {
+          "keyword": "ганчірка для авто без розводів",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "тряпка для авто без разводов",
+          "_original_category": "mikrofibra-i-tryapki"
+        },
+        {
+          "keyword": "ганчірки для машини",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "тряпки для машины",
+          "_original_category": "mikrofibra-i-tryapki"
+        },
+        {
+          "keyword": "тряпочки для машини",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "тряпочки для машины",
+          "_original_category": "mikrofibra-i-tryapki"
+        },
+        {
+          "keyword": "ганчірки для сушки авто",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "тряпки для сушки авто",
+          "_original_category": "mikrofibra-i-tryapki"
+        },
+        {
+          "keyword": "мікрофібра для сушки авто",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "микрофибра для сушки авто",
+          "_original_category": "mikrofibra-i-tryapki"
+        },
+        {
+          "keyword": "ганчірки для сушки автомобіля",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "тряпки для сушки автомобиля",
+          "_original_category": "mikrofibra-i-tryapki"
+        },
+        {
+          "keyword": "влаговпитывающая ганчірка для авто",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "влаговпитывающая тряпка для авто",
+          "_original_category": "mikrofibra-i-tryapki"
+        }
+      ],
+      "total_volume": 5250
+    },
+    "nabory": {
+      "keywords": [
+        {
+          "keyword": "набори для авто",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "наборы для авто",
+          "_original_category": "nabory"
+        },
+        {
+          "keyword": "набори для детейлінгу",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "наборы для детейлинга",
+          "_original_category": "nabory"
+        },
+        {
+          "keyword": "набір для миття авто",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "набор для мойки авто",
+          "_original_category": "nabory"
+        },
+        {
+          "keyword": "набори для догляду за автомобілем",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "наборы для ухода за автомобилем",
+          "_original_category": "nabory"
+        },
+        {
+          "keyword": "набір для догляду за авто",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "набор для ухода за авто",
+          "_original_category": "nabory"
+        },
+        {
+          "keyword": "набір для хімчистки автомобіля",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "набор для химчистки автомобиля",
+          "_original_category": "nabory"
+        },
+        {
+          "keyword": "подарочные набори для мужчин в машину",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "подарочные наборы для мужчин в машину",
+          "_original_category": "nabory"
+        },
+        {
+          "keyword": "набір для хімчистки салону",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "набор для химчистки салона",
+          "_original_category": "nabory"
+        },
+        {
+          "keyword": "набір для чистки салону авто",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "набор для чистки салона авто",
+          "_original_category": "nabory"
+        },
+        {
+          "keyword": "набір для хімчистки авто",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "набор для химчистки авто",
+          "_original_category": "nabory"
+        }
+      ],
+      "total_volume": 1930
+    },
+    "raspyliteli-i-penniki": {
+      "keywords": [
+        {
+          "keyword": "пенообразователи для миття",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "пенообразователи для мойки",
+          "_original_category": "raspyliteli-i-penniki"
+        },
+        {
+          "keyword": "помповый розпилювач для миття авто",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "помповый распылитель для мойки авто",
+          "_original_category": "raspyliteli-i-penniki"
+        },
+        {
+          "keyword": "купити пенообразователь для миття в украине",
+          "volume": 80,
+          "use_in": "meta_only",
+          "source_ru": "купить пенообразователь для мойки в украине",
+          "_original_category": "raspyliteli-i-penniki"
+        },
+        {
+          "keyword": "пенообразователь для миття высокого давления",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "пенообразователь для мойки высокого давления",
+          "_original_category": "raspyliteli-i-penniki"
+        },
+        {
+          "keyword": "розпилювач для миття авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "распылитель для мойки авто",
+          "_original_category": "raspyliteli-i-penniki"
+        },
+        {
+          "keyword": "купити пенообразователь для миття высокого давления",
+          "volume": 40,
+          "use_in": "meta_only",
+          "source_ru": "купить пенообразователь для мойки высокого давления",
+          "_original_category": "raspyliteli-i-penniki"
+        },
+        {
+          "keyword": "розпилювач піни для миття",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "распылитель пены для мойки",
+          "_original_category": "raspyliteli-i-penniki"
+        },
+        {
+          "keyword": "ручної розпилювач для миття авто",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "ручной распылитель для мойки авто",
+          "_original_category": "raspyliteli-i-penniki"
+        },
+        {
+          "keyword": "купити пенообразователь для миття авто",
+          "volume": 30,
+          "use_in": "meta_only",
+          "source_ru": "купить пенообразователь для мойки авто",
+          "_original_category": "raspyliteli-i-penniki"
+        },
+        {
+          "keyword": "помповый розпилювач для авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "помповый распылитель для авто",
+          "_original_category": "raspyliteli-i-penniki"
+        }
+      ],
+      "total_volume": 870
+    },
+    "vedra-i-emkosti": {
+      "keywords": [
+        {
+          "keyword": "відро для миття автомобіля",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "ведро для мойки автомобиля",
+          "_original_category": "vedra-i-emkosti"
+        },
+        {
+          "keyword": "відра для миття авто",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "ведра для мойки авто",
+          "_original_category": "vedra-i-emkosti"
+        },
+        {
+          "keyword": "відро для детейлінгу",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "ведро для детейлинга",
+          "_original_category": "vedra-i-emkosti"
+        },
+        {
+          "keyword": "відро з сіткою для миття",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "ведро с сеткой для мойки",
+          "_original_category": "vedra-i-emkosti"
+        },
+        {
+          "keyword": "профессиональное відро для миття",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "профессиональное ведро для мойки",
+          "_original_category": "vedra-i-emkosti"
+        },
+        {
+          "keyword": "купити відро для миття авто",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить ведро для мойки авто",
+          "_original_category": "vedra-i-emkosti"
+        },
+        {
+          "keyword": "відро для миття машини",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "ведро для мытья машины",
+          "_original_category": "vedra-i-emkosti"
+        },
+        {
+          "keyword": "відро для миття автомобіля купити",
+          "volume": 0,
+          "use_in": "meta_only",
+          "source_ru": "ведро для мойки автомобиля купить",
+          "_original_category": "vedra-i-emkosti"
+        }
+      ],
+      "total_volume": 250
+    },
+    "kisti-dlya-deteylinga": {
+      "keywords": [
+        {
+          "keyword": "щітка для детейлінгу",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "щетка для детейлинга",
+          "_original_category": "kisti-dlya-deteylinga"
+        },
+        {
+          "keyword": "щітка для чистки салону автомобіля",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "щетка для чистки салона автомобиля",
+          "_original_category": "kisti-dlya-deteylinga"
+        },
+        {
+          "keyword": "щітка для чистки салону авто",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "щетка для чистки салона авто",
+          "_original_category": "kisti-dlya-deteylinga"
+        },
+        {
+          "keyword": "щітки для хімчистки авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "щетки для химчистки авто",
+          "_original_category": "kisti-dlya-deteylinga"
+        },
+        {
+          "keyword": "щітка для дисків авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "щетка для дисков авто",
+          "_original_category": "kisti-dlya-deteylinga"
+        },
+        {
+          "keyword": "набір щеток для детейлінгу",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "набор щеток для детейлинга",
+          "_original_category": "kisti-dlya-deteylinga"
+        },
+        {
+          "keyword": "щітка для салону авто",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "щетка для салона авто",
+          "_original_category": "kisti-dlya-deteylinga"
+        },
+        {
+          "keyword": "купити кисточки для детейлінгу",
+          "volume": 40,
+          "use_in": "meta_only",
+          "source_ru": "купить кисточки для детейлинга",
+          "_original_category": "kisti-dlya-deteylinga"
+        },
+        {
+          "keyword": "щітка для чистки салону",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "щетка для чистки салона",
+          "_original_category": "kisti-dlya-deteylinga"
+        },
+        {
+          "keyword": "щітка для чистки сидений авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "щетка для чистки сидений авто",
+          "_original_category": "kisti-dlya-deteylinga"
+        }
+      ],
+      "total_volume": 610
+    },
+    "shchetka-dlya-moyki-avto": {
+      "keywords": [
+        {
+          "keyword": "щітка для миття авто",
+          "volume": 480,
+          "use_in": "content",
+          "source_ru": "щетка для мойки авто",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        },
+        {
+          "keyword": "щітка для миття машини",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "щетка для мытья машины",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        },
+        {
+          "keyword": "купити щетку для миття авто",
+          "volume": 210,
+          "use_in": "meta_only",
+          "source_ru": "купить щетку для мойки авто",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        },
+        {
+          "keyword": "купити щетку для миття автомобіля",
+          "volume": 210,
+          "use_in": "meta_only",
+          "source_ru": "купить щетку для мойки автомобиля",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        },
+        {
+          "keyword": "мягкие щітки для миття машини",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "мягкие щетки для мытья машины",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        },
+        {
+          "keyword": "щітка для миття автомобіля",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "щетка для мытья автомобиля",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        },
+        {
+          "keyword": "купити щетку для миття машини",
+          "volume": 90,
+          "use_in": "meta_only",
+          "source_ru": "купить щетку для мытья машины",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        },
+        {
+          "keyword": "щітки для миття машини",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "щетки для мойки машины",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        },
+        {
+          "keyword": "щітка для миття дисків авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "щетка для мытья дисков авто",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        },
+        {
+          "keyword": "щітка для миття машини ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "щетка для мытья машины цена",
+          "_original_category": "shchetka-dlya-moyki-avto"
+        }
+      ],
+      "total_volume": 1670
+    },
+    "avtoshampuni": {
+      "keywords": [
+        {
+          "keyword": "автошампунь",
+          "volume": 1000,
+          "use_in": "content",
+          "source_ru": "автошампунь",
+          "_original_category": "avtoshampuni"
+        },
+        {
+          "keyword": "шампунь для авто",
+          "volume": 500,
+          "use_in": "content",
+          "source_ru": "шампунь для авто",
+          "_original_category": "avtoshampuni"
+        },
+        {
+          "keyword": "шампунь для миття авто",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "шампунь для мойки авто",
+          "_original_category": "avtoshampuni"
+        },
+        {
+          "keyword": "купити автошампунь",
+          "volume": 90,
+          "use_in": "meta_only",
+          "source_ru": "купить автошампунь",
+          "_original_category": "avtoshampuni"
+        },
+        {
+          "keyword": "автомобільний шампунь",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "автомобильный шампунь",
+          "_original_category": "avtoshampuni"
+        },
+        {
+          "keyword": "шампунь для автомийки",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "шампунь для автомойки",
+          "_original_category": "avtoshampuni"
+        },
+        {
+          "keyword": "шампунь для моек высокого давления",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "шампунь для моек высокого давления",
+          "_original_category": "avtoshampuni"
+        },
+        {
+          "keyword": "купити шампунь для авто",
+          "volume": 50,
+          "use_in": "meta_only",
+          "source_ru": "купить шампунь для авто",
+          "_original_category": "avtoshampuni"
+        },
+        {
+          "keyword": "шампунь для машини",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "шампунь для машины",
+          "_original_category": "avtoshampuni"
+        },
+        {
+          "keyword": "моющее засіб для авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "моющее средство для авто",
+          "_original_category": "avtoshampuni"
+        }
+      ],
+      "total_volume": 1960
+    },
+    "ochistiteli-dvigatelya": {
+      "keywords": [
+        {
+          "keyword": "очищувач двигуна",
+          "volume": 480,
+          "use_in": "content",
+          "source_ru": "очиститель двигателя",
+          "_original_category": "ochistiteli-dvigatelya"
+        },
+        {
+          "keyword": "хімія для миття двигуна",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "химия для мойки двигателя",
+          "_original_category": "ochistiteli-dvigatelya"
+        },
+        {
+          "keyword": "засоби для миття двигуна",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "средства для мойки двигателя",
+          "_original_category": "ochistiteli-dvigatelya"
+        },
+        {
+          "keyword": "очищувач двигуна від масла та грязи",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "очиститель двигателя от масла и грязи",
+          "_original_category": "ochistiteli-dvigatelya"
+        },
+        {
+          "keyword": "засіб для миття двигуна",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "средство для мытья двигателя",
+          "_original_category": "ochistiteli-dvigatelya"
+        },
+        {
+          "keyword": "очищувач двигуна від масляных загрязнений",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "очиститель двигателя от масляных загрязнений",
+          "_original_category": "ochistiteli-dvigatelya"
+        },
+        {
+          "keyword": "купити химию для миття двигуна",
+          "volume": 90,
+          "use_in": "meta_only",
+          "source_ru": "купить химию для мойки двигателя",
+          "_original_category": "ochistiteli-dvigatelya"
+        },
+        {
+          "keyword": "хімія для мотора",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "химия для мотора",
+          "_original_category": "ochistiteli-dvigatelya"
+        },
+        {
+          "keyword": "купити очищувач двигуна",
+          "volume": 50,
+          "use_in": "meta_only",
+          "source_ru": "купить очиститель двигателя",
+          "_original_category": "ochistiteli-dvigatelya"
+        },
+        {
+          "keyword": "хімія для миття мотора",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "химия для мойки мотора",
+          "_original_category": "ochistiteli-dvigatelya"
+        }
+      ],
+      "total_volume": 1770
+    },
+    "aktivnaya-pena": {
+      "keywords": [
+        {
+          "keyword": "піна для миття авто",
+          "volume": 1300,
+          "use_in": "content",
+          "source_ru": "пена для мойки авто",
+          "_original_category": "aktivnaya-pena"
+        },
+        {
+          "keyword": "піна для миття автомобіля",
+          "volume": 1300,
+          "use_in": "content",
+          "source_ru": "пена для мойки автомобиля",
+          "_original_category": "aktivnaya-pena"
+        },
+        {
+          "keyword": "активна піна для миття авто",
+          "volume": 1000,
+          "use_in": "content",
+          "source_ru": "активная пена для мойки авто",
+          "_original_category": "aktivnaya-pena"
+        },
+        {
+          "keyword": "активна піна для миття автомобіля",
+          "volume": 880,
+          "use_in": "content",
+          "source_ru": "активная пена для мойки автомобиля",
+          "_original_category": "aktivnaya-pena"
+        },
+        {
+          "keyword": "активна піна",
+          "volume": 720,
+          "use_in": "content",
+          "source_ru": "активная пена",
+          "_original_category": "aktivnaya-pena"
+        },
+        {
+          "keyword": "купити піну для миття авто",
+          "volume": 590,
+          "use_in": "meta_only",
+          "source_ru": "купить пену для мойки авто",
+          "_original_category": "aktivnaya-pena"
+        },
+        {
+          "keyword": "активна піна для безконтактної миття",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "активная пена для бесконтактной мойки",
+          "_original_category": "aktivnaya-pena"
+        },
+        {
+          "keyword": "купити активную піну",
+          "volume": 260,
+          "use_in": "meta_only",
+          "source_ru": "купить активную пену",
+          "_original_category": "aktivnaya-pena"
+        },
+        {
+          "keyword": "купити активную піну для миття авто",
+          "volume": 210,
+          "use_in": "meta_only",
+          "source_ru": "купить активную пену для мойки авто",
+          "_original_category": "aktivnaya-pena"
+        },
+        {
+          "keyword": "шампунь для безконтактної миття",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "шампунь для бесконтактной мойки",
+          "_original_category": "aktivnaya-pena"
+        }
+      ],
+      "total_volume": 6690
+    },
+    "shampuni-dlya-ruchnoy-moyki": {
+      "keywords": [
+        {
+          "keyword": "автошампунь для ручної миття",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "автошампунь для ручной мойки",
+          "_original_category": "shampuni-dlya-ruchnoy-moyki"
+        },
+        {
+          "keyword": "шампунь для ручної миття авто",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "шампунь для ручной мойки авто",
+          "_original_category": "shampuni-dlya-ruchnoy-moyki"
+        },
+        {
+          "keyword": "автомобільний шампунь для ручної миття",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "автомобильный шампунь для ручной мойки",
+          "_original_category": "shampuni-dlya-ruchnoy-moyki"
+        },
+        {
+          "keyword": "купити автошампунь для ручної миття",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить автошампунь для ручной мойки",
+          "_original_category": "shampuni-dlya-ruchnoy-moyki"
+        },
+        {
+          "keyword": "шампунь для ручної миття",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "шампунь для ручной мойки",
+          "_original_category": "shampuni-dlya-ruchnoy-moyki"
+        },
+        {
+          "keyword": "шампунь для миття авто вручную",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "шампунь для мытья авто вручную",
+          "_original_category": "shampuni-dlya-ruchnoy-moyki"
+        },
+        {
+          "keyword": "шампунь для ручної миття ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "шампунь для ручной мойки цена",
+          "_original_category": "shampuni-dlya-ruchnoy-moyki"
+        }
+      ],
+      "total_volume": 620
+    },
+    "antibitum": {
+      "keywords": [
+        {
+          "keyword": "антибітум",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "антибитум",
+          "_original_category": "antibitum"
+        },
+        {
+          "keyword": "антибітум для авто",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "антибитум для авто",
+          "_original_category": "antibitum"
+        },
+        {
+          "keyword": "засіб від битума",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "средство от битума",
+          "_original_category": "antibitum"
+        },
+        {
+          "keyword": "очищувач битума",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "очиститель битума",
+          "_original_category": "antibitum"
+        },
+        {
+          "keyword": "видаляч битума",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "удалитель битума",
+          "_original_category": "antibitum"
+        },
+        {
+          "keyword": "купити антибітум для авто",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить антибитум для авто",
+          "_original_category": "antibitum"
+        },
+        {
+          "keyword": "засіб від битумных плям",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "средство от битумных пятен",
+          "_original_category": "antibitum"
+        },
+        {
+          "keyword": "антибітум купити",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "антибитум купить",
+          "_original_category": "antibitum"
+        },
+        {
+          "keyword": "антибітум ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "антибитум цена",
+          "_original_category": "antibitum"
+        }
+      ],
+      "total_volume": 210
+    },
+    "antimoshka": {
+      "keywords": [
+        {
+          "keyword": "антимошка",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "антимошка",
+          "_original_category": "antimoshka"
+        },
+        {
+          "keyword": "антимошка для авто",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "антимошка для авто",
+          "_original_category": "antimoshka"
+        },
+        {
+          "keyword": "засіб від мошек на авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "средство от мошек на авто",
+          "_original_category": "antimoshka"
+        },
+        {
+          "keyword": "антимошка на мийці",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "антимошка на мойке",
+          "_original_category": "antimoshka"
+        },
+        {
+          "keyword": "концентрат антимошка",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "концентрат антимошка",
+          "_original_category": "antimoshka"
+        },
+        {
+          "keyword": "антимошка на мийці самообслуговування",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "антимошка на мойке самообслуживания",
+          "_original_category": "antimoshka"
+        },
+        {
+          "keyword": "купити антимошку",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить антимошку",
+          "_original_category": "antimoshka"
+        },
+        {
+          "keyword": "антимошка спрей",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "антимошка спрей",
+          "_original_category": "antimoshka"
+        },
+        {
+          "keyword": "очищувач від насекомых",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "очиститель от насекомых",
+          "_original_category": "antimoshka"
+        },
+        {
+          "keyword": "антимошка ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "антимошка цена",
+          "_original_category": "antimoshka"
+        }
+      ],
+      "total_volume": 810
+    },
+    "glina-i-avtoskraby": {
+      "keywords": [
+        {
+          "keyword": "глина для авто",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "глина для авто",
+          "_original_category": "glina-i-avtoskraby"
+        },
+        {
+          "keyword": "синяя глина для авто",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "синяя глина для авто",
+          "_original_category": "glina-i-avtoskraby"
+        },
+        {
+          "keyword": "автоскраб",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "автоскраб",
+          "_original_category": "glina-i-avtoskraby"
+        },
+        {
+          "keyword": "глина для чистки авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "глина для чистки авто",
+          "_original_category": "glina-i-avtoskraby"
+        },
+        {
+          "keyword": "глина для чистки автомобіля",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "глина для чистки автомобиля",
+          "_original_category": "glina-i-avtoskraby"
+        },
+        {
+          "keyword": "голубая глина для авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "голубая глина для авто",
+          "_original_category": "glina-i-avtoskraby"
+        },
+        {
+          "keyword": "автомобільна глина",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "автомобильная глина",
+          "_original_category": "glina-i-avtoskraby"
+        },
+        {
+          "keyword": "глина для кузова автомобіля",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "глина для кузова автомобиля",
+          "_original_category": "glina-i-avtoskraby"
+        },
+        {
+          "keyword": "глина для полірування автомобіля",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "глина для полировки автомобиля",
+          "_original_category": "glina-i-avtoskraby"
+        },
+        {
+          "keyword": "купити синюю глину для авто",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить синюю глину для авто",
+          "_original_category": "glina-i-avtoskraby"
+        }
+      ],
+      "total_volume": 810
+    },
+    "obezzhirivateli": {
+      "keywords": [
+        {
+          "keyword": "знежирювач для авто",
+          "volume": 590,
+          "use_in": "content",
+          "source_ru": "обезжириватель для авто",
+          "_original_category": "obezzhirivateli"
+        },
+        {
+          "keyword": "купити знежирювач для авто",
+          "volume": 70,
+          "use_in": "meta_only",
+          "source_ru": "купить обезжириватель для авто",
+          "_original_category": "obezzhirivateli"
+        },
+        {
+          "keyword": "купити знежирювач для автомобіля",
+          "volume": 70,
+          "use_in": "meta_only",
+          "source_ru": "купить обезжириватель для автомобиля",
+          "_original_category": "obezzhirivateli"
+        },
+        {
+          "keyword": "знежирювач для кузова авто",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "обезжириватель для кузова авто",
+          "_original_category": "obezzhirivateli"
+        },
+        {
+          "keyword": "знежирювач для авто перед полировкой",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "обезжириватель для авто перед полировкой",
+          "_original_category": "obezzhirivateli"
+        },
+        {
+          "keyword": "знежирювач автомобільний",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "обезжириватель автомобильный",
+          "_original_category": "obezzhirivateli"
+        },
+        {
+          "keyword": "знежирювач кузова перед полировкой",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "обезжириватель кузова перед полировкой",
+          "_original_category": "obezzhirivateli"
+        },
+        {
+          "keyword": "знежирювач кузова перед мойкой",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "обезжириватель кузова перед мойкой",
+          "_original_category": "obezzhirivateli"
+        },
+        {
+          "keyword": "знежирювач для полірування авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "обезжириватель для полировки авто",
+          "_original_category": "obezzhirivateli"
+        },
+        {
+          "keyword": "знежирювач кузова автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "обезжириватель кузова автомобиля",
+          "_original_category": "obezzhirivateli"
+        }
+      ],
+      "total_volume": 830
+    },
+    "ukhod-za-naruzhnym-plastikom": {
+      "keywords": [
+        {
+          "keyword": "поліроль для зовнішнього пластику автомобіля",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "полироль для наружного пластика автомобиля",
+          "_original_category": "ukhod-za-naruzhnym-plastikom"
+        },
+        {
+          "keyword": "поліроль для зовнішнього пластику авто",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "полироль для наружного пластика авто",
+          "_original_category": "ukhod-za-naruzhnym-plastikom"
+        },
+        {
+          "keyword": "поліроль для зовнішнього пластику",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "полироль для наружного пластика",
+          "_original_category": "ukhod-za-naruzhnym-plastikom"
+        },
+        {
+          "keyword": "відновлювач пластику авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "восстановитель пластика авто",
+          "_original_category": "ukhod-za-naruzhnym-plastikom"
+        },
+        {
+          "keyword": "чорнитель для зовнішнього пластику",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "чернитель для наружного пластика",
+          "_original_category": "ukhod-za-naruzhnym-plastikom"
+        },
+        {
+          "keyword": "догляд за бамперами",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "уход за бамперами",
+          "_original_category": "ukhod-za-naruzhnym-plastikom"
+        }
+      ],
+      "total_volume": 120
+    },
+    "cherniteli-shin": {
+      "keywords": [
+        {
+          "keyword": "чорнитель гуми",
+          "volume": 1000,
+          "use_in": "content",
+          "source_ru": "чернитель резины",
+          "_original_category": "cherniteli-shin"
+        },
+        {
+          "keyword": "чорніння гуми",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "чернение резины",
+          "_original_category": "cherniteli-shin"
+        },
+        {
+          "keyword": "поліроль для колес",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "полироль для колес",
+          "_original_category": "cherniteli-shin"
+        },
+        {
+          "keyword": "засоби для чернения шин",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "средства для чернения шин",
+          "_original_category": "cherniteli-shin"
+        },
+        {
+          "keyword": "поліроль для шин",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "полироль для шин",
+          "_original_category": "cherniteli-shin"
+        },
+        {
+          "keyword": "купити чорнитель гуми",
+          "volume": 70,
+          "use_in": "meta_only",
+          "source_ru": "купить чернитель резины",
+          "_original_category": "cherniteli-shin"
+        },
+        {
+          "keyword": "чорнитель колёс",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "чернитель колёс",
+          "_original_category": "cherniteli-shin"
+        },
+        {
+          "keyword": "чорніння колес",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "чернение колес",
+          "_original_category": "cherniteli-shin"
+        },
+        {
+          "keyword": "поліроль для гуми",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "полироль для резины",
+          "_original_category": "cherniteli-shin"
+        },
+        {
+          "keyword": "чорнитель шин купити",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "чернитель шин купить",
+          "_original_category": "cherniteli-shin"
+        }
+      ],
+      "total_volume": 1950
+    },
+    "keramika-dlya-diskov": {
+      "keywords": [
+        {
+          "keyword": "захисне покриття для дисків",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "защитное покрытие для дисков",
+          "_original_category": "keramika-dlya-diskov"
+        },
+        {
+          "keyword": "захисне покриття для литых дисків",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "защитное покрытие для литых дисков",
+          "_original_category": "keramika-dlya-diskov"
+        },
+        {
+          "keyword": "кераміка для колёсных дисків",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "керамика для колёсных дисков",
+          "_original_category": "keramika-dlya-diskov"
+        },
+        {
+          "keyword": "нанокерамика для дисків",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "нанокерамика для дисков",
+          "_original_category": "keramika-dlya-diskov"
+        }
+      ],
+      "total_volume": 40
+    },
+    "ochistiteli-diskov": {
+      "keywords": [
+        {
+          "keyword": "хімія для дисків",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "химия для дисков",
+          "_original_category": "ochistiteli-diskov"
+        },
+        {
+          "keyword": "засоби для чистки дисків",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "средства для чистки дисков",
+          "_original_category": "ochistiteli-diskov"
+        },
+        {
+          "keyword": "очищувач дисків",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "очиститель дисков",
+          "_original_category": "ochistiteli-diskov"
+        },
+        {
+          "keyword": "засіб для дисків",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "средство для дисков",
+          "_original_category": "ochistiteli-diskov"
+        },
+        {
+          "keyword": "засіб для чистки дисків автомобіля",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "средство для чистки дисков автомобиля",
+          "_original_category": "ochistiteli-diskov"
+        },
+        {
+          "keyword": "хімія для чистки дисків",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "химия для чистки дисков",
+          "_original_category": "ochistiteli-diskov"
+        },
+        {
+          "keyword": "хімія для миття дисків",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "химия для мойки дисков",
+          "_original_category": "ochistiteli-diskov"
+        },
+        {
+          "keyword": "засіб для миття дисків",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "средство для мойки дисков",
+          "_original_category": "ochistiteli-diskov"
+        },
+        {
+          "keyword": "хімія для дисків автомобіля",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "химия для дисков автомобиля",
+          "_original_category": "ochistiteli-diskov"
+        },
+        {
+          "keyword": "очищувач колесных дисків",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "очиститель колесных дисков",
+          "_original_category": "ochistiteli-diskov"
+        }
+      ],
+      "total_volume": 270
+    },
+    "ochistiteli-shin": {
+      "keywords": [
+        {
+          "keyword": "очищувач шин",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "очиститель шин",
+          "_original_category": "ochistiteli-shin"
+        },
+        {
+          "keyword": "очищувач гуми",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "очиститель резины",
+          "_original_category": "ochistiteli-shin"
+        },
+        {
+          "keyword": "засіб для чистки шин",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "средство для чистки шин",
+          "_original_category": "ochistiteli-shin"
+        },
+        {
+          "keyword": "засіб для очищення гуми",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "средство для очистки резины",
+          "_original_category": "ochistiteli-shin"
+        },
+        {
+          "keyword": "очищувач для покрышек",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "очиститель для покрышек",
+          "_original_category": "ochistiteli-shin"
+        },
+        {
+          "keyword": "купити очищувач шин",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить очиститель шин",
+          "_original_category": "ochistiteli-shin"
+        }
+      ],
+      "total_volume": 120
+    },
+    "antidozhd": {
+      "keywords": [
+        {
+          "keyword": "антидощ",
+          "volume": 1200,
+          "use_in": "content",
+          "source_ru": "антидождь",
+          "_original_category": "antidozhd"
+        },
+        {
+          "keyword": "засіб антидощ купити",
+          "volume": 1000,
+          "use_in": "meta_only",
+          "source_ru": "средство антидождь купить",
+          "_original_category": "antidozhd"
+        },
+        {
+          "keyword": "антидощ авто купити",
+          "volume": 700,
+          "use_in": "meta_only",
+          "source_ru": "антидождь авто купить",
+          "_original_category": "antidozhd"
+        },
+        {
+          "keyword": "антидощ для автомобіля",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "антидождь для автомобиля",
+          "_original_category": "antidozhd"
+        },
+        {
+          "keyword": "антидощ ціна",
+          "volume": 200,
+          "use_in": "meta_only",
+          "source_ru": "антидождь цена",
+          "_original_category": "antidozhd"
+        },
+        {
+          "keyword": "купити антидощ",
+          "volume": 110,
+          "use_in": "meta_only",
+          "source_ru": "купить антидождь",
+          "_original_category": "antidozhd"
+        },
+        {
+          "keyword": "антидощ для авто",
+          "volume": 80,
+          "use_in": "content",
+          "source_ru": "антидождь для авто",
+          "_original_category": "antidozhd"
+        },
+        {
+          "keyword": "антидощ для дзеркал авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "антидождь для зеркал авто",
+          "_original_category": "antidozhd"
+        },
+        {
+          "keyword": "гідрофобне покриття для скла",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "гидрофобное покрытие для стекла",
+          "_original_category": "antidozhd"
+        },
+        {
+          "keyword": "антидощ на лобове скло",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "антидождь на лобовое стекло",
+          "_original_category": "antidozhd"
+        }
+      ],
+      "total_volume": 3660
+    },
+    "ochistiteli-stekol": {
+      "keywords": [
+        {
+          "keyword": "очищувач скла авто",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "очиститель стекла авто",
+          "_original_category": "ochistiteli-stekol"
+        },
+        {
+          "keyword": "засіб для скла авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "средство для стекол авто",
+          "_original_category": "ochistiteli-stekol"
+        },
+        {
+          "keyword": "засіб для автомобильных скла",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "средство для автомобильных стекол",
+          "_original_category": "ochistiteli-stekol"
+        },
+        {
+          "keyword": "очищувач лобового скла",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "очиститель лобового стекла",
+          "_original_category": "ochistiteli-stekol"
+        },
+        {
+          "keyword": "очищувач скла автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "очиститель стекол автомобиля",
+          "_original_category": "ochistiteli-stekol"
+        },
+        {
+          "keyword": "засіб для очищення скла авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "средство для очистки стекол авто",
+          "_original_category": "ochistiteli-stekol"
+        },
+        {
+          "keyword": "засіб для чистки скла авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "средство для чистки стекол авто",
+          "_original_category": "ochistiteli-stekol"
+        },
+        {
+          "keyword": "жидкость для очищення скла автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "жидкость для очистки стекол автомобиля",
+          "_original_category": "ochistiteli-stekol"
+        },
+        {
+          "keyword": "купити очищувач скла авто",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить очиститель стекол авто",
+          "_original_category": "ochistiteli-stekol"
+        },
+        {
+          "keyword": "очищувач скла авто ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "очиститель стекол авто цена",
+          "_original_category": "ochistiteli-stekol"
+        }
+      ],
+      "total_volume": 280
+    },
+    "omyvatel": {
+      "keywords": [
+        {
+          "keyword": "омивач скла зимний",
+          "volume": 1000,
+          "use_in": "content",
+          "source_ru": "омыватель стекла зимний",
+          "_original_category": "omyvatel"
+        },
+        {
+          "keyword": "омивач скла",
+          "volume": 720,
+          "use_in": "content",
+          "source_ru": "омыватель стекла",
+          "_original_category": "omyvatel"
+        },
+        {
+          "keyword": "зимний омивач",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "зимний омыватель",
+          "_original_category": "omyvatel"
+        },
+        {
+          "keyword": "омивач",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "омыватель",
+          "_original_category": "omyvatel"
+        },
+        {
+          "keyword": "купити омивач скла зимний",
+          "volume": 170,
+          "use_in": "meta_only",
+          "source_ru": "купить омыватель стекла зимний",
+          "_original_category": "omyvatel"
+        },
+        {
+          "keyword": "омивач скла летний",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "омыватель стекла летний",
+          "_original_category": "omyvatel"
+        },
+        {
+          "keyword": "омивач лобового скла",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "омыватель лобового стекла",
+          "_original_category": "omyvatel"
+        },
+        {
+          "keyword": "стеклоомыватель",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "стеклоомыватель",
+          "_original_category": "omyvatel"
+        },
+        {
+          "keyword": "омивач для скла",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "омыватель для стекол",
+          "_original_category": "omyvatel"
+        },
+        {
+          "keyword": "купити омивач скла",
+          "volume": 50,
+          "use_in": "meta_only",
+          "source_ru": "купить омыватель стекла",
+          "_original_category": "omyvatel"
+        }
+      ],
+      "total_volume": 2930
+    },
+    "polirol-dlya-stekla": {
+      "keywords": [
+        {
+          "keyword": "поліроль для скла",
+          "volume": 590,
+          "use_in": "content",
+          "source_ru": "полироль для стекла",
+          "_original_category": "polirol-dlya-stekla"
+        },
+        {
+          "keyword": "поліроль для скла авто",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "полироль для стекла авто",
+          "_original_category": "polirol-dlya-stekla"
+        },
+        {
+          "keyword": "поліроль для скла автомобіля",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "полироль для стекол автомобиля",
+          "_original_category": "polirol-dlya-stekla"
+        },
+        {
+          "keyword": "поліроль для автостекла",
+          "volume": 60,
+          "use_in": "content",
+          "source_ru": "полироль для автостекла",
+          "_original_category": "polirol-dlya-stekla"
+        },
+        {
+          "keyword": "засіб для полірування лобового скла",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "средство для полировки лобового стекла",
+          "_original_category": "polirol-dlya-stekla"
+        },
+        {
+          "keyword": "засіб для полірування скла автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "средство для полировки стекол автомобиля",
+          "_original_category": "polirol-dlya-stekla"
+        },
+        {
+          "keyword": "купити поліроль для скла авто",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить полироль для стекла авто",
+          "_original_category": "polirol-dlya-stekla"
+        },
+        {
+          "keyword": "поліроль для скла авто ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "полироль для стекла авто цена",
+          "_original_category": "polirol-dlya-stekla"
+        }
+      ],
+      "total_volume": 850
+    },
+    "apparaty-tornador": {
+      "keywords": [
+        {
+          "keyword": "торнадор",
+          "volume": 3600,
+          "use_in": "content",
+          "source_ru": "торнадор",
+          "_original_category": "apparaty-tornador"
+        },
+        {
+          "keyword": "купити торнадор",
+          "volume": 390,
+          "use_in": "meta_only",
+          "source_ru": "купить торнадор",
+          "_original_category": "apparaty-tornador"
+        },
+        {
+          "keyword": "торнадор для хімчистки авто",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "торнадор для химчистки авто",
+          "_original_category": "apparaty-tornador"
+        },
+        {
+          "keyword": "торнадор хімчистка",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "торнадор химчистка",
+          "_original_category": "apparaty-tornador"
+        },
+        {
+          "keyword": "tornador",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "tornador",
+          "_original_category": "apparaty-tornador"
+        },
+        {
+          "keyword": "купити торнадор для хімчистки",
+          "volume": 90,
+          "use_in": "meta_only",
+          "source_ru": "купить торнадор для химчистки",
+          "_original_category": "apparaty-tornador"
+        },
+        {
+          "keyword": "купити торнадор для хімчистки салону",
+          "volume": 50,
+          "use_in": "meta_only",
+          "source_ru": "купить торнадор для химчистки салона",
+          "_original_category": "apparaty-tornador"
+        },
+        {
+          "keyword": "торнадор професійний купити",
+          "volume": 50,
+          "use_in": "meta_only",
+          "source_ru": "торнадор профессиональный купить",
+          "_original_category": "apparaty-tornador"
+        },
+        {
+          "keyword": "купити tornador",
+          "volume": 40,
+          "use_in": "meta_only",
+          "source_ru": "купить tornador",
+          "_original_category": "apparaty-tornador"
+        },
+        {
+          "keyword": "торнадор для хімчистки салону",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "торнадор для химчистки салона",
+          "_original_category": "apparaty-tornador"
+        }
+      ],
+      "total_volume": 4860
+    },
+    "polirovalnye-pasty": {
+      "keywords": [
+        {
+          "keyword": "полировочная паста",
+          "volume": 1600,
+          "use_in": "content",
+          "source_ru": "полировочная паста",
+          "_original_category": "polirovalnye-pasty"
+        },
+        {
+          "keyword": "полировочная паста для авто",
+          "volume": 590,
+          "use_in": "content",
+          "source_ru": "полировочная паста для авто",
+          "_original_category": "polirovalnye-pasty"
+        },
+        {
+          "keyword": "паста для полірування",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "паста для полировки",
+          "_original_category": "polirovalnye-pasty"
+        },
+        {
+          "keyword": "полировочная паста для авто від царапин",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "полировочная паста для авто от царапин",
+          "_original_category": "polirovalnye-pasty"
+        },
+        {
+          "keyword": "купити пасту для полірування авто",
+          "volume": 260,
+          "use_in": "meta_only",
+          "source_ru": "купить пасту для полировки авто",
+          "_original_category": "polirovalnye-pasty"
+        },
+        {
+          "keyword": "полировочная паста для автомобіля",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "полировочная паста для автомобиля",
+          "_original_category": "polirovalnye-pasty"
+        },
+        {
+          "keyword": "купити полировочную пасту",
+          "volume": 140,
+          "use_in": "meta_only",
+          "source_ru": "купить полировочную пасту",
+          "_original_category": "polirovalnye-pasty"
+        },
+        {
+          "keyword": "купити полировочную пасту для автомобіля",
+          "volume": 110,
+          "use_in": "meta_only",
+          "source_ru": "купить полировочную пасту для автомобиля",
+          "_original_category": "polirovalnye-pasty"
+        },
+        {
+          "keyword": "купити полировочную пасту для авто",
+          "volume": 110,
+          "use_in": "meta_only",
+          "source_ru": "купить полировочную пасту для авто",
+          "_original_category": "polirovalnye-pasty"
+        },
+        {
+          "keyword": "паста для автомобіля",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "паста для автомобиля",
+          "_original_category": "polirovalnye-pasty"
+        }
+      ],
+      "total_volume": 3610
+    },
+    "mekhovye": {
+      "keywords": [
+        {
+          "keyword": "шерстяной круг для полірування",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "шерстяной круг для полировки",
+          "_original_category": "mekhovye"
+        },
+        {
+          "keyword": "хутряний круг для полірування",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "меховой круг для полировки",
+          "_original_category": "mekhovye"
+        },
+        {
+          "keyword": "хутряний круг для полірування авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "меховой круг для полировки авто",
+          "_original_category": "mekhovye"
+        },
+        {
+          "keyword": "шерстяной круг на полировальную машинку",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "шерстяной круг на полировальную машинку",
+          "_original_category": "mekhovye"
+        },
+        {
+          "keyword": "круг из шерсти для полірування",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "круг из шерсти для полировки",
+          "_original_category": "mekhovye"
+        },
+        {
+          "keyword": "wool pad",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "wool pad",
+          "_original_category": "mekhovye"
+        },
+        {
+          "keyword": "купити хутряний круг для полірування",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить меховой круг для полировки",
+          "_original_category": "mekhovye"
+        },
+        {
+          "keyword": "шерстяной круг для полірування ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "шерстяной круг для полировки цена",
+          "_original_category": "mekhovye"
+        }
+      ],
+      "total_volume": 130
+    },
+    "akkumulyatornaya": {
+      "keywords": [
+        {
+          "keyword": "акумуляторна полірувальна машина",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "аккумуляторная полировальная машина",
+          "_original_category": "akkumulyatornaya"
+        },
+        {
+          "keyword": "полірувальна машина на аккумуляторе",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "полировальная машина на аккумуляторе",
+          "_original_category": "akkumulyatornaya"
+        },
+        {
+          "keyword": "полірувальна машинка на аккумуляторе",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "полировальная машинка на аккумуляторе",
+          "_original_category": "akkumulyatornaya"
+        },
+        {
+          "keyword": "акумуляторна полірувальна машина для авто",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "аккумуляторная полировальная машина для авто",
+          "_original_category": "akkumulyatornaya"
+        },
+        {
+          "keyword": "полірувальна машина для авто на аккумуляторе",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "полировальная машина для авто на аккумуляторе",
+          "_original_category": "akkumulyatornaya"
+        },
+        {
+          "keyword": "купити аккумуляторную полировальную машинку",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить аккумуляторную полировальную машинку",
+          "_original_category": "akkumulyatornaya"
+        },
+        {
+          "keyword": "полировочная машинка на аккумуляторе",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "полировочная машинка на аккумуляторе",
+          "_original_category": "akkumulyatornaya"
+        },
+        {
+          "keyword": "машинка для полірування авто на аккумуляторе",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "машинка для полировки авто на аккумуляторе",
+          "_original_category": "akkumulyatornaya"
+        }
+      ],
+      "total_volume": 930
+    },
+    "neytralizatory-zapakha": {
+      "keywords": [
+        {
+          "keyword": "нейтрализаторы запаху",
+          "volume": 2400,
+          "use_in": "content",
+          "source_ru": "нейтрализаторы запаха",
+          "_original_category": "neytralizatory-zapakha"
+        },
+        {
+          "keyword": "поглотитель запаху",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "поглотитель запаха",
+          "_original_category": "neytralizatory-zapakha"
+        },
+        {
+          "keyword": "нейтралізатор запаху в автомобиле",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "нейтрализатор запаха в автомобиле",
+          "_original_category": "neytralizatory-zapakha"
+        },
+        {
+          "keyword": "професійний нейтралізатор запаху",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "профессиональный нейтрализатор запаха",
+          "_original_category": "neytralizatory-zapakha"
+        },
+        {
+          "keyword": "нейтралізатор запаху в авто",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "нейтрализатор запаха в авто",
+          "_original_category": "neytralizatory-zapakha"
+        },
+        {
+          "keyword": "устранитель запаху",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "устранитель запаха",
+          "_original_category": "neytralizatory-zapakha"
+        },
+        {
+          "keyword": "купити нейтралізатор запахов",
+          "volume": 90,
+          "use_in": "meta_only",
+          "source_ru": "купить нейтрализатор запахов",
+          "_original_category": "neytralizatory-zapakha"
+        },
+        {
+          "keyword": "нейтралізатор для авто",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "нейтрализатор для авто",
+          "_original_category": "neytralizatory-zapakha"
+        },
+        {
+          "keyword": "нейтралізатор запахов в салоне авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "нейтрализатор запахов в салоне авто",
+          "_original_category": "neytralizatory-zapakha"
+        },
+        {
+          "keyword": "нейтралізатор запаху автомобільний",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "нейтрализатор запаха автомобильный",
+          "_original_category": "neytralizatory-zapakha"
+        }
+      ],
+      "total_volume": 3480
+    },
+    "poliroli-dlya-plastika": {
+      "keywords": [
+        {
+          "keyword": "поліроль для салону автомобіля",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "полироль для салона автомобиля",
+          "_original_category": "poliroli-dlya-plastika"
+        },
+        {
+          "keyword": "поліроль для пластику автомобіля",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "полироль для пластика автомобиля",
+          "_original_category": "poliroli-dlya-plastika"
+        },
+        {
+          "keyword": "поліроль для пластику авто",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "полироль для пластику авто",
+          "_original_category": "poliroli-dlya-plastika"
+        },
+        {
+          "keyword": "поліроль для торпеды",
+          "volume": 260,
+          "use_in": "content",
+          "source_ru": "полироль для торпеды",
+          "_original_category": "poliroli-dlya-plastika"
+        },
+        {
+          "keyword": "поліроль для панели авто",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "полироль для панели авто",
+          "_original_category": "poliroli-dlya-plastika"
+        },
+        {
+          "keyword": "поліроль для торпеды автомобіля",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "полироль для торпеды автомобиля",
+          "_original_category": "poliroli-dlya-plastika"
+        },
+        {
+          "keyword": "поліроль для торпедо авто",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "полироль для торпедо авто",
+          "_original_category": "poliroli-dlya-plastika"
+        },
+        {
+          "keyword": "поліроль для торпеды авто",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "полироль для торпеды авто",
+          "_original_category": "poliroli-dlya-plastika"
+        },
+        {
+          "keyword": "поліроль для панели автомобіля",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "полироль для панели автомобиля",
+          "_original_category": "poliroli-dlya-plastika"
+        },
+        {
+          "keyword": "поліроль для салону",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "полироль для салона",
+          "_original_category": "poliroli-dlya-plastika"
+        }
+      ],
+      "total_volume": 2020
+    },
+    "pyatnovyvoditeli": {
+      "keywords": [
+        {
+          "keyword": "плямовивідник",
+          "volume": 2400,
+          "use_in": "content",
+          "source_ru": "пятновыводитель",
+          "_original_category": "pyatnovyvoditeli"
+        },
+        {
+          "keyword": "купити плямовивідник",
+          "volume": 110,
+          "use_in": "meta_only",
+          "source_ru": "купить пятновыводитель",
+          "_original_category": "pyatnovyvoditeli"
+        },
+        {
+          "keyword": "плямовивідник для авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "пятновыводитель для авто",
+          "_original_category": "pyatnovyvoditeli"
+        },
+        {
+          "keyword": "плямовивідник для салону авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "пятновыводитель для салона авто",
+          "_original_category": "pyatnovyvoditeli"
+        },
+        {
+          "keyword": "плямовивідник для сидений авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "пятновыводитель для сидений авто",
+          "_original_category": "pyatnovyvoditeli"
+        },
+        {
+          "keyword": "плямовивідник для автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "пятновыводитель для автомобиля",
+          "_original_category": "pyatnovyvoditeli"
+        },
+        {
+          "keyword": "плямовивідник для машини",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "пятновыводитель для машины",
+          "_original_category": "pyatnovyvoditeli"
+        },
+        {
+          "keyword": "плямовивідник для салону автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "пятновыводитель для салона автомобиля",
+          "_original_category": "pyatnovyvoditeli"
+        }
+      ],
+      "total_volume": 2570
+    },
+    "sredstva-dlya-kozhi": {
+      "keywords": [
+        {
+          "keyword": "засіб для шкіри авто",
+          "volume": 280,
+          "use_in": "content",
+          "source_ru": "средство для кожи авто",
+          "_original_category": "sredstva-dlya-kozhi"
+        },
+        {
+          "keyword": "засоби для шкіри авто",
+          "volume": 280,
+          "use_in": "content",
+          "source_ru": "средства для кожи авто",
+          "_original_category": "sredstva-dlya-kozhi"
+        },
+        {
+          "keyword": "засоби для шкіри автомобіля",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "средства для кожи автомобиля",
+          "_original_category": "sredstva-dlya-kozhi"
+        },
+        {
+          "keyword": "засіб для шкіри салону автомобіля",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "средство для кожи салона автомобиля",
+          "_original_category": "sredstva-dlya-kozhi"
+        },
+        {
+          "keyword": "хімія для шкіри авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "химия для кожи авто",
+          "_original_category": "sredstva-dlya-kozhi"
+        },
+        {
+          "keyword": "засіб для шкіряного салону",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "средство для кожаного салона",
+          "_original_category": "sredstva-dlya-kozhi"
+        },
+        {
+          "keyword": "засоби для шкіри салону автомобіля",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "средства для кожи салона автомобиля",
+          "_original_category": "sredstva-dlya-kozhi"
+        },
+        {
+          "keyword": "засоби по догляду за шкірою автомобіля",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "средства по уходу за кожей автомобиля",
+          "_original_category": "ukhod-za-kozhey"
+        }
+      ],
+      "total_volume": 960
+    },
+    "ochistiteli-kozhi": {
+      "keywords": [
+        {
+          "keyword": "засіб для чистки шкіри авто",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "средство для чистки кожи авто",
+          "_original_category": "ochistiteli-kozhi"
+        },
+        {
+          "keyword": "засоби для чистки шкіри автомобіля",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "средства для чистки кожи автомобиля",
+          "_original_category": "ochistiteli-kozhi"
+        },
+        {
+          "keyword": "засоби для чистки шкіряного салону автомобіля",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "средства для чистки кожаного салона автомобиля",
+          "_original_category": "ochistiteli-kozhi"
+        },
+        {
+          "keyword": "хімія для чистки шкіри авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "химия для чистки кожи авто",
+          "_original_category": "ochistiteli-kozhi"
+        },
+        {
+          "keyword": "засіб для очищення шкіри авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "средство для очистки кожи авто",
+          "_original_category": "ochistiteli-kozhi"
+        },
+        {
+          "keyword": "засоби для чистки шкіряного салону",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "средства для чистки кожаного салона",
+          "_original_category": "ochistiteli-kozhi"
+        },
+        {
+          "keyword": "купити очищувач шкіри авто",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить очиститель кожи авто",
+          "_original_category": "ochistiteli-kozhi"
+        },
+        {
+          "keyword": "очищувач шкіри авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "очиститель кожи авто",
+          "_original_category": "ochistiteli-kozhi"
+        },
+        {
+          "keyword": "краще засіб для чистки шкіри авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "лучшее средство для чистки кожи авто",
+          "_original_category": "ochistiteli-kozhi"
+        },
+        {
+          "keyword": "засіб для шкіри салону",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "средство для кожи салона",
+          "_original_category": "ochistiteli-kozhi"
+        }
+      ],
+      "total_volume": 290
+    },
+    "ukhod-za-kozhey": {
+      "keywords": [
+        {
+          "keyword": "догляд за шкірою авто",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "уход за кожей авто",
+          "_original_category": "ukhod-za-kozhey"
+        },
+        {
+          "keyword": "догляд за шкірою автомобіля",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "уход за кожей автомобиля",
+          "_original_category": "ukhod-za-kozhey"
+        },
+        {
+          "keyword": "поліроль для шкіри",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "полироль для кожи",
+          "_original_category": "ukhod-za-kozhey"
+        },
+        {
+          "keyword": "краще засіб по догляду за шкірою авто",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "лучшее средство по уходу за кожей авто",
+          "_original_category": "ukhod-za-kozhey"
+        },
+        {
+          "keyword": "засіб по догляду за шкірою авто",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "средство по уходу за кожей авто",
+          "_original_category": "ukhod-za-kozhey"
+        },
+        {
+          "keyword": "поліроль для шкіри авто",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "полироль для кожи авто",
+          "_original_category": "ukhod-za-kozhey"
+        },
+        {
+          "keyword": "поліроль для шкіри автомобіля",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "полироль для кожи автомобиля",
+          "_original_category": "ukhod-za-kozhey"
+        },
+        {
+          "keyword": "крем для шкіри авто",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "крем для кожи авто",
+          "_original_category": "ukhod-za-kozhey"
+        },
+        {
+          "keyword": "крем для шкіри автомобіля",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "крем для кожи автомобиля",
+          "_original_category": "ukhod-za-kozhey"
+        }
+      ],
+      "total_volume": 1140
+    },
+    "keramika-i-zhidkoe-steklo": {
+      "keywords": [
+        {
+          "keyword": "жидкое скло для автомобілів",
+          "volume": 480,
+          "use_in": "content",
+          "source_ru": "жидкое стекло для автомобилей",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        },
+        {
+          "keyword": "нанокерамика",
+          "volume": 480,
+          "use_in": "content",
+          "source_ru": "нанокерамика",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        },
+        {
+          "keyword": "нанокерамика для авто",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "нанокерамика для авто",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        },
+        {
+          "keyword": "нанокерамика для автомобіля",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "нанокерамика для автомобиля",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        },
+        {
+          "keyword": "керамічне покриття авто",
+          "volume": 170,
+          "use_in": "content",
+          "source_ru": "керамическое покрытие авто",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        },
+        {
+          "keyword": "купити жидкое скло для авто",
+          "volume": 140,
+          "use_in": "meta_only",
+          "source_ru": "купить жидкое стекло для авто",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        },
+        {
+          "keyword": "рідкий скло ціна",
+          "volume": 90,
+          "use_in": "meta_only",
+          "source_ru": "жидкий стекло цена",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        },
+        {
+          "keyword": "нано кераміка на авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "нано керамика на авто",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        },
+        {
+          "keyword": "жидкое скло для полірування авто",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "жидкое стекло для полировки авто",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        },
+        {
+          "keyword": "жидкое скло на машину",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "жидкое стекло на машину",
+          "_original_category": "keramika-i-zhidkoe-steklo"
+        }
+      ],
+      "total_volume": 2230
+    },
+    "kvik-deteylery": {
+      "keywords": [
+        {
+          "keyword": "полимер для авто",
+          "volume": 140,
+          "use_in": "content",
+          "source_ru": "полимер для авто",
+          "_original_category": "kvik-deteylery"
+        },
+        {
+          "keyword": "холодный віск для автомобіля",
+          "volume": 110,
+          "use_in": "content",
+          "source_ru": "холодный воск для автомобиля",
+          "_original_category": "kvik-deteylery"
+        },
+        {
+          "keyword": "горячий віск для авто",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "горячий воск для авто",
+          "_original_category": "kvik-deteylery"
+        },
+        {
+          "keyword": "холодный віск для авто",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "холодный воск для авто",
+          "_original_category": "kvik-deteylery"
+        },
+        {
+          "keyword": "швидкий віск для авто",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "быстрый воск для авто",
+          "_original_category": "kvik-deteylery"
+        },
+        {
+          "keyword": "купити холодный віск для авто",
+          "volume": 30,
+          "use_in": "meta_only",
+          "source_ru": "купить холодный воск для авто",
+          "_original_category": "kvik-deteylery"
+        },
+        {
+          "keyword": "купити холодный віск для автомобіля",
+          "volume": 30,
+          "use_in": "meta_only",
+          "source_ru": "купить холодный воск для автомобиля",
+          "_original_category": "kvik-deteylery"
+        },
+        {
+          "keyword": "віск для авто на автомийці",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "воск для авто на автомойке",
+          "_original_category": "kvik-deteylery"
+        },
+        {
+          "keyword": "холодный віск для сушки автомобіля",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "холодный воск для сушки автомобиля",
+          "_original_category": "kvik-deteylery"
+        },
+        {
+          "keyword": "швидкий блиск для авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "быстрый блеск для авто",
+          "_original_category": "kvik-deteylery"
+        }
+      ],
+      "total_volume": 570
+    },
+    "silanty": {
+      "keywords": [
+        {
+          "keyword": "силант",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "силант",
+          "_original_category": "silanty"
+        },
+        {
+          "keyword": "силанти для авто",
+          "volume": 40,
+          "use_in": "content",
+          "source_ru": "силанты для авто",
+          "_original_category": "silanty"
+        },
+        {
+          "keyword": "силант для авто",
+          "volume": 30,
+          "use_in": "content",
+          "source_ru": "силант для авто",
+          "_original_category": "silanty"
+        },
+        {
+          "keyword": "силант для кузова",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "силант для кузова",
+          "_original_category": "silanty"
+        },
+        {
+          "keyword": "силант покриття",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "силант покрытие",
+          "_original_category": "silanty"
+        },
+        {
+          "keyword": "купити силант",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить силант",
+          "_original_category": "silanty"
+        },
+        {
+          "keyword": "автомобіль силант ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "автомобиль силант цена",
+          "_original_category": "silanty"
+        },
+        {
+          "keyword": "силант ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "силант цена",
+          "_original_category": "silanty"
+        },
+        {
+          "keyword": "силант автомобіль",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "силант автомобиль",
+          "_original_category": "silanty"
+        }
+      ],
+      "total_volume": 180
+    },
+    "voski": {
+      "keywords": [
+        {
+          "keyword": "віск для авто",
+          "volume": 1600,
+          "use_in": "content",
+          "source_ru": "воск для авто",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "купити віск для авто",
+          "volume": 320,
+          "use_in": "meta_only",
+          "source_ru": "купить воск для авто",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "купити віск для автомобіля",
+          "volume": 320,
+          "use_in": "meta_only",
+          "source_ru": "купить воск для автомобиля",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "віск для машини",
+          "volume": 210,
+          "use_in": "content",
+          "source_ru": "воск для машины",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "віск автомобільний",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "воск автомобильный",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "віск для полірування авто",
+          "volume": 90,
+          "use_in": "content",
+          "source_ru": "воск для полировки авто",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "віск для миття авто",
+          "volume": 70,
+          "use_in": "content",
+          "source_ru": "воск для мойки авто",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "віск для кузова авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "воск для кузова авто",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "восковий поліроль для авто",
+          "volume": 50,
+          "use_in": "content",
+          "source_ru": "восковый полироль для авто",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "купити віск для полірування авто",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить воск для полировки авто",
+          "_original_category": "voski"
+        },
+        {
+          "keyword": "рідкий віск для автомобіля",
+          "volume": 20,
+          "use_in": "content",
+          "source_ru": "жидкий воск для автомобиля",
+          "_original_category": "zhidkiy-vosk"
+        }
+      ],
+      "total_volume": 2840
+    },
+    "tverdyy-vosk": {
+      "keywords": [
+        {
+          "keyword": "твёрдый віск для авто",
+          "volume": 1000,
+          "use_in": "content",
+          "source_ru": "твёрдый воск для авто",
+          "_original_category": "tverdyy-vosk"
+        },
+        {
+          "keyword": "твёрдый віск",
+          "volume": 390,
+          "use_in": "content",
+          "source_ru": "твёрдый воск",
+          "_original_category": "tverdyy-vosk"
+        },
+        {
+          "keyword": "купити твёрдый віск для авто",
+          "volume": 210,
+          "use_in": "meta_only",
+          "source_ru": "купить твёрдый воск для авто",
+          "_original_category": "tverdyy-vosk"
+        },
+        {
+          "keyword": "купити віск для машини",
+          "volume": 30,
+          "use_in": "meta_only",
+          "source_ru": "купить воск для машины",
+          "_original_category": "tverdyy-vosk"
+        },
+        {
+          "keyword": "твёрдый віск для полірування авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "твёрдый воск для полировки авто",
+          "_original_category": "tverdyy-vosk"
+        },
+        {
+          "keyword": "купити твёрдый віск для авто в украине",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить твёрдый воск для авто в украине",
+          "_original_category": "tverdyy-vosk"
+        },
+        {
+          "keyword": "твёрдый віск для авто ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "твёрдый воск для авто цена",
+          "_original_category": "tverdyy-vosk"
+        },
+        {
+          "keyword": "купити твёрдый віск для машини",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить твёрдый воск для машины",
+          "_original_category": "tverdyy-vosk"
+        },
+        {
+          "keyword": "твёрдый віск купити",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "твёрдый воск купить",
+          "_original_category": "tverdyy-vosk"
+        },
+        {
+          "keyword": "твёрдый віск для автомобіля ціна",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "твёрдый воск для автомобиля цена",
+          "_original_category": "tverdyy-vosk"
+        }
+      ],
+      "total_volume": 1690
+    },
+    "zhidkiy-vosk": {
+      "keywords": [
+        {
+          "keyword": "рідкий віск для авто",
+          "volume": 480,
+          "use_in": "content",
+          "source_ru": "жидкий воск для авто",
+          "_original_category": "zhidkiy-vosk"
+        },
+        {
+          "keyword": "рідкий віск",
+          "volume": 320,
+          "use_in": "content",
+          "source_ru": "жидкий воск",
+          "_original_category": "zhidkiy-vosk"
+        },
+        {
+          "keyword": "купити рідкий віск для авто",
+          "volume": 70,
+          "use_in": "meta_only",
+          "source_ru": "купить жидкий воск для авто",
+          "_original_category": "zhidkiy-vosk"
+        },
+        {
+          "keyword": "купити рідкий віск",
+          "volume": 40,
+          "use_in": "meta_only",
+          "source_ru": "купить жидкий воск",
+          "_original_category": "zhidkiy-vosk"
+        },
+        {
+          "keyword": "купити рідкий віск для автомобіля",
+          "volume": 20,
+          "use_in": "meta_only",
+          "source_ru": "купить жидкий воск для автомобиля",
+          "_original_category": "zhidkiy-vosk"
+        },
+        {
+          "keyword": "рідкий віск для кузова",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "жидкий воск для кузова",
+          "_original_category": "zhidkiy-vosk"
+        },
+        {
+          "keyword": "рідкий віск для миття авто",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "жидкий воск для мойки авто",
+          "_original_category": "zhidkiy-vosk"
+        },
+        {
+          "keyword": "рідкий віск для автомийки",
+          "volume": 10,
+          "use_in": "content",
+          "source_ru": "жидкий воск для автомойки",
+          "_original_category": "zhidkiy-vosk"
+        },
+        {
+          "keyword": "купити рідкий віск для машини",
+          "volume": 10,
+          "use_in": "meta_only",
+          "source_ru": "купить жидкий воск для машины",
+          "_original_category": "zhidkiy-vosk"
+        }
+      ],
+      "total_volume": 970
+    }
+  }
+}
