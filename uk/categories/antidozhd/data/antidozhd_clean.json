@@ -50,13 +50,6 @@
   ],
   "supporting_keywords": [
     {
-      "keyword": "антидощ для авто",
-      "volume": 80,
-      "use_in": "content",
-      "source_ru": "антидождь для авто",
-      "_original_category": "antidozhd"
-    },
-    {
       "keyword": "антидощ для дзеркал авто",
       "volume": 20,
       "use_in": "content",
@@ -76,6 +69,15 @@
       "use_in": "content",
       "source_ru": "антидождь на лобовое стекло",
       "_original_category": "antidozhd"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "антидощ для авто",
+      "volume": 80,
+      "use_in": "lsi",
+      "variant_of": "антидощ для автомобіля",
+      "source_ru": "антидождь для авто"
     }
   ],
   "all_keywords_count": 10
