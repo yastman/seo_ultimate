@@ -98,21 +98,53 @@ UK: /uk-content-init → /uk-generate-meta → /uk-seo-research → /uk-content-
 
 ---
 
-## Superpowers скиллы
+## Superpowers скиллы (14 скиллов)
 
-| Когда использовать | Скилл | Описание |
-| ------------------ | ----- | -------- |
-| Перед созданием фичи/компонента | `superpowers:brainstorming` | Исследует намерения и требования перед кодом |
-| Есть спецификация, нужен план | `superpowers:writing-plans` | Создаёт пошаговый план реализации |
-| Есть готовый план, нужно выполнить | `superpowers:executing-plans` | Выполняет план с чекпоинтами |
-| Перед написанием кода | `superpowers:test-driven-development` | TDD: сначала тесты, потом код |
-| Баг, ошибка, неожиданное поведение | `superpowers:systematic-debugging` | Систематический дебаггинг |
-| Перед коммитом/PR | `superpowers:verification-before-completion` | Проверяет что всё работает |
-| Завершил задачу, нужно ревью | `superpowers:requesting-code-review` | Запрашивает code review |
-| Получил фидбек на код | `superpowers:receiving-code-review` | Обрабатывает замечания правильно |
-| Нужна изоляция для фичи | `superpowers:using-git-worktrees` | Создаёт изолированный worktree |
-| 2+ независимых задачи | `superpowers:dispatching-parallel-agents` | Запускает параллельных агентов |
-| Ветка готова к мержу | `superpowers:finishing-a-development-branch` | Завершение работы с веткой |
+> **Источник:** [github.com/obra/superpowers](https://github.com/obra/superpowers/tree/main/skills)
+
+### Планирование и дизайн
+
+| Триггер | Скилл | Что делает |
+|---------|-------|------------|
+| **ПЕРЕД** любой креативной работой (фичи, компоненты, изменения поведения) | `superpowers:brainstorming` | Исследует намерения через вопросы, предлагает 2-3 подхода с trade-offs, валидирует дизайн по частям |
+| Есть спецификация/требования, нужен план | `superpowers:writing-plans` | Создаёт bite-sized задачи (2-5 мин), TDD-формат, сохраняет в `docs/plans/` |
+
+### Выполнение планов
+
+| Триггер | Скилл | Что делает |
+|---------|-------|------------|
+| Есть план, выполнять **в отдельной сессии** с чекпоинтами | `superpowers:executing-plans` | Batch execution (3 задачи → review → следующий batch) |
+| Есть план, выполнять **в текущей сессии** | `superpowers:subagent-driven-development` | Fresh subagent на задачу + двухэтапное ревью (spec → quality) |
+| 2+ **независимых** задач без shared state | `superpowers:dispatching-parallel-agents` | Параллельные агенты на разные проблемы |
+
+### Разработка и тестирование
+
+| Триггер | Скилл | Что делает |
+|---------|-------|------------|
+| **ПЕРЕД** написанием любого кода (фича/багфикс) | `superpowers:test-driven-development` | RED-GREEN-REFACTOR: тест → fail → код → pass. **Железное правило:** нет кода без failing test |
+| Баг, ошибка теста, неожиданное поведение | `superpowers:systematic-debugging` | 4-фазный анализ root cause. **НЕ фиксить без расследования!** |
+| **ПЕРЕД** claim "готово/работает/fixed" | `superpowers:verification-before-completion` | Запустить команды, проверить output. Evidence before assertions |
+
+### Code Review
+
+| Триггер | Скилл | Что делает |
+|---------|-------|------------|
+| Завершил задачу/фичу, нужно ревью | `superpowers:requesting-code-review` | Pre-review checklist, проактивное ревью |
+| Получил фидбек (особенно непонятный/спорный) | `superpowers:receiving-code-review` | Техническая верификация > слепое согласие |
+
+### Git и завершение работы
+
+| Триггер | Скилл | Что делает |
+|---------|-------|------------|
+| Нужна изоляция для фичи/плана | `superpowers:using-git-worktrees` | Создаёт изолированный worktree, smart directory selection |
+| Код готов, тесты проходят, нужно интегрировать | `superpowers:finishing-a-development-branch` | Варианты: merge/PR/cleanup. Verify → Options → Execute |
+
+### Мета-скиллы
+
+| Триггер | Скилл | Что делает |
+|---------|-------|------------|
+| Нужен новый скилл или редактировать существующий | `superpowers:writing-skills` | TDD для документации: failing test → skill → verify → refactor |
+| Понять как работает система скиллов | `superpowers:using-superpowers` | Введение в скиллы, правила discovery |
 
 ---
 
@@ -210,4 +242,4 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ---
 
-**Version:** 43.0
+**Version:** 44.0
