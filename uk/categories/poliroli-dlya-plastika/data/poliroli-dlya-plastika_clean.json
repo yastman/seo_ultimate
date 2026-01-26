@@ -20,13 +20,6 @@
       "_original_category": "poliroli-dlya-plastika"
     },
     {
-      "keyword": "поліроль для пластику авто",
-      "volume": 320,
-      "use_in": "content",
-      "source_ru": "полироль для пластику авто",
-      "_original_category": "poliroli-dlya-plastika"
-    },
-    {
       "keyword": "поліроль для торпеды",
       "volume": 260,
       "use_in": "content",
@@ -39,43 +32,51 @@
       "use_in": "content",
       "source_ru": "полироль для панели авто",
       "_original_category": "poliroli-dlya-plastika"
+    }
+  ],
+  "supporting_keywords": [],
+  "synonyms": [
+    {
+      "keyword": "поліроль для салону",
+      "volume": 40,
+      "use_in": "lsi",
+      "variant_of": "поліроль для салону автомобіля",
+      "source_ru": "полироль для салона"
+    },
+    {
+      "keyword": "поліроль для пластику авто",
+      "volume": 320,
+      "use_in": "lsi",
+      "variant_of": "поліроль для пластику автомобіля",
+      "source_ru": "полироль для пластику авто"
     },
     {
       "keyword": "поліроль для торпеды автомобіля",
       "volume": 170,
-      "use_in": "content",
-      "source_ru": "полироль для торпеды автомобиля",
-      "_original_category": "poliroli-dlya-plastika"
+      "use_in": "lsi",
+      "variant_of": "поліроль для торпеды",
+      "source_ru": "полироль для торпеды автомобиля"
     },
     {
       "keyword": "поліроль для торпедо авто",
       "volume": 140,
-      "use_in": "content",
-      "source_ru": "полироль для торпедо авто",
-      "_original_category": "poliroli-dlya-plastika"
+      "use_in": "lsi",
+      "variant_of": "поліроль для торпеды",
+      "source_ru": "полироль для торпедо авто"
     },
     {
       "keyword": "поліроль для торпеды авто",
       "volume": 140,
-      "use_in": "content",
-      "source_ru": "полироль для торпеды авто",
-      "_original_category": "poliroli-dlya-plastika"
-    }
-  ],
-  "supporting_keywords": [
+      "use_in": "lsi",
+      "variant_of": "поліроль для торпеды",
+      "source_ru": "полироль для торпеды авто"
+    },
     {
       "keyword": "поліроль для панели автомобіля",
       "volume": 70,
-      "use_in": "content",
-      "source_ru": "полироль для панели автомобиля",
-      "_original_category": "poliroli-dlya-plastika"
-    },
-    {
-      "keyword": "поліроль для салону",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "полироль для салона",
-      "_original_category": "poliroli-dlya-plastika"
+      "use_in": "lsi",
+      "variant_of": "поліроль для панели авто",
+      "source_ru": "полироль для панели автомобиля"
     }
   ],
   "all_keywords_count": 10
