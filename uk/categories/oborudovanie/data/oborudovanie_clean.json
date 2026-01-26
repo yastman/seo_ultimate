@@ -14,13 +14,6 @@
   "secondary_keywords": [],
   "supporting_keywords": [
     {
-      "keyword": "обладнання для моек авто",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "оборудование для моек авто",
-      "_original_category": "oborudovanie"
-    },
-    {
       "keyword": "обладнання для миття автомобілів",
       "volume": 10,
       "use_in": "content",
@@ -42,13 +35,6 @@
       "_original_category": "oborudovanie"
     },
     {
-      "keyword": "обладнання для миття машин цены",
-      "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "оборудование для мойки машин цены",
-      "_original_category": "oborudovanie"
-    },
-    {
       "keyword": "обладнання для хімчистки авто купити",
       "volume": 10,
       "use_in": "meta_only",
@@ -61,13 +47,29 @@
       "use_in": "meta_only",
       "source_ru": "оборудование для химчистки авто цена",
       "_original_category": "oborudovanie"
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "обладнання для моек авто",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "обладнання для миття автомобілів",
+      "source_ru": "оборудование для моек авто"
+    },
+    {
+      "keyword": "обладнання для миття машин цены",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "обладнання для миття автомобілів цены",
+      "source_ru": "оборудование для мойки машин цены"
     },
     {
       "keyword": "обладнання для хімчистки машини",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "оборудование для химчистки машины",
-      "_original_category": "oborudovanie"
+      "use_in": "lsi",
+      "variant_of": "обладнання для хімчистки авто",
+      "source_ru": "оборудование для химчистки машины"
     }
   ],
   "all_keywords_count": 9
