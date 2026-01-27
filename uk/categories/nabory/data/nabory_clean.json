@@ -1,8 +1,19 @@
 {
   "id": "nabory",
   "language": "uk",
-  "total_volume": 1930,
-  "keywords": [],
+  "total_volume": 1700,
+  "keywords": [
+    {"keyword": "набір для миття авто", "volume": 480},
+    {"keyword": "аксесуари для миття авто", "volume": 170},
+    {"keyword": "набір автохімії", "volume": 140},
+    {"keyword": "набір для полірування авто", "volume": 140},
+    {"keyword": "набір для дітейлінгу", "volume": 110},
+    {"keyword": "приладдя для миття авто", "volume": 110},
+    {"keyword": "набір для догляду за авто", "volume": 40},
+    {"keyword": "подарунковий набір для авто", "volume": 40},
+    {"keyword": "набір для миття машини", "volume": 30},
+    {"keyword": "набір", "volume": 20}
+  ],
   "secondary_keywords": [
     {
       "keyword": "набори для авто",
@@ -16,13 +27,6 @@
       "volume": 260,
       "use_in": "content",
       "source_ru": "наборы для детейлинга",
-      "_original_category": "nabory"
-    },
-    {
-      "keyword": "набір для миття авто",
-      "volume": 210,
-      "use_in": "content",
-      "source_ru": "набор для мойки авто",
       "_original_category": "nabory"
     },
     {
@@ -40,7 +44,7 @@
       "_original_category": "nabory"
     },
     {
-      "keyword": "подарочные набори для мужчин в машину",
+      "keyword": "подарункові набори для чоловіків в машину",
       "volume": 140,
       "use_in": "content",
       "source_ru": "подарочные наборы для мужчин в машину",
@@ -78,5 +82,5 @@
       "source_ru": "набор для химчистки авто"
     }
   ],
-  "all_keywords_count": 10
+  "all_keywords_count": 19
 }

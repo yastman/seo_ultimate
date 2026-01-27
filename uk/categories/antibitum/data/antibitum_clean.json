@@ -1,74 +1,17 @@
 {
   "id": "antibitum",
   "language": "uk",
-  "total_volume": 210,
+  "total_volume": 1680,
   "keywords": [
-    {
-      "keyword": "антибітум",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "антибитум",
-      "_original_category": "antibitum"
-    }
+    {"keyword": "антибітум", "volume": 720},
+    {"keyword": "очищувач бітуму", "volume": 390},
+    {"keyword": "очисник бітуму", "volume": 170},
+    {"keyword": "засіб для видалення бітуму", "volume": 140},
+    {"keyword": "засоби для видалення бітуму", "volume": 70},
+    {"keyword": "засіб від бітуму", "volume": 70},
+    {"keyword": "засіб для очищення кузова від бітуму", "volume": 70},
+    {"keyword": "очищувач кузова від бітуму", "volume": 50}
   ],
-  "secondary_keywords": [],
-  "supporting_keywords": [
-    {
-      "keyword": "антибітум для авто",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "антибитум для авто",
-      "_original_category": "antibitum"
-    },
-    {
-      "keyword": "засіб від битума",
-      "volume": 30,
-      "use_in": "content",
-      "source_ru": "средство от битума",
-      "_original_category": "antibitum"
-    },
-    {
-      "keyword": "очищувач битума",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "очиститель битума",
-      "_original_category": "antibitum"
-    },
-    {
-      "keyword": "видаляч битума",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "удалитель битума",
-      "_original_category": "antibitum"
-    },
-    {
-      "keyword": "купити антибітум для авто",
-      "volume": 20,
-      "use_in": "meta_only",
-      "source_ru": "купить антибитум для авто",
-      "_original_category": "antibitum"
-    },
-    {
-      "keyword": "засіб від битумных плям",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "средство от битумных пятен",
-      "_original_category": "antibitum"
-    },
-    {
-      "keyword": "антибітум купити",
-      "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "антибитум купить",
-      "_original_category": "antibitum"
-    },
-    {
-      "keyword": "антибітум ціна",
-      "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "антибитум цена",
-      "_original_category": "antibitum"
-    }
-  ],
-  "all_keywords_count": 9
+  "synonyms": [],
+  "micro_intents": ["як видалити бітум", "чим відмити смолу", "без пошкодження лаку"]
 }

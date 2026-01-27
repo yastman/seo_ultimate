@@ -2,13 +2,15 @@
   "id": "zhidkiy-vosk",
   "language": "uk",
   "total_volume": 970,
-  "keywords": [],
+  "keywords": [
+    {"keyword": "рідкий віск для авто", "volume": 320}
+  ],
   "secondary_keywords": [
     {
-      "keyword": "рідкий віск для авто",
-      "volume": 480,
+      "keyword": "рідкий віск",
+      "volume": 320,
       "use_in": "content",
-      "source_ru": "жидкий воск для авто",
+      "source_ru": "жидкий воск",
       "_original_category": "zhidkiy-vosk"
     }
   ],
@@ -40,16 +42,16 @@
       "use_in": "content",
       "source_ru": "жидкий воск для автомойки",
       "_original_category": "zhidkiy-vosk"
+    },
+    {
+      "keyword": "рідкий віск для автомобіля",
+      "volume": 20,
+      "use_in": "content",
+      "source_ru": "жидкий воск для автомобиля",
+      "_original_category": "zhidkiy-vosk"
     }
   ],
   "synonyms": [
-    {
-      "keyword": "рідкий віск",
-      "volume": 320,
-      "use_in": "lsi",
-      "variant_of": "рідкий віск для авто",
-      "source_ru": "жидкий воск"
-    },
     {
       "keyword": "купити рідкий віск",
       "volume": 40,
@@ -72,5 +74,5 @@
       "source_ru": "купить жидкий воск для машины"
     }
   ],
-  "all_keywords_count": 9
+  "all_keywords_count": 10
 }

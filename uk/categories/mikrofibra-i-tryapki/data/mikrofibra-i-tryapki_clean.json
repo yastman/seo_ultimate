@@ -3,20 +3,20 @@
   "language": "uk",
   "total_volume": 5250,
   "keywords": [
-    {
-      "keyword": "мікрофібра для авто",
-      "volume": 1300,
-      "use_in": "content",
-      "source_ru": "микрофибра для авто",
-      "_original_category": "mikrofibra-i-tryapki"
-    },
-    {
-      "keyword": "ганчірка для авто",
-      "volume": 1300,
-      "use_in": "content",
-      "source_ru": "тряпка для авто",
-      "_original_category": "mikrofibra-i-tryapki"
-    }
+    {"keyword": "мікрофібра для авто", "volume": 480},
+    {"keyword": "серветки для авто", "volume": 140},
+    {"keyword": "рушник для сушки авто", "volume": 140},
+    {"keyword": "ганчірка для миття авто", "volume": 110},
+    {"keyword": "шкіра для протирання авто", "volume": 110},
+    {"keyword": "ганчірка з мікрофібри", "volume": 90},
+    {"keyword": "серветка з штучної замші", "volume": 90},
+    {"keyword": "вафельний рушник для авто", "volume": 70},
+    {"keyword": "ганчірка для сушки авто", "volume": 50},
+    {"keyword": "набір мікрофібри", "volume": 50},
+    {"keyword": "мікрофібра для сушки авто", "volume": 40},
+    {"keyword": "серветки для скла", "volume": 40},
+    {"keyword": "мікрофібра", "volume": 30},
+    {"keyword": "шкіра для авто", "volume": 30}
   ],
   "secondary_keywords": [
     {

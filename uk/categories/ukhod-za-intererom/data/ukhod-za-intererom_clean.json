@@ -1,8 +1,17 @@
 {
   "id": "ukhod-za-intererom",
   "language": "uk",
-  "total_volume": 650,
-  "keywords": [],
+  "total_volume": 970,
+  "keywords": [
+    {
+      "keyword": "автохімія для салону",
+      "volume": 320
+    },
+    {
+      "keyword": "автокосметика для салону",
+      "volume": 40
+    }
+  ],
   "secondary_keywords": [
     {
       "keyword": "хімчистка салону авто",
@@ -44,5 +53,5 @@
       "source_ru": "уход за салоном автомобиля"
     }
   ],
-  "all_keywords_count": 5
+  "all_keywords_count": 6
 }

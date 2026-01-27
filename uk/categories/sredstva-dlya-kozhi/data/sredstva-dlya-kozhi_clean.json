@@ -1,8 +1,12 @@
 {
   "id": "sredstva-dlya-kozhi",
   "language": "uk",
-  "total_volume": 960,
-  "keywords": [],
+  "total_volume": 1390,
+  "keywords": [
+    {"keyword": "кондиціонер для шкіри авто", "volume": 170},
+    {"keyword": "поліроль для шкіри авто", "volume": 170},
+    {"keyword": "набір для догляду за шкіряним салоном", "volume": 90}
+  ],
   "secondary_keywords": [
     {
       "keyword": "засоби для шкіри авто",
@@ -65,5 +69,5 @@
       "source_ru": "средства для кожи салона автомобиля"
     }
   ],
-  "all_keywords_count": 8
+  "all_keywords_count": 11
 }

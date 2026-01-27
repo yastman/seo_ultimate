@@ -1,15 +1,10 @@
 {
   "id": "aksessuary",
   "language": "uk",
-  "total_volume": 230,
+  "total_volume": 280,
   "keywords": [
-    {
-      "keyword": "аксесуари для миття авто",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "аксессуары для мойки авто",
-      "_original_category": "aksessuary"
-    }
+    {"keyword": "сушка для авто", "volume": 50},
+    {"keyword": "аксесуари для миття авто", "volume": 50}
   ],
   "secondary_keywords": [],
   "supporting_keywords": [
@@ -42,14 +37,14 @@
       "_original_category": "aksessuary"
     },
     {
-      "keyword": "инвентарь для миття авто",
+      "keyword": "інвентар для миття авто",
       "volume": 10,
       "use_in": "content",
       "source_ru": "инвентарь для мойки авто",
       "_original_category": "aksessuary"
     },
     {
-      "keyword": "принадлежности для миття авто",
+      "keyword": "приналежності для миття авто",
       "volume": 10,
       "use_in": "content",
       "source_ru": "принадлежности для мойки авто",
@@ -79,5 +74,5 @@
       "source_ru": "все для мойки машины"
     }
   ],
-  "all_keywords_count": 10
+  "all_keywords_count": 11
 }

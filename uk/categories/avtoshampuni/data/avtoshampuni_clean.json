@@ -3,20 +3,21 @@
   "language": "uk",
   "total_volume": 1960,
   "keywords": [
-    {
-      "keyword": "автошампунь",
-      "volume": 1000,
-      "use_in": "content",
-      "source_ru": "автошампунь",
-      "_original_category": "avtoshampuni"
-    },
-    {
-      "keyword": "шампунь для авто",
-      "volume": 500,
-      "use_in": "content",
-      "source_ru": "шампунь для авто",
-      "_original_category": "avtoshampuni"
-    }
+    {"keyword": "автошампунь", "volume": 590},
+    {"keyword": "шампунь для авто", "volume": 390},
+    {"keyword": "автошампунь для ручної мийки", "volume": 210},
+    {"keyword": "шампунь для миття машини", "volume": 210},
+    {"keyword": "шампунь для миття авто", "volume": 140},
+    {"keyword": "автошампунь з воском", "volume": 110},
+    {"keyword": "шампунь для безконтактної мийки", "volume": 110},
+    {"keyword": "автошампунь для безконтактної мийки", "volume": 70},
+    {"keyword": "шампунь з ефектом воску", "volume": 70},
+    {"keyword": "шампунь для автомобіля", "volume": 50},
+    {"keyword": "шампунь концентрат для авто", "volume": 40},
+    {"keyword": "автошампунь ціна", "volume": 30},
+    {"keyword": "автошампунь купити", "volume": 30},
+    {"keyword": "сухий шампунь для авто", "volume": 30},
+    {"keyword": "шампунь", "volume": 20}
   ],
   "secondary_keywords": [
     {

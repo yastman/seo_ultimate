@@ -3,13 +3,9 @@
   "language": "uk",
   "total_volume": 10270,
   "keywords": [
-    {
-      "keyword": "малярний скотч",
-      "volume": 4400,
-      "use_in": "content",
-      "source_ru": "малярный скотч",
-      "_original_category": "malyarniy-skotch"
-    }
+    {"keyword": "малярний скотч", "volume": 4400},
+    {"keyword": "скотч малярний", "volume": 1300},
+    {"keyword": "малярна стрічка", "volume": 880}
   ],
   "secondary_keywords": [
     {

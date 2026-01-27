@@ -1,23 +1,13 @@
 {
   "id": "polirovalnye-mashinki",
   "language": "uk",
-  "total_volume": 210,
-  "keywords": [],
-  "secondary_keywords": [
-    {
-      "keyword": "полірувальна машинка для авто",
-      "volume": 140,
-      "use_in": "content"
-    }
+  "total_volume": 300,
+  "keywords": [
+    {"keyword": "полірувальна машинка для авто", "volume": 140},
+    {"keyword": "круг полірувальний", "volume": 90},
+    {"keyword": "полірувальна машинка", "volume": 70}
   ],
-  "supporting_keywords": [],
-  "synonyms": [
-    {
-      "keyword": "полірувальна машинка",
-      "volume": 70,
-      "use_in": "lsi",
-      "variant_of": "полірувальна машинка для авто"
-    }
-  ],
-  "all_keywords_count": 2
+  "synonyms": [],
+  "micro_intents": [],
+  "all_keywords_count": 3
 }

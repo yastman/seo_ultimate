@@ -1,84 +1,38 @@
 {
   "id": "omyvatel",
   "language": "uk",
-  "total_volume": 2930,
+  "total_volume": 2050,
   "keywords": [
-    {
-      "keyword": "омивач скла зимовий",
-      "volume": 1000,
-      "use_in": "content",
-      "source_ru": "омыватель стекла зимний",
-      "_original_category": "omyvatel"
-    },
-    {
-      "keyword": "омивач скла",
-      "volume": 720,
-      "use_in": "content",
-      "source_ru": "омыватель стекла",
-      "_original_category": "omyvatel"
-    }
-  ],
-  "secondary_keywords": [
-    {
-      "keyword": "купити омивач скла зимовий",
-      "volume": 170,
-      "use_in": "meta_only",
-      "source_ru": "купить омыватель стекла зимний",
-      "_original_category": "omyvatel"
-    },
-    {
-      "keyword": "омивач скла летний",
-      "volume": 140,
-      "use_in": "content",
-      "source_ru": "омыватель стекла летний",
-      "_original_category": "omyvatel"
-    },
-    {
-      "keyword": "омивач лобового скла",
-      "volume": 110,
-      "use_in": "content",
-      "source_ru": "омыватель лобового стекла",
-      "_original_category": "omyvatel"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "купити омивач скла",
-      "volume": 50,
-      "use_in": "meta_only",
-      "source_ru": "купить омыватель стекла",
-      "_original_category": "omyvatel"
-    }
+    {"keyword": "омивач скла", "volume": 1300},
+    {"keyword": "зимовий омивач скла", "volume": 720},
+    {"keyword": "літній омивач", "volume": 30}
   ],
   "synonyms": [
     {
       "keyword": "зимовий омивач",
       "volume": 320,
       "use_in": "lsi",
-      "variant_of": "омивач скла зимовий",
-      "source_ru": "зимний омыватель"
+      "variant_of": "зимовий омивач скла"
     },
     {
       "keyword": "омивач",
       "volume": 260,
       "use_in": "lsi",
-      "variant_of": "омивач скла",
-      "source_ru": "омыватель"
+      "variant_of": "омивач скла"
     },
     {
       "keyword": "стеклоомыватель",
       "volume": 110,
       "use_in": "lsi",
-      "variant_of": "омивач скла",
-      "source_ru": "стеклоомыватель"
+      "variant_of": "омивач скла"
     },
     {
       "keyword": "омивач для скла",
       "volume": 50,
       "use_in": "lsi",
-      "variant_of": "омивач скла",
-      "source_ru": "омыватель для стекол"
+      "variant_of": "омивач скла"
     }
   ],
-  "all_keywords_count": 10
+  "micro_intents": [],
+  "all_keywords_count": 3
 }

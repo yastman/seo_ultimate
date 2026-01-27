@@ -1,62 +1,34 @@
 {
   "id": "shampuni-dlya-ruchnoy-moyki",
   "language": "uk",
-  "total_volume": 620,
-  "keywords": [],
-  "secondary_keywords": [
+  "total_volume": 400,
+  "keywords": [
     {
-      "keyword": "автошампунь для ручної миття",
-      "volume": 390,
-      "use_in": "content",
-      "source_ru": "автошампунь для ручной мойки",
-      "_original_category": "shampuni-dlya-ruchnoy-moyki"
+      "keyword": "засіб для миття автомобіля",
+      "volume": 320
+    },
+    {
+      "keyword": "шампунь для ручної мийки авто",
+      "volume": 170
+    },
+    {
+      "keyword": "шампунь для миття авто",
+      "volume": 140
+    },
+    {
+      "keyword": "засіб для миття машини",
+      "volume": 140
+    },
+    {
+      "keyword": "шампунь для ручної мийки",
+      "volume": 90
+    },
+    {
+      "keyword": "засіб для миття кузова",
+      "volume": 70
     }
   ],
-  "supporting_keywords": [
-    {
-      "keyword": "купити автошампунь для ручної миття",
-      "volume": 20,
-      "use_in": "meta_only",
-      "source_ru": "купить автошампунь для ручной мойки",
-      "_original_category": "shampuni-dlya-ruchnoy-moyki"
-    },
-    {
-      "keyword": "шампунь для ручної миття ціна",
-      "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "шампунь для ручной мойки цена",
-      "_original_category": "shampuni-dlya-ruchnoy-moyki"
-    }
-  ],
-  "synonyms": [
-    {
-      "keyword": "шампунь для ручної миття авто",
-      "volume": 110,
-      "use_in": "lsi",
-      "variant_of": "автошампунь для ручної миття",
-      "source_ru": "шампунь для ручной мойки авто"
-    },
-    {
-      "keyword": "автомобільний шампунь для ручної миття",
-      "volume": 70,
-      "use_in": "lsi",
-      "variant_of": "автошампунь для ручної миття",
-      "source_ru": "автомобильный шампунь для ручной мойки"
-    },
-    {
-      "keyword": "шампунь для ручної миття",
-      "volume": 10,
-      "use_in": "lsi",
-      "variant_of": "автошампунь для ручної миття",
-      "source_ru": "шампунь для ручной мойки"
-    },
-    {
-      "keyword": "шампунь для миття авто вручную",
-      "volume": 10,
-      "use_in": "lsi",
-      "variant_of": "автошампунь для ручної миття",
-      "source_ru": "шампунь для мытья авто вручную"
-    }
-  ],
-  "all_keywords_count": 7
+  "synonyms": [],
+  "micro_intents": [],
+  "all_keywords_count": 3
 }

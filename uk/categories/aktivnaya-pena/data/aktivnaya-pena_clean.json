@@ -1,83 +1,121 @@
 {
   "id": "aktivnaya-pena",
   "language": "uk",
-  "total_volume": 6690,
+  "total_volume": 8430,
   "keywords": [
     {
-      "keyword": "піна для миття авто",
-      "volume": 1300,
-      "use_in": "content",
-      "source_ru": "пена для мойки авто",
-      "_original_category": "aktivnaya-pena"
+      "keyword": "активна піна для авто",
+      "volume": 1600
     },
     {
-      "keyword": "активна піна для миття авто",
-      "volume": 1000,
-      "use_in": "content",
-      "source_ru": "активная пена для мойки авто",
-      "_original_category": "aktivnaya-pena"
+      "keyword": "піна для миття авто",
+      "volume": 1300
+    },
+    {
+      "keyword": "піна для миття автомобіля",
+      "volume": 1300
     },
     {
       "keyword": "активна піна",
-      "volume": 720,
-      "use_in": "content",
-      "source_ru": "активная пена",
-      "_original_category": "aktivnaya-pena"
+      "volume": 1000
     },
     {
-      "keyword": "купити піну для миття авто",
-      "volume": 590,
-      "use_in": "meta_only",
-      "source_ru": "купить пену для мойки авто",
-      "_original_category": "aktivnaya-pena"
+      "keyword": "хімія для миття авто",
+      "volume": 1000
+    },
+    {
+      "keyword": "активна піна для миття авто",
+      "volume": 390
+    },
+    {
+      "keyword": "автохімія для миття авто",
+      "volume": 390
+    },
+    {
+      "keyword": "активна піна для безконтактної мийки",
+      "volume": 320
+    },
+    {
+      "keyword": "засоби для миття авто",
+      "volume": 320
+    },
+    {
+      "keyword": "автохімія для автомийки",
+      "volume": 260
+    },
+    {
+      "keyword": "хімія для миття автомобіля",
+      "volume": 260
+    },
+    {
+      "keyword": "активна піна для автомийки",
+      "volume": 210
+    },
+    {
+      "keyword": "хімія для безконтактної мийки",
+      "volume": 140
+    },
+    {
+      "keyword": "активна піна для мийки",
+      "volume": 110
+    },
+    {
+      "keyword": "піна для безконтактної мийки",
+      "volume": 110
+    },
+    {
+      "keyword": "хімія для мийки самообслуговування",
+      "volume": 110
+    },
+    {
+      "keyword": "засоби для мийки самообслуговування",
+      "volume": 90
+    },
+    {
+      "keyword": "гель для миття авто",
+      "volume": 90
+    },
+    {
+      "keyword": "хімія для авто",
+      "volume": 90
+    },
+    {
+      "keyword": "активна піна купити",
+      "volume": 70
+    },
+    {
+      "keyword": "піна активна",
+      "volume": 70
+    },
+    {
+      "keyword": "активна піна ціна",
+      "volume": 50
+    },
+    {
+      "keyword": "хімія для мийки",
+      "volume": 50
+    },
+    {
+      "keyword": "активна піна для авто відгуки",
+      "volume": 40
+    },
+    {
+      "keyword": "хімія для автомийки",
+      "volume": 40
+    },
+    {
+      "keyword": "активна піна для миття",
+      "volume": 30
+    },
+    {
+      "keyword": "піна",
+      "volume": 20
     }
   ],
-  "secondary_keywords": [
-    {
-      "keyword": "активна піна для безконтактної миття",
-      "volume": 320,
-      "use_in": "content",
-      "source_ru": "активная пена для бесконтактной мойки",
-      "_original_category": "aktivnaya-pena"
-    },
-    {
-      "keyword": "купити активную піну",
-      "volume": 260,
-      "use_in": "meta_only",
-      "source_ru": "купить активную пену",
-      "_original_category": "aktivnaya-pena"
-    },
-    {
-      "keyword": "шампунь для безконтактної миття",
-      "volume": 110,
-      "use_in": "content",
-      "source_ru": "шампунь для бесконтактной мойки",
-      "_original_category": "aktivnaya-pena"
-    }
-  ],
-  "supporting_keywords": [],
-  "synonyms": [
-    {
-      "keyword": "піна для миття автомобіля",
-      "volume": 1300,
-      "use_in": "lsi",
-      "variant_of": "піна для миття авто",
-      "source_ru": "пена для мойки автомобиля"
-    },
-    {
-      "keyword": "активна піна для миття автомобіля",
-      "volume": 880,
-      "use_in": "lsi",
-      "variant_of": "активна піна для миття авто",
-      "source_ru": "активная пена для мойки автомобиля"
-    },
-    {
-      "keyword": "купити активную піну для миття авто",
-      "volume": 210,
-      "use_in": "meta_only",
-      "variant_of": "купити піну для миття авто",
-      "source_ru": "купить активную пену для мойки авто"
-    }
-  ],
-  "all_keywords_count": 10
+  "synonyms": [],
+  "micro_intents": [
+    "як розводити",
+    "витрата",
+    "для мийки самообслуговування"
+  ]
 }

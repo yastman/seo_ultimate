@@ -1,84 +1,17 @@
 {
   "id": "keramika-i-zhidkoe-steklo",
   "language": "uk",
-  "total_volume": 2230,
+  "total_volume": 5610,
   "keywords": [
-    {
-      "keyword": "рідке скло для автомобілів",
-      "volume": 480,
-      "use_in": "content",
-      "source_ru": "жидкое стекло для автомобилей",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    }
+    {"keyword": "кераміка для авто", "volume": 2400},
+    {"keyword": "кераміка для кузова", "volume": 1000},
+    {"keyword": "рідке скло для авто", "volume": 1000},
+    {"keyword": "нанокераміка для авто", "volume": 590},
+    {"keyword": "нанокераміка", "volume": 320},
+    {"keyword": "керамічне покриття авто", "volume": 140},
+    {"keyword": "кераміка на авто", "volume": 110},
+    {"keyword": "керамічний лак для авто", "volume": 50}
   ],
-  "secondary_keywords": [
-    {
-      "keyword": "нанокерамика",
-      "volume": 480,
-      "use_in": "content",
-      "source_ru": "нанокерамика",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    },
-    {
-      "keyword": "нанокерамика для авто",
-      "volume": 390,
-      "use_in": "content",
-      "source_ru": "нанокерамика для авто",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    },
-    {
-      "keyword": "керамічне покриття авто",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "керамическое покрытие авто",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    },
-    {
-      "keyword": "купити рідке скло для авто",
-      "volume": 140,
-      "use_in": "meta_only",
-      "source_ru": "купить жидкое стекло для авто",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "рідкий скло ціна",
-      "volume": 90,
-      "use_in": "meta_only",
-      "source_ru": "жидкий стекло цена",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    },
-    {
-      "keyword": "нано кераміка на авто",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "нано керамика на авто",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    },
-    {
-      "keyword": "жидкое скло для полірування авто",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "жидкое стекло для полировки авто",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    },
-    {
-      "keyword": "жидкое скло на машину",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "жидкое стекло на машину",
-      "_original_category": "keramika-i-zhidkoe-steklo"
-    }
-  ],
-  "synonyms": [
-    {
-      "keyword": "нанокерамика для автомобіля",
-      "volume": 390,
-      "use_in": "lsi",
-      "variant_of": "нанокерамика для авто",
-      "source_ru": "нанокерамика для автомобиля"
-    }
-  ],
-  "all_keywords_count": 10
+  "synonyms": [],
+  "micro_intents": []
 }
