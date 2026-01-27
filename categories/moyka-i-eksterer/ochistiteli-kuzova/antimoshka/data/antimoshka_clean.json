@@ -4,18 +4,58 @@
   "type": "category",
   "parent_id": "ochistiteli-kuzova",
   "keywords": [
-    {"keyword": "антимошка", "volume": 320},
-    {"keyword": "антимошка для авто", "volume": 320}
+    {
+      "keyword": "антимошка",
+      "volume": 320
+    },
+    {
+      "keyword": "антимошка для авто",
+      "volume": 320
+    },
+    {
+      "keyword": "антимошка на мойке",
+      "volume": 10
+    },
+    {
+      "keyword": "концентрат антимошка",
+      "volume": 10
+    }
   ],
   "synonyms": [
-    {"keyword": "средство от мошек на авто", "volume": 50},
-    {"keyword": "антимошка на мойке", "volume": 30},
-    {"keyword": "концентрат антимошка", "volume": 20},
-    {"keyword": "антимошка на мойке самообслуживания", "volume": 20},
-    {"keyword": "антимошка спрей", "volume": 10},
-    {"keyword": "очиститель от насекомых", "volume": 10},
-    {"keyword": "купить антимошку", "volume": 20, "use_in": "meta_only"},
-    {"keyword": "антимошка цена", "volume": 10, "use_in": "meta_only"}
+    {
+      "keyword": "средство от мошек на авто",
+      "volume": 50
+    },
+    {
+      "keyword": "антимошка на мойке",
+      "volume": 30
+    },
+    {
+      "keyword": "концентрат антимошка",
+      "volume": 20
+    },
+    {
+      "keyword": "антимошка на мойке самообслуживания",
+      "volume": 20
+    },
+    {
+      "keyword": "антимошка спрей",
+      "volume": 10
+    },
+    {
+      "keyword": "очиститель от насекомых",
+      "volume": 10
+    },
+    {
+      "keyword": "купить антимошку",
+      "volume": 20,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "антимошка цена",
+      "volume": 10,
+      "use_in": "meta_only"
+    }
   ],
   "variations": [],
   "entities": [
