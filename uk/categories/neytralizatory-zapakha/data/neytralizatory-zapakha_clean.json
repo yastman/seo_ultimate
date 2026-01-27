@@ -1,84 +1,28 @@
 {
   "id": "neytralizatory-zapakha",
   "language": "uk",
-  "total_volume": 3480,
+  "total_volume": 990,
   "keywords": [
-    {
-      "keyword": "нейтралізатори запаху",
-      "volume": 2400,
-      "use_in": "content",
-      "source_ru": "нейтрализаторы запаха",
-      "_original_category": "neytralizatory-zapakha"
-    }
-  ],
-  "secondary_keywords": [
-    {
-      "keyword": "поглотитель запаху",
-      "volume": 260,
-      "use_in": "content",
-      "source_ru": "поглотитель запаха",
-      "_original_category": "neytralizatory-zapakha"
-    },
-    {
-      "keyword": "нейтралізатор запаху в автомобиле",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "нейтрализатор запаха в автомобиле",
-      "_original_category": "neytralizatory-zapakha"
-    },
-    {
-      "keyword": "професійний нейтралізатор запаху",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "профессиональный нейтрализатор запаха",
-      "_original_category": "neytralizatory-zapakha"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "устранитель запаху",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "устранитель запаха",
-      "_original_category": "neytralizatory-zapakha"
-    },
-    {
-      "keyword": "купити нейтралізатор запахов",
-      "volume": 90,
-      "use_in": "meta_only",
-      "source_ru": "купить нейтрализатор запахов",
-      "_original_category": "neytralizatory-zapakha"
-    },
-    {
-      "keyword": "нейтралізатор для авто",
-      "volume": 70,
-      "use_in": "content",
-      "source_ru": "нейтрализатор для авто",
-      "_original_category": "neytralizatory-zapakha"
-    },
-    {
-      "keyword": "нейтралізатор запаху автомобільний",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "нейтрализатор запаха автомобильный",
-      "_original_category": "neytralizatory-zapakha"
-    }
+    {"keyword": "поглинач запахів", "volume": 480},
+    {"keyword": "нейтралізатор запахів", "volume": 170},
+    {"keyword": "сухий туман для авто", "volume": 110},
+    {"keyword": "ароматизатор в машину", "volume": 110},
+    {"keyword": "нейтралізатор запаху в авто", "volume": 90},
+    {"keyword": "засіб для видалення запаху", "volume": 30}
   ],
   "synonyms": [
     {
-      "keyword": "нейтралізатор запаху в авто",
-      "volume": 140,
+      "keyword": "нейтралізатор запаху в автомобілі",
+      "volume": 90,
       "use_in": "lsi",
-      "variant_of": "нейтралізатор запаху в автомобиле",
-      "source_ru": "нейтрализатор запаха в авто"
+      "variant_of": "нейтралізатор запаху в авто"
     },
     {
-      "keyword": "нейтралізатор запахов в салоне авто",
+      "keyword": "поглотитель запаху",
       "volume": 50,
       "use_in": "lsi",
-      "variant_of": "нейтралізатор запаху в автомобиле",
-      "source_ru": "нейтрализатор запахов в салоне авто"
+      "variant_of": "поглинач запахів"
     }
   ],
-  "all_keywords_count": 10
+  "micro_intents": ["як прибрати запах", "від запаху тютюну", "від запаху сирості"]
 }
