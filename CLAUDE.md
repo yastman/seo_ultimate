@@ -242,4 +242,100 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ---
 
-**Version:** 44.0
+## Parallel Claude Workers (spawn-claude)
+
+Запуск автономных Claude-агентов в отдельных табах WezTerm для ускорения работы.
+
+### Базовый синтаксис
+
+```bash
+spawn-claude "промпт" /path/to/project
+```
+
+**ОБЯЗАТЕЛЬНО:** Всегда передавай путь к проекту вторым аргументом при вызове из оркестратора.
+
+### Правила параллелизации
+
+| Правило | Хорошо | Плохо |
+|---------|--------|-------|
+| 1 воркер = 1 модуль | W1: cache.py, W2: qdrant.py | W1: cache.py строки 1-100, W2: cache.py строки 101-200 |
+| Группируй мелкое | W1: metrics + otel + eval | W1: metrics, W2: otel, W3: eval (оверхед) |
+| Тесты с кодом | W1: auth.py + test_auth.py | W1: auth.py, W2: test_auth.py |
+| Общий файл — только чтение | Все читают план, оркестратор обновляет | Все пишут в один файл |
+
+**Количество воркеров:** Не ограничено — 1 независимый набор файлов = 1 воркер.
+
+### Архитектура
+
+```
+┌─────────────────────────────────────────────────────┐
+│              ОРКЕСТРАТОР (главный Claude)           │
+│  - Создаёт план: docs/plans/YYYY-MM-DD-task.md      │
+│  - Дробит на независимые задачи                     │
+│  - Запускает spawn-claude для каждого воркера       │
+│  - Мониторит прогресс                               │
+│  - Финальная проверка                               │
+└──────────────────────┬──────────────────────────────┘
+                       │
+       ┌─────────┬─────┴─────┬─────────┐
+       ▼         ▼           ▼         ▼
+  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
+  │Worker 1│ │Worker 2│ │Worker N│ │Worker M│
+  │File: A │ │File: B │ │File: X │ │File: Y │
+  └────────┘ └────────┘ └────────┘ └────────┘
+```
+
+### Шаблон промпта для воркера
+
+```bash
+spawn-claude "Ты Worker N. REQUIRED: используй superpowers:executing-plans
+
+План: docs/plans/YYYY-MM-DD-task.md
+Задачи: Tasks X.1-X.N (секция Track N)
+
+Твои файлы (ТОЛЬКО ЭТИ):
+- module.py
+- test_module.py
+
+Алгоритм:
+1. Прочитай план, найди свои задачи
+2. Выполни каждый Step по порядку
+3. git commit после каждой задачи
+4. НЕ ТРОГАЙ файлы других воркеров
+
+Команда проверки: pytest tests/unit/ -q" /path/to/project
+```
+
+### Пример: 6 воркеров
+
+```bash
+PROJECT="/mnt/c/Users/user/Documents/Сайты/rag-fresh"
+
+# Worker 1: filter_extractor
+spawn-claude "W1: fix filter_extractor. Files: telegram_bot/services/filter_extractor.py, tests/unit/services/test_filter_extractor.py" $PROJECT
+
+# Worker 2: metrics + otel + evaluator (сгруппированы — мелкие)
+spawn-claude "W2: fix metrics_logger + otel + evaluator. Files: tests/unit/test_metrics_logger.py, test_otel_setup.py, test_evaluator.py" $PROJECT
+
+# Worker 3: cache.py (большой модуль — отдельно)
+spawn-claude "W3: write cache.py tests to 80%. Files: telegram_bot/services/cache.py, tests/unit/test_cache_service.py" $PROJECT
+```
+
+### Мониторинг
+
+```bash
+# Проверить статус задач
+grep -c "\[x\]" docs/plans/*-tasks.md
+
+# Проверить git commits от воркеров
+git log --oneline -20
+
+# Финальная проверка
+pytest tests/unit/ -q
+```
+
+**Расположение скрипта:** `/mnt/c/Users/user/bin/spawn-claude`
+
+---
+
+**Version:** 45.0
