@@ -246,13 +246,53 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 Запуск автономных Claude-агентов в отдельных табах WezTerm для ускорения работы.
 
-### Базовый синтаксис
+### Расположение и вызов
 
 ```bash
-spawn-claude "промпт" /path/to/project
+# Полный путь к скрипту
+/mnt/c/Users/user/bin/spawn-claude
+
+# Синтаксис
+/mnt/c/Users/user/bin/spawn-claude "промпт" "/полный/путь/к/проекту"
 ```
 
-**ОБЯЗАТЕЛЬНО:** Всегда передавай путь к проекту вторым аргументом при вызове из оркестратора.
+**КРИТИЧНО:**
+- Всегда использовать **полный путь** к скрипту: `/mnt/c/Users/user/bin/spawn-claude`
+- Всегда передавать **полный путь к проекту** вторым аргументом в кавычках
+- Путь к этому проекту: `/mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт`
+
+### Обязательные скиллы в промпте
+
+Каждый воркер **ДОЛЖЕН** использовать эти скиллы:
+
+| Скилл | Когда | Зачем |
+|-------|-------|-------|
+| `superpowers:executing-plans` | При выполнении плана | Batch execution с чекпоинтами |
+| `superpowers:verification-before-completion` | **ПЕРЕД** каждым git commit | Проверить что всё работает |
+
+### Структура промпта воркера
+
+```
+W{N}: {Краткое описание задачи}.
+
+REQUIRED SKILLS:
+- superpowers:executing-plans — для выполнения плана
+- superpowers:verification-before-completion — ПЕРЕД каждым git commit
+
+План: docs/plans/YYYY-MM-DD-task.md
+Чек-лист/Данные: путь/к/файлу
+
+Твои файлы/категории: список
+
+Алгоритм:
+1. Прочитай источник данных
+2. Прочитай целевой файл
+3. Внеси изменения
+4. VERIFY: проверь результат (команда)
+5. git commit
+
+Шлях: /полный/путь/к/проекту
+```
 
 ### Правила параллелизации
 
@@ -285,57 +325,43 @@ spawn-claude "промпт" /path/to/project
   └────────┘ └────────┘ └────────┘ └────────┘
 ```
 
-### Шаблон промпта для воркера
+### Пример: запуск воркера (этот проект)
 
 ```bash
-spawn-claude "Ты Worker N. REQUIRED: используй superpowers:executing-plans
+/mnt/c/Users/user/bin/spawn-claude "W1: Apply UK keywords.
 
-План: docs/plans/YYYY-MM-DD-task.md
-Задачи: Tasks X.1-X.N (секция Track N)
+REQUIRED SKILLS:
+- superpowers:executing-plans — для виконання плану
+- superpowers:verification-before-completion — ПЕРЕД кожним git commit
 
-Твои файлы (ТОЛЬКО ЭТИ):
-- module.py
-- test_module.py
+План: docs/plans/2026-01-27-uk-keywords-apply-all-plan.md
+Чек-лист: tasks/TODO_UK_KEYWORDS_DISTRIBUTION.md
 
-Алгоритм:
-1. Прочитай план, найди свои задачи
-2. Выполни каждый Step по порядку
-3. git commit после каждой задачи
-4. НЕ ТРОГАЙ файлы других воркеров
+Твої категорії: aktivnaya-pena, antidozhd, antibitum
 
-Команда проверки: pytest tests/unit/ -q" /path/to/project
-```
+Алгоритм для кожної:
+1. Прочитай секцію з чек-листа
+2. Прочитай uk/categories/{slug}/data/{slug}_clean.json
+3. Заміни keywords масив
+4. VERIFY: python -m json.tool < file.json
+5. git commit
 
-### Пример: 6 воркеров
-
-```bash
-PROJECT="/mnt/c/Users/user/Documents/Сайты/rag-fresh"
-
-# Worker 1: filter_extractor
-spawn-claude "W1: fix filter_extractor. Files: telegram_bot/services/filter_extractor.py, tests/unit/services/test_filter_extractor.py" $PROJECT
-
-# Worker 2: metrics + otel + evaluator (сгруппированы — мелкие)
-spawn-claude "W2: fix metrics_logger + otel + evaluator. Files: tests/unit/test_metrics_logger.py, test_otel_setup.py, test_evaluator.py" $PROJECT
-
-# Worker 3: cache.py (большой модуль — отдельно)
-spawn-claude "W3: write cache.py tests to 80%. Files: telegram_bot/services/cache.py, tests/unit/test_cache_service.py" $PROJECT
+Шлях: /mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт" "/mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт"
 ```
 
 ### Мониторинг
 
 ```bash
-# Проверить статус задач
-grep -c "\[x\]" docs/plans/*-tasks.md
-
 # Проверить git commits от воркеров
 git log --oneline -20
 
-# Финальная проверка
-pytest tests/unit/ -q
-```
+# Проверить изменённые файлы
+git diff --name-only HEAD~10
 
-**Расположение скрипта:** `/mnt/c/Users/user/bin/spawn-claude`
+# Финальная проверка JSON
+find uk/categories -name "*_clean.json" -exec python -m json.tool {} \; > /dev/null && echo "All JSON valid"
+```
 
 ---
 
-**Version:** 45.0
+**Version:** 46.0
