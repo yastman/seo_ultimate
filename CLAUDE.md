@@ -242,58 +242,63 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ---
 
-## Parallel Claude Workers (spawn-claude)
+## Параллельные Claude сессии в tmux
 
-Запуск автономных Claude-агентов в отдельных табах WezTerm для ускорения работы.
+Инструкция по запуску нескольких Claude-агентов одновременно для ускорения работы.
 
-### Расположение и вызов
+### Архитектура
 
-```bash
-# Полный путь к скрипту
-/mnt/c/Users/user/bin/spawn-claude
-
-# Синтаксис
-/mnt/c/Users/user/bin/spawn-claude "промпт" "/полный/путь/к/проекту"
+```
+tmux session "claude"
+├── Окно 1: Основной Claude (оркестратор)
+│   └── Создаёт план и запускает воркеров через spawn-claude
+├── Окно 2: Worker 1 (независимая Claude сессия)
+├── Окно 3: Worker 2 (независимая Claude сессия)
+├── Окно 4: Worker 3 (независимая Claude сессия)
+└── Окно 5+: Дополнительные воркеры по мере необходимости
 ```
 
-**КРИТИЧНО:**
-- Всегда использовать **полный путь** к скрипту: `/mnt/c/Users/user/bin/spawn-claude`
-- Всегда передавать **полный путь к проекту** вторым аргументом в кавычках
-- Путь к этому проекту: `/mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт`
+**Результат:** N Claude-агентов работают **параллельно**, каждый на своей задаче, в одной tmux сессии.
 
-### Как происходит запуск новых вкладок
+### Быстрый старт (3 шага)
 
-`spawn-claude` запускает **новый Claude-сеанс в отдельной WezTerm-панели** через следующий процесс:
+**1. Открыть tmux сессию в проекте**
+```bash
+cd /mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт
+# Или через WezTerm (Ctrl+Shift+M) → выбрать проект "SEO Ultimate"
+```
 
-1. **Парсинг аргументов:**
-   - Аргумент 1: промпт воркера (текст в кавычках)
-   - Аргумент 2: полный путь к проекту
+**2. Запустить основную Claude сессию**
+```bash
+claude code
+```
 
-2. **Создание новой панели:**
-   - Скрипт создаёт новый WezTerm-таб/панель
-   - Устанавливает рабочую директорию на проект
-   - Выполняет: `claude code --sync-state` (загружает context)
+**3. Из Claude запустить воркеров**
+```bash
+spawn-claude "W1: Добавить UK keywords в kategoriya-1" "$(pwd)"
+spawn-claude "W2: Генерировать контент для kategoriya-2" "$(pwd)"
+spawn-claude "W3: Проверить качество мета для kategoriya-3" "$(pwd)"
+```
 
-3. **Запуск Claude-сеанса:**
-   - Передаёт промпт в новый Claude-сеанс
-   - Claude читает промпт, выполняет задачу
-   - Воркер работает **автономно** — основной Claude продолжает работу
+### Переключение между воркерами
 
-4. **Независимые git commits:**
-   - Каждый воркер создаёт свои коммиты
-   - Воркеры **НЕ конфликтуют** — каждый редактирует свои файлы
-   - Основной Claude/оркестратор видит все коммиты в `git log`
+| Комбо | Действие |
+|-------|----------|
+| `Ctrl+A, 1` | Основной Claude (оркестратор) |
+| `Ctrl+A, 2/3/4` | Worker 1/2/3 |
+| `Ctrl+A, n/p` | Следующее/предыдущее окно |
+| `Ctrl+A, w` | Список всех окон |
 
-**Результат:** 4 воркера параллельно работают в 4 разных вкладках, каждый на своём наборе файлов.
+### Синтаксис spawn-claude
 
-### Обязательные скиллы в промпте
+```bash
+spawn-claude "ПРОМПТ" "ПУТЬ"
+```
 
-Каждый воркер **ДОЛЖЕН** использовать эти скиллы:
-
-| Скилл | Когда | Зачем |
-|-------|-------|-------|
-| `superpowers:executing-plans` | При выполнении плана | Batch execution с чекпоинтами |
-| `superpowers:verification-before-completion` | **ПЕРЕД** каждым git commit | Проверить что всё работает |
+| Параметр | Значение | Пример |
+|----------|----------|--------|
+| **ПРОМПТ** | Задача для Claude | `"W1: Добавить UK keywords"` |
+| **ПУТЬ** | Путь к проекту | `"$(pwd)"` или абсолютный путь |
 
 ### Структура промпта воркера
 
@@ -301,92 +306,89 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 W{N}: {Краткое описание задачи}.
 
 REQUIRED SKILLS:
-- superpowers:executing-plans — для выполнения плана
-- superpowers:verification-before-completion — ПЕРЕД каждым git commit
+- superpowers:executing-plans
+- superpowers:verification-before-completion
 
 План: docs/plans/YYYY-MM-DD-task.md
-Чек-лист/Данные: путь/к/файлу
+Чек-лист: tasks/TODO_xxx.md
 
 Твои файлы/категории: список
 
 Алгоритм:
 1. Прочитай источник данных
-2. Прочитай целевой файл
-3. Внеси изменения
-4. VERIFY: проверь результат (команда)
-5. git commit
+2. Примени изменения
+3. VERIFY: команда для проверки
+4. git commit
 
-Шлях: /полный/путь/к/проекту
+Путь: /мнт/путь/к/проекту
 ```
 
 ### Правила параллелизации
 
-| Правило | Хорошо | Плохо |
-|---------|--------|-------|
-| 1 воркер = 1 модуль | W1: cache.py, W2: qdrant.py | W1: cache.py строки 1-100, W2: cache.py строки 101-200 |
-| Группируй мелкое | W1: metrics + otel + eval | W1: metrics, W2: otel, W3: eval (оверхед) |
-| Тесты с кодом | W1: auth.py + test_auth.py | W1: auth.py, W2: test_auth.py |
-| Общий файл — только чтение | Все читают план, оркестратор обновляет | Все пишут в один файл |
-
-**Количество воркеров:** Не ограничено — 1 независимый набор файлов = 1 воркер.
-
-### Архитектура
-
-```
-┌─────────────────────────────────────────────────────┐
-│              ОРКЕСТРАТОР (главный Claude)           │
-│  - Создаёт план: docs/plans/YYYY-MM-DD-task.md      │
-│  - Дробит на независимые задачи                     │
-│  - Запускает spawn-claude для каждого воркера       │
-│  - Мониторит прогресс                               │
-│  - Финальная проверка                               │
-└──────────────────────┬──────────────────────────────┘
-                       │
-       ┌─────────┬─────┴─────┬─────────┐
-       ▼         ▼           ▼         ▼
-  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
-  │Worker 1│ │Worker 2│ │Worker N│ │Worker M│
-  │File: A │ │File: B │ │File: X │ │File: Y │
-  └────────┘ └────────┘ └────────┘ └────────┘
-```
+| Правило | ✅ Хорошо | ❌ Плохо |
+|---------|----------|---------|
+| 1 воркер = 1 набор файлов | W1: kategoriya-1, W2: kategoriya-2 | W1: kategoriya-1 строка 1-50, W2: kategoriya-1 строка 51-100 |
+| Группируй мелкое | W1: meta + keywords + content | W1: meta, W2: keywords, W3: content |
+| Общий файл — только читать | Все читают план | Все пишут в один файл |
 
 ### Пример: запуск воркера (этот проект)
 
 ```bash
-/mnt/c/Users/user/bin/spawn-claude "W1: Apply UK keywords.
+spawn-claude "W1: Добавить UK keywords.
 
 REQUIRED SKILLS:
-- superpowers:executing-plans — для виконання плану
-- superpowers:verification-before-completion — ПЕРЕД кожним git commit
+- superpowers:executing-plans
+- superpowers:verification-before-completion
 
-План: docs/plans/2026-01-27-uk-keywords-apply-all-plan.md
-Чек-лист: tasks/TODO_UK_KEYWORDS_DISTRIBUTION.md
+План: docs/plans/2026-01-27-uk-keywords.md
 
-Твої категорії: aktivnaya-pena, antidozhd, antibitum
+Категории: aktivnaya-pena, antibitum, antidozhd
 
-Алгоритм для кожної:
-1. Прочитай секцію з чек-листа
-2. Прочитай uk/categories/{slug}/data/{slug}_clean.json
-3. Заміни keywords масив
-4. VERIFY: python -m json.tool < file.json
-5. git commit
+Алгоритм для каждой:
+1. Прочитай uk/categories/{slug}/data/{slug}_clean.json
+2. Обнови keywords из плана
+3. VERIFY: python -m json.tool < файл.json
+4. git commit
 
-Шлях: /mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт" "/mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт"
+Путь: /mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт" "$(pwd)"
 ```
 
-### Мониторинг
+### Мониторинг прогресса
 
 ```bash
-# Проверить git commits от воркеров
-git log --oneline -20
+# git log (обновляется каждые 2 сек)
+watch -n 2 "git log --oneline -10"
 
-# Проверить изменённые файлы
-git diff --name-only HEAD~10
-
-# Финальная проверка JSON
-find uk/categories -name "*_clean.json" -exec python -m json.tool {} \; > /dev/null && echo "All JSON valid"
+# Какие файлы изменены
+git diff --name-only HEAD~5
 ```
+
+### Обработка ошибок
+
+**"Not inside tmux session"** → `Ctrl+Shift+M` (войти в tmux)
+
+**Worker зависает** → `Ctrl+A, {номер}` → `Ctrl+C` → `claude code`
+
+**Конфликт в git** → `git status` → `git add .` → `git commit -m "Merge workers"`
+
+### Шпаргалка tmux
+
+| Комбо | Действие |
+|-------|----------|
+| `Ctrl+A, c` | Новое окно |
+| `Ctrl+A, n/p` | Следующее/предыдущее |
+| `Ctrl+A, 1/2/3` | Перейти на окно |
+| `Ctrl+A, w` | Список окон |
+| `Ctrl+A, d` | Отсоединиться (session stays) |
+| `Ctrl+A, \|` | Вертикальный сплит |
+| `Ctrl+A, -` | Горизонтальный сплит |
+
+### Когда использовать
+
+✅ **Используй:** много категорий (5+), независимые задачи, каждому свои файлы
+
+❌ **Не используй:** зависимые задачи, один файл для всех
 
 ---
 
-**Version:** 46.0
+**Version:** 47.0
