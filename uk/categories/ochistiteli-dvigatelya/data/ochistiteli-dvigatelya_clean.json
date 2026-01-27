@@ -1,83 +1,37 @@
 {
   "id": "ochistiteli-dvigatelya",
   "language": "uk",
-  "total_volume": 1770,
-  "keywords": [],
-  "secondary_keywords": [
-    {
-      "keyword": "очищувач двигуна",
-      "volume": 480,
-      "use_in": "content",
-      "source_ru": "очиститель двигателя",
-      "_original_category": "ochistiteli-dvigatelya"
-    },
-    {
-      "keyword": "хімія для миття двигуна",
-      "volume": 320,
-      "use_in": "content",
-      "source_ru": "химия для мойки двигателя",
-      "_original_category": "ochistiteli-dvigatelya"
-    },
-    {
-      "keyword": "засоби для миття двигуна",
-      "volume": 260,
-      "use_in": "content",
-      "source_ru": "средства для мойки двигателя",
-      "_original_category": "ochistiteli-dvigatelya"
-    },
-    {
-      "keyword": "очищувач двигуна від масла та грязи",
-      "volume": 210,
-      "use_in": "content",
-      "source_ru": "очиститель двигателя от масла и грязи",
-      "_original_category": "ochistiteli-dvigatelya"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "купити химию для миття двигуна",
-      "volume": 90,
-      "use_in": "meta_only",
-      "source_ru": "купить химию для мойки двигателя",
-      "_original_category": "ochistiteli-dvigatelya"
-    },
-    {
-      "keyword": "купити очищувач двигуна",
-      "volume": 50,
-      "use_in": "meta_only",
-      "source_ru": "купить очиститель двигателя",
-      "_original_category": "ochistiteli-dvigatelya"
-    }
+  "total_volume": 2820,
+  "keywords": [
+    {"keyword": "очищувач двигуна", "volume": 1000},
+    {"keyword": "засіб для миття двигуна", "volume": 480},
+    {"keyword": "хімія для миття двигуна", "volume": 480},
+    {"keyword": "консервант двигуна", "volume": 260},
+    {"keyword": "очищувач для двигуна", "volume": 210},
+    {"keyword": "засіб для очищення двигуна", "volume": 170},
+    {"keyword": "автохімія для двигуна", "volume": 140},
+    {"keyword": "засіб для чищення двигуна", "volume": 110},
+    {"keyword": "засіб для миття двигуна автомобіля", "volume": 90},
+    {"keyword": "засіб для консервації двигуна", "volume": 90},
+    {"keyword": "хімія для миття двигуна своїми руками", "volume": 70},
+    {"keyword": "хімія для чищення двигуна", "volume": 70},
+    {"keyword": "рідина для миття двигуна", "volume": 40},
+    {"keyword": "очищувач двигуна зовнішній", "volume": 40},
+    {"keyword": "очищувач двигуна від мастила", "volume": 30}
   ],
   "synonyms": [
     {
-      "keyword": "засіб для миття двигуна",
-      "volume": 140,
+      "keyword": "очищувач мотора",
+      "volume": 50,
       "use_in": "lsi",
-      "variant_of": "засоби для миття двигуна",
-      "source_ru": "средство для мытья двигателя"
+      "variant_of": "очищувач двигуна"
     },
     {
-      "keyword": "очищувач двигуна від масляных загрязнений",
-      "volume": 110,
-      "use_in": "lsi",
-      "variant_of": "очищувач двигуна від масла та грязи",
-      "source_ru": "очиститель двигателя от масляных загрязнений"
-    },
-    {
-      "keyword": "хімія для мотора",
-      "volume": 70,
-      "use_in": "lsi",
-      "variant_of": "хімія для миття двигуна",
-      "source_ru": "химия для мотора"
-    },
-    {
-      "keyword": "хімія для миття мотора",
+      "keyword": "засіб для миття мотора",
       "volume": 40,
       "use_in": "lsi",
-      "variant_of": "хімія для миття двигуна",
-      "source_ru": "химия для мойки мотора"
+      "variant_of": "засіб для миття двигуна"
     }
   ],
-  "all_keywords_count": 10
+  "micro_intents": ["як мити двигун", "чим очистити двигун", "консервація мотора"]
 }

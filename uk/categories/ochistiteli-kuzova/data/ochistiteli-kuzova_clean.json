@@ -1,23 +1,18 @@
 {
   "id": "ochistiteli-kuzova",
   "language": "uk",
-  "total_volume": 440,
-  "keywords": [],
-  "secondary_keywords": [
+  "total_volume": 390,
+  "keywords": [
+    {"keyword": "очищувач кузова", "volume": 320},
+    {"keyword": "очищувач плям на авто", "volume": 70}
+  ],
+  "synonyms": [
     {
-      "keyword": "очищувач кузова",
-      "volume": 320
+      "keyword": "очищувач кузова авто",
+      "volume": 40,
+      "use_in": "lsi",
+      "variant_of": "очищувач кузова"
     }
   ],
-  "supporting_keywords": [
-    {
-      "keyword": "очищувач плям на авто",
-      "volume": 70
-    },
-    {
-      "keyword": "очищувач кузова від бітуму",
-      "volume": 50
-    }
-  ],
-  "all_keywords_count": 3
+  "micro_intents": ["від плям", "від бітуму", "від смоли"]
 }
