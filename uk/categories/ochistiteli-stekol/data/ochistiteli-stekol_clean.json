@@ -1,83 +1,45 @@
 {
   "id": "ochistiteli-stekol",
   "language": "uk",
-  "total_volume": 280,
+  "total_volume": 950,
   "keywords": [
-    {
-      "keyword": "очищувач скла авто",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "очиститель стекла авто",
-      "_original_category": "ochistiteli-stekol"
-    }
-  ],
-  "secondary_keywords": [],
-  "supporting_keywords": [
-    {
-      "keyword": "засіб для скла авто",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "средство для стекол авто",
-      "_original_category": "ochistiteli-stekol"
-    },
-    {
-      "keyword": "очищувач лобового скла",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "очиститель лобового стекла",
-      "_original_category": "ochistiteli-stekol"
-    },
-    {
-      "keyword": "жидкость для очищення скла автомобіля",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "жидкость для очистки стекол автомобиля",
-      "_original_category": "ochistiteli-stekol"
-    },
-    {
-      "keyword": "купити очищувач скла авто",
-      "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "купить очиститель стекол авто",
-      "_original_category": "ochistiteli-stekol"
-    },
-    {
-      "keyword": "очищувач скла авто ціна",
-      "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "очиститель стекол авто цена",
-      "_original_category": "ochistiteli-stekol"
-    }
+    {"keyword": "очищувач скла", "volume": 210},
+    {"keyword": "засіб для миття скла авто", "volume": 170},
+    {"keyword": "розморожувач скла", "volume": 170},
+    {"keyword": "антизапотівач скла", "volume": 140},
+    {"keyword": "очищувач скла авто", "volume": 90},
+    {"keyword": "антизапотівач", "volume": 40},
+    {"keyword": "засіб для миття вікон авто", "volume": 40},
+    {"keyword": "очищувач слідів скотчу", "volume": 30},
+    {"keyword": "розморожувач замків", "volume": 30},
+    {"keyword": "засіб від запотівання скла", "volume": 30}
   ],
   "synonyms": [
     {
       "keyword": "очищувач скла автомобіля",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "очищувач скла авто",
-      "source_ru": "очиститель стекол автомобиля"
+      "variant_of": "очищувач скла авто"
     },
     {
       "keyword": "засіб для автомобильных скла",
       "volume": 20,
       "use_in": "lsi",
-      "variant_of": "засіб для скла авто",
-      "source_ru": "средство для автомобильных стекол"
+      "variant_of": "засіб для скла авто"
     },
     {
       "keyword": "засіб для очищення скла авто",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "засіб для скла авто",
-      "source_ru": "средство для очистки стекол авто"
+      "variant_of": "засіб для скла авто"
     },
     {
       "keyword": "засіб для чистки скла авто",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "засіб для скла авто",
-      "source_ru": "средство для чистки стекол авто"
+      "variant_of": "засіб для скла авто"
     }
   ],
+  "micro_intents": [],
   "all_keywords_count": 10
 }

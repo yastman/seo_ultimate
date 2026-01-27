@@ -1,16 +1,21 @@
 {
   "id": "shchetka-dlya-moyki-avto",
   "language": "uk",
-  "total_volume": 1670,
-  "keywords": [],
+  "total_volume": 2690,
+  "keywords": [
+    {"keyword": "щітка для миття авто", "volume": 1000},
+    {"keyword": "щітка для миття машини", "volume": 480},
+    {"keyword": "щітка для чищення салону авто", "volume": 320},
+    {"keyword": "щітка для миття автомобіля", "volume": 260},
+    {"keyword": "щітка для хімчистки авто", "volume": 210},
+    {"keyword": "щітка для видалення шерсті", "volume": 170},
+    {"keyword": "щітка для снігу", "volume": 110},
+    {"keyword": "щітка для чищення сидінь", "volume": 50},
+    {"keyword": "щітка для пилу в авто", "volume": 40},
+    {"keyword": "щітка для чищення килимків", "volume": 30},
+    {"keyword": "щітка", "volume": 20}
+  ],
   "secondary_keywords": [
-    {
-      "keyword": "щітка для миття авто",
-      "volume": 480,
-      "use_in": "content",
-      "source_ru": "щетка для мойки авто",
-      "_original_category": "shchetka-dlya-moyki-avto"
-    },
     {
       "keyword": "купити щетку для миття авто",
       "volume": 210,
@@ -44,20 +49,6 @@
   ],
   "synonyms": [
     {
-      "keyword": "щітка для миття машини",
-      "volume": 390,
-      "use_in": "lsi",
-      "variant_of": "щітка для миття авто",
-      "source_ru": "щетка для мытья машины"
-    },
-    {
-      "keyword": "щітка для миття автомобіля",
-      "volume": 90,
-      "use_in": "lsi",
-      "variant_of": "щітка для миття авто",
-      "source_ru": "щетка для мытья автомобиля"
-    },
-    {
       "keyword": "щітки для миття машини",
       "volume": 70,
       "use_in": "lsi",
@@ -79,5 +70,5 @@
       "source_ru": "купить щетку для мытья машины"
     }
   ],
-  "all_keywords_count": 10
+  "all_keywords_count": 18
 }

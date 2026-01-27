@@ -3,13 +3,9 @@
   "language": "uk",
   "total_volume": 610,
   "keywords": [
-    {
-      "keyword": "щітка для детейлінгу",
-      "volume": 210,
-      "use_in": "content",
-      "source_ru": "щетка для детейлинга",
-      "_original_category": "kisti-dlya-deteylinga"
-    }
+    {"keyword": "аксесуари для дітейлінгу", "volume": 90},
+    {"keyword": "набір щіток для дітейлінгу", "volume": 70},
+    {"keyword": "засоби для дітейлінгу", "volume": 50}
   ],
   "secondary_keywords": [],
   "supporting_keywords": [

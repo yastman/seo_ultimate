@@ -3,13 +3,9 @@
   "language": "uk",
   "total_volume": 4860,
   "keywords": [
-    {
-      "keyword": "торнадор",
-      "volume": 3600,
-      "use_in": "content",
-      "source_ru": "торнадор",
-      "_original_category": "apparaty-tornador"
-    }
+    {"keyword": "торнадор", "volume": 3600},
+    {"keyword": "пістолет для хімчистки авто", "volume": 140},
+    {"keyword": "апарат для хімчистки авто", "volume": 90}
   ],
   "secondary_keywords": [
     {

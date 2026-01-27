@@ -1,63 +1,46 @@
 {
   "id": "polirovka",
   "language": "uk",
-  "total_volume": 4160,
+  "total_volume": 3010,
   "keywords": [
     {
       "keyword": "полірування авто",
-      "volume": 2400,
-      "use_in": "content",
-      "source_ru": "полировка авто",
-      "_original_category": "polirovka"
-    }
-  ],
-  "secondary_keywords": [
-    {
-      "keyword": "полірування кузова",
-      "volume": 480,
-      "use_in": "content",
-      "source_ru": "полировка кузова",
-      "_original_category": "polirovka"
-    }
-  ],
-  "supporting_keywords": [
+      "volume": 1300
+    },
     {
       "keyword": "засоби для полірування авто",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "средства для полировки авто",
-      "_original_category": "polirovka"
+      "volume": 480
     },
     {
-      "keyword": "полірування авто своїми руками",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "полировка авто своими руками",
-      "_original_category": "polirovka"
+      "keyword": "поліроль для авто",
+      "volume": 480
     },
     {
-      "keyword": "все для полірування",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "всё для полировки",
-      "_original_category": "polirovka"
-    }
-  ],
-  "synonyms": [
+      "keyword": "поліроль для кузова",
+      "volume": 390
+    },
     {
-      "keyword": "полірування автомобіля",
-      "volume": 1000,
-      "use_in": "lsi",
-      "variant_of": "полірування авто",
-      "source_ru": "полировка автомобиля"
+      "keyword": "полірування фар",
+      "volume": 260
     },
     {
       "keyword": "полірування машини",
-      "volume": 170,
-      "use_in": "lsi",
-      "variant_of": "полірування авто",
-      "source_ru": "полировка машины"
+      "volume": 170
+    },
+    {
+      "keyword": "засіб для полірування авто",
+      "volume": 140
+    },
+    {
+      "keyword": "поліроль",
+      "volume": 30
+    },
+    {
+      "keyword": "полірування",
+      "volume": 20
     }
   ],
-  "all_keywords_count": 7
+  "synonyms": [],
+  "micro_intents": [],
+  "all_keywords_count": 8
 }

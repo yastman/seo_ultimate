@@ -2,7 +2,12 @@
   "id": "antimoshka",
   "language": "uk",
   "total_volume": 810,
-  "keywords": [],
+  "keywords": [
+    {"keyword": "очищувач слідів комах", "volume": 320},
+    {"keyword": "антимошка для авто", "volume": 260},
+    {"keyword": "засіб від комах", "volume": 140},
+    {"keyword": "засіб для видалення комах", "volume": 90}
+  ],
   "secondary_keywords": [
     {
       "keyword": "антимошка",

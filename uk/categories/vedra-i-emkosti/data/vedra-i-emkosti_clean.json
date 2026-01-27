@@ -1,8 +1,12 @@
 {
   "id": "vedra-i-emkosti",
   "language": "uk",
-  "total_volume": 250,
+  "total_volume": 470,
   "keywords": [
+    {"keyword": "відро для миття авто", "volume": 170},
+    {"keyword": "відро для дітейлінгу", "volume": 50}
+  ],
+  "secondary_keywords": [
     {
       "keyword": "відро для миття автомобіля",
       "volume": 90,
@@ -11,15 +15,7 @@
       "_original_category": "vedra-i-emkosti"
     }
   ],
-  "secondary_keywords": [],
   "supporting_keywords": [
-    {
-      "keyword": "відро для детейлінгу",
-      "volume": 30,
-      "use_in": "content",
-      "source_ru": "ведро для детейлинга",
-      "_original_category": "vedra-i-emkosti"
-    },
     {
       "keyword": "відро з сіткою для миття",
       "volume": 10,
@@ -28,7 +24,7 @@
       "_original_category": "vedra-i-emkosti"
     },
     {
-      "keyword": "профессиональное відро для миття",
+      "keyword": "професійне відро для миття",
       "volume": 10,
       "use_in": "content",
       "source_ru": "профессиональное ведро для мойки",
@@ -47,14 +43,14 @@
       "keyword": "відра для миття авто",
       "volume": 90,
       "use_in": "lsi",
-      "variant_of": "відро для миття автомобіля",
+      "variant_of": "відро для миття авто",
       "source_ru": "ведра для мойки авто"
     },
     {
       "keyword": "відро для миття машини",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "відро для миття автомобіля",
+      "variant_of": "відро для миття авто",
       "source_ru": "ведро для мытья машины"
     },
     {
@@ -65,5 +61,5 @@
       "source_ru": "ведро для мойки автомобиля купить"
     }
   ],
-  "all_keywords_count": 8
+  "all_keywords_count": 9
 }

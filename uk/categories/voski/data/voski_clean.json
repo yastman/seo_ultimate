@@ -1,15 +1,24 @@
 {
   "id": "voski",
   "language": "uk",
-  "total_volume": 2840,
+  "total_volume": 4200,
   "keywords": [
-    {
-      "keyword": "віск для авто",
-      "volume": 1600,
-      "use_in": "content",
-      "source_ru": "воск для авто",
-      "_original_category": "voski"
-    }
+    {"keyword": "віск для авто", "volume": 1000},
+    {"keyword": "віск для автомобіля", "volume": 720},
+    {"keyword": "віск для миття авто", "volume": 720},
+    {"keyword": "віск для кузова авто", "volume": 480},
+    {"keyword": "віск для полірування авто", "volume": 320},
+    {"keyword": "віск автомобільний", "volume": 210},
+    {"keyword": "віск для сушки авто", "volume": 140},
+    {"keyword": "віск для чорних авто", "volume": 90},
+    {"keyword": "холодний віск для авто", "volume": 90},
+    {"keyword": "поліроль з воском", "volume": 70},
+    {"keyword": "віск карнауба", "volume": 70},
+    {"keyword": "віск для авто ціна", "volume": 50},
+    {"keyword": "віск для авто рідкий", "volume": 40},
+    {"keyword": "віск для авто як користуватися", "volume": 30},
+    {"keyword": "гарячий віск для авто", "volume": 20},
+    {"keyword": "віск", "volume": 20}
   ],
   "secondary_keywords": [
     {
@@ -21,27 +30,6 @@
     }
   ],
   "supporting_keywords": [
-    {
-      "keyword": "віск для полірування авто",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "воск для полировки авто",
-      "_original_category": "voski"
-    },
-    {
-      "keyword": "віск для миття авто",
-      "volume": 70,
-      "use_in": "content",
-      "source_ru": "воск для мойки авто",
-      "_original_category": "voski"
-    },
-    {
-      "keyword": "віск для кузова авто",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "воск для кузова авто",
-      "_original_category": "voski"
-    },
     {
       "keyword": "восковий поліроль для авто",
       "volume": 50,
@@ -55,13 +43,6 @@
       "use_in": "meta_only",
       "source_ru": "купить воск для полировки авто",
       "_original_category": "voski"
-    },
-    {
-      "keyword": "рідкий віск для автомобіля",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "жидкий воск для автомобиля",
-      "_original_category": "zhidkiy-vosk"
     }
   ],
   "synonyms": [
@@ -78,14 +59,7 @@
       "use_in": "lsi",
       "variant_of": "віск для авто",
       "source_ru": "воск для машины"
-    },
-    {
-      "keyword": "віск автомобільний",
-      "volume": 90,
-      "use_in": "lsi",
-      "variant_of": "віск для авто",
-      "source_ru": "воск автомобильный"
     }
   ],
-  "all_keywords_count": 11
+  "all_keywords_count": 21
 }
