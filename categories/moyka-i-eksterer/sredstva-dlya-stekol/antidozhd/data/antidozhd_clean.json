@@ -3,13 +3,28 @@
   "name": "Антидождь",
   "type": "category",
   "parent_id": "sredstva-dlya-stekol",
+  "keywords": [
+    {"keyword": "антидождь", "volume": 1200},
+    {"keyword": "антидождь для автомобиля", "volume": 320},
+    {"keyword": "антидождь для авто", "volume": 80}
+  ],
+  "synonyms": [
+    {"keyword": "антидождь на лобовое стекло", "volume": 10},
+    {"keyword": "покрытие для лобового стекла", "volume": 10},
+    {"keyword": "антидождь для зеркал авто", "volume": 20},
+    {"keyword": "гидрофобное покрытие для стекла", "volume": 20},
+    {"keyword": "средство антидождь купить", "volume": 1000, "use_in": "meta_only"},
+    {"keyword": "антидождь авто купить", "volume": 700, "use_in": "meta_only"},
+    {"keyword": "антидождь цена", "volume": 200, "use_in": "meta_only"},
+    {"keyword": "купить антидождь", "volume": 110, "use_in": "meta_only"},
+    {"keyword": "купить антидождь для стекол авто", "volume": 10, "use_in": "meta_only"}
+  ],
+  "variations": [],
   "entities": [
     "лобовое стекло",
     "боковые зеркала",
     "гидрофобное покрытие",
-    "дождь",
-    "снег",
-    "грязь",
+    "дождь", "снег", "грязь",
     "видимость на дороге"
   ],
   "micro_intents": [
@@ -18,63 +33,5 @@
     "сколько держится антидождь",
     "антидождь или дворники"
   ],
-  "variations": [],
-  "source": "STRUCTURE.md",
-  "keywords": [
-    {
-      "keyword": "антидождь",
-      "volume": 1200
-    },
-    {
-      "keyword": "антидождь для автомобиля",
-      "volume": 320
-    },
-    {
-      "keyword": "антидождь для авто",
-      "volume": 80
-    }
-  ],
-  "synonyms": [
-    {
-      "keyword": "средство антидождь купить",
-      "volume": 1000,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "антидождь авто купить",
-      "volume": 700,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "антидождь цена",
-      "volume": 200,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить антидождь",
-      "volume": 110,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "антидождь для зеркал авто",
-      "volume": 20
-    },
-    {
-      "keyword": "гидрофобное покрытие для стекла",
-      "volume": 20
-    },
-    {
-      "keyword": "антидождь на лобовое стекло",
-      "volume": 10
-    },
-    {
-      "keyword": "покрытие для лобового стекла",
-      "volume": 10
-    },
-    {
-      "keyword": "купить антидождь для стекол авто",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
-  ]
+  "source": "STRUCTURE.md"
 }

@@ -3,6 +3,27 @@
   "name": "Квик-детейлеры",
   "type": "category",
   "parent_id": "zashchitnye-pokrytiya",
+  "keywords": [
+    {"keyword": "холодный воск для автомобиля", "volume": 110},
+    {"keyword": "горячий воск для авто", "volume": 90},
+    {"keyword": "быстрый воск для авто", "volume": 40}
+  ],
+  "synonyms": [
+    {"keyword": "полимер для авто", "volume": 140},
+    {"keyword": "воск для авто на автомойке", "volume": 20},
+    {"keyword": "холодный воск для сушки автомобиля", "volume": 10},
+    {"keyword": "быстрый блеск для авто", "volume": 10},
+    {"keyword": "купить холодный воск для авто", "volume": 30, "use_in": "meta_only"},
+    {"keyword": "купить холодный воск для автомобиля", "volume": 30, "use_in": "meta_only"},
+    {"keyword": "горячий воск для авто цена", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "холодный воск для авто цена", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить горячий воск для авто", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "жидкий воск цена", "volume": 10, "use_in": "meta_only"}
+  ],
+  "variations": [
+    {"keyword": "холодный воск для авто", "volume": 90, "parent": "холодный воск для автомобиля"},
+    {"keyword": "горячий воск для автомобиля", "volume": 10, "parent": "горячий воск для авто"}
+  ],
   "entities": [
     "quick detailer",
     "spray wax",
@@ -17,79 +38,5 @@
     "как использовать быстрый воск",
     "квик-детейлер или воск — в чём разница"
   ],
-  "variations": [
-    {
-      "keyword": "холодный воск для авто",
-      "volume": 90,
-      "parent": "холодный воск для автомобиля"
-    },
-    {
-      "keyword": "горячий воск для автомобиля",
-      "volume": 10,
-      "parent": "горячий воск для авто"
-    }
-  ],
-  "source": "STRUCTURE.md",
-  "keywords": [
-    {
-      "keyword": "холодный воск для автомобиля",
-      "volume": 110
-    },
-    {
-      "keyword": "горячий воск для авто",
-      "volume": 90
-    },
-    {
-      "keyword": "быстрый воск для авто",
-      "volume": 40
-    }
-  ],
-  "synonyms": [
-    {
-      "keyword": "полимер для авто",
-      "volume": 140
-    },
-    {
-      "keyword": "купить холодный воск для авто",
-      "volume": 30,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить холодный воск для автомобиля",
-      "volume": 30,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "воск для авто на автомойке",
-      "volume": 20
-    },
-    {
-      "keyword": "холодный воск для сушки автомобиля",
-      "volume": 10
-    },
-    {
-      "keyword": "быстрый блеск для авто",
-      "volume": 10
-    },
-    {
-      "keyword": "горячий воск для авто цена",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "холодный воск для авто цена",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить горячий воск для авто",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "жидкий воск цена",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
-  ]
+  "source": "STRUCTURE.md"
 }

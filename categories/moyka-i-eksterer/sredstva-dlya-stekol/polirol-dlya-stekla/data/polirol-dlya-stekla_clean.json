@@ -3,6 +3,24 @@
   "name": "Полироль для стекла",
   "type": "category",
   "parent_id": "sredstva-dlya-stekol",
+  "keywords": {
+    "primary": [
+      {"keyword": "полироль для стекла", "volume": 590},
+      {"keyword": "полироль для стекла авто", "volume": 70}
+    ],
+    "synonyms_avto": [
+      {"keyword": "полироль для стекол автомобиля", "volume": 70, "synonym_of": "полироль для стекла авто"},
+      {"keyword": "полироль для автостекла", "volume": 60, "synonym_of": "полироль для стекла авто"}
+    ],
+    "synonyms_sredstvo": [
+      {"keyword": "средство для полировки лобового стекла", "volume": 30, "synonym_of": "полироль для стекла"},
+      {"keyword": "средство для полировки стекол автомобиля", "volume": 10, "synonym_of": "полироль для стекла авто"}
+    ],
+    "commercial": [
+      {"keyword": "купить полироль для стекла авто", "volume": 10, "use_in": "meta_only"},
+      {"keyword": "полироль для стекла авто цена", "volume": 10, "use_in": "meta_only"}
+    ]
+  },
   "entities": [
     "лобовое стекло",
     "боковые стёкла",
@@ -19,42 +37,5 @@
     "чем отполировать лобовое стекло"
   ],
   "variations": [],
-  "source": "split from ochistiteli-stekol",
-  "keywords": [
-    {
-      "keyword": "полироль для стекла",
-      "volume": 590
-    },
-    {
-      "keyword": "полироль для стекла авто",
-      "volume": 50
-    },
-    {
-      "keyword": "полироль для стекол автомобиля",
-      "volume": 50
-    },
-    {
-      "keyword": "полироль для автостекла",
-      "volume": 30
-    },
-    {
-      "keyword": "средство для полировки лобового стекла",
-      "volume": 30
-    },
-    {
-      "keyword": "средство для полировки стекол автомобиля",
-      "volume": 10
-    },
-    {
-      "keyword": "купить полироль для стекла авто",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "полироль для стекла авто цена",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
-  ],
-  "synonyms": []
+  "source": "split from ochistiteli-stekol"
 }

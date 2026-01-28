@@ -3,6 +3,25 @@
   "name": "Жидкий воск",
   "type": "category",
   "parent_id": "voski",
+  "keywords": [
+    {"keyword": "жидкий воск для авто", "volume": 480},
+    {"keyword": "жидкий воск", "volume": 320}
+  ],
+  "synonyms": [
+    {"keyword": "жидкий воск для кузова", "volume": 10},
+    {"keyword": "жидкий воск для мойки авто", "volume": 10},
+    {"keyword": "жидкий воск для автомойки", "volume": 10},
+    {"keyword": "купить жидкий воск для авто", "volume": 70, "use_in": "meta_only"},
+    {"keyword": "купить жидкий воск", "volume": 40, "use_in": "meta_only"},
+    {"keyword": "купить жидкий воск для автомобиля", "volume": 20, "use_in": "meta_only"},
+    {"keyword": "купить жидкий воск для машины", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "жидкий воск для авто цена", "volume": 10, "use_in": "meta_only"}
+  ],
+  "variations": [
+    {"keyword": "жидкий воск для автомобиля", "volume": 20, "parent": "жидкий воск для авто"},
+    {"keyword": "жидкий воск для машин", "volume": 10, "parent": "жидкий воск для авто"},
+    {"keyword": "жидкий воск для кузова автомобиля", "volume": 10, "parent": "жидкий воск для кузова"}
+  ],
   "entities": [
     "спрей-воск",
     "концентрат воска",
@@ -16,71 +35,5 @@
     "сколько держится жидкий воск на авто",
     "жидкий или твёрдый воск — в чём разница"
   ],
-  "variations": [
-    {
-      "keyword": "жидкий воск для автомобиля",
-      "volume": 20,
-      "parent": "жидкий воск для авто"
-    },
-    {
-      "keyword": "жидкий воск для машин",
-      "volume": 10,
-      "parent": "жидкий воск для авто"
-    },
-    {
-      "keyword": "жидкий воск для кузова автомобиля",
-      "volume": 10,
-      "parent": "жидкий воск для кузова"
-    }
-  ],
-  "source": "STRUCTURE.md",
-  "keywords": [
-    {
-      "keyword": "жидкий воск для авто",
-      "volume": 480
-    },
-    {
-      "keyword": "жидкий воск",
-      "volume": 320
-    }
-  ],
-  "synonyms": [
-    {
-      "keyword": "купить жидкий воск для авто",
-      "volume": 70,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить жидкий воск",
-      "volume": 40,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить жидкий воск для автомобиля",
-      "volume": 20,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "жидкий воск для кузова",
-      "volume": 10
-    },
-    {
-      "keyword": "жидкий воск для мойки авто",
-      "volume": 10
-    },
-    {
-      "keyword": "жидкий воск для автомойки",
-      "volume": 10
-    },
-    {
-      "keyword": "купить жидкий воск для машины",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "жидкий воск для авто цена",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
-  ]
+  "source": "STRUCTURE.md"
 }

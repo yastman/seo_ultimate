@@ -3,6 +3,24 @@
   "name": "Малярный скотч",
   "type": "category",
   "parent_id": "aksessuary",
+  "keywords": [
+    {"keyword": "малярные скотчи", "volume": 4400},
+    {"keyword": "малярный скотч", "volume": 4400},
+    {"keyword": "скотч малярний", "volume": 1000},
+    {"keyword": "малярная лента", "volume": 50}
+  ],
+  "synonyms": [
+    {"keyword": "малярный скотч 10мм", "volume": 40},
+    {"keyword": "малярный скотч 10 мм", "volume": 30},
+    {"keyword": "скотч малярный автомобильный", "volume": 20},
+    {"keyword": "малярский скотч", "volume": 10},
+    {"keyword": "малярный скотч широкий", "volume": 10},
+    {"keyword": "малярный скотч для авто", "volume": 10},
+    {"keyword": "купить малярный скотч", "volume": 210, "use_in": "meta_only"},
+    {"keyword": "малярный скотч цена", "volume": 70, "use_in": "meta_only"},
+    {"keyword": "малярная лента купить", "volume": 50, "use_in": "meta_only"}
+  ],
+  "variations": [],
   "entities": [
     "маскировка при полировке",
     "защита пластика",
@@ -15,65 +33,5 @@
     "малярный скотч для оклейки",
     "скотч не оставляющий следов"
   ],
-  "variations": [],
-  "source": "checklist",
-  "keywords": [
-    {
-      "keyword": "малярные скотчи",
-      "volume": 4400
-    },
-    {
-      "keyword": "малярный скотч",
-      "volume": 4400
-    },
-    {
-      "keyword": "скотч малярний",
-      "volume": 1000
-    },
-    {
-      "keyword": "малярная лента",
-      "volume": 50
-    }
-  ],
-  "synonyms": [
-    {
-      "keyword": "купить малярный скотч",
-      "volume": 210,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "малярный скотч цена",
-      "volume": 70,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "малярная лента купить",
-      "volume": 50,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "малярный скотч 10мм",
-      "volume": 40
-    },
-    {
-      "keyword": "малярный скотч 10 мм",
-      "volume": 30
-    },
-    {
-      "keyword": "скотч малярный автомобильный",
-      "volume": 20
-    },
-    {
-      "keyword": "малярский скотч",
-      "volume": 10
-    },
-    {
-      "keyword": "малярный скотч широкий",
-      "volume": 10
-    },
-    {
-      "keyword": "малярный скотч для авто",
-      "volume": 10
-    }
-  ]
+  "source": "checklist"
 }
