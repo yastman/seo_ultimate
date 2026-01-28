@@ -3,18 +3,6 @@
   "name": "Шампуни для ручной мойки",
   "type": "category",
   "parent_id": "avtoshampuni",
-  "keywords": [
-    {"keyword": "автошампунь для ручной мойки", "volume": 390},
-    {"keyword": "шампунь для ручной мойки авто", "volume": 110},
-    {"keyword": "автомобильный шампунь для ручной мойки", "volume": 70}
-  ],
-  "synonyms": [
-    {"keyword": "шампунь для ручной мойки", "volume": 10},
-    {"keyword": "шампунь для мытья авто вручную", "volume": 10},
-    {"keyword": "купить автошампунь для ручной мойки", "volume": 20, "use_in": "meta_only"},
-    {"keyword": "шампунь для ручной мойки цена", "volume": 10, "use_in": "meta_only"}
-  ],
-  "variations": [],
   "entities": [
     "ведро и губка",
     "двухфазная мойка",
@@ -28,5 +16,40 @@
     "чем отличается от бесконтактного",
     "нужно ли разводить шампунь"
   ],
-  "source": "migrated_from_legacy"
+  "variations": [],
+  "source": "migrated_from_legacy",
+  "keywords": [
+    {
+      "keyword": "автошампунь для ручной мойки",
+      "volume": 390
+    },
+    {
+      "keyword": "шампунь для ручной мойки авто",
+      "volume": 110
+    },
+    {
+      "keyword": "автомобильный шампунь для ручной мойки",
+      "volume": 70
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "купить автошампунь для ручной мойки",
+      "volume": 20,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "шампунь для ручной мойки",
+      "volume": 10
+    },
+    {
+      "keyword": "шампунь для мытья авто вручную",
+      "volume": 10
+    },
+    {
+      "keyword": "шампунь для ручной мойки цена",
+      "volume": 10,
+      "use_in": "meta_only"
+    }
+  ]
 }

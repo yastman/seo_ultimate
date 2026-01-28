@@ -3,22 +3,6 @@
   "name": "Воски",
   "type": "category",
   "parent_id": "zashchitnye-pokrytiya",
-  "keywords": [
-    {"keyword": "воск для авто", "volume": 1600},
-    {"keyword": "воск для машины", "volume": 210},
-    {"keyword": "воск автомобильный", "volume": 90},
-    {"keyword": "воск для полировки авто", "volume": 90}
-  ],
-  "synonyms": [
-    {"keyword": "воск для мойки авто", "volume": 70},
-    {"keyword": "воск для кузова авто", "volume": 50},
-    {"keyword": "восковый полироль для авто", "volume": 50},
-    {"keyword": "купить воск для авто", "volume": 320, "use_in": "meta_only"},
-    {"keyword": "купить воск для автомобиля", "volume": 320, "use_in": "meta_only"},
-    {"keyword": "купить воск для полировки авто", "volume": 20, "use_in": "meta_only"},
-    {"keyword": "купить воск для мойки авто", "volume": 20, "use_in": "meta_only"}
-  ],
-  "variations": [],
   "entities": [
     "натуральный воск (карнауба)",
     "синтетический воск",
@@ -33,5 +17,58 @@
     "жидкий или твёрдый воск — что выбрать",
     "как наносить воск на кузов"
   ],
-  "source": "checklist"
+  "variations": [],
+  "source": "checklist",
+  "keywords": [
+    {
+      "keyword": "воск для авто",
+      "volume": 1600
+    },
+    {
+      "keyword": "воск для машины",
+      "volume": 210
+    },
+    {
+      "keyword": "воск автомобильный",
+      "volume": 90
+    },
+    {
+      "keyword": "воск для полировки авто",
+      "volume": 90
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "купить воск для авто",
+      "volume": 320,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "купить воск для автомобиля",
+      "volume": 320,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "воск для мойки авто",
+      "volume": 70
+    },
+    {
+      "keyword": "воск для кузова авто",
+      "volume": 50
+    },
+    {
+      "keyword": "восковый полироль для авто",
+      "volume": 50
+    },
+    {
+      "keyword": "купить воск для полировки авто",
+      "volume": 20,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "купить воск для мойки авто",
+      "volume": 20,
+      "use_in": "meta_only"
+    }
+  ]
 }

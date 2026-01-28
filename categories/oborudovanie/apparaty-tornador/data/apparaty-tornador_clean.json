@@ -3,34 +3,13 @@
   "name": "Аппараты Tornador",
   "type": "category",
   "parent_id": "oborudovanie",
-  "keywords": [
-    {"keyword": "торнадор", "volume": 3600},
-    {"keyword": "торнадор для химчистки авто", "volume": 260},
-    {"keyword": "торнадор химчистка", "volume": 210},
-    {"keyword": "tornador", "volume": 140}
-  ],
-  "synonyms": [
-    {"keyword": "торнадор для химчистки салона", "volume": 30},
-    {"keyword": "торнадо для чистки салона", "volume": 10},
-    {"keyword": "торнадо для химчистки", "volume": 10},
-    {"keyword": "tornador химчистка", "volume": 10},
-    {"keyword": "чистка салона tornador", "volume": 10},
-    {"keyword": "торнадор для чистки салона автомобиля", "volume": 10},
-    {"keyword": "аппарат для химчистки tornador", "volume": 10},
-    {"keyword": "купить торнадор", "volume": 390, "use_in": "meta_only"},
-    {"keyword": "купить торнадор для химчистки", "volume": 90, "use_in": "meta_only"},
-    {"keyword": "купить торнадор для химчистки салона", "volume": 50, "use_in": "meta_only"},
-    {"keyword": "торнадор профессиональный купить", "volume": 50, "use_in": "meta_only"},
-    {"keyword": "купить tornador", "volume": 40, "use_in": "meta_only"},
-    {"keyword": "торнадор цена", "volume": 10, "use_in": "meta_only"},
-    {"keyword": "tornador цена", "volume": 10, "use_in": "meta_only"}
-  ],
-  "variations": [],
   "entities": [
     "пневматический аппарат",
     "химчистка салона",
     "вихревая очистка",
-    "ткань", "велюр", "алькантара",
+    "ткань",
+    "велюр",
+    "алькантара",
     "компрессор"
   ],
   "micro_intents": [
@@ -39,5 +18,89 @@
     "торнадор для химчистки как выбрать",
     "чем торнадор лучше обычной щётки"
   ],
-  "source": "checklist"
+  "variations": [],
+  "source": "checklist",
+  "keywords": [
+    {
+      "keyword": "торнадор",
+      "volume": 3600
+    },
+    {
+      "keyword": "торнадор для химчистки авто",
+      "volume": 260
+    },
+    {
+      "keyword": "торнадор химчистка",
+      "volume": 210
+    },
+    {
+      "keyword": "tornador",
+      "volume": 140
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "купить торнадор",
+      "volume": 390,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "купить торнадор для химчистки",
+      "volume": 90,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "купить торнадор для химчистки салона",
+      "volume": 50,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "торнадор профессиональный купить",
+      "volume": 50,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "купить tornador",
+      "volume": 40,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "торнадор для химчистки салона",
+      "volume": 30
+    },
+    {
+      "keyword": "торнадо для чистки салона",
+      "volume": 10
+    },
+    {
+      "keyword": "торнадо для химчистки",
+      "volume": 10
+    },
+    {
+      "keyword": "tornador химчистка",
+      "volume": 10
+    },
+    {
+      "keyword": "чистка салона tornador",
+      "volume": 10
+    },
+    {
+      "keyword": "торнадор для чистки салона автомобиля",
+      "volume": 10
+    },
+    {
+      "keyword": "аппарат для химчистки tornador",
+      "volume": 10
+    },
+    {
+      "keyword": "торнадор цена",
+      "volume": 10,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "tornador цена",
+      "volume": 10,
+      "use_in": "meta_only"
+    }
+  ]
 }
