@@ -191,6 +191,33 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ---
 
+## Семантика RU (Master CSV)
+
+**Источник истины:** `data/ru_semantics_master.csv`
+
+### Обновление частотности
+
+```bash
+# 1. Загрузить свежий Excel в reports/
+# 2. Обновить master CSV
+python3 scripts/merge_to_master.py --excel reports/new.xlsx
+
+# 3. Валидация
+python3 scripts/validate_master.py
+
+# 4. Синхронизация в _clean.json
+python3 scripts/sync_semantics.py --apply
+```
+
+### Добавление ключей
+
+1. Открыть `data/ru_semantics_master.csv`
+2. Добавить строки: `keyword,volume,category,type,use_in`
+3. `python3 scripts/validate_master.py`
+4. `python3 scripts/sync_semantics.py --apply`
+
+---
+
 ## Формат JSON файлов
 
 ### _clean.json (семантика)
@@ -242,9 +269,9 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 ---
 
-## Параллельные Claude сессии в tmux
+## Parallel Claude Workers
 
-Инструкция по запуску нескольких Claude-агентов одновременно для ускорения работы.
+Запуск нескольких Claude-агентов одновременно для ускорения работы.
 
 ### Архитектура
 
@@ -260,34 +287,19 @@ tmux session "claude"
 
 **Результат:** N Claude-агентов работают **параллельно**, каждый на своей задаче, в одной tmux сессии.
 
-### Быстрый старт (3 шага)
+### Короткий синтаксис (из Claude)
 
-**1. Открыть tmux сессию в проекте**
-```bash
-cd /mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт
-# Или через WezTerm (Ctrl+Shift+M) → выбрать проект "SEO Ultimate"
+```
+/parallel docs/plans/2026-01-28-feature.md
+W1: 1,2,5
+W2: 3,4
 ```
 
-**2. Запустить основную Claude сессию**
-```bash
-claude code
-```
-
-**3. Из Claude запустить воркеров**
-```bash
-spawn-claude "W1: Добавить UK keywords в kategoriya-1" "$(pwd)"
-spawn-claude "W2: Генерировать контент для kategoriya-2" "$(pwd)"
-spawn-claude "W3: Проверить качество мета для kategoriya-3" "$(pwd)"
-```
-
-### Переключение между воркерами
-
-| Комбо | Действие |
-|-------|----------|
-| `Ctrl+A, 1` | Основной Claude (оркестратор) |
-| `Ctrl+A, 2/3/4` | Worker 1/2/3 |
-| `Ctrl+A, n/p` | Следующее/предыдущее окно |
-| `Ctrl+A, w` | Список всех окон |
+**Claude понимает:**
+- Прочитать план
+- Запустить `spawn-claude` для каждого воркера с правильными скиллами
+- Я (Claude) — оркестратор: не делаю задачи сам, только коммичу после воркеров
+- Воркеры НЕ делают коммиты
 
 ### Синтаксис spawn-claude
 
@@ -297,61 +309,51 @@ spawn-claude "ПРОМПТ" "ПУТЬ"
 
 | Параметр | Значение | Пример |
 |----------|----------|--------|
-| **ПРОМПТ** | Задача для Claude | `"W1: Добавить UK keywords"` |
+| **ПРОМПТ** | Задача для Claude | `"W1: Task 1 description"` |
 | **ПУТЬ** | Путь к проекту | `"$(pwd)"` или абсолютный путь |
 
-### Структура промпта воркера
+**ОБЯЗАТЕЛЬНО:** Всегда передавай путь к проекту вторым аргументом.
 
-```
-W{N}: {Краткое описание задачи}.
+### Шаблон промпта для воркера
+
+```bash
+spawn-claude "W{N}: {Краткое описание задачи}.
 
 REQUIRED SKILLS:
 - superpowers:executing-plans
 - superpowers:verification-before-completion
 
 План: docs/plans/YYYY-MM-DD-task.md
-Чек-лист: tasks/TODO_xxx.md
+Задачи: Task N
 
-Твои файлы/категории: список
-
-Алгоритм:
-1. Прочитай источник данных
-2. Примени изменения
-3. VERIFY: команда для проверки
-4. git commit
-
-Путь: /мнт/путь/к/проекту
+НЕ ДЕЛАЙ git commit - коммиты делает оркестратор" "$(pwd)"
 ```
 
-### Правила параллелизации
+**Важно:**
+- Не дублируй содержимое плана в промпте — воркер сам прочитает
+- Указывай только номера задач, не пересказывай шаги
+- Скилл `executing-plans` обеспечит правильное выполнение
 
-| Правило | ✅ Хорошо | ❌ Плохо |
-|---------|----------|---------|
-| 1 воркер = 1 набор файлов | W1: kategoriya-1, W2: kategoriya-2 | W1: kategoriya-1 строка 1-50, W2: kategoriya-1 строка 51-100 |
-| Группируй мелкое | W1: meta + keywords + content | W1: meta, W2: keywords, W3: content |
-| Общий файл — только читать | Все читают план | Все пишут в один файл |
+### Правила параллелизации (ВАЖНО)
 
-### Пример: запуск воркера (этот проект)
+**Главный принцип:** 1 воркер = 1 набор независимых файлов. Никогда не делить один файл между воркерами.
 
-```bash
-spawn-claude "W1: Добавить UK keywords.
+| Правило | Хорошо | Плохо |
+|---------|--------|-------|
+| 1 воркер = 1 модуль | W1: script1.py, W2: script2.py | W1: script.py строки 1-100, W2: script.py строки 101-200 |
+| Группируй мелкое | W1: meta + keywords + content | W1: meta, W2: keywords, W3: content (оверхед) |
+| Тесты с кодом | W1: script.py + test_script.py | W1: script.py, W2: test_script.py |
+| Общий файл — только чтение | Все читают план | Все пишут в один файл |
 
-REQUIRED SKILLS:
-- superpowers:executing-plans
-- superpowers:verification-before-completion
+### Переключение между воркерами (tmux)
 
-План: docs/plans/2026-01-27-uk-keywords.md
-
-Категории: aktivnaya-pena, antibitum, antidozhd
-
-Алгоритм для каждой:
-1. Прочитай uk/categories/{slug}/data/{slug}_clean.json
-2. Обнови keywords из плана
-3. VERIFY: python -m json.tool < файл.json
-4. git commit
-
-Путь: /mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт" "$(pwd)"
-```
+| Комбо | Действие |
+|-------|----------|
+| `Ctrl+A, 1` | Основной Claude (оркестратор) |
+| `Ctrl+A, 2/3/4` | Worker 1/2/3 |
+| `Ctrl+A, n/p` | Следующее/предыдущее окно |
+| `Ctrl+A, w` | Список всех окон |
+| `Ctrl+A, d` | Отсоединиться (session stays) |
 
 ### Мониторинг прогресса
 
@@ -365,30 +367,18 @@ git diff --name-only HEAD~5
 
 ### Обработка ошибок
 
-**"Not inside tmux session"** → `Ctrl+Shift+M` (войти в tmux)
-
-**Worker зависает** → `Ctrl+A, {номер}` → `Ctrl+C` → `claude code`
-
-**Конфликт в git** → `git status` → `git add .` → `git commit -m "Merge workers"`
-
-### Шпаргалка tmux
-
-| Комбо | Действие |
-|-------|----------|
-| `Ctrl+A, c` | Новое окно |
-| `Ctrl+A, n/p` | Следующее/предыдущее |
-| `Ctrl+A, 1/2/3` | Перейти на окно |
-| `Ctrl+A, w` | Список окон |
-| `Ctrl+A, d` | Отсоединиться (session stays) |
-| `Ctrl+A, \|` | Вертикальный сплит |
-| `Ctrl+A, -` | Горизонтальный сплит |
+| Проблема | Решение |
+|----------|---------|
+| "Not inside tmux session" | `Ctrl+Shift+M` (войти в tmux) или `tmux new -s claude` |
+| Worker зависает | `Ctrl+A, {номер}` → `Ctrl+C` → `claude` |
+| Конфликт в git | `git status` → `git add .` → `git commit -m "Merge workers"` |
 
 ### Когда использовать
 
-✅ **Используй:** много категорий (5+), независимые задачи, каждому свои файлы
+**Используй:** много независимых задач (3+), каждому свои файлы, план готов
 
-❌ **Не используй:** зависимые задачи, один файл для всех
+**Не используй:** зависимые задачи, один файл для всех, нужна координация
 
 ---
 
-**Version:** 47.0
+**Version:** 48.0
