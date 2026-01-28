@@ -3,17 +3,6 @@
   "name": "Защитные покрытия",
   "type": "category",
   "parent_id": null,
-  "keywords": [
-    {"keyword": "защитные покрытия для авто", "volume": 70},
-    {"keyword": "покрытие для автомобиля", "volume": 10}
-  ],
-  "synonyms": [
-    {"keyword": "защитное покрытие на машину купить", "volume": 10, "use_in": "meta_only"},
-    {"keyword": "купить защитное покрытие для авто", "volume": 10, "use_in": "meta_only"}
-  ],
-  "variations": [
-    {"keyword": "защитные покрытия автомобиля", "volume": 10, "parent": "защитные покрытия для авто"}
-  ],
   "entities": [
     "воски",
     "силанты",
@@ -28,5 +17,34 @@
     "сколько держится защитное покрытие",
     "как нанести защитное покрытие на авто"
   ],
-  "source": "STRUCTURE.md"
+  "variations": [
+    {
+      "keyword": "защитные покрытия автомобиля",
+      "volume": 10,
+      "parent": "защитные покрытия для авто"
+    }
+  ],
+  "source": "STRUCTURE.md",
+  "keywords": [
+    {
+      "keyword": "защитные покрытия для авто",
+      "volume": 70
+    },
+    {
+      "keyword": "покрытие для автомобиля",
+      "volume": 10
+    }
+  ],
+  "synonyms": [
+    {
+      "keyword": "защитное покрытие на машину купить",
+      "volume": 10,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "купить защитное покрытие для авто",
+      "volume": 10,
+      "use_in": "meta_only"
+    }
+  ]
 }
