@@ -34,7 +34,8 @@
     {"keyword": "нанокерамика для авто цена", "volume": 20, "use_in": "meta_only"},
     {"keyword": "нанокерамика цена", "volume": 10, "use_in": "meta_only"},
     {"keyword": "цена на жидкое стекло для авто", "volume": 10, "use_in": "meta_only"},
-    {"keyword": "жидкое стекло на машину цена", "volume": 10, "use_in": "meta_only"}
+    {"keyword": "жидкое стекло на машину цена", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить полироль жидкое стекло", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [
     {"keyword": "жидкое стекло для полировки автомобиля", "volume": 20, "parent": "жидкое стекло для полировки авто"}

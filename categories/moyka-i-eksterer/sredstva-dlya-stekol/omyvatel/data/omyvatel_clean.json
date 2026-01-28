@@ -24,18 +24,23 @@
     {"keyword": "летний стеклоомыватель", "volume": 10},
     {"keyword": "омыватель стекла антимошка", "volume": 10},
     {"keyword": "омывайка антимошка", "volume": 10},
+    {"keyword": "стеклоомыватель в машине", "volume": 10},
     {"keyword": "купить омыватель стекла зимний", "volume": 170, "use_in": "meta_only"},
     {"keyword": "купить омыватель стекол зимний", "volume": 170, "use_in": "meta_only"},
     {"keyword": "купить омыватель стекла", "volume": 50, "use_in": "meta_only"},
     {"keyword": "купить зимний омыватель", "volume": 40, "use_in": "meta_only"},
     {"keyword": "купить омыватель", "volume": 20, "use_in": "meta_only"},
     {"keyword": "омыватель стекол купить", "volume": 20, "use_in": "meta_only"},
+    {"keyword": "купить омыватель стекла авто", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить стеклоомыватель для авто", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "летний омыватель купить", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "зимний стеклоомыватель купить", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить стеклоомыватель", "volume": 10, "use_in": "meta_only"},
     {"keyword": "омыватели стекла цена", "volume": 10, "use_in": "meta_only"},
-    {"keyword": "стеклоомыватель цена", "volume": 10, "use_in": "meta_only"}
+    {"keyword": "стеклоомыватель цена", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "стеклоомыватель зимний цена", "volume": 10, "use_in": "meta_only"}
   ],
-  "variations": [
-    {"keyword": "стеклоомыватель в машине", "volume": 10, "parent": "стеклоомыватель для автомобиля"}
-  ],
+  "variations": [],
   "entities": [
     "зимний омыватель",
     "летний омыватель",

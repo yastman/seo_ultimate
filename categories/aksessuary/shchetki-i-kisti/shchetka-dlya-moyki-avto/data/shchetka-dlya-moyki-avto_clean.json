@@ -6,17 +6,25 @@
   "keywords": [
     {"keyword": "щетка для мойки авто", "volume": 480},
     {"keyword": "щетка для мытья машины", "volume": 390},
+    {"keyword": "щетка для автомобиля", "volume": 320},
     {"keyword": "щетка для мытья авто", "volume": 140},
     {"keyword": "мягкие щетки для мытья машины", "volume": 110},
     {"keyword": "щетка для мытья автомобиля", "volume": 90},
+    {"keyword": "щетка автомобильная", "volume": 70},
+    {"keyword": "щетка скребок для авто", "volume": 70},
     {"keyword": "щетки для мойки машины", "volume": 70}
   ],
   "synonyms": [
-    {"keyword": "щетки для мойки автомобилей", "volume": 0},
+    {"keyword": "щетка для чистки авто", "volume": 20},
     {"keyword": "щетка для мытья дисков авто", "volume": 10},
+    {"keyword": "щетки для мойки автомобилей", "volume": 0},
     {"keyword": "купить щетку для мойки авто", "volume": 210, "use_in": "meta_only"},
     {"keyword": "купить щетку для мойки автомобиля", "volume": 210, "use_in": "meta_only"},
     {"keyword": "купить щетку для мытья машины", "volume": 90, "use_in": "meta_only"},
+    {"keyword": "купить щетку для мытья авто", "volume": 30, "use_in": "meta_only"},
+    {"keyword": "купить щетку для мытья автомобиля", "volume": 30, "use_in": "meta_only"},
+    {"keyword": "купить щетку для машины", "volume": 20, "use_in": "meta_only"},
+    {"keyword": "купить щетку для мойки машины", "volume": 10, "use_in": "meta_only"},
     {"keyword": "щетка для мытья машины цена", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [],
