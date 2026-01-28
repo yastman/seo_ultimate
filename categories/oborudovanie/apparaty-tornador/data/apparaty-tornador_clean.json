@@ -23,7 +23,10 @@
     {"keyword": "торнадор профессиональный купить", "volume": 50, "use_in": "meta_only"},
     {"keyword": "купить tornador", "volume": 40, "use_in": "meta_only"},
     {"keyword": "торнадор цена", "volume": 10, "use_in": "meta_only"},
-    {"keyword": "tornador цена", "volume": 10, "use_in": "meta_only"}
+    {"keyword": "tornador цена", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "торнадор для химчистки авто купить", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "цена торнадор для химчистки", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "tornador купить в украине", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [],
   "entities": [

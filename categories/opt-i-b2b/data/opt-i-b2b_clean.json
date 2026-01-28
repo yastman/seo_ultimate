@@ -4,6 +4,7 @@
   "type": "category",
   "parent_id": null,
   "keywords": [
+    {"keyword": "автохимия опт", "volume": 90},
     {"keyword": "автохимия от производителя", "volume": 10},
     {"keyword": "автохимия производство", "volume": 10},
     {"keyword": "автохимия поставщики", "volume": 10}
@@ -11,7 +12,16 @@
   "synonyms": [
     {"keyword": "производители автохимии украина", "volume": 10},
     {"keyword": "автохимия оптом", "volume": 10},
-    {"keyword": "детейлинг химия оптом", "volume": 10}
+    {"keyword": "детейлинг химия оптом", "volume": 10},
+    {"keyword": "автокосметика оптом", "volume": 10},
+    {"keyword": "автокосметика оптом от производителя", "volume": 10},
+    {"keyword": "автохимия оптом от производителя", "volume": 10},
+    {"keyword": "автокосметика для автомоек", "volume": 10},
+    {"keyword": "химия для автомоек оптом", "volume": 10},
+    {"keyword": "химия для авто оптом", "volume": 10},
+    {"keyword": "автохимия по оптовым ценам", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить автохимию оптом", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить автокосметику оптом", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [],
   "entities": [

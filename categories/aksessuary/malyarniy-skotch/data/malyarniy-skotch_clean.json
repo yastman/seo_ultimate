@@ -18,7 +18,12 @@
     {"keyword": "малярный скотч для авто", "volume": 10},
     {"keyword": "купить малярный скотч", "volume": 210, "use_in": "meta_only"},
     {"keyword": "малярный скотч цена", "volume": 70, "use_in": "meta_only"},
-    {"keyword": "малярная лента купить", "volume": 50, "use_in": "meta_only"}
+    {"keyword": "малярная лента купить", "volume": 50, "use_in": "meta_only"},
+    {"keyword": "малярный скотч 1 см купить", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "малярный скотч стоимость", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "скотч малярный купить в украине", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить малярную клейкую ленту", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить малярный скотч для авто", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [],
   "entities": [

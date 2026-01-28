@@ -14,6 +14,7 @@
     {"keyword": "аксессуары по уходу за автомобилем", "volume": 10},
     {"keyword": "инвентарь для мойки авто", "volume": 10},
     {"keyword": "принадлежности для мойки авто", "volume": 10},
+    {"keyword": "купить скребок для автомобиля", "volume": 30, "use_in": "meta_only"},
     {"keyword": "купить аксессуары для мойки", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [
