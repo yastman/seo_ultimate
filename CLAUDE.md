@@ -42,8 +42,7 @@ uk/
 |------|------------|
 | `{slug}_clean.json` | Семантическое ядро: keywords, synonyms, micro_intents |
 | `{slug}_meta.json` | Title, Description, H1, keywords_in_content |
-| `{slug}_ru.md` | Контент на русском (buyer guide формат) |
-| `{slug}_uk.md` | Контент на украинском |
+| `{slug}_ru.md` / `{slug}_uk.md` | Контент (buyer guide формат) |
 | `RESEARCH_PROMPT.md` | Промпт для Perplexity Deep Research |
 | `RESEARCH_DATA.md` | Результаты research |
 
@@ -61,103 +60,32 @@ UK: /uk-content-init → /uk-generate-meta → /uk-seo-research → /uk-content-
 
 ## Скиллы проекта
 
-| Когда использовать | Команда | Описание |
-| ------------------ | ------- | -------- |
-| Новая категория нужна в проекте | `/category-init {slug}` | Создаёт структуру папок и базовые файлы |
-| Нужны Title/Description/H1 | `/generate-meta {slug}` | Генерирует мета-теги на основе семантики |
-| Нужен промпт для Perplexity | `/seo-research {slug}` | Анализирует товары, создаёт RESEARCH_PROMPT.md |
-| Нужен текст категории | `/content-generator {slug}` | Генерирует buyer guide контент |
-| Нужна ревизия контента | `content-reviewer {path}` | Проверяет и исправляет контент по плану v3.0 |
-| Интерактивная проверка | `/verify-content {slug}` | Ручная верификация перед продакшеном |
-| Готов к деплою, нужна проверка | `/quality-gate {slug}` | Валидирует все файлы перед публикацией |
-| Всё готово, нужно залить на сайт | `/deploy-to-opencart {slug}` | Деплоит мета и контент в OpenCart |
+### RU Pipeline
 
----
+| Команда | Описание |
+| ------- | -------- |
+| `/category-init {slug}` | Создаёт структуру папок и базовые файлы |
+| `/generate-meta {slug}` | Генерирует мета-теги на основе семантики |
+| `/seo-research {slug}` | Анализирует товары, создаёт RESEARCH_PROMPT.md |
+| `/content-generator {slug}` | Генерирует buyer guide контент |
+| `content-reviewer {path}` | Проверяет и исправляет контент |
+| `/verify-content {slug}` | Ручная верификация перед продакшеном |
+| `/quality-gate {slug}` | Валидирует все файлы перед публикацией |
+| `/deploy-to-opencart {slug}` | Деплоит мета и контент в OpenCart |
 
-## UK Pipeline
+### UK Pipeline
 
-| Когда использовать | Команда | Описание |
-| ------------------ | ------- | -------- |
-| UK структура нужна | `/uk-content-init {slug}` | Создаёт UK папки и переводит ключи |
-| UK мета-теги | `/uk-generate-meta {slug}` | Генерирует Title/Description/H1 украинские |
-| UK research | `/uk-seo-research {slug}` | Промпт для Perplexity (UK) |
-| UK контент | `/uk-content-generator {slug}` | Генерирует UK buyer guide |
-| UK ревизия | `uk-content-reviewer {slug}` | Проверяет UK контент |
-| UK валидация | `/uk-quality-gate {slug}` | Финальная проверка UK |
-| UK деплой | `/uk-deploy {slug}` | Деплой UK на сайт (language_id=1) |
-| Экспорт ключей | `/uk-keywords-export` | Собирает RU ключи, переводит на UK |
-| Импорт частотности | `/uk-keywords-import` | Загружает UK ключи с частотой |
-
-> **Note:** UK skills synced to v3.0 (January 2026) — повний паритет з RU pipeline.
-> - uk-content-generator v3.3: Синхронізовано з RU, entities прибрано, профтерміни з RESEARCH_DATA.md
-> - uk-generate-meta v15.0: IRON RULE, Producer/Shop patterns, List/Dict schema support
-> - uk-quality-gate v3.0: docs links, keywords_in_content sync, розширена термінологія
-> - uk-seo-research v13.0: 11 блоків, спірні твердження, незалежні осі класифікації
-> - uk-deploy-to-opencart v3.0: Паритет з RU, language_id=1
-> - uk-content-reviewer v2.0: NEW — ревізія UK контенту, UK термінологія check
-
----
-
-## Superpowers скиллы (14 скиллов)
-
-> **Источник:** [github.com/obra/superpowers](https://github.com/obra/superpowers/tree/main/skills)
-
-### Планирование и дизайн
-
-| Триггер | Скилл | Что делает |
-|---------|-------|------------|
-| **ПЕРЕД** любой креативной работой (фичи, компоненты, изменения поведения) | `superpowers:brainstorming` | Исследует намерения через вопросы, предлагает 2-3 подхода с trade-offs, валидирует дизайн по частям |
-| Есть спецификация/требования, нужен план | `superpowers:writing-plans` | Создаёт bite-sized задачи (2-5 мин), TDD-формат, сохраняет в `docs/plans/` |
-
-### Выполнение планов
-
-| Триггер | Скилл | Что делает |
-|---------|-------|------------|
-| Есть план, выполнять **в отдельной сессии** с чекпоинтами | `superpowers:executing-plans` | Batch execution (3 задачи → review → следующий batch) |
-| Есть план, выполнять **в текущей сессии** | `superpowers:subagent-driven-development` | Fresh subagent на задачу + двухэтапное ревью (spec → quality) |
-| 2+ **независимых** задач без shared state | `superpowers:dispatching-parallel-agents` | Параллельные агенты на разные проблемы |
-
-### Разработка и тестирование
-
-| Триггер | Скилл | Что делает |
-|---------|-------|------------|
-| **ПЕРЕД** написанием любого кода (фича/багфикс) | `superpowers:test-driven-development` | RED-GREEN-REFACTOR: тест → fail → код → pass. **Железное правило:** нет кода без failing test |
-| Баг, ошибка теста, неожиданное поведение | `superpowers:systematic-debugging` | 4-фазный анализ root cause. **НЕ фиксить без расследования!** |
-| **ПЕРЕД** claim "готово/работает/fixed" | `superpowers:verification-before-completion` | Запустить команды, проверить output. Evidence before assertions |
-
-### Code Review
-
-| Триггер | Скилл | Что делает |
-|---------|-------|------------|
-| Завершил задачу/фичу, нужно ревью | `superpowers:requesting-code-review` | Pre-review checklist, проактивное ревью |
-| Получил фидбек (особенно непонятный/спорный) | `superpowers:receiving-code-review` | Техническая верификация > слепое согласие |
-
-### Git и завершение работы
-
-| Триггер | Скилл | Что делает |
-|---------|-------|------------|
-| Нужна изоляция для фичи/плана | `superpowers:using-git-worktrees` | Создаёт изолированный worktree, smart directory selection |
-| Код готов, тесты проходят, нужно интегрировать | `superpowers:finishing-a-development-branch` | Варианты: merge/PR/cleanup. Verify → Options → Execute |
-
-### Мета-скиллы
-
-| Триггер | Скилл | Что делает |
-|---------|-------|------------|
-| Нужен новый скилл или редактировать существующий | `superpowers:writing-skills` | TDD для документации: failing test → skill → verify → refactor |
-| Понять как работает система скиллов | `superpowers:using-superpowers` | Введение в скиллы, правила discovery |
-
----
-
-## Утилитарные скиллы
-
-| Когда использовать | Скилл | Описание |
-| ------------------ | ----- | -------- |
-| Нужен новый скилл | `skill-creator` | Создаёт .skill файлы |
-| Нужен специализированный агент | `subagent-creator` | Создаёт конфиг агента |
-| Создаю UI/frontend | `frontend-design:frontend-design` | Качественный дизайн интерфейсов |
-| Пишу документацию/тексты | `elements-of-style:writing-clearly-and-concisely` | Правила ясного письма |
-| Нужно управлять браузером | `superpowers-chrome:browsing` | Chrome DevTools Protocol |
-| Интерактивные команды (vim, repl) | `superpowers-lab:using-tmux-for-interactive-commands` | Tmux для интерактивных сессий |
+| Команда | Описание |
+| ------- | -------- |
+| `/uk-content-init {slug}` | Создаёт UK папки и переводит ключи |
+| `/uk-generate-meta {slug}` | Генерирует Title/Description/H1 украинские |
+| `/uk-seo-research {slug}` | Промпт для Perplexity (UK) |
+| `/uk-content-generator {slug}` | Генерирует UK buyer guide |
+| `uk-content-reviewer {slug}` | Проверяет UK контент |
+| `/uk-quality-gate {slug}` | Финальная проверка UK |
+| `/uk-deploy {slug}` | Деплой UK на сайт (language_id=1) |
+| `/uk-keywords-export` | Собирает RU ключи, переводит на UK |
+| `/uk-keywords-import` | Загружает UK ключи с частотой |
 
 ---
 
@@ -173,20 +101,17 @@ ruff check scripts/
 ruff format scripts/
 
 # Валидация
-python scripts/validate_meta.py --all
-python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
-python scripts/validate_uk.py categories/{slug}/content/{slug}_uk.md
-python scripts/check_seo_structure.py categories/{slug}/content/{slug}_ru.md "main keyword"
-python scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "ключове слово"  # UK auto-detected
+python3 scripts/validate_meta.py --all
+python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
+python3 scripts/check_seo_structure.py categories/{slug}/content/{slug}_ru.md "main keyword"
 
 # Валидация (UK)
-python scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
-python scripts/check_h1_sync.py --lang uk
-python scripts/check_semantic_coverage.py --lang uk
+python3 scripts/validate_uk.py uk/categories/{slug}/content/{slug}_uk.md
+python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 
 # Аудит
-python scripts/audit_keyword_consistency.py   # Проверка ключей в meta vs clean
-python scripts/check_h1_sync.py               # Синхронизация H1 между файлами
+python3 scripts/audit_keyword_consistency.py   # Ключи в meta vs clean
+python3 scripts/check_h1_sync.py               # Синхронизация H1
 ```
 
 ---
@@ -195,26 +120,17 @@ python scripts/check_h1_sync.py               # Синхронизация H1 м
 
 **Источник истины:** `data/ru_semantics_master.csv`
 
-### Обновление частотности
-
 ```bash
-# 1. Загрузить свежий Excel в reports/
-# 2. Обновить master CSV
+# Обновление частотности
 python3 scripts/merge_to_master.py --excel reports/new.xlsx
-
-# 3. Валидация
 python3 scripts/validate_master.py
-
-# 4. Синхронизация в _clean.json
 python3 scripts/sync_semantics.py --apply
+
+# Добавление ключей
+# 1. Редактировать data/ru_semantics_master.csv (keyword,volume,category,type,use_in)
+# 2. python3 scripts/validate_master.py
+# 3. python3 scripts/sync_semantics.py --apply
 ```
-
-### Добавление ключей
-
-1. Открыть `data/ru_semantics_master.csv`
-2. Добавить строки: `keyword,volume,category,type,use_in`
-3. `python3 scripts/validate_master.py`
-4. `python3 scripts/sync_semantics.py --apply`
 
 ---
 
@@ -231,8 +147,6 @@ python3 scripts/sync_semantics.py --apply
 }
 ```
 
-> **Примечание:** Поле `entities` в `_clean.json` сгенерировано автоматически и не используется для контента. Профессиональные термины (E-E-A-T) берутся из `RESEARCH_DATA.md`.
-
 ### _meta.json (мета-теги)
 ```json
 {
@@ -246,48 +160,25 @@ python3 scripts/sync_semantics.py --apply
 
 ---
 
-## Правила
-
-- **Context7 MCP** — использовать для документации библиотек/API без запроса
-
----
-
 ## Навигация
 
-| Что              | Где                        |
-| ---------------- | -------------------------- |
-| Задачи (обзор)   | `tasks/README.md`          |
-| Research TODO    | `tasks/TODO_RESEARCH.md`   |
-| Content TODO     | `tasks/TODO_CONTENT.md`    |
-| UK TODO          | `tasks/TODO_UK_CONTENT.md` |
-| Аудит категорий  | `tasks/CONTENT_STATUS.md`  |
-| SEO-гайд         | `docs/CONTENT_GUIDE.md`    |
-| Данные категорий | `categories/{slug}/`       |
-| UK ключи (база)  | `uk/data/uk_keywords.json` |
-| UK синоніми        | `.claude/skills/uk-content-generator/references/uk-lsi-synonyms.md` |
-| Скрипты          | `scripts/`                 |
+| Что | Где |
+| --- | --- |
+| Задачи | `tasks/README.md` |
+| SEO-гайд | `docs/CONTENT_GUIDE.md` |
+| Данные категорий | `categories/{slug}/` |
+| UK ключи | `uk/data/uk_keywords.json` |
+| UK синоніми | `.claude/skills/uk-content-generator/references/uk-lsi-synonyms.md` |
+| Скрипты | `scripts/` |
+| Планы | `docs/plans/` |
 
 ---
 
 ## Parallel Claude Workers
 
-Запуск нескольких Claude-агентов одновременно для ускорения работы.
+Запуск нескольких Claude-агентов для параллельной работы.
 
-### Архитектура
-
-```
-tmux session "claude"
-├── Окно 1: Основной Claude (оркестратор)
-│   └── Создаёт план и запускает воркеров через spawn-claude
-├── Окно 2: Worker 1 (независимая Claude сессия)
-├── Окно 3: Worker 2 (независимая Claude сессия)
-├── Окно 4: Worker 3 (независимая Claude сессия)
-└── Окно 5+: Дополнительные воркеры по мере необходимости
-```
-
-**Результат:** N Claude-агентов работают **параллельно**, каждый на своей задаче, в одной tmux сессии.
-
-### Короткий синтаксис (из Claude)
+### Короткий синтаксис
 
 ```
 /parallel docs/plans/2026-01-28-feature.md
@@ -295,29 +186,12 @@ W1: 1,2,5
 W2: 3,4
 ```
 
-**Claude понимает:**
-- Прочитать план
-- Запустить `spawn-claude` для каждого воркера с правильными скиллами
-- Я (Claude) — оркестратор: не делаю задачи сам, только коммичу после воркеров
-- Воркеры НЕ делают коммиты
+Claude понимает: прочитать план, запустить `spawn-claude` для каждого воркера. Оркестратор не делает задачи сам — только коммитит после воркеров.
 
 ### Синтаксис spawn-claude
 
 ```bash
-spawn-claude "ПРОМПТ" "ПУТЬ"
-```
-
-| Параметр | Значение | Пример |
-|----------|----------|--------|
-| **ПРОМПТ** | Задача для Claude | `"W1: Task 1 description"` |
-| **ПУТЬ** | Путь к проекту | `"$(pwd)"` или абсолютный путь |
-
-**ОБЯЗАТЕЛЬНО:** Всегда передавай путь к проекту вторым аргументом.
-
-### Шаблон промпта для воркера
-
-```bash
-spawn-claude "W{N}: {Краткое описание задачи}.
+spawn-claude "W{N}: {Описание}.
 
 REQUIRED SKILLS:
 - superpowers:executing-plans
@@ -329,56 +203,27 @@ REQUIRED SKILLS:
 НЕ ДЕЛАЙ git commit - коммиты делает оркестратор" "$(pwd)"
 ```
 
-**Важно:**
-- Не дублируй содержимое плана в промпте — воркер сам прочитает
-- Указывай только номера задач, не пересказывай шаги
-- Скилл `executing-plans` обеспечит правильное выполнение
+### Правила
 
-### Правила параллелизации (ВАЖНО)
+- **1 воркер = 1 набор файлов** — никогда не делить один файл между воркерами
+- Воркеры НЕ делают коммиты
+- Не дублировать план в промпте — воркер сам прочитает
 
-**Главный принцип:** 1 воркер = 1 набор независимых файлов. Никогда не делить один файл между воркерами.
-
-| Правило | Хорошо | Плохо |
-|---------|--------|-------|
-| 1 воркер = 1 модуль | W1: script1.py, W2: script2.py | W1: script.py строки 1-100, W2: script.py строки 101-200 |
-| Группируй мелкое | W1: meta + keywords + content | W1: meta, W2: keywords, W3: content (оверхед) |
-| Тесты с кодом | W1: script.py + test_script.py | W1: script.py, W2: test_script.py |
-| Общий файл — только чтение | Все читают план | Все пишут в один файл |
-
-### Переключение между воркерами (tmux)
+### tmux навигация
 
 | Комбо | Действие |
 |-------|----------|
-| `Ctrl+A, 1` | Основной Claude (оркестратор) |
-| `Ctrl+A, 2/3/4` | Worker 1/2/3 |
 | `Ctrl+A, n/p` | Следующее/предыдущее окно |
-| `Ctrl+A, w` | Список всех окон |
-| `Ctrl+A, d` | Отсоединиться (session stays) |
-
-### Мониторинг прогресса
-
-```bash
-# git log (обновляется каждые 2 сек)
-watch -n 2 "git log --oneline -10"
-
-# Какие файлы изменены
-git diff --name-only HEAD~5
-```
-
-### Обработка ошибок
-
-| Проблема | Решение |
-|----------|---------|
-| "Not inside tmux session" | `Ctrl+Shift+M` (войти в tmux) или `tmux new -s claude` |
-| Worker зависает | `Ctrl+A, {номер}` → `Ctrl+C` → `claude` |
-| Конфликт в git | `git status` → `git add .` → `git commit -m "Merge workers"` |
-
-### Когда использовать
-
-**Используй:** много независимых задач (3+), каждому свои файлы, план готов
-
-**Не используй:** зависимые задачи, один файл для всех, нужна координация
+| `Ctrl+A, w` | Список окон |
+| `Ctrl+A, d` | Отсоединиться |
 
 ---
 
-**Version:** 48.0
+## Правила
+
+- **Context7 MCP** — использовать для документации библиотек/API без запроса
+- **python3** — использовать вместо python в командах
+
+---
+
+**Version:** 49.0
