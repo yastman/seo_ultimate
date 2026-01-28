@@ -3,6 +3,19 @@
   "name": "Меховые круги",
   "type": "category",
   "parent_id": "polirovalnye-krugi",
+  "keywords": [
+    {"keyword": "шерстяной круг для полировки", "volume": 50},
+    {"keyword": "меховой круг для полировки", "volume": 20}
+  ],
+  "synonyms": [
+    {"keyword": "меховой круг для полировки авто", "volume": 10},
+    {"keyword": "шерстяной круг на полировальную машинку", "volume": 10},
+    {"keyword": "круг из шерсти для полировки", "volume": 10},
+    {"keyword": "wool pad", "volume": 10},
+    {"keyword": "купить меховой круг для полировки", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "шерстяной круг для полировки цена", "volume": 10, "use_in": "meta_only"}
+  ],
+  "variations": [],
   "entities": [
     "натуральная шерсть",
     "синтетический мех",
@@ -17,44 +30,5 @@
     "меховой круг для каких работ",
     "как ухаживать за меховым кругом"
   ],
-  "variations": [],
-  "source": "checklist",
-  "keywords": [
-    {
-      "keyword": "шерстяной круг для полировки",
-      "volume": 50
-    },
-    {
-      "keyword": "меховой круг для полировки",
-      "volume": 20
-    }
-  ],
-  "synonyms": [
-    {
-      "keyword": "меховой круг для полировки авто",
-      "volume": 10
-    },
-    {
-      "keyword": "шерстяной круг на полировальную машинку",
-      "volume": 10
-    },
-    {
-      "keyword": "круг из шерсти для полировки",
-      "volume": 10
-    },
-    {
-      "keyword": "wool pad",
-      "volume": 10
-    },
-    {
-      "keyword": "купить меховой круг для полировки",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "шерстяной круг для полировки цена",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
-  ]
+  "source": "checklist"
 }
