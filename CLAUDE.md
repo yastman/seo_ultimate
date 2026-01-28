@@ -9,7 +9,7 @@ Ultimate.net.ua — интернет-магазин автохимии и дет
 
 ## Архитектура данных
 
-### Иерархия категорий
+### Иерархия категорий (52 RU категории)
 ```
 categories/
 ├── {L1-slug}/                    # Корневая категория (aksessuary, moyka-i-eksterer)
@@ -21,6 +21,22 @@ categories/
 │       ├── data/, meta/, content/, research/
 │       └── {L3-slug}/            # Листовая категория (товары)
 │           └── data/, meta/, content/, research/
+```
+
+### Структура polirovka/ (полный пример)
+```
+polirovka/
+├── data/polirovka_clean.json
+├── polirovalnye-pasty/
+│   └── data/polirovalnye-pasty_clean.json
+├── polirovalnye-mashinki/
+│   ├── data/polirovalnye-mashinki_clean.json
+│   └── akkumulyatornaya/
+│       └── data/akkumulyatornaya_clean.json
+└── polirovalnye-krugi/
+    ├── data/polirovalnye-krugi_clean.json
+    └── mekhovye/
+        └── data/mekhovye_clean.json
 ```
 
 ### UK структура (зеркало RU)
@@ -226,4 +242,4 @@ REQUIRED SKILLS:
 
 ---
 
-**Version:** 49.0
+**Version:** 50.0
