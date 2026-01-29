@@ -4,18 +4,18 @@
   "type": "category",
   "parent_id": null,
   "keywords": [
+    {"keyword": "химчистка салона авто", "volume": 320},
     {"keyword": "уход за салоном авто", "volume": 170},
-    {"keyword": "средства для салона автомобиля", "volume": 90}
+    {"keyword": "средства для салона автомобиля", "volume": 90},
+    {"keyword": "автохимия для салона", "volume": 30},
+    {"keyword": "автокосметика для салона", "volume": 10}
   ],
   "synonyms": [
-    {"keyword": "химчистка салона авто", "volume": 320},
     {"keyword": "уход за салоном автомобиля", "volume": 50, "use_in": "lsi", "variant_of": "уход за салоном авто"},
-    {"keyword": "автохимия для салона", "volume": 30},
     {"keyword": "чистка салона машины", "volume": 20, "use_in": "lsi", "variant_of": "химчистка салона авто"},
     {"keyword": "автохимия для салона авто", "volume": 10, "use_in": "lsi", "variant_of": "автохимия для салона"},
     {"keyword": "автохимия для салона автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "автохимия для салона"},
-    {"keyword": "автохимия для салона купить", "volume": 10, "use_in": "meta_only"},
-    {"keyword": "автокосметика для салона", "volume": 10}
+    {"keyword": "автохимия для салона купить", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [],
   "entities": [

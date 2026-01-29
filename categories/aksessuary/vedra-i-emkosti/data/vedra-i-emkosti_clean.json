@@ -5,18 +5,17 @@
   "parent_id": "aksessuary",
   "keywords": [
     {"keyword": "ведро для мойки автомобиля", "volume": 90},
-    {"keyword": "ведро для детейлинга", "volume": 30}
+    {"keyword": "ведро для детейлинга", "volume": 30},
+    {"keyword": "ведро с сеткой для мойки", "volume": 10},
+    {"keyword": "профессиональное ведро для мойки", "volume": 10}
   ],
   "synonyms": [
     {"keyword": "ведра для мойки авто", "volume": 90, "use_in": "lsi", "variant_of": "ведро для мойки автомобиля"},
-    {"keyword": "ведро с сеткой для мойки", "volume": 10},
-    {"keyword": "профессиональное ведро для мойки", "volume": 10},
+    {"keyword": "ведро для мытья машины", "volume": 10, "use_in": "lsi", "variant_of": "ведро для мойки автомобиля"},
     {"keyword": "купить ведро для мойки авто", "volume": 10, "use_in": "meta_only"},
     {"keyword": "ведро для мойки автомобиля купить", "volume": 0, "use_in": "meta_only"}
   ],
-  "variations": [
-    {"keyword": "ведро для мытья машины", "volume": 10, "parent": "ведро для мойки автомобиля"}
-  ],
+  "variations": [],
   "entities": [
     "грязеуловитель (Grit Guard)",
     "двухвёдерная система",

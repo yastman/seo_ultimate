@@ -4,33 +4,14 @@
   "type": "category",
   "parent_id": "sredstva-dlya-diskov-i-shin",
   "keywords": [
-    {
-      "keyword": "очиститель шин",
-      "volume": 70
-    },
-    {
-      "keyword": "очиститель резины",
-      "volume": 10
-    }
+    {"keyword": "очиститель шин", "volume": 70},
+    {"keyword": "очиститель резины", "volume": 10}
   ],
   "synonyms": [
-    {
-      "keyword": "средство для чистки шин",
-      "volume": 10
-    },
-    {
-      "keyword": "средство для очистки резины",
-      "volume": 10
-    },
-    {
-      "keyword": "очиститель для покрышек",
-      "volume": 10
-    },
-    {
-      "keyword": "купить очиститель шин",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
+    {"keyword": "средство для чистки шин", "volume": 10, "use_in": "lsi", "variant_of": "очиститель шин"},
+    {"keyword": "средство для очистки резины", "volume": 10, "use_in": "lsi", "variant_of": "очиститель резины"},
+    {"keyword": "очиститель для покрышек", "volume": 10, "use_in": "lsi", "variant_of": "очиститель шин"},
+    {"keyword": "купить очиститель шин", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [],
   "entities": [
@@ -47,5 +28,5 @@
     "чем отмыть белые буквы на шинах",
     "нужно ли мыть шины перед нанесением чернителя"
   ],
-  "source": "STRUCTURE.md"
+  "source": "semantic-cluster-v2: 2026-01-29"
 }

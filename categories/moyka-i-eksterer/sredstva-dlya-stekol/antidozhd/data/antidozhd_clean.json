@@ -5,14 +5,14 @@
   "parent_id": "sredstva-dlya-stekol",
   "keywords": [
     {"keyword": "антидождь", "volume": 1200},
-    {"keyword": "антидождь для автомобиля", "volume": 320}
+    {"keyword": "антидождь для автомобиля", "volume": 320},
+    {"keyword": "гидрофобное покрытие для стекла", "volume": 20},
+    {"keyword": "антидождь для зеркал авто", "volume": 20}
   ],
   "synonyms": [
     {"keyword": "антидождь для авто", "volume": 80, "use_in": "lsi", "variant_of": "антидождь для автомобиля"},
-    {"keyword": "антидождь на лобовое стекло", "volume": 10},
-    {"keyword": "покрытие для лобового стекла", "volume": 10},
-    {"keyword": "антидождь для зеркал авто", "volume": 20},
-    {"keyword": "гидрофобное покрытие для стекла", "volume": 20},
+    {"keyword": "антидождь на лобовое стекло", "volume": 10, "use_in": "lsi", "variant_of": "антидождь для автомобиля"},
+    {"keyword": "покрытие для лобового стекла", "volume": 10, "use_in": "lsi", "variant_of": "гидрофобное покрытие для стекла"},
     {"keyword": "средство антидождь купить", "volume": 1000, "use_in": "meta_only"},
     {"keyword": "антидождь авто купить", "volume": 700, "use_in": "meta_only"},
     {"keyword": "антидождь цена", "volume": 200, "use_in": "meta_only"},
@@ -33,5 +33,5 @@
     "сколько держится антидождь",
     "антидождь или дворники"
   ],
-  "source": "STRUCTURE.md"
+  "source": "semantic-cluster v2.0"
 }

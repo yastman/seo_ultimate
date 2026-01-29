@@ -4,112 +4,32 @@
   "type": "category",
   "parent_id": "sredstva-dlya-diskov-i-shin",
   "keywords": [
-    {
-      "keyword": "чернитель резины",
-      "volume": 1000
-    },
-    {
-      "keyword": "чернение резины",
-      "volume": 390
-    },
-    {
-      "keyword": "средства для чернения шин",
-      "volume": 90
-    },
-    {
-      "keyword": "чернитель колёс",
-      "volume": 50
-    }
+    {"keyword": "чернитель резины", "volume": 1000},
+    {"keyword": "чернение резины", "volume": 390},
+    {"keyword": "полироль для шин", "volume": 90},
+    {"keyword": "средства для чернения шин", "volume": 90},
+    {"keyword": "чернитель колёс", "volume": 50}
   ],
   "synonyms": [
-    {
-      "keyword": "полироль для шин",
-      "volume": 90
-    },
-    {
-      "keyword": "средство для резины",
-      "volume": 10
-    },
-    {
-      "keyword": "средства для чернения резины",
-      "volume": 10,
-      "use_in": "lsi",
-      "variant_of": "средства для чернения шин"
-    },
-    {
-      "keyword": "средство для ухода за шинами",
-      "volume": 10
-    },
-    {
-      "keyword": "средство для ухода за резиной",
-      "volume": 10,
-      "use_in": "lsi",
-      "variant_of": "средство для ухода за шинами"
-    },
-    {
-      "keyword": "средства для шин",
-      "volume": 10
-    },
-    {
-      "keyword": "средство для обработки шин",
-      "volume": 10
-    },
-    {
-      "keyword": "средство для шин авто",
-      "volume": 10
-    },
-    {
-      "keyword": "средство для натирания шин",
-      "volume": 10
-    },
-    {
-      "keyword": "купить чернитель резины",
-      "volume": 70,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "чернитель шин купить",
-      "volume": 20,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "средство для чернения резины купить",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить средство для чернения шин",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
+    {"keyword": "полироль для колес", "volume": 170, "use_in": "lsi", "variant_of": "полироль для шин"},
+    {"keyword": "полироль для резины", "volume": 20, "use_in": "lsi", "variant_of": "полироль для шин"},
+    {"keyword": "чернение колес", "volume": 20, "use_in": "lsi", "variant_of": "чернение резины"},
+    {"keyword": "средства для чернения резины", "volume": 10, "use_in": "lsi", "variant_of": "средства для чернения шин"},
+    {"keyword": "средство для ухода за шинами", "volume": 10},
+    {"keyword": "средство для ухода за резиной", "volume": 10, "use_in": "lsi", "variant_of": "средство для ухода за шинами"},
+    {"keyword": "средство для резины", "volume": 10, "use_in": "lsi", "variant_of": "средство для ухода за шинами"},
+    {"keyword": "средства для шин", "volume": 10, "use_in": "lsi", "variant_of": "средства для чернения шин"},
+    {"keyword": "средство для обработки шин", "volume": 10, "use_in": "lsi", "variant_of": "средства для чернения шин"},
+    {"keyword": "средство для шин авто", "volume": 10, "use_in": "lsi", "variant_of": "средства для чернения шин"},
+    {"keyword": "средство для натирания шин", "volume": 10, "use_in": "lsi", "variant_of": "полироль для шин"},
+    {"keyword": "полироль для резины автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "полироль для шин"},
+    {"keyword": "средства для ухода за резиной автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "средство для ухода за шинами"},
+    {"keyword": "купить чернитель резины", "volume": 70, "use_in": "meta_only"},
+    {"keyword": "чернитель шин купить", "volume": 20, "use_in": "meta_only"},
+    {"keyword": "средство для чернения резины купить", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить средство для чернения шин", "volume": 10, "use_in": "meta_only"}
   ],
-  "variations": [
-    {
-      "keyword": "полироль для колес",
-      "volume": 170,
-      "parent": "полироль для шин"
-    },
-    {
-      "keyword": "чернение колес",
-      "volume": 20,
-      "parent": "чернение резины"
-    },
-    {
-      "keyword": "полироль для резины",
-      "volume": 20,
-      "parent": "полироль для шин"
-    },
-    {
-      "keyword": "полироль для резины автомобиля",
-      "volume": 10,
-      "parent": "полироль для шин"
-    },
-    {
-      "keyword": "средства для ухода за резиной автомобиля",
-      "volume": 10,
-      "parent": "средство для ухода за резиной"
-    }
-  ],
+  "variations": [],
   "entities": [
     "боковина шины",
     "резина",
@@ -125,5 +45,5 @@
     "сколько держится чернитель",
     "чернитель на силиконе или на воде"
   ],
-  "source": "checklist"
+  "source": "semantic-cluster v2.0"
 }

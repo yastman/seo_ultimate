@@ -4,12 +4,12 @@
   "type": "category",
   "parent_id": "sredstva-dlya-diskov-i-shin",
   "keywords": [
-    {"keyword": "защитное покрытие для дисков", "volume": 10}
-  ],
-  "synonyms": [
-    {"keyword": "защитное покрытие для литых дисков", "volume": 10},
+    {"keyword": "защитное покрытие для дисков", "volume": 10},
     {"keyword": "керамика для колёсных дисков", "volume": 10},
     {"keyword": "нанокерамика для дисков", "volume": 10}
+  ],
+  "synonyms": [
+    {"keyword": "защитное покрытие для литых дисков", "volume": 10, "use_in": "lsi", "variant_of": "защитное покрытие для дисков"}
   ],
   "variations": [],
   "entities": [
@@ -23,5 +23,5 @@
     "керамика для дисков — сколько держится",
     "нужно ли покрывать диски керамикой"
   ],
-  "source": "STRUCTURE.md"
+  "source": "semantic-cluster v2.0"
 }

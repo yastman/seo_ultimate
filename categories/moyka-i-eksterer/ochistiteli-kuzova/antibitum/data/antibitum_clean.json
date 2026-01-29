@@ -4,47 +4,17 @@
   "type": "category",
   "parent_id": "ochistiteli-kuzova",
   "keywords": [
-    {
-      "keyword": "антибитум",
-      "volume": 50
-    },
-    {
-      "keyword": "антибитум для авто",
-      "volume": 40
-    }
+    {"keyword": "антибитум", "volume": 50},
+    {"keyword": "антибитум для авто", "volume": 40},
+    {"keyword": "очиститель битума", "volume": 20},
+    {"keyword": "удалитель битума", "volume": 20}
   ],
   "synonyms": [
-    {
-      "keyword": "средство от битума",
-      "volume": 30
-    },
-    {
-      "keyword": "очиститель битума",
-      "volume": 20
-    },
-    {
-      "keyword": "удалитель битума",
-      "volume": 20
-    },
-    {
-      "keyword": "средство от битумных пятен",
-      "volume": 10
-    },
-    {
-      "keyword": "антибитум купить",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить антибитум для авто",
-      "volume": 20,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "антибитум цена",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
+    {"keyword": "средство от битума", "volume": 30},
+    {"keyword": "средство от битумных пятен", "volume": 10, "use_in": "lsi", "variant_of": "средство от битума"},
+    {"keyword": "антибитум купить", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить антибитум для авто", "volume": 20, "use_in": "meta_only"},
+    {"keyword": "антибитум цена", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [],
   "entities": [
@@ -61,5 +31,5 @@
     "безопасен ли антибитум для лака",
     "как правильно наносить антибитум"
   ],
-  "source": "checklist"
+  "source": "semantic-cluster v2.0"
 }

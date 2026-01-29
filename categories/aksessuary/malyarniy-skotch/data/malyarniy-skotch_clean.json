@@ -5,16 +5,16 @@
   "parent_id": "aksessuary",
   "keywords": [
     {"keyword": "малярный скотч", "volume": 4400},
-    {"keyword": "малярная лента", "volume": 50}
+    {"keyword": "малярная лента", "volume": 50},
+    {"keyword": "малярный скотч 10мм", "volume": 40},
+    {"keyword": "скотч малярный автомобильный", "volume": 20},
+    {"keyword": "малярный скотч широкий", "volume": 10},
+    {"keyword": "малярный скотч для авто", "volume": 10}
   ],
   "synonyms": [
     {"keyword": "малярные скотчи", "volume": 4400, "use_in": "lsi", "variant_of": "малярный скотч"},
-    {"keyword": "малярный скотч 10мм", "volume": 40},
     {"keyword": "малярный скотч 10 мм", "volume": 30, "use_in": "lsi", "variant_of": "малярный скотч 10мм"},
-    {"keyword": "скотч малярный автомобильный", "volume": 20},
-    {"keyword": "малярский скотч", "volume": 10},
-    {"keyword": "малярный скотч широкий", "volume": 10},
-    {"keyword": "малярный скотч для авто", "volume": 10},
+    {"keyword": "малярский скотч", "volume": 10, "use_in": "lsi", "variant_of": "малярный скотч"},
     {"keyword": "купить малярный скотч", "volume": 210, "use_in": "meta_only"},
     {"keyword": "малярный скотч цена", "volume": 70, "use_in": "meta_only"},
     {"keyword": "малярная лента купить", "volume": 50, "use_in": "meta_only"},
