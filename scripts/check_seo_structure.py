@@ -20,6 +20,11 @@ import re
 import sys
 from pathlib import Path
 
+# Add project root to path for direct script execution
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from scripts.keyword_utils import MorphAnalyzer
+
 
 def detect_language(file_path: str) -> str:
     """
@@ -122,47 +127,28 @@ def get_russian_word_stems(keyword: str) -> list[str]:
     """
     Получает основы слов для поиска с учётом русских падежей.
 
-    Для "активная пена" вернёт: ["активн", "пен"]
+    Для "активная пена" вернёт: ["активный", "пена"]
     Это позволит найти: активная/активную/активной + пена/пену/пены/пеной
+
+    Uses MorphAnalyzer for accurate lemmatization.
     """
-    words = keyword.lower().split()
-    stems = []
-
-    for word in words:
-        if len(word) <= 3:
-            stems.append(word)
-        elif len(word) <= 5:
-            stems.append(word[:-1])  # убираем 1 символ
-        else:
-            stems.append(word[:-2])  # убираем 2 символа (окончание)
-
-    return stems
+    morph = MorphAnalyzer("ru")
+    words = re.findall(r"[а-яё]+", keyword.lower())
+    return [morph.get_lemma(w) for w in words if len(w) > 2]
 
 
 def get_ukrainian_word_stems(keyword: str) -> list[str]:
     """
     Получает основы слов для поиска с учётом украинских падежей.
 
-    Украинские окончания:
-    - Существительные: -а, -и, -у, -ою, -ої, -ам, -ах
-    - Прилагательные: -ий, -а, -е, -ого, -ому, -им, -ій, -ої
-    - Глаголы: -ти, -ть, -ння, -ють, -ає
-
-    Для "активна піна" вернёт: ["активн", "пін"]
+    Для "активна піна" вернёт: ["активний", "піна"]
     Это позволит найти: активна/активну/активної + піна/піну/піни/піною
+
+    Uses MorphAnalyzer for accurate lemmatization.
     """
-    words = keyword.lower().split()
-    stems = []
-
-    for word in words:
-        if len(word) <= 3:
-            stems.append(word)
-        elif len(word) <= 5:
-            stems.append(word[:-1])  # убираем 1 символ
-        else:
-            stems.append(word[:-2])  # убираем 2 символа (окончание)
-
-    return stems
+    morph = MorphAnalyzer("uk")
+    words = re.findall(r"[а-яёїієґ]+", keyword.lower())
+    return [morph.get_lemma(w) for w in words if len(w) > 2]
 
 
 def get_word_stems(keyword: str, lang: str = "ru") -> list[str]:

@@ -65,12 +65,22 @@ except ImportError:
 
 # Coverage targets (SSOT)
 try:
-    from scripts.config import CONTENT_STANDARDS, QUALITY_THRESHOLDS, get_adaptive_coverage_target
+    from scripts.config import CONTENT_STANDARDS, QUALITY_THRESHOLDS
 except ImportError:
-    from config import (  # type: ignore
-        CONTENT_STANDARDS,
-        QUALITY_THRESHOLDS,
-        get_adaptive_coverage_target,
+    from config import CONTENT_STANDARDS, QUALITY_THRESHOLDS  # type: ignore
+
+# Unified keyword matching (keyword_utils)
+try:
+    from scripts.keyword_utils import (
+        CoverageChecker,
+        KeywordMatcher,
+        keyword_matches_text,
+    )
+except ImportError:
+    from keyword_utils import (  # type: ignore
+        CoverageChecker,
+        KeywordMatcher,
+        keyword_matches_text,
     )
 
 # Grammar check (language_tool_python)
@@ -251,7 +261,9 @@ def check_primary_keyword(text: str, primary_keyword: str) -> dict:
 
 def check_primary_keyword_semantic(text: str, primary_keyword: str, use_llm: bool = False) -> dict:
     """
-    Semantic check for primary keyword using LLM (hybrid approach).
+    Semantic check for primary keyword using morphology-aware matching.
+
+    Uses KeywordMatcher for proper Russian morphology instead of manual stemming.
 
     Instead of exact match, checks semantic equivalence:
     - "чернитель резины" ≈ "чернители шин" (singular/plural + synonym)
@@ -279,35 +291,16 @@ def check_primary_keyword_semantic(text: str, primary_keyword: str, use_llm: boo
         "llm_prompt": None,
     }
 
-    # Generate semantic variations of keyword
-    keyword_lower = primary_keyword.lower()
-    keyword_words = keyword_lower.split()
-
-    # Simple semantic check: any significant word from keyword in text
-    significant_words = [w for w in keyword_words if len(w) > 3]
+    # Use KeywordMatcher for morphology-aware matching
+    matcher = KeywordMatcher(lang="ru")
 
     # Check H1 semantically
-    h1_lower = h1.lower()
-    h1_word_matches = sum(1 for w in significant_words if w in h1_lower)
-    results["semantic_h1"] = h1_word_matches >= len(significant_words) * 0.5
-
-    # Check stem matches (чернител -> чернитель, чернители)
-    for word in significant_words:
-        stem = word[:-2] if len(word) > 4 else word[:-1] if len(word) > 3 else word
-        if stem in h1_lower:
-            results["semantic_h1"] = True
-            break
+    h1_matched, _ = matcher.find_in_text(primary_keyword, h1)
+    results["semantic_h1"] = h1_matched
 
     # Check intro semantically
-    intro_lower = intro.lower()
-    intro_word_matches = sum(1 for w in significant_words if w in intro_lower)
-    results["semantic_intro"] = intro_word_matches >= len(significant_words) * 0.5
-
-    for word in significant_words:
-        stem = word[:-2] if len(word) > 4 else word[:-1] if len(word) > 3 else word
-        if stem in intro_lower:
-            results["semantic_intro"] = True
-            break
+    intro_matched, _ = matcher.find_in_text(primary_keyword, intro)
+    results["semantic_intro"] = intro_matched
 
     # Calculate confidence
     if results["semantic_h1"] and results["semantic_intro"]:
@@ -341,10 +334,12 @@ def check_keyword_coverage(text: str, keywords: list[str]) -> dict:
     """
     Check keyword coverage (legacy, for backwards compatibility).
 
+    Uses CoverageChecker with morphology-aware matching.
+
     Adaptive targets:
-    - ≤10 keywords: 70% coverage
-    - 11-20 keywords: 60% coverage
-    - 20+ keywords: 50% coverage
+    - ≤5 keywords: 70% coverage
+    - 6-15 keywords: 60% coverage
+    - >15 keywords: 50% coverage
 
     WARNING (not blocker) if below target.
     """
@@ -360,96 +355,47 @@ def check_keyword_coverage(text: str, keywords: list[str]) -> dict:
             "missing_keywords": [],
         }
 
-    total = len(keywords)
-    text_lower = text.lower()
+    checker = CoverageChecker(lang="ru")
+    result = checker.check(keywords, text, use_lemma=True)
 
-    found = []
-    missing = []
-
-    for kw in keywords:
-        if kw.lower() in text_lower:
-            found.append(kw)
-        else:
-            missing.append(kw)
-
-    coverage = (len(found) / total) * 100 if total > 0 else 0
-
-    # Adaptive target
-    target = get_adaptive_coverage_target(total)
-
-    passed = coverage >= target
+    # Convert to legacy format (found_keywords as list of strings, not dicts)
+    found_kw_strings = [item["keyword"] for item in result["found_keywords"]]
 
     return {
-        "total": total,
-        "found": len(found),
-        "coverage_percent": round(coverage, 1),
-        "target": target,
-        "passed": passed,
-        "overall": "PASS" if passed else "WARNING",
-        "found_keywords": found[:10],  # First 10
-        "missing_keywords": missing[:10],  # First 10
+        "total": result["total"],
+        "found": result["found"],
+        "coverage_percent": result["coverage_percent"],
+        "target": result["target"],
+        "passed": result["passed"],
+        "overall": "PASS" if result["passed"] else "WARNING",
+        "found_keywords": found_kw_strings[:10],  # First 10
+        "missing_keywords": result["missing_keywords"][:10],  # First 10
     }
 
 
 def keyword_matches_semantic(keyword: str, text: str) -> bool:
     """
-    Check if keyword matches text semantically (v8.5).
+    Check if keyword matches text semantically.
 
-    Uses stem-based matching for Russian keywords:
-    - "автошампунь" matches "шампунь"
-    - "очиститель стекол" matches "очистители стекол"
-    - "шампунь для ручной мойки" matches "ручной мойки"
+    Uses morphology-aware matching via keyword_utils.
 
     Args:
         keyword: Keyword to find
         text: Text to search in
 
     Returns:
-        True if keyword matches (exact or semantic)
+        True if keyword matches (exact or morphological)
     """
-    keyword_lower = keyword.lower()
-    text_lower = text.lower()
-
-    # 1. Exact match
-    if keyword_lower in text_lower:
-        return True
-
-    # 2. Stem-based matching
-    keyword_words = keyword_lower.split()
-    significant_words = [w for w in keyword_words if len(w) > 3]
-
-    if not significant_words:
-        return False
-
-    # Check if significant words or their stems are in text
-    matches = 0
-    for word in significant_words:
-        # Try exact word
-        if word in text_lower:
-            matches += 1
-            continue
-
-        # Try stem (remove last 2-3 chars for Russian morphology)
-        if len(word) > 5:
-            stem = word[:-2]
-            if stem in text_lower:
-                matches += 1
-                continue
-        elif len(word) > 4:
-            stem = word[:-1]
-            if stem in text_lower:
-                matches += 1
-                continue
-
-    # Require at least 50% of significant words to match
-    return matches >= len(significant_words) * 0.5
+    return keyword_matches_text(keyword, text, lang="ru")
 
 
 def check_keyword_coverage_split(
     text: str, core_keywords: list[str], commercial_keywords: list[str], use_semantic: bool = True
 ) -> dict:
     """
-    Check keyword coverage split by intent (v8.5).
+    Check keyword coverage split by intent.
+
+    Uses CoverageChecker with morphology-aware matching.
 
     Core keywords: target coverage applies (WARNING if below)
     Commercial keywords: INFO only (no penalty)
@@ -463,50 +409,35 @@ def check_keyword_coverage_split(
     Returns:
         Dict with separate coverage metrics
     """
-    text_lower = text.lower()
+    checker = CoverageChecker(lang="ru")
 
-    # Core coverage (WARNING if below target)
-    if use_semantic:
-        core_found = [kw for kw in core_keywords if keyword_matches_semantic(kw, text_lower)]
-        core_missing = [kw for kw in core_keywords if not keyword_matches_semantic(kw, text_lower)]
-    else:
-        core_found = [kw for kw in core_keywords if kw.lower() in text_lower]
-        core_missing = [kw for kw in core_keywords if kw.lower() not in text_lower]
-    core_total = len(core_keywords)
-    core_coverage = (len(core_found) / core_total * 100) if core_total > 0 else 0
+    # Core coverage (with morphology if use_semantic=True)
+    core_result = checker.check(core_keywords, text, use_lemma=use_semantic)
 
-    # Adaptive target for core
-    core_target = get_adaptive_coverage_target(core_total)
-
-    core_passed = core_coverage >= core_target
-
-    # Commercial coverage (INFO only, no target)
-    comm_found = [kw for kw in commercial_keywords if kw.lower() in text_lower]
-    comm_missing = [kw for kw in commercial_keywords if kw.lower() not in text_lower]
-    comm_total = len(commercial_keywords)
-    comm_coverage = (len(comm_found) / comm_total * 100) if comm_total > 0 else 0
+    # Commercial coverage (exact match only - these are transactional terms)
+    comm_result = checker.check(commercial_keywords, text, use_lemma=False)
 
     # Overall based on core only
-    overall = "PASS" if core_passed else "WARNING"
+    overall = "PASS" if core_result["passed"] else "WARNING"
 
     return {
         "core": {
-            "total": core_total,
-            "found": len(core_found),
-            "coverage_percent": round(core_coverage, 1),
-            "target": core_target,
-            "passed": core_passed,
-            "missing_keywords": core_missing[:10],
+            "total": core_result["total"],
+            "found": core_result["found"],
+            "coverage_percent": core_result["coverage_percent"],
+            "target": core_result["target"],
+            "passed": core_result["passed"],
+            "missing_keywords": core_result["missing_keywords"][:10],
         },
         "commercial": {
-            "total": comm_total,
-            "found": len(comm_found),
-            "coverage_percent": round(comm_coverage, 1),
+            "total": comm_result["total"],
+            "found": comm_result["found"],
+            "coverage_percent": comm_result["coverage_percent"],
             "note": "INFO only (for meta tags)",
-            "missing_keywords": comm_missing[:10],
+            "missing_keywords": comm_result["missing_keywords"][:10],
         },
         "overall": overall,
-        "passed": core_passed,
+        "passed": core_result["passed"],
     }
 
 
