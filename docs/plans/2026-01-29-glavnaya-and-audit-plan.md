@@ -136,8 +136,22 @@ python3 -c "import json; json.load(open('categories/glavnaya/data/glavnaya_clean
 1. Прочитать каждый _clean.json
 2. Проверить что каждый ключ релевантен категории
 3. Проверить классификацию (keyword vs synonym vs meta_only)
-4. Исправить ошибки через Edit
-5. Отчёт: `✅ {slug}: OK` или `⚠️ {slug}: исправлено X ключей`
+4. **НЕ УДАЛЯТЬ ключи!** Сомнительные — перенести в секцию `needs_review`:
+   ```json
+   "needs_review": [
+     {"keyword": "...", "volume": N, "reason": "причина сомнения", "from": "keywords|synonyms"}
+   ]
+   ```
+5. Писать лог в `data/generated/audit-logs/W{N}_log.md`:
+   ```markdown
+   # W{N} Audit Log
+
+   ## {slug}
+   - ✅ OK: X ключей проверено
+   - ⚠️ Перенесено в needs_review: Y ключей
+     - "ключ" — причина
+   ```
+6. Отчёт в конце: `✅ {slug}: OK` или `⚠️ {slug}: N в needs_review`
 
 ---
 

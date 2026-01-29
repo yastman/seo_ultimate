@@ -10,7 +10,6 @@
   "synonyms": [
     {"keyword": "твёрдый воск для полировки авто", "volume": 10},
     {"keyword": "купить твёрдый воск для авто", "volume": 210, "use_in": "meta_only"},
-    {"keyword": "купить воск для машины", "volume": 30, "use_in": "meta_only"},
     {"keyword": "купить твёрдый воск для авто в украине", "volume": 10, "use_in": "meta_only"},
     {"keyword": "твёрдый воск для авто цена", "volume": 10, "use_in": "meta_only"},
     {"keyword": "купить твёрдый воск для машины", "volume": 10, "use_in": "meta_only"},
@@ -34,5 +33,8 @@
     "карнауба или синтетика — что лучше",
     "как располировать твёрдый воск"
   ],
-  "source": "STRUCTURE.md"
+  "source": "STRUCTURE.md",
+  "needs_review": [
+    {"keyword": "купить воск для машины", "volume": 30, "reason": "слишком общий, должен быть в родительской категории voski", "from": "synonyms", "use_in": "meta_only"}
+  ]
 }

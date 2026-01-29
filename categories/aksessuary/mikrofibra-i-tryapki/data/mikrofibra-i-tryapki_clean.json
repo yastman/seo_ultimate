@@ -106,7 +106,6 @@
       {"keyword": "купить тряпку для стекол авто", "volume": 10, "use_in": "meta_only"},
       {"keyword": "тряпка для мытья машины цена", "volume": 10, "use_in": "meta_only"},
       {"keyword": "тряпка для автомобиля купить", "volume": 10, "use_in": "meta_only"},
-      {"keyword": "купити тряпку для авто", "volume": 10, "use_in": "meta_only"},
       {"keyword": "тряпка для машины цена", "volume": 10, "use_in": "meta_only"},
       {"keyword": "купить тряпку для мытья машины", "volume": 10, "use_in": "meta_only"},
       {"keyword": "купить салфетку для авто", "volume": 10, "use_in": "meta_only"},
@@ -133,5 +132,8 @@
     "микрофибра для сушки какая лучше"
   ],
   "variations": [],
-  "source": "merged: tryapka-dlya-avto, tryapka-dlya-vytiraniya-avto-posle-moyki, dlya-stekol"
+  "source": "merged: tryapka-dlya-avto, tryapka-dlya-vytiraniya-avto-posle-moyki, dlya-stekol",
+  "needs_review": [
+    {"keyword": "купити тряпку для авто", "volume": 10, "reason": "украинский ключ в RU файле — перенести в UK версию", "from": "keywords.commercial"}
+  ]
 }

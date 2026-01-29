@@ -9,7 +9,6 @@
     {"keyword": "быстрый воск для авто", "volume": 40}
   ],
   "synonyms": [
-    {"keyword": "полимер для авто", "volume": 140},
     {"keyword": "воск для авто на автомойке", "volume": 20},
     {"keyword": "холодный воск для сушки автомобиля", "volume": 10},
     {"keyword": "быстрый блеск для авто", "volume": 10},
@@ -38,5 +37,8 @@
     "как использовать быстрый воск",
     "квик-детейлер или воск — в чём разница"
   ],
-  "source": "STRUCTURE.md"
+  "source": "STRUCTURE.md",
+  "needs_review": [
+    {"keyword": "полимер для авто", "volume": 140, "reason": "слишком общий термин, может относиться к zashchitnye-pokrytiya или silanty", "from": "synonyms"}
+  ]
 }
