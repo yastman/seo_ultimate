@@ -1,8 +1,6 @@
 """Tests for validate_uk.py"""
 
 import json
-import os
-from unittest.mock import patch
 
 from scripts.validate_uk import validate_uk_category
 

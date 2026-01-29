@@ -746,6 +746,7 @@ def check_content_standards(text: str, lang: str = "ru") -> dict:
                 r"##\s*как\s+не\s+(сделать|испортить|навредить)",
                 r"##\s*ошибк",
                 r"##\s*предосторож",
+                r"##\s*safety\b",  # language-independent
             ],
             "math": [r"расход", r"концентрац", r"разведен", r"\d+\s*(мл|литр|л\b|г\b)", r"\d+:\d+"],
             "warning": [
@@ -769,6 +770,7 @@ def check_content_standards(text: str, lang: str = "ru") -> dict:
                 r"##\s*як\s+не\s+(зіпсувати|нашкодити)",
                 r"##\s*помилк",
                 r"##\s*застереж",
+                r"##\s*safety\b",  # language-independent
             ],
             "math": [r"витрат", r"концентрац", r"розведен", r"\d+\s*(мл|літр|л\b|г\b)", r"\d+:\d+"],
             "warning": [

@@ -32,15 +32,21 @@
   "synonyms": [
     {
       "keyword": "меховой круг для полировки авто",
-      "volume": 10
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "меховой круг для полировки"
     },
     {
       "keyword": "шерстяной круг на полировальную машинку",
-      "volume": 10
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "шерстяной круг для полировки"
     },
     {
       "keyword": "круг из шерсти для полировки",
-      "volume": 10
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "шерстяной круг для полировки"
     },
     {
       "keyword": "wool pad",

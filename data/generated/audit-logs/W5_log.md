@@ -1,47 +1,63 @@
-# W5 Audit Log
+# W5 Semantic Cluster Log
 
-## polirovka
-- ✅ OK: 3 keywords — все релевантны
-- ⚠️ needs_review: 5 ключей из synonyms
-  - "полировочный круг для машины" (10) — относится к polirovalnye-krugi
-  - "круги для полировки машины" (10) — относится к polirovalnye-krugi
-  - "круги на полировочную машинку" (10) — относится к polirovalnye-krugi
-  - "круги для полировальной машины" (10) — относится к polirovalnye-krugi
-  - "круги для полировальной машинки" (10) — относится к polirovalnye-krugi
+Дата: 2026-01-29 11:44
 
-## polirovalnye-krugi
-- ✅ OK: 5 keywords, 25 synonyms — релевантны
-- ⚠️ needs_review: 1 ключ из keywords
-  - "набор для полировки авто" (480) — слишком общий, включает пасты+машинку+круги
+## ochistiteli-kozhi
+- Найдено дублей: 1
+- Перенесено в synonyms: 1
+- Canonical: средство для чистки кожи авто
+- Variants: средства для чистки кожи автомобиля → synonyms (lsi)
 
-## mekhovye
-- ✅ OK: 2 keywords, 6 synonyms — все релевантны
-- ⚠️ needs_review: 0 ключей
+## ukhod-za-kozhey
+- Найдено дублей: 1
+- Перенесено в synonyms: 1
+- Canonical: уход за кожей авто
+- Variants: уход за кожей автомобиля → synonyms (lsi)
 
-## polirovalnye-mashinki
-- ✅ OK: 10 keywords, 29 synonyms — релевантны
-- ⚠️ needs_review: 1 ключ из keywords (дублирование с akkumulyatornaya)
-  - "аккумуляторная полировальная машина" (260) — дублируется с подкатегорией
+## zashchitnye-pokrytiya
+- Найдено дублей: 1
+- Перенесено в synonyms: 1
+- Canonical: полимер для авто (поднят из synonyms в keywords)
+- Variants: полимер для автомобиля → synonyms (lsi)
 
-## akkumulyatornaya
-- ✅ OK: 3 keywords, 5 synonyms — все релевантны
-- ⚠️ needs_review: 0 ключей
+## keramika-i-zhidkoe-steklo
+- Найдено дублей: 1
+- Перенесено в synonyms: 1
+- Canonical: нанокерамика для авто
+- Variants: нанокерамика для автомобиля → synonyms (lsi)
 
-## polirovalnye-pasty
-- ✅ OK: 9 keywords, 23 synonyms, 1 variation — все релевантны
-- ⚠️ needs_review: 0 ключей
+## kvik-deteylery
+- Найдено дублей: 2
+- Перенесено в synonyms: 2 (из variations)
+- Canonical: холодный воск для автомобиля, горячий воск для авто
+- Variants: холодный воск для авто, горячий воск для автомобиля → synonyms (lsi)
+
+## silanty
+- Найдено дублей: 1
+- Перенесено в synonyms: 1
+- Canonical: силанты для авто
+- Variants: силант для авто → synonyms (lsi)
+
+## voski
+- Найдено дублей: 0
+- Перенесено в synonyms: 0
+- Примечание: авто/машина — разные слова (не стем-варианты), оба оставлены в keywords
+
+## tverdyy-vosk
+- Найдено дублей: 1
+- Перенесено в synonyms: 1 (из variations)
+- Canonical: твёрдый воск для авто
+- Variants: твёрдый воск для машины → synonyms (lsi)
+
+## zhidkiy-vosk
+- Найдено дублей: 3
+- Перенесено в synonyms: 3 (из variations)
+- Canonical: жидкий воск для авто, жидкий воск для кузова
+- Variants: жидкий воск для автомобиля, жидкий воск для машин, жидкий воск для кузова автомобиля → synonyms (lsi)
 
 ---
-
-## Summary
-
-| Категория | Keywords | Synonyms | needs_review |
-|-----------|----------|----------|--------------|
-| polirovka | 3 ✅ | 4 ✅ / 5 ⚠️ | 5 |
-| polirovalnye-krugi | 5 ✅ / 1 ⚠️ | 25 ✅ | 1 |
-| mekhovye | 2 ✅ | 6 ✅ | 0 |
-| polirovalnye-mashinki | 10 ✅ / 1 ⚠️ | 29 ✅ | 1 |
-| akkumulyatornaya | 3 ✅ | 5 ✅ | 0 |
-| polirovalnye-pasty | 9 ✅ | 23 ✅ | 0 |
-
-**Total:** 7 ключей в needs_review
+## Итог
+- Обработано категорий: 9
+- Всего дублей: 11
+- Всего перенесено: 11
+- Валидация: ✅ Все 8 meta PASS

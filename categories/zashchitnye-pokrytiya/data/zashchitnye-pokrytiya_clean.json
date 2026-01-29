@@ -4,12 +4,12 @@
   "type": "category",
   "parent_id": null,
   "keywords": [
+    {"keyword": "полимер для авто", "volume": 140},
     {"keyword": "защитные покрытия для авто", "volume": 70},
-    {"keyword": "полимер для автомобиля", "volume": 70},
     {"keyword": "покрытие для автомобиля", "volume": 10}
   ],
   "synonyms": [
-    {"keyword": "полимер для авто", "volume": 140},
+    {"keyword": "полимер для автомобиля", "volume": 70, "use_in": "lsi", "variant_of": "полимер для авто"},
     {"keyword": "защитное покрытие на машину купить", "volume": 10, "use_in": "meta_only"},
     {"keyword": "купить защитное покрытие для авто", "volume": 10, "use_in": "meta_only"}
   ],

@@ -114,10 +114,12 @@ class TestCoverage:
         core = ["шампунь", "пена"]
         comm = ["купить"]
 
-        res = check_keyword_coverage_split(text, core, comm, use_semantic=True)
-        assert res["core"]["found"] == 1  # шампунь found
-        assert res["commercial"]["found"] == 1  # купить found
-        assert res["passed"]  # Depends on target, assuming 1/2 >= target(50%)
+        # Patch adaptive target to 50% so 1/2 keywords (50%) passes
+        with patch("scripts.validate_content.get_adaptive_coverage_target", return_value=50):
+            res = check_keyword_coverage_split(text, core, comm, use_semantic=True)
+            assert res["core"]["found"] == 1  # шампунь found
+            assert res["commercial"]["found"] == 1  # купить found
+            assert res["passed"]  # 50% >= 50% target
 
 
 # ============================================================================

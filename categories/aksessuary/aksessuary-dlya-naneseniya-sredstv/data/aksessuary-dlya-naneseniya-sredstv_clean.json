@@ -4,17 +4,17 @@
   "type": "category",
   "parent_id": "aksessuary",
   "keywords": [
-    {"keyword": "губка для полировки автомобиля", "volume": 170},
     {"keyword": "губка для полировки авто", "volume": 170}
   ],
   "synonyms": [
+    {"keyword": "губка для полировки автомобиля", "volume": 170, "use_in": "lsi", "variant_of": "губка для полировки авто"},
     {"keyword": "тряпки для полировки авто", "volume": 50},
     {"keyword": "аппликатор для авто", "volume": 30},
     {"keyword": "салфетки для полировки авто", "volume": 20},
     {"keyword": "губка из микрофибры для авто", "volume": 10},
     {"keyword": "губка для ручной полировки авто", "volume": 10},
     {"keyword": "губка для салона авто", "volume": 10},
-    {"keyword": "полировочная губка для авто", "volume": 10},
+    {"keyword": "полировочная губка для авто", "volume": 10, "use_in": "lsi", "variant_of": "губка для полировки авто"},
     {"keyword": "купить губку для полировки авто", "volume": 20, "use_in": "meta_only"}
   ],
   "variations": [],
