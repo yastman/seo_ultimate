@@ -89,10 +89,17 @@ class CategoryBuilder:
         # 2. Create data/ (clean.json)
         data_dir = cat_dir / "data"
         data_dir.mkdir(exist_ok=True)
+
+        # Flatten keywords to list format (primary schema used in real data)
+        if isinstance(self._keywords, dict) and "primary" in self._keywords:
+            keywords_list = self._keywords["primary"]
+        else:
+            keywords_list = self._keywords
+
         clean_data = {
             "slug": self._slug,
             "name": self._meta.get("h1", "Name"),
-            "keywords": self._keywords,
+            "keywords": keywords_list,
             "meta": self._meta,
             **self._clean_json_extra,
         }

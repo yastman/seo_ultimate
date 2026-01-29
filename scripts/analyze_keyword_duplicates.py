@@ -131,9 +131,9 @@ def main():
 
             # Рекомендация
             print("**Рекомендация:**")
-            for dup in dup["duplicates"] if "duplicates" in dup else r["duplicates"]:
+            for dup_item in r["duplicates"]:
                 # Сортируем: короче = лучше, при равной длине — больший volume
-                sorted_variants = sorted(dup["variants"], key=lambda x: (len(x["keyword"]), -x.get("volume", 0)))
+                sorted_variants = sorted(dup_item["variants"], key=lambda x: (len(x["keyword"]), -x.get("volume", 0)))
                 keep = sorted_variants[0]
                 move = sorted_variants[1:]
 

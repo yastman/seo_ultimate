@@ -1,7 +1,6 @@
 """Tests for audit_keyword_consistency.py"""
 
 import json
-from unittest.mock import MagicMock, patch
 
 from scripts.audit_keyword_consistency import scan_actual_keywords
 

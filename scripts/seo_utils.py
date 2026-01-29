@@ -31,6 +31,9 @@ from typing import Any
 
 import yaml
 
+# URL utilities moved to scripts/utils/url.py - re-export for backwards compatibility
+from scripts.utils.url import is_blacklisted_domain  # noqa: F401
+
 # Fix path for direct execution and legacy imports
 if __name__ == "__main__" or __package__ is None:
     sys.path.append(str(Path(__file__).resolve().parent.parent))
@@ -387,8 +390,9 @@ def clean_markdown(text: str) -> str:
     # Remove bold/italic
     text = re.sub(r"\*{1,2}([^*]+)\*{1,2}", r"\1", text)
 
-    # Remove list markers
+    # Remove list markers (unordered and ordered)
     text = re.sub(r"^[-*+]\s+", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^\s*\d+[.)]\s+", "", text, flags=re.MULTILINE)
 
     # Remove tables
     text = re.sub(r"\|.*?\|", " ", text)
@@ -435,7 +439,11 @@ def normalize_text(md: str) -> str:
     # 6. Жирный/курсив (**bold** → bold)
     text = re.sub(r"[*_]{1,2}([^*_]+)[*_]{1,2}", r"\1", text)
 
-    # 7. Множественные пробелы → один пробел
+    # 7. Remove punctuation (preserve apostrophes in contractions and hyphens in words)
+    text = re.sub(r"[,!?;:\"(){}[\]<>]", "", text)
+    text = re.sub(r"\.(?=\s|$)", "", text)  # Remove periods at word boundaries
+
+    # 8. Множественные пробелы → один пробел
     text = re.sub(r"\s+", " ", text).strip()
 
     return text
@@ -476,8 +484,6 @@ def count_chars_no_spaces(content: str) -> int:
 
 
 # ============================================================================
-# URL utilities moved to scripts/utils/url.py
-
 # Keyword Counting (with fallback)
 # ============================================================================
 

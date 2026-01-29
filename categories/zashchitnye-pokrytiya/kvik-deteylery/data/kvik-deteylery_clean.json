@@ -9,6 +9,8 @@
     {"keyword": "быстрый воск для авто", "volume": 40}
   ],
   "synonyms": [
+    {"keyword": "холодный воск для авто", "volume": 90, "use_in": "lsi", "variant_of": "холодный воск для автомобиля"},
+    {"keyword": "горячий воск для автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "горячий воск для авто"},
     {"keyword": "воск для авто на автомойке", "volume": 20},
     {"keyword": "холодный воск для сушки автомобиля", "volume": 10},
     {"keyword": "быстрый блеск для авто", "volume": 10},
@@ -19,10 +21,7 @@
     {"keyword": "купить горячий воск для авто", "volume": 10, "use_in": "meta_only"},
     {"keyword": "жидкий воск цена", "volume": 10, "use_in": "meta_only"}
   ],
-  "variations": [
-    {"keyword": "холодный воск для авто", "volume": 90, "parent": "холодный воск для автомобиля"},
-    {"keyword": "горячий воск для автомобиля", "volume": 10, "parent": "горячий воск для авто"}
-  ],
+  "variations": [],
   "entities": [
     "quick detailer",
     "spray wax",

@@ -5,10 +5,10 @@
   "parent_id": "sredstva-dlya-kozhi",
   "keywords": [
     {"keyword": "уход за кожей авто", "volume": 210},
-    {"keyword": "уход за кожей автомобиля", "volume": 140},
     {"keyword": "лучшее средство по уходу за кожей авто", "volume": 140}
   ],
   "synonyms": [
+    {"keyword": "уход за кожей автомобиля", "volume": 140, "use_in": "lsi", "variant_of": "уход за кожей авто"},
     {"keyword": "полироль для кожи", "volume": 170},
     {"keyword": "средство по уходу за кожей авто", "volume": 90},
     {"keyword": "полироль для кожи авто", "volume": 90},

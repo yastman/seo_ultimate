@@ -5,10 +5,10 @@
   "parent_id": "sredstva-dlya-stekol",
   "keywords": [
     {"keyword": "антидождь", "volume": 1200},
-    {"keyword": "антидождь для автомобиля", "volume": 320},
-    {"keyword": "антидождь для авто", "volume": 80}
+    {"keyword": "антидождь для автомобиля", "volume": 320}
   ],
   "synonyms": [
+    {"keyword": "антидождь для авто", "volume": 80, "use_in": "lsi", "variant_of": "антидождь для автомобиля"},
     {"keyword": "антидождь на лобовое стекло", "volume": 10},
     {"keyword": "покрытие для лобового стекла", "volume": 10},
     {"keyword": "антидождь для зеркал авто", "volume": 20},
