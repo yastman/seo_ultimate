@@ -15,6 +15,7 @@
     {"keyword": "восковый полироль для авто", "volume": 50},
     {"keyword": "купить воск для авто", "volume": 320, "use_in": "meta_only"},
     {"keyword": "купить воск для автомобиля", "volume": 320, "use_in": "meta_only"},
+    {"keyword": "купить воск для машины", "volume": 30, "use_in": "meta_only"},
     {"keyword": "купить воск для полировки авто", "volume": 20, "use_in": "meta_only"},
     {"keyword": "купить воск для мойки авто", "volume": 20, "use_in": "meta_only"}
   ],

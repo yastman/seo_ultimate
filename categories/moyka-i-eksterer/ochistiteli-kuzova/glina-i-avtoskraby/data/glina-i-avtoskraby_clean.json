@@ -183,12 +183,5 @@
     "глина или автоскраб — что лучше",
     "как часто нужно клеить кузов глиной"
   ],
-  "source": "checklist",
-  "needs_review": [
-    {"keyword": "автомобильная глина", "volume": 10, "reason": "дубль: в synonyms vol=20", "from": "keywords"},
-    {"keyword": "глина для кузова авто", "volume": 10, "reason": "дубль: в variations", "from": "keywords"},
-    {"keyword": "глина для полировки авто", "volume": 10, "reason": "дубль: в variations", "from": "keywords"},
-    {"keyword": "купить синюю глину для авто", "volume": 10, "reason": "дубль: в synonyms vol=20 meta_only", "from": "keywords"},
-    {"keyword": "глина для мойки авто", "volume": 10, "reason": "дубль: в synonyms vol=10", "from": "keywords"}
-  ]
+  "source": "checklist"
 }

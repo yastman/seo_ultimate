@@ -61,10 +61,5 @@
     "безопасен ли антибитум для лака",
     "как правильно наносить антибитум"
   ],
-  "source": "checklist",
-  "needs_review": [
-    {"keyword": "купить антибитум для авто", "volume": 10, "reason": "дубль: в synonyms vol=20 meta_only", "from": "keywords"},
-    {"keyword": "антибитум купить", "volume": 10, "reason": "дубль: в synonyms vol=10 meta_only", "from": "keywords"},
-    {"keyword": "антибитум цена", "volume": 10, "reason": "дубль: в synonyms vol=10 meta_only", "from": "keywords"}
-  ]
+  "source": "checklist"
 }

@@ -37,8 +37,5 @@
     "малярный скотч для оклейки",
     "скотч не оставляющий следов"
   ],
-  "source": "checklist",
-  "needs_review": [
-    {"keyword": "скотч малярний", "volume": 1000, "reason": "украинский ключ в RU файле — перенести в UK версию", "from": "keywords"}
-  ]
+  "source": "checklist"
 }

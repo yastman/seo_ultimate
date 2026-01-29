@@ -37,8 +37,5 @@
     "как использовать быстрый воск",
     "квик-детейлер или воск — в чём разница"
   ],
-  "source": "STRUCTURE.md",
-  "needs_review": [
-    {"keyword": "полимер для авто", "volume": 140, "reason": "слишком общий термин, может относиться к zashchitnye-pokrytiya или silanty", "from": "synonyms"}
-  ]
+  "source": "STRUCTURE.md"
 }

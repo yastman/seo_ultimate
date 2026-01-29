@@ -187,51 +187,33 @@ python3 scripts/sync_semantics.py --apply
 | UK синоніми | `.claude/skills/uk-content-generator/references/uk-lsi-synonyms.md` |
 | Скрипты | `scripts/` |
 | Планы | `docs/plans/` |
+| Воркеры | `docs/PARALLEL_WORKERS.md` |
+| Логи воркеров | `data/generated/audit-logs/` |
 
 ---
 
 ## Parallel Claude Workers
 
-Запуск нескольких Claude-агентов для параллельной работы.
+См. **[docs/PARALLEL_WORKERS.md](docs/PARALLEL_WORKERS.md)** — полная документация.
 
-### Короткий синтаксис
-
-```
-/parallel docs/plans/2026-01-28-feature.md
-W1: 1,2,5
-W2: 3,4
-```
-
-Claude понимает: прочитать план, запустить `spawn-claude` для каждого воркера. Оркестратор не делает задачи сам — только коммитит после воркеров.
-
-### Синтаксис spawn-claude
+### Быстрый старт
 
 ```bash
-spawn-claude "W{N}: {Описание}.
+spawn-claude "W1: Описание задачи.
 
-REQUIRED SKILLS:
-- superpowers:executing-plans
-- superpowers:verification-before-completion
+/superpowers:executing-plans docs/plans/YYYY-MM-DD-plan.md
 
-План: docs/plans/YYYY-MM-DD-task.md
-Задачи: Task N
+Выполни ТОЛЬКО Task 1.
 
-НЕ ДЕЛАЙ git commit - коммиты делает оркестратор" "$(pwd)"
+НЕ ДЕЛАЙ git commit" "$(pwd)"
 ```
 
-### Правила
+### Ключевые правила
 
-- **1 воркер = 1 набор файлов** — никогда не делить один файл между воркерами
-- Воркеры НЕ делают коммиты
-- Не дублировать план в промпте — воркер сам прочитает
-
-### tmux навигация
-
-| Комбо | Действие |
-|-------|----------|
-| `Ctrl+A, n/p` | Следующее/предыдущее окно |
-| `Ctrl+A, w` | Список окон |
-| `Ctrl+A, d` | Отсоединиться |
+- **1 воркер = 1 набор файлов** — без пересечений
+- **Воркеры пишут логи** в `data/generated/audit-logs/W{N}_log.md`
+- **Воркеры НЕ коммитят** — коммиты делает оркестратор
+- **tmux:** `Ctrl+A, w` — список окон
 
 ---
 
@@ -242,4 +224,4 @@ REQUIRED SKILLS:
 
 ---
 
-**Version:** 50.0
+**Version:** 51.0
