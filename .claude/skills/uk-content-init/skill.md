@@ -119,7 +119,7 @@ uk/categories/{slug}/
 
 ### Step 5: Write UK Meta JSON
 
-**Title formula:** `Купити {primary} в Україні | Ultimate`
+**Title formula:** `{primary} — купити в інтернет-магазині Ultimate`
 **Description formula:** `{Категорія} від виробника Ultimate. {Типи}. {Призначення}. Опт і роздріб.`
 
 ```json
@@ -128,7 +128,7 @@ uk/categories/{slug}/
     "slug": "{slug}",
     "h1": "{Primary keyword} для авто",
     "meta": {
-        "title": "Купити {Primary} в Україні | Ultimate",
+        "title": "{Primary} — купити в інтернет-магазині Ultimate",
         "description": "{Категорія} від виробника Ultimate. {Типи}. Опт і роздріб."
     },
     "types": ["тип1", "тип2"],

@@ -280,7 +280,7 @@ grep -c "стекло" uk/categories/{slug}/content/{slug}_uk.md  # Should be 0
 
 | Field | UK Rule | Example |
 |-------|---------|---------|
-| Title | "Купити" ОБОВ'ЯЗКОВО | "Купити активну піну в Україні \| Ultimate" |
+| Title | primary_keyword на початку | "Активна піна — купити в інтернет-магазині Ultimate" |
 | Title length | 50-60 chars | |
 | Description | 100-160 chars | "{keyword} від виробника Ultimate. {types}. Опт і роздріб." |
 | H1 | БЕЗ "Купити" | "Активна піна" |
