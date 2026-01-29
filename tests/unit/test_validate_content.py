@@ -102,9 +102,9 @@ class TestCoverage:
         keywords = ["word1", "word2", "missing"]
 
         # 2/3 = 66%
-        # Target for 3 keywords (<=5) is 70% usually (depends on config mocked)
-
-        with patch("scripts.validate_content.get_adaptive_coverage_target", return_value=50):
+        # Target for 3 keywords (<=5) is 70% by default
+        # Patch CoverageChecker.get_adaptive_target since that's what's used internally
+        with patch("scripts.keyword_utils.CoverageChecker.get_adaptive_target", return_value=50):
             res = check_keyword_coverage(text, keywords)
             assert res["passed"]
             assert res["coverage_percent"] > 60
@@ -115,7 +115,7 @@ class TestCoverage:
         comm = ["купить"]
 
         # Patch adaptive target to 50% so 1/2 keywords (50%) passes
-        with patch("scripts.validate_content.get_adaptive_coverage_target", return_value=50):
+        with patch("scripts.keyword_utils.CoverageChecker.get_adaptive_target", return_value=50):
             res = check_keyword_coverage_split(text, core, comm, use_semantic=True)
             assert res["core"]["found"] == 1  # шампунь found
             assert res["commercial"]["found"] == 1  # купить found

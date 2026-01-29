@@ -32,6 +32,11 @@ import sys
 from pathlib import Path
 from typing import Any
 
+# Add project root to path for direct script execution
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from scripts.keyword_utils import MorphAnalyzer, keyword_matches_text
+
 # Fix Windows encoding is moved to main() block to avoid pytest conflicts
 
 
@@ -118,81 +123,23 @@ def get_commercial_keywords(keywords_data: dict[str, Any]) -> list[str]:
 
 def get_word_stem(word: str) -> str:
     """
+    Backward-compatible wrapper using MorphAnalyzer.
+
     Extract stem from a single word for fuzzy matching.
     Handles singular/plural forms in Russian/Ukrainian.
     """
-    w = word.lower().strip()
-    if len(w) <= 4:
-        return w
-
-    # Remove common noun endings (ordered by length)
-    for suffix in [
-        "ого",
-        "его",
-        "ому",
-        "ему",
-        "ими",
-        "ыми",
-        "ая",
-        "яя",
-        "ую",
-        "юю",
-        "ое",
-        "ее",
-        "ые",
-        "ие",
-        "ый",
-        "ій",
-        "ями",
-        "ей",
-        "ов",
-        "ів",
-        "ах",
-        "ях",
-        "ий",
-        "ой",
-        "ем",
-        "ом",
-        "и",
-        "і",
-        "ы",
-        "а",
-        "я",
-        "е",
-        "ь",
-        "у",
-        "ю",
-    ]:
-        if len(w) > len(suffix) + 3 and w.endswith(suffix):
-            return w[: -len(suffix)]
-    return w
+    morph = MorphAnalyzer("ru")
+    return morph.get_lemma(word)
 
 
 def keyword_matches(keyword: str, text: str) -> bool:
     """
+    Backward-compatible wrapper using keyword_utils.
+
     Check if keyword matches text, accounting for plural/singular forms.
-    Uses word-level stem matching for each significant word.
+    Uses morphological analysis for accurate matching.
     """
-    text_lower = text.lower()
-    kw_lower = keyword.lower()
-
-    # Direct match
-    if kw_lower in text_lower:
-        return True
-
-    # Split keyword into words and match stems for main words
-    kw_words = kw_lower.split()
-    if not kw_words:
-        return False
-
-    # Get the first significant word (usually the main noun)
-    main_word = kw_words[0]
-    main_stem = get_word_stem(main_word)
-
-    # Check if main stem appears in text (at least 4 chars)
-    return len(main_stem) >= 4 and main_stem in text_lower
-
-    return False
+    return keyword_matches_text(keyword, text, lang="ru")
 
 
 def validate_title(title: str, primary_keywords: list[str] | None = None) -> dict[str, Any]:

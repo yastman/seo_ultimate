@@ -31,6 +31,15 @@ from typing import Any
 
 import yaml
 
+# Keyword utilities (SSOT) - import from keyword_utils
+from scripts.keyword_utils import (
+    get_adaptive_coverage_target as _get_adaptive_coverage_target,
+)
+from scripts.keyword_utils import (
+    get_commercial_markers,
+    get_stoplist_phrases,
+)
+
 # URL utilities moved to scripts/utils/url.py - re-export for backwards compatibility
 from scripts.utils.url import is_blacklisted_domain  # noqa: F401
 
@@ -51,15 +60,8 @@ SLUG_TO_L3 = _config.SLUG_TO_L3
 
 
 def get_adaptive_coverage_target(keywords_count: int) -> int:
-    """Get coverage target based on keywords count (fallback safe)."""
-    func = getattr(_config, "get_adaptive_coverage_target", None)
-    if callable(func):
-        return int(func(keywords_count))
-    if keywords_count <= 5:
-        return int(QUALITY_THRESHOLDS.get("coverage_shallow", 70))
-    if keywords_count <= 15:
-        return int(QUALITY_THRESHOLDS.get("coverage_medium", 60))
-    return int(QUALITY_THRESHOLDS.get("coverage_deep", 50))
+    """Get coverage target based on keywords count (SSOT from keyword_utils)."""
+    return int(_get_adaptive_coverage_target(keywords_count))
 
 
 # ============================================================================
@@ -750,60 +752,48 @@ def get_tier_requirements(tier: str = "B") -> dict[str, Any]:
 # Commercial Markers Validation (v7.3)
 # ============================================================================
 
-# Коммерческие маркеры (Must Have для E-commerce)
-COMMERCIAL_MARKERS = [
-    # RU
-    "купить",
-    "цена",
-    "стоимость",
-    "интернет-магазин",
-    "доставка",
-    "заказать",
-    "в наличии",
-    "оптом",
-    "недорого",
-    "скидка",
-    "акция",
-    # UA
-    "купити",
-    "ціна",
-    "вартість",
-    "інтернет-магазин",
-    "доставка",
-    "замовити",
-    "в наявності",
-    "оптом",
-]
+
+def find_commercial_markers(text: str, lang: str = "ru") -> dict[str, int]:
+    """
+    Find commercial markers in text (SSOT from keyword_utils).
+
+    Args:
+        text: текст для проверки
+        lang: язык ('ru' или 'uk')
+
+    Returns:
+        {marker: count, ...} — найденные маркеры с количеством вхождений
+    """
+    markers = get_commercial_markers(lang)
+    found: dict[str, int] = {}
+    text_lower = text.lower()
+    for marker in markers:
+        if marker in text_lower:
+            count = text_lower.count(marker)
+            found[marker] = count
+    return found
 
 
-def check_commercial_markers(text: str, min_required: int = 3) -> dict[str, Any]:
+def check_commercial_markers(text: str, min_required: int = 3, lang: str = "ru") -> dict[str, Any]:
     """
     Проверка наличия коммерческих маркеров в тексте
 
     Args:
         text: текст для проверки
         min_required: минимальное количество маркеров
+        lang: язык ('ru' или 'uk')
 
     Returns:
         {
             "passed": bool,
             "found_count": int,
             "found_markers": List[str],
-            "missing_markers": List[str],
+            "min_required": int,
             "message": str
         }
     """
-    text_lower = text.lower()
-    found = []
-    missing = []
-
-    for marker in COMMERCIAL_MARKERS:
-        if marker.lower() in text_lower:
-            if marker not in found:  # Уникальные
-                found.append(marker)
-        else:
-            if marker not in missing:
-                missing.append(marker)
+    found_markers = find_commercial_markers(text, lang)
+    found = list(found_markers.keys())
 
     passed = len(found) >= min_required
 
@@ -822,41 +812,34 @@ def check_commercial_markers(text: str, min_required: int = 3) -> dict[str, Any]
 # Anti-Fluff Stoplist (v7.3)
 # ============================================================================
 
-STOPLIST_PHRASES = [
-    # Вводные конструкции > 3 слов
-    "в современном мире",
-    "ни для кого не секрет",
-    "как известно",
-    "не секрет, что",
-    "на сегодняшний день",
-    "в настоящее время",
-    # Пустые обещания
-    "самый лучший товар",
-    "индивидуальный подход",
-    "высокое качество по доступной цене",
-    "широкий ассортимент",
-    "профессиональный подход",
-    # История (не для E-commerce)
-    "первые шампуни появились",
-    "история создания",
-    "с давних времён",
-    "издавна известно",
-    # AI-fluff
-    "давайте разберёмся",
-    "давайте рассмотрим",
-    "в этой статье",
-    "в данной статье",
-    "в заключение",
-    "подводя итоги",
-]
+
+def check_stoplist_phrases(text: str, lang: str = "ru") -> list[str]:
+    """
+    Find stoplist phrases in text (SSOT from keyword_utils).
+
+    Args:
+        text: текст для проверки
+        lang: язык ('ru' или 'uk')
+
+    Returns:
+        List of found stoplist phrases
+    """
+    phrases = get_stoplist_phrases(lang)
+    found = []
+    text_lower = text.lower()
+    for phrase in phrases:
+        if phrase in text_lower:
+            found.append(phrase)
+    return found
 
 
-def check_stoplist(text: str) -> dict[str, Any]:
+def check_stoplist(text: str, lang: str = "ru") -> dict[str, Any]:
     """
     Проверка на стоп-фразы (Anti-Fluff)
 
     Args:
         text: текст для проверки
+        lang: язык ('ru' или 'uk')
 
     Returns:
         {
@@ -865,12 +848,7 @@ def check_stoplist(text: str) -> dict[str, Any]:
             "message": str
         }
     """
-    text_lower = text.lower()
-    violations = []
-
-    for phrase in STOPLIST_PHRASES:
-        if phrase.lower() in text_lower:
-            violations.append(phrase)
+    violations = check_stoplist_phrases(text, lang)
 
     passed = len(violations) == 0
 
