@@ -27,6 +27,8 @@ spawn-claude "W{N}: Выполнение задач из плана.
 
 Выполни ТОЛЬКО: {список задач}.
 
+После выполнения — /superpowers:verification-before-completion
+
 Пиши лог в data/generated/audit-logs/W{N}_log.md
 
 НЕ ДЕЛАЙ git commit - коммиты делает оркестратор" "$(pwd)"
