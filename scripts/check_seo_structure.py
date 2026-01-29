@@ -24,6 +24,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from scripts.keyword_utils import MorphAnalyzer
+from scripts.text_utils import extract_h2s
 
 
 def detect_language(file_path: str) -> str:
@@ -182,9 +183,8 @@ def check_keywords_in_h2(text: str, keyword: str, lang: str = "ru") -> dict:
     Returns:
         Dict с результатами
     """
-    # Находим все H2
-    h2_pattern = r"^##\s+(.+)$"
-    h2_matches = re.findall(h2_pattern, text, re.MULTILINE)
+    # Находим все H2 (используем text_utils SSOT)
+    h2_matches = extract_h2s(text)
 
     keyword_lower = normalize_keyword(keyword)
     keyword_words = keyword_lower.split()

@@ -40,6 +40,7 @@ from scripts.keyword_utils import (
     get_stoplist_phrases,
 )
 
+# Text utilities (SSOT) - import from text_utils
 # URL utilities moved to scripts/utils/url.py - re-export for backwards compatibility
 from scripts.utils.url import is_blacklisted_domain  # noqa: F401
 
@@ -344,145 +345,10 @@ def rebuild_document(yaml_text: str, body_text: str) -> str:
 
 
 # ============================================================================
-# Text Normalization & Counting
+# Text Normalization & Counting (SSOT from scripts/text_utils.py)
 # ============================================================================
-
-
-def clean_markdown(text: str) -> str:
-    """
-    Remove markdown formatting for analysis (SSOT - Single Source of Truth).
-
-    This is the canonical function for cleaning markdown across all scripts.
-    Use this instead of local implementations.
-
-    Removes:
-    - YAML front matter
-    - Headers markup (keeps text)
-    - Links (keeps text)
-    - Bold/italic
-    - List markers
-    - Code blocks
-    - Tables
-
-    Args:
-        text: Raw markdown text
-
-    Returns:
-        Clean text without markdown formatting
-
-    Example:
-        >>> clean_markdown("# Hello\\n**World**")
-        'Hello World'
-    """
-    # Remove YAML front matter
-    text = re.sub(r"^---\n.*?\n---\n", "", text, flags=re.DOTALL)
-
-    # Remove code blocks (triple backticks)
-    text = re.sub(r"```.*?```", " ", text, flags=re.DOTALL)
-
-    # Remove inline code backticks but keep the code text
-    text = re.sub(r"`([^`]+)`", r"\1", text)
-
-    # Remove headers markup (keep text)
-    text = re.sub(r"^#+\s+", "", text, flags=re.MULTILINE)
-
-    # Remove links (keep text)
-    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
-
-    # Remove bold/italic
-    text = re.sub(r"\*{1,2}([^*]+)\*{1,2}", r"\1", text)
-
-    # Remove list markers (unordered and ordered)
-    text = re.sub(r"^[-*+]\s+", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^\s*\d+[.)]\s+", "", text, flags=re.MULTILINE)
-
-    # Remove tables
-    text = re.sub(r"\|.*?\|", " ", text)
-
-    # Normalize whitespace
-    text = re.sub(r"\s+", " ", text).strip()
-
-    return text
-
-
-def normalize_text(md: str) -> str:
-    """
-    Единая нормализация текста для подсчёта слов
-
-    IMPORTANT: Используется и в validator, и в fixer для согласованности метрик
-
-    Удаляет:
-    - Markdown разметку (ссылки, код, заголовки, таблицы)
-    - Оставляет только слова
-
-    Args:
-        md: Markdown текст
-
-    Returns:
-        Нормализованный текст
-    """
-    text = md
-
-    # 1. Код-блоки (тройные ```)
-    text = re.sub(r"```.*?```", " ", text, flags=re.DOTALL)
-
-    # 2. Инлайн-код (`code`)
-    text = re.sub(r"`[^`]+`", " ", text)
-
-    # 3. Ссылки [text](url) → text
-    text = re.sub(r"\[([^\]]+)\]\([^\)]+\)", r"\1", text)
-
-    # 4. Заголовки (# Header → Header)
-    text = re.sub(r"^#{1,6}\s+", "", text, flags=re.MULTILINE)
-
-    # 5. Таблицы (|...|)
-    text = re.sub(r"\|.*?\|", " ", text)
-
-    # 6. Жирный/курсив (**bold** → bold)
-    text = re.sub(r"[*_]{1,2}([^*_]+)[*_]{1,2}", r"\1", text)
-
-    # 7. Remove punctuation (preserve apostrophes in contractions and hyphens in words)
-    text = re.sub(r"[,!?;:\"(){}[\]<>]", "", text)
-    text = re.sub(r"\.(?=\s|$)", "", text)  # Remove periods at word boundaries
-
-    # 8. Множественные пробелы → один пробел
-    text = re.sub(r"\s+", " ", text).strip()
-
-    return text
-
-
-def count_words(text: str) -> int:
-    """
-    Подсчёт слов в нормализованном тексте
-
-    IMPORTANT: Используется единая функция для всех скриптов
-
-    Args:
-        text: нормализованный текст (через normalize_text)
-
-    Returns:
-        Количество слов
-    """
-    words = text.split()
-    return len(words)
-
-
-def count_chars_no_spaces(content: str) -> int:
-    """
-    Подсчёт символов БЕЗ пробелов, переносов, табов
-
-    EXACT FORMULA - совпадает с:
-    - content-generation-agent (self-validation)
-    - stage-8-11-content-validator
-
-    Args:
-        content: полный текст файла (включая markdown разметку)
-
-    Returns:
-        Количество символов без пробелов
-    """
-    no_spaces = content.replace(" ", "").replace("\n", "").replace("\t", "").replace("\r", "")
-    return len(no_spaces)
+# clean_markdown, normalize_text, count_words, count_chars_no_spaces
+# are imported from scripts.text_utils at the top of this file.
 
 
 # ============================================================================

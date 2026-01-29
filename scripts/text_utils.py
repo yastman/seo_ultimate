@@ -336,9 +336,60 @@ def clean_markdown(text: str) -> str:
     return text
 
 
-def normalize_text(text: str) -> str:
-    """Alias for clean_markdown (backwards compatibility)."""
-    return clean_markdown(text)
+def normalize_text(md: str) -> str:
+    """
+    Unified text normalization for word counting.
+
+    IMPORTANT: Used by both validator and fixer for consistent metrics.
+
+    Different from clean_markdown():
+    - Also removes punctuation (for word counting)
+    - Preserves apostrophes in contractions
+
+    Removes:
+    - Code blocks
+    - Inline code
+    - Links (keeps text)
+    - Headers markup
+    - Tables
+    - Bold/italic
+    - Punctuation (,!?;:"(){}[]<>)
+    - Periods at word boundaries
+
+    Args:
+        md: Markdown text
+
+    Returns:
+        Normalized text
+    """
+    text = md
+
+    # 1. Code blocks (triple ```)
+    text = re.sub(r"```.*?```", " ", text, flags=re.DOTALL)
+
+    # 2. Inline code (`code`)
+    text = re.sub(r"`[^`]+`", " ", text)
+
+    # 3. Links [text](url) → text
+    text = re.sub(r"\[([^\]]+)\]\([^\)]+\)", r"\1", text)
+
+    # 4. Headers (# Header → Header)
+    text = re.sub(r"^#{1,6}\s+", "", text, flags=re.MULTILINE)
+
+    # 5. Tables (|...|)
+    text = re.sub(r"\|.*?\|", " ", text)
+
+    # 6. Bold/italic (**bold** → bold)
+    text = re.sub(r"[*_]{1,2}([^*_]+)[*_]{1,2}", r"\1", text)
+
+    # 7. Remove punctuation (preserve apostrophes in contractions and hyphens)
+    text = re.sub(r"[,!?;:\"(){}[\]<>]", "", text)
+    text = re.sub(r"\.(?=\s|$)", "", text)  # Remove periods at word boundaries
+
+    # 8. Multiple spaces → single space
+    text = re.sub(r"\s+", " ", text).strip()
+
+    return text
 
 
 # =============================================================================

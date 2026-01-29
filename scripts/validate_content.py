@@ -30,9 +30,11 @@ import sys
 from pathlib import Path
 from typing import Any
 
-# Add scripts to path
+# Add scripts and project root to path
 SCRIPT_DIR = Path(__file__).parent
+PROJECT_ROOT = SCRIPT_DIR.parent
 sys.path.insert(0, str(SCRIPT_DIR))
+sys.path.insert(0, str(PROJECT_ROOT))
 
 # Fix Windows encoding issues for emojis/Cyrillic
 if sys.platform == "win32":
@@ -51,17 +53,31 @@ try:
 except ImportError:
     check_blacklist = None
 
-# SSOT: Use core functions from seo_utils
+# SSOT: Use core functions from text_utils
 try:
-    from seo_utils import (
+    from scripts.text_utils import (
         clean_markdown,
         count_chars_no_spaces,
         count_words,
-        get_adaptive_requirements,
+        extract_h1,
+        extract_h2s,
+        extract_intro,
     )
 except ImportError:
-    print("❌ Error: Could not import core functions from seo_utils")
-    sys.exit(1)
+    from text_utils import (  # type: ignore
+        clean_markdown,
+        count_chars_no_spaces,
+        count_words,
+        extract_h1,
+        extract_h2s,
+        extract_intro,
+    )
+
+# SSOT: get_adaptive_requirements from seo_utils
+try:
+    from scripts.seo_utils import get_adaptive_requirements
+except ImportError:
+    from seo_utils import get_adaptive_requirements  # type: ignore
 
 # Coverage targets (SSOT)
 try:
@@ -106,40 +122,8 @@ VALIDATION_MODES = ("quality", "seo")
 
 
 # =============================================================================
-# Text Processing
+# Text Processing (extract_h1, extract_h2s, extract_intro imported from text_utils)
 # =============================================================================
-
-
-def extract_h1(text: str) -> str | None:
-    """Extract H1 heading."""
-    match = re.search(r"^#\s+(.+)$", text, re.MULTILINE)
-    return match.group(1) if match else None
-
-
-def extract_h2s(text: str) -> list[str]:
-    """Extract all H2 headings."""
-    return re.findall(r"^##\s+(.+)$", text, re.MULTILINE)
-
-
-def extract_intro(text: str) -> str:
-    """Extract intro paragraph (first text after H1)."""
-    lines = text.split("\n")
-    intro_lines = []
-    found_h1 = False
-
-    for line in lines:
-        if line.startswith("# "):
-            found_h1 = True
-            continue
-        if found_h1 and line.startswith("## "):
-            break
-        if found_h1:
-            if line.strip():
-                intro_lines.append(line.strip())
-            if len(intro_lines) >= 5:  # Max 5 lines for intro
-                break
-
-    return " ".join(intro_lines)
 
 
 def count_faq(text: str) -> int:

@@ -32,6 +32,20 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+# Import from text_utils SSOT
+try:
+    from scripts.text_utils import (
+        clean_markdown,
+        get_stopwords,
+        tokenize,
+    )
+except ImportError:
+    from text_utils import (
+        clean_markdown,
+        get_stopwords,
+        tokenize,
+    )
+
 # Snowball Stemmer для группировки словоформ по корню
 try:
     from snowballstemmer import stemmer as snowball_stemmer
@@ -73,257 +87,6 @@ SPAM_THRESHOLD = 3.0  # % - above this is spam
 WARNING_THRESHOLD = 2.5  # % - above this is warning
 OPTIMAL_RANGE = (1.0, 2.5)  # % - ideal keyword density
 
-# Russian stopwords (common words to exclude from analysis)
-STOPWORDS_RU = {
-    "и",
-    "в",
-    "на",
-    "с",
-    "по",
-    "для",
-    "из",
-    "к",
-    "у",
-    "о",
-    "от",
-    "за",
-    "при",
-    "не",
-    "но",
-    "а",
-    "же",
-    "то",
-    "это",
-    "как",
-    "что",
-    "так",
-    "все",
-    "он",
-    "она",
-    "они",
-    "мы",
-    "вы",
-    "его",
-    "её",
-    "их",
-    "ее",
-    "или",
-    "если",
-    "только",
-    "уже",
-    "ещё",
-    "еще",
-    "бы",
-    "ли",
-    "до",
-    "без",
-    "под",
-    "над",
-    "между",
-    "через",
-    "после",
-    "перед",
-    "около",
-    "более",
-    "менее",
-    "также",
-    "тоже",
-    "очень",
-    "может",
-    "можно",
-    "нужно",
-    "есть",
-    "был",
-    "была",
-    "были",
-    "будет",
-    "который",
-    "которая",
-    "которое",
-    "которые",
-    "этот",
-    "эта",
-    "эти",
-    "тот",
-    "та",
-    "те",
-    "свой",
-    "своя",
-    "свои",
-    "наш",
-    "ваш",
-    "сам",
-    "самый",
-    "весь",
-    "вся",
-    "всё",
-    "каждый",
-    "любой",
-    "другой",
-    "такой",
-    "какой",
-    "чтобы",
-    "потому",
-    "поэтому",
-    "когда",
-    "где",
-    "куда",
-    "откуда",
-    "почему",
-    "зачем",
-    "сколько",
-    "кто",
-    "чего",
-    "чему",
-    "кого",
-    "кому",
-    "чем",
-    "кем",
-    "ним",
-    "ней",
-    "них",
-    "ему",
-    "ей",
-    "им",
-    "вам",
-    "нам",
-    "себя",
-    "себе",
-    "собой",
-    "мне",
-    "меня",
-    "мной",
-    "тебя",
-    "тебе",
-    "тобой",
-}
-
-# Ukrainian stopwords
-STOPWORDS_UK = {
-    "і",
-    "в",
-    "на",
-    "з",
-    "по",
-    "для",
-    "із",
-    "до",
-    "у",
-    "о",
-    "від",
-    "за",
-    "при",
-    "не",
-    "але",
-    "а",
-    "ж",
-    "то",
-    "це",
-    "як",
-    "що",
-    "так",
-    "все",
-    "він",
-    "вона",
-    "вони",
-    "ми",
-    "ви",
-    "його",
-    "її",
-    "їх",
-    "або",
-    "якщо",
-    "тільки",
-    "вже",
-    "ще",
-    "би",
-    "чи",
-    "без",
-    "під",
-    "над",
-    "між",
-    "через",
-    "після",
-    "перед",
-    "біля",
-    "більше",
-    "менше",
-    "також",
-    "теж",
-    "дуже",
-    "може",
-    "можна",
-    "потрібно",
-    "є",
-    "був",
-    "була",
-    "були",
-    "буде",
-    "який",
-    "яка",
-    "яке",
-    "які",
-    "цей",
-    "ця",
-    "ці",
-    "той",
-    "та",
-    "ті",
-    "свій",
-    "своя",
-    "свої",
-    "наш",
-    "ваш",
-    "сам",
-    "самий",
-    "весь",
-    "вся",
-    "кожен",
-    "будь",
-    "інший",
-    "такий",
-    "щоб",
-    "тому",
-    "коли",
-    "де",
-    "куди",
-    "звідки",
-    "чому",
-    "навіщо",
-    "скільки",
-    "хто",
-    "чого",
-    "кого",
-    "кому",
-    "чим",
-    "ким",
-    "ним",
-    "ній",
-    "них",
-    "йому",
-    "їй",
-    "їм",
-    "вам",
-    "нам",
-    "себе",
-    "собі",
-    "собою",
-    "мені",
-    "мене",
-    "мною",
-    "тебе",
-    "тобі",
-    "тобою",
-}
-
-
-def get_stopwords(lang: str = "ru") -> set[str]:
-    """Return stopwords for specified language."""
-    if lang == "uk":
-        return STOPWORDS_UK
-    return STOPWORDS_RU
-
-
 # Legacy: Common Russian word stems for grouping (fallback if no stemmer)
 STEM_PATTERNS = {
     "аккумулятор": r"аккумулятор\w*",
@@ -347,63 +110,6 @@ CATEGORY_KEYWORDS = {
     "shampuni-dlya-ruchnoy-moyki": (["ручн", "шампун"], ["пен"]),
     "avtoshampuni": (["автошампун", "шампун"], []),
 }
-
-
-# =============================================================================
-# Text Processing
-# =============================================================================
-
-
-def clean_markdown(text: str) -> str:
-    """Remove markdown formatting, keep only plain text."""
-    # Remove code blocks
-    text = re.sub(r"```[\s\S]*?```", "", text)
-    text = re.sub(r"`[^`]+`", "", text)
-
-    # Remove tables (keep cell content)
-    text = re.sub(r"\|", " ", text)
-    text = re.sub(r"[-:]+\s*\|", "", text)
-
-    # Remove headers markers
-    text = re.sub(r"^#{1,6}\s+", "", text, flags=re.MULTILINE)
-
-    # Remove bold/italic
-    text = re.sub(r"\*\*([^*]+)\*\*", r"\1", text)
-    text = re.sub(r"\*([^*]+)\*", r"\1", text)
-    text = re.sub(r"__([^_]+)__", r"\1", text)
-    text = re.sub(r"_([^_]+)_", r"\1", text)
-
-    # Remove links [text](url)
-    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
-
-    # Remove images
-    text = re.sub(r"!\[([^\]]*)\]\([^)]+\)", "", text)
-
-    # Remove list markers
-    text = re.sub(r"^\s*[-*+]\s+", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^\s*\d+\.\s+", "", text, flags=re.MULTILINE)
-
-    # Remove horizontal rules
-    text = re.sub(r"^[-*_]{3,}\s*$", "", text, flags=re.MULTILINE)
-
-    # Clean extra whitespace
-    text = re.sub(r"\s+", " ", text)
-
-    return text.strip()
-
-
-def tokenize(text: str) -> list[str]:
-    """Split text into words, lowercase."""
-    text = text.lower()
-    # Keep only Cyrillic, Latin letters and digits
-    words = re.findall(r"[а-яёa-z0-9]+", text, re.IGNORECASE)
-    return words
-
-
-def remove_stopwords(words: list[str], lang: str = "ru") -> list[str]:
-    """Remove stopwords from word list."""
-    stopwords = get_stopwords(lang)
-    return [w for w in words if w not in stopwords and len(w) > 2]
 
 
 # =============================================================================
@@ -486,15 +192,15 @@ def count_substring_frequencies(words: list[str], substrings: list[str]) -> dict
     return result
 
 
-def check_keyword_density(text: str, keyword: str) -> dict[str, Any]:
+def check_keyword_density(text: str, keyword: str, lang: str = "ru") -> dict[str, Any]:
     """Check density of a specific keyword (exact + partial match)."""
     clean_text = clean_markdown(text)
-    words = tokenize(clean_text)
+    words = tokenize(clean_text, lang=lang, remove_stopwords=False)
     total_words = len(words)
 
     # Exact match count
     keyword_lower = keyword.lower()
-    keyword_words = tokenize(keyword)
+    keyword_words = tokenize(keyword, lang=lang, remove_stopwords=False)
 
     # Single word keyword
     if len(keyword_words) == 1:
@@ -539,8 +245,8 @@ def get_density_status(density: float) -> str:
 def analyze_text(text: str, top_n: int = 20, slug: str | None = None, lang: str = "ru") -> dict[str, Any]:
     """Full keyword density analysis of text."""
     clean_text = clean_markdown(text)
-    all_words = tokenize(clean_text)
-    words = remove_stopwords(all_words, lang)
+    all_words = tokenize(clean_text, lang=lang, remove_stopwords=False)
+    words = tokenize(clean_text, lang=lang, remove_stopwords=True)
 
     total_words = len(all_words)
     content_words = len(words)
