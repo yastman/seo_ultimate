@@ -121,3 +121,196 @@ python3 -m pytest tests/unit/test_validate_content.py -v
 ```
 
 Все 17 тестов в test_validate_content.py прошли.
+
+---
+
+# W2 Content Review Audit Log
+
+**Started:** 2026-01-29
+**Task:** Keywords coverage review for 13 categories
+
+## Results
+
+### 1. zashchitnye-pokrytiya/kvik-deteylery
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Density | ✅ | max 1.99% (авт*) |
+| Academic | ⚠️ | 5.5% (сухой текст < 7%) |
+| Keywords | ✅ | primary 4/4, secondary 2/2 |
+| H1 sync | ✅ FIXED | было "Полимер для авто" → "Холодный воск для автомобиля" |
+
+**Исправления:** H1 синхронизирован с meta
+
+### 2. zashchitnye-pokrytiya/silanty
+**Verdict:** ✅ PASS
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Density | ✅ | max 1.73% (силант*) |
+| Academic | ⚠️ | 4.3% (сухой текст < 7%) |
+| Keywords | ✅ | primary 3/3, secondary 1/1, supporting 2/2 |
+| H1 sync | ⚠️ | H1 content "Силанты" ≠ meta "Силант" (meta issue, не content) |
+
+**Исправления:** нет
+
+### 3. zashchitnye-pokrytiya/voski
+**Verdict:** ✅ PASS
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Density | ⚠️ | воск* 2.82% (WARNING, но < 3%) |
+| Keywords | ✅ | primary 4/4, secondary 3/3, supporting 6/6 |
+| H1 sync | ✅ | "Воск для авто" = meta H1 |
+
+**Исправления:** нет
+
+### 4. zashchitnye-pokrytiya/voski/tverdyy-vosk
+**Verdict:** ✅ PASS
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Density | ✅ | max 2.09% (воск*) |
+| Keywords | ✅ | primary 3/3, secondary 2/2, supporting 2/2 |
+| H1 sync | ✅ | "Твёрдый воск для авто" = meta H1 |
+
+**Исправления:** нет
+
+### 5. zashchitnye-pokrytiya/voski/zhidkiy-vosk
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Density | ✅ | max 1.93% (воск*) |
+| Keywords | ✅ FIXED | primary 5/5, secondary 2/2 |
+| H1 sync | ✅ FIXED | было "Жидкий воск" → "Жидкий воск для авто" |
+
+**Исправления:** H1 синхронизирован с meta, добавлен "воск для бесконтактной мойки"
+
+### 6. oborudovanie
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Keywords | ✅ FIXED | primary 1/1, secondary 2/2 |
+| H1 sync | ✅ FIXED | было "Оборудование" → "Оборудование для химчистки авто" |
+
+**Исправления:** H1 синхронизирован с meta, добавлены primary и secondary keywords
+
+### 7. oborudovanie/apparaty-tornador
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Keywords | ✅ FIXED | primary 1/1, secondary 2/2, supporting 3/3 |
+| H1 sync | ✅ FIXED | было "Аппараты Торнадор" → "Торнадор" |
+
+**Исправления:** H1 синхронизирован с meta, добавлены keywords
+
+### 8. ukhod-za-intererom
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Keywords | ✅ FIXED | primary 2/2, secondary 2/2 |
+| H1 sync | ✅ FIXED | было "Уход за салоном авто" → "Химчистка салона авто" |
+
+**Исправления:** H1 синхронизирован с meta, добавлен "средства для салона автомобиля"
+
+### 9. ukhod-za-intererom/neytralizatory-zapakha
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Keywords | ✅ FIXED | primary 2/2, secondary 3/3, supporting 2/2 |
+| H1 sync | ✅ | "Нейтрализаторы запаха" = meta H1 |
+
+**Исправления:** добавлен "устранение запаха в автомобиле"
+
+### 10. ukhod-za-intererom/poliroli-dlya-plastika
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Keywords | ✅ FIXED | primary 2/2, secondary 2/2, supporting 2/2 |
+| H1 sync | ✅ FIXED | было "Полироли для пластика" → "Полироль для салона автомобиля" |
+
+**Исправления:** H1 синхронизирован с meta, добавлены keywords
+
+### 11. ukhod-za-intererom/pyatnovyvoditeli
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Keywords | ✅ FIXED | primary 1/1, secondary 2/2, supporting 2/2 |
+| H1 sync | ✅ FIXED | было "Пятновыводители" → "Пятновыводитель" |
+
+**Исправления:** H1 синхронизирован с meta, добавлен "пятновыводитель для автомобиля"
+
+### 12. ukhod-za-intererom/sredstva-dlya-kozhi
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Keywords | ✅ FIXED | primary 1/1, secondary 3/3, supporting 2/2 |
+| H1 sync | ✅ FIXED | было "Средства для кожи" → "Средство для кожи авто" |
+
+**Исправления:** H1 синхронизирован с meta, добавлены все secondary и supporting keywords
+
+### 13. ukhod-za-intererom/sredstva-dlya-khimchistki-salona
+**Verdict:** ✅ FIXED
+
+| Критерий | Результат | Примечание |
+|----------|-----------|------------|
+| Meta | ✅ | validate_meta PASS |
+| Keywords | ✅ FIXED | primary 3/3, secondary 3/3, supporting 2/2 |
+| H1 sync | ✅ FIXED | было "Средства для химчистки салона" → "Химия для чистки салона" |
+
+**Исправления:** H1 синхронизирован с meta, добавлены все keywords
+
+---
+
+## Summary
+
+| # | Category | Verdict |
+|---|----------|---------|
+| 1 | zashchitnye-pokrytiya/kvik-deteylery | ✅ FIXED |
+| 2 | zashchitnye-pokrytiya/silanty | ✅ PASS |
+| 3 | zashchitnye-pokrytiya/voski | ✅ PASS |
+| 4 | zashchitnye-pokrytiya/voski/tverdyy-vosk | ✅ PASS |
+| 5 | zashchitnye-pokrytiya/voski/zhidkiy-vosk | ✅ FIXED |
+| 6 | oborudovanie | ✅ FIXED |
+| 7 | oborudovanie/apparaty-tornador | ✅ FIXED |
+| 8 | ukhod-za-intererom | ✅ FIXED |
+| 9 | ukhod-za-intererom/neytralizatory-zapakha | ✅ FIXED |
+| 10 | ukhod-za-intererom/poliroli-dlya-plastika | ✅ FIXED |
+| 11 | ukhod-za-intererom/pyatnovyvoditeli | ✅ FIXED |
+| 12 | ukhod-za-intererom/sredstva-dlya-kozhi | ✅ FIXED |
+| 13 | ukhod-za-intererom/sredstva-dlya-khimchistki-salona | ✅ FIXED |
+
+**Total:** 13 categories reviewed
+- PASS: 3
+- FIXED: 10
+
+## Keywords Distribution Check
+
+После финальной проверки все ключи из `keywords_in_content` распределены по контенту:
+
+```
+✅ Все 13 категорий: 100% keywords coverage
+```
+
+**Completed:** 2026-01-29
