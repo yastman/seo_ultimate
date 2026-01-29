@@ -33,8 +33,5 @@
     "карнауба или синтетика — что лучше",
     "как располировать твёрдый воск"
   ],
-  "source": "STRUCTURE.md",
-  "needs_review": [
-    {"keyword": "купить воск для машины", "volume": 30, "reason": "слишком общий, должен быть в родительской категории voski", "from": "synonyms", "use_in": "meta_only"}
-  ]
+  "source": "STRUCTURE.md"
 }

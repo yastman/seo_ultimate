@@ -47,9 +47,5 @@
     "чем отмыть белые буквы на шинах",
     "нужно ли мыть шины перед нанесением чернителя"
   ],
-  "source": "STRUCTURE.md",
-  "needs_review": [
-    {"keyword": "средство для чистки шин", "volume": 10, "reason": "дубль: в synonyms vol=10", "from": "keywords"},
-    {"keyword": "средство для очистки резины", "volume": 10, "reason": "дубль: в synonyms vol=10", "from": "keywords"}
-  ]
+  "source": "STRUCTURE.md"
 }

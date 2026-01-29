@@ -282,16 +282,5 @@
     "какую пену выбрать для минимойки",
     "как правильно наносить пену"
   ],
-  "source": "checklist",
-  "needs_review": [
-    {"keyword": "пена для минимойки", "volume": 10, "reason": "дубль: в synonyms vol=70", "from": "keywords"},
-    {"keyword": "шампунь для бесконтактной мойки", "volume": 10, "reason": "дубль: в synonyms vol=110", "from": "keywords"},
-    {"keyword": "пена для бесконтактной мойки", "volume": 10, "reason": "дубль: в synonyms vol=70", "from": "keywords"},
-    {"keyword": "бесконтактная пена", "volume": 10, "reason": "дубль: в synonyms vol=20", "from": "keywords"},
-    {"keyword": "бесконтактная химия для автомойки", "volume": 10, "reason": "дубль: в synonyms vol=20", "from": "keywords"},
-    {"keyword": "профессиональная пена для мойки авто", "volume": 10, "reason": "дубль: в synonyms vol=10", "from": "keywords"},
-    {"keyword": "пена для автомойки", "volume": 20, "reason": "дубль: в synonyms vol=40", "from": "keywords"},
-    {"keyword": "купить активную пену", "volume": 20, "reason": "дубль: в synonyms vol=260 meta_only", "from": "keywords"},
-    {"keyword": "купить пену для мойки авто", "volume": 40, "reason": "дубль: в synonyms vol=590 meta_only", "from": "keywords"}
-  ]
+  "source": "checklist"
 }
