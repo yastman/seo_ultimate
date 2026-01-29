@@ -1,11 +1,13 @@
 """Tests for check_keyword_density.py UK support."""
 
 from scripts.check_keyword_density import (
+    get_stemmer,
+)
+from scripts.text_utils import (
     STOPWORDS_RU,
     STOPWORDS_UK,
-    get_stemmer,
     get_stopwords,
-    remove_stopwords,
+    tokenize,
 )
 
 
@@ -51,33 +53,33 @@ class TestStopwords:
         assert "але" not in STOPWORDS_RU
 
 
-class TestRemoveStopwords:
-    """Tests for remove_stopwords with language support."""
+class TestTokenizeStopwords:
+    """Tests for tokenize with stopwords removal (via text_utils)."""
 
-    def test_remove_stopwords_ru_default(self):
-        """Default removes Russian stopwords."""
-        words = ["активная", "и", "пена", "для", "авто"]
-        result = remove_stopwords(words)
+    def test_tokenize_removes_ru_stopwords(self):
+        """Tokenize with remove_stopwords=True removes Russian stopwords."""
+        text = "активная и пена для авто"
+        result = tokenize(text, lang="ru", remove_stopwords=True)
         assert "и" not in result
         assert "для" not in result
         assert "активная" in result
         assert "пена" in result
         assert "авто" in result
 
-    def test_remove_stopwords_uk(self):
-        """UK removes Ukrainian stopwords."""
-        words = ["активна", "і", "піна", "для", "авто"]
-        result = remove_stopwords(words, "uk")
+    def test_tokenize_removes_uk_stopwords(self):
+        """Tokenize with remove_stopwords=True removes Ukrainian stopwords."""
+        text = "активна і піна для авто"
+        result = tokenize(text, lang="uk", remove_stopwords=True)
         assert "і" not in result
         assert "для" not in result
         assert "активна" in result
         assert "піна" in result
         assert "авто" in result
 
-    def test_remove_stopwords_keeps_long_words(self):
-        """Removes words with len <= 2."""
-        words = ["авто", "в", "на", "шампунь"]
-        result = remove_stopwords(words, "ru")
+    def test_tokenize_removes_short_words(self):
+        """Tokenize removes words with len <= 2."""
+        text = "авто в на шампунь"
+        result = tokenize(text, lang="ru", remove_stopwords=True)
         assert "в" not in result
         assert "на" not in result
         assert "авто" in result
