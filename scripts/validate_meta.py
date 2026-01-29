@@ -52,15 +52,29 @@ DESC_MAX_LENGTH = 160
 
 # Patterns to detect
 COLON_PATTERN = re.compile(r":\s")
-PRODUCER_PATTERNS = [
-    r"від виробника",
+
+# RU patterns
+PRODUCER_PATTERNS_RU = [
     r"от производителя",
-    r"виробника ultimate",
     r"производителя ultimate",
-    r"в інтернет-магазині ultimate",
     r"в интернет-магазине ultimate",
 ]
-WHOLESALE_PATTERNS = [r"опт\b", r"роздріб", r"розница", r"оптом"]
+
+# UK patterns
+PRODUCER_PATTERNS_UK = [
+    r"від виробника",
+    r"виробника ultimate",
+    r"в інтернет-магазині ultimate",
+]
+
+# Combined patterns (default - for backwards compatibility)
+PRODUCER_PATTERNS = PRODUCER_PATTERNS_RU + PRODUCER_PATTERNS_UK
+
+# Wholesale patterns by language
+WHOLESALE_PATTERNS_RU = [r"опт\b", r"розница", r"оптом"]
+WHOLESALE_PATTERNS_UK = [r"опт\b", r"роздріб", r"оптом"]
+WHOLESALE_PATTERNS = WHOLESALE_PATTERNS_RU + WHOLESALE_PATTERNS_UK
+
 MARKETING_FLUFF = [
     r"без разводов",
     r"без розводів",
@@ -73,6 +87,27 @@ MARKETING_FLUFF = [
     r"лучшие цены",
     r"найкращі ціни",
 ]
+
+
+def get_validation_patterns(lang: str = "ru") -> dict[str, list[str]]:
+    """
+    Get validation patterns for specified language.
+
+    Args:
+        lang: 'ru' (default) or 'uk'
+
+    Returns:
+        Dict with 'producer' and 'wholesale' pattern lists
+    """
+    if lang == "uk":
+        return {
+            "producer": PRODUCER_PATTERNS_UK,
+            "wholesale": WHOLESALE_PATTERNS_UK,
+        }
+    return {
+        "producer": PRODUCER_PATTERNS_RU,
+        "wholesale": WHOLESALE_PATTERNS_RU,
+    }
 
 
 # =============================================================================
@@ -132,17 +167,22 @@ def get_word_stem(word: str) -> str:
     return morph.get_lemma(word)
 
 
-def keyword_matches(keyword: str, text: str) -> bool:
+def keyword_matches(keyword: str, text: str, lang: str = "ru") -> bool:
     """
     Backward-compatible wrapper using keyword_utils.
 
     Check if keyword matches text, accounting for plural/singular forms.
     Uses morphological analysis for accurate matching.
+
+    Args:
+        keyword: Keyword to search for
+        text: Text to search in
+        lang: 'ru' (default) or 'uk' for morphology
     """
-    return keyword_matches_text(keyword, text, lang="ru")
+    return keyword_matches_text(keyword, text, lang=lang)
 
 
-def validate_title(title: str, primary_keywords: list[str] | None = None) -> dict[str, Any]:
+def validate_title(title: str, primary_keywords: list[str] | None = None, lang: str = "ru") -> dict[str, Any]:
     """
     Validate meta title.
 
@@ -151,6 +191,11 @@ def validate_title(title: str, primary_keywords: list[str] | None = None) -> dic
     - No colon
     - Contains primary keyword
     - No marketing fluff
+
+    Args:
+        title: Meta title text
+        primary_keywords: List of primary keywords to check
+        lang: 'ru' (default) or 'uk' for morphology
     """
     checks: dict[str, Any] = {
         "length": {"passed": False, "message": ""},
@@ -189,9 +234,9 @@ def validate_title(title: str, primary_keywords: list[str] | None = None) -> dic
     else:
         results["checks"]["no_colon"]["message"] = "Contains colon (:) - replace with 'для' or brackets"
 
-    # 3. Primary keyword check (with stem matching)
+    # 3. Primary keyword check (with stem matching, language-aware)
     if primary_keywords:
-        found = [kw for kw in primary_keywords if keyword_matches(kw, title)]
+        found = [kw for kw in primary_keywords if keyword_matches(kw, title, lang=lang)]
         if found:
             results["checks"]["primary_keyword"]["passed"] = True
             results["checks"]["primary_keyword"]["message"] = f"Found: {found[0]}"
@@ -224,7 +269,9 @@ def validate_title(title: str, primary_keywords: list[str] | None = None) -> dic
     return results
 
 
-def validate_description(description: str, primary_keywords: list[str] | None = None) -> dict[str, Any]:
+def validate_description(
+    description: str, primary_keywords: list[str] | None = None, lang: str = "ru"
+) -> dict[str, Any]:
     """
     Validate meta description.
 
@@ -234,6 +281,11 @@ def validate_description(description: str, primary_keywords: list[str] | None = 
     - Contains "виробника Ultimate" or equivalent
     - Contains "опт" or wholesale indicator
     - No marketing fluff
+
+    Args:
+        description: Meta description text
+        primary_keywords: List of primary keywords to check
+        lang: 'ru' (default) or 'uk' for language-specific patterns
     """
     checks: dict[str, Any] = {
         "length": {"passed": False, "message": ""},
@@ -251,6 +303,9 @@ def validate_description(description: str, primary_keywords: list[str] | None = 
 
     desc_lower = description.lower()
 
+    # Get language-specific patterns
+    patterns = get_validation_patterns(lang)
+
     # 1. Length check
     desc_length = len(description)
     if DESC_MIN_LENGTH <= desc_length <= DESC_MAX_LENGTH:
@@ -262,9 +317,9 @@ def validate_description(description: str, primary_keywords: list[str] | None = 
         results["checks"]["length"]["passed"] = True  # Warning only
         results["checks"]["length"]["message"] = f"Slightly long ({desc_length} > {DESC_MAX_LENGTH})"
 
-    # 2. Primary keyword check (with stem matching)
+    # 2. Primary keyword check (with stem matching, language-aware)
     if primary_keywords:
-        found = [kw for kw in primary_keywords if keyword_matches(kw, description)]
+        found = [kw for kw in primary_keywords if keyword_matches(kw, description, lang=lang)]
         if found:
             results["checks"]["primary_keyword"]["passed"] = True
             results["checks"]["primary_keyword"]["message"] = f"Found: {found[0]}"
@@ -274,30 +329,33 @@ def validate_description(description: str, primary_keywords: list[str] | None = 
         results["checks"]["primary_keyword"]["passed"] = True
         results["checks"]["primary_keyword"]["message"] = "No keywords to check"
 
-    # 3. Producer check
-    producer_found = any(re.search(p, desc_lower) for p in PRODUCER_PATTERNS)
+    # 3. Producer check (use language-specific patterns)
+    producer_found = any(re.search(p, desc_lower) for p in patterns["producer"])
     if producer_found:
+        producer_msg = "OK (contains 'від виробника')" if lang == "uk" else "OK (contains 'от производителя')"
         results["checks"]["producer"]["passed"] = True
-        results["checks"]["producer"]["message"] = "OK (contains 'виробника/производителя')"
+        results["checks"]["producer"]["message"] = producer_msg
     else:
-        results["checks"]["producer"]["message"] = "Missing 'від виробника Ultimate'"
+        missing_msg = "Missing 'від виробника Ultimate'" if lang == "uk" else "Missing 'от производителя Ultimate'"
+        results["checks"]["producer"]["message"] = missing_msg
 
     # Check if this is a "shop" pattern (no Ultimate products) vs "producer" pattern
-    is_shop_pattern = bool(
-        re.search(r"в інтернет-магазині ultimate", desc_lower) or re.search(r"в интернет-магазине ultimate", desc_lower)
-    )
+    shop_pattern = r"в інтернет-магазині ultimate" if lang == "uk" else r"в интернет-магазине ultimate"
+    is_shop_pattern = bool(re.search(shop_pattern, desc_lower))
 
     # 4. Wholesale check - only required for producer pattern (Ultimate products)
-    wholesale_found = any(re.search(p, desc_lower) for p in WHOLESALE_PATTERNS)
+    wholesale_found = any(re.search(p, desc_lower) for p in patterns["wholesale"])
     if wholesale_found:
+        wholesale_msg = "OK (contains 'опт/роздріб')" if lang == "uk" else "OK (contains 'опт/розница')"
         results["checks"]["wholesale"]["passed"] = True
-        results["checks"]["wholesale"]["message"] = "OK (contains 'опт/роздріб')"
+        results["checks"]["wholesale"]["message"] = wholesale_msg
     elif is_shop_pattern:
         # Shop pattern doesn't require wholesale
         results["checks"]["wholesale"]["passed"] = True
         results["checks"]["wholesale"]["message"] = "OK (shop pattern, wholesale not required)"
     else:
-        results["checks"]["wholesale"]["message"] = "Missing 'Опт і роздріб'"
+        missing_wholesale = "Missing 'Опт і роздріб'" if lang == "uk" else "Missing 'Опт и розница'"
+        results["checks"]["wholesale"]["message"] = missing_wholesale
 
     # 5. No marketing fluff
     fluff_found = [p for p in MARKETING_FLUFF if re.search(p, desc_lower)]
@@ -321,13 +379,14 @@ def validate_description(description: str, primary_keywords: list[str] | None = 
     return results
 
 
-def validate_meta_file(meta_path: str, keywords_path: str | None = None) -> dict[str, Any]:
+def validate_meta_file(meta_path: str, keywords_path: str | None = None, lang: str = "ru") -> dict[str, Any]:
     """
     Full validation of meta JSON file.
 
     Args:
         meta_path: Path to meta JSON file
         keywords_path: Optional path to keywords JSON file
+        lang: 'ru' (default) or 'uk' for language-specific validation
 
     Returns:
         Validation results dict
@@ -335,6 +394,7 @@ def validate_meta_file(meta_path: str, keywords_path: str | None = None) -> dict
     results: dict[str, Any] = {
         "file": meta_path,
         "keywords_file": keywords_path,
+        "lang": lang,
         "title": None,
         "description": None,
         "h1": None,
@@ -356,6 +416,11 @@ def validate_meta_file(meta_path: str, keywords_path: str | None = None) -> dict
 
     results["h1"] = {"value": h1}
 
+    # Auto-detect language from meta file if not specified
+    if meta.get("language") == "uk":
+        lang = "uk"
+        results["lang"] = lang
+
     # Load keywords if provided
     primary_keywords = []
     # commercial_keywords = []
@@ -374,11 +439,11 @@ def validate_meta_file(meta_path: str, keywords_path: str | None = None) -> dict
         if "primary" in kic:
             primary_keywords = [k.lower() for k in kic["primary"]]
 
-    # Validate title
-    results["title"] = validate_title(title, primary_keywords)
+    # Validate title (with language support)
+    results["title"] = validate_title(title, primary_keywords, lang=lang)
 
-    # Validate description
-    results["description"] = validate_description(description, primary_keywords)
+    # Validate description (with language support)
+    results["description"] = validate_description(description, primary_keywords, lang=lang)
 
     # Overall
     title_ok = results["title"]["overall"] in ["PASS", "WARNING"]
@@ -524,6 +589,16 @@ def main():
     output_json = "--json" in sys.argv
     validate_all = "--all" in sys.argv
 
+    # Parse --lang argument
+    lang = "ru"
+    if "--lang" in sys.argv:
+        idx = sys.argv.index("--lang")
+        if idx + 1 < len(sys.argv):
+            lang = sys.argv[idx + 1]
+            if lang not in ("ru", "uk"):
+                print(f"Invalid language: {lang}. Use 'ru' or 'uk'.")
+                sys.exit(1)
+
     if validate_all:
         # Validate all meta files
         meta_files = find_all_meta_files()
@@ -534,7 +609,9 @@ def main():
 
         all_results = []
         for meta_path, keywords_path in meta_files:
-            results = validate_meta_file(meta_path, keywords_path)
+            # Auto-detect language from path
+            file_lang = "uk" if "/uk/" in meta_path or "\\uk\\" in meta_path else lang
+            results = validate_meta_file(meta_path, keywords_path, lang=file_lang)
             all_results.append(results)
 
             if not output_json:
@@ -564,7 +641,11 @@ def main():
             if idx + 1 < len(sys.argv):
                 keywords_path = sys.argv[idx + 1]
 
-        results = validate_meta_file(meta_path, keywords_path)
+        # Auto-detect language from path if not explicitly set
+        if "--lang" not in sys.argv and ("/uk/" in meta_path or "\\uk\\" in meta_path):
+            lang = "uk"
+
+        results = validate_meta_file(meta_path, keywords_path, lang=lang)
 
         if output_json:
             print(json.dumps(results, ensure_ascii=False, indent=2))

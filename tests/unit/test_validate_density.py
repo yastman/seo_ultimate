@@ -1,13 +1,13 @@
-"""Tests for check_keyword_density.py UK support."""
+"""Tests for validate_density.py UK support."""
 
-from scripts.check_keyword_density import (
-    get_stemmer,
-)
 from scripts.text_utils import (
     STOPWORDS_RU,
     STOPWORDS_UK,
     get_stopwords,
     tokenize,
+)
+from scripts.validate_density import (
+    get_stemmer,
 )
 
 

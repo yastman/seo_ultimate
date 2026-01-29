@@ -2,7 +2,7 @@
 
 import json
 
-from scripts.validate_uk import validate_uk_category
+from scripts.archive.validate_uk import validate_uk_category
 
 
 class TestValidateUkCategory:
@@ -41,9 +41,7 @@ class TestValidateUkCategory:
                 "description": "Опис категорії",
             },
         }
-        (uk_path / "meta" / "test-slug_meta.json").write_text(
-            json.dumps(meta, ensure_ascii=False), encoding="utf-8"
-        )
+        (uk_path / "meta" / "test-slug_meta.json").write_text(json.dumps(meta, ensure_ascii=False), encoding="utf-8")
         (uk_path / "content" / "test-slug_uk.md").write_text(
             "# Заголовок\n\n" + "Текст українською мовою. " * 50, encoding="utf-8"
         )
@@ -68,9 +66,7 @@ class TestValidateUkCategory:
                 "description": "Опис категорії українською",
             },
         }
-        (uk_path / "meta" / "test-slug_meta.json").write_text(
-            json.dumps(meta, ensure_ascii=False), encoding="utf-8"
-        )
+        (uk_path / "meta" / "test-slug_meta.json").write_text(json.dumps(meta, ensure_ascii=False), encoding="utf-8")
         (uk_path / "content" / "test-slug_uk.md").write_text(
             "# Заголовок\n\n" + "Текст українською мовою для тестування. " * 50,
             encoding="utf-8",

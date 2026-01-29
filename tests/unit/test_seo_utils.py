@@ -1,13 +1,15 @@
 import pytest
 
 from scripts.seo_utils import (
-    clean_markdown,
-    count_words,
     get_commercial_modifiers,
-    normalize_text,
     parse_front_matter,
     rebuild_document,
     slugify,
+)
+from scripts.text_utils import (
+    clean_markdown,
+    count_words,
+    normalize_text,
 )
 
 
