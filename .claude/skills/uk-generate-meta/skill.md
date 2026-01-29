@@ -31,23 +31,43 @@ This document contains **UK-specific** formulas only.
 
 ### Що таке `{primary_keyword}`
 
-Це головний ВЧ ключ категорії. Його потрібно використовувати в Title/H1/Description як основу.
+Це ключ з **максимальним volume** у категорії. Його потрібно використовувати в Title/H1/Description як основу.
 
-**Підтримуються 2 формати `uk/categories/{slug}/data/{slug}_clean.json`:**
+**🚨 ВАЖЛИВО: primary_keyword = MAX(volume), НЕ перший у списку!**
 
-1) **List-схема (часто в нових категоріях):**
+**Алгоритм визначення з `uk/categories/{slug}/data/{slug}_clean.json`:**
+
+1) **List-схема:**
 ```json
-"keywords": [{"keyword": "віск для авто", "volume": 1000}]
+"keywords": [
+  {"keyword": "піна для миття авто", "volume": 1300},
+  {"keyword": "активна піна", "volume": 720}
+]
 ```
-→ `{primary_keyword}` = `keywords[0].keyword`
+→ `{primary_keyword}` = ключ з MAX(volume) = `"піна для миття авто"` (1300)
 
-2) **Dict-схема (зустрічається після кластеризації):**
+2) **Dict-схема:**
 ```json
 "keywords": {"primary": [{"keyword": "очищувач дисків", "volume": 70}]}
 ```
-→ `{primary_keyword}` = `keywords.primary[0].keyword`
+→ `{primary_keyword}` = ключ з MAX(volume) з `keywords.primary[]`
 
-Якщо жоден формат не знайдено — це проблема даних (повернись до checklist/CSV) і мета генерувати не можна.
+**Як знайти:**
+```python
+# List-схема
+keywords = data.get("keywords", [])
+if isinstance(keywords, list) and keywords:
+    primary = max(keywords, key=lambda x: x.get("volume", 0))
+    primary_keyword = primary["keyword"]
+
+# Dict-схема
+if isinstance(keywords, dict):
+    primary_list = keywords.get("primary", [])
+    primary = max(primary_list, key=lambda x: x.get("volume", 0))
+    primary_keyword = primary["keyword"]
+```
+
+Якщо keywords порожній або не знайдено — це проблема даних, мета генерувати не можна.
 
 ### Acceptance criteria (що значить "готово")
 
@@ -367,7 +387,12 @@ Status: ready for /uk-content-generator
 **Changelog v15.1:**
 - ADDED: Reference to shared/meta-rules.md for common rules
 
-**Version:** 15.0 — January 2026
+**Version:** 16.0 — January 2026
+
+**Changelog v16.0:**
+- 🎯 **КРИТИЧНО: primary_keyword = MAX(volume)**, НЕ перший у списку
+- 🔧 Додано Python-код для визначення primary_keyword
+- 📋 Після semantic-cluster порядок ключів може змінитись — завжди шукати MAX
 
 **Changelog v15.0:**
 - **Синхронізовано з RU v15.0** — повний паритет
