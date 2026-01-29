@@ -138,3 +138,145 @@ extend-exclude = [".github_repos", ".claude", "archive"]
 ---
 
 **Итог:** 3 задачи выполнены. Коммиты НЕ созданы (делает оркестратор).
+
+---
+
+# W4 Keywords Coverage Audit (2026-01-29 session 3)
+
+**Task:** Content review for 18 categories (keywords coverage check)
+
+## Progress
+
+| # | Category | Status | Notes |
+|---|----------|--------|-------|
+| 1 | moyka-i-eksterer/sredstva-dlya-stekol | SKIP | Зонтичная категория без контента |
+| 2 | moyka-i-eksterer/avtoshampuni/aktivnaya-pena | ✅ PASS | Референсный текст, 8/8 keywords |
+| 3 | moyka-i-eksterer/avtoshampuni/shampuni-dlya-ruchnoy-moyki | ✅ PASS | 8/8 keywords |
+| 4 | moyka-i-eksterer/ochistiteli-kuzova/antibitum | ✅ PASS | Референсный текст, 5/5 keywords |
+| 5 | moyka-i-eksterer/ochistiteli-kuzova/antimoshka | ✅ PASS | 6/6 keywords |
+| 6 | moyka-i-eksterer/ochistiteli-kuzova/glina-i-avtoskraby | ✅ FIXED | +2 keywords |
+| 7 | moyka-i-eksterer/ochistiteli-kuzova/obezzhirivateli | ✅ FIXED | +1 keyword |
+| 8 | moyka-i-eksterer/ochistiteli-kuzova/ukhod-za-naruzhnym-plastikom | ✅ PASS | 10/10 keywords |
+| 9 | moyka-i-eksterer/sredstva-dlya-diskov-i-shin/cherniteli-shin | ✅ FIXED | +1 keyword, референс |
+| 10 | moyka-i-eksterer/sredstva-dlya-diskov-i-shin/keramika-dlya-diskov | ✅ FIXED | +2 keywords |
+| 11 | moyka-i-eksterer/sredstva-dlya-diskov-i-shin/ochistiteli-diskov | ✅ FIXED | +1 keyword |
+| 12 | moyka-i-eksterer/sredstva-dlya-diskov-i-shin/ochistiteli-shin | ✅ FIXED | +2 keywords |
+| 13 | moyka-i-eksterer/sredstva-dlya-stekol/antidozhd | ✅ PASS | 5/5 keywords |
+| 14 | moyka-i-eksterer/sredstva-dlya-stekol/ochistiteli-stekol | ✅ PASS | 6/6 keywords |
+| 15 | moyka-i-eksterer/sredstva-dlya-stekol/omyvatel | ✅ FIXED | +5 keywords |
+| 16 | moyka-i-eksterer/sredstva-dlya-stekol/polirol-dlya-stekla | ✅ PASS | 6/6 keywords |
+| 17 | glavnaya | SKIP | Нет content файла |
+| 18 | opt-i-b2b | ✅ FIXED | +2 keywords |
+
+## Summary
+
+- **Проверено:** 18 категорий
+- **PASS:** 8 категорий (без исправлений)
+- **FIXED:** 8 категорий (добавлены недостающие keywords)
+- **SKIP:** 2 категории (зонтичные без контента)
+
+**Всего добавлено keywords:** ~22 ключа (включая падежные исправления)
+
+**Файлы изменены:**
+1. `glina-i-avtoskraby_ru.md` — +2 keywords
+2. `obezzhirivateli_ru.md` — +1 keyword
+3. `cherniteli-shin_ru.md` — +1 keyword
+4. `keramika-dlya-diskov_ru.md` — +2 keywords
+5. `ochistiteli-diskov_ru.md` — +1 keyword
+6. `ochistiteli-shin_ru.md` — +2 keywords
+7. `omyvatel_ru.md` — +5 keywords
+8. `opt-i-b2b_ru.md` — +2 keywords
+
+**НЕ КОММИТИТЬ — коммиты делает оркестратор**
+
+---
+
+## Detailed Results
+
+### Детальное распределение добавленных ключей
+
+#### 1. glina-i-avtoskraby (+2 keywords)
+
+| Ключ | Группа | Куда добавлен |
+|------|--------|---------------|
+| очищающая глина для кузова автомобиля | supporting | Intro — заменено "очищающая глина для авто" |
+| полимерная глина для авто | supporting | Intro — заменено "глина для кузова автомобиля готовит" → "полимерная глина для авто готовит" |
+
+#### 2. obezzhirivateli (+1 keyword)
+
+| Ключ | Группа | Куда добавлен |
+|------|--------|---------------|
+| обезжириватель кузова | supporting | Таблица сценариев — добавлена строка "Обезжириватель кузова перед мойкой" |
+
+#### 3. cherniteli-shin (+1 keyword)
+
+| Ключ | Группа | Куда добавлен |
+|------|--------|---------------|
+| средство для ухода за шинами | supporting | Intro — заменено "для ухода за боковиной" → "средство для ухода за шинами и боковиной" |
+
+#### 4. keramika-dlya-diskov (+2 keywords)
+
+| Ключ | Группа | Куда добавлен |
+|------|--------|---------------|
+| керамика для колёсных дисков | secondary | H2 — заменено "керамику для дисков" → "керамику для колёсных дисков" |
+| защитное покрытие для литых дисков | supporting | Секция сценариев — добавлен новый сценарий |
+
+#### 5. ochistiteli-diskov (+1 keyword)
+
+| Ключ | Группа | Куда добавлен |
+|------|--------|---------------|
+| средство для очистки дисков | supporting | Сценарии подбора — добавлен пункт "Нужно универсальное средство для очистки дисков" |
+
+#### 6. ochistiteli-shin (+2 keywords)
+
+| Ключ | Группа | Куда добавлен |
+|------|--------|---------------|
+| средство для очистки резины | supporting | Intro — добавлено предложение в конец |
+| очиститель для покрышек | supporting | Intro — добавлено предложение в конец |
+
+#### 7. omyvatel (+5 keywords)
+
+| Ключ | Группа | Куда добавлен |
+|------|--------|---------------|
+| омыватель стекла летний | secondary | Intro — заменено "состав с усиленными детергентами" → "омыватель стекла летний" |
+| омыватель для стекол | supporting | Intro — добавлено предложение |
+| омыватель заднего стекла | supporting | Intro — добавлено в предложение выше |
+| омыватель стекла антимошка | supporting | Таблица — заменено "Омыватель-антимошка" → "Омыватель стекла антимошка" |
+| омыватель для машины | supporting | Таблица — добавлена строка "Универсальный омыватель для машины" |
+
+#### 8. opt-i-b2b (+2 keywords)
+
+| Ключ | Группа | Куда добавлен |
+|------|--------|---------------|
+| автокосметика оптом | secondary | H2 — заменено "Автохимия оптом" → "Автохимия и автокосметика оптом" |
+| химия для автомоек оптом | supporting | Секция оптовых закупок — добавлено предложение |
+
+---
+
+### Итого по группам
+
+| Группа | Добавлено ключей |
+|--------|------------------|
+| primary | 0 |
+| secondary | 3 |
+| supporting | 14 |
+| **TOTAL** | **17** |
+
+---
+
+### Дополнительные исправления (падежная точность)
+
+После первичной проверки обнаружены ключи в неправильных падежах:
+
+| Категория | Ключ | Проблема | Исправление |
+|-----------|------|----------|-------------|
+| glina-i-avtoskraby | глина для чистки авто | "глину" vs "глина" | Добавлено предложение с именительным падежом |
+| omyvatel | омыватель заднего стекла | "омывателя" vs "омыватель" | Переписано предложение |
+| opt-i-b2b | автохимия опт | отсутствовал | Изменён H1 на "Автохимия опт" |
+| opt-i-b2b | B2B сотрудничество | отсутствовал | Добавлено предложение после H2 |
+| keramika-dlya-diskov | керамика для колёсных дисков | "керамику" vs "керамика" | Добавлено в intro |
+| keramika-dlya-diskov | нанокерамика для дисков | "нанокерамики" vs "нанокерамика" | Переписано начало секции |
+| keramika-dlya-diskov | защитное покрытие для дисков | выпал при редактировании | Возвращено в intro |
+| ochistiteli-diskov | химия для дисков | заменено на "химия для чистки" | Изменён H2 |
+
+**Финальная верификация:** ✅ 100% coverage по всем 8 категориям
