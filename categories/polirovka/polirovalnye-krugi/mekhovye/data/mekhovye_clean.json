@@ -3,6 +3,18 @@
   "name": "Меховые круги",
   "type": "category",
   "parent_id": "polirovalnye-krugi",
+  "keywords": [
+    {"keyword": "шерстяной круг для полировки", "volume": 50},
+    {"keyword": "меховой круг для полировки", "volume": 20},
+    {"keyword": "wool pad", "volume": 10}
+  ],
+  "synonyms": [
+    {"keyword": "меховой круг для полировки авто", "volume": 10, "use_in": "lsi", "variant_of": "меховой круг для полировки"},
+    {"keyword": "шерстяной круг на полировальную машинку", "volume": 10, "use_in": "lsi", "variant_of": "шерстяной круг для полировки"},
+    {"keyword": "круг из шерсти для полировки", "volume": 10, "use_in": "lsi", "variant_of": "шерстяной круг для полировки"},
+    {"keyword": "купить меховой круг для полировки", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "шерстяной круг для полировки цена", "volume": 10, "use_in": "meta_only"}
+  ],
   "entities": [
     "натуральная шерсть",
     "синтетический мех",
@@ -18,49 +30,5 @@
     "как ухаживать за меховым кругом"
   ],
   "variations": [],
-  "source": "checklist",
-  "keywords": [
-    {
-      "keyword": "шерстяной круг для полировки",
-      "volume": 50
-    },
-    {
-      "keyword": "меховой круг для полировки",
-      "volume": 20
-    }
-  ],
-  "synonyms": [
-    {
-      "keyword": "меховой круг для полировки авто",
-      "volume": 10,
-      "use_in": "lsi",
-      "variant_of": "меховой круг для полировки"
-    },
-    {
-      "keyword": "шерстяной круг на полировальную машинку",
-      "volume": 10,
-      "use_in": "lsi",
-      "variant_of": "шерстяной круг для полировки"
-    },
-    {
-      "keyword": "круг из шерсти для полировки",
-      "volume": 10,
-      "use_in": "lsi",
-      "variant_of": "шерстяной круг для полировки"
-    },
-    {
-      "keyword": "wool pad",
-      "volume": 10
-    },
-    {
-      "keyword": "купить меховой круг для полировки",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "шерстяной круг для полировки цена",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
-  ]
+  "source": "checklist"
 }

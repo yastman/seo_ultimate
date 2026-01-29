@@ -5,12 +5,12 @@
   "parent_id": "sredstva-dlya-stekol",
   "keywords": [
     {"keyword": "полироль для стекла", "volume": 590},
-    {"keyword": "полироль для стекла авто", "volume": 50}
+    {"keyword": "полироль для стекла авто", "volume": 50},
+    {"keyword": "средство для полировки лобового стекла", "volume": 30}
   ],
   "synonyms": [
     {"keyword": "полироль для стекол автомобиля", "volume": 50, "use_in": "lsi", "variant_of": "полироль для стекла авто"},
     {"keyword": "полироль для автостекла", "volume": 30, "use_in": "lsi", "variant_of": "полироль для стекла авто"},
-    {"keyword": "средство для полировки лобового стекла", "volume": 30},
     {"keyword": "средство для полировки стекол автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "полироль для стекла авто"},
     {"keyword": "купить полироль для стекла авто", "volume": 10, "use_in": "meta_only"},
     {"keyword": "полироль для стекла авто цена", "volume": 10, "use_in": "meta_only"}
@@ -31,5 +31,5 @@
     "чем отполировать лобовое стекло"
   ],
   "variations": [],
-  "source": "split from ochistiteli-stekol"
+  "source": "semantic-cluster-v2: 2026-01-29"
 }

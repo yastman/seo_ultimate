@@ -5,14 +5,14 @@
   "parent_id": "sredstva-dlya-stekol",
   "keywords": [
     {"keyword": "очиститель стекла авто", "volume": 210},
+    {"keyword": "очиститель лобового стекла", "volume": 90},
     {"keyword": "средство для стекол авто", "volume": 40}
   ],
   "synonyms": [
-    {"keyword": "очиститель лобового стекла", "volume": 90},
     {"keyword": "очиститель стекол автомобиля", "volume": 210, "use_in": "lsi", "variant_of": "очиститель стекла авто"},
     {"keyword": "средство для очистки стекол автомобиля", "volume": 20, "use_in": "lsi", "variant_of": "средство для стекол авто"},
-    {"keyword": "средство для автомобильных стекол", "volume": 10, "use_in": "lsi", "variant_of": "средство для стекол авто"},
     {"keyword": "средство для очистки стекол авто", "volume": 20, "use_in": "lsi", "variant_of": "средство для стекол авто"},
+    {"keyword": "средство для автомобильных стекол", "volume": 10, "use_in": "lsi", "variant_of": "средство для стекол авто"},
     {"keyword": "средство для чистки стекол авто", "volume": 10, "use_in": "lsi", "variant_of": "средство для стекол авто"},
     {"keyword": "жидкость для очистки стекол автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "средство для стекол авто"},
     {"keyword": "средство для очистки автомобильных стекол", "volume": 10, "use_in": "lsi", "variant_of": "средство для стекол авто"},
@@ -37,5 +37,5 @@
     "какой очиститель стекол лучше",
     "как очистить стекло от никотина"
   ],
-  "source": "refactored: keywords object converted to standard array format"
+  "source": "semantic-cluster-v2: 2026-01-29"
 }

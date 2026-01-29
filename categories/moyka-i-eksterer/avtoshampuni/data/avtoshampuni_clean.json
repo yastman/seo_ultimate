@@ -4,102 +4,30 @@
   "type": "category",
   "parent_id": "moyka-i-eksterer",
   "keywords": [
-    {
-      "keyword": "автошампунь",
-      "volume": 1000
-    },
-    {
-      "keyword": "шампунь для авто",
-      "volume": 500
-    },
-    {
-      "keyword": "шампунь для мойки авто",
-      "volume": 110
-    },
-    {
-      "keyword": "автомобильный шампунь",
-      "volume": 50
-    },
-    {
-      "keyword": "автошампунь для ручной мойки",
-      "volume": 40
-    },
-    {
-      "keyword": "кислотный шампунь для авто",
-      "volume": 20
-    },
-    {
-      "keyword": "купить автошампунь для ручной мойки",
-      "volume": 10
-    }
+    {"keyword": "автошампунь", "volume": 1000},
+    {"keyword": "шампунь для авто", "volume": 500},
+    {"keyword": "шампунь для мойки авто", "volume": 110},
+    {"keyword": "автомобильный шампунь", "volume": 50},
+    {"keyword": "автошампунь для ручной мойки", "volume": 40},
+    {"keyword": "шампунь для моек высокого давления", "volume": 50},
+    {"keyword": "кислотный шампунь для авто", "volume": 20},
+    {"keyword": "моющее средство для авто", "volume": 20}
   ],
   "synonyms": [
-    {
-      "keyword": "шампунь для автомойки",
-      "volume": 50
-    },
-    {
-      "keyword": "шампунь для моек высокого давления",
-      "volume": 50
-    },
-    {
-      "keyword": "шампунь для машины",
-      "volume": 40
-    },
-    {
-      "keyword": "моющее средство для авто",
-      "volume": 20
-    },
-    {
-      "keyword": "шампунь для мойки",
-      "volume": 20
-    },
-    {
-      "keyword": "шампунь для мойки машины",
-      "volume": 20
-    },
-    {
-      "keyword": "кислотный автошампунь",
-      "volume": 20
-    },
-    {
-      "keyword": "шампунь для минимойки",
-      "volume": 10
-    },
-    {
-      "keyword": "жидкость для мойки автомобиля",
-      "volume": 10
-    },
-    {
-      "keyword": "купить автошампунь",
-      "volume": 90,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить шампунь для автомобиля",
-      "volume": 70,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить шампунь для авто",
-      "volume": 50,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "автошампунь цена",
-      "volume": 20,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить шампунь для мойки авто",
-      "volume": 10,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "купить шампунь для автомойки",
-      "volume": 10,
-      "use_in": "meta_only"
-    }
+    {"keyword": "шампунь для автомойки", "volume": 50, "use_in": "lsi", "variant_of": "шампунь для мойки авто"},
+    {"keyword": "шампунь для машины", "volume": 40, "use_in": "lsi", "variant_of": "шампунь для авто"},
+    {"keyword": "шампунь для мойки", "volume": 20, "use_in": "lsi", "variant_of": "шампунь для мойки авто"},
+    {"keyword": "шампунь для мойки машины", "volume": 20, "use_in": "lsi", "variant_of": "шампунь для мойки авто"},
+    {"keyword": "кислотный автошампунь", "volume": 20, "use_in": "lsi", "variant_of": "кислотный шампунь для авто"},
+    {"keyword": "шампунь для минимойки", "volume": 10, "use_in": "lsi", "variant_of": "шампунь для моек высокого давления"},
+    {"keyword": "жидкость для мойки автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "моющее средство для авто"},
+    {"keyword": "купить автошампунь", "volume": 90, "use_in": "meta_only"},
+    {"keyword": "купить шампунь для автомобиля", "volume": 70, "use_in": "meta_only"},
+    {"keyword": "купить шампунь для авто", "volume": 50, "use_in": "meta_only"},
+    {"keyword": "автошампунь цена", "volume": 20, "use_in": "meta_only"},
+    {"keyword": "купить автошампунь для ручной мойки", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить шампунь для мойки авто", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "купить шампунь для автомойки", "volume": 10, "use_in": "meta_only"}
   ],
   "variations": [],
   "entities": [
@@ -117,5 +45,5 @@
     "как разводить автошампунь",
     "какой шампунь для бесконтактной мойки"
   ],
-  "source": "merged from kislotnyy filter"
+  "source": "semantic-cluster v2.0"
 }

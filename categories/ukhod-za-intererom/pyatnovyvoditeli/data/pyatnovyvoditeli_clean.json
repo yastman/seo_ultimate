@@ -4,15 +4,15 @@
   "type": "category",
   "parent_id": "ukhod-za-intererom",
   "keywords": [
-    {"keyword": "пятновыводитель", "volume": 2400}
+    {"keyword": "пятновыводитель", "volume": 2400},
+    {"keyword": "пятновыводитель для салона авто", "volume": 10},
+    {"keyword": "пятновыводитель для сидений авто", "volume": 10}
   ],
   "synonyms": [
-    {"keyword": "пятновыводитель для авто", "volume": 10},
-    {"keyword": "пятновыводитель для автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "пятновыводитель для авто"},
-    {"keyword": "пятновыводитель для машины", "volume": 10, "use_in": "lsi", "variant_of": "пятновыводитель для авто"},
-    {"keyword": "пятновыводитель для салона авто", "volume": 10},
+    {"keyword": "пятновыводитель для авто", "volume": 10, "use_in": "lsi", "variant_of": "пятновыводитель"},
+    {"keyword": "пятновыводитель для автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "пятновыводитель"},
+    {"keyword": "пятновыводитель для машины", "volume": 10, "use_in": "lsi", "variant_of": "пятновыводитель"},
     {"keyword": "пятновыводитель для салона автомобиля", "volume": 10, "use_in": "lsi", "variant_of": "пятновыводитель для салона авто"},
-    {"keyword": "пятновыводитель для сидений авто", "volume": 10},
     {"keyword": "купить пятновыводитель", "volume": 110, "use_in": "meta_only"}
   ],
   "variations": [],
