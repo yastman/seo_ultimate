@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for check_seo_structure.py UK language support."""
+"""Tests for validate_seo.py UK language support."""
 
 import sys
 from pathlib import Path
@@ -7,7 +7,7 @@ from pathlib import Path
 # Add scripts to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from check_seo_structure import (
+from validate_seo import (
     detect_language,
     get_russian_word_stems,
     get_ukrainian_word_stems,
@@ -84,7 +84,7 @@ class TestH2KeywordMatching:
 
     def test_uk_h2_with_partial_match(self):
         """UK H2 matches keyword via stems."""
-        from check_seo_structure import check_keywords_in_h2
+        from validate_seo import check_keywords_in_h2
 
         text = """# Title
 
@@ -114,7 +114,7 @@ Questions.
 
     def test_ru_h2_backward_compatible(self):
         """RU H2 matching still works."""
-        from check_seo_structure import check_keywords_in_h2
+        from validate_seo import check_keywords_in_h2
 
         text = """# Title
 
