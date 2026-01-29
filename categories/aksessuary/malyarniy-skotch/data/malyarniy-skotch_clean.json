@@ -6,7 +6,6 @@
   "keywords": [
     {"keyword": "малярные скотчи", "volume": 4400},
     {"keyword": "малярный скотч", "volume": 4400},
-    {"keyword": "скотч малярний", "volume": 1000},
     {"keyword": "малярная лента", "volume": 50}
   ],
   "synonyms": [
@@ -38,5 +37,8 @@
     "малярный скотч для оклейки",
     "скотч не оставляющий следов"
   ],
-  "source": "checklist"
+  "source": "checklist",
+  "needs_review": [
+    {"keyword": "скотч малярний", "volume": 1000, "reason": "украинский ключ в RU файле — перенести в UK версию", "from": "keywords"}
+  ]
 }

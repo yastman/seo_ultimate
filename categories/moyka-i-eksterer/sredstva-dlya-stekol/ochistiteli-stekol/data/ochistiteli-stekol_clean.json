@@ -3,32 +3,25 @@
   "name": "Очистители стекол",
   "type": "category",
   "parent_id": "sredstva-dlya-stekol",
-  "keywords": {
-    "primary": [
-      {"keyword": "очиститель стекла авто", "volume": 170},
-      {"keyword": "средство для стекол авто", "volume": 20}
-    ],
-    "synonyms_ochistitel": [
-      {"keyword": "очиститель лобового стекла", "volume": 10, "synonym_of": "очиститель стекла авто"},
-      {"keyword": "очиститель стекол автомобиля", "volume": 10, "synonym_of": "очиститель стекла авто"}
-    ],
-    "synonyms_sredstvo": [
-      {"keyword": "средство для очистки стекол автомобиля", "volume": 20, "synonym_of": "средство для стекол авто"},
-      {"keyword": "средство для автомобильных стекол", "volume": 20, "synonym_of": "средство для стекол авто"},
-      {"keyword": "средство для очистки стекол авто", "volume": 10, "synonym_of": "средство для стекол авто"},
-      {"keyword": "средство для чистки стекол авто", "volume": 10, "synonym_of": "средство для стекол авто"},
-      {"keyword": "жидкость для очистки стекол автомобиля", "volume": 10, "synonym_of": "средство для стекол авто"},
-      {"keyword": "средство для очистки автомобильных стекол", "volume": 10, "synonym_of": "средство для стекол авто"},
-      {"keyword": "средство для чистки стекол автомобиля", "volume": 10, "synonym_of": "средство для стекол авто"}
-    ],
-    "synonyms_ochistitel_ext": [
-      {"keyword": "очиститель стекла для автомобиля", "volume": 10, "synonym_of": "очиститель стекла авто"}
-    ],
-    "commercial": [
-      {"keyword": "купить очиститель стекол авто", "volume": 10, "use_in": "meta_only"},
-      {"keyword": "очиститель стекол авто цена", "volume": 10, "use_in": "meta_only"}
-    ]
-  },
+  "keywords": [
+    {"keyword": "очиститель стекла авто", "volume": 170},
+    {"keyword": "средство для стекол авто", "volume": 20}
+  ],
+  "synonyms": [
+    {"keyword": "очиститель лобового стекла", "volume": 10},
+    {"keyword": "очиститель стекол автомобиля", "volume": 10},
+    {"keyword": "средство для очистки стекол автомобиля", "volume": 20},
+    {"keyword": "средство для автомобильных стекол", "volume": 20},
+    {"keyword": "средство для очистки стекол авто", "volume": 10},
+    {"keyword": "средство для чистки стекол авто", "volume": 10},
+    {"keyword": "жидкость для очистки стекол автомобиля", "volume": 10},
+    {"keyword": "средство для очистки автомобильных стекол", "volume": 10},
+    {"keyword": "средство для чистки стекол автомобиля", "volume": 10},
+    {"keyword": "очиститель стекла для автомобиля", "volume": 10},
+    {"keyword": "купить очиститель стекол авто", "volume": 10, "use_in": "meta_only"},
+    {"keyword": "очиститель стекол авто цена", "volume": 10, "use_in": "meta_only"}
+  ],
+  "variations": [],
   "entities": [
     "лобовое стекло",
     "боковые стёкла",
@@ -44,6 +37,5 @@
     "какой очиститель стекол лучше",
     "как очистить стекло от никотина"
   ],
-  "variations": [],
-  "source": "split: poliroli moved to polirol-dlya-stekla"
+  "source": "refactored: keywords object converted to standard array format"
 }

@@ -11,14 +11,6 @@
     {
       "keyword": "антимошка для авто",
       "volume": 320
-    },
-    {
-      "keyword": "антимошка на мойке",
-      "volume": 10
-    },
-    {
-      "keyword": "концентрат антимошка",
-      "volume": 10
     }
   ],
   "synonyms": [
@@ -73,5 +65,9 @@
     "безопасна ли антимошка для лака",
     "когда применять антимошку"
   ],
-  "source": "checklist"
+  "source": "checklist",
+  "needs_review": [
+    {"keyword": "антимошка на мойке", "volume": 10, "reason": "дубль: в synonyms vol=30", "from": "keywords"},
+    {"keyword": "концентрат антимошка", "volume": 10, "reason": "дубль: в synonyms vol=20", "from": "keywords"}
+  ]
 }

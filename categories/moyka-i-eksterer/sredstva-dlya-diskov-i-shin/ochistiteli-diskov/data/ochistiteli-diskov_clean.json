@@ -11,34 +11,6 @@
     {
       "keyword": "очиститель дисков",
       "volume": 70
-    },
-    {
-      "keyword": "средства для чистки дисков",
-      "volume": 20
-    },
-    {
-      "keyword": "полироль для колес",
-      "volume": 10
-    },
-    {
-      "keyword": "химия для чистки дисков",
-      "volume": 10
-    },
-    {
-      "keyword": "жидкость для чистки дисков",
-      "volume": 10
-    },
-    {
-      "keyword": "средство для дисков",
-      "volume": 10
-    },
-    {
-      "keyword": "средство для мойки дисков",
-      "volume": 10
-    },
-    {
-      "keyword": "очиститель колесных дисков",
-      "volume": 10
     }
   ],
   "synonyms": [
@@ -152,5 +124,14 @@
     "безопасна ли кислота для дисков",
     "как часто мыть диски"
   ],
-  "source": "checklist"
+  "source": "checklist",
+  "needs_review": [
+    {"keyword": "средства для чистки дисков", "volume": 20, "reason": "дубль: в synonyms vol=50", "from": "keywords"},
+    {"keyword": "полироль для колес", "volume": 10, "reason": "нерелевантен: это про шины, а не про очистку дисков", "from": "keywords"},
+    {"keyword": "химия для чистки дисков", "volume": 10, "reason": "дубль: в synonyms vol=20", "from": "keywords"},
+    {"keyword": "жидкость для чистки дисков", "volume": 10, "reason": "дубль: в synonyms vol=10", "from": "keywords"},
+    {"keyword": "средство для дисков", "volume": 10, "reason": "дубль: в synonyms vol=20", "from": "keywords"},
+    {"keyword": "средство для мойки дисков", "volume": 10, "reason": "дубль: в synonyms vol=20", "from": "keywords"},
+    {"keyword": "очиститель колесных дисков", "volume": 10, "reason": "дубль: в synonyms vol=10", "from": "keywords"}
+  ]
 }
