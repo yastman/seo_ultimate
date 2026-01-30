@@ -1,14 +1,22 @@
 {
   "id": "opt-i-b2b",
   "language": "uk",
-  "total_volume": 60,
+  "total_volume": 410,
   "keywords": [
+    {
+      "keyword": "магазин автохімії",
+      "volume": 390
+    },
     {
       "keyword": "автохімія від виробника",
       "volume": 10,
       "use_in": "content",
       "source_ru": "автохимия от производителя",
       "_original_category": "opt-i-b2b"
+    },
+    {
+      "keyword": "автокосметика оптом",
+      "volume": 10
     }
   ],
   "secondary_keywords": [],

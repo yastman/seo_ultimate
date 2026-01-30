@@ -1,24 +1,19 @@
 {
   "id": "akkumulyatornaya",
   "language": "uk",
-  "total_volume": 930,
-  "keywords": [],
-  "secondary_keywords": [
+  "total_volume": 480,
+  "keywords": [
     {
       "keyword": "акумуляторна полірувальна машина",
-      "volume": 260,
-      "use_in": "content",
-      "source_ru": "аккумуляторная полировальная машина",
-      "_original_category": "akkumulyatornaya"
-    }
-  ],
-  "supporting_keywords": [
+      "volume": 320
+    },
     {
       "keyword": "акумуляторна полірувальна машина для авто",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "аккумуляторная полировальная машина для авто",
-      "_original_category": "akkumulyatornaya"
+      "volume": 90
+    },
+    {
+      "keyword": "полірувальна машина для авто на акумуляторі",
+      "volume": 70
     }
   ],
   "synonyms": [
@@ -65,5 +60,5 @@
       "source_ru": "машинка для полировки авто на аккумуляторе"
     }
   ],
-  "all_keywords_count": 8
+  "all_keywords_count": 9
 }

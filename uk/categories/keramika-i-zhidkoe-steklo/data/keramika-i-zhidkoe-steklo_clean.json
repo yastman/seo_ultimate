@@ -1,16 +1,68 @@
 {
   "id": "keramika-i-zhidkoe-steklo",
   "language": "uk",
-  "total_volume": 5610,
+  "total_volume": 11620,
   "keywords": [
-    {"keyword": "кераміка для авто", "volume": 2400},
-    {"keyword": "кераміка для кузова", "volume": 1000},
-    {"keyword": "рідке скло для авто", "volume": 1000},
-    {"keyword": "нанокераміка для авто", "volume": 590},
-    {"keyword": "нанокераміка", "volume": 320},
-    {"keyword": "керамічне покриття авто", "volume": 140},
-    {"keyword": "кераміка на авто", "volume": 110},
-    {"keyword": "керамічний лак для авто", "volume": 50}
+    {
+      "keyword": "рідке скло",
+      "volume": 5400
+    },
+    {
+      "keyword": "кераміка для авто",
+      "volume": 2400
+    },
+    {
+      "keyword": "кераміка для кузова",
+      "volume": 1000
+    },
+    {
+      "keyword": "рідке скло для авто",
+      "volume": 1000
+    },
+    {
+      "keyword": "нанокераміка для авто",
+      "volume": 590
+    },
+    {
+      "keyword": "нанокераміка",
+      "volume": 320
+    },
+    {
+      "keyword": "керамічне покриття авто",
+      "volume": 210
+    },
+    {
+      "keyword": "купити рідке скло для авто",
+      "volume": 210
+    },
+    {
+      "keyword": "купити рідке скло для автомобіля",
+      "volume": 210
+    },
+    {
+      "keyword": "кераміка на авто",
+      "volume": 110
+    },
+    {
+      "keyword": "рідке скло ціна",
+      "volume": 90
+    },
+    {
+      "keyword": "керамічний лак для авто",
+      "volume": 50
+    },
+    {
+      "keyword": "рідке скло для кузова авто",
+      "volume": 10
+    },
+    {
+      "keyword": "рідке скло на машину",
+      "volume": 10
+    },
+    {
+      "keyword": "нанокераміка ціна",
+      "volume": 10
+    }
   ],
   "synonyms": [],
   "micro_intents": []

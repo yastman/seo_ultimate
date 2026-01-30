@@ -1,71 +1,47 @@
 {
   "id": "kvik-deteylery",
   "language": "uk",
-  "total_volume": 570,
+  "total_volume": 510,
   "keywords": [
     {
       "keyword": "полімер для авто",
-      "volume": 140,
-      "use_in": "content",
-      "source_ru": "полимер для авто",
-      "_original_category": "kvik-deteylery"
+      "volume": 140
+    },
+    {
+      "keyword": "холодний віск для автомобіля",
+      "volume": 110
+    },
+    {
+      "keyword": "горячий віск для авто",
+      "volume": 90
     },
     {
       "keyword": "засіб для миття авто без води",
       "volume": 50
-    }
-  ],
-  "secondary_keywords": [
-    {
-      "keyword": "холодний віск для автомобіля",
-      "volume": 110,
-      "use_in": "content",
-      "source_ru": "холодный воск для автомобиля",
-      "_original_category": "kvik-deteylery"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "горячий віск для авто",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "горячий воск для авто",
-      "_original_category": "kvik-deteylery"
     },
     {
       "keyword": "швидкий віск для авто",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "быстрый воск для авто",
-      "_original_category": "kvik-deteylery"
+      "volume": 40
     },
     {
       "keyword": "купити холодный віск для авто",
-      "volume": 30,
-      "use_in": "meta_only",
-      "source_ru": "купить холодный воск для авто",
-      "_original_category": "kvik-deteylery"
+      "volume": 30
     },
     {
       "keyword": "віск для авто на автомийці",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "воск для авто на автомойке",
-      "_original_category": "kvik-deteylery"
+      "volume": 20
+    },
+    {
+      "keyword": "гарячий віск для автомобіля",
+      "volume": 10
     },
     {
       "keyword": "холодный віск для сушки автомобіля",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "холодный воск для сушки автомобиля",
-      "_original_category": "kvik-deteylery"
+      "volume": 10
     },
     {
       "keyword": "швидкий блиск для авто",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "быстрый блеск для авто",
-      "_original_category": "kvik-deteylery"
+      "volume": 10
     }
   ],
   "synonyms": [
@@ -73,7 +49,7 @@
       "keyword": "холодный віск для авто",
       "volume": 90,
       "use_in": "lsi",
-      "variant_of": "холодний віск для автомобіля",
+      "variant_of": "холодній віск для автомобіля",
       "source_ru": "холодный воск для авто"
     },
     {
@@ -84,5 +60,5 @@
       "source_ru": "купить холодный воск для автомобиля"
     }
   ],
-  "all_keywords_count": 10
+  "all_keywords_count": 12
 }

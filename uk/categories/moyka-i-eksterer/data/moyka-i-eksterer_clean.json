@@ -1,8 +1,29 @@
 {
   "id": "moyka-i-eksterer",
   "language": "uk",
-  "total_volume": 870,
-  "keywords": [],
+  "total_volume": 290,
+  "keywords": [
+    {
+      "keyword": "купити хімію для авто",
+      "volume": 90
+    },
+    {
+      "keyword": "хімія для машини",
+      "volume": 70
+    },
+    {
+      "keyword": "хімія для миття машин",
+      "volume": 70
+    },
+    {
+      "keyword": "купити хімію для мийки авто",
+      "volume": 40
+    },
+    {
+      "keyword": "миючий засіб для авто",
+      "volume": 20
+    }
+  ],
   "secondary_keywords": [
     {
       "keyword": "хімія для миття авто",
@@ -79,5 +100,5 @@
       "source_ru": "автохимия для мойки автомобиля"
     }
   ],
-  "all_keywords_count": 10
+  "all_keywords_count": 15
 }
