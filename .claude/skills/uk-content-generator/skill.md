@@ -411,7 +411,7 @@ python3 scripts/validate_content.py uk/categories/chorniteli-shin/content/chorni
 
 ```bash
 # Щільність ключів та переспам
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 
 # Тошнота та вода (Natasha)
 python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md

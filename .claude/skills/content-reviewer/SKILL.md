@@ -95,7 +95,7 @@ Step 10: Output verdict
 ```bash
 python3 scripts/validate_meta.py categories/{path}/meta/{slug}_meta.json
 python3 scripts/validate_content.py categories/{path}/content/{slug}_ru.md "{primary}" --mode seo
-python3 scripts/check_keyword_density.py categories/{path}/content/{slug}_ru.md
+python3 scripts/validate_density.py categories/{path}/content/{slug}_ru.md
 python3 scripts/check_water_natasha.py categories/{path}/content/{slug}_ru.md
 ```
 

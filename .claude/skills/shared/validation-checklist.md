@@ -81,11 +81,11 @@ python3 scripts/validate_meta.py {meta_path}
 python3 scripts/validate_content.py {content_path} "{primary}" --mode seo
 
 # Keyword density
-python3 scripts/check_keyword_density.py {content_path}
+python3 scripts/validate_density.py {content_path}
 
 # Water/nausea
 python3 scripts/check_water_natasha.py {content_path}
 
 # SEO structure
-python3 scripts/check_seo_structure.py {content_path} "{primary}"
+python3 scripts/validate_seo.py {content_path} "{primary}"
 ```
