@@ -76,6 +76,105 @@ def load_category_data(slug: str, lang: str) -> tuple[list, list, str] | None:
     return keywords, synonyms, content
 
 
+def load_meta_keywords(slug: str, lang: str) -> dict[str, list[str]] | None:
+    """
+    Load keywords_in_content from _meta.json.
+
+    Returns:
+        {"primary": [...], "secondary": [...], "supporting": [...]}
+        or None if category not found.
+    """
+    base = find_category_path(slug, lang)
+    if base is None:
+        return None
+
+    meta_file = base / "meta" / f"{slug}_meta.json"
+    if not meta_file.exists():
+        return {"primary": [], "secondary": [], "supporting": []}
+
+    with open(meta_file, encoding="utf-8") as f:
+        data = json.load(f)
+
+    kic = data.get("keywords_in_content", {})
+    return {
+        "primary": kic.get("primary", []),
+        "secondary": kic.get("secondary", []),
+        "supporting": kic.get("supporting", []),
+    }
+
+
+def audit_with_meta(
+    keywords: list[dict],
+    synonyms: list[dict],
+    meta_keywords: dict[str, list[str]],
+    text: str,
+    lang: str,
+) -> dict:
+    """
+    Audit both keywords[] and keywords_in_content.
+
+    Args:
+        keywords: List from _clean.json
+        synonyms: List from _clean.json
+        meta_keywords: Dict with primary/secondary/supporting lists
+        text: Content text
+        lang: Language code
+
+    Returns:
+        {
+            "keywords_in_content": {
+                "primary": {"total": N, "covered": M, "coverage_percent": X, "results": [...]},
+                "secondary": {...},
+                "supporting": {...}
+            },
+            "keywords": {"total": N, "covered": M, "coverage_percent": X, "results": [...]}
+        }
+    """
+    from coverage_matcher import PreparedText, check_keyword
+
+    prepared = PreparedText(text, lang)
+
+    # Build volume lookup from keywords[]
+    volume_map = {kw["keyword"]: kw.get("volume", 0) for kw in keywords}
+
+    # Audit keywords_in_content groups
+    kic_results = {}
+    for group in ["primary", "secondary", "supporting"]:
+        group_keywords = meta_keywords.get(group, [])
+        results = []
+        for kw in group_keywords:
+            match = check_keyword(kw, prepared, synonyms)
+            results.append(
+                {
+                    "keyword": kw,
+                    "volume": volume_map.get(kw, 0),
+                    "status": match.status,
+                    "covered": match.covered,
+                    "covered_by": match.covered_by,
+                    "syn_match_method": match.syn_match_method,
+                    "lemma_coverage": match.lemma_coverage,
+                    "reason": match.reason,
+                }
+            )
+
+        total = len(group_keywords)
+        covered = sum(1 for r in results if r["covered"])
+        kic_results[group] = {
+            "total": total,
+            "covered": covered,
+            "coverage_percent": round(covered / total * 100, 1) if total > 0 else 100.0,
+            "results": results,
+        }
+
+    # Audit full keywords[]
+    keywords_result = audit_category(keywords, synonyms, text, lang)
+
+    return {
+        "keywords_in_content": kic_results,
+        "keywords": keywords_result,
+    }
+
+
 def get_all_slugs(lang: str) -> list[str]:
     """Get all category slugs for a language."""
     if lang == "uk":
@@ -228,6 +327,11 @@ def main():
     parser.add_argument("--lang", choices=["ru", "uk", "all"], default="uk")
     parser.add_argument("--verbose", "-v", action="store_true")
     parser.add_argument("--json", action="store_true")
+    parser.add_argument(
+        "--include-meta",
+        action="store_true",
+        help="Include keywords_in_content from _meta.json",
+    )
 
     args = parser.parse_args()
 
