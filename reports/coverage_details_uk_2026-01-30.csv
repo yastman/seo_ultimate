@@ -1,0 +1,332 @@
+slug,lang,keyword,volume,status,covered,covered_by,syn_match_method,lemma_coverage,reason
+akkumulyatornaya,uk,акумуляторна полірувальна машина,320,EXACT,True,,,,
+akkumulyatornaya,uk,акумуляторна полірувальна машина для авто,90,NORM,True,,,,
+aksessuary,uk,косметика для авто,90,EXACT,True,,,,
+aksessuary,uk,сушка для авто,50,NORM,True,,,,
+aksessuary,uk,аксесуари для миття авто,50,EXACT,True,,,,
+aksessuary,uk,все для миття авто,50,EXACT,True,,,,
+aksessuary,uk,аксесуари для детейлінгу,20,EXACT,True,,,,
+aksessuary,uk,аксесуари для автомийок,20,EXACT,True,,,,
+aksessuary-dlya-naneseniya-sredstv,uk,губка для полірування автомобіля,170,EXACT,True,,,,
+aksessuary-dlya-naneseniya-sredstv,uk,ганчірки для полірування авто,50,NORM,True,,,,
+aksessuary-dlya-naneseniya-sredstv,uk,аплікатор для авто,30,EXACT,True,,,,
+aksessuary-dlya-naneseniya-sredstv,uk,салфетки для полірування авто,20,PARTIAL,False,,,0.75,75% lemmas found
+aksessuary-dlya-naneseniya-sredstv,uk,губка з мікрофібри для авто,10,EXACT,True,,,,
+aksessuary-dlya-naneseniya-sredstv,uk,губка для салону авто,10,LEMMA,True,,,,
+aktivnaya-pena,uk,активна піна для авто,1600,NORM,True,,,,
+aktivnaya-pena,uk,піна для миття авто,1300,EXACT,True,,,,
+aktivnaya-pena,uk,активна піна,1000,EXACT,True,,,,
+aktivnaya-pena,uk,хімія для миття авто,1000,EXACT,True,,,,
+aktivnaya-pena,uk,автохімія для миття авто,390,LEMMA,True,,,,
+aktivnaya-pena,uk,активна піна для безконтактної мийки,320,NORM,True,,,,
+aktivnaya-pena,uk,засоби для миття авто,320,EXACT,True,,,,
+aktivnaya-pena,uk,хімія для безконтактної мийки,140,EXACT,True,,,,
+aktivnaya-pena,uk,хімія для мийки самообслуговування,110,PARTIAL,False,,,0.75,75% lemmas found
+aktivnaya-pena,uk,засоби для мийки самообслуговування,90,PARTIAL,False,,,0.75,75% lemmas found
+aktivnaya-pena,uk,гель для миття авто,90,PARTIAL,False,,,0.75,75% lemmas found
+antibitum,uk,антибітум,720,EXACT,True,,,,
+antibitum,uk,очищувач бітуму,390,EXACT,True,,,,
+antibitum,uk,засіб для видалення бітуму,140,EXACT,True,,,,
+antibitum,uk,засіб для очищення кузова від бітуму,70,EXACT,True,,,,
+antidozhd,uk,антидощ,1900,EXACT,True,,,,
+antidozhd,uk,антидощ для скла авто,390,NORM,True,,,,
+antidozhd,uk,антидощ на лобове скло,170,NORM,True,,,,
+antidozhd,uk,гідрофобне покриття,40,EXACT,True,,,,
+antimoshka,uk,антимошка,320,EXACT,True,,,,
+antimoshka,uk,очищувач слідів комах,320,EXACT,True,,,,
+antimoshka,uk,антимошка для авто,260,NORM,True,,,,
+antimoshka,uk,засіб від комах,140,EXACT,True,,,,
+antimoshka,uk,засіб для видалення комах,90,EXACT,True,,,,
+antimoshka,uk,антимошка на мийці,30,NORM,True,,,,
+antimoshka,uk,концентрат антимошка,20,NORM,True,,,,
+antimoshka,uk,антимошка спрей,10,NORM,True,,,,
+apparaty-tornador,uk,торнадор,3600,EXACT,True,,,,
+apparaty-tornador,uk,торнадор для хімчистки авто,260,EXACT,True,,,,
+apparaty-tornador,uk,пістолет для хімчистки авто,140,NORM,True,,,,
+apparaty-tornador,uk,апарат для хімчистки авто,90,NORM,True,,,,
+apparaty-tornador,uk,торнадор для хімчистки салону,30,EXACT,True,,,,
+avtoshampuni,uk,автошампунь,590,EXACT,True,,,,
+avtoshampuni,uk,шампунь для авто,390,EXACT,True,,,,
+avtoshampuni,uk,автошампунь для ручної мийки,210,EXACT,True,,,,
+avtoshampuni,uk,автошампунь з воском,110,NORM,True,,,,
+avtoshampuni,uk,шампунь для безконтактної мийки,110,EXACT,True,,,,
+avtoshampuni,uk,шампунь концентрат для авто,40,PARTIAL,False,,,1.0,100% lemmas found
+avtoshampuni,uk,сухий шампунь для авто,30,EXACT,True,,,,
+cherniteli-shin,uk,чорніння гуми,390,EXACT,True,,,,
+cherniteli-shin,uk,засіб для чорніння гуми,210,EXACT,True,,,,
+cherniteli-shin,uk,поліроль для шин,70,NORM,True,,,,
+cherniteli-shin,uk,чорнитель гуми,50,EXACT,True,,,,
+cherniteli-shin,uk,хімія для чорніння гуми,40,EXACT,True,,,,
+glina-i-avtoskraby,uk,глина для авто,590,EXACT,True,,,,
+glina-i-avtoskraby,uk,глина для очищення кузова,320,NORM,True,,,,
+glina-i-avtoskraby,uk,синя глина для авто,320,EXACT,True,,,,
+glina-i-avtoskraby,uk,глина для полірування авто,210,EXACT,True,,,,
+glina-i-avtoskraby,uk,автоскраб,90,EXACT,True,,,,
+glina-i-avtoskraby,uk,синя глина 3м,50,NORM,True,,,,
+gubki-i-varezhki,uk,губка для авто,590,EXACT,True,,,,
+gubki-i-varezhki,uk,мочалка для авто,260,EXACT,True,,,,
+gubki-i-varezhki,uk,губка для полірування авто,140,EXACT,True,,,,
+gubki-i-varezhki,uk,губка меламінова,90,EXACT,True,,,,
+gubki-i-varezhki,uk,рукавиця з овчини,70,EXACT,True,,,,
+gubki-i-varezhki,uk,губка для нанесення воску,50,EXACT,True,,,,
+gubki-i-varezhki,uk,рукавиця для миття авто,50,EXACT,True,,,,
+keramika-dlya-diskov,uk,захисне покриття для дисків,10,NORM,True,,,,
+keramika-dlya-diskov,uk,захисне покриття для литих дисків,10,EXACT,True,,,,
+keramika-dlya-diskov,uk,кераміка для колісних дисків,10,EXACT,True,,,,
+keramika-dlya-diskov,uk,нанокераміка для дисків,10,NORM,True,,,,
+keramika-i-zhidkoe-steklo,uk,рідке скло,5400,EXACT,True,,,,
+keramika-i-zhidkoe-steklo,uk,кераміка для авто,2400,EXACT,True,,,,
+keramika-i-zhidkoe-steklo,uk,кераміка для кузова,1000,NORM,True,,,,
+keramika-i-zhidkoe-steklo,uk,рідке скло для авто,1000,EXACT,True,,,,
+keramika-i-zhidkoe-steklo,uk,нанокераміка для авто,590,EXACT,True,,,,
+keramika-i-zhidkoe-steklo,uk,нанокераміка,320,EXACT,True,,,,
+keramika-i-zhidkoe-steklo,uk,керамічне покриття авто,210,PARTIAL,False,,,1.0,100% lemmas found
+keramika-i-zhidkoe-steklo,uk,керамічний лак для авто,50,PARTIAL,False,,,1.0,100% lemmas found
+kisti-dlya-deteylinga,uk,аксесуари для дітейлінгу,90,EXACT,True,,,,
+kisti-dlya-deteylinga,uk,набір щіток для дітейлінгу,70,EXACT,True,,,,
+kisti-dlya-deteylinga,uk,щітка для чистки салону авто,70,NORM,True,,,,
+kisti-dlya-deteylinga,uk,засоби для дітейлінгу,50,EXACT,True,,,,
+kisti-dlya-deteylinga,uk,щітки для хімчистки авто,50,EXACT,True,,,,
+kisti-dlya-deteylinga,uk,щітка для дисків авто,50,EXACT,True,,,,
+kisti-dlya-deteylinga,uk,щітка для чистки сидень авто,20,EXACT,True,,,,
+kisti-dlya-deteylinga,uk,щітка для шкіри авто,10,EXACT,True,,,,
+kvik-deteylery,uk,полімер для авто,140,EXACT,True,,,,
+kvik-deteylery,uk,холодний віск для автомобіля,110,SYNONYM,True,холодний віск для авто,EXACT,,
+kvik-deteylery,uk,горячий віск для авто,90,PARTIAL,False,,,0.75,75% lemmas found
+kvik-deteylery,uk,засіб для миття авто без води,50,PARTIAL,False,,,1.0,100% lemmas found
+kvik-deteylery,uk,швидкий віск для авто,40,PARTIAL,False,,,1.0,100% lemmas found
+kvik-deteylery,uk,віск для авто на автомийці,20,PARTIAL,False,,,0.75,75% lemmas found
+kvik-deteylery,uk,холодний віск для сушки автомобіля,10,PARTIAL,False,,,0.6,60% lemmas found
+kvik-deteylery,uk,швидкий блиск для авто,10,PARTIAL,False,,,1.0,100% lemmas found
+malyarniy-skotch,uk,малярний скотч,4400,EXACT,True,,,,
+malyarniy-skotch,uk,малярна стрічка,880,EXACT,True,,,,
+malyarniy-skotch,uk,малярний скотч 10мм,40,LEMMA,True,,,,
+malyarniy-skotch,uk,скотч малярний автомобільний,20,PARTIAL,False,,,1.0,100% lemmas found
+malyarniy-skotch,uk,малярний скотч широкий,10,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+mekhovye,uk,шерстяний круг для полірування,50,NORM,True,,,,
+mekhovye,uk,диск полірувальний,20,ABSENT,False,,,,
+mekhovye,uk,хутряний круг для полірування,20,EXACT,True,,,,
+mekhovye,uk,wool pad,10,EXACT,True,,,,
+mekhovye,uk,шерстяний круг на полірувальну машинку,10,PARTIAL,False,,,0.75,75% lemmas found
+mikrofibra-i-tryapki,uk,мікрофібра для авто,480,EXACT,True,,,,
+mikrofibra-i-tryapki,uk,ганчірка для авто без розводів,260,NORM,True,,,,
+mikrofibra-i-tryapki,uk,фібра для авто,260,EXACT,True,,,,
+mikrofibra-i-tryapki,uk,серветки для авто,140,PARTIAL,False,,,1.0,100% lemmas found
+mikrofibra-i-tryapki,uk,рушник для сушки авто,140,PARTIAL,False,,,0.5,50% lemmas found
+mikrofibra-i-tryapki,uk,ганчірка для авто,110,NORM,True,,,,
+mikrofibra-i-tryapki,uk,ганчірка для миття авто,110,PARTIAL,False,,,0.75,75% lemmas found
+mikrofibra-i-tryapki,uk,шкіра для протирання авто,110,PARTIAL,False,,,0.75,75% lemmas found
+mikrofibra-i-tryapki,uk,влаговбирна ганчірка для авто,110,PARTIAL,False,,,0.75,75% lemmas found
+mikrofibra-i-tryapki,uk,ганчірка з мікрофібри,90,PARTIAL,False,,,1.0,100% lemmas found
+mikrofibra-i-tryapki,uk,серветка з штучної замші,90,ABSENT,False,,,,
+mikrofibra-i-tryapki,uk,вафельний рушник для авто,70,PARTIAL,False,,,0.75,75% lemmas found
+mikrofibra-i-tryapki,uk,ганчірка для сушки авто,50,PARTIAL,False,,,0.75,75% lemmas found
+mikrofibra-i-tryapki,uk,набір мікрофібри,50,PARTIAL,False,,,1.0,100% lemmas found
+mikrofibra-i-tryapki,uk,мікрофібра для сушки авто,40,PARTIAL,False,,,0.75,75% lemmas found
+mikrofibra-i-tryapki,uk,серветки для скла,40,PARTIAL,False,,,1.0,100% lemmas found
+mikrofibra-i-tryapki,uk,мікрофібра для скла авто,20,PARTIAL,False,,,1.0,100% lemmas found
+mikrofibra-i-tryapki,uk,ганчірка для скла авто,10,PARTIAL,False,,,1.0,100% lemmas found
+mikrofibra-i-tryapki,uk,мікрофібра для полірування авто,10,PARTIAL,False,,,1.0,100% lemmas found
+moyka-i-eksterer,uk,хімія для миття авто,260,EXACT,True,,,,
+moyka-i-eksterer,uk,хімія для миття машин,70,PARTIAL,False,,,0.75,75% lemmas found
+moyka-i-eksterer,uk,засіб для миття авто,70,PARTIAL,False,,,0.75,75% lemmas found
+moyka-i-eksterer,uk,автохімія для миття авто,50,SYNONYM,True,автохімія для миття,EXACT,,
+moyka-i-eksterer,uk,миючий засіб для авто,20,PARTIAL,False,,,0.5,50% lemmas found
+nabory,uk,набір для миття авто,480,NORM,True,,,,
+nabory,uk,набори для авто,320,EXACT,True,,,,
+nabory,uk,аксесуари для миття авто,170,PARTIAL,False,,,1.0,100% lemmas found
+nabory,uk,подарункові набори для чоловіків в машину,140,ABSENT,False,,,,
+nabory,uk,набір автохімії,140,PARTIAL,False,,,0.5,50% lemmas found
+nabory,uk,набір для полірування авто,140,PARTIAL,False,,,1.0,100% lemmas found
+nabory,uk,набір для хімчистки салону,140,PARTIAL,False,,,1.0,100% lemmas found
+nabory,uk,набір для дітейлінгу,110,SYNONYM,True,набори для детейлінгу,EXACT,,
+nabory,uk,приладдя для миття авто,110,PARTIAL,False,,,0.75,75% lemmas found
+nabory,uk,набір для догляду за авто,40,NORM,True,,,,
+nabory,uk,набір для чистки автомобіля,40,PARTIAL,False,,,0.5,50% lemmas found
+nabory,uk,набір для чистки салону авто,40,PARTIAL,False,,,0.8,80% lemmas found
+nabory,uk,набір для догляду за салоном автомобіля,30,PARTIAL,False,,,0.8,80% lemmas found
+nabory,uk,набір щіток для хімчистки авто,30,PARTIAL,False,,,0.8,80% lemmas found
+nabory,uk,набір кругів для полірування авто,10,PARTIAL,False,,,0.8,80% lemmas found
+nabory,uk,набір для хімчистки автомобіля,10,PARTIAL,False,,,0.75,75% lemmas found
+neytralizatory-zapakha,uk,поглинач запахів,480,PARTIAL,False,,,0.5,50% lemmas found
+neytralizatory-zapakha,uk,нейтралізатор запахів,170,PARTIAL,False,,,0.5,50% lemmas found
+neytralizatory-zapakha,uk,сухий туман для авто,110,PARTIAL,False,,,0.5,50% lemmas found
+neytralizatory-zapakha,uk,ароматизатор в машину,110,PARTIAL,False,,,0.5,50% lemmas found
+neytralizatory-zapakha,uk,засіб для видалення запаху,30,PARTIAL,False,,,0.5,50% lemmas found
+obezzhirivateli,uk,знежирювач для авто,390,EXACT,True,,,,
+obezzhirivateli,uk,знежирювач антисилікон,320,PARTIAL,False,,,0.5,50% lemmas found
+obezzhirivateli,uk,знежирювач кузова,320,NORM,True,,,,
+obezzhirivateli,uk,знежирювач для авто перед фарбуванням,210,PARTIAL,False,,,0.8,80% lemmas found
+obezzhirivateli,uk,знежирювач універсальний,140,PARTIAL,False,,,1.0,100% lemmas found
+obezzhirivateli,uk,знежирювач для металу,110,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+obezzhirivateli,uk,знежирювач перед поліруванням,70,NORM,True,,,,
+obezzhirivateli,uk,знежирювач поверхні,30,PARTIAL,False,,,1.0,100% lemmas found
+oborudovanie,uk,обладнання для хімчистки авто,90,NORM,True,,,,
+oborudovanie,uk,обладнання для мийки автомобілів,10,PARTIAL,False,,,0.5,50% lemmas found
+oborudovanie,uk,обладнання для хімчистки салонів авто,10,PARTIAL,False,,,0.8,80% lemmas found
+ochistiteli-diskov,uk,очищувач дисків,590,EXACT,True,,,,
+ochistiteli-diskov,uk,засіб для чищення дисків автомобіля,320,SYNONYM,True,засіб для чищення дисків,EXACT,,
+ochistiteli-diskov,uk,очищувач колісних дисків,170,NORM,True,,,,
+ochistiteli-diskov,uk,хімія для чищення дисків,140,SYNONYM,True,хімія для дисків,NORM,,
+ochistiteli-diskov,uk,щітка для дисків,140,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+ochistiteli-diskov,uk,очищувач гальмівних дисків,90,PARTIAL,False,,,1.0,100% lemmas found
+ochistiteli-diskov,uk,щітка для миття дисків,90,PARTIAL,False,,,0.5,50% lemmas found
+ochistiteli-diskov,uk,щітка для миття коліс,70,ABSENT,False,,,,
+ochistiteli-diskov,uk,очищувач коліс,40,NORM,True,,,,
+ochistiteli-diskov,uk,засіб для очищення дисків від іржі,40,PARTIAL,False,,,0.8333333333333334,83% lemmas found
+ochistiteli-dvigatelya,uk,очищувач двигуна,1000,EXACT,True,,,,
+ochistiteli-dvigatelya,uk,засіб для миття двигуна,480,SYNONYM,True,засіб для миття мотора,EXACT,,
+ochistiteli-dvigatelya,uk,хімія для миття двигуна,480,NORM,True,,,,
+ochistiteli-dvigatelya,uk,консервант двигуна,260,PARTIAL,False,,,1.0,100% lemmas found
+ochistiteli-dvigatelya,uk,автохімія для двигуна,140,NORM,True,,,,
+ochistiteli-dvigatelya,uk,рідина для миття двигуна,40,EXACT,True,,,,
+ochistiteli-dvigatelya,uk,очищувач двигуна зовнішній,40,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+ochistiteli-dvigatelya,uk,очищувач двигуна від мастила,30,PARTIAL,False,,,0.75,75% lemmas found
+ochistiteli-kozhi,uk,очищувач шкіри авто,320,NORM,True,,,,
+ochistiteli-kozhi,uk,засіб для чищення шкіри авто,210,EXACT,True,,,,
+ochistiteli-kozhi,uk,засіб для догляду за шкірою авто,110,EXACT,True,,,,
+ochistiteli-kozhi,uk,засіб для чищення шкіряного салону,110,NORM,True,,,,
+ochistiteli-kuzova,uk,очищувач кузова,320,EXACT,True,,,,
+ochistiteli-kuzova,uk,очищувач плям на авто,70,EXACT,True,,,,
+ochistiteli-kuzova,uk,засіб для видалення іржі з авто,50,EXACT,True,,,,
+ochistiteli-kuzova,uk,очищувач іржі,30,EXACT,True,,,,
+ochistiteli-shin,uk,очищувач гуми,260,EXACT,True,,,,
+ochistiteli-shin,uk,засіб для догляду за гумою,90,EXACT,True,,,,
+ochistiteli-shin,uk,відновлювач гуми,90,EXACT,True,,,,
+ochistiteli-shin,uk,поліроль для гуми,10,EXACT,True,,,,
+ochistiteli-stekol,uk,очищувач скла,210,EXACT,True,,,,
+ochistiteli-stekol,uk,засіб для миття скла авто,170,EXACT,True,,,,
+ochistiteli-stekol,uk,розморожувач скла,170,EXACT,True,,,,
+ochistiteli-stekol,uk,антизапотівач скла,140,EXACT,True,,,,
+ochistiteli-stekol,uk,очищувач слідів скотчу,30,NORM,True,,,,
+ochistiteli-stekol,uk,розморожувач замків,30,EXACT,True,,,,
+omyvatel,uk,омивач скла,1300,EXACT,True,,,,
+omyvatel,uk,зимовий омивач скла,720,PARTIAL,False,,,1.0,100% lemmas found
+omyvatel,uk,літній омивач,30,EXACT,True,,,,
+opt-i-b2b,uk,магазин автохімії,390,PARTIAL,False,,,0.5,50% lemmas found
+opt-i-b2b,uk,автохімія від виробника,10,NORM,True,,,,
+opt-i-b2b,uk,автокосметика оптом,10,PARTIAL,False,,,0.5,50% lemmas found
+opt-i-b2b,uk,автохімія оптом,10,LEMMA,True,,,,
+opt-i-b2b,uk,детейлінг хімія оптом,10,NORM,True,,,,
+polirol-dlya-stekla,uk,поліроль для фар,320,PARTIAL,False,,,1.0,100% lemmas found
+polirol-dlya-stekla,uk,поліроль для скла,260,EXACT,True,,,,
+polirol-dlya-stekla,uk,засіб для полірування фар,90,PARTIAL,False,,,1.0,100% lemmas found
+polirol-dlya-stekla,uk,полірування скла,40,LEMMA,True,,,,
+polirol-dlya-stekla,uk,поліроль для фар своїми руками,30,PARTIAL,False,,,0.6,60% lemmas found
+poliroli-dlya-plastika,uk,поліроль для пластику,1300,EXACT,True,,,,
+poliroli-dlya-plastika,uk,поліроль для торпеди,720,LEMMA,True,,,,
+poliroli-dlya-plastika,uk,очищувач пластику авто,320,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+poliroli-dlya-plastika,uk,відновлювач пластику,260,PARTIAL,False,,,0.5,50% lemmas found
+poliroli-dlya-plastika,uk,поліроль для чорного пластику,210,PARTIAL,False,,,0.75,75% lemmas found
+poliroli-dlya-plastika,uk,засіб для догляду за пластиком авто,210,PARTIAL,False,,,1.0,100% lemmas found
+poliroli-dlya-plastika,uk,відновлювач кольору пластику,110,ABSENT,False,,,,
+poliroli-dlya-plastika,uk,поліроль для металу,110,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+poliroli-dlya-plastika,uk,поліроль для дисків,110,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+poliroli-dlya-plastika,uk,поліроль для хрому,90,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+polirovalnye-mashinki,uk,полірувальна машина для авто,590,SYNONYM,True,полірувальна машинка для авто,NORM,,
+polirovalnye-mashinki,uk,полірувальні машини,110,PARTIAL,False,,,0.5,50% lemmas found
+polirovalnye-mashinki,uk,круг полірувальний,90,PARTIAL,False,,,1.0,100% lemmas found
+polirovalnye-pasty,uk,паста для полірування авто,720,LEMMA,True,,,,
+polirovalnye-pasty,uk,паста для полірування кузова автомобіля,390,PARTIAL,False,,,1.0,100% lemmas found
+polirovalnye-pasty,uk,поліроль від подряпин,110,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+polirovalnye-pasty,uk,паста для полірування фар,90,PARTIAL,False,,,0.75,75% lemmas found
+polirovalnye-pasty,uk,засіб для видалення подряпин на авто,90,PARTIAL,False,,,0.8,80% lemmas found
+polirovalnye-pasty,uk,паста для видалення подряпин,50,PARTIAL,False,,,1.0,100% lemmas found
+polirovalnye-pasty,uk,набір паст для полірування авто,30,NORM,True,,,,
+polirovka,uk,полірування авто,1300,EXACT,True,,,,
+polirovka,uk,засоби для полірування авто,480,EXACT,True,,,,
+polirovka,uk,поліроль для авто,480,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+polirovka,uk,поліроль для кузова,390,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+polirovka,uk,полірувальні круги,320,EXACT,True,,,,
+polirovka,uk,полірування фар,260,PARTIAL,False,,,0.5,50% lemmas found
+polirovka,uk,полірування авто своїми руками,90,PARTIAL,False,,,0.5,50% lemmas found
+polirovka,uk,поліроль для панелі автомобіля,90,PARTIAL,False,,,0.75,75% lemmas found
+polirovka,uk,поліроль для шкіри,30,ABSENT,False,,,,
+polirovka,uk,набір паст для полірування авто,30,PARTIAL,False,,,1.0,100% lemmas found
+pyatnovyvoditeli,uk,плямовивідник,2400,EXACT,True,,,,
+pyatnovyvoditeli,uk,плямовивідник для салону авто,10,LEMMA,True,,,,
+pyatnovyvoditeli,uk,плямовивідник для сидінь авто,10,NORM,True,,,,
+raspyliteli-i-penniki,uk,розпилювач для води,480,EXACT,True,,,,
+raspyliteli-i-penniki,uk,піногенератор для мийки,90,EXACT,True,,,,
+raspyliteli-i-penniki,uk,пінна насадка,50,EXACT,True,,,,
+shampuni-dlya-ruchnoy-moyki,uk,засіб для миття автомобіля,320,NORM,True,,,,
+shampuni-dlya-ruchnoy-moyki,uk,шампунь для ручної мийки авто,170,EXACT,True,,,,
+shampuni-dlya-ruchnoy-moyki,uk,шампунь для миття авто,140,EXACT,True,,,,
+shampuni-dlya-ruchnoy-moyki,uk,засіб для миття кузова,70,PARTIAL,False,,,0.75,75% lemmas found
+shchetka-dlya-moyki-avto,uk,щітка для миття авто,1000,EXACT,True,,,,
+shchetka-dlya-moyki-avto,uk,щітка для чищення салону авто,320,PARTIAL,False,,,0.8,80% lemmas found
+shchetka-dlya-moyki-avto,uk,щітка для хімчистки авто,210,PARTIAL,False,,,1.0,100% lemmas found
+shchetka-dlya-moyki-avto,uk,щітка для видалення шерсті,170,PARTIAL,False,,,1.0,100% lemmas found
+shchetka-dlya-moyki-avto,uk,м'які щітки для миття машини,110,EXACT,True,,,,
+shchetka-dlya-moyki-avto,uk,щітка для снігу,110,PARTIAL,False,,,1.0,100% lemmas found
+shchetka-dlya-moyki-avto,uk,щітка скребок для авто,90,PARTIAL,False,,,1.0,100% lemmas found
+shchetka-dlya-moyki-avto,uk,щітка для чищення сидінь,50,PARTIAL,False,,,0.75,75% lemmas found
+shchetka-dlya-moyki-avto,uk,щітка для пилу в авто,40,PARTIAL,False,,,1.0,100% lemmas found
+shchetka-dlya-moyki-avto,uk,щітка для чищення килимків,30,PARTIAL,False,,,0.75,75% lemmas found
+shchetka-dlya-moyki-avto,uk,щітка для миття дисків авто,10,PARTIAL,False,,,1.0,100% lemmas found
+silanty,uk,силант,50,EXACT,True,,,,
+silanty,uk,силанти для авто,40,LEMMA,True,,,,
+silanty,uk,силант для кузова,10,EXACT,True,,,,
+silanty,uk,силант покриття,10,PARTIAL,False,,,1.0,100% lemmas found
+sredstva-dlya-khimchistki-salona,uk,хімчистка салону авто,1300,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+sredstva-dlya-khimchistki-salona,uk,засоби для хімчистки салону автомобіля,1000,SYNONYM,True,засіб для хімчистки салону,EXACT,,
+sredstva-dlya-khimchistki-salona,uk,хімія для хімчистки салону автомобіля,1000,PARTIAL,False,,,0.6,60% lemmas found
+sredstva-dlya-khimchistki-salona,uk,очищувач салону,590,EXACT,True,,,,
+sredstva-dlya-khimchistki-salona,uk,засіб для чищення салону автомобіля,590,PARTIAL,False,,,0.8,80% lemmas found
+sredstva-dlya-khimchistki-salona,uk,поліроль для салону авто,480,PARTIAL,False,,,0.5,50% lemmas found
+sredstva-dlya-khimchistki-salona,uk,засіб для чищення сидінь автомобіля,320,PARTIAL,False,,,0.8,80% lemmas found
+sredstva-dlya-khimchistki-salona,uk,набір для хімчистки авто,260,PARTIAL,False,,,0.5,50% lemmas found
+sredstva-dlya-khimchistki-salona,uk,очищувач кондиціонера,260,PARTIAL,False,,,0.5,50% lemmas found
+sredstva-dlya-khimchistki-salona,uk,професійна хімія для хімчистки салону,210,PARTIAL,False,,,0.6,60% lemmas found
+sredstva-dlya-khimchistki-salona,uk,засіб для чищення тканинного салону,140,PARTIAL,False,,,1.0,100% lemmas found
+sredstva-dlya-khimchistki-salona,uk,очищувач велюру,110,PARTIAL,False,,,0.5,50% lemmas found
+sredstva-dlya-khimchistki-salona,uk,засіб для чищення алькантари,110,PARTIAL,False,,,0.75,75% lemmas found
+sredstva-dlya-khimchistki-salona,uk,засіб для чищення ковроліну в авто,90,PARTIAL,False,,,0.6,60% lemmas found
+sredstva-dlya-khimchistki-salona,uk,засіб для чищення стелі авто,70,PARTIAL,False,,,0.8,80% lemmas found
+sredstva-dlya-khimchistki-salona,uk,очищувач салону піна,50,PARTIAL,False,,,1.0,100% lemmas found
+sredstva-dlya-khimchistki-salona,uk,пінний очищувач салону,40,PARTIAL,False,,,1.0,100% lemmas found
+sredstva-dlya-kozhi,uk,засоби для шкіри авто,280,EXACT,True,,,,
+sredstva-dlya-kozhi,uk,кондиціонер для шкіри авто,170,LEMMA,True,,,,
+sredstva-dlya-kozhi,uk,поліроль для шкіри авто,170,PARTIAL,False,,,0.75,75% lemmas found
+sredstva-dlya-kozhi,uk,набір для догляду за шкіряним салоном,90,PARTIAL,False,,,0.8,80% lemmas found
+sredstva-dlya-kozhi,uk,хімія для шкіри авто,50,PARTIAL,False,,,1.0,100% lemmas found
+tverdyy-vosk,uk,твердий віск для авто,1300,EXACT,True,,,,
+tverdyy-vosk,uk,твердий віск для полірування авто,10,EXACT,True,,,,
+ukhod-za-intererom,uk,хімчистка салону авто,320,EXACT,True,,,,
+ukhod-za-intererom,uk,автохімія для салону,320,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+ukhod-za-intererom,uk,догляд за салоном авто,170,EXACT,True,,,,
+ukhod-za-intererom,uk,засоби для салону автомобіля,90,PARTIAL,False,,,1.0,100% lemmas found
+ukhod-za-intererom,uk,автокосметика для салону,40,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+ukhod-za-kozhey,uk,догляд за шкірою авто,210,EXACT,True,,,,
+ukhod-za-kozhey,uk,поліроль для шкіри,170,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+ukhod-za-kozhey,uk,краще засіб по догляду за шкірою авто,140,SYNONYM,True,засіб по догляду за шкірою авто,LEMMA,,
+ukhod-za-kozhey,uk,крем для шкіри авто,70,PARTIAL,False,,,1.0,100% lemmas found
+ukhod-za-naruzhnym-plastikom,uk,відновлювач пластику авто,110,NORM,True,,,,
+ukhod-za-naruzhnym-plastikom,uk,поліроль для зовнішнього пластику автомобіля,40,EXACT,True,,,,
+ukhod-za-naruzhnym-plastikom,uk,чорнитель для зовнішнього пластику,10,NORM,True,,,,
+ukhod-za-naruzhnym-plastikom,uk,догляд за бамперами,10,NORM,True,,,,
+vedra-i-emkosti,uk,відро для миття авто,170,EXACT,True,,,,
+vedra-i-emkosti,uk,відро для дітейлінгу,50,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+vedra-i-emkosti,uk,відро з сіткою для миття,10,NORM,True,,,,
+vedra-i-emkosti,uk,професійне відро для миття,10,EXACT,True,,,,
+voski,uk,віск для авто,1000,EXACT,True,,,,
+voski,uk,віск для миття авто,720,PARTIAL,False,,,1.0,100% lemmas found
+voski,uk,віск для кузова авто,480,PARTIAL,False,,,1.0,100% lemmas found
+voski,uk,віск для полірування авто,320,PARTIAL,False,,,0.75,75% lemmas found
+voski,uk,віск для сушки авто,140,PARTIAL,False,,,0.75,75% lemmas found
+voski,uk,віск для чорних авто,90,PARTIAL,False,,,0.75,75% lemmas found
+voski,uk,холодний віск для авто,90,PARTIAL,False,,,0.75,75% lemmas found
+voski,uk,поліроль з воском,70,PARTIAL,False,,,1.0,100% lemmas found
+voski,uk,віск карнауба,70,PARTIAL,False,,,1.0,100% lemmas found
+voski,uk,віск для авто рідкий,40,PARTIAL,False,,,1.0,100% lemmas found
+voski,uk,восковий поліроль для авто,30,EXACT,True,,,,
+voski,uk,віск для авто як користуватися,30,PARTIAL,False,,,0.75,75% lemmas found
+voski,uk,гарячий віск для авто,20,PARTIAL,False,,,1.0,100% lemmas found
+voski,uk,швидкий віск для авто,20,PARTIAL,False,,,1.0,100% lemmas found
+zashchitnye-pokrytiya,uk,рідка гума для авто,90,PARTIAL,False,,,0.5,50% lemmas found
+zashchitnye-pokrytiya,uk,захисне покриття для авто,70,EXACT,True,,,,
+zashchitnye-pokrytiya,uk,силікон для авто,70,PARTIAL,False,,,0.6666666666666666,66% lemmas found
+zhidkiy-vosk,uk,рідкий віск для авто,320,EXACT,True,,,,
+zhidkiy-vosk,uk,рідкий віск для кузова,10,PARTIAL,False,,,0.75,75% lemmas found
+zhidkiy-vosk,uk,рідкий віск для миття авто,10,PARTIAL,False,,,1.0,100% lemmas found
+zhidkiy-vosk,uk,рідкий віск для автомийки,10,PARTIAL,False,,,0.75,75% lemmas found
