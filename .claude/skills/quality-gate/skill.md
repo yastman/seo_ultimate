@@ -69,9 +69,10 @@ python scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 ### 3. Content Validation (_ru.md /_uk.md)
 
 ```bash
-python scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
-python scripts/check_keyword_density.py categories/{slug}/content/{slug}_ru.md
-python scripts/check_water_natasha.py categories/{slug}/content/{slug}_ru.md
+python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
+python3 scripts/check_keyword_density.py categories/{slug}/content/{slug}_ru.md
+python3 scripts/check_water_natasha.py categories/{slug}/content/{slug}_ru.md
+python3 scripts/audit_coverage.py --slug {slug} --lang ru --json --include-meta
 ```
 
 **Checks:**
@@ -85,12 +86,22 @@ python scripts/check_water_natasha.py categories/{slug}/content/{slug}_ru.md
 - [ ] **НЕТ how-to секций** (BLOCKER!)
 - [ ] Word count appropriate (400-700)
 - [ ] No brand names/prices
-- [ ] Primary keyword in first 100 words
-- [ ] Secondary keywords used naturally
 - [ ] Stem-группа ≤2.5% (BLOCKER >3.0%)
 - [ ] Классическая тошнота ≤3.5 (BLOCKER >4.0)
 - [ ] **Academic ≥7%** (WARNING <7%)
 - [ ] Вода 40-65% (WARNING >75%)
+- [ ] **Keywords coverage** (audit_coverage.py --include-meta)
+
+**Keywords Coverage (audit_coverage.py --json --include-meta):**
+
+| Источник | Группа | Требование | При фейле |
+|----------|--------|------------|-----------|
+| keywords_in_content | primary | 100% COVERED | BLOCKER |
+| keywords_in_content | secondary | 100% COVERED | BLOCKER |
+| keywords_in_content | supporting | ≥80% COVERED | WARNING |
+| keywords[] | all | adaptive threshold | WARNING |
+
+Adaptive thresholds: ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
 
 > **Примечание:** entities в _clean.json автогенерированные — НЕ использовать для контента. Профтермины берутся из RESEARCH_DATA.md.
 
@@ -310,7 +321,12 @@ If FAIL: Fix issues, then run `/quality-gate {slug}` again
 
 ---
 
-**Version:** 3.0 — January 2026
+**Version:** 3.1 — January 2026
+
+**Changelog v3.1:**
+- ADDED: audit_coverage.py в Content Validation (динамические пороги)
+- ADDED: Keywords Coverage check с порогами ≤5→70%, 6-15→60%, >15→50%
+- ADDED: Диагностика TOKENIZATION/PARTIAL/ABSENT для непокрытых ключей
 
 **Changelog v3.0:**
 - REMOVED: "Has how-to section" (how-to секции запрещены в buyer guide)

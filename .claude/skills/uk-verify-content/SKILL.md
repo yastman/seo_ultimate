@@ -136,17 +136,36 @@ Fix terminology now? [Y/n]
 
 ---
 
-### Phase 5: Keywords Coverage
+### Phase 5: Keywords Coverage (audit_coverage.py)
+
+```bash
+python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
+```
+
+**Правила вердикту:**
+
+| Джерело | Вимога | Severity |
+|---------|--------|----------|
+| primary+secondary | **100% COVERED** | BLOCKER |
+| supporting | **≥80% COVERED** | WARNING |
+| keywords[] | threshold по кількості | WARNING |
+
+**COVERED** = EXACT / NORM / LEMMA / SYNONYM
+**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT
+
+**Output:**
 
 ```
 ## Keywords Coverage
 
-Primary (need 100%, 3+ occurrences):
-- ✅ "активна піна" — 5×
-- ❌ "піна для безконтактного миття" — NOT FOUND
+| Джерело | Covered | Total | % | Status |
+|---------|---------|-------|---|--------|
+| primary+secondary | 7/8 | 88% | ❌ BLOCKER |
+| supporting | 4/5 | 80% | ✅ PASS |
+| keywords[] | 8/15 | 53% | ⚠️ WARNING (threshold 50%) |
 
-Secondary (need ≥80%): ✅ 4/5 (80%)
-Supporting (need ≥80%): ✅ 6/7 (86%)
+**NOT COVERED (primary/secondary):**
+- "піна для безконтактного миття" (1200) — ABSENT
 
 ⚠️ 1 primary keyword missing. Add? [Y/n]
 ```
@@ -273,3 +292,12 @@ Apply this fix? [Y/n/edit]
 | Primary keyword | 3-7× | 0 or >10 |
 | H2 with keyword | ≥2 | 0 |
 | Word count | 400-700 | <300 or >800 |
+
+---
+
+**Version:** 1.1 — January 2026
+
+**Changelog v1.1:**
+- **ADDED: audit_coverage.py інтеграція** — Phase 5 використовує `--include-meta` для детальної перевірки coverage
+- Автоматична перевірка primary/secondary/supporting з JSON-виводом
+- Чіткі severity: BLOCKER для primary+secondary, WARNING для supporting та keywords[]

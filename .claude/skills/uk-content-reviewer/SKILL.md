@@ -3,7 +3,7 @@ name: uk-content-reviewer
 description: Ревізія та виправлення UK контенту категорії по плану v3.0. Use when uk-content-reviewer {slug}, перевір UK контент, ревізія українського контенту. Автономний режим — знаходить та виправляє проблеми без інтерактивності.
 ---
 
-# UK Content Reviewer v2.0
+# UK Content Reviewer v2.1
 
 Перевірка та виправлення контенту **однієї UK категорії** за виклик.
 
@@ -73,7 +73,7 @@ uk/categories/{slug}/
 ```
 Step 1: Read files (parallel)
 Step 2: Run validators (parallel)
-Step 3: Keywords Coverage (100% required)
+Step 3: Keywords Coverage (audit_coverage.py)
 Step 4: Research Completeness
 Step 5: Commercial Intent Check
 Step 6: Dryness Diagnosis
@@ -101,13 +101,42 @@ python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 python3 scripts/validate_seo.py uk/categories/{slug}/content/{slug}_uk.md "{primary}"
 ```
 
-### Step 3: Keywords Coverage (100% required)
+### Step 3: Keywords Coverage (audit_coverage.py)
 
-| Група | Вимога | Severity |
-|-------|--------|----------|
-| primary | **100%** | BLOCKER |
-| secondary | **100%** | BLOCKER |
-| supporting | **≥80%** | WARNING |
+```bash
+python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
+```
+
+**Правила вердикту:**
+
+| Джерело | Вимога | Severity |
+|---------|--------|----------|
+| primary+secondary | **100% COVERED** | BLOCKER |
+| supporting | **≥80% COVERED** | WARNING |
+| keywords[] | threshold по кількості | WARNING |
+
+**COVERED** = EXACT / NORM / LEMMA / SYNONYM
+**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT → фейл групи
+
+**Thresholds для keywords[]:**
+- ≤5 ключів → 70%
+- 6-15 ключів → 60%
+- >15 ключів → 50%
+
+**Формат виводу:**
+
+```markdown
+### Keywords Coverage
+
+| Джерело | Covered | Total | % | Status |
+|---------|---------|-------|---|--------|
+| primary+secondary | 8/8 | 100% | ✅ PASS |
+| supporting | 4/5 | 80% | ✅ PASS |
+| keywords[] | 8/15 | 53% | ⚠️ WARNING (threshold 50%) |
+
+**NOT COVERED (primary/secondary):** ключ1 (volume), ключ2 (volume)
+**NOT COVERED (keywords[]):** топ-5 по volume
+```
 
 **Куди розподіляти:** Intro (primary), H2 (secondary), Сценарії/Таблиці (supporting)
 
@@ -157,7 +186,7 @@ grep -c "стекло" uk/categories/{slug}/content/{slug}_uk.md  # Має бу�
 | Meta | ✅/❌ | validate_meta.py |
 | Density | ✅/⚠️/❌ | stem max X% |
 | Academic | ✅/⚠️ | X% (≥7%) |
-| **Keywords** | ✅/⚠️/❌ | **primary X/X, secondary X/X** |
+| **Keywords** | ✅/⚠️/❌ | **primary+secondary X/X, supporting X/X** |
 | **Research Types** | ✅/❌ | **всі типи з Блок 2** |
 | **Commercial Intent** | ✅/❌ | всі секції про вибір |
 | **Dryness** | ✅/⚠️/❌ | TEXT OK / MINOR / REWRITE |
@@ -254,7 +283,12 @@ uk/categories/cherniteli-shin/content/cherniteli-shin_uk.md
 
 ---
 
-**Version:** 2.0 — January 2026 (based on RU content-reviewer v2.0)
+**Version:** 2.1 — January 2026
+
+**Changelog v2.1:**
+- **ADDED: audit_coverage.py інтеграція** — Step 3 використовує `--include-meta` для детальної перевірки coverage
+- Автоматична перевірка primary/secondary/supporting з JSON-виводом
+- Чіткі severity: BLOCKER для primary+secondary, WARNING для supporting та keywords[]
 
 **Changelog v2.0:**
 - **Синхронізовано з RU content-reviewer v2.0** — повний паритет

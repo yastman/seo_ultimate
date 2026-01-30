@@ -163,6 +163,34 @@ python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 | Класична тошнота | ≤3.5 | >4.0 |
 | Вода | 40-65% | >75% |
 
+### 8. Keywords Coverage (audit_coverage.py)
+
+```bash
+python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
+```
+
+**Правила вердикту:**
+
+| Джерело | Вимога | Severity |
+|---------|--------|----------|
+| primary+secondary | **100% COVERED** | BLOCKER |
+| supporting | **≥80% COVERED** | WARNING |
+| keywords[] | threshold по кількості | WARNING |
+
+**COVERED** = EXACT / NORM / LEMMA / SYNONYM
+**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT → фейл групи
+
+**Thresholds для keywords[]:**
+- ≤5 ключів → 70%
+- 6-15 ключів → 60%
+- >15 ключів → 50%
+
+**Результат у звіті:**
+
+| Keywords (primary+secondary) | ✅/❌ | 8/8 (100%) |
+| Keywords (supporting) | ✅/⚠️ | 4/5 (80%) |
+| Keywords (semantic) | ✅/⚠️ | 12/15 (80%) |
+
 ---
 
 ## Workflow
@@ -196,6 +224,9 @@ python3 scripts/check_h1_sync.py --lang uk
 
 # Semantic coverage check
 python3 scripts/check_semantic_coverage.py --lang uk
+
+# Keywords coverage (audit_coverage.py)
+python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
 ```
 
 ### Step 2: Generate Report
@@ -217,6 +248,9 @@ python3 scripts/check_semantic_coverage.py --lang uk
 | Keyword Density | ✅/❌ | Stem: X%, Nausea: Y |
 | SEO Structure | ✅/❌ | H2 with keyword: X, Intro keyword: ✅/❌ |
 | Academic Nausea | ✅/❌ | Academic: X%, Water: Y% |
+| Keywords (primary+secondary) | ✅/❌ | X/X (100%) |
+| Keywords (supporting) | ✅/⚠️ | X/X (≥80%) |
+| Keywords (semantic) | ✅/⚠️ | X/X (threshold%) |
 
 ## Issues Found
 
@@ -265,6 +299,8 @@ uk/categories/{slug}/QUALITY_REPORT.md
 | Патерни "Якщо X→Y" ≥3 | ✅ |
 | Academic ≥7% | ⚠️ |
 | Word count 400-700 | ✅ |
+| Keywords (primary+secondary) 100% | ✅ |
+| Keywords (supporting) ≥80% | ⚠️ |
 
 ---
 
@@ -308,7 +344,12 @@ If FAIL: Fix issues, then run /uk-quality-gate {slug} again
 
 ---
 
-**Version:** 3.1
+**Version:** 3.2
+
+**Changelog v3.2:**
+- **ADDED: audit_coverage.py інтеграція** — Section 8 Keywords Coverage
+- Автоматична перевірка primary/secondary/supporting з JSON-виводом
+- Додано Keywords coverage до Report та Pass Criteria
 
 **Changelog v3.1:**
 - ADDED: Reference to shared/validation-checklist.md for common rules

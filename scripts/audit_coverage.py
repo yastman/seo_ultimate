@@ -346,16 +346,30 @@ def main():
                 continue
 
             keywords, synonyms, content = data
-            result = audit_category(keywords, synonyms, content, lang)
-            result["slug"] = args.slug
-            result["lang"] = lang
 
-            if args.json:
+            if args.json and args.include_meta:
+                # --include-meta mode: audit both keywords_in_content and keywords[]
+                meta_kw = load_meta_keywords(args.slug, lang)
+                if meta_kw is None:
+                    meta_kw = {"primary": [], "secondary": [], "supporting": []}
+                result = audit_with_meta(keywords, synonyms, meta_kw, content, lang)
+                result["slug"] = args.slug
+                result["lang"] = lang
                 print(json.dumps(result, ensure_ascii=False, indent=2))
-            elif args.verbose:
-                print_verbose(args.slug, lang, result)
             else:
-                print(f"{args.slug} ({lang}): {result['covered']}/{result['total']} ({result['coverage_percent']}%)")
+                # Standard mode: only keywords[]
+                result = audit_category(keywords, synonyms, content, lang)
+                result["slug"] = args.slug
+                result["lang"] = lang
+
+                if args.json:
+                    print(json.dumps(result, ensure_ascii=False, indent=2))
+                elif args.verbose:
+                    print_verbose(args.slug, lang, result)
+                else:
+                    print(
+                        f"{args.slug} ({lang}): {result['covered']}/{result['total']} ({result['coverage_percent']}%)"
+                    )
     else:
         # Batch mode
         langs = ["ru", "uk"] if args.lang == "all" else [args.lang]

@@ -95,26 +95,48 @@ Found 2 AI patterns. Show context? [Y/n]
 
 ---
 
-### Phase 4: Keywords Coverage
+### Phase 4: Keywords Coverage (audit_coverage.py)
 
-1. Get keywords from `_meta.json` → `keywords_in_content`
-2. Search each in content (any declension OK)
-3. Show coverage
+```bash
+python3 scripts/audit_coverage.py --slug {slug} --lang ru --json --include-meta
+```
+
+**Два источника ключей:**
+1. `keywords_in_content` из _meta.json (primary/secondary/supporting) — **строгая проверка**
+2. `keywords[]` из _clean.json — **информативная проверка**
+
+**Правила вердикта:**
+
+| Источник | Группа | Требование | При фейле |
+|----------|--------|------------|-----------|
+| keywords_in_content | primary | 100% COVERED | BLOCKER |
+| keywords_in_content | secondary | 100% COVERED | BLOCKER |
+| keywords_in_content | supporting | ≥80% COVERED | WARNING |
+| keywords[] | all | adaptive threshold | WARNING |
+
+**COVERED** = EXACT / NORM / LEMMA / SYNONYM
+**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT
+
+**Adaptive thresholds для keywords[]:** ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
 
 **Output format:**
 
 ```
 ## Keywords Coverage
 
-Primary (need 100%):
-- ✅ "активная пена" — found 5×
-- ❌ "пена для бесконтактной мойки" — NOT FOUND
+| Источник | Covered | Total | % | Status |
+|----------|---------|-------|---|--------|
+| primary+secondary | 8/8 | 100% | ✅ PASS |
+| supporting | 4/5 | 80% | ✅ PASS |
+| keywords[] | 8/15 | 53% | ⚠️ WARNING (threshold 50%) |
 
-Secondary (need ≥80%): ✅ 4/5 (80%)
-Supporting (need ≥80%): ✅ 6/7 (86%)
+**NOT COVERED (primary/secondary):** нет
+**NOT COVERED (keywords[]):** ключ1 (1200), ключ2 (800)
 
-⚠️ 1 primary keyword missing. Add? [Y/n]
+⚠️ 2 keywords[] missing. Add? [Y/n]
 ```
+
+**Куда распределять:** Intro (primary), H2 (secondary), Сценарии/Таблицы (supporting)
 
 ---
 
@@ -226,3 +248,18 @@ Apply this fix? [Y/n/edit]
 | Fixes | Automatic | On request |
 | Speed | Fast (batch) | Thorough |
 | Use case | Mass revision | Pre-prod QA |
+
+---
+
+**Version:** 1.2 — January 2026
+
+**Changelog v1.2:**
+- **ADDED: audit_coverage.py --include-meta интеграция** — Phase 4 использует `--json --include-meta` для детальной проверки coverage
+- Автоматическая проверка primary/secondary/supporting с JSON-выводом
+- Чёткие severity: BLOCKER для primary+secondary, WARNING для supporting и keywords[]
+
+**Changelog v1.1:**
+- REPLACED: Phase 4 Keywords Coverage → audit_coverage.py
+- ADDED: Статусы EXACT/NORM/LEMMA/SYNONYM для покрытых ключей
+- ADDED: Диагностика TOKENIZATION/PARTIAL/ABSENT для непокрытых
+- ADDED: Динамические пороги (≤5→70%, 6-15→60%, >15→50%)
