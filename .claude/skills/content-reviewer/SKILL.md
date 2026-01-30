@@ -116,12 +116,12 @@ python3 scripts/audit_coverage.py --slug {slug} --lang ru --json --include-meta
 | keywords_in_content | primary | 100% COVERED | BLOCKER |
 | keywords_in_content | secondary | 100% COVERED | BLOCKER |
 | keywords_in_content | supporting | ≥80% COVERED | WARNING |
-| keywords[] | all | adaptive threshold | WARNING |
+| keywords[] | all | adaptive threshold | BLOCKER |
 
 **Adaptive thresholds для keywords[]:** ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
 
-**COVERED** = EXACT / NORM / LEMMA / SYNONYM
-**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT
+**COVERED** = EXACT / NORM / LEMMA
+**NOT COVERED** = SYNONYM / PARTIAL / ABSENT
 
 **Формат вывода:**
 
