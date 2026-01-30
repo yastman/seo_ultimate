@@ -153,18 +153,27 @@ class MorphAnalyzer:
     @lru_cache(maxsize=10000)  # noqa: B019 - singleton, no memory leak
     def get_lemma(self, word: str) -> str:
         """
-        Получить лемму (начальную форму) слова.
+        Получить лемму (начальную форму) слова, фильтруя surname parses.
 
         щётки → щётка
         машинки → машинка
         грязеуловителем → грязеуловитель
+        губка → губка (not губко - surname)
         """
         word_lower = word.lower()
 
         if self._use_pymorphy and self._morph:
-            parsed = self._morph.parse(word_lower)
-            if parsed:
-                return parsed[0].normal_form
+            parses = self._morph.parse(word_lower)
+            if parses:
+                # Filter out surname (Surn) parses - they give false lemmas
+                # e.g., "губка" parsed as surname "Губко" instead of noun "губка"
+                non_surname = [p for p in parses if "Surn" not in p.tag]
+
+                if non_surname:
+                    return non_surname[0].normal_form
+
+                # Fallback if all parses are surnames
+                return parses[0].normal_form
 
         if self._stemmer:
             return self._stemmer.stemWord(word_lower)
