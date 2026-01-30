@@ -1,10 +1,16 @@
 {
   "id": "vedra-i-emkosti",
   "language": "uk",
-  "total_volume": 470,
+  "total_volume": 220,
   "keywords": [
-    {"keyword": "відро для миття авто", "volume": 170},
-    {"keyword": "відро для дітейлінгу", "volume": 50}
+    {
+      "keyword": "відро для миття авто",
+      "volume": 170
+    },
+    {
+      "keyword": "відро для дітейлінгу",
+      "volume": 50
+    }
   ],
   "secondary_keywords": [
     {

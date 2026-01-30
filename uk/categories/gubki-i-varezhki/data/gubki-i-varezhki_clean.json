@@ -1,19 +1,23 @@
 {
   "id": "gubki-i-varezhki",
   "language": "uk",
-  "total_volume": 1480,
+  "total_volume": 1830,
   "keywords": [
     {"keyword": "губка для авто", "volume": 590},
+    {"keyword": "мочалка для авто", "volume": 260},
     {"keyword": "губки для миття авто", "volume": 260},
     {"keyword": "губка для полірування авто", "volume": 140},
     {"keyword": "губка для миття машини", "volume": 110},
     {"keyword": "губка меламінова", "volume": 90},
+    {"keyword": "мочалка для машини", "volume": 70},
     {"keyword": "губка для автомийки", "volume": 70},
     {"keyword": "рукавиця з овчини", "volume": 70},
     {"keyword": "губка для нанесення воску", "volume": 50},
     {"keyword": "рукавиця для миття авто", "volume": 50},
     {"keyword": "губка автомобільна", "volume": 30},
-    {"keyword": "губка", "volume": 20}
+    {"keyword": "губка", "volume": 20},
+    {"keyword": "мочалка автомобільна", "volume": 10},
+    {"keyword": "мочалка для миття машини", "volume": 10}
   ],
   "synonyms": [],
   "micro_intents": []

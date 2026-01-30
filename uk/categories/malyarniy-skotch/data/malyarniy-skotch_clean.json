@@ -1,11 +1,24 @@
 {
   "id": "malyarniy-skotch",
   "language": "uk",
-  "total_volume": 10270,
+  "total_volume": 6590,
   "keywords": [
-    {"keyword": "малярний скотч", "volume": 4400},
-    {"keyword": "скотч малярний", "volume": 1300},
-    {"keyword": "малярна стрічка", "volume": 880}
+    {
+      "keyword": "малярний скотч",
+      "volume": 4400
+    },
+    {
+      "keyword": "скотч малярний",
+      "volume": 1300
+    },
+    {
+      "keyword": "малярна стрічка",
+      "volume": 880
+    },
+    {
+      "keyword": "малярний скотч широкий",
+      "volume": 10
+    }
   ],
   "secondary_keywords": [
     {
@@ -76,5 +89,5 @@
       "source_ru": "малярный скотч 10 мм"
     }
   ],
-  "all_keywords_count": 10
+  "all_keywords_count": 11
 }

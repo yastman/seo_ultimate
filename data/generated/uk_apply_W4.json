@@ -1,0 +1,180 @@
+{
+  "cherniteli-shin": [
+    {
+      "keyword": "поліроль для шин",
+      "volume": 70
+    },
+    {
+      "keyword": "чорніння коліс",
+      "volume": 70
+    },
+    {
+      "keyword": "поліроль для гуми",
+      "volume": 10
+    }
+  ],
+  "ochistiteli-diskov": [
+    {
+      "keyword": "засіб для дисків",
+      "volume": 10
+    },
+    {
+      "keyword": "засіб для чистки дисків авто",
+      "volume": 10
+    },
+    {
+      "keyword": "хімія для чистки дисків",
+      "volume": 10
+    }
+  ],
+  "ochistiteli-dvigatelya": [
+    {
+      "keyword": "хімія для миття двигуна",
+      "volume": 390
+    },
+    {
+      "keyword": "хімія для мотора",
+      "volume": 70
+    },
+    {
+      "keyword": "хімія для двигуна",
+      "volume": 40
+    },
+    {
+      "keyword": "хімія для мийки мотора",
+      "volume": 10
+    }
+  ],
+  "shchetka-dlya-moyki-avto": [
+    {
+      "keyword": "щітка для миття авто",
+      "volume": 1000
+    },
+    {
+      "keyword": "щітка для автомобіля",
+      "volume": 170
+    },
+    {
+      "keyword": "купити щітку для миття авто",
+      "volume": 170
+    },
+    {
+      "keyword": "купити щітку для миття автомобіля",
+      "volume": 170
+    },
+    {
+      "keyword": "щітка автомобільна",
+      "volume": 110
+    },
+    {
+      "keyword": "щітка для мийки авто",
+      "volume": 110
+    },
+    {
+      "keyword": "щітка скребок для авто",
+      "volume": 90
+    },
+    {
+      "keyword": "щітка для миття дисків авто",
+      "volume": 30
+    },
+    {
+      "keyword": "купити щітку для миття машини",
+      "volume": 30
+    },
+    {
+      "keyword": "купити щітку для машини",
+      "volume": 20
+    },
+    {
+      "keyword": "щітка для чистки авто",
+      "volume": 10
+    }
+  ],
+  "gubki-i-varezhki": [
+    {
+      "keyword": "мочалка для авто",
+      "volume": 260
+    },
+    {
+      "keyword": "мочалка для машини",
+      "volume": 70
+    },
+    {
+      "keyword": "мочалка автомобільна",
+      "volume": 10
+    },
+    {
+      "keyword": "мочалка для миття машини",
+      "volume": 10
+    }
+  ],
+  "mikrofibra-i-tryapki": [
+    {
+      "keyword": "рушник для сушки авто",
+      "volume": 320
+    },
+    {
+      "keyword": "фібра для авто",
+      "volume": 260
+    },
+    {
+      "keyword": "ганчірка для авто",
+      "volume": 110
+    },
+    {
+      "keyword": "мікрофібра для машини",
+      "volume": 90
+    },
+    {
+      "keyword": "купити мікрофібру для авто",
+      "volume": 70
+    },
+    {
+      "keyword": "мікрофібра для скла авто",
+      "volume": 20
+    },
+    {
+      "keyword": "рушник мікрофібра для авто",
+      "volume": 10
+    },
+    {
+      "keyword": "ганчірка для скла авто",
+      "volume": 10
+    },
+    {
+      "keyword": "мікрофібра для полірування авто",
+      "volume": 10
+    }
+  ],
+  "kisti-dlya-deteylinga": [
+    {
+      "keyword": "щітки для хімчистки авто",
+      "volume": 50
+    },
+    {
+      "keyword": "щітка для шкіри авто",
+      "volume": 10
+    }
+  ],
+  "aksessuary-dlya-naneseniya-sredstv": [
+    {
+      "keyword": "аплікатор для авто",
+      "volume": 10
+    }
+  ],
+  "malyarniy-skotch": [
+    {
+      "keyword": "малярний скотч ціна",
+      "volume": 50
+    },
+    {
+      "keyword": "скотч малярний автомобільний",
+      "volume": 40
+    },
+    {
+      "keyword": "малярний скотч широкий",
+      "volume": 10
+    }
+  ]
+}

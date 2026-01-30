@@ -1,20 +1,22 @@
 {
   "id": "tverdyy-vosk",
   "language": "uk",
-  "total_volume": 1340,
+  "total_volume": 1450,
   "keywords": [
-    {"keyword": "твердий віск для авто", "volume": 1300},
-    {"keyword": "твердий віск", "volume": 40}
-  ],
-  "secondary_keywords": [
+    {
+      "keyword": "твердий віск для авто",
+      "volume": 1300
+    },
     {
       "keyword": "купити твердий віск для авто",
-      "volume": 210,
-      "use_in": "meta_only",
-      "source_ru": "купить твёрдый воск для авто",
-      "_original_category": "tverdyy-vosk"
+      "volume": 110
+    },
+    {
+      "keyword": "твердий віск",
+      "volume": 40
     }
   ],
+  "secondary_keywords": [],
   "supporting_keywords": [
     {
       "keyword": "купити віск для машини",

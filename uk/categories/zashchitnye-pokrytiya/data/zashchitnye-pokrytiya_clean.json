@@ -1,10 +1,16 @@
 {
   "id": "zashchitnye-pokrytiya",
   "language": "uk",
-  "total_volume": 230,
+  "total_volume": 160,
   "keywords": [
-    {"keyword": "рідка гума для авто", "volume": 90},
-    {"keyword": "силікон для авто", "volume": 70}
+    {
+      "keyword": "рідка гума для авто",
+      "volume": 90
+    },
+    {
+      "keyword": "силікон для авто",
+      "volume": 70
+    }
   ],
   "secondary_keywords": [
     {

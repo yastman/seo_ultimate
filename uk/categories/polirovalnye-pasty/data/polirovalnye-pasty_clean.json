@@ -1,8 +1,12 @@
 {
   "id": "polirovalnye-pasty",
   "language": "uk",
-  "total_volume": 2560,
+  "total_volume": 4540,
   "keywords": [
+    {
+      "keyword": "пасти для полірування авто",
+      "volume": 880
+    },
     {
       "keyword": "паста для полірування автомобіля",
       "volume": 880
@@ -12,12 +16,24 @@
       "volume": 720
     },
     {
+      "keyword": "полірувальна паста для авто",
+      "volume": 480
+    },
+    {
       "keyword": "паста для полірування кузова автомобіля",
       "volume": 390
     },
     {
       "keyword": "полірувальна паста",
       "volume": 390
+    },
+    {
+      "keyword": "паста авто",
+      "volume": 110
+    },
+    {
+      "keyword": "паста для полірування",
+      "volume": 110
     },
     {
       "keyword": "поліроль від подряпин",
@@ -32,6 +48,10 @@
       "volume": 90
     },
     {
+      "keyword": "купити полірувальну пасту для авто",
+      "volume": 70
+    },
+    {
       "keyword": "паста для видалення подряпин",
       "volume": 50
     },
@@ -40,11 +60,23 @@
       "volume": 40
     },
     {
+      "keyword": "купити полірувальну пасту",
+      "volume": 40
+    },
+    {
       "keyword": "поліроль для авто відгуки",
       "volume": 40
+    },
+    {
+      "keyword": "набір паст для полірування авто",
+      "volume": 30
+    },
+    {
+      "keyword": "купити пасту для полірування авто",
+      "volume": 20
     }
   ],
   "synonyms": [],
   "micro_intents": [],
-  "all_keywords_count": 7
+  "all_keywords_count": 18
 }

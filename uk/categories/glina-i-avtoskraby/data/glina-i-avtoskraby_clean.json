@@ -1,7 +1,7 @@
 {
   "id": "glina-i-avtoskraby",
   "language": "uk",
-  "total_volume": 1920,
+  "total_volume": 2020,
   "keywords": [
     {"keyword": "глина для авто", "volume": 590},
     {"keyword": "глина для очищення кузова", "volume": 320},
@@ -11,7 +11,10 @@
     {"keyword": "синя глина", "volume": 110},
     {"keyword": "глина для авто купити", "volume": 90},
     {"keyword": "автоскраб", "volume": 90},
-    {"keyword": "синя глина 3м", "volume": 50}
+    {"keyword": "глина для кузова", "volume": 50},
+    {"keyword": "синя глина 3м", "volume": 50},
+    {"keyword": "автомобільна глина", "volume": 40},
+    {"keyword": "глина для полірування", "volume": 10}
   ],
   "synonyms": [],
   "micro_intents": []

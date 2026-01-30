@@ -1,7 +1,7 @@
 {
   "id": "ochistiteli-diskov",
   "language": "uk",
-  "total_volume": 2940,
+  "total_volume": 2970,
   "keywords": [
     {"keyword": "очищувач дисків", "volume": 590},
     {"keyword": "засіб для чищення дисків автомобіля", "volume": 320},
@@ -18,7 +18,10 @@
     {"keyword": "щітка для миття дисків", "volume": 90},
     {"keyword": "очищувач дисків авто", "volume": 70},
     {"keyword": "щітка для миття коліс", "volume": 70},
-    {"keyword": "очищувач коліс", "volume": 40}
+    {"keyword": "очищувач коліс", "volume": 40},
+    {"keyword": "засіб для дисків", "volume": 10},
+    {"keyword": "засіб для чистки дисків авто", "volume": 10},
+    {"keyword": "хімія для чистки дисків", "volume": 10}
   ],
   "synonyms": [
     {

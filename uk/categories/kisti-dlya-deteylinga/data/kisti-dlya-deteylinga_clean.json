@@ -1,11 +1,24 @@
 {
   "id": "kisti-dlya-deteylinga",
   "language": "uk",
-  "total_volume": 610,
+  "total_volume": 220,
   "keywords": [
-    {"keyword": "аксесуари для дітейлінгу", "volume": 90},
-    {"keyword": "набір щіток для дітейлінгу", "volume": 70},
-    {"keyword": "засоби для дітейлінгу", "volume": 50}
+    {
+      "keyword": "аксесуари для дітейлінгу",
+      "volume": 90
+    },
+    {
+      "keyword": "набір щіток для дітейлінгу",
+      "volume": 70
+    },
+    {
+      "keyword": "засоби для дітейлінгу",
+      "volume": 50
+    },
+    {
+      "keyword": "щітка для шкіри авто",
+      "volume": 10
+    }
   ],
   "secondary_keywords": [],
   "supporting_keywords": [
@@ -75,5 +88,5 @@
       "source_ru": "щетка для чистки салона"
     }
   ],
-  "all_keywords_count": 10
+  "all_keywords_count": 11
 }

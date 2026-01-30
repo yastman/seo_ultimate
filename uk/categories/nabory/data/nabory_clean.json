@@ -1,27 +1,122 @@
 {
   "id": "nabory",
   "language": "uk",
-  "total_volume": 1700,
+  "total_volume": 2310,
   "keywords": [
-    {"keyword": "набір для миття авто", "volume": 480},
-    {"keyword": "аксесуари для миття авто", "volume": 170},
-    {"keyword": "набір автохімії", "volume": 140},
-    {"keyword": "набір для полірування авто", "volume": 140},
-    {"keyword": "набір для дітейлінгу", "volume": 110},
-    {"keyword": "приладдя для миття авто", "volume": 110},
-    {"keyword": "набір для догляду за авто", "volume": 40},
-    {"keyword": "подарунковий набір для авто", "volume": 40},
-    {"keyword": "набір для миття машини", "volume": 30},
-    {"keyword": "набір", "volume": 20}
-  ],
-  "secondary_keywords": [
+    {
+      "keyword": "набір для миття авто",
+      "volume": 480
+    },
     {
       "keyword": "набори для авто",
-      "volume": 390,
-      "use_in": "content",
-      "source_ru": "наборы для авто",
-      "_original_category": "nabory"
+      "volume": 320
     },
+    {
+      "keyword": "аксесуари для миття авто",
+      "volume": 170
+    },
+    {
+      "keyword": "набір автохімії",
+      "volume": 140
+    },
+    {
+      "keyword": "набір для полірування авто",
+      "volume": 140
+    },
+    {
+      "keyword": "подарункові набори для чоловіків в машину",
+      "volume": 140
+    },
+    {
+      "keyword": "набір для миття автомобіля",
+      "volume": 140
+    },
+    {
+      "keyword": "набір для дітейлінгу",
+      "volume": 110
+    },
+    {
+      "keyword": "приладдя для миття авто",
+      "volume": 110
+    },
+    {
+      "keyword": "набір для мийки авто",
+      "volume": 70
+    },
+    {
+      "keyword": "набір для догляду за авто",
+      "volume": 40
+    },
+    {
+      "keyword": "подарунковий набір для авто",
+      "volume": 40
+    },
+    {
+      "keyword": "набір для догляду за машиною",
+      "volume": 40
+    },
+    {
+      "keyword": "набір для чистки автомобіля",
+      "volume": 40
+    },
+    {
+      "keyword": "набір для чистки салону авто",
+      "volume": 40
+    },
+    {
+      "keyword": "набір для миття машини",
+      "volume": 30
+    },
+    {
+      "keyword": "подарункові набори в машину",
+      "volume": 30
+    },
+    {
+      "keyword": "полірувальний набір для авто",
+      "volume": 30
+    },
+    {
+      "keyword": "купити набір для полірування авто",
+      "volume": 30
+    },
+    {
+      "keyword": "набір для догляду за салоном автомобіля",
+      "volume": 30
+    },
+    {
+      "keyword": "набір щіток для хімчистки авто",
+      "volume": 30
+    },
+    {
+      "keyword": "набір",
+      "volume": 20
+    },
+    {
+      "keyword": "комплект для полірування авто",
+      "volume": 20
+    },
+    {
+      "keyword": "набір для прибирання машини",
+      "volume": 20
+    },
+    {
+      "keyword": "набір для чистки машини",
+      "volume": 20
+    },
+    {
+      "keyword": "набір для прибирання автомобіля",
+      "volume": 10
+    },
+    {
+      "keyword": "набір для хімчистки автомобіля",
+      "volume": 10
+    },
+    {
+      "keyword": "набір кругів для полірування авто",
+      "volume": 10
+    }
+  ],
+  "secondary_keywords": [
     {
       "keyword": "набори для детейлінгу",
       "volume": 260,
@@ -37,43 +132,15 @@
       "_original_category": "nabory"
     },
     {
-      "keyword": "набір для хімчистки автомобіля",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "набор для химчистки автомобиля",
-      "_original_category": "nabory"
-    },
-    {
-      "keyword": "подарункові набори для чоловіків в машину",
-      "volume": 140,
-      "use_in": "content",
-      "source_ru": "подарочные наборы для мужчин в машину",
-      "_original_category": "nabory"
-    },
-    {
       "keyword": "набір для хімчистки салону",
       "volume": 140,
       "use_in": "content",
       "source_ru": "набор для химчистки салона",
       "_original_category": "nabory"
-    },
-    {
-      "keyword": "набір для чистки салону авто",
-      "volume": 140,
-      "use_in": "content",
-      "source_ru": "набор для чистки салона авто",
-      "_original_category": "nabory"
     }
   ],
   "supporting_keywords": [],
   "synonyms": [
-    {
-      "keyword": "набір для догляду за авто",
-      "volume": 170,
-      "use_in": "lsi",
-      "variant_of": "набори для догляду за автомобілем",
-      "source_ru": "набор для ухода за авто"
-    },
     {
       "keyword": "набір для хімчистки авто",
       "volume": 140,
@@ -82,5 +149,5 @@
       "source_ru": "набор для химчистки авто"
     }
   ],
-  "all_keywords_count": 19
+  "all_keywords_count": 32
 }
