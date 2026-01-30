@@ -1,5 +1,7 @@
 """Unit tests for coverage_matcher.py"""
 
+import json
+
 from scripts.coverage_matcher import (
     MatchResult,
     PreparedText,
@@ -318,3 +320,144 @@ class TestPathResolution:
             assert result is None
         finally:
             module.PROJECT_ROOT = original_root
+
+
+class TestLoadMetaKeywords:
+    """Tests for loading keywords_in_content from _meta.json."""
+
+    def test_load_meta_keywords_returns_grouped_dict(self, tmp_path):
+        """load_meta_keywords should return {primary: [], secondary: [], supporting: []}."""
+        slug = "test-cat"
+        meta_dir = tmp_path / "uk" / "categories" / slug / "meta"
+        data_dir = tmp_path / "uk" / "categories" / slug / "data"
+        meta_dir.mkdir(parents=True)
+        data_dir.mkdir(parents=True)
+        # Need _clean.json for find_category_path to work
+        (data_dir / f"{slug}_clean.json").write_text("{}")
+        meta_file = meta_dir / f"{slug}_meta.json"
+        meta_file.write_text(
+            json.dumps(
+                {
+                    "keywords_in_content": {
+                        "primary": ["активна піна"],
+                        "secondary": ["піна для мийки", "безконтактна піна"],
+                        "supporting": ["автошампунь"],
+                    }
+                }
+            )
+        )
+
+        import scripts.audit_coverage as module
+
+        original_root = module.PROJECT_ROOT
+        module.PROJECT_ROOT = tmp_path
+        try:
+            from scripts.audit_coverage import load_meta_keywords
+
+            result = load_meta_keywords(slug, "uk")
+            assert result is not None
+            assert "primary" in result
+            assert "secondary" in result
+            assert "supporting" in result
+            assert result["primary"] == ["активна піна"]
+        finally:
+            module.PROJECT_ROOT = original_root
+
+    def test_load_meta_keywords_missing_file_returns_none(self, tmp_path):
+        """Missing _meta.json should return None."""
+        import scripts.audit_coverage as module
+
+        original_root = module.PROJECT_ROOT
+        module.PROJECT_ROOT = tmp_path
+        try:
+            from scripts.audit_coverage import load_meta_keywords
+
+            result = load_meta_keywords("nonexistent", "uk")
+            assert result is None
+        finally:
+            module.PROJECT_ROOT = original_root
+
+    def test_load_meta_keywords_no_keywords_in_content_returns_empty(self, tmp_path):
+        """_meta.json without keywords_in_content returns empty groups."""
+        slug = "test-cat"
+        meta_dir = tmp_path / "uk" / "categories" / slug / "meta"
+        data_dir = tmp_path / "uk" / "categories" / slug / "data"
+        meta_dir.mkdir(parents=True)
+        data_dir.mkdir(parents=True)
+        (data_dir / f"{slug}_clean.json").write_text("{}")
+        (meta_dir / f"{slug}_meta.json").write_text('{"h1": "Test"}')
+
+        import scripts.audit_coverage as module
+
+        original_root = module.PROJECT_ROOT
+        module.PROJECT_ROOT = tmp_path
+        try:
+            from scripts.audit_coverage import load_meta_keywords
+
+            result = load_meta_keywords(slug, "uk")
+            assert result == {"primary": [], "secondary": [], "supporting": []}
+        finally:
+            module.PROJECT_ROOT = original_root
+
+
+class TestAuditWithMeta:
+    """Tests for --include-meta functionality."""
+
+    def test_audit_with_meta_returns_both_sections(self):
+        """audit_with_meta should return keywords_in_content and keywords sections."""
+        from scripts.audit_coverage import audit_with_meta
+
+        keywords = [{"keyword": "активна піна", "volume": 100}]
+        synonyms = []
+        meta_keywords = {
+            "primary": ["активна піна"],
+            "secondary": [],
+            "supporting": [],
+        }
+        text = "Купуйте активна піна"
+
+        result = audit_with_meta(keywords, synonyms, meta_keywords, text, "uk")
+
+        assert "keywords_in_content" in result
+        assert "keywords" in result
+        assert "primary" in result["keywords_in_content"]
+        assert result["keywords_in_content"]["primary"]["total"] == 1
+        assert result["keywords_in_content"]["primary"]["covered"] == 1
+
+    def test_audit_with_meta_groups_coverage_correctly(self):
+        """Each group (primary/secondary/supporting) should have own coverage stats."""
+        from scripts.audit_coverage import audit_with_meta
+
+        keywords = [
+            {"keyword": "ключ1", "volume": 100},
+            {"keyword": "ключ2", "volume": 90},
+            {"keyword": "ключ3", "volume": 80},
+        ]
+        meta_keywords = {
+            "primary": ["ключ1"],
+            "secondary": ["ключ2"],
+            "supporting": ["ключ3", "ключ4"],  # ключ4 not in text
+        }
+        text = "Текст з ключ1 та ключ2 та ключ3"
+
+        result = audit_with_meta(keywords, [], meta_keywords, text, "uk")
+
+        assert result["keywords_in_content"]["primary"]["coverage_percent"] == 100.0
+        assert result["keywords_in_content"]["secondary"]["coverage_percent"] == 100.0
+        assert result["keywords_in_content"]["supporting"]["coverage_percent"] == 50.0
+
+    def test_audit_with_meta_handles_empty_meta(self):
+        """Empty meta_keywords should return empty groups."""
+        from scripts.audit_coverage import audit_with_meta
+
+        result = audit_with_meta(
+            [{"keyword": "test", "volume": 10}],
+            [],
+            {"primary": [], "secondary": [], "supporting": []},
+            "test text",
+            "uk",
+        )
+
+        assert result["keywords_in_content"]["primary"]["total"] == 0
+        assert result["keywords_in_content"]["secondary"]["total"] == 0
+        assert result["keywords_in_content"]["supporting"]["total"] == 0
