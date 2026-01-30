@@ -216,22 +216,20 @@ def print_verbose(slug: str, lang: str, result: dict):
             by_status[status] = []
         by_status[status].append(r)
 
-    # Print COVERED
-    for status in ["EXACT", "NORM", "LEMMA", "SYNONYM"]:
+    # Print COVERED (EXACT, NORM, LEMMA are truly covered)
+    for status in ["EXACT", "NORM", "LEMMA"]:
         if status in by_status:
             items = by_status[status]
             print(f"\n✓ {status} ({len(items)}):")
             for r in items[:5]:
-                if status == "SYNONYM":
-                    print(f"  - {r['keyword']} ({r['volume']}) ← {r['covered_by']} [{r['syn_match_method']}]")
-                else:
-                    print(f"  - {r['keyword']} ({r['volume']})")
+                print(f"  - {r['keyword']} ({r['volume']})")
             if len(items) > 5:
                 print(f"  ... and {len(items) - 5} more")
 
-    # Print NOT COVERED
+    # Print NOT COVERED (SYNONYM, TOKENIZATION, PARTIAL, ABSENT)
+    # SYNONYM = keyword found only via synonym, actual keyword absent
     not_covered = []
-    for status in ["TOKENIZATION", "PARTIAL", "ABSENT"]:
+    for status in ["SYNONYM", "TOKENIZATION", "PARTIAL", "ABSENT"]:
         if status in by_status:
             not_covered.extend(by_status[status])
 
@@ -240,7 +238,11 @@ def print_verbose(slug: str, lang: str, result: dict):
         # Sort by volume desc
         not_covered.sort(key=lambda x: x["volume"], reverse=True)
         for r in not_covered[:10]:
-            extra = f" — {r['reason']}" if r.get("reason") else ""
+            if r["status"] == "SYNONYM":
+                # Show synonym match info
+                extra = f' ← via "{r["covered_by"]}" [{r["syn_match_method"]}]'
+            else:
+                extra = f" — {r['reason']}" if r.get("reason") else ""
             print(f"  - [{r['status']}] {r['keyword']} ({r['volume']}){extra}")
         if len(not_covered) > 10:
             print(f"  ... and {len(not_covered) - 10} more")
