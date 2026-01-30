@@ -1,92 +1,47 @@
 {
   "id": "kisti-dlya-deteylinga",
   "language": "uk",
-  "total_volume": 220,
+  "total_volume": 630,
   "keywords": [
-    {
-      "keyword": "аксесуари для дітейлінгу",
-      "volume": 90
-    },
-    {
-      "keyword": "набір щіток для дітейлінгу",
-      "volume": 70
-    },
-    {
-      "keyword": "засоби для дітейлінгу",
-      "volume": 50
-    },
-    {
-      "keyword": "щітка для шкіри авто",
-      "volume": 10
-    }
-  ],
-  "secondary_keywords": [],
-  "supporting_keywords": [
-    {
-      "keyword": "щітка для чистки салону авто",
-      "volume": 70,
-      "use_in": "content",
-      "source_ru": "щетка для чистки салона авто",
-      "_original_category": "kisti-dlya-deteylinga"
-    },
-    {
-      "keyword": "щітки для хімчистки авто",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "щетки для химчистки авто",
-      "_original_category": "kisti-dlya-deteylinga"
-    },
-    {
-      "keyword": "щітка для дисків авто",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "щетка для дисков авто",
-      "_original_category": "kisti-dlya-deteylinga"
-    },
-    {
-      "keyword": "набір щеток для детейлінгу",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "набор щеток для детейлинга",
-      "_original_category": "kisti-dlya-deteylinga"
-    },
-    {
-      "keyword": "купити кисточки для детейлінгу",
-      "volume": 40,
-      "use_in": "meta_only",
-      "source_ru": "купить кисточки для детейлинга",
-      "_original_category": "kisti-dlya-deteylinga"
-    },
-    {
-      "keyword": "щітка для чистки сидений авто",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "щетка для чистки сидений авто",
-      "_original_category": "kisti-dlya-deteylinga"
-    }
+    {"keyword": "аксесуари для дітейлінгу", "volume": 90},
+    {"keyword": "набір щіток для дітейлінгу", "volume": 70},
+    {"keyword": "щітка для чистки салону авто", "volume": 70},
+    {"keyword": "засоби для дітейлінгу", "volume": 50},
+    {"keyword": "щітки для хімчистки авто", "volume": 50},
+    {"keyword": "щітка для дисків авто", "volume": 50},
+    {"keyword": "щітка для чистки сидень авто", "volume": 20},
+    {"keyword": "щітка для шкіри авто", "volume": 10}
   ],
   "synonyms": [
     {
       "keyword": "щітка для чистки салону автомобіля",
       "volume": 70,
       "use_in": "lsi",
-      "variant_of": "щітка для чистки салону авто",
-      "source_ru": "щетка для чистки салона автомобиля"
+      "variant_of": "щітка для чистки салону авто"
     },
     {
       "keyword": "щітка для салону авто",
       "volume": 40,
       "use_in": "lsi",
-      "variant_of": "щітка для чистки салону авто",
-      "source_ru": "щетка для салона авто"
+      "variant_of": "щітка для чистки салону авто"
+    },
+    {
+      "keyword": "набір щеток для детейлінгу",
+      "volume": 40,
+      "use_in": "lsi",
+      "variant_of": "набір щіток для дітейлінгу"
+    },
+    {
+      "keyword": "купити кисточки для детейлінгу",
+      "volume": 40,
+      "use_in": "meta_only"
     },
     {
       "keyword": "щітка для чистки салону",
       "volume": 20,
       "use_in": "lsi",
-      "variant_of": "щітка для чистки салону авто",
-      "source_ru": "щетка для чистки салона"
+      "variant_of": "щітка для чистки салону авто"
     }
   ],
-  "all_keywords_count": 11
+  "micro_intents": []
 }

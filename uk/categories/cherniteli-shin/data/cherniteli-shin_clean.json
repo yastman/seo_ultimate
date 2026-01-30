@@ -5,14 +5,29 @@
   "keywords": [
     {"keyword": "чорніння гуми", "volume": 390},
     {"keyword": "засіб для чорніння гуми", "volume": 210},
-    {"keyword": "засоби для чорніння шин", "volume": 110},
     {"keyword": "поліроль для шин", "volume": 70},
-    {"keyword": "чорніння коліс", "volume": 70},
     {"keyword": "чорнитель гуми", "volume": 50},
-    {"keyword": "хімія для чорніння гуми", "volume": 40},
-    {"keyword": "засіб для чорніння гуми", "volume": 20},
-    {"keyword": "поліроль для гуми", "volume": 10}
+    {"keyword": "хімія для чорніння гуми", "volume": 40}
   ],
-  "synonyms": [],
-  "micro_intents": []
+  "synonyms": [
+    {
+      "keyword": "засоби для чорніння шин",
+      "volume": 110,
+      "use_in": "lsi",
+      "variant_of": "засіб для чорніння гуми"
+    },
+    {
+      "keyword": "чорніння коліс",
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "чорніння гуми"
+    },
+    {
+      "keyword": "поліроль для гуми",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "поліроль для шин"
+    }
+  ],
+  "micro_intents": ["який чорнитель краще", "матовий чи глянцевий", "як наносити"]
 }

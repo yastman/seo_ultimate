@@ -32,38 +32,50 @@
       "volume": 210
     },
     {
+      "keyword": "керамічний лак для авто",
+      "volume": 50
+    }
+  ],
+  "synonyms": [
+    {
       "keyword": "купити рідке скло для авто",
-      "volume": 210
+      "volume": 210,
+      "use_in": "meta_only"
     },
     {
       "keyword": "купити рідке скло для автомобіля",
-      "volume": 210
+      "volume": 210,
+      "use_in": "meta_only",
+      "variant_of": "купити рідке скло для авто"
     },
     {
       "keyword": "кераміка на авто",
-      "volume": 110
+      "volume": 110,
+      "use_in": "lsi",
+      "variant_of": "кераміка для авто"
     },
     {
       "keyword": "рідке скло ціна",
-      "volume": 90
-    },
-    {
-      "keyword": "керамічний лак для авто",
-      "volume": 50
+      "volume": 90,
+      "use_in": "meta_only"
     },
     {
       "keyword": "рідке скло для кузова авто",
-      "volume": 10
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "рідке скло для авто"
     },
     {
       "keyword": "рідке скло на машину",
-      "volume": 10
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "рідке скло для авто"
     },
     {
       "keyword": "нанокераміка ціна",
-      "volume": 10
+      "volume": 10,
+      "use_in": "meta_only"
     }
   ],
-  "synonyms": [],
   "micro_intents": []
 }

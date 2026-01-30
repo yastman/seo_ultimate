@@ -1,76 +1,45 @@
 {
   "id": "ukhod-za-kozhey",
   "language": "uk",
-  "total_volume": 0,
-  "keywords": [],
-  "secondary_keywords": [
-    {
-      "keyword": "догляд за шкірою авто",
-      "volume": 210,
-      "use_in": "content",
-      "source_ru": "уход за кожей авто",
-      "_original_category": "ukhod-za-kozhey"
-    },
-    {
-      "keyword": "поліроль для шкіри",
-      "volume": 170,
-      "use_in": "content",
-      "source_ru": "полироль для кожи",
-      "_original_category": "ukhod-za-kozhey"
-    },
-    {
-      "keyword": "краще засіб по догляду за шкірою авто",
-      "volume": 140,
-      "use_in": "content",
-      "source_ru": "лучшее средство по уходу за кожей авто",
-      "_original_category": "ukhod-za-kozhey"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "засіб по догляду за шкірою авто",
-      "volume": 90,
-      "use_in": "content",
-      "source_ru": "средство по уходу за кожей авто",
-      "_original_category": "ukhod-za-kozhey"
-    },
-    {
-      "keyword": "крем для шкіри авто",
-      "volume": 70,
-      "use_in": "content",
-      "source_ru": "крем для кожи авто",
-      "_original_category": "ukhod-za-kozhey"
-    }
+  "total_volume": 1140,
+  "keywords": [
+    {"keyword": "догляд за шкірою авто", "volume": 210},
+    {"keyword": "поліроль для шкіри", "volume": 170},
+    {"keyword": "краще засіб по догляду за шкірою авто", "volume": 140},
+    {"keyword": "крем для шкіри авто", "volume": 70}
   ],
   "synonyms": [
     {
       "keyword": "догляд за шкірою автомобіля",
       "volume": 210,
       "use_in": "lsi",
-      "variant_of": "догляд за шкірою авто",
-      "source_ru": "уход за кожей автомобиля"
+      "variant_of": "догляд за шкірою авто"
+    },
+    {
+      "keyword": "засіб по догляду за шкірою авто",
+      "volume": 90,
+      "use_in": "lsi",
+      "variant_of": "краще засіб по догляду за шкірою авто"
     },
     {
       "keyword": "поліроль для шкіри авто",
       "volume": 90,
       "use_in": "lsi",
-      "variant_of": "поліроль для шкіри",
-      "source_ru": "полироль для кожи авто"
+      "variant_of": "поліроль для шкіри"
     },
     {
       "keyword": "поліроль для шкіри автомобіля",
       "volume": 90,
       "use_in": "lsi",
-      "variant_of": "поліроль для шкіри",
-      "source_ru": "полироль для кожи автомобиля"
+      "variant_of": "поліроль для шкіри"
     },
     {
       "keyword": "крем для шкіри автомобіля",
       "volume": 70,
       "use_in": "lsi",
-      "variant_of": "крем для шкіри авто",
-      "source_ru": "крем для кожи автомобиля"
+      "variant_of": "крем для шкіри авто"
     }
   ],
+  "micro_intents": [],
   "all_keywords_count": 9
 }

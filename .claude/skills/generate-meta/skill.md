@@ -24,23 +24,43 @@ description: Use when you see /generate-meta, генерируй мета, со�
 
 ### Что такое `{primary_keyword}`
 
-Это главный ВЧ ключ категории. Его нужно использовать в Title/H1/Description как основу.
+Это ключ с **максимальным volume** в категории. Его нужно использовать в Title/H1/Description как основу.
 
-**Поддерживаются 2 формата `categories/{slug}/data/{slug}_clean.json`:**
+**🚨 ВАЖНО: primary_keyword = MAX(volume), НЕ первый в списке!**
 
-1) **List-схема (часто в новых категориях):**
+**Алгоритм определения из `categories/{slug}/data/{slug}_clean.json`:**
+
+1) **List-схема:**
 ```json
-"keywords": [{"keyword": "воск для авто", "volume": 1000}]
+"keywords": [
+  {"keyword": "пена для мойки авто", "volume": 1300},
+  {"keyword": "активная пена", "volume": 720}
+]
 ```
-→ `{primary_keyword}` = `keywords[0].keyword`
+→ `{primary_keyword}` = ключ с MAX(volume) = `"пена для мойки авто"` (1300)
 
-2) **Dict-схема (встречается после кластеризации):**
+2) **Dict-схема:**
 ```json
 "keywords": {"primary": [{"keyword": "очиститель дисков", "volume": 70}]}
 ```
-→ `{primary_keyword}` = `keywords.primary[0].keyword`
+→ `{primary_keyword}` = ключ с MAX(volume) из `keywords.primary[]`
 
-Если ни один формат не найден — это проблема данных (вернись к checklist/CSV) и мета генерировать нельзя.
+**Как найти:**
+```python
+# List-схема
+keywords = data.get("keywords", [])
+if isinstance(keywords, list) and keywords:
+    primary = max(keywords, key=lambda x: x.get("volume", 0))
+    primary_keyword = primary["keyword"]
+
+# Dict-схема
+if isinstance(keywords, dict):
+    primary_list = keywords.get("primary", [])
+    primary = max(primary_list, key=lambda x: x.get("volume", 0))
+    primary_keyword = primary["keyword"]
+```
+
+Если keywords пуст или не найден — это проблема данных, мета генерировать нельзя.
 
 ### Acceptance criteria (что значит “готово”)
 
@@ -372,7 +392,12 @@ Status: ready for /seo-research
 
 ---
 
-**Version:** 15.0 — January 2026
+**Version:** 16.0 — January 2026
+
+**Changelog v16.0:**
+- 🎯 **КРИТИЧНО: primary_keyword = MAX(volume)**, НЕ первый в списке
+- 🔧 Добавлен Python-код для определения primary_keyword
+- 📋 После semantic-cluster порядок ключей может измениться — всегда искать MAX
 
 **Changelog v15.0:**
 - 🔧 Введён термин `{primary_keyword}` и описаны 2 схемы `_clean.json` (list/dict)

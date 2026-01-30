@@ -1,39 +1,25 @@
 {
   "id": "keramika-dlya-diskov",
   "language": "uk",
-  "total_volume": 10,
+  "total_volume": 40,
   "keywords": [
     {
       "keyword": "захисне покриття для дисків",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "защитное покрытие для дисков",
-      "_original_category": "keramika-dlya-diskov"
-    }
-  ],
-  "secondary_keywords": [],
-  "supporting_keywords": [
-    {
-      "keyword": "захисне покриття для литых дисків",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "защитное покрытие для литых дисков",
-      "_original_category": "keramika-dlya-diskov"
+      "volume": 10
     },
     {
-      "keyword": "кераміка для колёсных дисків",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "керамика для колёсных дисков",
-      "_original_category": "keramika-dlya-diskov"
+      "keyword": "захисне покриття для литих дисків",
+      "volume": 10
     },
     {
-      "keyword": "нанокерамика для дисків",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "нанокерамика для дисков",
-      "_original_category": "keramika-dlya-diskov"
+      "keyword": "кераміка для колісних дисків",
+      "volume": 10
+    },
+    {
+      "keyword": "нанокераміка для дисків",
+      "volume": 10
     }
   ],
-  "all_keywords_count": 4
+  "synonyms": [],
+  "micro_intents": []
 }

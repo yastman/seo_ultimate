@@ -1,89 +1,52 @@
 {
   "id": "apparaty-tornador",
   "language": "uk",
-  "total_volume": 3830,
+  "total_volume": 4850,
   "keywords": [
-    {
-      "keyword": "торнадор",
-      "volume": 3600
-    },
-    {
-      "keyword": "пістолет для хімчистки авто",
-      "volume": 140
-    },
-    {
-      "keyword": "апарат для хімчистки авто",
-      "volume": 90
-    }
-  ],
-  "secondary_keywords": [
-    {
-      "keyword": "купити торнадор",
-      "volume": 390,
-      "use_in": "meta_only",
-      "source_ru": "купить торнадор",
-      "_original_category": "apparaty-tornador"
-    },
-    {
-      "keyword": "торнадор для хімчистки авто",
-      "volume": 260,
-      "use_in": "content",
-      "source_ru": "торнадор для химчистки авто",
-      "_original_category": "apparaty-tornador"
-    },
-    {
-      "keyword": "tornador",
-      "volume": 140,
-      "use_in": "content",
-      "source_ru": "tornador",
-      "_original_category": "apparaty-tornador"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "купити торнадор для хімчистки",
-      "volume": 90,
-      "use_in": "meta_only",
-      "source_ru": "купить торнадор для химчистки",
-      "_original_category": "apparaty-tornador"
-    },
-    {
-      "keyword": "торнадор професійний купити",
-      "volume": 50,
-      "use_in": "meta_only",
-      "source_ru": "торнадор профессиональный купить",
-      "_original_category": "apparaty-tornador"
-    },
-    {
-      "keyword": "купити tornador",
-      "volume": 40,
-      "use_in": "meta_only",
-      "source_ru": "купить tornador",
-      "_original_category": "apparaty-tornador"
-    },
-    {
-      "keyword": "торнадор для хімчистки салону",
-      "volume": 30,
-      "use_in": "content",
-      "source_ru": "торнадор для химчистки салона",
-      "_original_category": "apparaty-tornador"
-    }
+    {"keyword": "торнадор", "volume": 3600},
+    {"keyword": "торнадор для хімчистки авто", "volume": 260},
+    {"keyword": "пістолет для хімчистки авто", "volume": 140},
+    {"keyword": "апарат для хімчистки авто", "volume": 90},
+    {"keyword": "торнадор для хімчистки салону", "volume": 30}
   ],
   "synonyms": [
     {
       "keyword": "торнадор хімчистка",
       "volume": 210,
       "use_in": "lsi",
-      "variant_of": "торнадор для хімчистки авто",
-      "source_ru": "торнадор химчистка"
+      "variant_of": "торнадор для хімчистки авто"
+    },
+    {
+      "keyword": "tornador",
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "торнадор"
+    },
+    {
+      "keyword": "купити торнадор",
+      "volume": 390,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "купити торнадор для хімчистки",
+      "volume": 90,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "торнадор професійний купити",
+      "volume": 50,
+      "use_in": "meta_only"
     },
     {
       "keyword": "купити торнадор для хімчистки салону",
       "volume": 50,
-      "use_in": "meta_only",
-      "variant_of": "купити торнадор для хімчистки",
-      "source_ru": "купить торнадор для химчистки салона"
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "купити tornador",
+      "volume": 40,
+      "use_in": "meta_only"
     }
   ],
-  "all_keywords_count": 10
+  "micro_intents": ["як користуватися торнадором", "підключення", "вибір насадок"]
 }

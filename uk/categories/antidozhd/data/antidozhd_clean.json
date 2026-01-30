@@ -3,48 +3,47 @@
   "language": "uk",
   "total_volume": 3590,
   "keywords": [
-    {
-      "keyword": "антидощ",
-      "volume": 1900
-    },
+    {"keyword": "антидощ", "volume": 1900},
+    {"keyword": "антидощ для скла авто", "volume": 390},
+    {"keyword": "антидощ на лобове скло", "volume": 170},
+    {"keyword": "гідрофобне покриття", "volume": 40}
+  ],
+  "synonyms": [
     {
       "keyword": "антидощ для авто",
-      "volume": 480
-    },
-    {
-      "keyword": "антидощ для скла авто",
-      "volume": 390
+      "volume": 480,
+      "use_in": "lsi",
+      "variant_of": "антидощ"
     },
     {
       "keyword": "антидощ для автомобіля",
-      "volume": 320
-    },
-    {
-      "keyword": "антидощ на лобове скло",
-      "volume": 170
+      "volume": 320,
+      "use_in": "lsi",
+      "variant_of": "антидощ"
     },
     {
       "keyword": "засіб антидощ",
-      "volume": 140
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "антидощ"
     },
     {
       "keyword": "антидощ для скла",
-      "volume": 70
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "антидощ для скла авто"
     },
     {
       "keyword": "антидощ купити",
-      "volume": 50
-    },
-    {
-      "keyword": "гідрофобне покриття",
-      "volume": 40
+      "volume": 50,
+      "use_in": "meta_only"
     },
     {
       "keyword": "антидощ відгуки",
-      "volume": 30
+      "volume": 30,
+      "use_in": "meta_only"
     }
   ],
-  "synonyms": [],
   "micro_intents": [
     "як наносити",
     "скільки тримається",

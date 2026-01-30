@@ -12,18 +12,18 @@ from scripts.validate_meta import (
 
 class TestSemanticLogic:
     def test_get_word_stem(self):
-        # Russian endings removal
-        assert get_word_stem("краcного") == "краcн"  # ого
-        # "яя" skipped (len 5 !> 2+3), but "я" might be removed if present?
-        # Actually logic: finds first match that satisfies length.
-        # "я" is at the end. "яя" matched but length check failed.
-        # So it falls through to "я" (len 1). 5 > 1+3 (5>4) True. Removes last char. -> синя.
-        assert get_word_stem("синяя") == "синя"
-        assert get_word_stem("шампуни") == "шампун"  # и
-        assert get_word_stem("короткое") == "коротк"  # ое
+        # Now uses MorphAnalyzer (via keyword_utils).
+        # With pymorphy3: returns proper lemmas (синяя -> синий)
+        # With Snowball fallback: returns stems (синяя -> син)
+        # Test verifies consistent behavior within same word family
 
-        # Short words
-        assert get_word_stem("пена") == "пена"  # <= 4 chars logic
+        # Same word family should produce same stem/lemma
+        assert get_word_stem("синяя") == get_word_stem("синюю")  # both from "синий"
+        assert get_word_stem("шампуни") == get_word_stem("шампунем")  # both from "шампунь"
+        assert get_word_stem("короткое") == get_word_stem("короткую")  # both from "короткий"
+
+        # Different words should produce different stems
+        assert get_word_stem("пена") != get_word_stem("шампунь")
 
     def test_keyword_matches(self):
         # Exact
@@ -124,3 +124,82 @@ class TestValidateMetaFile:
     def test_missing_file(self):
         result = validate_meta_file("non_existent.json")
         assert "Cannot load meta file" in result["errors"][0]
+
+
+class TestValidateMetaUK:
+    """Tests for UK language support in validate_meta."""
+
+    def test_validate_meta_uk_language(self, tmp_path):
+        """validate_meta_file works with lang='uk'."""
+        meta_file = tmp_path / "test_meta.json"
+
+        # Use keyword that appears verbatim in title/description (активна піна)
+        desc = (
+            "Активна піна для безконтактної мийки від виробника Ultimate. "
+            "Опт і роздріб, доставка по Україні. Ефективне видалення бруду."
+        )
+
+        content = {
+            "slug": "test",
+            "language": "uk",
+            "meta": {
+                "title": "Активна піна для безконтактної мийки - купити в Україні | Ultimate",
+                "description": desc,
+            },
+            "h1": "Активна піна для безконтактної мийки",
+            "keywords_in_content": {"primary": ["активна піна"]},
+        }
+        meta_file.write_text(json.dumps(content, ensure_ascii=False), encoding="utf-8")
+
+        result = validate_meta_file(str(meta_file), lang="uk")
+        assert result is not None
+        assert result["overall"] in ["PASS", "WARNING"]
+
+    def test_validate_meta_uk_detects_missing_producer(self, tmp_path):
+        """UK validation detects missing 'від виробника' pattern."""
+        meta_file = tmp_path / "test_meta.json"
+
+        desc = (
+            "Активна піна для безконтактної мийки автомобіля. "
+            "Доставка по Україні. Ефективне видалення бруду і забруднень."
+        )
+
+        content = {
+            "slug": "test",
+            "language": "uk",
+            "meta": {
+                "title": "Активна піна для безконтактної мийки - купити в Україні | Ultimate",
+                "description": desc,
+            },
+            "h1": "Активна піна для безконтактної мийки",
+            "keywords_in_content": {"primary": ["активна піна"]},
+        }
+        meta_file.write_text(json.dumps(content, ensure_ascii=False), encoding="utf-8")
+
+        result = validate_meta_file(str(meta_file), lang="uk")
+        # Should fail because missing 'від виробника'
+        assert not result["description"]["checks"]["producer"]["passed"]
+
+    def test_validate_meta_uk_wholesale_pattern(self, tmp_path):
+        """UK validation detects 'опт і роздріб' pattern."""
+        meta_file = tmp_path / "test_meta.json"
+
+        desc = (
+            "Активна піна для безконтактної мийки від виробника Ultimate. "
+            "Опт і роздріб, доставка по Україні. Ефективне видалення бруду."
+        )
+
+        content = {
+            "slug": "test",
+            "language": "uk",
+            "meta": {
+                "title": "Активна піна для безконтактної мийки - купити в Україні | Ultimate",
+                "description": desc,
+            },
+            "h1": "Активна піна для безконтактної мийки",
+            "keywords_in_content": {"primary": ["активна піна"]},
+        }
+        meta_file.write_text(json.dumps(content, ensure_ascii=False), encoding="utf-8")
+
+        result = validate_meta_file(str(meta_file), lang="uk")
+        assert result["description"]["checks"]["wholesale"]["passed"]

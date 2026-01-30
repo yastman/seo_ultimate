@@ -1,52 +1,27 @@
 {
   "id": "ukhod-za-naruzhnym-plastikom",
   "language": "uk",
-  "total_volume": 150,
+  "total_volume": 220,
   "keywords": [
-    {
-      "keyword": "відновлювач пластику авто",
-      "volume": 110
-    },
-    {
-      "keyword": "поліроль для зовнішнього пластику автомобіля",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "полироль для наружного пластика автомобиля",
-      "_original_category": "ukhod-za-naruzhnym-plastikom"
-    }
-  ],
-  "secondary_keywords": [],
-  "supporting_keywords": [
-    {
-      "keyword": "чорнитель для зовнішнього пластику",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "чернитель для наружного пластика",
-      "_original_category": "ukhod-za-naruzhnym-plastikom"
-    },
-    {
-      "keyword": "догляд за бамперами",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "уход за бамперами",
-      "_original_category": "ukhod-za-naruzhnym-plastikom"
-    }
+    {"keyword": "відновлювач пластику авто", "volume": 110},
+    {"keyword": "поліроль для зовнішнього пластику автомобіля", "volume": 40},
+    {"keyword": "чорнитель для зовнішнього пластику", "volume": 10},
+    {"keyword": "догляд за бамперами", "volume": 10}
   ],
   "synonyms": [
     {
       "keyword": "поліроль для зовнішнього пластику авто",
       "volume": 40,
       "use_in": "lsi",
-      "variant_of": "поліроль для зовнішнього пластику автомобіля",
-      "source_ru": "полироль для наружного пластика авто"
+      "variant_of": "поліроль для зовнішнього пластику автомобіля"
     },
     {
       "keyword": "поліроль для зовнішнього пластику",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "поліроль для зовнішнього пластику автомобіля",
-      "source_ru": "полироль для наружного пластика"
+      "variant_of": "поліроль для зовнішнього пластику автомобіля"
     }
   ],
+  "micro_intents": [],
   "all_keywords_count": 6
 }
