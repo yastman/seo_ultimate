@@ -3,89 +3,54 @@
   "language": "uk",
   "total_volume": 280,
   "keywords": [
-    {
-      "keyword": "косметика для авто",
-      "volume": 90
-    },
-    {
-      "keyword": "косметика для автомобіля",
-      "volume": 90
-    },
-    {
-      "keyword": "сушка для авто",
-      "volume": 50
-    },
-    {
-      "keyword": "аксесуари для миття авто",
-      "volume": 50
-    }
-  ],
-  "secondary_keywords": [],
-  "supporting_keywords": [
-    {
-      "keyword": "все для миття авто",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "все для мойки авто",
-      "_original_category": "aksessuary"
-    },
-    {
-      "keyword": "аксесуари для детейлінгу",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "аксессуары для детейлинга",
-      "_original_category": "aksessuary"
-    },
-    {
-      "keyword": "аксесуари для автомийок",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "аксессуары для автомоек",
-      "_original_category": "aksessuary"
-    },
-    {
-      "keyword": "аксесуари по догляду за автомобілем",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "аксессуары по уходу за автомобилем",
-      "_original_category": "aksessuary"
-    },
-    {
-      "keyword": "інвентар для миття авто",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "инвентарь для мойки авто",
-      "_original_category": "aksessuary"
-    },
-    {
-      "keyword": "приналежності для миття авто",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "принадлежности для мойки авто",
-      "_original_category": "aksessuary"
-    },
-    {
-      "keyword": "купити аксесуари для миття",
-      "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "купить аксессуары для мойки",
-      "_original_category": "aksessuary"
-    }
+    {"keyword": "косметика для авто", "volume": 90},
+    {"keyword": "сушка для авто", "volume": 50},
+    {"keyword": "аксесуари для миття авто", "volume": 50},
+    {"keyword": "все для миття авто", "volume": 50},
+    {"keyword": "аксесуари для детейлінгу", "volume": 20},
+    {"keyword": "аксесуари для автомийок", "volume": 20}
   ],
   "synonyms": [
+    {
+      "keyword": "косметика для автомобіля",
+      "volume": 90,
+      "use_in": "lsi",
+      "variant_of": "косметика для авто"
+    },
     {
       "keyword": "все для миття автомобілів",
       "volume": 40,
       "use_in": "lsi",
-      "variant_of": "все для миття авто",
-      "source_ru": "все для мойки автомобилей"
+      "variant_of": "все для миття авто"
+    },
+    {
+      "keyword": "аксесуари по догляду за автомобілем",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "аксесуари для миття авто"
+    },
+    {
+      "keyword": "інвентар для миття авто",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "аксесуари для миття авто"
+    },
+    {
+      "keyword": "приналежності для миття авто",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "аксесуари для миття авто"
     },
     {
       "keyword": "все для миття машини",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "все для миття авто",
-      "source_ru": "все для мойки машины"
+      "variant_of": "все для миття авто"
+    },
+    {
+      "keyword": "купити аксесуари для миття",
+      "volume": 10,
+      "use_in": "meta_only"
     }
   ],
   "all_keywords_count": 13

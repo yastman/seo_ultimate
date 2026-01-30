@@ -18,16 +18,18 @@
     {
       "keyword": "очищувач іржі",
       "volume": 30
-    },
-    {
-      "keyword": "очищувач",
-      "volume": 20
     }
   ],
   "synonyms": [
     {
       "keyword": "очищувач кузова авто",
       "volume": 40,
+      "use_in": "lsi",
+      "variant_of": "очищувач кузова"
+    },
+    {
+      "keyword": "очищувач",
+      "volume": 20,
       "use_in": "lsi",
       "variant_of": "очищувач кузова"
     }

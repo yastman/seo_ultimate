@@ -3,68 +3,44 @@
   "language": "uk",
   "total_volume": 2400,
   "keywords": [
-    {
-      "keyword": "плямовивідник",
-      "volume": 2400,
-      "use_in": "content",
-      "source_ru": "пятновыводитель",
-      "_original_category": "pyatnovyvoditeli"
-    }
+    {"keyword": "плямовивідник", "volume": 2400},
+    {"keyword": "плямовивідник для салону авто", "volume": 10},
+    {"keyword": "плямовивідник для сидінь авто", "volume": 10}
   ],
-  "secondary_keywords": [
+  "synonyms": [
     {
       "keyword": "купити плямовивідник",
       "volume": 110,
-      "use_in": "meta_only",
-      "source_ru": "купить пятновыводитель",
-      "_original_category": "pyatnovyvoditeli"
-    }
-  ],
-  "supporting_keywords": [
+      "use_in": "meta_only"
+    },
     {
       "keyword": "плямовивідник для авто",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "пятновыводитель для авто",
-      "_original_category": "pyatnovyvoditeli"
+      "use_in": "lsi",
+      "variant_of": "плямовивідник"
     },
-    {
-      "keyword": "плямовивідник для салону авто",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "пятновыводитель для салона авто",
-      "_original_category": "pyatnovyvoditeli"
-    },
-    {
-      "keyword": "плямовивідник для сидений авто",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "пятновыводитель для сидений авто",
-      "_original_category": "pyatnovyvoditeli"
-    }
-  ],
-  "synonyms": [
     {
       "keyword": "плямовивідник для автомобіля",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "плямовивідник для авто",
-      "source_ru": "пятновыводитель для автомобиля"
+      "variant_of": "плямовивідник"
     },
     {
       "keyword": "плямовивідник для машини",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "плямовивідник для авто",
-      "source_ru": "пятновыводитель для машины"
+      "variant_of": "плямовивідник"
     },
     {
       "keyword": "плямовивідник для салону автомобіля",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "плямовивідник для салону авто",
-      "source_ru": "пятновыводитель для салона автомобиля"
+      "variant_of": "плямовивідник для салону авто"
     }
   ],
-  "all_keywords_count": 8
+  "micro_intents": [
+    "для оббивки",
+    "від плям їжі",
+    "від плям крові"
+  ]
 }

@@ -1,57 +1,36 @@
 {
   "id": "zashchitnye-pokrytiya",
   "language": "uk",
-  "total_volume": 160,
+  "total_volume": 280,
   "keywords": [
-    {
-      "keyword": "рідка гума для авто",
-      "volume": 90
-    },
-    {
-      "keyword": "силікон для авто",
-      "volume": 70
-    }
-  ],
-  "secondary_keywords": [
-    {
-      "keyword": "захисне покриття для авто",
-      "volume": 70,
-      "use_in": "content",
-      "source_ru": "защитные покрытия для авто",
-      "_original_category": "zashchitnye-pokrytiya"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "купити захисне покриття для авто",
-      "volume": 10,
-      "use_in": "meta_only",
-      "source_ru": "купить защитное покрытие для авто",
-      "_original_category": "zashchitnye-pokrytiya"
-    }
+    {"keyword": "рідка гума для авто", "volume": 90},
+    {"keyword": "захисне покриття для авто", "volume": 70},
+    {"keyword": "силікон для авто", "volume": 70}
   ],
   "synonyms": [
     {
       "keyword": "захисне покриття автомобіля",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "захисне покриття для авто",
-      "source_ru": "защитные покрытия автомобиля"
+      "variant_of": "захисне покриття для авто"
     },
     {
       "keyword": "покриття для автомобіля",
       "volume": 10,
       "use_in": "lsi",
-      "variant_of": "захисне покриття для авто",
-      "source_ru": "покрытие для автомобиля"
+      "variant_of": "захисне покриття для авто"
+    },
+    {
+      "keyword": "купити захисне покриття для авто",
+      "volume": 10,
+      "use_in": "meta_only"
     },
     {
       "keyword": "захисне покриття на машину купити",
       "volume": 10,
-      "use_in": "lsi",
-      "variant_of": "купити захисне покриття для авто",
-      "source_ru": "защитное покрытие на машину купить"
+      "use_in": "meta_only"
     }
   ],
-  "all_keywords_count": 8
+  "micro_intents": [],
+  "all_keywords_count": 7
 }

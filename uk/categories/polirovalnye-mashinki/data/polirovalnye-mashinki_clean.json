@@ -3,72 +3,87 @@
   "language": "uk",
   "total_volume": 2600,
   "keywords": [
-    {
-      "keyword": "полірувальна машина для авто",
-      "volume": 590
-    },
+    {"keyword": "полірувальна машина для авто", "volume": 590},
+    {"keyword": "полірувальні машини", "volume": 110},
+    {"keyword": "круг полірувальний", "volume": 90}
+  ],
+  "synonyms": [
     {
       "keyword": "машинка для полірування авто",
-      "volume": 390
+      "volume": 390,
+      "use_in": "lsi",
+      "variant_of": "полірувальна машина для авто"
     },
     {
       "keyword": "полірувальна машинка для автомобіля",
-      "volume": 320
+      "volume": 320,
+      "use_in": "lsi",
+      "variant_of": "полірувальна машина для авто"
     },
     {
       "keyword": "купити полірувальну машинку",
-      "volume": 320
+      "volume": 320,
+      "use_in": "meta_only"
     },
     {
       "keyword": "купити полірувальну машинку для авто",
-      "volume": 260
+      "volume": 260,
+      "use_in": "meta_only"
     },
     {
       "keyword": "полірувальна машинка для авто",
-      "volume": 140
-    },
-    {
-      "keyword": "полірувальні машини",
-      "volume": 110
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "полірувальна машина для авто"
     },
     {
       "keyword": "машинка для полірування",
-      "volume": 110
-    },
-    {
-      "keyword": "круг полірувальний",
-      "volume": 90
+      "volume": 110,
+      "use_in": "lsi",
+      "variant_of": "полірувальна машина для авто"
     },
     {
       "keyword": "купити полірувальну машину",
-      "volume": 70
+      "volume": 70,
+      "use_in": "meta_only"
     },
     {
       "keyword": "полірувальна машинка",
-      "volume": 70
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "полірувальна машина для авто"
     },
     {
       "keyword": "купити машинку для полірування авто",
-      "volume": 50
+      "volume": 50,
+      "use_in": "meta_only"
     },
     {
       "keyword": "купити полірувальну машинку для автомобіля",
-      "volume": 40
+      "volume": 40,
+      "use_in": "meta_only"
     },
     {
       "keyword": "машина для полірування авто",
-      "volume": 20
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "полірувальна машина для авто"
     },
     {
       "keyword": "полірувальні машинки для авто",
-      "volume": 10
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "полірувальні машини"
     },
     {
       "keyword": "машина для полірування",
-      "volume": 10
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "полірувальна машина для авто"
     }
   ],
-  "synonyms": [],
-  "micro_intents": [],
-  "all_keywords_count": 16
+  "micro_intents": [
+    "орбітальна машинка",
+    "роторна машинка"
+  ]
 }

@@ -1,104 +1,66 @@
 {
   "id": "moyka-i-eksterer",
   "language": "uk",
-  "total_volume": 290,
+  "total_volume": 1020,
   "keywords": [
+    {"keyword": "хімія для миття авто", "volume": 260},
+    {"keyword": "хімія для миття машин", "volume": 70},
+    {"keyword": "засіб для миття авто", "volume": 70},
+    {"keyword": "автохімія для миття авто", "volume": 50},
+    {"keyword": "миючий засіб для авто", "volume": 20}
+  ],
+  "synonyms": [
     {
       "keyword": "купити хімію для авто",
-      "volume": 90
+      "volume": 90,
+      "use_in": "meta_only"
     },
     {
       "keyword": "хімія для машини",
-      "volume": 70
-    },
-    {
-      "keyword": "хімія для миття машин",
-      "volume": 70
-    },
-    {
-      "keyword": "купити хімію для мийки авто",
-      "volume": 40
-    },
-    {
-      "keyword": "миючий засіб для авто",
-      "volume": 20
-    }
-  ],
-  "secondary_keywords": [
-    {
-      "keyword": "хімія для миття авто",
-      "volume": 260,
-      "use_in": "content",
-      "source_ru": "химия для мойки авто",
-      "_original_category": "moyka-i-eksterer"
-    },
-    {
-      "keyword": "купити химию для миття авто",
-      "volume": 260,
-      "use_in": "meta_only",
-      "source_ru": "купить химию для мойки авто",
-      "_original_category": "moyka-i-eksterer"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "засіб для миття авто",
       "volume": 70,
-      "use_in": "content",
-      "source_ru": "средство для мойки авто",
-      "_original_category": "moyka-i-eksterer"
+      "use_in": "lsi",
+      "variant_of": "хімія для миття авто"
     },
     {
       "keyword": "хімія для миття",
       "volume": 70,
-      "use_in": "content",
-      "source_ru": "химия для мойки",
-      "_original_category": "moyka-i-eksterer"
+      "use_in": "lsi",
+      "variant_of": "хімія для миття авто"
     },
-    {
-      "keyword": "автохімія для миття авто",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "автохимия для мойки авто",
-      "_original_category": "moyka-i-eksterer"
-    },
-    {
-      "keyword": "купити автохимию для миття авто",
-      "volume": 20,
-      "use_in": "meta_only",
-      "source_ru": "купить автохимию для мойки авто",
-      "_original_category": "moyka-i-eksterer"
-    }
-  ],
-  "synonyms": [
     {
       "keyword": "хімія для миття машини",
       "volume": 50,
       "use_in": "lsi",
-      "variant_of": "хімія для миття авто",
-      "source_ru": "химия для мойки машины"
+      "variant_of": "хімія для миття авто"
     },
     {
       "keyword": "автохімія для миття",
       "volume": 50,
       "use_in": "lsi",
-      "variant_of": "автохімія для миття авто",
-      "source_ru": "автохимия для мойки"
+      "variant_of": "автохімія для миття авто"
+    },
+    {
+      "keyword": "купити хімію для мийки авто",
+      "volume": 40,
+      "use_in": "meta_only"
     },
     {
       "keyword": "хімія для миття автомобіля",
       "volume": 20,
       "use_in": "lsi",
-      "variant_of": "хімія для миття авто",
-      "source_ru": "химия для мойки автомобиля"
+      "variant_of": "хімія для миття авто"
     },
     {
       "keyword": "автохімія для миття автомобіля",
       "volume": 20,
       "use_in": "lsi",
-      "variant_of": "автохімія для миття авто",
-      "source_ru": "автохимия для мойки автомобиля"
+      "variant_of": "автохімія для миття авто"
+    },
+    {
+      "keyword": "купити автохімію для миття авто",
+      "volume": 20,
+      "use_in": "meta_only"
     }
   ],
-  "all_keywords_count": 15
+  "micro_intents": []
 }

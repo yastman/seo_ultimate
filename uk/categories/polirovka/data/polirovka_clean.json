@@ -3,104 +3,103 @@
   "language": "uk",
   "total_volume": 4490,
   "keywords": [
+    {"keyword": "полірування авто", "volume": 1300},
+    {"keyword": "засоби для полірування авто", "volume": 480},
+    {"keyword": "поліроль для авто", "volume": 480},
+    {"keyword": "поліроль для кузова", "volume": 390},
+    {"keyword": "полірувальні круги", "volume": 320},
+    {"keyword": "полірування фар", "volume": 260},
+    {"keyword": "полірування авто своїми руками", "volume": 90},
+    {"keyword": "поліроль для панелі автомобіля", "volume": 90},
+    {"keyword": "поліроль для шкіри", "volume": 30},
+    {"keyword": "набір паст для полірування авто", "volume": 30}
+  ],
+  "synonyms": [
     {
-      "keyword": "полірування авто",
-      "volume": 1300
-    },
-    {
-      "keyword": "засоби для полірування авто",
-      "volume": 480
-    },
-    {
-      "keyword": "поліроль для авто",
-      "volume": 480
-    },
-    {
-      "keyword": "поліроль для кузова",
-      "volume": 390
-    },
-    {
-      "keyword": "полірувальні круги",
-      "volume": 320
-    },
-    {
-      "keyword": "полірування фар",
-      "volume": 260
+      "keyword": "полірування машини",
+      "volume": 170,
+      "use_in": "lsi",
+      "variant_of": "полірування авто"
     },
     {
       "keyword": "круг для полірування авто",
-      "volume": 170
-    },
-    {
-      "keyword": "полірування машини",
-      "volume": 170
+      "volume": 170,
+      "use_in": "lsi",
+      "variant_of": "полірувальні круги"
     },
     {
       "keyword": "полірувальні круги для авто",
-      "volume": 140
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "полірувальні круги"
     },
     {
       "keyword": "засіб для полірування авто",
-      "volume": 140
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "засоби для полірування авто"
     },
     {
       "keyword": "круги для полірування",
-      "volume": 110
-    },
-    {
-      "keyword": "полірування авто своїми руками",
-      "volume": 90
-    },
-    {
-      "keyword": "поліроль для панелі автомобіля",
-      "volume": 90
+      "volume": 110,
+      "use_in": "lsi",
+      "variant_of": "полірувальні круги"
     },
     {
       "keyword": "полірування кузова",
-      "volume": 70
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "полірування авто"
     },
     {
       "keyword": "полірування автомобіля",
-      "volume": 50
+      "volume": 50,
+      "use_in": "lsi",
+      "variant_of": "полірування авто"
     },
     {
       "keyword": "купити полірувальні круги",
-      "volume": 40
+      "volume": 40,
+      "use_in": "meta_only"
     },
     {
       "keyword": "поліроль",
-      "volume": 30
-    },
-    {
-      "keyword": "поліроль для шкіри",
-      "volume": 30
+      "volume": 30,
+      "use_in": "lsi",
+      "variant_of": "поліроль для авто"
     },
     {
       "keyword": "купити набір для полірування авто",
-      "volume": 30
-    },
-    {
-      "keyword": "набір паст для полірування авто",
-      "volume": 30
+      "volume": 30,
+      "use_in": "meta_only"
     },
     {
       "keyword": "полірування",
-      "volume": 20
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "полірування авто"
     },
     {
       "keyword": "комплект для полірування авто",
-      "volume": 20
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "набір паст для полірування авто"
     },
     {
       "keyword": "купити пасту для полірування авто",
-      "volume": 20
+      "volume": 20,
+      "use_in": "meta_only"
     },
     {
       "keyword": "диск для полірування авто",
-      "volume": 10
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "полірувальні круги"
     }
   ],
-  "synonyms": [],
-  "micro_intents": [],
-  "all_keywords_count": 24
+  "micro_intents": [
+    "своїми руками",
+    "абразивне полірування",
+    "фінішне полірування"
+  ]
 }

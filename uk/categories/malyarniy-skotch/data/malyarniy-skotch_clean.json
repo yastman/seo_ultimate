@@ -3,91 +3,46 @@
   "language": "uk",
   "total_volume": 6590,
   "keywords": [
-    {
-      "keyword": "малярний скотч",
-      "volume": 4400
-    },
-    {
-      "keyword": "скотч малярний",
-      "volume": 1300
-    },
-    {
-      "keyword": "малярна стрічка",
-      "volume": 880
-    },
-    {
-      "keyword": "малярний скотч широкий",
-      "volume": 10
-    }
-  ],
-  "secondary_keywords": [
-    {
-      "keyword": "купити малярний скотч",
-      "volume": 210,
-      "use_in": "meta_only",
-      "source_ru": "купить малярный скотч",
-      "_original_category": "malyarniy-skotch"
-    }
-  ],
-  "supporting_keywords": [
-    {
-      "keyword": "малярний скотч ціна",
-      "volume": 70,
-      "use_in": "meta_only",
-      "source_ru": "малярный скотч цена",
-      "_original_category": "malyarniy-skotch"
-    },
-    {
-      "keyword": "малярная лента",
-      "volume": 50,
-      "use_in": "content",
-      "source_ru": "малярная лента",
-      "_original_category": "malyarniy-skotch"
-    },
-    {
-      "keyword": "малярная лента купити",
-      "volume": 50,
-      "use_in": "meta_only",
-      "source_ru": "малярная лента купить",
-      "_original_category": "malyarniy-skotch"
-    },
-    {
-      "keyword": "малярний скотч 10мм",
-      "volume": 40,
-      "use_in": "content",
-      "source_ru": "малярный скотч 10мм",
-      "_original_category": "malyarniy-skotch"
-    },
-    {
-      "keyword": "скотч малярний автомобільний",
-      "volume": 20,
-      "use_in": "content",
-      "source_ru": "скотч малярный автомобильный",
-      "_original_category": "malyarniy-skotch"
-    }
+    {"keyword": "малярний скотч", "volume": 4400},
+    {"keyword": "малярна стрічка", "volume": 880},
+    {"keyword": "малярний скотч 10мм", "volume": 40},
+    {"keyword": "скотч малярний автомобільний", "volume": 20},
+    {"keyword": "малярний скотч широкий", "volume": 10}
   ],
   "synonyms": [
     {
       "keyword": "малярні скотчі",
       "volume": 4400,
       "use_in": "lsi",
-      "variant_of": "малярний скотч",
-      "source_ru": "малярные скотчи"
+      "variant_of": "малярний скотч"
     },
     {
       "keyword": "скотч малярний",
-      "volume": 1000,
+      "volume": 1300,
       "use_in": "lsi",
-      "variant_of": "малярний скотч",
-      "source_ru": "скотч малярний"
+      "variant_of": "малярний скотч"
+    },
+    {
+      "keyword": "купити малярний скотч",
+      "volume": 210,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "малярний скотч ціна",
+      "volume": 70,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "малярна стрічка купити",
+      "volume": 50,
+      "use_in": "meta_only"
     },
     {
       "keyword": "малярний скотч 10 мм",
       "volume": 30,
       "use_in": "lsi",
-      "variant_of": "малярний скотч 10мм",
-      "source_ru": "малярный скотч 10 мм"
+      "variant_of": "малярний скотч 10мм"
     }
   ],
-  "all_keywords_count": 11
+  "micro_intents": []
 }

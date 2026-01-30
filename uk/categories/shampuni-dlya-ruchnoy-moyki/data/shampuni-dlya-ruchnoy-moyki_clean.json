@@ -3,32 +3,25 @@
   "language": "uk",
   "total_volume": 930,
   "keywords": [
-    {
-      "keyword": "засіб для миття автомобіля",
-      "volume": 320
-    },
-    {
-      "keyword": "шампунь для ручної мийки авто",
-      "volume": 170
-    },
-    {
-      "keyword": "шампунь для миття авто",
-      "volume": 140
-    },
+    {"keyword": "засіб для миття автомобіля", "volume": 320},
+    {"keyword": "шампунь для ручної мийки авто", "volume": 170},
+    {"keyword": "шампунь для миття авто", "volume": 140},
+    {"keyword": "засіб для миття кузова", "volume": 70}
+  ],
+  "synonyms": [
     {
       "keyword": "засіб для миття машини",
-      "volume": 140
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "засіб для миття автомобіля"
     },
     {
       "keyword": "шампунь для ручної мийки",
-      "volume": 90
-    },
-    {
-      "keyword": "засіб для миття кузова",
-      "volume": 70
+      "volume": 90,
+      "use_in": "lsi",
+      "variant_of": "шампунь для ручної мийки авто"
     }
   ],
-  "synonyms": [],
   "micro_intents": [],
-  "all_keywords_count": 3
+  "all_keywords_count": 6
 }

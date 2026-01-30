@@ -3,59 +3,34 @@
   "language": "uk",
   "total_volume": 410,
   "keywords": [
-    {
-      "keyword": "магазин автохімії",
-      "volume": 390
-    },
-    {
-      "keyword": "автохімія від виробника",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "автохимия от производителя",
-      "_original_category": "opt-i-b2b"
-    },
-    {
-      "keyword": "автокосметика оптом",
-      "volume": 10
-    }
+    {"keyword": "магазин автохімії", "volume": 390},
+    {"keyword": "автохімія від виробника", "volume": 10},
+    {"keyword": "автокосметика оптом", "volume": 10},
+    {"keyword": "автохімія оптом", "volume": 10},
+    {"keyword": "детейлінг хімія оптом", "volume": 10}
   ],
-  "secondary_keywords": [],
-  "supporting_keywords": [
+  "synonyms": [
     {
       "keyword": "автохімія виробництво",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "автохимия производство",
-      "_original_category": "opt-i-b2b"
+      "use_in": "lsi",
+      "variant_of": "автохімія від виробника"
     },
     {
       "keyword": "автохімія постачальники",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "автохимия поставщики",
-      "_original_category": "opt-i-b2b"
+      "use_in": "lsi",
+      "variant_of": "автохімія оптом"
     },
     {
-      "keyword": "производители автохимии украина",
+      "keyword": "виробники автохімії Україна",
       "volume": 10,
-      "use_in": "content",
-      "source_ru": "производители автохимии украина",
-      "_original_category": "opt-i-b2b"
-    },
-    {
-      "keyword": "автохімія оптом",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "автохимия оптом",
-      "_original_category": "opt-i-b2b"
-    },
-    {
-      "keyword": "детейлінг хімія оптом",
-      "volume": 10,
-      "use_in": "content",
-      "source_ru": "детейлинг химия оптом",
-      "_original_category": "opt-i-b2b"
+      "use_in": "lsi",
+      "variant_of": "автохімія від виробника"
     }
   ],
-  "all_keywords_count": 6
+  "micro_intents": [
+    "оптова закупівля",
+    "B2B співпраця"
+  ]
 }

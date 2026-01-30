@@ -7,15 +7,45 @@
     {"keyword": "глина для очищення кузова", "volume": 320},
     {"keyword": "синя глина для авто", "volume": 320},
     {"keyword": "глина для полірування авто", "volume": 210},
-    {"keyword": "глина для чистки авто", "volume": 140},
-    {"keyword": "синя глина", "volume": 110},
-    {"keyword": "глина для авто купити", "volume": 90},
     {"keyword": "автоскраб", "volume": 90},
-    {"keyword": "глина для кузова", "volume": 50},
-    {"keyword": "синя глина 3м", "volume": 50},
-    {"keyword": "автомобільна глина", "volume": 40},
-    {"keyword": "глина для полірування", "volume": 10}
+    {"keyword": "синя глина 3м", "volume": 50}
   ],
-  "synonyms": [],
-  "micro_intents": []
+  "synonyms": [
+    {
+      "keyword": "глина для чистки авто",
+      "volume": 140,
+      "use_in": "lsi",
+      "variant_of": "глина для очищення кузова"
+    },
+    {
+      "keyword": "синя глина",
+      "volume": 110,
+      "use_in": "lsi",
+      "variant_of": "синя глина для авто"
+    },
+    {
+      "keyword": "глина для кузова",
+      "volume": 50,
+      "use_in": "lsi",
+      "variant_of": "глина для авто"
+    },
+    {
+      "keyword": "автомобільна глина",
+      "volume": 40,
+      "use_in": "lsi",
+      "variant_of": "глина для авто"
+    },
+    {
+      "keyword": "глина для полірування",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "глина для полірування авто"
+    },
+    {
+      "keyword": "глина для авто купити",
+      "volume": 90,
+      "use_in": "meta_only"
+    }
+  ],
+  "micro_intents": ["як користуватися глиною", "скільки разів можна використовувати", "яка глина краще"]
 }

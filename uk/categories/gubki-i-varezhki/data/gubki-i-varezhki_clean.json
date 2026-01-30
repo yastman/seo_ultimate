@@ -5,20 +5,55 @@
   "keywords": [
     {"keyword": "губка для авто", "volume": 590},
     {"keyword": "мочалка для авто", "volume": 260},
-    {"keyword": "губки для миття авто", "volume": 260},
     {"keyword": "губка для полірування авто", "volume": 140},
-    {"keyword": "губка для миття машини", "volume": 110},
     {"keyword": "губка меламінова", "volume": 90},
-    {"keyword": "мочалка для машини", "volume": 70},
-    {"keyword": "губка для автомийки", "volume": 70},
     {"keyword": "рукавиця з овчини", "volume": 70},
     {"keyword": "губка для нанесення воску", "volume": 50},
-    {"keyword": "рукавиця для миття авто", "volume": 50},
-    {"keyword": "губка автомобільна", "volume": 30},
-    {"keyword": "губка", "volume": 20},
-    {"keyword": "мочалка автомобільна", "volume": 10},
-    {"keyword": "мочалка для миття машини", "volume": 10}
+    {"keyword": "рукавиця для миття авто", "volume": 50}
   ],
-  "synonyms": [],
-  "micro_intents": []
+  "synonyms": [
+    {
+      "keyword": "губки для миття авто",
+      "volume": 260,
+      "use_in": "lsi",
+      "variant_of": "губка для авто"
+    },
+    {
+      "keyword": "губка для миття машини",
+      "volume": 110,
+      "use_in": "lsi",
+      "variant_of": "губка для авто"
+    },
+    {
+      "keyword": "мочалка для машини",
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "мочалка для авто"
+    },
+    {
+      "keyword": "губка для автомийки",
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "губка для авто"
+    },
+    {
+      "keyword": "губка автомобільна",
+      "volume": 30,
+      "use_in": "lsi",
+      "variant_of": "губка для авто"
+    },
+    {
+      "keyword": "мочалка автомобільна",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "мочалка для авто"
+    },
+    {
+      "keyword": "мочалка для миття машини",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "мочалка для авто"
+    }
+  ],
+  "micro_intents": ["яка губка краще", "губка чи рукавиця", "догляд за губкою"]
 }

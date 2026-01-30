@@ -1,115 +1,80 @@
 {
   "id": "voski",
   "language": "uk",
-  "total_volume": 4250,
+  "total_volume": 4490,
   "keywords": [
-    {
-      "keyword": "віск для авто",
-      "volume": 1000
-    },
+    {"keyword": "віск для авто", "volume": 1000},
+    {"keyword": "віск для миття авто", "volume": 720},
+    {"keyword": "віск для кузова авто", "volume": 480},
+    {"keyword": "віск для полірування авто", "volume": 320},
+    {"keyword": "віск для сушки авто", "volume": 140},
+    {"keyword": "віск для чорних авто", "volume": 90},
+    {"keyword": "холодний віск для авто", "volume": 90},
+    {"keyword": "поліроль з воском", "volume": 70},
+    {"keyword": "віск карнауба", "volume": 70},
+    {"keyword": "віск для авто рідкий", "volume": 40},
+    {"keyword": "восковий поліроль для авто", "volume": 30},
+    {"keyword": "віск для авто як користуватися", "volume": 30},
+    {"keyword": "гарячий віск для авто", "volume": 20},
+    {"keyword": "швидкий віск для авто", "volume": 20}
+  ],
+  "synonyms": [
     {
       "keyword": "віск для автомобіля",
-      "volume": 720
-    },
-    {
-      "keyword": "віск для миття авто",
-      "volume": 720
-    },
-    {
-      "keyword": "віск для кузова авто",
-      "volume": 480
-    },
-    {
-      "keyword": "віск для полірування авто",
-      "volume": 320
+      "volume": 720,
+      "use_in": "lsi",
+      "variant_of": "віск для авто"
     },
     {
       "keyword": "віск автомобільний",
-      "volume": 210
+      "volume": 210,
+      "use_in": "lsi",
+      "variant_of": "віск для авто"
     },
-    {
-      "keyword": "віск для сушки авто",
-      "volume": 140
-    },
-    {
-      "keyword": "купити віск для авто",
-      "volume": 90
-    },
-    {
-      "keyword": "віск для чорних авто",
-      "volume": 90
-    },
-    {
-      "keyword": "холодний віск для авто",
-      "volume": 90
-    },
-    {
-      "keyword": "поліроль з воском",
-      "volume": 70
-    },
-    {
-      "keyword": "віск карнауба",
-      "volume": 70
-    },
-    {
-      "keyword": "віск для авто ціна",
-      "volume": 50
-    },
-    {
-      "keyword": "віск для авто рідкий",
-      "volume": 40
-    },
-    {
-      "keyword": "восковий поліроль для авто",
-      "volume": 30
-    },
-    {
-      "keyword": "віск для авто як користуватися",
-      "volume": 30
-    },
-    {
-      "keyword": "гарячий віск для авто",
-      "volume": 20
-    },
-    {
-      "keyword": "віск",
-      "volume": 20
-    },
-    {
-      "keyword": "швидкий віск для авто",
-      "volume": 20
-    },
-    {
-      "keyword": "купити віск для автомобіля",
-      "volume": 20
-    },
-    {
-      "keyword": "гарячий віск для автомобіля",
-      "volume": 10
-    },
-    {
-      "keyword": "купити віск для машини",
-      "volume": 10
-    }
-  ],
-  "secondary_keywords": [],
-  "supporting_keywords": [
-    {
-      "keyword": "купити віск для полірування авто",
-      "volume": 20,
-      "use_in": "meta_only",
-      "source_ru": "купить воск для полировки авто",
-      "_original_category": "voski"
-    }
-  ],
-  "synonyms": [
     {
       "keyword": "віск для машини",
       "volume": 210,
       "use_in": "lsi",
-      "variant_of": "віск для авто",
-      "source_ru": "воск для машины"
+      "variant_of": "віск для авто"
+    },
+    {
+      "keyword": "купити віск для авто",
+      "volume": 90,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "віск для авто ціна",
+      "volume": 50,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "віск",
+      "volume": 20,
+      "use_in": "lsi",
+      "variant_of": "віск для авто"
+    },
+    {
+      "keyword": "купити віск для полірування авто",
+      "volume": 20,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "купити віск для автомобіля",
+      "volume": 20,
+      "use_in": "meta_only"
+    },
+    {
+      "keyword": "гарячий віск для автомобіля",
+      "volume": 10,
+      "use_in": "lsi",
+      "variant_of": "гарячий віск для авто"
+    },
+    {
+      "keyword": "купити віск для машини",
+      "volume": 10,
+      "use_in": "meta_only"
     }
   ],
+  "micro_intents": [],
   "all_keywords_count": 24
 }
