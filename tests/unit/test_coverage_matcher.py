@@ -25,10 +25,12 @@ class TestMatchResult:
     def test_synonym_with_details(self):
         r = MatchResult(
             status="SYNONYM",
-            covered=True,
+            covered=False,  # SYNONYM means NOT covered - keyword itself absent
             covered_by="засоби для чорніння шин",
             syn_match_method="LEMMA",
+            reason="Synonym match only",
         )
+        assert r.covered is False
         assert r.covered_by == "засоби для чорніння шин"
         assert r.syn_match_method == "LEMMA"
 
@@ -109,7 +111,7 @@ class TestCheckKeyword:
         prepared = PreparedText("Купуйте засоби для чорніння шин", "uk")
         r = check_keyword("засіб для чорніння гуми", prepared, synonyms)
         assert r.status == "SYNONYM"
-        assert r.covered is True
+        assert r.covered is False  # SYNONYM = NOT covered (keyword itself absent)
         assert r.covered_by == "засоби для чорніння шин"
 
     def test_synonym_match_case_insensitive(self):
@@ -118,7 +120,7 @@ class TestCheckKeyword:
         prepared = PreparedText("Купуйте чорнитель шин", "uk")
         r = check_keyword("чорнитель гуми", prepared, synonyms)
         assert r.status == "SYNONYM"
-        assert r.covered is True
+        assert r.covered is False  # SYNONYM = NOT covered
 
     def test_tokenization_not_found(self):
         prepared = PreparedText("Звичайний засіб", "uk")
@@ -197,7 +199,7 @@ class TestCheckKeywordFalsePositives:
 class TestDiagnosticStatuses:
     """Control tests to verify all diagnostic statuses work correctly."""
 
-    def test_all_covered_statuses_in_one_audit(self):
+    def test_all_statuses_in_one_audit(self):
         """Verify EXACT, NORM, LEMMA, SYNONYM all appear in one audit."""
         keywords = [
             {"keyword": "активна піна", "volume": 100},  # EXACT
@@ -213,7 +215,9 @@ class TestDiagnosticStatuses:
         statuses = {r["status"] for r in result["results"]}
         # Should have at least EXACT and others
         assert "EXACT" in statuses
-        assert result["coverage_percent"] == 100.0
+        # SYNONYM now means NOT covered (keyword itself absent, only synonym found)
+        # 3 of 4 keywords covered (EXACT, NORM, LEMMA), SYNONYM = not covered
+        assert result["coverage_percent"] == 75.0
 
     def test_all_not_covered_statuses(self):
         """Verify TOKENIZATION, PARTIAL, ABSENT diagnostics."""
@@ -241,6 +245,28 @@ class TestDiagnosticStatuses:
         assert r.status == "SYNONYM"
         assert r.covered_by == "холодний віск"
         assert r.syn_match_method == "EXACT"
+
+
+class TestSynonymNotCovered:
+    """Test that SYNONYM status means covered=False."""
+
+    def test_synonym_match_returns_not_covered(self):
+        """When keyword matches only via synonym, covered should be False."""
+        # This test verifies the contract: SYNONYM → covered=False
+        from scripts.coverage_matcher import MatchResult
+
+        # Create a SYNONYM result
+        result = MatchResult(
+            status="SYNONYM",
+            covered=False,  # This is what we're enforcing
+            covered_by="синонім ключа",
+            syn_match_method="NORM",
+            reason="Synonym match only",
+        )
+
+        assert result.status == "SYNONYM"
+        assert result.covered is False
+        assert result.reason == "Synonym match only"
 
 
 class TestPathResolution:

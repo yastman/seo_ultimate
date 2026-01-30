@@ -198,11 +198,29 @@ def check_keyword(
             syn_kw = syn["keyword"]
 
             if _exact_match(syn_kw, prepared):
-                return MatchResult(status="SYNONYM", covered=True, covered_by=syn_kw, syn_match_method="EXACT")
+                return MatchResult(
+                    status="SYNONYM",
+                    covered=False,
+                    covered_by=syn_kw,
+                    syn_match_method="EXACT",
+                    reason="Synonym match only",
+                )
             if _normalized_match(syn_kw, prepared):
-                return MatchResult(status="SYNONYM", covered=True, covered_by=syn_kw, syn_match_method="NORM")
+                return MatchResult(
+                    status="SYNONYM",
+                    covered=False,
+                    covered_by=syn_kw,
+                    syn_match_method="NORM",
+                    reason="Synonym match only",
+                )
             if _lemma_match(syn_kw, prepared, morph):
-                return MatchResult(status="SYNONYM", covered=True, covered_by=syn_kw, syn_match_method="LEMMA")
+                return MatchResult(
+                    status="SYNONYM",
+                    covered=False,
+                    covered_by=syn_kw,
+                    syn_match_method="LEMMA",
+                    reason="Synonym match only",
+                )
 
     # === NOT COVERED — diagnose reason ===
 
