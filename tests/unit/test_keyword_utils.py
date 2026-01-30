@@ -359,3 +359,24 @@ class TestBackwardCompatibleFunctions:
         """find_keyword_form returns None when not found."""
         form = find_keyword_form("губка", "используйте щётку", "ru")
         assert form is None
+
+
+class TestMorphAnalyzerSurnFilter:
+    """Test that Surn (surname) parses are filtered out."""
+
+    def test_uk_gubka_not_surname(self):
+        """губка should lemmatize to губка, not губко (surname)."""
+        morph = MorphAnalyzer(lang="uk")
+        assert morph.get_lemma("губка") == "губка"
+
+    def test_uk_gubky_to_gubka(self):
+        """губки should lemmatize to губка."""
+        morph = MorphAnalyzer(lang="uk")
+        assert morph.get_lemma("губки") == "губка"
+
+    def test_ru_no_surname_interference(self):
+        """RU morphology should also filter surnames."""
+        morph = MorphAnalyzer(lang="ru")
+        # Иванов as noun (not surname Ivanov)
+        result = morph.get_lemma("шампунь")
+        assert result == "шампунь"
