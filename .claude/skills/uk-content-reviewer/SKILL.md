@@ -107,23 +107,54 @@ python3 scripts/validate_seo.py uk/categories/{slug}/content/{slug}_uk.md "{prim
 python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
 ```
 
+**Інтерпретація JSON-виводу:**
+
+JSON містить два блоки:
+1. `keywords_in_content` — ключі з _meta.json (primary/secondary/supporting)
+2. `keywords` — всі ключі з _clean.json
+
+**Алгоритм валідації:**
+
+```python
+# 1. Перевірити keywords_in_content
+primary = json["keywords_in_content"]["primary"]
+secondary = json["keywords_in_content"]["secondary"]
+supporting = json["keywords_in_content"]["supporting"]
+
+# primary + secondary: 100% coverage required
+ps_total = primary["total"] + secondary["total"]
+ps_covered = primary["covered"] + secondary["covered"]
+if ps_covered < ps_total:
+    # BLOCKER — знайти NOT COVERED:
+    not_covered = [r for r in primary["results"] + secondary["results"]
+                   if not r["covered"]]
+    # status: TOKENIZATION, PARTIAL, ABSENT = NOT COVERED
+
+# supporting: ≥80% coverage
+if supporting["coverage_percent"] < 80:
+    # WARNING
+
+# 2. Перевірити keywords[] (adaptive threshold)
+kw = json["keywords"]
+total = kw["total"]
+threshold = 70 if total <= 5 else (60 if total <= 15 else 50)
+if kw["coverage_percent"] < threshold:
+    # WARNING
+```
+
+**Статуси покриття:**
+- ✅ COVERED: `EXACT`, `NORM`, `LEMMA`, `SYNONYM`
+- ❌ NOT COVERED: `TOKENIZATION`, `PARTIAL`, `ABSENT`
+
 **Правила вердикту:**
 
 | Джерело | Вимога | Severity |
 |---------|--------|----------|
 | primary+secondary | **100% COVERED** | BLOCKER |
 | supporting | **≥80% COVERED** | WARNING |
-| keywords[] | threshold по кількості | WARNING |
+| keywords[] | adaptive threshold | WARNING |
 
-**COVERED** = EXACT / NORM / LEMMA / SYNONYM
-**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT → фейл групи
-
-**Thresholds для keywords[]:**
-- ≤5 ключів → 70%
-- 6-15 ключів → 60%
-- >15 ключів → 50%
-
-**Формат виводу:**
+**Формат виводу в лог:**
 
 ```markdown
 ### Keywords Coverage
@@ -134,11 +165,14 @@ python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
 | supporting | 4/5 | 80% | ✅ PASS |
 | keywords[] | 8/15 | 53% | ⚠️ WARNING (threshold 50%) |
 
-**NOT COVERED (primary/secondary):** ключ1 (volume), ключ2 (volume)
+**NOT COVERED (primary/secondary):** ключ1 (1200), ключ2 (800)
 **NOT COVERED (keywords[]):** топ-5 по volume
 ```
 
-**Куди розподіляти:** Intro (primary), H2 (secondary), Сценарії/Таблиці (supporting)
+**Куди розподіляти непокриті ключі:**
+- primary → Intro (перший абзац)
+- secondary → H2 заголовки
+- supporting → Сценарії покупки, таблиці, FAQ
 
 ### Step 4: Research Completeness
 
@@ -283,7 +317,12 @@ uk/categories/cherniteli-shin/content/cherniteli-shin_uk.md
 
 ---
 
-**Version:** 2.1 — January 2026
+**Version:** 2.2 — January 2026
+
+**Changelog v2.2:**
+- **ADDED: JSON інтерпретація** — детальний алгоритм валідації JSON-виводу audit_coverage.py
+- Пояснення статусів покриття (EXACT/NORM/LEMMA/SYNONYM vs TOKENIZATION/PARTIAL/ABSENT)
+- Інструкція куди розподіляти непокриті ключі
 
 **Changelog v2.1:**
 - **ADDED: audit_coverage.py інтеграція** — Step 3 використовує `--include-meta` для детальної перевірки coverage
