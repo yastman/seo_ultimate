@@ -51,8 +51,8 @@ uk/categories/{slug}/
 
 ```bash
 python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
-python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary}"
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+python3 scripts/validate_seo.py uk/categories/{slug}/content/{slug}_uk.md "{primary}"
+python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 ```
 

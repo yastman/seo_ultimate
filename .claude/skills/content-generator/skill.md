@@ -161,7 +161,7 @@ Buyer guide описывает ВЫБОР (что взять) → коммерч
 5. Find research    → research/RESEARCH_DATA.md (как справка + FAQ, не копировать!)
 6. Write content    → Hub: по процессам | Product: buyer guide (коммерческий интент!)
 7. Check H2         → минимум 1 H2 содержит secondary keyword
-8. Check density    → check_keyword_density.py (stem ≤2.5%)
+8. Check density    → validate_density.py (stem ≤2.5%)
 9. Check nausea     → check_water_natasha.py (тошнота ≤3.5)
 10. Fix spam        → заменить тематические слова на синонимы
 11. Validate        → validate_content.py --mode seo
@@ -479,7 +479,7 @@ python3 scripts/check_water_natasha.py categories/{slug}/content/{slug}_ru.md
 - [ ] **Объяснено преимущество над бытовым продуктом** (в intro или FAQ)
 
 ### Тошнота и переспам
-- [ ] **Stem-группы ≤2.5%** (проверить `check_keyword_density.py`)
+- [ ] **Stem-группы ≤2.5%** (проверить `validate_density.py`)
 - [ ] **Классическая тошнота ≤3.5** (проверить `check_water_natasha.py`)
 - [ ] **Тематические слова разбавлены синонимами** (батарея→АКБ, машинка→инструмент)
 

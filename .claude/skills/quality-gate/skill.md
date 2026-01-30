@@ -70,7 +70,7 @@ python scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
 
 ```bash
 python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md
-python3 scripts/check_keyword_density.py categories/{slug}/content/{slug}_ru.md
+python3 scripts/validate_density.py categories/{slug}/content/{slug}_ru.md
 python3 scripts/check_water_natasha.py categories/{slug}/content/{slug}_ru.md
 python3 scripts/audit_coverage.py --slug {slug} --lang ru --json --include-meta
 ```
@@ -108,7 +108,7 @@ Adaptive thresholds: ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
 ### 4. SEO Structure Check
 
 ```bash
-python scripts/check_seo_structure.py categories/{slug}/content/{slug}_ru.md
+python3 scripts/validate_seo.py categories/{slug}/content/{slug}_ru.md
 ```
 
 **Checks:**
@@ -257,7 +257,7 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}" --mode seo
 
 # Keyword density
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 
 # H1 sync check
 python3 scripts/check_h1_sync.py --lang uk
