@@ -161,9 +161,9 @@ Buyer guide описує ВИБІР (що взяти) → комерційний
 5. Find research    → uk/categories/{slug}/research/RESEARCH_DATA.md (як довідка + FAQ, не копіювати!)
 6. Write content    → Hub: за процесами | Product: buyer guide (комерційний інтент!)
 7. Check H2         → мінімум 2 H2 містять secondary keyword
-8. Check density    → check_keyword_density.py --lang uk (stem ≤2.5%)
+8. Check density    → validate_density.py --lang uk (stem ≤2.5%)
 9. Check nausea     → check_water_natasha.py (тошнота ≤3.5)
-10. Check SEO       → check_seo_structure.py (H2 keywords, intro check)
+10. Check SEO       → validate_seo.py (H2 keywords, intro check)
 11. Fix spam        → замінити тематичні слова на синоніми
 12. Validate        → validate_content.py --mode seo
 ```
@@ -498,7 +498,7 @@ python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 - [ ] **Пояснено перевагу над побутовим продуктом** (в intro або FAQ)
 
 ### Тошнота та переспам
-- [ ] **Stem-групи ≤2.5%** (перевірити `check_keyword_density.py --lang uk`)
+- [ ] **Stem-групи ≤2.5%** (перевірити `validate_density.py --lang uk`)
 - [ ] **Класична тошнота ≤3.5** (перевірити `check_water_natasha.py`)
 - [ ] **Академічна тошнота ≥7%** (якщо <7% — додати звернення до читача)
 - [ ] **Тематичні слова розбавлені синонімами** (батарея→АКБ, машинка→інструмент)

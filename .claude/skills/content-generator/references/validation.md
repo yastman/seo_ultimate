@@ -8,7 +8,7 @@
 
 ```bash
 # Плотность ключей и переспам
-python3 scripts/check_keyword_density.py categories/{slug}/content/{slug}_ru.md
+python3 scripts/validate_density.py categories/{slug}/content/{slug}_ru.md
 
 # Тошнота и вода
 python3 scripts/check_water_natasha.py categories/{slug}/content/{slug}_ru.md
