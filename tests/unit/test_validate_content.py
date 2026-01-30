@@ -14,6 +14,7 @@ from scripts.validate_content import (
     extract_h2s,
     extract_intro,
     keyword_matches_semantic,
+    validate_content,
 )
 
 # ============================================================================
@@ -94,6 +95,36 @@ class TestPrimaryKeyword:
         assert res["semantic_intro"]
         assert res["confidence"] >= 90
         assert res["overall"] == "PASS"
+
+    def test_uk_morphology_match(self):
+        text = "# Губку для салону авто\n\nВикористовуйте губку для салону авто."
+        kw = "губка для салону авто"
+        res = check_primary_keyword(text, kw, lang="uk")
+        assert res["in_h1"]["passed"]
+        assert res["in_intro"]["passed"]
+        assert res["overall"] == "PASS"
+
+    def test_validate_content_passes_lang_to_primary_keyword(self, tmp_path):
+        path = tmp_path / "uk.md"
+        path.write_text("# Заголовок\n\nТекст.", encoding="utf-8")
+
+        with patch("scripts.validate_content.check_primary_keyword", return_value={"overall": "PASS"}) as mocked:
+            res = validate_content(str(path), "будь-що", mode="seo", lang="uk")
+
+        assert res["summary"]["overall"] == "PASS"
+        mocked.assert_called()
+        assert mocked.call_args.kwargs.get("lang") == "uk"
+
+    def test_semantic_primary_keyword_uses_lang(self):
+        text = "# Шампуні\n\nШампуні для авто."
+        kw = "шампунь"
+
+        with patch("scripts.validate_content.KeywordMatcher") as mocked_matcher:
+            mocked_matcher.return_value.find_in_text.return_value = (True, kw)
+            res = check_primary_keyword_semantic(text, kw, lang="uk")
+
+        mocked_matcher.assert_called_with(lang="uk")
+        assert res["overall"] in {"PASS", "WARNING"}
 
 
 class TestCoverage:

@@ -196,35 +196,50 @@ def check_structure(text: str) -> dict:
     return results
 
 
-def check_primary_keyword(text: str, primary_keyword: str) -> dict:
+def check_primary_keyword(text: str, primary_keyword: str, lang: str = "ru") -> dict:
     """
-    Check primary keyword placement.
+    Check primary keyword placement using morphology-aware matching.
 
     BLOCKER:
     - Primary keyword in H1
     - Primary keyword in intro
+
+    Uses KeywordMatcher for proper RU/UK morphology:
+    - "губка для салону" matches "губку для салону" (case declension)
+    - "чернитель шин" matches "чернителі шин" (singular/plural)
     """
     results: dict[str, Any] = {
-        "in_h1": {"passed": False},
-        "in_intro": {"passed": False},
+        "in_h1": {"passed": False, "form": None},
+        "in_intro": {"passed": False, "form": None},
         "frequency": {"count": 0, "status": "OK"},
         "overall": "FAIL",
     }
 
-    keyword_lower = primary_keyword.lower()
+    # Use KeywordMatcher for morphology-aware matching
+    matcher = KeywordMatcher(lang=lang)
 
     # In H1
     h1 = extract_h1(text)
     if h1:
-        results["in_h1"]["passed"] = keyword_lower in h1.lower()
+        found, form = matcher.find_in_text(primary_keyword, h1)
+        results["in_h1"]["passed"] = found
+        results["in_h1"]["form"] = form
 
     # In intro
     intro = extract_intro(text)
-    results["in_intro"]["passed"] = keyword_lower in intro.lower()
+    found_intro, form_intro = matcher.find_in_text(primary_keyword, intro)
+    results["in_intro"]["passed"] = found_intro
+    results["in_intro"]["form"] = form_intro
 
-    # Frequency (informational)
+    # Frequency (informational) - count all morphological forms
+    keyword_lower = primary_keyword.lower()
     text_lower = text.lower()
+    # Basic count for exact match
     count = text_lower.count(keyword_lower)
+    # Also count morphological variations
+    _, all_forms = matcher.find_in_text(primary_keyword, text)
+    if all_forms and all_forms != keyword_lower:
+        count += text_lower.count(all_forms.lower())
     results["frequency"]["count"] = count
 
     if count < 2:
@@ -243,7 +258,7 @@ def check_primary_keyword(text: str, primary_keyword: str) -> dict:
     return results
 
 
-def check_primary_keyword_semantic(text: str, primary_keyword: str, use_llm: bool = False) -> dict:
+def check_primary_keyword_semantic(text: str, primary_keyword: str, use_llm: bool = False, lang: str = "ru") -> dict:
     """
     Semantic check for primary keyword using morphology-aware matching.
 
@@ -276,7 +291,7 @@ def check_primary_keyword_semantic(text: str, primary_keyword: str, use_llm: boo
     }
 
     # Use KeywordMatcher for morphology-aware matching
-    matcher = KeywordMatcher(lang="ru")
+    matcher = KeywordMatcher(lang=lang)
 
     # Check H1 semantically
     h1_matched, _ = matcher.find_in_text(primary_keyword, h1)
@@ -314,7 +329,7 @@ INTRO: "{intro[:300]}..."
     return results
 
 
-def check_keyword_coverage(text: str, keywords: list[str]) -> dict:
+def check_keyword_coverage(text: str, keywords: list[str], lang: str = "ru") -> dict:
     """
     Check keyword coverage (legacy, for backwards compatibility).
 
@@ -339,7 +354,7 @@ def check_keyword_coverage(text: str, keywords: list[str]) -> dict:
             "missing_keywords": [],
         }
 
-    checker = CoverageChecker(lang="ru")
+    checker = CoverageChecker(lang=lang)
     result = checker.check(keywords, text, use_lemma=True)
 
     # Convert to legacy format (found_keywords as list of strings, not dicts)
@@ -357,7 +372,7 @@ def check_keyword_coverage(text: str, keywords: list[str]) -> dict:
     }
 
 
-def keyword_matches_semantic(keyword: str, text: str) -> bool:
+def keyword_matches_semantic(keyword: str, text: str, lang: str = "ru") -> bool:
     """
     Check if keyword matches text semantically.
 
@@ -370,11 +385,15 @@ def keyword_matches_semantic(keyword: str, text: str) -> bool:
     Returns:
         True if keyword matches (exact or morphological)
     """
-    return keyword_matches_text(keyword, text, lang="ru")
+    return keyword_matches_text(keyword, text, lang=lang)
 
 
 def check_keyword_coverage_split(
-    text: str, core_keywords: list[str], commercial_keywords: list[str], use_semantic: bool = True
+    text: str,
+    core_keywords: list[str],
+    commercial_keywords: list[str],
+    use_semantic: bool = True,
+    lang: str = "ru",
 ) -> dict:
     """
     Check keyword coverage split by intent.
@@ -393,7 +412,7 @@ def check_keyword_coverage_split(
     Returns:
         Dict with separate coverage metrics
     """
-    checker = CoverageChecker(lang="ru")
+    checker = CoverageChecker(lang=lang)
 
     # Core coverage (with morphology if use_semantic=True)
     core_result = checker.check(core_keywords, text, use_lemma=use_semantic)
@@ -906,15 +925,17 @@ def validate_content(
     # intro length / H2 count as blockers (blockers are defined below).
     structure = check_structure(text)
 
-    semantic_allowed = use_semantic and lang != "uk"
+    # "semantic" here really means lemma/stem matching via KeywordMatcher.
+    # We allow it for both RU and UK to avoid forcing awkward exact forms.
+    semantic_allowed = use_semantic
 
     # Primary keyword: exact or semantic check
-    primary_kw = check_primary_keyword(text, primary_keyword)
+    primary_kw = check_primary_keyword(text, primary_keyword, lang=lang)
     semantic_kw = None
 
     if semantic_allowed and (use_semantic or primary_kw["overall"] == "FAIL"):
         # Run semantic check as fallback or if requested
-        semantic_kw = check_primary_keyword_semantic(text, primary_keyword, use_llm=semantic_allowed)
+        semantic_kw = check_primary_keyword_semantic(text, primary_keyword, use_llm=semantic_allowed, lang=lang)
 
         # If semantic passes but exact fails, upgrade status
         if primary_kw["overall"] == "FAIL" and semantic_kw["overall"] in ["PASS", "WARNING"]:
@@ -926,10 +947,10 @@ def validate_content(
     # Coverage: use split if available (v8.4), otherwise legacy
     if core_keywords is not None or commercial_keywords is not None:
         coverage = check_keyword_coverage_split(
-            text, core_keywords or [], commercial_keywords or [], use_semantic=semantic_allowed
+            text, core_keywords or [], commercial_keywords or [], use_semantic=semantic_allowed, lang=lang
         )
     else:
-        coverage = check_keyword_coverage(text, all_keywords or [])
+        coverage = check_keyword_coverage(text, all_keywords or [], lang=lang)
 
     if mode == "seo":
         # SEO mode: don't enforce quality metrics, grammar, md-lint; keep coverage as INFO.
@@ -1237,9 +1258,11 @@ def print_results(results: dict):
 
 
 def main():
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print(__doc__)
-        print("\nUsage: python3 validate_content.py <file.md> <keyword> [options]")
+        print("\nUsage:")
+        print('  python3 validate_content.py <file.md> "<keyword>" [options]')
+        print("  python3 validate_content.py <file.md> --with-analysis <slug> [options]")
         print("\nOptions:")
         print("  --no-semantic  Disable semantic matching (exact match only)")
         print("  --json         Output results as JSON")
@@ -1249,7 +1272,13 @@ def main():
         sys.exit(1)
 
     file_path = sys.argv[1]
-    primary_keyword = sys.argv[2]
+    primary_keyword: str | None = None
+
+    # Support both:
+    # - <file> "<keyword>" [options]
+    # - <file> --with-analysis <slug> [options]  (primary inferred from analysis)
+    if len(sys.argv) >= 3 and not sys.argv[2].startswith("--"):
+        primary_keyword = sys.argv[2]
     output_json = "--json" in sys.argv
     use_semantic = "--no-semantic" not in sys.argv  # semantic is default
     mode = "quality"
@@ -1273,7 +1302,7 @@ def main():
         if idx + 1 < len(sys.argv):
             slug = sys.argv[idx + 1]
             try:
-                from analyze_category import analyze_category
+                from scripts.analyze_category import analyze_category
 
                 try:
                     analysis = analyze_category(slug, lang=lang)
@@ -1285,8 +1314,18 @@ def main():
                     if "core_keywords" in analysis["keywords"]:
                         core_keywords = analysis["keywords"]["core_keywords"]
                         commercial_keywords = analysis["keywords"]["commercial_keywords"]
+                    if primary_keyword is None and "primary" in analysis["keywords"]:
+                        primary_keyword = analysis["keywords"]["primary"]["keyword"]
             except Exception as e:
                 print(f"Warning: Could not load analysis for {slug}: {e}")
+
+    if primary_keyword is None:
+        print(__doc__)
+        print("\nError: missing primary keyword.")
+        print("\nUsage:")
+        print('  python3 validate_content.py <file.md> "<keyword>" [options]')
+        print("  python3 validate_content.py <file.md> --with-analysis <slug> [options]")
+        sys.exit(1)
 
     results = validate_content(
         file_path,

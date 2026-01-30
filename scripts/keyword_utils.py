@@ -100,7 +100,7 @@ class MorphAnalyzer:
     """
     Singleton морфологический анализатор.
 
-    Использует pymorphy3 если доступен, иначе Snowball fallback.
+    Uses pymorphy3 if available, otherwise pymorphy2, then Snowball fallback.
     """
 
     _instances: dict[str, "MorphAnalyzer"] = {}
@@ -122,12 +122,10 @@ class MorphAnalyzer:
         try:
             import pymorphy3
 
-            if lang == "uk":
-                self._morph = pymorphy3.MorphAnalyzer(lang="uk")
-            else:
-                self._morph = pymorphy3.MorphAnalyzer()
+            # `lang="uk"` requires Ukrainian dictionaries; handle missing dicts gracefully.
+            self._morph = pymorphy3.MorphAnalyzer(lang=lang)
             self._use_pymorphy = True
-        except ImportError:
+        except Exception:
             pass
 
         # Fallback to pymorphy2
@@ -135,10 +133,11 @@ class MorphAnalyzer:
             try:
                 import pymorphy2
 
-                self._morph = pymorphy2.MorphAnalyzer()
+                # `lang="uk"` requires pymorphy2-dicts-uk; if not installed, this may raise.
+                self._morph = pymorphy2.MorphAnalyzer(lang=lang)
                 self._use_pymorphy = True
-            except (ImportError, AttributeError):
-                # AttributeError: Python 3.12 removed inspect.getargspec
+            except Exception:
+                # Can fail due to missing dictionaries (e.g. uk) or pymorphy2 incompatibilities on newer Python.
                 pass
 
         # Fallback to Snowball
@@ -146,7 +145,8 @@ class MorphAnalyzer:
             try:
                 from snowballstemmer import stemmer
 
-                self._stemmer = stemmer("russian" if lang == "ru" else "russian")
+                # SnowballStemmer doesn't support Ukrainian; keep Russian as the best-effort fallback.
+                self._stemmer = stemmer("russian")
             except ImportError:
                 pass
 
