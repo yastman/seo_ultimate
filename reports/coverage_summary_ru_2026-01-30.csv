@@ -1,0 +1,51 @@
+slug,lang,total_keywords,covered,not_covered,coverage_percent,top_missing
+akkumulyatornaya,ru,1,1,0,100.0,
+aksessuary,ru,4,4,0,100.0,
+aksessuary-dlya-naneseniya-sredstv,ru,5,5,0,100.0,
+aktivnaya-pena,ru,6,6,0,100.0,
+antibitum,ru,4,4,0,100.0,
+antidozhd,ru,4,4,0,100.0,
+antimoshka,ru,3,3,0,100.0,
+apparaty-tornador,ru,3,3,0,100.0,
+avtoshampuni,ru,8,7,1,87.5,автошампунь для ручной мойки (40)
+cherniteli-shin,ru,5,5,0,100.0,
+glina-i-avtoskraby,ru,5,5,0,100.0,
+gubki-i-varezhki,ru,6,6,0,100.0,
+keramika-dlya-diskov,ru,3,3,0,100.0,
+keramika-i-zhidkoe-steklo,ru,6,6,0,100.0,
+kisti-dlya-deteylinga,ru,7,7,0,100.0,
+kvik-deteylery,ru,6,6,0,100.0,
+malyarniy-skotch,ru,6,6,0,100.0,
+mekhovye,ru,3,3,0,100.0,
+mikrofibra-i-tryapki,ru,11,9,2,81.8,тряпки для мытья машины (50);тряпка для стекла автомобиля (40)
+moyka-i-eksterer,ru,6,5,1,83.3,автохимия для мойки авто (50)
+nabory,ru,12,11,1,91.7,набор для чистки салона автомобиля (110)
+neytralizatory-zapakha,ru,10,7,3,70.0,средство для удаления запаха в салоне автомобиля (30);удаление запаха в машине (10);удалить запах в салоне автомобиля (10)
+obezzhirivateli,ru,6,6,0,100.0,
+oborudovanie,ru,3,3,0,100.0,
+ochistiteli-diskov,ru,4,4,0,100.0,
+ochistiteli-dvigatelya,ru,6,6,0,100.0,
+ochistiteli-kozhi,ru,8,6,2,75.0,средство для кожи салона (10);средство для очистки кожи салона (10)
+ochistiteli-shin,ru,2,2,0,100.0,
+ochistiteli-stekol,ru,3,3,0,100.0,
+omyvatel,ru,10,10,0,100.0,
+opt-i-b2b,ru,6,6,0,100.0,
+polirol-dlya-stekla,ru,3,3,0,100.0,
+poliroli-dlya-plastika,ru,4,4,0,100.0,
+polirovalnye-pasty,ru,6,6,0,100.0,
+polirovka,ru,5,5,0,100.0,
+pyatnovyvoditeli,ru,3,3,0,100.0,
+raspyliteli-i-penniki,ru,6,6,0,100.0,
+shampuni-dlya-ruchnoy-moyki,ru,3,3,0,100.0,
+shchetka-dlya-moyki-avto,ru,6,6,0,100.0,
+silanty,ru,3,3,0,100.0,
+sredstva-dlya-khimchistki-salona,ru,13,8,5,61.5,профессиональная химия для чистки салона авто (210);средство для чистки тканевого салона автомобиля (20);средство для чистки обивки салона автомобиля (10)
+sredstva-dlya-kozhi,ru,7,6,1,85.7,автокосметика для кожи (10)
+tverdyy-vosk,ru,3,3,0,100.0,
+ukhod-za-intererom,ru,5,5,0,100.0,
+ukhod-za-kozhey,ru,8,8,0,100.0,
+ukhod-za-naruzhnym-plastikom,ru,4,4,0,100.0,
+vedra-i-emkosti,ru,4,4,0,100.0,
+voski,ru,7,7,0,100.0,
+zashchitnye-pokrytiya,ru,3,3,0,100.0,
+zhidkiy-vosk,ru,5,5,0,100.0,
