@@ -93,6 +93,12 @@ python3 scripts/validate_content.py <path> "<keyword>" [--lang ru|uk]
 # Аудит
 python3 scripts/audit_keyword_consistency.py   # Ключи meta vs clean
 python3 scripts/check_h1_sync.py               # H1 синхронизация
+
+# Coverage audit (покрытие ключей в контенте)
+python3 scripts/audit_coverage.py --slug {slug} --lang uk --verbose   # Одна категория
+python3 scripts/audit_coverage.py --lang uk                            # Batch все UK
+python3 scripts/audit_coverage.py --slug {slug} --lang uk --json       # JSON output
+# CSV отчёты: reports/coverage_summary_*.csv, coverage_details_*.csv
 ```
 
 ---
@@ -117,6 +123,7 @@ python3 scripts/sync_semantics.py --apply                     # Синхрони
 | `keyword_utils.py` | Морфология RU/UK, KeywordMatcher, CoverageChecker |
 | `text_utils.py` | Стопслова, clean_markdown, count_words |
 | `seo_utils.py` | Front-matter, keyword counting, protected sections |
+| `coverage_matcher.py` | Coverage audit: EXACT/NORM/LEMMA/SYNONYM matching |
 
 ```python
 from scripts.keyword_utils import KeywordMatcher, CoverageChecker
@@ -170,4 +177,4 @@ spawn-claude "W1: Описание.
 
 ---
 
-**Version:** 55.0
+**Version:** 56.0
