@@ -150,8 +150,8 @@ python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
 | supporting | **≥80% COVERED** | WARNING |
 | keywords[] | threshold по кількості | WARNING |
 
-**COVERED** = EXACT / NORM / LEMMA / SYNONYM
-**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT
+**COVERED** = EXACT / NORM / LEMMA
+**NOT COVERED** = SYNONYM / PARTIAL / ABSENT
 
 **Output:**
 
@@ -240,7 +240,7 @@ If user chooses to fix:
 2. Propose fix
 3. User confirms or edits
 4. Apply Edit tool
-5. Return to verdict
+5. **Return to Phase 9: Re-Validate**
 
 **Example:**
 
@@ -254,6 +254,56 @@ Proposed fix:
 > "Безпечний для гуми"
 
 Apply this fix? [Y/n/edit]
+```
+
+---
+
+### Phase 9: Re-Validate After Fixes
+
+**MANDATORY** after any content changes. Max 3 iterations.
+
+```bash
+# Re-run coverage check
+python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
+
+# Re-run validators if density/structure was fixed
+python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
+python3 scripts/validate_seo.py uk/categories/{slug}/content/{slug}_uk.md "{primary}"
+python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+```
+
+**Logic:**
+
+```
+Iteration 1: Fix → Re-validate
+  ├── ALL PASS → Phase 7 verdict (✅)
+  └── Still issues → Iteration 2
+
+Iteration 2: Fix remaining → Re-validate
+  ├── ALL PASS → Phase 7 verdict (✅)
+  └── Still issues → Iteration 3
+
+Iteration 3: Fix remaining → Re-validate
+  ├── ALL PASS → Phase 7 verdict (✅)
+  └── Still issues → STOP, report remaining issues
+```
+
+**Output:**
+
+```
+## Re-Validation (Iteration X/3)
+
+| Check | Before | After | Status |
+|-------|--------|-------|--------|
+| Coverage | 85% | 92% | ✅ Improved |
+| Density | 3.1% | 2.4% | ✅ Fixed |
+| UK Terms | 2 | 0 | ✅ Fixed |
+
+✅ All checks pass. Ready for production!
+— OR —
+⚠️ Remaining issues (iteration X/3):
+- Coverage: 1 keyword missing
+Continue fixing? [Y/n]
 ```
 
 ---
@@ -295,7 +345,12 @@ Apply this fix? [Y/n/edit]
 
 ---
 
-**Version:** 1.1 — January 2026
+**Version:** 1.2 — January 2026
+
+**Changelog v1.2:**
+- **ADDED: Phase 9 Re-Validate** — mandatory re-validation after fixes (max 3 iterations)
+- **FIXED: COVERED/NOT COVERED** — SYNONYM now in NOT COVERED (keyword must appear directly)
+- Використовує validate_seo.py, validate_density.py (нові імена скриптів)
 
 **Changelog v1.1:**
 - **ADDED: audit_coverage.py інтеграція** — Phase 5 використовує `--include-meta` для детальної перевірки coverage

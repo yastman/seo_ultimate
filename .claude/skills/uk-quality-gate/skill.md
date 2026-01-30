@@ -72,7 +72,7 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 
 ```bash
 python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}" --mode seo
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 ```
 
@@ -99,7 +99,7 @@ python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 ### 4. SEO Structure Check
 
 ```bash
-python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
+python3 scripts/validate_seo.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
 ```
 
 **Перевірки:**
@@ -139,7 +139,7 @@ grep -c "стекло" uk/categories/{slug}/content/{slug}_uk.md  # Має бу�
 ### 6. Keyword Density
 
 ```bash
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 ```
 
 **Пороги:**
@@ -208,7 +208,7 @@ python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json
 python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}" --mode seo
 
 # SEO structure
-python3 scripts/check_seo_structure.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
+python3 scripts/validate_seo.py uk/categories/{slug}/content/{slug}_uk.md "{primary_uk}"
 
 # Academic nausea
 python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
@@ -217,7 +217,7 @@ python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 grep -E "резина|мойка|стекло" uk/categories/{slug}/content/{slug}_uk.md
 
 # Keyword density
-python3 scripts/check_keyword_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 
 # H1 sync check
 python3 scripts/check_h1_sync.py --lang uk
@@ -365,12 +365,12 @@ If FAIL: Fix issues, then run /uk-quality-gate {slug} again
 - ADDED: Більше деталей у Common Issues
 
 **Changelog v2.1:**
-- Added `--lang uk` to check_keyword_density.py calls
+- Added `--lang uk` to validate_density.py calls
 - Added check_h1_sync.py --lang uk validation
 - Added check_semantic_coverage.py --lang uk validation
 
 **Changelog v2.0:**
-- Додано check_seo_structure.py валідацію
+- Додано validate_seo.py валідацію
 - Додано H2 keyword check (мін. 2)
 - Додано Academic ≥7% вимогу
 - Description length: 120-160 (було 100-160)

@@ -143,8 +143,10 @@ if kw["coverage_percent"] < threshold:
 ```
 
 **Статуси покриття:**
-- ✅ COVERED: `EXACT`, `NORM`, `LEMMA`, `SYNONYM`
-- ❌ NOT COVERED: `TOKENIZATION`, `PARTIAL`, `ABSENT`
+- ✅ COVERED: `EXACT`, `NORM`, `LEMMA`
+- ❌ NOT COVERED: `SYNONYM`, `PARTIAL`, `ABSENT`
+
+> **SYNONYM = NOT COVERED:** Синонім знайдено в тексті, але сам ключ — відсутній. Для SEO потрібен саме ключ.
 
 **Правила вердикту:**
 
@@ -152,7 +154,7 @@ if kw["coverage_percent"] < threshold:
 |---------|--------|----------|
 | primary+secondary | **100% COVERED** | BLOCKER |
 | supporting | **≥80% COVERED** | WARNING |
-| keywords[] | adaptive threshold | WARNING |
+| keywords[] | adaptive threshold | **BLOCKER** |
 
 **Формат виводу в лог:**
 
@@ -230,6 +232,39 @@ grep -c "стекло" uk/categories/{slug}/content/{slug}_uk.md  # Має бу�
 | Сценарії покупки | ✅/❌ | є секція |
 | FAQ | ✅/❌ | про вибір / про процес |
 | **VERDICT** | **✅/⚠️/❌** | |
+
+### Step 10: Re-validate Coverage (MANDATORY)
+
+**Обов'язково після будь-яких виправлень!**
+
+```bash
+python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
+```
+
+**Цикл виправлень (max 3 ітерації):**
+
+```
+Iteration 1: Fix → Re-validate → check NOT COVERED
+Iteration 2: Fix remaining → Re-validate → check NOT COVERED
+Iteration 3: Fix remaining → Re-validate → STOP
+```
+
+**Якщо після 3 ітерацій залишаються NOT COVERED:**
+- Задокументувати в логу які ключі не вдалося вставити
+- Перейти до Step 11
+
+**Куди вставляти непокриті ключі:**
+
+| Пріоритет | Куди | Приклад |
+|-----------|------|---------|
+| **primary** | Intro (перший абзац) | "...{keyword} допоможе..." |
+| **secondary** | H2 заголовки | "## Як обрати {keyword}" |
+| **supporting** | Сценарії, таблиці, FAQ | "**Для {keyword}** — ..." |
+
+**Техніка органічного впровадження:**
+- Знайди речення за змістом близьке до ключа
+- Переформулюй з включенням ключа
+- НЕ додавай нові факти — використовуй RESEARCH_DATA.md
 
 ---
 
@@ -317,11 +352,17 @@ uk/categories/cherniteli-shin/content/cherniteli-shin_uk.md
 
 ---
 
-**Version:** 2.2 — January 2026
+**Version:** 2.3 — January 2026
+
+**Changelog v2.3:**
+- **CHANGED: keywords[] severity** — WARNING → BLOCKER
+- **CHANGED: SYNONYM = NOT COVERED** — синонім не замінює ключ для SEO
+- **ADDED: Step 10 деталі** — Re-validate Coverage з max 3 ітераціями
+- **ADDED: Таблиця куди вставляти ключі** — primary/secondary/supporting
 
 **Changelog v2.2:**
 - **ADDED: JSON інтерпретація** — детальний алгоритм валідації JSON-виводу audit_coverage.py
-- Пояснення статусів покриття (EXACT/NORM/LEMMA/SYNONYM vs TOKENIZATION/PARTIAL/ABSENT)
+- Пояснення статусів покриття (EXACT/NORM/LEMMA vs SYNONYM/PARTIAL/ABSENT)
 - Інструкція куди розподіляти непокриті ключі
 
 **Changelog v2.1:**
