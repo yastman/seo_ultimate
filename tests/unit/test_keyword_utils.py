@@ -102,18 +102,83 @@ class TestMorphAnalyzer:
 
 
 class TestMorphAnalyzerUK:
-    """Test Ukrainian MorphAnalyzer."""
+    """Test Ukrainian MorphAnalyzer with pymorphy3-dicts-uk.
 
-    def test_uk_get_lemma(self):
-        """Ukrainian lemmatization works."""
+    Note: Some words have dictionary bugs (e.g., губка→губко).
+    Use stable words: шампунь, щітка, піна, засіб.
+    """
+
+    def test_uk_lemmatization_shampun(self):
+        """UK: шампуні/шампунем → шампунь."""
         morph = MorphAnalyzer("uk")
-        # щітки → щітка (Ukrainian)
-        lemma = morph.get_lemma("щітки")
-        # May return stem if UK dict not available
-        assert len(lemma) > 0
+        assert morph.get_lemma("шампуні") == "шампунь"
+        assert morph.get_lemma("шампунем") == "шампунь"
+        assert morph.get_lemma("шампуню") == "шампунь"
+
+    def test_uk_lemmatization_shchitka(self):
+        """UK: щітки/щітку/щіткою → щітка."""
+        morph = MorphAnalyzer("uk")
+        assert morph.get_lemma("щітки") == "щітка"
+        assert morph.get_lemma("щітку") == "щітка"
+        assert morph.get_lemma("щіткою") == "щітка"
+
+    def test_uk_lemmatization_pina(self):
+        """UK: піни/піну/піною → піна."""
+        morph = MorphAnalyzer("uk")
+        assert morph.get_lemma("піни") == "піна"
+        assert morph.get_lemma("піну") == "піна"
+        assert morph.get_lemma("піною") == "піна"
+
+    def test_uk_lemmatization_zasib(self):
+        """UK: засоби/засобу/засобом → засіб."""
+        morph = MorphAnalyzer("uk")
+        assert morph.get_lemma("засоби") == "засіб"
+        assert morph.get_lemma("засобу") == "засіб"
+        assert morph.get_lemma("засобом") == "засіб"
+
+    def test_uk_not_snowball_russian(self):
+        """UK should NOT use Russian Snowball stemming.
+
+        Verify by checking that UK-specific word normalizes correctly,
+        not to Russian-style stem.
+        """
+        morph = MorphAnalyzer("uk")
+        # "засоби" in Russian Snowball would stem differently
+        # If pymorphy works, it returns proper Ukrainian lemma
+        lemma = morph.get_lemma("засоби")
+        assert lemma == "засіб", f"Expected 'засіб', got '{lemma}' (possible Snowball fallback)"
 
 
 from scripts.keyword_utils import KeywordMatcher
+
+
+class TestKeywordMatcherUK:
+    """Test Ukrainian keyword matching with proper morphology."""
+
+    def test_uk_keyword_match_declension_shchitka(self):
+        """UK: 'щітка для миття' should match 'щітку для миття'."""
+        matcher = KeywordMatcher(lang="uk")
+        found, form = matcher.find_in_text("щітка для миття", "Використовуйте щітку для миття авто.")
+        assert found, "Should match declined form щітку"
+
+    def test_uk_keyword_match_plural_shampun(self):
+        """UK: 'шампунь для авто' should match 'шампуні для авто'."""
+        matcher = KeywordMatcher(lang="uk")
+        found, form = matcher.find_in_text("шампунь для авто", "Купуйте шампуні для авто в нашому магазині.")
+        assert found, "Should match plural form шампуні"
+
+    def test_uk_keyword_match_instrumental_pina(self):
+        """UK: 'піна' should match 'піною'."""
+        matcher = KeywordMatcher(lang="uk")
+        found, form = matcher.find_in_text("активна піна", "Миття активною піною дає кращий результат.")
+        assert found, "Should match instrumental form піною"
+
+    def test_uk_keyword_single_word_accusative(self):
+        """UK: Find keyword when text has accusative form."""
+        matcher = KeywordMatcher(lang="uk")
+        found, form = matcher.find_in_text("щітка", "використовуйте щітку для миття")
+        assert found is True
+        assert form == "щітку"
 
 
 class TestKeywordMatcher:
