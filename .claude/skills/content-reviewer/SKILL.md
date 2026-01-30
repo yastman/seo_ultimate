@@ -99,13 +99,44 @@ python3 scripts/validate_density.py categories/{path}/content/{slug}_ru.md
 python3 scripts/check_water_natasha.py categories/{path}/content/{slug}_ru.md
 ```
 
-### Step 3: Keywords Coverage (100% required)
+### Step 3: Keywords Coverage (audit_coverage.py)
 
-| Группа | Требование | Severity |
-|--------|------------|----------|
-| primary | **100%** | BLOCKER |
-| secondary | **100%** | BLOCKER |
-| supporting | **≥80%** | WARNING |
+```bash
+python3 scripts/audit_coverage.py --slug {slug} --lang ru --json --include-meta
+```
+
+**Два источника ключей:**
+1. `keywords_in_content` из _meta.json (primary/secondary/supporting) — **строгая проверка**
+2. `keywords[]` из _clean.json — **информативная проверка**
+
+**Правила вердикта:**
+
+| Источник | Группа | Требование | При фейле |
+|----------|--------|------------|-----------|
+| keywords_in_content | primary | 100% COVERED | BLOCKER |
+| keywords_in_content | secondary | 100% COVERED | BLOCKER |
+| keywords_in_content | supporting | ≥80% COVERED | WARNING |
+| keywords[] | all | adaptive threshold | WARNING |
+
+**Adaptive thresholds для keywords[]:** ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
+
+**COVERED** = EXACT / NORM / LEMMA / SYNONYM
+**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT
+
+**Формат вывода:**
+
+```markdown
+### Keywords Coverage
+
+| Источник | Covered | Total | % | Status |
+|----------|---------|-------|---|--------|
+| primary+secondary | 8/8 | 100% | ✅ PASS |
+| supporting | 4/5 | 80% | ✅ PASS |
+| keywords[] | 8/15 | 53% | ⚠️ WARNING (threshold 50%) |
+
+**NOT COVERED (primary/secondary):** нет
+**NOT COVERED (keywords[]):** ключ1 (1200), ключ2 (800)
+```
 
 **Куда распределять:** Intro (primary), H2 (secondary), Сценарии/Таблицы (supporting)
 

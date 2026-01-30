@@ -429,16 +429,16 @@ class TestAuditWithMeta:
         from scripts.audit_coverage import audit_with_meta
 
         keywords = [
-            {"keyword": "ключ1", "volume": 100},
-            {"keyword": "ключ2", "volume": 90},
-            {"keyword": "ключ3", "volume": 80},
+            {"keyword": "активна піна", "volume": 100},
+            {"keyword": "безконтактна мийка", "volume": 90},
+            {"keyword": "автошампунь", "volume": 80},
         ]
         meta_keywords = {
-            "primary": ["ключ1"],
-            "secondary": ["ключ2"],
-            "supporting": ["ключ3", "ключ4"],  # ключ4 not in text
+            "primary": ["активна піна"],
+            "secondary": ["безконтактна мийка"],
+            "supporting": ["автошампунь", "неіснуюче слово"],  # "неіснуюче слово" not in text
         }
-        text = "Текст з ключ1 та ключ2 та ключ3"
+        text = "Купуйте активна піна для безконтактна мийка. Автошампунь у наявності."
 
         result = audit_with_meta(keywords, [], meta_keywords, text, "uk")
 
