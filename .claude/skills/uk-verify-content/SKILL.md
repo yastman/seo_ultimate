@@ -73,6 +73,58 @@ python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
 
 ---
 
+### Phase 2a: Density/Nausea Fix (if needed)
+
+**Trigger:** Phase 2 validators show stem >3.0% OR nausea >4.0
+
+1. Show issue summary:
+   ```
+   ## Density Issue
+
+   Word "піна" appears 15 times (3.8%)
+   Target: 3-4 times (≤2.5%)
+
+   Occurrences found at lines: 5, 12, 18, 23, 31, 42, 48, 55, 61, 67, 73, 79, 85, 91, 97
+
+   Recommend keeping:
+   - Line 5 (intro - first mention)
+   - Line 31 (H2 heading)
+   - Line 67 (table header)
+   - Line 85 (FAQ)
+
+   Recommend replacing: 11 others
+
+   Fix density now? [Y/n]
+   ```
+
+2. If user confirms, show each replacement proposal:
+   ```
+   Line 12: "активна піна швидко видаляє бруд"
+         → "активний засіб швидко видаляє бруд"
+
+   Apply? [Y/n/edit]
+   ```
+
+3. After all replacements, re-run validator:
+   ```bash
+   python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+   ```
+
+4. Show before/after:
+   ```
+   ## Density Fix Result
+
+   | Metric | Before | After |
+   |--------|--------|-------|
+   | "піна" count | 15 | 4 |
+   | Density | 3.8% | 1.0% |
+   | Status | ❌ BLOCKER | ✅ PASS |
+   ```
+
+5. If still >2.5%, offer to continue (max 3 iterations)
+
+---
+
 ### Phase 3: UK Terminology Check (BLOCKER)
 
 ```bash
@@ -345,7 +397,18 @@ Continue fixing? [Y/n]
 
 ---
 
-**Version:** 1.2 — January 2026
+**Version:** 1.4 — February 2026
+
+**Changelog v1.4:**
+- **ADDED: Phase 2a** — interactive density/nausea fix
+- Shows each replacement, asks for confirmation
+- Before/after comparison table
+- SYNCED with RU verify-content v1.4
+
+**Changelog v1.3:**
+- **SYNCED with RU v1.3** — повний паритет
+- **FIXED: SYNONYM = NOT COVERED** — синонім не замінює ключ для SEO
+- ADDED: max 3 ітерації для циклу виправлень
 
 **Changelog v1.2:**
 - **ADDED: Phase 9 Re-Validate** — mandatory re-validation after fixes (max 3 iterations)

@@ -3,7 +3,7 @@ name: content-reviewer
 description: Ревизия и исправление контента категории по плану v3.0. Use when /content-reviewer {path}, нужно проверить контент, выполнить ревизию, пофиксить проблемы в тексте, review content. Автономный режим — находит и исправляет проблемы без интерактивности.
 ---
 
-# Content Reviewer v2.0
+# Content Reviewer v2.2
 
 Проверка и исправление контента **одной категории** за вызов.
 
@@ -79,7 +79,8 @@ Step 5: Commercial Intent Check
 Step 6: Dryness Diagnosis
 Step 7: Verdict table
 Step 8: Fix if BLOCKER or REWRITE if needed
-Step 9: Re-validate
+Step 8a: Fix Density/Nausea (if BLOCKER)
+Step 9: Re-validate Coverage (max 3 iterations)
 Step 10: Output verdict
 ```
 
@@ -120,8 +121,11 @@ python3 scripts/audit_coverage.py --slug {slug} --lang ru --json --include-meta
 
 **Adaptive thresholds для keywords[]:** ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
 
-**COVERED** = EXACT / NORM / LEMMA
-**NOT COVERED** = SYNONYM / PARTIAL / ABSENT
+**Статуси покриття:**
+- ✅ COVERED: `EXACT`, `NORM`, `LEMMA`
+- ❌ NOT COVERED: `SYNONYM`, `PARTIAL`, `ABSENT`
+
+> **SYNONYM = NOT COVERED:** Синонім знайдено в тексті, але сам ключ — відсутній. Для SEO потрібен саме ключ.
 
 **Формат вывода:**
 
@@ -198,13 +202,90 @@ categories/moyka-i-eksterer/sredstva-dlya-diskov-i-shin/cherniteli-shin/content/
 
 ---
 
+### Step 8a: Fix Density/Nausea (if BLOCKER)
+
+**Trigger:** Step 2 validators show:
+- `validate_density.py`: stem >3.0%
+- `check_water_natasha.py`: classic nausea >4.0
+
+**Algorithm:**
+
+1. From validator output, identify overused word:
+   - Density: `"пена*" — 15 раз (3.8%)`
+   - Nausea: `Самое частое слово: 'пена' (15 раз)`
+
+2. Find all occurrences in `{slug}_ru.md`
+
+3. Decide which to keep (3-4 max):
+   - ✅ Keep: first mention in intro
+   - ✅ Keep: H2 headings
+   - ✅ Keep: table headers
+   - ❌ Replace: body text repetitions
+
+4. Replace excess with contextual synonyms:
+   - Choose synonym based on sentence context
+   - Match grammatical case/gender
+   - Common alternatives: "средство", "состав", "продукт", "формула"
+
+5. Re-run validator:
+   ```bash
+   python3 scripts/validate_density.py categories/{path}/content/{slug}_ru.md
+   ```
+
+6. Repeat until ≤2.5% or max 3 iterations
+
+7. Log all replacements made
+
+**Example:**
+```
+Before: "пена" × 15 (3.8%)
+After:  "пена" × 4 + "средство" × 5 + "состав" × 3 + "продукт" × 3 = 1.0%
+```
+
+---
+
+## Step 9: Re-validate Coverage (MANDATORY)
+
+**Обов'язково після будь-яких виправлень!**
+
+```bash
+python3 scripts/audit_coverage.py --slug {slug} --lang ru --json --include-meta
+```
+
+**Цикл виправлень (max 3 ітерації):**
+
+```
+Iteration 1: Fix → Re-validate → check NOT COVERED
+Iteration 2: Fix remaining → Re-validate → check NOT COVERED
+Iteration 3: Fix remaining → Re-validate → STOP
+```
+
+**Якщо після 3 ітерацій залишаються NOT COVERED:**
+- Задокументувати в логу які ключі не вдалося вставити
+- Перейти до фінального verdict
+
+**Куди вставляти непокриті ключі:**
+
+| Пріоритет | Куди | Приклад |
+|-----------|------|---------|
+| **primary** | Intro (перший абзац) | "...{keyword} поможет..." |
+| **secondary** | H2 заголовки | "## Как выбрать {keyword}" |
+| **supporting** | Сценарии, таблицы, FAQ | "**Для {keyword}** — ..." |
+
+**Техніка органічного впровадження:**
+- Знайди речення за змістом близьке до ключа
+- Переформулюй з включенням ключа
+- НЕ додавай нові факти — використовуй RESEARCH_DATA.md
+
+---
+
 ## BLOCKER Fixes
 
 | Issue | Fix |
 |-------|-----|
 | H1 ≠ name | Replace H1 |
 | How-to sections | Delete or convert |
-| Stem >3.0% | Replace with synonyms |
+| Stem >3.0% | Step 8a: auto-replace with synonyms |
 | Intro = определение | Rewrite: польза + сценарий |
 | >2 primary missing | Add keywords organically |
 | Research types missing | Add all types |
@@ -253,3 +334,18 @@ categories/moyka-i-eksterer/sredstva-dlya-diskov-i-shin/cherniteli-shin/content/
 4. **Buyer guide, не how-to**.
 5. **Academic ≥7%** — если ниже, добавить обращения.
 6. **НЕ ВЫДУМЫВАЙ факты** — при добавлении ключей используй ТОЛЬКО информацию из RESEARCH_DATA.md. Если нет подходящего факта — внедряй ключ в существующий контекст без новых утверждений.
+
+---
+
+**Version:** 2.2 — February 2026
+
+**Changelog v2.2:**
+- **ADDED: Step 8a** — auto-fix density/nausea with synonym replacement
+- Iterative cycle: fix → re-validate → repeat (max 3 iterations)
+
+**Changelog v2.1:**
+- **SYNCED with UK v2.3** — повний паритет
+- ADDED: max 3 ітерації для циклу виправлень
+- ADDED: SYNONYM = NOT COVERED (explicit)
+- ADDED: Таблиця куди вставляти непокриті ключі
+- ADDED: Техніка органічного впровадження

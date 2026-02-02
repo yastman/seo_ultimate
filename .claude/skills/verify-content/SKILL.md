@@ -74,6 +74,64 @@ categories/{path}/
 
 ---
 
+### Phase 2a: Density/Nausea Fix (if needed)
+
+**Trigger:** Run validators first:
+```bash
+python3 scripts/validate_density.py categories/{path}/content/{slug}_ru.md
+python3 scripts/check_water_natasha.py categories/{path}/content/{slug}_ru.md
+```
+
+**BLOCKER if:** stem >3.0% OR classic nausea >4.0
+
+1. Show issue summary:
+   ```
+   ## Density Issue
+
+   Word "пена" appears 15 times (3.8%)
+   Target: 3-4 times (≤2.5%)
+
+   Occurrences found at lines: 5, 12, 18, 23, 31, 42, 48, 55, 61, 67, 73, 79, 85, 91, 97
+
+   Recommend keeping:
+   - Line 5 (intro - first mention)
+   - Line 31 (H2 heading)
+   - Line 67 (table header)
+   - Line 85 (FAQ)
+
+   Recommend replacing: 11 others
+
+   Fix density now? [Y/n]
+   ```
+
+2. If user confirms, show each replacement proposal:
+   ```
+   Line 12: "активная пена быстро удаляет грязь"
+         → "активное средство быстро удаляет грязь"
+
+   Apply? [Y/n/edit]
+   ```
+
+3. After all replacements, re-run validator:
+   ```bash
+   python3 scripts/validate_density.py categories/{path}/content/{slug}_ru.md
+   ```
+
+4. Show before/after:
+   ```
+   ## Density Fix Result
+
+   | Metric | Before | After |
+   |--------|--------|-------|
+   | "пена" count | 15 | 4 |
+   | Density | 3.8% | 1.0% |
+   | Status | ❌ BLOCKER | ✅ PASS |
+   ```
+
+5. If still >2.5%, offer to continue (max 3 iterations)
+
+---
+
 ### Phase 3: AI Patterns Detection
 
 1. Прочитать `references/ai-patterns.md` для списка паттернов
@@ -114,8 +172,11 @@ python3 scripts/audit_coverage.py --slug {slug} --lang ru --json --include-meta
 | keywords_in_content | supporting | ≥80% COVERED | WARNING |
 | keywords[] | all | adaptive threshold | WARNING |
 
-**COVERED** = EXACT / NORM / LEMMA / SYNONYM
-**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT
+**Статуси покриття:**
+- ✅ COVERED: `EXACT`, `NORM`, `LEMMA`
+- ❌ NOT COVERED: `SYNONYM`, `PARTIAL`, `ABSENT`
+
+> **SYNONYM = NOT COVERED:** Синонім знайдено в тексті, але сам ключ — відсутній. Для SEO потрібен саме ключ.
 
 **Adaptive thresholds для keywords[]:** ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
 
@@ -201,6 +262,10 @@ Actions:
 
 ### Phase 7: Fix Mode
 
+**Цикл виправлень (max 3 ітерації):**
+- Iteration 1-3: Fix → Re-validate → check NOT COVERED
+- Після 3 ітерацій: STOP і задокументувати невирішені
+
 If user chooses to fix:
 
 1. Show exact location
@@ -251,7 +316,16 @@ Apply this fix? [Y/n/edit]
 
 ---
 
-**Version:** 1.2 — January 2026
+**Version:** 1.4 — February 2026
+
+**Changelog v1.4:**
+- **ADDED: Phase 2a** — interactive density/nausea fix
+- Shows each replacement, asks for confirmation
+- Before/after comparison table
+
+**Changelog v1.3:**
+- **FIXED: SYNONYM = NOT COVERED** — синонім не замінює ключ для SEO
+- ADDED: max 3 ітерації для циклу виправлень
 
 **Changelog v1.2:**
 - **ADDED: audit_coverage.py --include-meta интеграция** — Phase 4 использует `--json --include-meta` для детальной проверки coverage

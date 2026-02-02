@@ -3,7 +3,7 @@ name: uk-content-reviewer
 description: Ревізія та виправлення UK контенту категорії по плану v3.0. Use when uk-content-reviewer {slug}, перевір UK контент, ревізія українського контенту. Автономний режим — знаходить та виправляє проблеми без інтерактивності.
 ---
 
-# UK Content Reviewer v2.1
+# UK Content Reviewer v2.4
 
 Перевірка та виправлення контенту **однієї UK категорії** за виклик.
 
@@ -80,6 +80,7 @@ Step 6: Dryness Diagnosis
 Step 7: UK Terminology Check
 Step 8: Verdict table
 Step 9: Fix if BLOCKER or REWRITE if needed
+Step 9a: Fix Density/Nausea (if BLOCKER)
 Step 10: Re-validate
 Step 11: Output verdict
 ```
@@ -233,6 +234,46 @@ grep -c "стекло" uk/categories/{slug}/content/{slug}_uk.md  # Має бу�
 | FAQ | ✅/❌ | про вибір / про процес |
 | **VERDICT** | **✅/⚠️/❌** | |
 
+### Step 9a: Fix Density/Nausea (if BLOCKER)
+
+**Trigger:** Step 2 validators show:
+- `validate_density.py`: stem >3.0%
+- `check_water_natasha.py`: classic nausea >4.0
+
+**Algorithm:**
+
+1. From validator output, identify overused word:
+   - Density: `"піна*" — 15 раз (3.8%)`
+   - Nausea: `Самое частое слово: 'піна' (15 раз)`
+
+2. Find all occurrences in `{slug}_uk.md`
+
+3. Decide which to keep (3-4 max):
+   - ✅ Keep: first mention in intro
+   - ✅ Keep: H2 headings
+   - ✅ Keep: table headers
+   - ❌ Replace: body text repetitions
+
+4. Replace excess with contextual synonyms:
+   - Choose synonym based on sentence context
+   - Match grammatical case/gender
+   - Common alternatives: "засіб", "склад", "продукт", "формула"
+
+5. Re-run validator:
+   ```bash
+   python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
+   ```
+
+6. Repeat until ≤2.5% or max 3 iterations
+
+7. Log all replacements made
+
+**Example:**
+```
+Before: "піна" × 15 (3.8%)
+After:  "піна" × 4 + "засіб" × 5 + "склад" × 3 + "продукт" × 3 = 1.0%
+```
+
 ### Step 10: Re-validate Coverage (MANDATORY)
 
 **Обов'язково після будь-яких виправлень!**
@@ -298,7 +339,7 @@ uk/categories/cherniteli-shin/content/cherniteli-shin_uk.md
 |-------|-----|
 | H1 ≠ name | Replace H1 |
 | How-to sections | Delete or convert |
-| Stem >3.0% | Replace with synonyms |
+| Stem >3.0% | Step 9a: auto-replace with synonyms |
 | Intro = визначення | Rewrite: користь + сценарій |
 | >2 primary missing | Add keywords organically |
 | Research types missing | Add all types |
@@ -352,7 +393,11 @@ uk/categories/cherniteli-shin/content/cherniteli-shin_uk.md
 
 ---
 
-**Version:** 2.3 — January 2026
+**Version:** 2.4 — February 2026
+
+**Changelog v2.4:**
+- **ADDED: Step 9a** — auto-fix density/nausea with synonym replacement
+- Iterative cycle: fix → re-validate → repeat (max 3 iterations)
 
 **Changelog v2.3:**
 - **CHANGED: keywords[] severity** — WARNING → BLOCKER
