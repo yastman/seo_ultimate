@@ -279,6 +279,23 @@ Iteration 3: Fix remaining → Re-validate → STOP
 
 ---
 
+## Step 9b: Re-check Nausea After Keywords (MANDATORY)
+
+**КРИТИЧНО:** После добавления ключей nausea может вырасти!
+
+```bash
+python3 scripts/check_water_natasha.py categories/{path}/content/{slug}_ru.md
+```
+
+**Если nausea >3.5 (WARNING):**
+1. Применить Step 8a (synonym replacement)
+2. Цикл: replace → check → repeat (max 3 iterations)
+3. Цель: nausea ≤3.5
+
+**Правило:** Порог 3.5 — WARNING, требует исправления. Не только BLOCKER >4.0.
+
+---
+
 ## BLOCKER Fixes
 
 | Issue | Fix |
@@ -334,18 +351,3 @@ Iteration 3: Fix remaining → Re-validate → STOP
 4. **Buyer guide, не how-to**.
 5. **Academic ≥7%** — если ниже, добавить обращения.
 6. **НЕ ВЫДУМЫВАЙ факты** — при добавлении ключей используй ТОЛЬКО информацию из RESEARCH_DATA.md. Если нет подходящего факта — внедряй ключ в существующий контекст без новых утверждений.
-
----
-
-**Version:** 2.2 — February 2026
-
-**Changelog v2.2:**
-- **ADDED: Step 8a** — auto-fix density/nausea with synonym replacement
-- Iterative cycle: fix → re-validate → repeat (max 3 iterations)
-
-**Changelog v2.1:**
-- **SYNCED with UK v2.3** — повний паритет
-- ADDED: max 3 ітерації для циклу виправлень
-- ADDED: SYNONYM = NOT COVERED (explicit)
-- ADDED: Таблиця куди вставляти непокриті ключі
-- ADDED: Техніка органічного впровадження

@@ -309,6 +309,23 @@ Iteration 3: Fix remaining → Re-validate → STOP
 
 ---
 
+## Step 10b: Re-check Nausea After Keywords (MANDATORY)
+
+**КРИТИЧНО:** Після додавання ключів nausea може зрости!
+
+```bash
+python3 scripts/check_water_natasha.py uk/categories/{slug}/content/{slug}_uk.md
+```
+
+**Якщо nausea >3.5 (WARNING):**
+1. Застосувати Step 9a (synonym replacement)
+2. Цикл: replace → check → repeat (max 3 iterations)
+3. Ціль: nausea ≤3.5
+
+**Правило:** Поріг 3.5 — WARNING, вимагає виправлення. Не лише BLOCKER >4.0.
+
+---
+
 ## Reference-based Rewrite
 
 **Коли:** REWRITE NEEDED (Dryness 5+)
@@ -390,35 +407,3 @@ uk/categories/cherniteli-shin/content/cherniteli-shin_uk.md
 5. **Academic ≥7%** — якщо нижче, додати звернення.
 6. **UK термінологія** — BLOCKER якщо знайдено RU терміни.
 7. **НЕ ВИГАДУЙ факти** — при додаванні ключів використовуй ТІЛЬКИ інформацію з RESEARCH_DATA.md. Якщо немає відповідного факту — впроваджуй ключ в існуючий контекст без нових тверджень.
-
----
-
-**Version:** 2.4 — February 2026
-
-**Changelog v2.4:**
-- **ADDED: Step 9a** — auto-fix density/nausea with synonym replacement
-- Iterative cycle: fix → re-validate → repeat (max 3 iterations)
-
-**Changelog v2.3:**
-- **CHANGED: keywords[] severity** — WARNING → BLOCKER
-- **CHANGED: SYNONYM = NOT COVERED** — синонім не замінює ключ для SEO
-- **ADDED: Step 10 деталі** — Re-validate Coverage з max 3 ітераціями
-- **ADDED: Таблиця куди вставляти ключі** — primary/secondary/supporting
-
-**Changelog v2.2:**
-- **ADDED: JSON інтерпретація** — детальний алгоритм валідації JSON-виводу audit_coverage.py
-- Пояснення статусів покриття (EXACT/NORM/LEMMA vs SYNONYM/PARTIAL/ABSENT)
-- Інструкція куди розподіляти непокриті ключі
-
-**Changelog v2.1:**
-- **ADDED: audit_coverage.py інтеграція** — Step 3 використовує `--include-meta` для детальної перевірки coverage
-- Автоматична перевірка primary/secondary/supporting з JSON-виводом
-- Чіткі severity: BLOCKER для primary+secondary, WARNING для supporting та keywords[]
-
-**Changelog v2.0:**
-- **Синхронізовано з RU content-reviewer v2.0** — повний паритет
-- ADDED: UK Terminology Check (Step 7)
-- ADDED: check_seo_structure.py валідація
-- ADDED: H2 з keyword перевірка
-- ADDED: Розширена таблиця термінології
-- Українізовані всі тексти та приклади
