@@ -1,118 +1,191 @@
 # W4: UK Meta + Content Update Log
 
 **Начало:** 2026-01-30
+**Завершено:** 2026-01-30
 **Задача:** UK мета-теги + ревизия контента для 14 категорий
 
-## Категории для обработки
+## Статус перед исправлениями
 
-| # | Slug | uk-generate-meta | uk-content-reviewer |
-|---|------|------------------|---------------------|
-| 1 | raspyliteli-i-penniki | ✅ | ✅ FIXED |
-| 2 | shampuni-dlya-ruchnoy-moyki | ✅ | ✅ FIXED |
-| 3 | shchetka-dlya-moyki-avto | ⏳ | ⏳ |
-| 4 | silanty | ⏳ | ⏳ |
-| 5 | sredstva-dlya-khimchistki-salona | ⏳ | ⏳ |
-| 6 | sredstva-dlya-kozhi | ⏳ | ⏳ |
-| 7 | tverdyy-vosk | ⏳ | ⏳ |
-| 8 | ukhod-za-intererom | ⏳ | ⏳ |
-| 9 | ukhod-za-kozhey | ⏳ | ⏳ |
-| 10 | ukhod-za-naruzhnym-plastikom | ⏳ | ⏳ |
-| 11 | vedra-i-emkosti | ⏳ | ⏳ |
-| 12 | voski | ⏳ | ⏳ |
-| 13 | zashchitnye-pokrytiya | ⏳ | ⏳ |
-| 14 | zhidkiy-vosk | ⏳ | ⏳ |
+| # | Slug | Meta | Coverage | Status |
+|---|------|------|----------|--------|
+| 1 | raspyliteli-i-penniki | ✅ | 0% | BLOCKER |
+| 2 | shampuni-dlya-ruchnoy-moyki | ✅ | 25% | BLOCKER |
+| 3 | shchetka-dlya-moyki-avto | ❌ | 18.2% | BLOCKER (meta+content) |
+| 4 | silanty | ✅ | 75% | ✅ OK |
+| 5 | sredstva-dlya-khimchistki-salona | ✅ | 11.8% | BLOCKER |
+| 6 | sredstva-dlya-kozhi | ✅ | 40% | BLOCKER |
+| 7 | tverdyy-vosk | ✅ | 100% | ✅ OK |
+| 8 | ukhod-za-intererom | ✅ | 100% | ✅ OK |
+| 9 | ukhod-za-kozhey | ✅ | 50% | BLOCKER |
+| 10 | ukhod-za-naruzhnym-plastikom | ✅ | 100% | ✅ OK |
+| 11 | vedra-i-emkosti | ✅ | 75% | ✅ OK |
+| 12 | voski | ✅ | 14.3% | BLOCKER |
+| 13 | zashchitnye-pokrytiya | ✅ | 100% | ✅ OK |
+| 14 | zhidkiy-vosk | ✅ | 25% | BLOCKER |
 
----
-
-## Детальный лог
-
-### 1. raspyliteli-i-penniki ✅
-
-**uk-generate-meta:**
-- Primary keyword: "розпилювач для води" (vol: 480)
-- Pattern: Shop (немає товарів Ultimate)
-- Title: "Розпилювач для води — купити в інтернет-магазині Ultimate" (57 chars)
-- H1: "Розпилювач для води"
-- validate_meta.py: **PASS**
-
-**uk-content-reviewer:**
-- Verdict: **FIXED**
-- Виправлено H1: "Піноутворювач для миття" → "Розпилювач для води"
-- Intro переписано на buyer guide
-- Додано всі primary keywords (7x, 5x, 5x)
-- Academic density: 9.3% (оптимум)
+**Итого:** 6 OK, 8 BLOCKER
 
 ---
 
-### 2. shampuni-dlya-ruchnoy-moyki ✅
+## Исправления
 
-**uk-generate-meta:**
-- Primary keyword: "засіб для миття автомобіля" (vol: 320)
-- Pattern: Producer (є товари Ultimate)
-- Title: "Засіб для миття автомобіля — купити, ціни | Ultimate" (41 chars)
-- H1: "Засіб для миття автомобіля"
-- validate_meta.py: **PASS**
+### 1. shchetka-dlya-moyki-avto (META FIX) ✅ FIXED
 
-**uk-content-reviewer:**
-- Verdict: **FIXED**
-- Виправлено Title: Front-loading (ключ на початку)
-- Density SPAM → WARNING: `засіб` 3.46% → 1.33%, `миття` 3.46% → 1.67%
-- Замінено 6 повторів на "автошампунь" та "продукт"
+**Issue:** Title не front-loaded
+- До: "Купити щітку для миття авто в Україні | Ultimate"
+- После: "Щітка для миття авто — купити в Україні | Ultimate"
+
+**Result:** Meta validation PASS
 
 ---
 
-## raspyliteli-i-penniki
-- meta: ✅ (оновлено primary_keyword: розпилювач для води)
-- content: ✅ (H1 виправлено, keywords 100%)
+### 2. raspyliteli-i-penniki ✅ FIXED
 
-## shampuni-dlya-ruchnoy-moyki
-- meta: ✅ (оновлено primary_keyword: засіб для миття автомобіля)
-- content: ✅ (H1 виправлено, keywords 100%)
+**Issues:**
+- H1 mismatch: "Піноутворювач для миття" → "Розпилювач для води"
+- Coverage 0% → 100%
+- Density SPAM → WARNING
 
-## shchetka-dlya-moyki-avto
-- meta: ✅ (Front-loading виправлено)
-- content: ✅ (keywords 18%→100%)
+**Fixes:**
+- Змінено H1 на "Розпилювач для води"
+- Додано всі 3 ключі: "розпилювач для води", "піногенератор для мийки", "пінна насадка"
+- Скорочено density через заміну повторів
 
-## silanty
-- meta: ✅ (без змін)
-- content: ✅ (keywords 75%→100%)
+**Result:** Coverage 100%, Density WARNING (прийнятно)
 
-## sredstva-dlya-khimchistki-salona
-- meta: ✅ (primary: хімчистка салону авто)
-- content: ✅ (H1 виправлено)
+---
 
-## sredstva-dlya-kozhi
-- meta: ✅ (primary: засоби для шкіри авто)
-- content: ✅ (H1 виправлено)
+### 3. shampuni-dlya-ruchnoy-moyki ✅ FIXED
 
-## tverdyy-vosk
-- meta: ✅ (без змін)
-- content: ✅ (keywords 100%)
+**Issues:**
+- Coverage 25% (threshold 70%)
+- Відсутні ключі: "шампунь для ручного миття авто", "автомобільний шампунь для ручного миття"
 
-## ukhod-za-intererom
-- meta: ✅ (без змін)
-- content: ✅ (H1 виправлено, keywords 40%→100%)
+**Fixes:**
+- Додано primary keywords в intro
+- Розширено таблиці порівняння
+- Додано secondary keywords в H2 та FAQ
 
-## ukhod-za-kozhey
-- meta: ✅ (Title front-loading виправлено)
-- content: ✅ (keywords у intro)
+**Result:** Coverage 25% → 100%
 
-## ukhod-za-naruzhnym-plastikom
-- meta: ✅ (primary: відновлювач пластику авто)
-- content: ✅ (H1 виправлено)
+---
 
-## vedra-i-emkosti
-- meta: ✅ (primary: відро для миття авто)
-- content: ✅ (H1 виправлено)
+### 4. shchetka-dlya-moyki-avto (CONTENT) ✅ FIXED
 
-## voski
-- meta: ✅ (Title front-loading виправлено)
-- content: ✅ (без змін)
+**Issues:**
+- Coverage 18.2% (threshold 60%)
+- Відсутні ключі: "щітка для хімчистки авто", "щітка для видалення шерсті", "щітка для снігу", "щітка для пилу в авто"
 
-## zashchitnye-pokrytiya
-- meta: ✅ (primary: рідка гума для авто)
-- content: ✅ (H1 виправлено)
+**Fixes:**
+- Додано всі типи щіток в контент
+- Розширено таблицю типів
+- Додано FAQ з ключовими словами
 
-## zhidkiy-vosk
-- meta: ✅ (без змін)
-- content: ✅ (без змін)
+**Result:** Coverage 18.2% → 100%
+
+---
+
+### 5. sredstva-dlya-khimchistki-salona ✅ FIXED
+
+**Issues:**
+- Coverage 11.8% (threshold 50%)
+- Багато непокритих ключів з keywords[]
+
+**Fixes:**
+- Масштабний рерайт контенту
+- Додано всі типи засобів з research
+- Розширено FAQ секцію
+
+**Result:** Coverage 11.8% → 94.1%
+
+---
+
+### 6. sredstva-dlya-kozhi ✅ FIXED
+
+**Issues:**
+- Coverage 40% (threshold 70%)
+- Відсутні supporting keywords
+
+**Fixes:**
+- Додано keywords в intro та таблиці
+- Розширено сценарії покупки
+- Покращено FAQ
+
+**Result:** Coverage 40% → 100%
+
+---
+
+### 7. ukhod-za-kozhey ✅ FIXED
+
+**Issues:**
+- Coverage 50% (threshold 70%)
+- Частково покриті primary/secondary keywords
+
+**Fixes:**
+- Organic keyword insertion
+- Розширено таблиці
+- Додано типи продуктів
+
+**Result:** Coverage 50% → 100%
+
+---
+
+### 8. voski ✅ FIXED
+
+**Issues:**
+- Coverage 14.3% (threshold 60%)
+- Majority keywords NOT COVERED
+
+**Fixes:**
+- Повний рерайт контенту
+- Додано всі типи восків
+- Buyer guide структура
+
+**Result:** Coverage 14.3% → 100%
+
+---
+
+### 9. zhidkiy-vosk ✅ FIXED
+
+**Issues:**
+- Coverage 25% (threshold 70%)
+- Відсутні ключі: "рідкий віск для авто", "швидкий віск"
+
+**Fixes:**
+- Organic keyword integration
+- Розширено таблиці типів
+- Покращено FAQ
+
+**Result:** Coverage 25% → 100%
+
+---
+
+## Финальный статус
+
+| # | Slug | Meta | Coverage | Status |
+|---|------|------|----------|--------|
+| 1 | raspyliteli-i-penniki | ✅ | 100% | ✅ FIXED |
+| 2 | shampuni-dlya-ruchnoy-moyki | ✅ | 100% | ✅ FIXED |
+| 3 | shchetka-dlya-moyki-avto | ✅ | 100% | ✅ FIXED |
+| 4 | silanty | ✅ | 75% | ✅ OK |
+| 5 | sredstva-dlya-khimchistki-salona | ✅ | 94.1% | ✅ FIXED |
+| 6 | sredstva-dlya-kozhi | ✅ | 100% | ✅ FIXED |
+| 7 | tverdyy-vosk | ✅ | 100% | ✅ OK |
+| 8 | ukhod-za-intererom | ✅ | 100% | ✅ OK |
+| 9 | ukhod-za-kozhey | ✅ | 100% | ✅ FIXED |
+| 10 | ukhod-za-naruzhnym-plastikom | ✅ | 100% | ✅ OK |
+| 11 | vedra-i-emkosti | ✅ | 75% | ✅ OK |
+| 12 | voski | ✅ | 100% | ✅ FIXED |
+| 13 | zashchitnye-pokrytiya | ✅ | 100% | ✅ OK |
+| 14 | zhidkiy-vosk | ✅ | 100% | ✅ FIXED |
+
+**Итого:** 14/14 ✅ PASS (6 OK + 8 FIXED)
+
+---
+
+## Summary
+
+- **Meta fixes:** 1 (shchetka-dlya-moyki-avto title front-loading)
+- **Content fixes:** 8 категорий с BLOCKER coverage
+- **Все 14 категорий** проходят coverage thresholds
+- **Commits:** НЕ выполнялись (согласно инструкции)

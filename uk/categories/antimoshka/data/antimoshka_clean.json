@@ -1,16 +1,11 @@
 {
   "id": "antimoshka",
   "language": "uk",
-  "total_volume": 1130,
+  "total_volume": 550,
   "keywords": [
-    {"keyword": "антимошка", "volume": 320},
     {"keyword": "очищувач слідів комах", "volume": 320},
-    {"keyword": "антимошка для авто", "volume": 260},
     {"keyword": "засіб від комах", "volume": 140},
-    {"keyword": "засіб для видалення комах", "volume": 90},
-    {"keyword": "антимошка на мийці", "volume": 30},
-    {"keyword": "концентрат антимошка", "volume": 20},
-    {"keyword": "антимошка спрей", "volume": 10}
+    {"keyword": "засіб для видалення комах", "volume": 90}
   ],
   "synonyms": [
     {
@@ -20,26 +15,10 @@
       "variant_of": "засіб від комах"
     },
     {
-      "keyword": "антимошка на мийці самообслуговування",
-      "volume": 20,
-      "use_in": "lsi",
-      "variant_of": "антимошка на мийці"
-    },
-    {
       "keyword": "очищувач від комах",
       "volume": 10,
       "use_in": "lsi",
       "variant_of": "очищувач слідів комах"
-    },
-    {
-      "keyword": "купити антимошку",
-      "volume": 20,
-      "use_in": "meta_only"
-    },
-    {
-      "keyword": "антимошка ціна",
-      "volume": 10,
-      "use_in": "meta_only"
     }
   ],
   "micro_intents": ["як очистити сліди комах", "для бампера", "для лобового скла"]

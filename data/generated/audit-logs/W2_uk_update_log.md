@@ -1,50 +1,61 @@
-# W2: UK Meta + Content Update Log
+# W2 UK Update Log
 
-**Started:** 2026-01-30
-**Categories:** 13
+Started: 2026-01-30
+Completed: 2026-01-30
 
-## Progress
+## Categories processed:
+1. keramika-dlya-diskov
+2. keramika-i-zhidkoe-steklo
+3. kisti-dlya-deteylinga
+4. kvik-deteylery
+5. malyarniy-skotch
+6. mekhovye
+7. mikrofibra-i-tryapki
+8. moyka-i-eksterer
+9. nabory
+10. neytralizatory-zapakha
+11. obezzhirivateli
+12. oborudovanie
+13. ochistiteli-diskov
 
-| # | Slug | uk-generate-meta | uk-content-reviewer | Status |
-|---|------|------------------|---------------------|--------|
-| 1 | keramika-dlya-diskov | DONE | FIXED | ✅ |
-| 2 | keramika-i-zhidkoe-steklo | FIXED | PASS | ✅ |
-| 3 | kisti-dlya-deteylinga | FIXED | FIXED | ✅ |
-| 4 | kvik-deteylery | FIXED | FIXED | ✅ |
-| 5 | malyarniy-skotch | FIXED | FIXED | ✅ |
-| 6 | mekhovye | pending | pending | - |
-| 7 | mikrofibra-i-tryapki | pending | pending | - |
-| 8 | moyka-i-eksterer | pending | pending | - |
-| 9 | nabory | pending | pending | - |
-| 10 | neytralizatory-zapakha | pending | pending | - |
-| 11 | obezzhirivateli | pending | pending | - |
-| 12 | oborudovanie | pending | pending | - |
-| 13 | ochistiteli-diskov | pending | pending | - |
+---
 
-## Details
+## Summary
 
-### 1. keramika-dlya-diskov
-- **Meta:** ✅ FIXED — Title front-loading, primary "захисне покриття для дисків"
-- **Content:** ✅ FIXED — H1 updated, primary in intro, coverage 100% (4/4)
-- **Validation:** PASS
+| # | Category | Meta Valid | Coverage (p+s) | Status | Changes |
+|---|----------|------------|----------------|--------|---------|
+| 1 | keramika-dlya-diskov | PASS | 100% | FIXED | H1 updated, keywords added |
+| 2 | keramika-i-zhidkoe-steklo | PASS | 100% | FIXED | H1 updated, intro rewritten |
+| 3 | kisti-dlya-deteylinga | PASS | 100% | FIXED | Meta synced with clean.json, title/H1 changed |
+| 4 | kvik-deteylery | PASS | 100% | FIXED | Meta rebuilt, H1 changed |
+| 5 | malyarniy-skotch | PASS | 100% | FIXED | H1 changed, keywords added |
+| 6 | mekhovye | PASS | 100% | PASS | No changes needed |
+| 7 | mikrofibra-i-tryapki | PASS | 100% | FIXED | Keywords added to intro and table |
+| 8 | moyka-i-eksterer | PASS | 100% | FIXED | Meta rebuilt, keywords added |
+| 9 | nabory | PASS | 100% | FIXED | Meta rebuilt, H1 changed, keywords added |
+| 10 | neytralizatory-zapakha | PASS | 100% | FIXED | Meta rebuilt, H1 changed, keywords added |
+| 11 | obezzhirivateli | PASS | 100% | FIXED | Keywords added |
+| 12 | oborudovanie | PASS | 100% | FIXED | Meta rebuilt, H1 changed |
+| 13 | ochistiteli-diskov | PASS | 100% | FIXED | Keyword added |
 
-### 2. keramika-i-zhidkoe-steklo
-- **Meta:** ✅ Fixed Title to "Рідке скло — купити в інтернет-магазині Ultimate" (was "Купити...")
-- **Content:** ✅ All validators pass, density OK
-- **Validation:** PASS
+---
 
-### 3. kisti-dlya-deteylinga
-- **Meta:** ✅ FIXED — primary changed "кисті" → "аксесуари для дітейлінгу" (90 vol)
-- **Content:** ✅ FIXED — повне перероблення, H1 updated, coverage 100% (8/8)
-- **Validation:** PASS
+## Key Changes
 
-### 4. kvik-deteylery
-- **Meta:** ✅ FIXED — primary "полімер для авто" (140 vol), front-loading
-- **Content:** ✅ FIXED — H1 updated, coverage 100% (8/8)
-- **Validation:** PASS
+### Meta Alignments
+Categories where meta keywords_in_content didn't match clean.json:
+- kisti-dlya-deteylinga: "кисті для детейлінгу" → "аксесуари для дітейлінгу"
+- kvik-deteylery: "сухий туман для авто" → "полімер для авто"
+- moyka-i-eksterer: "піна для миття авто" → "хімія для миття авто"
+- nabory: "набір для хімчистки авто" → "набір для миття авто"
+- neytralizatory-zapakha: "нейтралізатор запахів" → "поглинач запахів"
+- oborudovanie: "пістолет для хімчистки авто" → "обладнання для хімчистки авто"
 
-### 5. malyarniy-skotch
-- **Meta:** ✅ FIXED — primary "малярний скотч" (4400 vol), front-loading, Shop pattern
-- **Content:** ✅ FIXED — H1 singular, coverage 100% (5/5)
-- **Validation:** PASS
+### Coverage Fixes
+All categories now have 100% coverage for primary+secondary keywords from meta.
 
+---
+
+**Worker:** W2
+**Status:** Completed
+**Git:** NO COMMIT (manual commit by orchestrator)
