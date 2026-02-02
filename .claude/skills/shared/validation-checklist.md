@@ -44,7 +44,8 @@ Common validation rules for RU and UK categories.
 - [ ] Secondary keywords used naturally
 - [ ] No brand names/prices
 - [ ] Stem group ≤2.5% (BLOCKER >3.0%)
-- [ ] Classic nausea ≤3.5 (BLOCKER >4.0)
+- [ ] Classic nausea ≤3.5 (WARNING >3.5, BLOCKER >4.0)
+- [ ] **After adding keywords:** Re-check nausea, apply synonym replacement if >3.5
 - [ ] Academic ≥7% (WARNING <7%)
 - [ ] Water 40-65% (WARNING >75%)
 
@@ -89,3 +90,29 @@ python3 scripts/check_water_natasha.py {content_path}
 # SEO structure
 python3 scripts/validate_seo.py {content_path} "{primary}"
 ```
+
+---
+
+## Keywords Coverage (audit_coverage.py)
+
+```bash
+python3 scripts/audit_coverage.py --slug {slug} --lang {ru|uk} --json --include-meta
+```
+
+**Статуси покриття:**
+- ✅ COVERED: `EXACT`, `NORM`, `LEMMA`
+- ❌ NOT COVERED: `SYNONYM`, `PARTIAL`, `ABSENT`
+
+> **SYNONYM = NOT COVERED** — синонім знайдено в тексті, але сам ключ відсутній. Для SEO потрібен саме ключ.
+
+**Правила:**
+
+| Джерело | Вимога | Severity |
+|---------|--------|----------|
+| primary+secondary | **100% COVERED** | BLOCKER |
+| supporting | **≥80% COVERED** | WARNING |
+| keywords[] | adaptive threshold | BLOCKER |
+
+**Adaptive thresholds:** ≤5 ключів → 70%, 6-15 → 60%, >15 → 50%
+
+**Цикл виправлень:** max 3 ітерації (Fix → Re-validate → Check)
