@@ -40,4 +40,4 @@ def test_category_builder_creates_structure(tmp_path):
 
     clean_data = load_json(clean_file)
     assert clean_data["slug"] == slug
-    assert clean_data["keywords"][0]["keyword"] == "k1"
+    assert clean_data["keywords"]["primary"][0]["keyword"] == "k1"

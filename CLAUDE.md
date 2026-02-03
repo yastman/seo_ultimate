@@ -72,14 +72,23 @@ UK: /uk-content-init → /uk-generate-meta → /uk-seo-research → /uk-content-
 | `/quality-gate {slug}` | `/uk-quality-gate {slug}` | Финальная валидация |
 | `/deploy-to-opencart {slug}` | `/uk-deploy {slug}` | SQL в OpenCart |
 
+### Title формула (2026)
+
+```
+[ТОП ВЧ КЛЮЧ] — купити/купить, ціни/цены | Ultimate
+```
+
+ВЧ первым (Front-Loading) → "купити" включает Transactional Intent.
+
 ---
 
 ## Команды
 
 ```bash
-# Тесты
-pytest                        # Все
-pytest -k "test_meta"         # По имени
+# Тесты (WSL: использовать .venv-linux для xdist)
+pytest                                                    # Все (последовательно)
+pytest -k "test_meta"                                     # По имени
+.venv-linux/bin/pytest -n auto --dist loadfile            # Параллельно (~40% быстрее)
 
 # Линтинг
 ruff check scripts/
@@ -89,6 +98,9 @@ ruff format scripts/
 python3 scripts/validate_meta.py <path> [--lang ru|uk]
 python3 scripts/validate_meta.py --all [--lang ru|uk]
 python3 scripts/validate_content.py <path> "<keyword>" [--lang ru|uk]
+python3 scripts/validate_density.py <path> [--lang ru|uk]   # Stem density
+python3 scripts/validate_seo.py <path> "<keyword>"          # SEO structure
+python3 scripts/check_water_natasha.py <path>               # Water & Nausea
 
 # Аудит
 python3 scripts/audit_keyword_consistency.py   # Ключи meta vs clean
@@ -132,6 +144,16 @@ from scripts.config import QUALITY_THRESHOLDS
 ```
 
 **Coverage thresholds:** ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
+
+**Nausea thresholds:** Classic ≤3.5 (target), >4.0 (BLOCKER). Academic ≥7% (min).
+
+### Coverage Matching Pipeline
+
+```
+EXACT → NORM (lowercase) → LEMMA (pymorphy2) → SYNONYM (variant_of)
+```
+
+Первый найденный вариант — результат. Статусы: `COVERED`, `SYNONYM`, `NOT_COVERED`.
 
 ---
 
@@ -177,4 +199,12 @@ spawn-claude "W1: Описание.
 
 ---
 
-**Version:** 56.0
+## Quality Thresholds
+
+| Метрика | Target | BLOCKER |
+|---------|--------|---------|
+| Stem density | ≤2.5% | >3.0% |
+| Classic nausea | ≤3.5 | >4.0 |
+| Academic nausea | ≥7% | <6% |
+| Water | 40-65% | >70% |
+| Word count | 400-700 | — |

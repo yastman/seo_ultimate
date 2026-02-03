@@ -60,6 +60,7 @@ cover/
 # Env
 .env
 .venv
+.venv-linux
 env/
 venv/
 ENV/
