@@ -287,3 +287,89 @@ class TestValidateH1:
 
         result2 = validate_h1(h1="Test H1", primary_keyword="", lang="uk")
         assert result2["passed"] is False
+
+
+class TestValidateMetaFileH1:
+    """Tests for H1 validation in full meta file validation."""
+
+    def test_meta_file_with_valid_h1(self, tmp_path):
+        """Meta file with H1 matching primary keyword passes."""
+        # Create test meta.json
+        meta_json = tmp_path / "test_meta.json"
+        meta_json.write_text(
+            json.dumps(
+                {
+                    "slug": "test",
+                    "language": "uk",
+                    "meta": {
+                        "title": "Активні піни — купити, ціни | Ultimate",
+                        "description": "Активна піна від виробника Ultimate. Безконтактна мийка. Опт і роздріб.",
+                    },
+                    "h1": "Активні піни",
+                },
+                ensure_ascii=False,
+            )
+        )
+
+        # Create test _clean.json
+        clean_json = tmp_path / "test_clean.json"
+        clean_json.write_text(
+            json.dumps(
+                {
+                    "id": "test",
+                    "keywords": [
+                        {"keyword": "активна піна", "volume": 1000},
+                        {"keyword": "піна для мийки", "volume": 500},
+                    ],
+                }
+            )
+        )
+
+        result = validate_meta_file(str(meta_json), str(clean_json), lang="uk")
+        assert result["h1"]["validation"]["passed"] is True
+
+    def test_meta_file_with_invalid_h1(self, tmp_path):
+        """Meta file with H1 not matching primary keyword fails."""
+        meta_json = tmp_path / "test_meta.json"
+        meta_json.write_text(
+            json.dumps(
+                {
+                    "slug": "test",
+                    "language": "uk",
+                    "meta": {
+                        "title": "Засоби для полірування — купити | Ultimate",
+                        "description": "Засіб від виробника Ultimate. Опт і роздріб, доставка.",
+                    },
+                    "h1": "Засоби для полірування",
+                },
+                ensure_ascii=False,
+            )
+        )
+
+        clean_json = tmp_path / "test_clean.json"
+        clean_json.write_text(json.dumps({"id": "test", "keywords": [{"keyword": "активна піна", "volume": 1000}]}))
+
+        result = validate_meta_file(str(meta_json), str(clean_json), lang="uk")
+        assert result["h1"]["validation"]["passed"] is False
+
+    def test_meta_file_h1_without_keywords(self, tmp_path):
+        """Meta file without keywords file still validates H1 structure."""
+        meta_json = tmp_path / "test_meta.json"
+        meta_json.write_text(
+            json.dumps(
+                {
+                    "slug": "test",
+                    "language": "uk",
+                    "meta": {
+                        "title": "Тестова категорія — купити | Ultimate",
+                        "description": "Тестовий опис від виробника Ultimate. Опт і роздріб.",
+                    },
+                    "h1": "Тестова категорія",
+                },
+                ensure_ascii=False,
+            )
+        )
+
+        result = validate_meta_file(str(meta_json), lang="uk")
+        # Without keywords, H1 validation should pass (no keywords to check)
+        assert result["h1"]["validation"]["passed"] is True

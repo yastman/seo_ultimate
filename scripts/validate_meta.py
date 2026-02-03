@@ -556,14 +556,36 @@ def validate_meta_file(meta_path: str, keywords_path: str | None = None, lang: s
     # Validate description (with language support)
     results["description"] = validate_description(description, primary_keywords, lang=lang)
 
+    # Validate H1 against primary keyword
+    h1_validation: dict[str, Any] = {
+        "passed": True,
+        "form": None,
+        "message": "No keywords provided",
+    }
+
+    if primary_keywords and h1:
+        h1_validation = validate_h1(h1, primary_keywords[0], lang=lang)
+
+    results["h1"] = {
+        "value": h1,
+        "validation": h1_validation,
+    }
+
     # Overall
     title_ok = results["title"]["overall"] in ["PASS", "WARNING"]
     desc_ok = results["description"]["overall"] in ["PASS", "WARNING"]
 
-    if results["title"]["overall"] == "PASS" and results["description"]["overall"] == "PASS":
+    # H1 mismatch is WARNING, not BLOCKER
+    h1_ok = h1_validation["passed"]
+
+    if results["title"]["overall"] == "PASS" and results["description"]["overall"] == "PASS" and h1_ok:
         results["overall"] = "PASS"
     elif title_ok and desc_ok:
-        results["overall"] = "WARNING"
+        if not h1_ok:
+            results["overall"] = "WARNING"
+            results["warnings"] = results.get("warnings", []) + [f"H1 validation: {h1_validation['message']}"]
+        else:
+            results["overall"] = "WARNING"
     else:
         results["overall"] = "FAIL"
 
