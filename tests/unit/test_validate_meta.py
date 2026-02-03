@@ -373,3 +373,46 @@ class TestValidateMetaFileH1:
         result = validate_meta_file(str(meta_json), lang="uk")
         # Without keywords, H1 validation should pass (no keywords to check)
         assert result["h1"]["validation"]["passed"] is True
+
+
+class TestFindAllMetaFiles:
+    """Test find_all_meta_files function."""
+
+    def test_finds_nested_ru_categories(self, tmp_path):
+        """Should find meta files in nested RU category structure."""
+        from scripts.validate_meta import find_all_meta_files
+
+        # Create nested structure: categories/parent/child/meta/child_meta.json
+        parent = tmp_path / "categories" / "moyka-i-eksterer"
+        parent.mkdir(parents=True)
+
+        child = parent / "ochistiteli-diskov" / "meta"
+        child.mkdir(parents=True)
+        (child / "ochistiteli-diskov_meta.json").write_text('{"h1": "test"}')
+
+        # Also create L1 category
+        l1 = tmp_path / "categories" / "aktivnaya-pena" / "meta"
+        l1.mkdir(parents=True)
+        (l1 / "aktivnaya-pena_meta.json").write_text('{"h1": "test"}')
+
+        files = find_all_meta_files(str(tmp_path))
+        paths = [f[0] for f in files]
+
+        assert len(paths) >= 2, f"Expected at least 2 files, got {len(paths)}"
+        assert any("ochistiteli-diskov" in p for p in paths), "Nested category not found"
+        assert any("aktivnaya-pena" in p for p in paths), "L1 category not found"
+
+    def test_finds_uk_categories(self, tmp_path):
+        """Should find meta files in uk/categories/."""
+        from scripts.validate_meta import find_all_meta_files
+
+        # Create UK structure
+        uk = tmp_path / "uk" / "categories" / "antibitum" / "meta"
+        uk.mkdir(parents=True)
+        (uk / "antibitum_meta.json").write_text('{"h1": "test", "language": "uk"}')
+
+        files = find_all_meta_files(str(tmp_path))
+        paths = [f[0] for f in files]
+
+        assert len(paths) == 1
+        assert "antibitum" in paths[0]

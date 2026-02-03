@@ -596,27 +596,41 @@ def find_all_meta_files(base_path: str = ".") -> list[tuple[str, str | None]]:
     """
     Find all meta files and their corresponding keywords files.
 
+    Uses rglob to find nested categories (L2, L3).
+
     Returns:
         List of (meta_path, keywords_path) tuples
     """
     base = Path(base_path)
     results = []
 
-    # Search in categories/
-    for meta_file in base.glob("categories/*/meta/*_meta.json"):
-        slug = meta_file.stem.replace("_meta", "")
-        keywords_file = meta_file.parent.parent / "data" / f"{slug}_clean.json"
-        if not keywords_file.exists():
-            keywords_file = meta_file.parent.parent / "data" / f"{slug}.json"
-        results.append((str(meta_file), str(keywords_file) if keywords_file.exists() else None))
+    # Search in categories/ (RU) - including nested
+    categories_path = base / "categories"
+    if categories_path.exists():
+        for meta_file in categories_path.rglob("*_meta.json"):
+            # Skip if not in meta/ folder
+            if meta_file.parent.name != "meta":
+                continue
+            slug = meta_file.stem.replace("_meta", "")
+            data_dir = meta_file.parent.parent / "data"
+            keywords_file = data_dir / f"{slug}_clean.json"
+            if not keywords_file.exists():
+                keywords_file = data_dir / f"{slug}.json"
+            results.append((str(meta_file), str(keywords_file) if keywords_file.exists() else None))
 
-    # Search in uk/categories/
-    for meta_file in base.glob("uk/categories/*/meta/*_meta.json"):
-        slug = meta_file.stem.replace("_meta", "")
-        keywords_file = meta_file.parent.parent / "data" / f"{slug}_clean.json"
-        if not keywords_file.exists():
-            keywords_file = meta_file.parent.parent / "data" / f"{slug}.json"
-        results.append((str(meta_file), str(keywords_file) if keywords_file.exists() else None))
+    # Search in uk/categories/ (UK) - including nested
+    uk_categories_path = base / "uk" / "categories"
+    if uk_categories_path.exists():
+        for meta_file in uk_categories_path.rglob("*_meta.json"):
+            # Skip if not in meta/ folder
+            if meta_file.parent.name != "meta":
+                continue
+            slug = meta_file.stem.replace("_meta", "")
+            data_dir = meta_file.parent.parent / "data"
+            keywords_file = data_dir / f"{slug}_clean.json"
+            if not keywords_file.exists():
+                keywords_file = data_dir / f"{slug}.json"
+            results.append((str(meta_file), str(keywords_file) if keywords_file.exists() else None))
 
     return results
 
