@@ -11,17 +11,16 @@ See [../shared/meta-rules.md](../shared/meta-rules.md) for IRON RULE and common 
 
 This document contains **UK-specific** formulas only.
 
-
 ---
 
-## January 2026 SEO Rules (UK)
+## February 2026 SEO Rules (UK)
 
 | Параметр | Значення | Джерело |
 |----------|----------|---------|
 | Title | **30-60 chars (унікальна частина; до `\|` якщо `\|` використовується)** | validate_meta.py |
-| Title formula | **{primary_keyword} — купити** (Front-loading) | Ahrefs 2025 |
+| Title formula | **{title_phrase} — купити** (Front-loading) | Ahrefs 2025 |
 | Description | **100-160 chars** | validate_meta.py |
-| H1 | **= {primary_keyword} БЕЗ "Купити"** | John Mueller 2025 |
+| H1 | **= {title_phrase} БЕЗ "Купити"** | John Mueller 2025 |
 | Commercial modifiers | **Після ВЧ у Title** | Ahrefs, BigCommerce |
 | Заборонено | Назви товарів/SKU, бренди конкурентів, marketing fluff, розведення | правила проекту + перевірки |
 
@@ -29,47 +28,55 @@ This document contains **UK-specific** formulas only.
 
 ## Терміни та джерела істини
 
+### Що таке `{title_phrase}` (головний термін!)
+
+**🚨 КРИТИЧНО:** `{title_phrase}` — це фраза для Title/H1/Description.
+
+```
+{title_phrase} = category_title ?? primary_keyword
+```
+
+**Логіка:**
+1. Якщо в `_clean.json` є поле `category_title` → використовувати його
+2. Інакше → використовувати `primary_keyword` (MAX volume)
+
+### Що таке `{category_title}`
+
+**Опціональне поле** в `_clean.json` для складених категорій або категорій з двома ВЧ-ключами.
+
+```json
+{
+  "id": "gubki-i-varezhki",
+  "category_title": "Губки та рукавички",
+  "keywords": [...]
+}
+```
+
+**Коли є `category_title`:**
+1. **Складена категорія** — назва містить "та" (Щітки та пензлі, Губки та рукавички)
+2. **Два сильних ВЧ-ключі** — потрібно охопити обидва (Автохімія та автокосметика)
+
 ### Що таке `{primary_keyword}`
 
-Це ключ з **максимальним volume** у категорії. Його потрібно використовувати в Title/H1/Description як основу.
+Це ключ з **максимальним volume** у категорії. Використовується як fallback якщо немає `category_title`.
 
 **🚨 ВАЖЛИВО: primary_keyword = MAX(volume), НЕ перший у списку!**
 
 **Алгоритм визначення з `uk/categories/{slug}/data/{slug}_clean.json`:**
 
-1) **List-схема:**
-```json
-"keywords": [
-  {"keyword": "піна для миття авто", "volume": 1300},
-  {"keyword": "активна піна", "volume": 720}
-]
-```
-→ `{primary_keyword}` = ключ з MAX(volume) = `"піна для миття авто"` (1300)
-
-2) **Dict-схема:**
-```json
-"keywords": {"primary": [{"keyword": "очищувач дисків", "volume": 70}]}
-```
-→ `{primary_keyword}` = ключ з MAX(volume) з `keywords.primary[]`
-
-**Як знайти:**
 ```python
-# List-схема
-keywords = data.get("keywords", [])
-if isinstance(keywords, list) and keywords:
-    primary = max(keywords, key=lambda x: x.get("volume", 0))
-    primary_keyword = primary["keyword"]
-
-# Dict-схема
-if isinstance(keywords, dict):
-    primary_list = keywords.get("primary", [])
-    primary = max(primary_list, key=lambda x: x.get("volume", 0))
-    primary_keyword = primary["keyword"]
+# Спочатку перевірити category_title
+if data.get("category_title"):
+    title_phrase = data["category_title"]
+else:
+    # Fallback: MAX(volume) з keywords
+    keywords = data.get("keywords", [])
+    if isinstance(keywords, list) and keywords:
+        primary = max(keywords, key=lambda x: x.get("volume", 0))
+        title_phrase = primary["keyword"]
 ```
 
-Якщо keywords порожній або не знайдено — це проблема даних, мета генерувати не можна.
-
-### Acceptance criteria (що значить "готово")
+### Acceptance criteria
 
 Файл `uk/categories/{slug}/meta/{slug}_meta.json` повинен проходити:
 `python3 scripts/validate_meta.py uk/categories/{slug}/meta/{slug}_meta.json --keywords uk/categories/{slug}/data/{slug}_clean.json`
@@ -82,27 +89,21 @@ if isinstance(keywords, dict):
 
 ### Категорії З товарами Ultimate (Producer pattern)
 ```
-{primary_keyword} від виробника Ultimate. {Типи} — {деталі}. Опт і роздріб.
+{title_phrase} від виробника Ultimate. {Типи} — {деталі}. Опт і роздріб.
 ```
 - ✅ "від виробника Ultimate"
 - ✅ "Опт і роздріб" в кінці
 
 ### Категорії БЕЗ товарів Ultimate (Shop pattern)
 ```
-{primary_keyword} в інтернет-магазині Ultimate. {Типи} — {деталі}.
+{title_phrase} в інтернет-магазині Ultimate. {Типи} — {деталі}.
 ```
 - ✅ "в інтернет-магазині Ultimate"
 - ❌ НЕМАє "Опт і роздріб"
 - ❌ НЕМАє назв брендів (Meguiar's, Gtechniq, Koch тощо)
 
-### Як визначити тип категорії?
-Перевірити в SQL базі `data/dumps/ultimate_net_ua_backup.sql`:
-- manufacturer_id=13 → Ultimate
-- Якщо в категорії є товари з manufacturer_id=13 → Producer pattern
-- Якщо немає → Shop pattern
-
 ### Категорії БЕЗ товарів Ultimate (Shop pattern):
-*(Знімок на January 2026; список може застарівати. При конфлікті довіряй факту з SQL.)*
+*(Знімок на February 2026; список може застарівати. При конфлікті довіряй факту з SQL.)*
 - glina-i-avtoskraby
 - gubki-i-varezhki
 - cherniteli-shin
@@ -120,32 +121,54 @@ if isinstance(keywords, dict):
 
 ---
 
-## 🚨 IRON RULE: primary_keyword — ДОСЛІВНО
+## Title та H1 Формула
 
-**`{primary_keyword}` з `_clean.json` використовується в Title/H1/Description без зміни слів і порядку.**
-
-Допускається лише:
-- капіталізація першої літери (за стилем), без зміни слів/відмінків/синонімів.
+**КРИТИЧНО:** Title і H1 використовують **множину**, бо це категорія магазину з багатьма товарами.
 
 ```
-_clean.json: "keywords": [{"keyword": "віск для авто", "volume": 1000}]
-
-✅ Title: Віск для авто — купити, ціни | Ultimate
-✅ H1: Віск для авто
-
-❌ Title: Автовіск — купити | Ultimate           ← ЗМІНИВ КЛЮЧ!
-❌ Title: Віск для авто для авто — купити        ← ДОДАВ "для авто"!
-❌ H1: Автомобільний віск                        ← ЗМІНИВ КЛЮЧ!
+title_phrase = category_title ?? primary_keyword
+H1 = phrase_to_plural(title_phrase)   # множина першого слова
+Title = H1 + " — купити..."           # той самий H1
 ```
 
-**Не можна:**
+**Приклад:**
+```
+_clean.json: primary_keyword = "очищувач слідів комах"
+
+H1: "Очищувачі слідів комах"      ✅ (множина)
+Title: "Очищувачі слідів комах — купити, ціни | Ultimate"  ✅
+
+НЕ ПРАВИЛЬНО:
+H1: "Очищувачі від комах"          ❌ (інша фраза!)
+```
+
+---
+
+## 🚨 IRON RULE: title_phrase — ДОСЛІВНО (уточнено)
+
+**`{title_phrase}` використовується в Title/H1/Description без зміни слів і порядку.**
+
+**Дозволено ТІЛЬКИ:**
+1. Капіталізація першої літери
+2. Конвертація першого слова в множину (phrase_to_plural)
+
+**НЕ ДОЗВОЛЕНО:**
+- Скорочувати фразу ("слідів комах" → "від комах")
 - Міняти порядок слів
-- Додавати слова ("авто" → "автомобільний", додавати "для авто")
-- Склеювати слова ("віск для авто" → "автовіск")
-- "Покращувати" або "оптимізувати" ключ
-- Використовувати синоніми замість primary_keyword
+- Додавати слова
+- Змінювати відмінки
+- "Покращувати" або "оптимізувати"
+- Використовувати синоніми
 
-**Чому:** `{primary_keyword}` — це ТОП ВЧ ключ за volume. Будь-яка "оптимізація" ключа руками = ризик втрати точного збігу та позицій.
+```
+_clean.json: "category_title": "Губки та рукавички"
+
+✅ Title: Губки та рукавички — купити, ціни | Ultimate
+✅ H1: Губки та рукавички
+
+❌ Title: Рукавички та губки — купити | Ultimate    ← ЗМІНИВ ПОРЯДОК!
+❌ H1: Губки й рукавиці                             ← ЗМІНИВ СЛОВА!
+```
 
 ---
 
@@ -158,26 +181,24 @@ _clean.json: "keywords": [{"keyword": "віск для авто", "volume": 1000
 ### Адаптивна формула:
 
 ```
-ЯКЩО primary_keyword ≤ 20 chars:
-  {primary_keyword} — купити в інтернет-магазині Ultimate
+ЯКЩО title_phrase ≤ 20 chars:
+  {title_phrase} — купити в інтернет-магазині Ultimate
 
 ІНАКШЕ:
-  {primary_keyword} — купити, ціни | Ultimate
+  {title_phrase} — купити, ціни | Ultimate
 ```
 
 **Приклади:**
 
-| primary_keyword | Довжина | Title |
-|-----------------|---------|-------|
-| силант | 6 | Силант — купити в інтернет-магазині Ultimate |
-| віск для авто | 13 | Віск для авто — купити в інтернет-магазині Ultimate |
-| полірувальна машинка | 20 | Полірувальна машинка — купити в інтернет-магазині Ultimate |
-| догляд за салоном авто | 22 | Догляд за салоном авто — купити, ціни \| Ultimate |
-| акумуляторна полірувальна машина | 33 | Акумуляторна полірувальна машина — купити, ціни \| Ultimate |
+| title_phrase | Довжина | Title |
+|--------------|---------|-------|
+| Силанти | 7 | Силанти — купити в інтернет-магазині Ultimate |
+| Губки та рукавички | 18 | Губки та рукавички — купити в інтернет-магазині Ultimate |
+| Щітки та пензлі для детейлінгу | 30 | Щітки та пензлі для детейлінгу — купити, ціни \| Ultimate |
 
 **Правила:**
-- **primary_keyword В НАЧАЛО** (Front-loading!) — або "Купити {keyword}", або "{keyword} — купити"
-- Commercial modifiers **ПІСЛЯ** primary_keyword
+- **title_phrase В НАЧАЛО** (Front-loading!)
+- Commercial modifiers **ПІСЛЯ** title_phrase
 - Бренд **В КІНЕЦЬ** `| Ultimate`
 - **БЕЗ двокрапки** (Google замінює на дефіс)
 - **Мінімум 30 chars** в унікальній частині — інакше WARNING
@@ -189,45 +210,35 @@ _clean.json: "keywords": [{"keyword": "віск для авто", "volume": 1000
 ### Формула (Producer pattern — є товари Ultimate):
 
 ```
-{primary_keyword} від виробника Ultimate. {Призначення/типи} — {деталі}. Опт і роздріб.
+{title_phrase} від виробника Ultimate. {Призначення/типи} — {деталі}. Опт і роздріб.
 ```
 
 ### Формула (Shop pattern — НЕМАє товарів Ultimate):
 
 ```
-{primary_keyword} в інтернет-магазині Ultimate. {Призначення/типи} — {деталі}.
+{title_phrase} в інтернет-магазині Ultimate. {Призначення/типи} — {деталі}.
 ```
 
-### Приклади Producer pattern (З товарами Ultimate):
+### Приклади:
 
 ```
-✅ Силант від виробника Ultimate. Полімерний захист кузова — гідрофобний ефект, захист 3–6 місяців. Опт і роздріб.
+✅ Губки та рукавички в інтернет-магазині Ultimate. Для миття та полірування авто — поролон, мікрофібра, овчина.
 
-✅ Активна піна від виробника Ultimate. Безконтактна мийка — лужні та нейтральні, концентрати й готові. Опт і роздріб.
+✅ Автохімія та автокосметика від виробника Ultimate. Засоби для догляду за авто — шампуні, воски, полірувальні пасти. Опт і роздріб.
 
-✅ Антибітум від виробника Ultimate. Видалення бітуму та смоли — сольвентні та лужні склади. Опт і роздріб.
-```
-
-### Приклади Shop pattern (БЕЗ товарів Ultimate):
-
-```
-✅ Полірувальна машинка в інтернет-магазині Ultimate. Роторні, ексцентрикові, акумуляторні — діаметр 75–180мм.
-
-✅ Щітки для детейлінгу в інтернет-магазині Ultimate. Для кузова, салону, дисків — м'які та жорсткі, всі розміри.
-
-✅ Глина для авто в інтернет-магазині Ultimate. Глибоке очищення кузова — глина синя, жовта, автоскраби.
+✅ Щітки та пензлі для детейлінгу в інтернет-магазині Ultimate. Для салону, дисків, кузова — м'які та жорсткі, набори та поштучно.
 ```
 
 ### 🚨 ОБОВ'ЯЗКОВІ ЕЛЕМЕНТИ:
 
 **Producer pattern:**
-1. **primary_keyword** — на початку Description
-2. **"від виробника Ultimate"** — одразу після keyword
+1. **title_phrase** — на початку Description
+2. **"від виробника Ultimate"** — одразу після
 3. **"Опт і роздріб"** — в кінці
 
 **Shop pattern:**
-1. **primary_keyword** — на початку Description
-2. **"в інтернет-магазині Ultimate"** — одразу після keyword
+1. **title_phrase** — на початку Description
+2. **"в інтернет-магазині Ultimate"** — одразу після
 3. ❌ НЕМАє "Опт і роздріб"
 4. ❌ НЕМАє назв брендів
 
@@ -236,27 +247,16 @@ _clean.json: "keywords": [{"keyword": "віск для авто", "volume": 1000
 | Заборонено | Чому | Правильно |
 |------------|------|-----------|
 | Назви товарів (Bitumen Buster) | Користувач не знає SKU | Типи: "сольвентні", "лужні" |
-| Назви брендів (Meguiar's, Gtechniq) | Динамічні дані, можуть змінюватися | Тільки "Ultimate" як магазин |
+| Назви брендів (Meguiar's, Gtechniq) | Динамічні дані | Тільки "Ultimate" як магазин |
 | Marketing fluff (швидко, якісно) | Валідатор відхилить | Факти: "видаляє смолу" |
-| Розведення (1:5, 1:10) | Це для контенту | Тільки об'єми: 0.5л, 1л, 5л |
-| Довгі описи >160 chars | Обріжеться в SERP | Короткі типи + об'єми |
-
-### ✅ Що використовувати:
-
-| Поле | Джерело | Приклад |
-|------|---------|---------|
-| **Типи** | PRODUCTS_LIST.md | лужні, кислотні, сольвентні |
-| **Форми** | PRODUCTS_LIST.md | концентрати, готові, спреї |
-| **Об'єми** | PRODUCTS_LIST.md | 0.5л, 1л, 5л, 20л |
-| **Ефект** | entities | матовий, гідрофобний, UV-захист |
 
 ---
 
-## H1 (= primary_keyword → PLURAL)
+## H1 (= title_phrase → PLURAL)
 
 **🚨 КРИТИЧНО: H1 має бути у МНОЖИНІ, бо категорія містить багато товарів.**
 
-**Формула:** `{primary_keyword}` → **конвертувати в множину**
+**Формула:** `{title_phrase}` → конвертувати в множину (якщо потрібно)
 
 ### Таблиця конвертації (UK)
 
@@ -265,9 +265,6 @@ _clean.json: "keywords": [{"keyword": "віск для авто", "volume": 1000
 | Очищувач | **Очищувачі** |
 | Поліроль | **Поліролі** |
 | Силант | **Силанти** |
-| Знежирювач | **Знежирювачі** |
-| Плямовивідник | **Плямовивідники** |
-| Поглинач | **Нейтралізатори** |
 | Губка | **Губки** |
 | Відро | **Відра** |
 | Набір | **Набори** |
@@ -275,40 +272,33 @@ _clean.json: "keywords": [{"keyword": "віск для авто", "volume": 1000
 | Шампунь | **Шампуні** |
 | Щітка | **Щітки** |
 | Машинка | **Машинки** |
-| Круг | **Круги** |
-| Засіб | **Засоби** |
-| Торнадор | **Торнадори** |
-| Відновлювач | **Відновлювачі** |
 
 ### Алгоритм
 
-1. Взяти `{primary_keyword}` з `_clean.json` (MAX volume)
-2. Конвертувати **перше слово** в множину за таблицею
-3. Решту фрази залишити без змін
+1. Взяти `{title_phrase}` (category_title або primary_keyword)
+2. Якщо однина — конвертувати **перше слово** в множину
+3. Якщо category_title вже у множині (Губки та рукавички) — залишити як є
 
 ```
-primary_keyword: "очищувач дисків" (однина)
-H1: "Очищувачі дисків" (множина) ✅
+category_title: "Губки та рукавички" (вже множина)
+H1: "Губки та рукавички" ✅
 
 primary_keyword: "силант для авто" (однина)
 H1: "Силанти для авто" (множина) ✅
-
-primary_keyword: "губка для авто" (однина)
-H1: "Губки для авто" (множина) ✅
 ```
 
 ### Виключення (вже множина або збірне)
 
 НЕ конвертувати:
-- glavnaya (Автохімія — збірне)
-- aksessuary (Аксесуари — вже множина)
-- oborudovanie (Обладнання — збірне)
-- zashchitnye-pokrytiya (Захисні покриття — вже множина)
-- polirovka (Полірування — процес)
+- Автохімія (збірне)
+- Аксесуари (вже множина)
+- Обладнання (збірне)
+- Захисні покриття (вже множина)
+- Полірування (процес)
 
 **Інші правила:**
 - **БЕЗ "Купити"**
-- НЕ додавати "для авто" якщо його немає в keyword
+- НЕ додавати слова яких немає в title_phrase
 
 ---
 
@@ -319,20 +309,16 @@ H1: "Губки для авто" (множина) ✅
   "slug": "{slug}",
   "language": "uk",
   "meta": {
-    "title": "{H1_PLURAL} — купити, ціни | Ultimate",
-    "description": "{H1_PLURAL} від виробника Ultimate. {Типи/призначення} — {деталі}. Опт і роздріб."
+    "title": "{title_phrase} — купити, ціни | Ultimate",
+    "description": "{title_phrase} від виробника Ultimate. {Типи} — {деталі}. Опт і роздріб."
   },
-  "h1": "{H1_PLURAL}",  // ← МНОЖИНА!
-  "h1": "{primary_keyword}",
+  "h1": "{title_phrase}",
   "keywords_in_content": {
     "primary": ["keyword1", "keyword2"],
     "secondary": ["keyword3", "keyword4"],
     "supporting": ["keyword5", "keyword6"]
   },
-  "types": ["тип1", "тип2"],
-  "forms": ["концентрат", "готовий"],
-  "volumes": ["0.5л", "1л", "5л"],
-  "updated_at": "2026-01-26"
+  "updated_at": "2026-02-03"
 }
 ```
 
@@ -341,75 +327,69 @@ H1: "Губки для авто" (множина) ✅
 ## Workflow
 
 1. **Прочитати** `uk/categories/{slug}/data/{slug}_clean.json`
-   - Визначити `{primary_keyword}` (див. "Терміни та джерела істини" вище)
-   - Перевірити довжину `{primary_keyword}` для вибору формули Title
+   - Перевірити наявність `category_title`
+   - Якщо є → `title_phrase = category_title`
+   - Якщо немає → `title_phrase = primary_keyword` (MAX volume)
 
-2. **Знайти товари** в `data/generated/PRODUCTS_LIST.md`
-   - Витягнути **типи**: лужні, кислотні, сольвентні
-   - Витягнути **форми**: концентрати, готові, спреї
-   - Витягнути **об'єми**: 0.5л, 1л, 5л, 20л
+2. **Визначити тип** (Producer vs Shop)
 
 3. **Застосувати формули:**
-   - Title: адаптивна формула (див. вище)
-   - H1: `{primary_keyword}` (без "купити", без додавань)
-   - Description: Producer/Shop формула (див. вище)
+   - Title: адаптивна формула з `{title_phrase}`
+   - H1: `{title_phrase}` (множина, без "купити")
+   - Description: Producer/Shop формула з `{title_phrase}`
 
 4. **Перевірити:**
-   - ✅ Title містить primary_keyword ДОСЛІВНО (за словами і порядком)
+   - ✅ Title містить title_phrase ДОСЛІВНО
    - ✅ Title 30-60 chars (унікальна частина)
-   - ✅ H1 = primary_keyword ДОСЛІВНО (за словами і порядком)
+   - ✅ H1 = title_phrase ДОСЛІВНО
    - ✅ Description 100-160 chars
-   - ✅ Description містить primary_keyword і коректний патерн (Producer або Shop)
-   - ❌ НЕМАє назв товарів, fluff, розведення
+   - ✅ Description містить title_phrase і коректний патерн
 
 5. **Зберегти** в `uk/categories/{slug}/meta/{slug}_meta.json`
 
-6. **Валідація:** `python3 scripts/validate_meta.py {path}` → має бути PASS
+6. **Валідація:** `python3 scripts/validate_meta.py {path} --keywords {clean_path}` → PASS
 
 ---
 
 ## Validation Checklist
 
+**Нагадування:** `{title_phrase} = category_title ?? primary_keyword`
+
 ### Title:
-- [ ] **primary_keyword ДОСЛІВНО** (за словами і порядком) ← IRON RULE!
-- [ ] **30-60 chars (унікальна частина, див. правило `|`)**
-- [ ] **Містить "купити"** ПІСЛЯ primary_keyword
+- [ ] **title_phrase ДОСЛІВНО** ← IRON RULE!
+- [ ] **30-60 chars** (унікальна частина)
+- [ ] **Містить "купити"** ПІСЛЯ title_phrase
 - [ ] Без двокрапки
 
-### Description (Producer pattern — є товари Ultimate):
+### Description (Producer):
 - [ ] **100-160 chars**
-- [ ] **Починається з primary_keyword**
-- [ ] **Містить "від виробника Ultimate"**
-- [ ] **Містить "Опт і роздріб"**
-- [ ] **НЕМАє** назв товарів, брендів, fluff, розведення
+- [ ] **Починається з title_phrase**
+- [ ] **"від виробника Ultimate"**
+- [ ] **"Опт і роздріб"**
+- [ ] НЕМАє назв товарів, брендів, fluff
 
-### Description (Shop pattern — НЕМАє товарів Ultimate):
+### Description (Shop):
 - [ ] **100-160 chars**
-- [ ] **Починається з primary_keyword**
-- [ ] **Містить "в інтернет-магазині Ultimate"**
-- [ ] **НЕМАє "Опт і роздріб"**
-- [ ] **НЕМАє** назв товарів, брендів, fluff, розведення
+- [ ] **Починається з title_phrase**
+- [ ] **"в інтернет-магазині Ultimate"**
+- [ ] НЕМАє "Опт і роздріб"
+- [ ] НЕМАє назв брендів
 
 ### H1:
-- [ ] **= primary_keyword ДОСЛІВНО** ← IRON RULE!
+- [ ] **= title_phrase** ← IRON RULE!
 - [ ] **БЕЗ "Купити"**
-- [ ] **БЕЗ додавань** ("для авто" тощо)
+- [ ] Множина (якщо потрібно)
 
 ---
 
 ## 🚩 Red Flags — СТОП і виправ
 
-Якщо ти думаєш щось із цього — ти раціоналізуєш:
-
 | Думка | Реальність |
 |-------|------------|
-| "Автовіск звучить краще" | primary_keyword = дані семантики. Твоя думка ≠ дані. |
-| "Додам для авто для ясності" | Якщо в primary_keyword немає "для авто" — НЕ додавай! |
-| "Це ж синонім" | Синонім ≠ точний збіг. Google розрізняє. |
-| "Так коротше/довше" | Довжина регулюється хвостом Title, НЕ ключем. |
-| "Я оптимізую" | Оптимізація = використовувати primary_keyword за словами і порядком. |
-
-**Всі ці думки = повернись до `_clean.json` і візьми primary_keyword ДОСЛІВНО (за словами і порядком).**
+| "Змінити порядок слів" | title_phrase = дані. НЕ змінюй! |
+| "Додам для авто для ясності" | Якщо в title_phrase немає — НЕ додавай! |
+| "Це ж синонім" | Синонім ≠ точний збіг. |
+| "Я оптимізую" | Оптимізація = використовувати title_phrase дослівно. |
 
 ---
 
@@ -423,29 +403,19 @@ Status: ready for /uk-content-generator
 
 ---
 
-**Version:** 16.1 — January 2026
+**Version:** 17.2 — February 2026
 
-**Changelog v16.1:**
-- 🔧 Синхронізовано формулу Title з RU: "в інтернет-магазині" замість "в Україні"
-- 📏 Виправлено Front-loading: ключ на початку, не "Купити"
+**Changelog v17.2:**
+- 🔧 **Чітка формула**: Title = H1 = phrase_to_plural(title_phrase)
+- 📋 **IRON RULE уточнено**: дозволено тільки капіталізація + множина
+- ❌ **Заборонено**: скорочувати або змінювати фразу
 
-**Changelog v16.0:**
-- 🎯 **КРИТИЧНО: primary_keyword = MAX(volume)**, НЕ перший у списку
-- 🔧 Додано Python-код для визначення primary_keyword
-- 📋 Після semantic-cluster порядок ключів може змінитись — завжди шукати MAX
+**Changelog v17.1:**
+- 🔧 **Консистентність**: всі формули використовують `{title_phrase}` замість `{primary_keyword}`
+- 📋 **Validation Checklist**: оновлено для title_phrase
+- 🧹 **Спрощення**: видалено дублювання, скорочено документ
 
-**Changelog v15.1:**
-- ADDED: Reference to shared/meta-rules.md for common rules
-
-**Changelog v15.0:**
-- **Синхронізовано з RU v15.0** — повний паритет
-- 🔧 Введено термін `{primary_keyword}` і описані 2 схеми `_clean.json` (list/dict)
-- 📏 Уточнено правило підрахунку довжини Title (унікальна частина, логіка `|` як у валідаторі)
-- 🧱 IRON RULE уточнено: слова/порядок незмінні, допускається капіталізація першої літери
-- 🏭 **Producer vs Shop pattern:** два типи Description залежно від наявності товарів Ultimate
-- ❌ **Заборонено:** назви брендів (Meguiar's, Gtechniq) — динамічні дані
-- 📋 **Список Shop-категорій:** 14 категорій без товарів Ultimate
-
-**Changelog v1.1:**
-- Додано Red Flags секцію
-- Базова синхронізація з generate-meta
+**Changelog v17.0:**
+- 🆕 **category_title**: нове опціональне поле для складених категорій та двох ВЧ-ключів
+- 📋 **Пріоритет**: `category_title` > `primary_keyword` в Title/H1/Description
+- 🔧 **title_phrase**: `category_title ?? primary_keyword`
