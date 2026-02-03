@@ -125,12 +125,27 @@ def load_json(path: str) -> dict[str, Any]:
 
 
 def get_primary_keywords(keywords_data: dict[str, Any]) -> list[str]:
-    """Extract primary keywords from keywords JSON."""
+    """
+    Extract primary keyword from keywords JSON.
+
+    Supports two formats:
+    1. _clean.json: {"keywords": [{"keyword": "...", "volume": N}, ...]} → MAX(volume)
+    2. Old format: {"keywords": {"primary": [...]}}
+    """
     keywords = []
 
     if "keywords" in keywords_data:
         kw_section = keywords_data["keywords"]
-        if "primary" in kw_section:
+
+        # Format 1: _clean.json with list of {keyword, volume}
+        if isinstance(kw_section, list) and kw_section:
+            # Find keyword with MAX volume
+            max_item = max(kw_section, key=lambda x: x.get("volume", 0) if isinstance(x, dict) else 0)
+            if isinstance(max_item, dict) and max_item.get("keyword"):
+                keywords.append(max_item["keyword"].lower())
+
+        # Format 2: Old format with {"primary": [...]}
+        elif isinstance(kw_section, dict) and "primary" in kw_section:
             for item in kw_section["primary"]:
                 if isinstance(item, dict):
                     keywords.append(item.get("keyword", "").lower())
@@ -235,8 +250,22 @@ def validate_title(title: str, primary_keywords: list[str] | None = None, lang: 
         results["checks"]["no_colon"]["message"] = "Contains colon (:) - replace with 'для' or brackets"
 
     # 3. Primary keyword check (with stem matching, language-aware)
+    # Also check plural form since Title/H1 use plural formula
     if primary_keywords:
-        found = [kw for kw in primary_keywords if keyword_matches(kw, title, lang=lang)]
+        from scripts.keyword_utils import MorphAnalyzer
+
+        morph = MorphAnalyzer(lang)
+        found = []
+        for kw in primary_keywords:
+            # Check original form
+            if keyword_matches(kw, title, lang=lang):
+                found.append(kw)
+            # Check plural form (Title uses phrase_to_plural)
+            else:
+                plural_kw = morph.phrase_to_plural(kw)
+                if keyword_matches(plural_kw, title, lang=lang):
+                    found.append(f"{kw} (plural: {plural_kw})")
+
         if found:
             results["checks"]["primary_keyword"]["passed"] = True
             results["checks"]["primary_keyword"]["message"] = f"Found: {found[0]}"
@@ -318,8 +347,22 @@ def validate_description(
         results["checks"]["length"]["message"] = f"Slightly long ({desc_length} > {DESC_MAX_LENGTH})"
 
     # 2. Primary keyword check (with stem matching, language-aware)
+    # Also check plural form since Description may start with plural
     if primary_keywords:
-        found = [kw for kw in primary_keywords if keyword_matches(kw, description, lang=lang)]
+        from scripts.keyword_utils import MorphAnalyzer
+
+        morph = MorphAnalyzer(lang)
+        found = []
+        for kw in primary_keywords:
+            # Check original form
+            if keyword_matches(kw, description, lang=lang):
+                found.append(kw)
+            # Check plural form
+            else:
+                plural_kw = morph.phrase_to_plural(kw)
+                if keyword_matches(plural_kw, description, lang=lang):
+                    found.append(f"{kw} (plural: {plural_kw})")
+
         if found:
             results["checks"]["primary_keyword"]["passed"] = True
             results["checks"]["primary_keyword"]["message"] = f"Found: {found[0]}"
@@ -428,7 +471,13 @@ def validate_meta_file(meta_path: str, keywords_path: str | None = None, lang: s
     if keywords_path:
         try:
             keywords_data = load_json(keywords_path)
-            primary_keywords = get_primary_keywords(keywords_data)
+
+            # Priority: category_title > primary_keyword (MAX volume)
+            # category_title используется для составных категорий (Губки и варежки, Керамика и жидкое стекло)
+            if keywords_data.get("category_title"):
+                primary_keywords = [keywords_data["category_title"].lower()]
+            else:
+                primary_keywords = get_primary_keywords(keywords_data)
             # commercial_keywords = get_commercial_keywords(keywords_data)
         except Exception as e:
             results["errors"].append(f"Cannot load keywords file: {e}")

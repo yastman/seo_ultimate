@@ -284,15 +284,17 @@ class MorphAnalyzer:
 
     def phrase_to_plural(self, phrase: str) -> str:
         """
-        Convert phrase to plural (first word only).
+        Convert phrase to plural (adjective + noun patterns).
 
         "очиститель дисков" → "Очистители дисков"
         "губка для авто" → "Губки для авто"
+        "шерстяний круг для полірування" → "Шерстяні круги для полірування"
         """
         words = phrase.split()
         if not words:
             return phrase
 
+        # Convert first word to plural
         first_word = words[0]
         plural_first = self.to_plural(first_word)
 
@@ -300,6 +302,28 @@ class MorphAnalyzer:
         if plural_first:
             plural_first = plural_first.capitalize()
 
+        if len(words) == 1:
+            return plural_first
+
+        # Check if second word is a noun that should also be pluralized
+        # Pattern: ADJ + NOUN (e.g., "шерстяний круг", "поліровальний круг")
+        second_word = words[1]
+        result_words = [plural_first]
+
+        if self._use_pymorphy and self._morph:
+            parsed_first = self._morph.parse(first_word.lower())
+            parsed_second = self._morph.parse(second_word.lower())
+
+            first_is_adj = parsed_first and any("ADJF" in str(p.tag) for p in parsed_first[:2])
+            second_is_noun = parsed_second and any("NOUN" in str(p.tag) for p in parsed_second[:2])
+
+            if first_is_adj and second_is_noun:
+                # Both adjective and noun should be plural
+                result_words.append(self.to_plural(second_word))
+                result_words.extend(words[2:])
+                return " ".join(result_words)
+
+        # Default: only first word plural
         return " ".join([plural_first] + words[1:])
 
     @property
