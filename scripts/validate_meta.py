@@ -422,6 +422,68 @@ def validate_description(
     return results
 
 
+def validate_h1(h1: str, primary_keyword: str, lang: str = "ru") -> dict[str, Any]:
+    """
+    Validate that H1 contains primary_keyword or its plural form.
+
+    Args:
+        h1: The H1 heading text
+        primary_keyword: Primary keyword from _clean.json (MAX volume)
+        lang: 'ru' or 'uk' for morphology
+
+    Returns:
+        {
+            "passed": bool,
+            "form": "exact" | "plural" | "morphological" | None,
+            "message": str,
+            "h1": str,
+            "primary_keyword": str
+        }
+    """
+    result: dict[str, Any] = {
+        "passed": False,
+        "form": None,
+        "message": "",
+        "h1": h1,
+        "primary_keyword": primary_keyword,
+    }
+
+    if not h1 or not primary_keyword:
+        result["message"] = "H1 or primary_keyword is empty"
+        return result
+
+    h1_lower = h1.lower()
+    pk_lower = primary_keyword.lower()
+
+    # Check 1: Exact match (keyword in H1)
+    if pk_lower in h1_lower:
+        result["passed"] = True
+        result["form"] = "exact"
+        result["message"] = "OK (exact match)"
+        return result
+
+    # Check 2: Plural form match
+    morph = MorphAnalyzer(lang)
+    plural_form = morph.phrase_to_plural(primary_keyword)
+
+    if plural_form.lower() in h1_lower:
+        result["passed"] = True
+        result["form"] = "plural"
+        result["message"] = "OK (plural form)"
+        return result
+
+    # Check 3: Morphological match (lemma-based)
+    if keyword_matches(primary_keyword, h1, lang=lang):
+        result["passed"] = True
+        result["form"] = "morphological"
+        result["message"] = "OK (morphological match)"
+        return result
+
+    # Failed all checks
+    result["message"] = f"H1 '{h1}' не містить '{primary_keyword}' або '{plural_form}'"
+    return result
+
+
 def validate_meta_file(meta_path: str, keywords_path: str | None = None, lang: str = "ru") -> dict[str, Any]:
     """
     Full validation of meta JSON file.
