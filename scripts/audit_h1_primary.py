@@ -86,7 +86,19 @@ def audit_category(
         return result
 
     # Get primary keyword (MAX volume)
-    keywords = clean_data.get("keywords", [])
+    keywords_raw = clean_data.get("keywords", [])
+
+    # Support both formats:
+    # 1. New: {"keywords": [{"keyword": "...", "volume": N}, ...]}
+    # 2. Old: {"keywords": {"primary": [{"keyword": "...", "volume": N}], ...}}
+    if isinstance(keywords_raw, dict):
+        # Old format - flatten primary + secondary + supporting
+        keywords = []
+        for section in ["primary", "secondary", "supporting"]:
+            keywords.extend(keywords_raw.get(section, []))
+    else:
+        keywords = keywords_raw
+
     if not keywords:
         result["status"] = "MISSING_DATA"
         result["message"] = "No keywords in _clean.json"
@@ -97,7 +109,13 @@ def audit_category(
         primary_kw = clean_data["category_title"]
         primary_vol = 0  # category_title doesn't have volume
     else:
-        primary_item = max(keywords, key=lambda x: x.get("volume", 0))
+        # Filter only dict items (some legacy data may have strings)
+        kw_dicts = [k for k in keywords if isinstance(k, dict) and k.get("keyword")]
+        if not kw_dicts:
+            result["status"] = "MISSING_DATA"
+            result["message"] = "No valid keyword dicts in _clean.json"
+            return result
+        primary_item = max(kw_dicts, key=lambda x: x.get("volume", 0))
         primary_kw = primary_item.get("keyword", "")
         primary_vol = primary_item.get("volume", 0)
 
