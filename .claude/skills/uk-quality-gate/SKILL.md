@@ -177,8 +177,11 @@ python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
 | supporting | **≥80% COVERED** | WARNING |
 | keywords[] | threshold по кількості | WARNING |
 
-**COVERED** = EXACT / NORM / LEMMA / SYNONYM
-**NOT COVERED** = TOKENIZATION / PARTIAL / ABSENT → фейл групи
+**Статуси покриття:**
+- ✅ COVERED: `EXACT`, `NORM`, `LEMMA`
+- ❌ NOT COVERED: `SYNONYM`, `PARTIAL`, `ABSENT`
+
+> **SYNONYM = NOT COVERED** — синонім не замінює ключ для SEO.
 
 **Thresholds для keywords[]:**
 - ≤5 ключів → 70%
@@ -218,12 +221,6 @@ grep -E "резина|мойка|стекло" uk/categories/{slug}/content/{slu
 
 # Keyword density
 python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
-
-# H1 sync check
-python3 scripts/check_h1_sync.py --lang uk
-
-# Semantic coverage check
-python3 scripts/check_semantic_coverage.py --lang uk
 
 # Keywords coverage (audit_coverage.py)
 python3 scripts/audit_coverage.py --slug {slug} --lang uk --json --include-meta
@@ -344,7 +341,12 @@ If FAIL: Fix issues, then run /uk-quality-gate {slug} again
 
 ---
 
-**Version:** 3.2
+**Version:** 3.3 — February 2026
+
+**Changelog v3.3:**
+- **REMOVED: check_h1_sync.py** — скрипт не існує
+- **REMOVED: check_semantic_coverage.py** — скрипт не існує
+- **FIXED: SYNONYM = NOT COVERED** — виправлено статус
 
 **Changelog v3.2:**
 - **ADDED: audit_coverage.py інтеграція** — Section 8 Keywords Coverage

@@ -103,6 +103,12 @@ python3 scripts/audit_coverage.py --slug {slug} --lang ru --json --include-meta
 
 Adaptive thresholds: ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
 
+**Статуси покриття:**
+- ✅ COVERED: `EXACT`, `NORM`, `LEMMA`
+- ❌ NOT COVERED: `SYNONYM`, `PARTIAL`, `ABSENT`
+
+> **SYNONYM = NOT COVERED** — синонім не замінює ключ для SEO.
+
 > **Примечание:** entities в _clean.json автогенерированные — НЕ использовать для контента. Профтермины берутся из RESEARCH_DATA.md.
 
 ### 4. SEO Structure Check
@@ -259,11 +265,6 @@ python3 scripts/validate_content.py uk/categories/{slug}/content/{slug}_uk.md "{
 # Keyword density
 python3 scripts/validate_density.py uk/categories/{slug}/content/{slug}_uk.md --lang uk
 
-# H1 sync check
-python3 scripts/check_h1_sync.py --lang uk
-
-# Semantic coverage
-python3 scripts/check_semantic_coverage.py --lang uk
 ```
 
 ### UK-Specific Checks
@@ -321,7 +322,15 @@ If FAIL: Fix issues, then run `/quality-gate {slug}` again
 
 ---
 
-**Version:** 3.1 — January 2026
+**Version:** 3.3 — February 2026
+
+**Changelog v3.3:**
+- **SYNCED with UK v3.3** — повний паритет
+
+**Changelog v3.2:**
+- **REMOVED: check_h1_sync.py** — скрипт не існує
+- **REMOVED: check_semantic_coverage.py** — скрипт не існує
+- **ADDED: SYNONYM = NOT COVERED** — явне роз'яснення
 
 **Changelog v3.1:**
 - ADDED: audit_coverage.py в Content Validation (динамические пороги)

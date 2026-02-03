@@ -33,11 +33,33 @@ _clean.json: "keywords": [{"keyword": "воск для авто", "volume": 1000
 
 | Rule | Value |
 |------|-------|
-| Length | 50-60 chars (unique part) |
-| Structure | {primary_keyword} + commercial + brand |
-| Commercial | "купить/купити" AFTER keyword |
+| Length | 30-60 chars (unique part before `\|`) |
+| Structure | **{H1}** + commercial + brand |
+| Formula | `{H1} — купить/купити, цены/ціни \| Ultimate` |
+| Front-loading | **Keyword FIRST** (NOT "Купить {keyword}") |
 | Brand | "Ultimate" at end |
 | Forbidden | Colons (Google replaces with dash) |
+
+### Title Formula
+
+```
+✅ CORRECT: {H1} — купити, ціни | Ultimate
+❌ WRONG:   Купити {H1} в Україні | Ultimate
+```
+
+**H1 = primary_keyword in PLURAL form** (see H1 Rules below)
+
+### Examples
+
+| H1 (plural) | Title |
+|-------------|-------|
+| Очищувачі дисків | **Очищувачі дисків — купити, ціни \| Ultimate** |
+| Силанти для авто | **Силанти для авто — купити, ціни \| Ultimate** |
+| Знежирювачі | **Знежирювачі — купити в інтернет-магазині Ultimate** |
+
+**Adaptive formula:**
+- If H1 ≤ 20 chars: `{H1} — купити в інтернет-магазині Ultimate`
+- If H1 > 20 chars: `{H1} — купити, ціни | Ultimate`
 
 ---
 
@@ -70,10 +92,59 @@ _clean.json: "keywords": [{"keyword": "воск для авто", "volume": 1000
 
 ## H1 Rules
 
-**Formula:** `{primary_keyword}`
+**Formula:** `{primary_keyword}` → **PLURAL FORM**
 
-**Rules:**
-- = primary_keyword VERBATIM
+**🚨 CRITICAL: H1 must be in PLURAL form because category contains multiple products.**
+
+### Plural Conversion Table
+
+| Singular (RU) | Plural (RU) | Singular (UK) | Plural (UK) |
+|---------------|-------------|---------------|-------------|
+| Очиститель | **Очистители** | Очищувач | **Очищувачі** |
+| Полироль | **Полироли** | Поліроль | **Поліролі** |
+| Силант | **Силанты** | Силант | **Силанти** |
+| Обезжириватель | **Обезжириватели** | Знежирювач | **Знежирювачі** |
+| Пятновыводитель | **Пятновыводители** | Плямовивідник | **Плямовивідники** |
+| Нейтрализатор | **Нейтрализаторы** | Поглинач | **Нейтралізатори** |
+| Губка | **Губки** | Губка | **Губки** |
+| Ведро | **Вёдра** | Відро | **Відра** |
+| Набор | **Наборы** | Набір | **Набори** |
+| Воск | **Воски** | Віск | **Воски** |
+| Шампунь | **Шампуни** | Шампунь | **Шампуні** |
+| Щётка | **Щётки** | Щітка | **Щітки** |
+| Машинка | **Машинки** | Машинка | **Машинки** |
+| Круг | **Круги** | Круг | **Круги** |
+| Средство | **Средства** | Засіб | **Засоби** |
+| Торнадор | **Торнадоры** | Торнадор | **Торнадори** |
+| Восстановитель | **Восстановители** | Відновлювач | **Відновлювачі** |
+
+### Algorithm
+
+1. Take `{primary_keyword}` from `_clean.json` (MAX volume)
+2. Convert first word to **plural** using table above
+3. Keep rest of phrase unchanged
+
+```
+primary_keyword: "очиститель дисков" (singular)
+H1: "Очистители дисков" (plural)
+
+primary_keyword: "силант для авто" (singular)
+H1: "Силанты для авто" (plural)
+
+primary_keyword: "губка для авто" (singular)
+H1: "Губки для авто" (plural)
+```
+
+### Exceptions (already plural or collective)
+
+These categories DON'T need conversion:
+- glavnaya (Автохімія/Автохимия — collective)
+- aksessuary (Аксесуари — already plural)
+- oborudovanie (Обладнання — collective)
+- zashchitnye-pokrytiya (Захисні покриття — already plural)
+- polirovka (Полірування — process, not product)
+
+**Other rules:**
 - NO "Купить/Купити"
 - NO additions ("для авто" if not in keyword)
 
