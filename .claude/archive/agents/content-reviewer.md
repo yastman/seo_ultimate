@@ -264,6 +264,44 @@ python3 scripts/check_water_natasha.py categories/{path}/content/{slug}_ru.md
 | поверхность | покрытие, основа, материал |
 | защита      | барьер, слой, покрытие     |
 | автомобиль  | авто, машина, транспорт    |
+| пена        | состав, средство, продукт, формула |
+| мойка       | очистка, уход, обработка   |
+| воск        | покрытие, защита, слой     |
+
+---
+
+## Nausea Auto-Fix Algorithm (v3.1)
+
+**Когда применять:** После ЛЮБОГО добавления ключевых слов в текст.
+
+### Workflow
+
+```
+1. Добавить ключ →
+2. Запустить check_water_natasha.py →
+3. Если nausea >3.5:
+   a. Найти самое частое слово (из отчёта)
+   b. Заменить 1-2 вхождения на синоним (таблица выше)
+   c. Re-check nausea
+   d. Повторить до nausea ≤3.5
+4. Максимум 3 итерации
+```
+
+### Пример
+
+```
+❌ ДО (nausea 3.74, слово "пена" 14 раз):
+"Активная пена для мойки... Пена размягчает... пена работает..."
+
+✅ ПОСЛЕ (nausea 3.2):
+"Активная пена для мойки... Состав размягчает... средство работает..."
+```
+
+### Правило замены
+
+1. Заменять только **повторы**, не первое вхождение ключа
+2. Primary keyword — НЕ ТРОГАТЬ (нужен для SEO)
+3. Заменять generic слова, не ключевые фразы
 
 ---
 
@@ -381,7 +419,24 @@ categories/moyka-i-eksterer/sredstva-dlya-diskov-i-shin/cherniteli-shin/content/
 
 ## Step 8: Re-validate after fix
 
-После исправлений запустить те же 4 скрипта + re-check qualitative criteria.
+После исправлений запустить:
+
+```bash
+# 1. Density check
+python3 scripts/check_keyword_density.py {content_path}
+
+# 2. Nausea check (ОБЯЗАТЕЛЬНО после добавления ключей!)
+python3 scripts/check_water_natasha.py {content_path}
+# Если nausea >3.5 → применить Nausea Auto-Fix Algorithm
+
+# 3. Coverage check
+python3 scripts/audit_coverage.py --slug {slug} --lang ru --verbose
+
+# 4. Content validation
+python3 scripts/validate_content.py {content_path} "{primary}" --mode seo
+```
+
+Re-check qualitative criteria после всех фиксов.
 
 ---
 
