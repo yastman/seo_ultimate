@@ -1,0 +1,9 @@
+slug,status,primary_keyword,primary_volume,current_h1,expected_h1,fix_needed,lang
+aksessuary,OK,аксессуары для мойки авто,50,Аксессуары для мойки авто,Аксессуары для мойки авто,False,ru
+glavnaya,MISMATCH,Автохимия и автокосметика,0,Автохимия,Автохимии и автокосметика,True,ru
+moyka-i-eksterer,OK,Мойка и экстерьер,0,Мойка и экстерьер,Мойки и экстерьер,False,ru
+oborudovanie,OK,оборудование для химчистки авто,90,Оборудование для химчистки авто,Оборудования для химчистки авто,False,ru
+opt-i-b2b,OK,Автохимия оптом,0,Автохимия оптом,Автохимии оптом,False,ru
+polirovka,OK,полировка авто,2400,Полировка авто,Полировки авто,False,ru
+ukhod-za-intererom,OK,химчистка салона авто,320,Химчистка салона авто,Химчистки салона авто,False,ru
+zashchitnye-pokrytiya,OK,полимер для авто,140,Полимер для авто,Полимеры для авто,False,ru
