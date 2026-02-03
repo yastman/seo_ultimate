@@ -126,6 +126,44 @@ class TestValidateMetaFile:
         assert "Cannot load meta file" in result["errors"][0]
 
 
+class TestValidateTitlePluralSupport:
+    """Tests for plural form support in Title validation."""
+
+    def test_validate_title_accepts_plural(self):
+        """Title with plural form of primary_keyword should PASS."""
+        # primary_keyword = "очищувач слідів комах" (singular)
+        # Title uses plural = "Очищувачі слідів комах"
+        result = validate_title(
+            "Очищувачі слідів комах — купити, ціни | Ultimate",
+            primary_keywords=["очищувач слідів комах"],
+            lang="uk",
+        )
+
+        assert result["checks"]["primary_keyword"]["passed"] is True
+
+    def test_validate_title_accepts_plural_ru(self):
+        """RU Title with plural form should PASS."""
+        # primary_keyword = "очиститель дисков" (singular)
+        # Title uses plural = "Очистители дисков"
+        result = validate_title(
+            "Очистители дисков — купить, цены | Ultimate",
+            primary_keywords=["очиститель дисков"],
+            lang="ru",
+        )
+
+        assert result["checks"]["primary_keyword"]["passed"] is True
+
+    def test_validate_description_accepts_singular(self):
+        """Description with singular form should still PASS."""
+        result = validate_description(
+            "Очищувач слідів комах від виробника Ultimate. Засоби для видалення комах. Опт і роздріб.",
+            primary_keywords=["очищувач слідів комах"],
+            lang="uk",
+        )
+
+        assert result["checks"]["primary_keyword"]["passed"] is True
+
+
 class TestValidateMetaUK:
     """Tests for UK language support in validate_meta."""
 

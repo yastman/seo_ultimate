@@ -218,6 +218,90 @@ class MorphAnalyzer:
                 lemmas.append(self.get_lemma(w))
         return lemmas
 
+    # Fallback plural dictionaries for words pymorphy can't inflect
+    _PLURAL_FALLBACK_RU: dict[str, str] = {
+        "набор": "наборы",
+        "губка": "губки",
+        "ведро": "вёдра",
+        "средство": "средства",
+    }
+
+    _PLURAL_FALLBACK_UK: dict[str, str] = {
+        "набір": "набори",
+        "губка": "губки",
+        "відро": "відра",
+        "засіб": "засоби",
+        "віск": "воски",
+        "круг": "круги",
+        "торнадор": "торнадори",
+        "машинка": "машинки",
+        "щітка": "щітки",
+        "рукавичка": "рукавички",
+        "ганчірка": "ганчірки",
+        "ємність": "ємності",
+        "пензель": "пензлі",
+    }
+
+    @lru_cache(maxsize=1000)  # noqa: B019 - singleton, no memory leak
+    def to_plural(self, word: str) -> str:
+        """
+        Convert word to plural nominative case.
+
+        очиститель → очистители
+        губка → губки
+        набір → набори
+
+        Returns original word if conversion fails.
+        """
+        word_lower = word.lower()
+
+        # Check fallback dictionary first
+        fallback = self._PLURAL_FALLBACK_UK if self.lang == "uk" else self._PLURAL_FALLBACK_RU
+        if word_lower in fallback:
+            result = fallback[word_lower]
+            if word[0].isupper():
+                return result.capitalize()
+            return result
+
+        # Try pymorphy inflection
+        if self._use_pymorphy and self._morph:
+            parsed = self._morph.parse(word_lower)
+            if parsed:
+                non_surname = [p for p in parsed if "Surn" not in p.tag]
+                p = non_surname[0] if non_surname else parsed[0]
+
+                try:
+                    plural = p.inflect({"plur", "nomn"})
+                    if plural:
+                        result = plural.word
+                        if word[0].isupper():
+                            return result.capitalize()
+                        return result
+                except Exception:
+                    pass
+
+        return word
+
+    def phrase_to_plural(self, phrase: str) -> str:
+        """
+        Convert phrase to plural (first word only).
+
+        "очиститель дисков" → "Очистители дисков"
+        "губка для авто" → "Губки для авто"
+        """
+        words = phrase.split()
+        if not words:
+            return phrase
+
+        first_word = words[0]
+        plural_first = self.to_plural(first_word)
+
+        # Capitalize first word
+        if plural_first:
+            plural_first = plural_first.capitalize()
+
+        return " ".join([plural_first] + words[1:])
+
     @property
     def backend(self) -> str:
         """Return which backend is being used."""
