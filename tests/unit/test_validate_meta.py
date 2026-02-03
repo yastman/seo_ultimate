@@ -241,3 +241,49 @@ class TestValidateMetaUK:
 
         result = validate_meta_file(str(meta_file), lang="uk")
         assert result["description"]["checks"]["wholesale"]["passed"]
+
+
+class TestValidateH1:
+    """Tests for H1 vs primary_keyword validation."""
+
+    def test_h1_contains_primary_keyword_exact(self):
+        """H1 contains primary keyword exactly."""
+        from scripts.validate_meta import validate_h1
+
+        result = validate_h1(h1="Активна піна", primary_keyword="активна піна", lang="uk")
+        assert result["passed"] is True
+        assert result["form"] == "exact"
+
+    def test_h1_contains_primary_keyword_plural(self):
+        """H1 contains plural form of primary keyword."""
+        from scripts.validate_meta import validate_h1
+
+        result = validate_h1(h1="Активні піни", primary_keyword="активна піна", lang="uk")
+        assert result["passed"] is True
+        assert result["form"] == "plural"
+
+    def test_h1_contains_primary_keyword_in_phrase(self):
+        """H1 phrase contains primary keyword."""
+        from scripts.validate_meta import validate_h1
+
+        # "Кераміка та рідке скло" contains "рідке скло" → should pass
+        result = validate_h1(h1="Кераміка та рідке скло", primary_keyword="рідке скло", lang="uk")
+        assert result["passed"] is True
+
+    def test_h1_completely_different(self):
+        """H1 is completely different from primary keyword."""
+        from scripts.validate_meta import validate_h1
+
+        result = validate_h1(h1="Засоби для полірування", primary_keyword="рідке скло", lang="uk")
+        assert result["passed"] is False
+        assert "рідке скло" in result["message"]
+
+    def test_h1_empty_inputs(self):
+        """Empty H1 or primary_keyword fails gracefully."""
+        from scripts.validate_meta import validate_h1
+
+        result = validate_h1(h1="", primary_keyword="test", lang="uk")
+        assert result["passed"] is False
+
+        result2 = validate_h1(h1="Test H1", primary_keyword="", lang="uk")
+        assert result2["passed"] is False
