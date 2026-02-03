@@ -361,6 +361,58 @@ class TestBackwardCompatibleFunctions:
         assert form is None
 
 
+class TestMorphAnalyzerPlural:
+    """Test to_plural() singular to plural conversion."""
+
+    def test_to_plural_ru(self):
+        """Test Russian singular to plural conversion."""
+        morph = MorphAnalyzer("ru")
+
+        assert morph.to_plural("очиститель") == "очистители"
+        assert morph.to_plural("набор") == "наборы"
+        assert morph.to_plural("губка") == "губки"
+        assert morph.to_plural("ведро") == "вёдра"
+        assert morph.to_plural("воск") == "воски"
+        assert morph.to_plural("шампунь") == "шампуни"
+
+    def test_to_plural_uk(self):
+        """Test Ukrainian singular to plural conversion."""
+        morph = MorphAnalyzer("uk")
+
+        assert morph.to_plural("очищувач") == "очищувачі"
+        assert morph.to_plural("набір") == "набори"
+        assert morph.to_plural("губка") == "губки"
+        assert morph.to_plural("відро") == "відра"
+        assert morph.to_plural("шампунь") == "шампуні"
+
+    def test_to_plural_preserves_capitalization(self):
+        """Test that capitalization is preserved."""
+        morph = MorphAnalyzer("ru")
+
+        assert morph.to_plural("Очиститель") == "Очистители"
+        assert morph.to_plural("Губка") == "Губки"
+
+
+class TestMorphAnalyzerPhraseToPlural:
+    """Test phrase_to_plural() phrase conversion."""
+
+    def test_phrase_to_plural_ru(self):
+        """Test Russian phrase plural conversion (first word only)."""
+        morph = MorphAnalyzer("ru")
+
+        assert morph.phrase_to_plural("очиститель дисков") == "Очистители дисков"
+        assert morph.phrase_to_plural("губка для авто") == "Губки для авто"
+        assert morph.phrase_to_plural("набор для детейлинга") == "Наборы для детейлинга"
+
+    def test_phrase_to_plural_uk(self):
+        """Test Ukrainian phrase plural conversion (first word only)."""
+        morph = MorphAnalyzer("uk")
+
+        assert morph.phrase_to_plural("очищувач слідів комах") == "Очищувачі слідів комах"
+        assert morph.phrase_to_plural("губка для авто") == "Губки для авто"
+        assert morph.phrase_to_plural("набір для миття авто") == "Набори для миття авто"
+
+
 class TestMorphAnalyzerSurnFilter:
     """Test that Surn (surname) parses are filtered out."""
 
