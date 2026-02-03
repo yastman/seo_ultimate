@@ -3,11 +3,16 @@
   "language": "uk",
   "total_volume": 280,
   "keywords": [
-    {"keyword": "рідка гума для авто", "volume": 90},
-    {"keyword": "захисне покриття для авто", "volume": 70},
+    {"keyword": "захисне покриття для авто", "volume": 90},
     {"keyword": "силікон для авто", "volume": 70}
   ],
   "synonyms": [
+    {
+      "keyword": "рідка гума для авто",
+      "volume": 70,
+      "use_in": "lsi",
+      "variant_of": "захисне покриття для авто"
+    },
     {
       "keyword": "захисне покриття автомобіля",
       "volume": 10,
