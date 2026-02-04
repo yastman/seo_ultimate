@@ -110,10 +110,18 @@ class TestCountStemFrequencies:
     """Tests for count_stem_frequencies function."""
 
     def test_russian_stems(self):
-        """Russian stems should be grouped."""
+        """Russian stems should be grouped (MIN_STEM_FREQUENCY=3)."""
         from seo_ultimate.validate.density import count_stem_frequencies
 
-        words = ["полировка", "полировочный", "полировальная", "машина", "машинка"]
+        # Need at least 3 words with same stem (declensions, not derivatives)
+        words = [
+            "машина",
+            "машины",
+            "машину",  # 3 declensions -> машин
+            "полировка",
+            "полировки",
+            "полировку",  # 3 declensions -> полировк
+        ]
         result = count_stem_frequencies(words, lang="ru")
 
         # Should have entries for stems
@@ -124,10 +132,18 @@ class TestCountStemFrequencies:
             assert "forms" in data or "example" in data
 
     def test_ukrainian_lang(self):
-        """Ukrainian language should work."""
+        """Ukrainian language should work (MIN_STEM_FREQUENCY=3)."""
         from seo_ultimate.validate.density import count_stem_frequencies
 
-        words = ["полірування", "полірувальна", "машина"]
+        # Need at least 3 words with same stem (declensions)
+        words = [
+            "машина",
+            "машини",
+            "машину",  # 3 declensions -> машин
+            "полірування",
+            "полірування",
+            "полірування",  # repeat to reach threshold
+        ]
         result = count_stem_frequencies(words, lang="uk")
 
         assert len(result) > 0
