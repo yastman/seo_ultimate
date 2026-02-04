@@ -1,253 +1,577 @@
-# Scripts Modernization Plan
+# Scripts Modernization Implementation Plan
 
-**Дизайн:** [2026-02-04-scripts-modernization-design.md](./2026-02-04-scripts-modernization-design.md)
+> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
+
+**Goal:** Migrate 89 scripts to uv + src layout, achieve 80% test coverage
+
+**Architecture:** Phased migration — infra first (blocks all), then core (blocks validate/audit), then parallel workers for remaining modules
+
+**Tech Stack:** uv, pytest, ruff, mypy, pymorphy3, natasha
 
 ---
 
-## Worker 1: Инфраструктура + Core
+## Pre-flight Checklist
 
-### Task 1.1: uv + pyproject.toml
 ```bash
-# Файлы для создания/изменения:
-- pyproject.toml (новый)
-- .python-version (новый)
-# Удалить после миграции:
-- requirements.txt
+# Verify environment
+echo $TMUX              # Must be inside tmux
+mkdir -p logs data/generated/audit-logs
+git status              # Clean working tree
 ```
 
-**Шаги:**
-1. `uv init --no-readme`
-2. Перенести зависимости из requirements.txt в pyproject.toml
-3. Добавить dependency-groups: nlp, dev, test
-4. Настроить [tool.ruff], [tool.pytest], [tool.mypy]
-5. `uv sync --all-groups`
-6. Проверить: `uv run python -c "import pymorphy3"`
+---
 
-### Task 1.2: Структура src/
+## Phase 1: Infrastructure (Orchestrator — blocks all workers)
+
+### Task 1.1: Initialize uv project
+
+**Files:**
+- Create: `pyproject.toml`
+- Create: `.python-version`
+- Delete (after): `requirements.txt`
+
+**Step 1: Init uv**
+
+```bash
+uv init --no-readme --name seo-ultimate
+```
+
+**Step 2: Set Python version**
+
+```bash
+echo "3.12" > .python-version
+```
+
+**Step 3: Verify**
+
+Run: `cat pyproject.toml`
+Expected: `[project]` section with `name = "seo-ultimate"`
+
+---
+
+### Task 1.2: Configure pyproject.toml
+
+**Files:**
+- Modify: `pyproject.toml`
+
+**Step 1: Write full config**
+
+```toml
+[project]
+name = "seo-ultimate"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pyyaml>=6.0",
+    "tqdm>=4.67",
+    "requests>=2.32",
+    "toml>=0.10",
+    "pandas>=2.2",
+]
+
+[dependency-groups]
+nlp = [
+    "pymorphy3>=2.0",
+    "pymorphy3-dicts-ru>=2.4",
+    "pymorphy3-dicts-uk>=2.4",
+    "natasha>=1.6",
+    "razdel>=0.5",
+    "navec>=0.10",
+    "slovnet>=0.6",
+    "spacy>=3.8",
+]
+dev = [
+    "ruff>=0.14",
+    "mypy>=1.18",
+]
+test = [
+    "pytest>=9.0",
+    "pytest-cov>=7.0",
+    "pytest-xdist>=3.5",
+]
+
+[tool.uv]
+default-groups = ["nlp", "dev", "test"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.coverage.run]
+source = ["src/seo_ultimate"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:"]
+```
+
+**Step 2: Sync dependencies**
+
+Run: `uv sync`
+Expected: `Resolved X packages`, creates `uv.lock`
+
+**Step 3: Verify**
+
+Run: `uv run python -c "import pymorphy3; print('OK')"`
+Expected: `OK`
+
+---
+
+### Task 1.3: Create src layout
+
+**Files:**
+- Create: `src/seo_ultimate/__init__.py`
+- Create: `src/seo_ultimate/core/__init__.py`
+- Create: `src/seo_ultimate/validate/__init__.py`
+- Create: `src/seo_ultimate/audit/__init__.py`
+- Create: `src/seo_ultimate/py.typed`
+
+**Step 1: Create directories**
+
 ```bash
 mkdir -p src/seo_ultimate/{core,validate,audit,analyze,extract,generate,fix,sync,compare,batch,tools}
+```
+
+**Step 2: Create init files**
+
+```bash
 touch src/seo_ultimate/__init__.py
-touch src/seo_ultimate/core/__init__.py
+touch src/seo_ultimate/py.typed
+for d in core validate audit analyze extract generate fix sync compare batch tools; do
+  touch src/seo_ultimate/$d/__init__.py
+done
 ```
 
-### Task 1.3: Миграция core/
+**Step 3: Add package to pyproject.toml**
+
+Add to `pyproject.toml`:
+```toml
+[tool.setuptools.packages.find]
+where = ["src"]
+```
+
+**Step 4: Verify import**
+
+Run: `uv run python -c "import seo_ultimate; print('OK')"`
+Expected: `OK`
+
+**Step 5: Commit infra**
+
 ```bash
-# Переместить:
-scripts/config.py         → src/seo_ultimate/core/config.py
-scripts/keyword_utils.py  → src/seo_ultimate/core/keyword_utils.py
-scripts/text_utils.py     → src/seo_ultimate/core/text_utils.py
-scripts/seo_utils.py      → src/seo_ultimate/core/seo_utils.py
-scripts/coverage_matcher.py → src/seo_ultimate/core/coverage_matcher.py
-scripts/synonym_tools.py  → src/seo_ultimate/core/synonym_tools.py
+git add pyproject.toml uv.lock .python-version src/
+git commit -m "feat: init uv + src layout for scripts modernization"
 ```
-
-**После миграции:**
-- Обновить импорты внутри core/
-- Создать `src/seo_ultimate/core/__init__.py` с публичным API
-
-### Task 1.4: Unit-тесты core/
-```bash
-tests/unit/core/
-├── test_config.py
-├── test_keyword_utils.py
-├── test_text_utils.py
-├── test_seo_utils.py
-├── test_coverage_matcher.py
-└── test_synonym_tools.py
-```
-
-**Target:** 90% coverage на core/
 
 ---
 
-## Worker 2: Validate модуль
+### Task 1.4: Migrate core modules
 
-### Task 2.1: Миграция validate/
+**Files:**
+- Move: `scripts/config.py` → `src/seo_ultimate/core/config.py`
+- Move: `scripts/keyword_utils.py` → `src/seo_ultimate/core/keywords.py`
+- Move: `scripts/text_utils.py` → `src/seo_ultimate/core/text.py`
+- Move: `scripts/seo_utils.py` → `src/seo_ultimate/core/seo.py`
+- Move: `scripts/coverage_matcher.py` → `src/seo_ultimate/core/coverage.py`
+- Move: `scripts/synonym_tools.py` → `src/seo_ultimate/core/synonyms.py`
+- Modify: `src/seo_ultimate/core/__init__.py`
+
+**Step 1: Copy files (keep originals for now)**
+
 ```bash
-# Переместить (8 файлов):
-scripts/validate_content.py  → src/seo_ultimate/validate/content.py
-scripts/validate_density.py  → src/seo_ultimate/validate/density.py
-scripts/validate_master.py   → src/seo_ultimate/validate/master.py
-scripts/validate_meta.py     → src/seo_ultimate/validate/meta.py
-scripts/validate_seo.py      → src/seo_ultimate/validate/seo.py
-scripts/validate_uk.py       → src/seo_ultimate/validate/uk.py
-scripts/verify_structural_integrity.py → src/seo_ultimate/validate/structural.py
-scripts/verify_test_infra.py → src/seo_ultimate/validate/test_infra.py
+cp scripts/config.py src/seo_ultimate/core/config.py
+cp scripts/keyword_utils.py src/seo_ultimate/core/keywords.py
+cp scripts/text_utils.py src/seo_ultimate/core/text.py
+cp scripts/seo_utils.py src/seo_ultimate/core/seo.py
+cp scripts/coverage_matcher.py src/seo_ultimate/core/coverage.py
+cp scripts/synonym_tools.py src/seo_ultimate/core/synonyms.py
 ```
 
-### Task 2.2: Обновить импорты
-- Заменить `from scripts.keyword_utils` → `from seo_ultimate.core.keyword_utils`
-- Заменить `from scripts.config` → `from seo_ultimate.core.config`
+**Step 2: Fix imports in core modules**
 
-### Task 2.3: CLI entry points
+Replace in all `src/seo_ultimate/core/*.py`:
+- `from scripts.config` → `from seo_ultimate.core.config`
+- `from scripts.keyword_utils` → `from seo_ultimate.core.keywords`
+- `from scripts.text_utils` → `from seo_ultimate.core.text`
+
+**Step 3: Export public API**
+
+`src/seo_ultimate/core/__init__.py`:
 ```python
-# src/seo_ultimate/validate/__init__.py
-from .meta import validate_meta
-from .content import validate_content
-# etc.
+"""Core utilities for SEO Ultimate."""
+from seo_ultimate.core.config import *
+from seo_ultimate.core.keywords import KeywordMatcher, CoverageChecker
+from seo_ultimate.core.text import get_stopwords, clean_markdown, count_words
+from seo_ultimate.core.seo import extract_frontmatter, count_keyword_occurrences
+from seo_ultimate.core.coverage import CoverageMatcher
 ```
 
-### Task 2.4: Integration-тесты
+**Step 4: Verify imports**
+
+Run: `uv run python -c "from seo_ultimate.core import KeywordMatcher; print('OK')"`
+Expected: `OK`
+
+**Step 5: Commit core**
+
 ```bash
-tests/integration/validate/
-├── test_validate_meta.py      # fixtures: valid/invalid _meta.json
-├── test_validate_content.py   # fixtures: sample .md files
-├── test_validate_density.py
-└── test_validate_seo.py
-```
-
-**Target:** 80% coverage на validate/
-
----
-
-## Worker 3: Audit модуль
-
-### Task 3.1: Миграция audit/ (11 файлов)
-```bash
-scripts/audit_coverage.py          → src/seo_ultimate/audit/coverage.py
-scripts/audit_h1_primary.py        → src/seo_ultimate/audit/h1_primary.py
-scripts/audit_keyword_consistency.py → src/seo_ultimate/audit/keyword_consistency.py
-scripts/audit_meta.py              → src/seo_ultimate/audit/meta.py
-scripts/audit_synonyms.py          → src/seo_ultimate/audit/synonyms.py
-scripts/audit_unused_keywords.py   → src/seo_ultimate/audit/unused_keywords.py
-scripts/check_cannibalization.py   → src/seo_ultimate/audit/cannibalization.py
-scripts/check_h1_sync.py           → src/seo_ultimate/audit/h1_sync.py
-scripts/check_ner_brands.py        → src/seo_ultimate/audit/ner_brands.py
-scripts/check_semantic_coverage.py → src/seo_ultimate/audit/semantic_coverage.py
-scripts/check_water_natasha.py     → src/seo_ultimate/audit/water_natasha.py
-```
-
-### Task 3.2: Обновить импорты
-- Аналогично Worker 2
-
-### Task 3.3: Integration-тесты
-```bash
-tests/integration/audit/
-├── test_audit_coverage.py
-├── test_audit_h1_primary.py
-├── test_check_water_natasha.py
-└── ...
-```
-
-**Target:** 80% coverage на audit/
-
----
-
-## Worker 4: Остальные модули
-
-### Task 4.1: analyze/ (5 файлов)
-```bash
-scripts/analyze_category.py           → src/seo_ultimate/analyze/category.py
-scripts/analyze_keyword_duplicates.py → src/seo_ultimate/analyze/keyword_duplicates.py
-scripts/analyze_keywords_order.py     → src/seo_ultimate/analyze/keywords_order.py
-scripts/analyze_keywords_synonyms.py  → src/seo_ultimate/analyze/keywords_synonyms.py
-scripts/analyze_meta_keywords.py      → src/seo_ultimate/analyze/meta_keywords.py
-```
-
-### Task 4.2: extract/ (9 файлов)
-```bash
-scripts/extract_all_keywords.py      → src/seo_ultimate/extract/all_keywords.py
-scripts/extract_categories.py        → src/seo_ultimate/extract/categories.py
-scripts/extract_ru_keywords_list.py  → src/seo_ultimate/extract/ru_keywords_list.py
-scripts/extract_ru_keywords_mapping.py → src/seo_ultimate/extract/ru_keywords_mapping.py
-scripts/extract_uk_keywords.py       → src/seo_ultimate/extract/uk_keywords.py
-scripts/extract_uk_keywords_list.py  → src/seo_ultimate/extract/uk_keywords_list.py
-scripts/export_uk_category_texts.py  → src/seo_ultimate/extract/uk_category_texts.py
-scripts/collect_keywords.py          → src/seo_ultimate/extract/collect.py
-```
-
-### Task 4.3: generate/ (8 файлов)
-```bash
-scripts/generate_all_meta.py         → src/seo_ultimate/generate/all_meta.py
-scripts/generate_catalog_json.py     → src/seo_ultimate/generate/catalog_json.py
-scripts/generate_checklists.py       → src/seo_ultimate/generate/checklists.py
-scripts/generate_plural_sql.py       → src/seo_ultimate/generate/plural_sql.py
-scripts/generate_semantic_review.py  → src/seo_ultimate/generate/semantic_review.py
-scripts/generate_sql.py              → src/seo_ultimate/generate/sql.py
-scripts/generate_uk_keywords_from_ru.py → src/seo_ultimate/generate/uk_keywords.py
-scripts/regenerate_all_meta.py       → src/seo_ultimate/generate/regenerate_meta.py
-```
-
-### Task 4.4: fix/, sync/, compare/, batch/
-```bash
-# fix/ (6 файлов)
-scripts/fix_*.py → src/seo_ultimate/fix/
-scripts/cleanup_misplaced.py → src/seo_ultimate/fix/cleanup.py
-
-# sync/ (6 файлов)
-scripts/sync_*.py → src/seo_ultimate/sync/
-scripts/merge_to_master.py → src/seo_ultimate/sync/merge_master.py
-scripts/migrate_keywords.py → src/seo_ultimate/sync/migrate.py
-scripts/upload_to_db.py → src/seo_ultimate/sync/upload_db.py
-
-# compare/ (3 файла)
-scripts/compare_*.py → src/seo_ultimate/compare/
-
-# batch/ (2 файла)
-scripts/batch_*.py → src/seo_ultimate/batch/
-```
-
-### Task 4.5: Smoke-тесты
-- Проверить что каждый модуль импортируется
-- Базовые тесты на основные функции
-
----
-
-## Финальная фаза (после всех воркеров)
-
-### Task 5.1: Аудит tools/
-- Проанализировать оставшиеся ~26 скриптов
-- Удалить неиспользуемые
-- Распределить полезные по модулям
-
-### Task 5.2: Legacy cleanup
-```bash
-# После полной миграции:
-rm -rf scripts/*.py
-# Оставить только __init__.py с deprecation warning
-```
-
-### Task 5.3: Обновить документацию
-- CLAUDE.md: новые пути импортов
-- README: инструкции по uv
-
-### Task 5.4: Coverage отчёт
-```bash
-uv run pytest --cov=src/seo_ultimate --cov-report=html
-# Проверить ≥80%
+git add src/seo_ultimate/core/
+git commit -m "feat(core): migrate utils to src layout"
 ```
 
 ---
 
-## Порядок выполнения
+## Phase 2: Parallel Workers (after Phase 1 complete)
 
-```
-W1 (Core) ────────┐
-                  ├──→ W2, W3, W4 параллельно ──→ Финальная фаза
-                  │
-[блокирует остальных - нужен core для импортов]
+### Worktree Setup
+
+```bash
+# Create worktrees for parallel work
+git worktree add .worktrees/validate -b refactor/validate main
+git worktree add .worktrees/audit -b refactor/audit main
+git worktree add .worktrees/modules -b refactor/modules main
 ```
 
-**W1 должен завершиться первым**, потом W2/W3/W4 могут работать параллельно.
+### tmux Windows
+
+```bash
+tmux new-window -n "W-VAL" -c "$(pwd)/.worktrees/validate"
+tmux new-window -n "W-AUD" -c "$(pwd)/.worktrees/audit"
+tmux new-window -n "W-MOD" -c "$(pwd)/.worktrees/modules"
+```
 
 ---
 
-## Команды запуска воркеров
+## Worker W-VAL: Validate Module
+
+### Spawn Command
 
 ```bash
-# После завершения W1:
-spawn-claude "W2: Validate модуль.
-Читай docs/plans/2026-02-04-scripts-modernization-plan.md — Worker 2.
-Лог: data/generated/audit-logs/W2_modernization.md
-НЕ ДЕЛАЙ git commit" "$(pwd)"
+tmux send-keys -t "W-VAL" "claude --dangerously-skip-permissions 'W-VAL: Migrate validate scripts.
 
-spawn-claude "W3: Audit модуль.
-Читай docs/plans/2026-02-04-scripts-modernization-plan.md — Worker 3.
-Лог: data/generated/audit-logs/W3_modernization.md
-НЕ ДЕЛАЙ git commit" "$(pwd)"
+ПЛАН: docs/plans/2026-02-04-scripts-modernization-plan.md
+ЗАДАЧИ: Worker W-VAL section
 
-spawn-claude "W4: Остальные модули.
-Читай docs/plans/2026-02-04-scripts-modernization-plan.md — Worker 4.
-Лог: data/generated/audit-logs/W4_modernization.md
-НЕ ДЕЛАЙ git commit" "$(pwd)"
+⚠️ BEST PRACTICES 2026:
+1. Используй существующие core модули: from seo_ultimate.core import ...
+2. ТЕСТЫ — только свои: uv run pytest tests/integration/validate/ -v
+   НЕ запускай все тесты.
+3. Target coverage: 80% для validate/
+
+ЛОГИРОВАНИЕ в $(pwd)/logs/worker-val.log:
+[START] timestamp Task
+[DONE] timestamp Task
+[COMPLETE] timestamp Worker finished
+
+НЕ делай git commit.'" Enter
 ```
+
+### Task W-VAL.1: Migrate validate_meta.py
+
+**Files:**
+- Move: `scripts/validate_meta.py` → `src/seo_ultimate/validate/meta.py`
+- Create: `tests/integration/validate/test_meta.py`
+
+**Step 1: Copy and fix imports**
+
+```bash
+cp scripts/validate_meta.py src/seo_ultimate/validate/meta.py
+```
+
+Fix imports:
+```python
+from seo_ultimate.core.config import QUALITY_THRESHOLDS, PROJECT_ROOT
+from seo_ultimate.core.keywords import KeywordMatcher
+```
+
+**Step 2: Write integration test**
+
+`tests/integration/validate/test_meta.py`:
+```python
+import pytest
+from pathlib import Path
+
+def test_validate_meta_valid_file(tmp_path):
+    """Valid meta file should pass validation."""
+    meta = tmp_path / "test_meta.json"
+    meta.write_text('{"slug": "test", "language": "ru", "meta": {"title": "Test", "description": "Desc"}, "h1": "Test H1"}')
+
+    from seo_ultimate.validate.meta import validate_meta_file
+    result = validate_meta_file(meta)
+    assert result.is_valid
+
+def test_validate_meta_missing_h1(tmp_path):
+    """Missing H1 should fail validation."""
+    meta = tmp_path / "test_meta.json"
+    meta.write_text('{"slug": "test", "language": "ru", "meta": {"title": "Test"}}')
+
+    from seo_ultimate.validate.meta import validate_meta_file
+    result = validate_meta_file(meta)
+    assert not result.is_valid
+    assert "h1" in str(result.errors).lower()
+```
+
+**Step 3: Run test**
+
+Run: `uv run pytest tests/integration/validate/test_meta.py -v`
+Expected: 2 passed
+
+**Step 4: Log completion**
+
+```bash
+echo "[DONE] $(date +%H:%M) Task W-VAL.1: validate_meta migrated" >> logs/worker-val.log
+```
+
+---
+
+### Task W-VAL.2-8: Remaining validate scripts
+
+Repeat pattern for:
+- `validate_content.py` → `validate/content.py`
+- `validate_density.py` → `validate/density.py`
+- `validate_seo.py` → `validate/seo.py`
+- `validate_uk.py` → `validate/uk.py`
+- `validate_master.py` → `validate/master.py`
+- `verify_structural_integrity.py` → `validate/structural.py`
+- `verify_test_infra.py` → `validate/test_infra.py`
+
+**After all tasks:**
+
+```bash
+echo "[COMPLETE] $(date +%H:%M) Worker W-VAL finished" >> logs/worker-val.log
+```
+
+---
+
+## Worker W-AUD: Audit Module
+
+### Spawn Command
+
+```bash
+tmux send-keys -t "W-AUD" "claude --dangerously-skip-permissions 'W-AUD: Migrate audit scripts.
+
+ПЛАН: docs/plans/2026-02-04-scripts-modernization-plan.md
+ЗАДАЧИ: Worker W-AUD section
+
+⚠️ BEST PRACTICES 2026:
+1. Используй существующие core модули: from seo_ultimate.core import ...
+2. ТЕСТЫ — только свои: uv run pytest tests/integration/audit/ -v
+3. Target coverage: 80% для audit/
+
+ЛОГИРОВАНИЕ в $(pwd)/logs/worker-aud.log:
+[START] timestamp Task
+[DONE] timestamp Task
+[COMPLETE] timestamp Worker finished
+
+НЕ делай git commit.'" Enter
+```
+
+### Task W-AUD.1: Migrate audit_coverage.py
+
+**Files:**
+- Move: `scripts/audit_coverage.py` → `src/seo_ultimate/audit/coverage.py`
+- Create: `tests/integration/audit/test_coverage.py`
+
+**Step 1: Copy and fix imports**
+
+```bash
+cp scripts/audit_coverage.py src/seo_ultimate/audit/coverage.py
+```
+
+**Step 2: Write integration test**
+
+`tests/integration/audit/test_coverage.py`:
+```python
+import pytest
+
+def test_audit_coverage_returns_report():
+    """Audit should return coverage report dict."""
+    from seo_ultimate.audit.coverage import audit_category_coverage
+    # Use existing test fixture
+    result = audit_category_coverage("aktivnaya-pena", lang="ru")
+    assert "coverage_percent" in result
+    assert isinstance(result["coverage_percent"], (int, float))
+```
+
+**Step 3: Run test**
+
+Run: `uv run pytest tests/integration/audit/test_coverage.py -v`
+
+---
+
+### Task W-AUD.2-11: Remaining audit scripts
+
+Migrate (11 files):
+- `audit_h1_primary.py` → `audit/h1.py`
+- `audit_keyword_consistency.py` → `audit/keyword_consistency.py`
+- `audit_meta.py` → `audit/meta.py`
+- `audit_synonyms.py` → `audit/synonyms.py`
+- `audit_unused_keywords.py` → `audit/unused.py`
+- `check_cannibalization.py` → `audit/cannibalization.py`
+- `check_h1_sync.py` → `audit/h1_sync.py`
+- `check_ner_brands.py` → `audit/ner_brands.py`
+- `check_semantic_coverage.py` → `audit/semantic.py`
+- `check_water_natasha.py` → `audit/water.py`
+
+**After all tasks:**
+
+```bash
+echo "[COMPLETE] $(date +%H:%M) Worker W-AUD finished" >> logs/worker-aud.log
+```
+
+---
+
+## Worker W-MOD: Remaining Modules
+
+### Spawn Command
+
+```bash
+tmux send-keys -t "W-MOD" "claude --dangerously-skip-permissions 'W-MOD: Migrate remaining scripts.
+
+ПЛАН: docs/plans/2026-02-04-scripts-modernization-plan.md
+ЗАДАЧИ: Worker W-MOD section
+
+⚠️ BEST PRACTICES 2026:
+1. Batch migrate by prefix: analyze_*, extract_*, generate_*, etc.
+2. Smoke tests only — verify imports work
+3. НЕ трогай tools/ пока — оставь на финальную фазу
+
+ЛОГИРОВАНИЕ в $(pwd)/logs/worker-mod.log:
+[START] timestamp Task
+[DONE] timestamp Task
+[COMPLETE] timestamp Worker finished
+
+НЕ делай git commit.'" Enter
+```
+
+### Task W-MOD.1: analyze/ (5 files)
+
+```bash
+cp scripts/analyze_category.py src/seo_ultimate/analyze/category.py
+cp scripts/analyze_keyword_duplicates.py src/seo_ultimate/analyze/duplicates.py
+cp scripts/analyze_keywords_order.py src/seo_ultimate/analyze/order.py
+cp scripts/analyze_keywords_synonyms.py src/seo_ultimate/analyze/synonyms.py
+cp scripts/analyze_meta_keywords.py src/seo_ultimate/analyze/meta.py
+```
+
+Fix imports, verify: `uv run python -c "from seo_ultimate.analyze import category"`
+
+### Task W-MOD.2: extract/ (8 files)
+
+### Task W-MOD.3: generate/ (8 files)
+
+### Task W-MOD.4: fix/ (6 files)
+
+### Task W-MOD.5: sync/ (6 files)
+
+### Task W-MOD.6: compare/ (3 files)
+
+### Task W-MOD.7: batch/ (2 files)
+
+**After all tasks:**
+
+```bash
+echo "[COMPLETE] $(date +%H:%M) Worker W-MOD finished" >> logs/worker-mod.log
+```
+
+---
+
+## Auto-Monitor Script
+
+Create `scripts/monitor-workers.sh`:
+
+```bash
+#!/bin/bash
+declare -A WINDOW_MAP=(
+  ["worker-val"]="W-VAL"
+  ["worker-aud"]="W-AUD"
+  ["worker-mod"]="W-MOD"
+)
+
+while true; do
+  completed=0
+  for k in "${!WINDOW_MAP[@]}"; do
+    if grep -q '\[COMPLETE\]' "logs/${k}.log" 2>/dev/null; then
+      tmux kill-window -t "${WINDOW_MAP[$k]}" 2>/dev/null
+      ((completed++))
+    fi
+  done
+
+  # All done
+  if [ $completed -eq ${#WINDOW_MAP[@]} ]; then
+    echo "[MONITOR] All workers complete at $(date +%H:%M)" >> logs/monitor.log
+    exit 0
+  fi
+
+  sleep 30
+done
+```
+
+Run: `chmod +x scripts/monitor-workers.sh && nohup ./scripts/monitor-workers.sh > logs/monitor.log 2>&1 &`
+
+---
+
+## Phase 3: Merge & Cleanup (Orchestrator)
+
+### Task 3.1: Merge worktrees
+
+```bash
+# After all [COMPLETE] in logs
+git checkout main
+
+# Merge each branch
+git merge refactor/validate --no-ff -m "feat(validate): migrate to src layout"
+git merge refactor/audit --no-ff -m "feat(audit): migrate to src layout"
+git merge refactor/modules --no-ff -m "feat(modules): migrate remaining scripts"
+
+# Cleanup worktrees
+git worktree remove .worktrees/validate
+git worktree remove .worktrees/audit
+git worktree remove .worktrees/modules
+```
+
+### Task 3.2: Coverage report
+
+```bash
+uv run pytest --cov=src/seo_ultimate --cov-report=term-missing --cov-report=html
+```
+
+Expected: `TOTAL ... 80%+`
+
+### Task 3.3: Update CLAUDE.md
+
+Replace script paths:
+- `python3 scripts/validate_meta.py` → `uv run python -m seo_ultimate.validate.meta`
+
+### Task 3.4: Final commit
+
+```bash
+git add .
+git commit -m "feat: complete scripts modernization to uv + src layout
+
+- Migrated 89 scripts to src/seo_ultimate/
+- Added uv for dependency management
+- Achieved 80%+ test coverage
+- Updated CLAUDE.md with new paths"
+```
+
+---
+
+## Verification Checklist
+
+- [ ] `uv sync` — no errors
+- [ ] `uv run pytest` — all pass
+- [ ] `uv run pytest --cov` — ≥80%
+- [ ] `uv run ruff check src/` — no errors
+- [ ] `uv run mypy src/seo_ultimate/core/` — no errors
+- [ ] All workers logged `[COMPLETE]`
