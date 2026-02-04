@@ -1,3 +1,66 @@
+[project]
+name = "seo-ultimate"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pyyaml>=6.0",
+    "tqdm>=4.67",
+    "requests>=2.32",
+    "toml>=0.10",
+    "pandas>=2.2",
+    "markdown>=3.8",
+]
+
+[dependency-groups]
+nlp = [
+    "pymorphy3>=2.0",
+    "pymorphy3-dicts-ru>=2.4",
+    "pymorphy3-dicts-uk>=2.4",
+    "natasha>=1.6",
+    "razdel>=0.5",
+    "navec>=0.10",
+    "slovnet>=0.6",
+    "spacy>=3.8",
+]
+dev = [
+    "ruff>=0.14",
+    "mypy>=1.18",
+]
+test = [
+    "pytest>=9.0",
+    "pytest-cov>=7.0",
+    "pytest-xdist>=3.5",
+]
+
+[tool.uv]
+default-groups = ["nlp", "dev", "test"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [
+    ".github_repos",
+    ".claude",
+    "archive",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"archive/*" = ["E402", "E722", "E741", "E721", "F401", "F811", "F841", "B007", "B905"]
+".claude/examples-anthropic/*" = ["E402", "E722", "E741", "E721", "B007", "B905"]
+".github_repos/*" = ["E402", "E722", "E741", "E721", "F401", "F811", "F841", "B007", "B905"]
+"tests/*" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
 [tool.mypy]
 python_version = "3.12"
 warn_return_any = true
@@ -17,24 +80,16 @@ strict_equality = true
 module = ["natasha.*", "pymorphy2.*", "pandas.*", "mysql.connector.*", "markdown.*"]
 ignore_missing_imports = true
 
-[tool.ruff]
-line-length = 120
-target-version = "py312"
-extend-exclude = [
-    ".github_repos",
-    ".claude",
-    "archive",
-]
+[tool.coverage.run]
+source = ["src/seo_ultimate"]
+branch = true
 
-[tool.ruff.lint]
-select = ["E", "F", "B", "I"]
-ignore = ["E501"]
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:"]
 
-[tool.ruff.lint.per-file-ignores]
-"archive/*" = ["E402", "E722", "E741", "E721", "F401", "F811", "F841", "B007", "B905"]
-".claude/examples-anthropic/*" = ["E402", "E722", "E741", "E721", "B007", "B905"]
-".github_repos/*" = ["E402", "E722", "E741", "E721", "F401", "F811", "F841", "B007", "B905"]
-"tests/*" = ["E402"]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.ruff.format]
-quote-style = "double"
+[tool.hatch.build.targets.wheel]
+packages = ["src/seo_ultimate"]
