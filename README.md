@@ -26,19 +26,15 @@ CSV → /category-init → /generate-meta → /seo-research → /content-generat
 ```
 /
 ├── CLAUDE.md               # Инструкции для Claude
-├── GEMINI.md               # Инструкции для Gemini [UPDATED]
-├── README.md               # Этот файл
+├── pyproject.toml          # uv project config
+├── src/seo_ultimate/       # Python пакет (core, validate, audit, etc.)
 │
-├── docs/                   # Документация проекта
-├── tasks/                  # Управление задачами (Active, Completed, Refs)
 ├── categories/             # Данные категорий (RU)
 ├── uk/                     # Локализация (UK)
-├── scripts/                # Утилиты автоматизации [REFACTORED]
-├── data/                   # Данные (Raw, Dumps, Generated)
-├── reports/                # Логи и отчеты
+├── scripts/                # Legacy утилиты (миграция в src/)
 ├── tests/                  # Pytest тесты
-├── archive/                # Устаревшие файлы
-└── deploy/                 # SQL скрипты для деплоя
+├── docs/                   # Документация
+└── data/                   # Данные (Raw, Generated)
 ```
 
 ---
@@ -48,17 +44,17 @@ CSV → /category-init → /generate-meta → /seo-research → /content-generat
 ### Основные команды
 
 ```bash
-# Инициализация категории
-python scripts/setup_all.py --slug avtoshampuni
+# Установка зависимостей
+uv sync
 
-# Генерация мета-тегов
-python scripts/validate_meta.py categories/avtoshampuni/meta/avtoshampuni_meta.json
+# Тесты
+uv run pytest
+
+# Валидация мета-тегов
+uv run python -m seo_ultimate.validate.meta categories/avtoshampuni/meta/avtoshampuni_meta.json
 
 # Валидация контента
-python scripts/validate_content.py categories/avtoshampuni/content/avtoshampuni_ru.md
-
-# Генерация HTML
-python scripts/md_to_html.py categories/avtoshampuni/content/avtoshampuni_ru.md
+uv run python -m seo_ultimate.validate.content categories/avtoshampuni/content/avtoshampuni_ru.md
 ```
 
 ### Skills (Slash Commands)
@@ -81,23 +77,21 @@ python scripts/md_to_html.py categories/avtoshampuni/content/avtoshampuni_ru.md
 
 **Метрики:**
 
--   **Всего категорий:** 280+
--   **Готово к деплою:** См. статус
--   **Скриптов:** ~30 (оптимизировано)
+-   **Всего категорий:** 53 RU + 53 UK
+-   **Модулей:** 65 (src/seo_ultimate/)
+-   **Тестов:** 569
 
 ---
 
-## 🛠 Инструменты `scripts/`
+## 🛠 Модули `src/seo_ultimate/`
 
-Полный список в [`scripts/README.md`](scripts/README.md).
-
-| Группа         | Скрипты                                                     |
-| -------------- | ----------------------------------------------------------- |
-| **Core**       | `seo_utils.py`, `config.py`                                 |
-| **Validators** | `validate_meta.py`, `validate_content.py`, `validate_uk.py` |
-| **Parsers**    | `csv_to_readable_md.py`, `parse_semantics_to_json.py`       |
-| **Tools**      | `synonym_tools.py`, `competitors.py`, `products.py`         |
-| **Generators** | `generate_sql.py`, `md_to_html.py`                          |
+| Пакет | Назначение |
+|-------|------------|
+| **core/** | Config, keywords, text, SEO utilities |
+| **validate/** | Meta, content, density, SEO validators |
+| **audit/** | Coverage, H1, keywords consistency |
+| **generate/** | SQL, meta, checklists |
+| **analyze/** | Category analysis, duplicates |
 
 ---
 
@@ -110,5 +104,5 @@ python scripts/md_to_html.py categories/avtoshampuni/content/avtoshampuni_ru.md
 
 ---
 
-**Updated:** 2026-01-05
-**Version:** 9.0
+**Updated:** 2026-02-04
+**Version:** 10.0 (uv + src layout)

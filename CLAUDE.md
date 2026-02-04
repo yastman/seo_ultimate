@@ -85,75 +85,48 @@ UK: /uk-content-init → /uk-generate-meta → /uk-seo-research → /uk-content-
 ## Команды
 
 ```bash
-# Тесты (WSL: использовать .venv-linux для xdist)
-pytest                                                    # Все (последовательно)
-pytest -k "test_meta"                                     # По имени
-.venv-linux/bin/pytest -n auto --dist loadfile            # Параллельно (~40% быстрее)
+# Тесты
+uv run pytest                              # Все тесты
+uv run pytest -k "test_meta"               # По имени
+uv run pytest -n auto --dist loadfile      # Параллельно
 
 # Линтинг
-ruff check scripts/
-ruff format scripts/
+uv run ruff check src/
+uv run ruff format src/
 
 # Валидация
-python3 scripts/validate_meta.py <path> [--lang ru|uk]
-python3 scripts/validate_meta.py --all [--lang ru|uk]
-python3 scripts/validate_content.py <path> "<keyword>" [--lang ru|uk]
-python3 scripts/validate_density.py <path> [--lang ru|uk]   # Stem density
-python3 scripts/validate_seo.py <path> "<keyword>"          # SEO structure
-python3 scripts/check_water_natasha.py <path>               # Water & Nausea
+uv run python -m seo_ultimate.validate.meta <path> [--lang ru|uk]
+uv run python -m seo_ultimate.validate.content <path> "<keyword>" [--lang ru|uk]
+uv run python -m seo_ultimate.validate.density <path> [--lang ru|uk]
+uv run python -m seo_ultimate.audit.water <path>
 
 # Аудит
-python3 scripts/audit_keyword_consistency.py   # Ключи meta vs clean
-python3 scripts/check_h1_sync.py               # H1 синхронизация
-
-# Coverage audit (покрытие ключей в контенте)
-python3 scripts/audit_coverage.py --slug {slug} --lang uk --verbose   # Одна категория
-python3 scripts/audit_coverage.py --lang uk                            # Batch все UK
-python3 scripts/audit_coverage.py --slug {slug} --lang uk --json       # JSON output
-# CSV отчёты: reports/coverage_summary_*.csv, coverage_details_*.csv
+uv run python -m seo_ultimate.audit.keyword_consistency
+uv run python -m seo_ultimate.audit.h1_sync
+uv run python -m seo_ultimate.audit.coverage --slug {slug} --lang uk --verbose
 ```
 
 ---
 
-## Семантика RU (Master CSV)
-
-**Источник истины:** `data/ru_semantics_master.csv`
-
-```bash
-python3 scripts/merge_to_master.py --excel reports/new.xlsx  # Импорт
-python3 scripts/validate_master.py                            # Валидация
-python3 scripts/sync_semantics.py --apply                     # Синхронизация
-```
-
----
-
-## Ключевые модули
+## Ключевые модули (src/seo_ultimate/)
 
 | Модуль | Назначение |
 |--------|------------|
-| `config.py` | SSOT: пути, thresholds, L3→slug маппинг |
-| `keyword_utils.py` | Морфология RU/UK, KeywordMatcher, CoverageChecker |
-| `text_utils.py` | Стопслова, clean_markdown, count_words |
-| `seo_utils.py` | Front-matter, keyword counting, protected sections |
-| `coverage_matcher.py` | Coverage audit: EXACT/NORM/LEMMA/SYNONYM matching |
+| `core/config.py` | SSOT: пути, thresholds, L3→slug маппинг |
+| `core/keywords.py` | Морфология RU/UK, KeywordMatcher, CoverageChecker |
+| `core/text.py` | Стопслова, clean_markdown, count_words |
+| `core/seo.py` | Front-matter, keyword counting |
+| `core/coverage.py` | Coverage audit: EXACT/NORM/LEMMA/SYNONYM |
 
 ```python
-from scripts.keyword_utils import KeywordMatcher, CoverageChecker
-from scripts.text_utils import get_stopwords, clean_markdown
-from scripts.config import QUALITY_THRESHOLDS
+from seo_ultimate.core import KeywordMatcher, CoverageChecker
+from seo_ultimate.core import get_stopwords, clean_markdown
+from seo_ultimate.core import QUALITY_THRESHOLDS
 ```
 
 **Coverage thresholds:** ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%
 
-**Nausea thresholds:** Classic ≤3.5 (target), >4.0 (BLOCKER). Academic ≥7% (min).
-
-### Coverage Matching Pipeline
-
-```
-EXACT → NORM (lowercase) → LEMMA (pymorphy2) → SYNONYM (variant_of)
-```
-
-Первый найденный вариант — результат. Статусы: `COVERED`, `SYNONYM`, `NOT_COVERED`.
+**Nausea thresholds:** Classic ≤3.5 (target), >4.0 (BLOCKER).
 
 ---
 
@@ -194,7 +167,7 @@ spawn-claude "W1: Описание.
 
 ## Правила
 
-- **python3** — использовать вместо python
+- **uv run** — для всех Python команд (управляет зависимостями)
 - **Context7 MCP** — для документации библиотек без запроса
 
 ---
