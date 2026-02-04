@@ -8,7 +8,7 @@ from seo_ultimate.core.config import (
     QUALITY_THRESHOLDS,
     SLUG_TO_L3,
 )
-from seo_ultimate.core.coverage import MatchResult, PreparedText, check_keyword
+from seo_ultimate.core.coverage import MatchResult, PreparedText, audit_category, check_keyword
 from seo_ultimate.core.keywords import CoverageChecker, KeywordMatcher
 from seo_ultimate.core.seo import count_keyword_occurrences, parse_front_matter
 from seo_ultimate.core.text import clean_markdown, count_words, get_stopwords
@@ -27,6 +27,7 @@ __all__ = [
     # Coverage
     "MatchResult",
     "PreparedText",
+    "audit_category",
     "check_keyword",
     # SEO
     "parse_front_matter",
