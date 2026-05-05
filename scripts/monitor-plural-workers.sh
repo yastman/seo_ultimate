@@ -6,7 +6,7 @@ declare -A WINDOW_MAP=(
     ["worker-skills"]="W-SKILLS"
 )
 
-LOG_DIR="/home/user/projects/seo-ultimate/logs"
+LOG_DIR="/home/user/projects/llm-keywords-pipeline/logs"
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Monitor started"
 

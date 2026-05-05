@@ -1,4 +1,4 @@
-"""Integration tests for seo_ultimate.validate.density module."""
+"""Integration tests for llm_keywords_pipeline.validate.density module."""
 
 
 class TestCheckKeywordDensity:
@@ -6,7 +6,7 @@ class TestCheckKeywordDensity:
 
     def test_single_keyword_density(self):
         """Calculate density of a single keyword."""
-        from seo_ultimate.validate.density import check_keyword_density
+        from llm_keywords_pipeline.validate.density import check_keyword_density
 
         text = "Активная пена для мойки. Активная пена эффективно удаляет грязь."
         result = check_keyword_density(text, "активная пена")
@@ -17,7 +17,7 @@ class TestCheckKeywordDensity:
 
     def test_keyword_not_found(self):
         """Keyword not in text should have zero density."""
-        from seo_ultimate.validate.density import check_keyword_density
+        from llm_keywords_pipeline.validate.density import check_keyword_density
 
         text = "Текст без искомого ключевого слова."
         result = check_keyword_density(text, "активная пена")
@@ -31,7 +31,7 @@ class TestAnalyzeText:
 
     def test_basic_analysis(self):
         """Analyze text and get word frequencies."""
-        from seo_ultimate.validate.density import analyze_text
+        from llm_keywords_pipeline.validate.density import analyze_text
 
         text = """
         Активная пена для бесконтактной мойки автомобиля.
@@ -48,7 +48,7 @@ class TestAnalyzeText:
 
     def test_stem_frequencies(self):
         """Stem-based analysis should group word forms."""
-        from seo_ultimate.validate.density import analyze_text
+        from llm_keywords_pipeline.validate.density import analyze_text
 
         text = """
         Полировка кузова. Полировальная машинка для полировки.
@@ -67,21 +67,21 @@ class TestGetDensityStatus:
 
     def test_ok_status(self):
         """Low density should return OK."""
-        from seo_ultimate.validate.density import get_density_status
+        from llm_keywords_pipeline.validate.density import get_density_status
 
         assert get_density_status(1.0) == "OK"
         assert get_density_status(2.0) == "OK"
 
     def test_warning_status(self):
         """Medium density should return WARNING."""
-        from seo_ultimate.validate.density import get_density_status
+        from llm_keywords_pipeline.validate.density import get_density_status
 
         assert get_density_status(2.6) == "WARNING"
         assert get_density_status(2.9) == "WARNING"
 
     def test_spam_status(self):
         """High density should return SPAM."""
-        from seo_ultimate.validate.density import get_density_status
+        from llm_keywords_pipeline.validate.density import get_density_status
 
         assert get_density_status(3.1) == "SPAM"
         assert get_density_status(5.0) == "SPAM"
@@ -92,7 +92,7 @@ class TestCalculateDensity:
 
     def test_calculation(self):
         """Density = (count / total_words) * 100."""
-        from seo_ultimate.validate.density import calculate_density
+        from llm_keywords_pipeline.validate.density import calculate_density
 
         # 10 occurrences in 100 words = 10%
         assert calculate_density(10, 100) == 10.0
@@ -101,7 +101,7 @@ class TestCalculateDensity:
 
     def test_zero_words(self):
         """Zero total words should return 0."""
-        from seo_ultimate.validate.density import calculate_density
+        from llm_keywords_pipeline.validate.density import calculate_density
 
         assert calculate_density(5, 0) == 0.0
 
@@ -111,7 +111,7 @@ class TestCountStemFrequencies:
 
     def test_russian_stems(self):
         """Russian stems should be grouped (MIN_STEM_FREQUENCY=3)."""
-        from seo_ultimate.validate.density import count_stem_frequencies
+        from llm_keywords_pipeline.validate.density import count_stem_frequencies
 
         # Need at least 3 words with same stem (declensions, not derivatives)
         words = [
@@ -133,7 +133,7 @@ class TestCountStemFrequencies:
 
     def test_ukrainian_lang(self):
         """Ukrainian language should work (MIN_STEM_FREQUENCY=3)."""
-        from seo_ultimate.validate.density import count_stem_frequencies
+        from llm_keywords_pipeline.validate.density import count_stem_frequencies
 
         # Need at least 3 words with same stem (declensions)
         words = [

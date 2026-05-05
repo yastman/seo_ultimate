@@ -1,6 +1,6 @@
 """Tests for audit/water.py"""
 
-from seo_ultimate.audit.water import calculate_metrics_from_text
+from llm_keywords_pipeline.audit.water import calculate_metrics_from_text
 
 
 class TestCalculateMetrics:

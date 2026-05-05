@@ -1,4 +1,4 @@
-"""Integration tests for seo_ultimate.validate.content module."""
+"""Integration tests for llm_keywords_pipeline.validate.content module."""
 
 from pathlib import Path
 
@@ -8,7 +8,7 @@ class TestCheckStructure:
 
     def test_valid_structure_passes(self, tmp_path: Path):
         """Content with H1, intro, and H2s should pass."""
-        from seo_ultimate.validate.content import check_structure
+        from llm_keywords_pipeline.validate.content import check_structure
 
         content = """# Активная пена для авто
 
@@ -34,7 +34,7 @@ class TestCheckStructure:
 
     def test_missing_h1_fails(self, tmp_path: Path):
         """Content without H1 should fail."""
-        from seo_ultimate.validate.content import check_structure
+        from llm_keywords_pipeline.validate.content import check_structure
 
         content = """## Раздел без H1
 
@@ -47,7 +47,7 @@ class TestCheckStructure:
 
     def test_short_intro_fails(self, tmp_path: Path):
         """Content with short intro should fail."""
-        from seo_ultimate.validate.content import check_structure
+        from llm_keywords_pipeline.validate.content import check_structure
 
         content = """# Заголовок
 
@@ -66,7 +66,7 @@ class TestCheckPrimaryKeyword:
 
     def test_keyword_in_h1_and_intro(self):
         """Keyword found in both H1 and intro should pass."""
-        from seo_ultimate.validate.content import check_primary_keyword
+        from llm_keywords_pipeline.validate.content import check_primary_keyword
 
         content = """# Активная пена для авто
 
@@ -84,7 +84,7 @@ class TestCheckPrimaryKeyword:
 
     def test_keyword_missing_fails(self):
         """Content without keyword should fail."""
-        from seo_ultimate.validate.content import check_primary_keyword
+        from llm_keywords_pipeline.validate.content import check_primary_keyword
 
         content = """# Моющее средство
 
@@ -104,7 +104,7 @@ class TestCheckKeywordCoverage:
 
     def test_full_coverage(self):
         """All keywords found should result in high coverage."""
-        from seo_ultimate.validate.content import check_keyword_coverage
+        from llm_keywords_pipeline.validate.content import check_keyword_coverage
 
         content = """
         Активная пена для мойки автомобиля. Бесконтактная мойка позволяет
@@ -119,7 +119,7 @@ class TestCheckKeywordCoverage:
 
     def test_no_keywords(self):
         """Empty keywords list should pass."""
-        from seo_ultimate.validate.content import check_keyword_coverage
+        from llm_keywords_pipeline.validate.content import check_keyword_coverage
 
         result = check_keyword_coverage("Текст без ключей", [])
 
@@ -132,7 +132,7 @@ class TestValidateContent:
 
     def test_valid_content_passes(self, tmp_path: Path):
         """Valid content should pass all checks."""
-        from seo_ultimate.validate.content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         content_file = tmp_path / "test.md"
         content = """# Активная пена для авто
@@ -161,7 +161,7 @@ class TestValidateContent:
 
     def test_missing_file_returns_error(self, tmp_path: Path):
         """Non-existent file should return error."""
-        from seo_ultimate.validate.content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         result = validate_content("/nonexistent/file.md", "keyword")
 
@@ -169,7 +169,7 @@ class TestValidateContent:
 
     def test_seo_mode_disables_quality(self, tmp_path: Path):
         """SEO mode should skip quality checks."""
-        from seo_ultimate.validate.content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         content_file = tmp_path / "test.md"
         content = """# Заголовок
@@ -192,7 +192,7 @@ class TestCheckContentStandards:
 
     def test_safety_block_detected(self):
         """Content with safety section should pass."""
-        from seo_ultimate.validate.content import check_content_standards
+        from llm_keywords_pipeline.validate.content import check_content_standards
 
         content = """# Заголовок
 
@@ -215,7 +215,7 @@ Intro текст.
 
     def test_uk_patterns(self):
         """Ukrainian patterns should be detected."""
-        from seo_ultimate.validate.content import check_content_standards
+        from llm_keywords_pipeline.validate.content import check_content_standards
 
         content = """# Заголовок
 

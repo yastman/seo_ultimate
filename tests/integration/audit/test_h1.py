@@ -1,6 +1,6 @@
 """Tests for audit/h1.py"""
 
-from seo_ultimate.audit.h1 import (
+from llm_keywords_pipeline.audit.h1 import (
     audit_all,
     audit_category,
     get_categories_path,

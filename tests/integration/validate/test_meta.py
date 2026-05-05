@@ -1,4 +1,4 @@
-"""Integration tests for seo_ultimate.validate.meta module."""
+"""Integration tests for llm_keywords_pipeline.validate.meta module."""
 
 import json
 from pathlib import Path
@@ -21,7 +21,7 @@ class TestValidateMetaFile:
         }
         meta_file.write_text(json.dumps(meta_data, ensure_ascii=False))
 
-        from seo_ultimate.validate.meta import validate_meta_file
+        from llm_keywords_pipeline.validate.meta import validate_meta_file
 
         result = validate_meta_file(str(meta_file))
 
@@ -41,7 +41,7 @@ class TestValidateMetaFile:
         }
         meta_file.write_text(json.dumps(meta_data, ensure_ascii=False))
 
-        from seo_ultimate.validate.meta import validate_meta_file
+        from llm_keywords_pipeline.validate.meta import validate_meta_file
 
         result = validate_meta_file(str(meta_file))
 
@@ -53,7 +53,7 @@ class TestValidateMetaFile:
         meta_file = tmp_path / "test_meta.json"
         meta_file.write_text("{ invalid json }")
 
-        from seo_ultimate.validate.meta import validate_meta_file
+        from llm_keywords_pipeline.validate.meta import validate_meta_file
 
         result = validate_meta_file(str(meta_file))
 
@@ -74,7 +74,7 @@ class TestValidateMetaFile:
         }
         meta_file.write_text(json.dumps(meta_data, ensure_ascii=False))
 
-        from seo_ultimate.validate.meta import validate_meta_file
+        from llm_keywords_pipeline.validate.meta import validate_meta_file
 
         result = validate_meta_file(str(meta_file), lang="uk")
 
@@ -88,7 +88,7 @@ class TestValidateTitle:
 
     def test_title_length_ok(self):
         """Title within length limits should pass."""
-        from seo_ultimate.validate.meta import validate_title
+        from llm_keywords_pipeline.validate.meta import validate_title
 
         # Title without brand (before |) should be 30-60 chars
         title = "Активная пена для авто — купить, цены в Украине | Ultimate"
@@ -98,7 +98,7 @@ class TestValidateTitle:
 
     def test_title_too_short(self):
         """Title below min length should fail length check."""
-        from seo_ultimate.validate.meta import validate_title
+        from llm_keywords_pipeline.validate.meta import validate_title
 
         title = "Пена | Ultimate"
         result = validate_title(title)
@@ -108,7 +108,7 @@ class TestValidateTitle:
 
     def test_title_with_colon_fails(self):
         """Title with colon should fail no_colon check."""
-        from seo_ultimate.validate.meta import validate_title
+        from llm_keywords_pipeline.validate.meta import validate_title
 
         title = "Товар: купить онлайн | Ultimate"
         result = validate_title(title)
@@ -117,7 +117,7 @@ class TestValidateTitle:
 
     def test_title_primary_keyword_found(self):
         """Title containing primary keyword should pass."""
-        from seo_ultimate.validate.meta import validate_title
+        from llm_keywords_pipeline.validate.meta import validate_title
 
         title = "Активная пена — купить, цены | Ultimate"
         result = validate_title(title, primary_keywords=["активная пена"])
@@ -130,7 +130,7 @@ class TestValidateDescription:
 
     def test_description_length_ok(self):
         """Description within length limits should pass."""
-        from seo_ultimate.validate.meta import validate_description
+        from llm_keywords_pipeline.validate.meta import validate_description
 
         desc = "Активная пена от производителя Ultimate. Опт и розница. Доставка по Украине. Качественная автохимия."
         result = validate_description(desc)
@@ -139,7 +139,7 @@ class TestValidateDescription:
 
     def test_description_producer_pattern_ru(self):
         """Russian description should check for RU producer pattern."""
-        from seo_ultimate.validate.meta import validate_description
+        from llm_keywords_pipeline.validate.meta import validate_description
 
         desc = "Товар от производителя Ultimate. Опт и розница. Доставка."
         result = validate_description(desc, lang="ru")
@@ -148,7 +148,7 @@ class TestValidateDescription:
 
     def test_description_producer_pattern_uk(self):
         """Ukrainian description should check for UK producer pattern."""
-        from seo_ultimate.validate.meta import validate_description
+        from llm_keywords_pipeline.validate.meta import validate_description
 
         desc = "Товар від виробника Ultimate. Опт і роздріб. Доставка."
         result = validate_description(desc, lang="uk")
@@ -161,7 +161,7 @@ class TestValidateH1:
 
     def test_h1_exact_match(self):
         """H1 with exact keyword match should pass."""
-        from seo_ultimate.validate.meta import validate_h1
+        from llm_keywords_pipeline.validate.meta import validate_h1
 
         result = validate_h1("Активная пена", "активная пена")
 
@@ -170,7 +170,7 @@ class TestValidateH1:
 
     def test_h1_plural_match(self):
         """H1 with plural form should pass."""
-        from seo_ultimate.validate.meta import validate_h1
+        from llm_keywords_pipeline.validate.meta import validate_h1
 
         result = validate_h1("Активные пены", "активная пена")
 
@@ -179,7 +179,7 @@ class TestValidateH1:
 
     def test_h1_no_match(self):
         """H1 without keyword should fail."""
-        from seo_ultimate.validate.meta import validate_h1
+        from llm_keywords_pipeline.validate.meta import validate_h1
 
         result = validate_h1("Моющие средства", "активная пена")
 
@@ -191,7 +191,7 @@ class TestGetPrimaryKeywords:
 
     def test_clean_json_format(self):
         """Should extract MAX volume keyword from _clean.json format."""
-        from seo_ultimate.validate.meta import get_primary_keywords
+        from llm_keywords_pipeline.validate.meta import get_primary_keywords
 
         data = {
             "keywords": [
@@ -207,7 +207,7 @@ class TestGetPrimaryKeywords:
 
     def test_old_format(self):
         """Should handle old format with nested primary list."""
-        from seo_ultimate.validate.meta import get_primary_keywords
+        from llm_keywords_pipeline.validate.meta import get_primary_keywords
 
         data = {"keywords": {"primary": [{"keyword": "активная пена"}]}}
 

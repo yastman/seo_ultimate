@@ -1,4 +1,4 @@
-"""Integration tests for seo_ultimate.validate.master module."""
+"""Integration tests for llm_keywords_pipeline.validate.master module."""
 
 import csv
 
@@ -8,7 +8,7 @@ class TestValidateMaster:
 
     def test_valid_master_csv(self, tmp_path):
         """Valid master CSV should pass validation."""
-        from seo_ultimate.validate.master import validate
+        from llm_keywords_pipeline.validate.master import validate
 
         csv_path = tmp_path / "master.csv"
         categories_dir = tmp_path / "categories"
@@ -46,7 +46,7 @@ class TestValidateMaster:
 
     def test_missing_required_column(self, tmp_path):
         """CSV without required column should fail."""
-        from seo_ultimate.validate.master import validate_columns
+        from llm_keywords_pipeline.validate.master import validate_columns
 
         rows = [{"keyword": "test"}]  # Missing category_slug, type, etc.
 
@@ -60,7 +60,7 @@ class TestValidateNoduplicates:
 
     def test_no_duplicates(self):
         """Unique keywords should pass."""
-        from seo_ultimate.validate.master import validate_no_duplicates
+        from llm_keywords_pipeline.validate.master import validate_no_duplicates
 
         rows = [
             {"keyword": "unique key 1"},
@@ -74,7 +74,7 @@ class TestValidateNoduplicates:
 
     def test_with_duplicates(self):
         """Duplicate keywords should fail."""
-        from seo_ultimate.validate.master import validate_no_duplicates
+        from llm_keywords_pipeline.validate.master import validate_no_duplicates
 
         rows = [
             {"keyword": "duplicate key"},

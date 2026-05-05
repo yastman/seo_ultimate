@@ -95,20 +95,20 @@ uv run ruff check src/
 uv run ruff format src/
 
 # Валидация
-uv run python -m seo_ultimate.validate.meta <path> [--lang ru|uk]
-uv run python -m seo_ultimate.validate.content <path> "<keyword>" [--lang ru|uk]
-uv run python -m seo_ultimate.validate.density <path> [--lang ru|uk]
-uv run python -m seo_ultimate.audit.water <path>
+uv run python -m llm_keywords_pipeline.validate.meta <path> [--lang ru|uk]
+uv run python -m llm_keywords_pipeline.validate.content <path> "<keyword>" [--lang ru|uk]
+uv run python -m llm_keywords_pipeline.validate.density <path> [--lang ru|uk]
+uv run python -m llm_keywords_pipeline.audit.water <path>
 
 # Аудит
-uv run python -m seo_ultimate.audit.keyword_consistency
-uv run python -m seo_ultimate.audit.h1_sync
-uv run python -m seo_ultimate.audit.coverage --slug {slug} --lang uk --verbose
+uv run python -m llm_keywords_pipeline.audit.keyword_consistency
+uv run python -m llm_keywords_pipeline.audit.h1_sync
+uv run python -m llm_keywords_pipeline.audit.coverage --slug {slug} --lang uk --verbose
 ```
 
 ---
 
-## Ключевые модули (src/seo_ultimate/)
+## Ключевые модули (src/llm_keywords_pipeline/)
 
 | Модуль | Назначение |
 |--------|------------|
@@ -119,9 +119,9 @@ uv run python -m seo_ultimate.audit.coverage --slug {slug} --lang uk --verbose
 | `core/coverage.py` | Coverage audit: EXACT/NORM/LEMMA/SYNONYM |
 
 ```python
-from seo_ultimate.core import KeywordMatcher, CoverageChecker
-from seo_ultimate.core import get_stopwords, clean_markdown
-from seo_ultimate.core import QUALITY_THRESHOLDS
+from llm_keywords_pipeline.core import KeywordMatcher, CoverageChecker
+from llm_keywords_pipeline.core import get_stopwords, clean_markdown
+from llm_keywords_pipeline.core import QUALITY_THRESHOLDS
 ```
 
 **Coverage thresholds:** ≤5 ключей → 70%, 6-15 → 60%, >15 → 50%

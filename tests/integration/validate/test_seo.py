@@ -1,4 +1,4 @@
-"""Integration tests for seo_ultimate.validate.seo module."""
+"""Integration tests for llm_keywords_pipeline.validate.seo module."""
 
 
 class TestCheckSeoStructure:
@@ -6,7 +6,7 @@ class TestCheckSeoStructure:
 
     def test_keyword_in_intro_passes(self, tmp_path):
         """Content with keyword in intro should pass intro check."""
-        from seo_ultimate.validate.seo import check_seo_structure
+        from llm_keywords_pipeline.validate.seo import check_seo_structure
 
         content_file = tmp_path / "test.md"
         content = """# Активная пена
@@ -32,7 +32,7 @@ class TestCheckSeoStructure:
 
     def test_keyword_missing_intro_fails(self, tmp_path):
         """Content without keyword in intro should fail intro check."""
-        from seo_ultimate.validate.seo import check_seo_structure
+        from llm_keywords_pipeline.validate.seo import check_seo_structure
 
         content_file = tmp_path / "test.md"
         content = """# Моющее средство
@@ -55,12 +55,12 @@ class TestDetectLanguage:
 
     def test_ru_path(self):
         """Russian path should return 'ru'."""
-        from seo_ultimate.validate.seo import detect_language
+        from llm_keywords_pipeline.validate.seo import detect_language
 
         assert detect_language("categories/test/content/test_ru.md") == "ru"
 
     def test_uk_path(self):
         """Ukrainian path should return 'uk'."""
-        from seo_ultimate.validate.seo import detect_language
+        from llm_keywords_pipeline.validate.seo import detect_language
 
         assert detect_language("uk/categories/test/content/test_uk.md") == "uk"

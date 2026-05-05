@@ -1,4 +1,4 @@
-"""Integration tests for seo_ultimate.validate.test_infra module."""
+"""Integration tests for llm_keywords_pipeline.validate.test_infra module."""
 
 
 class TestCheckStructure:
@@ -6,7 +6,7 @@ class TestCheckStructure:
 
     def test_returns_bool(self):
         """Function should return a bool indicating structure is valid."""
-        from seo_ultimate.validate.test_infra import check_structure
+        from llm_keywords_pipeline.validate.test_infra import check_structure
 
         result = check_structure()
 
@@ -18,7 +18,7 @@ class TestCheckImports:
 
     def test_returns_bool(self):
         """Function should return a bool indicating imports are valid."""
-        from seo_ultimate.validate.test_infra import check_imports
+        from llm_keywords_pipeline.validate.test_infra import check_imports
 
         result = check_imports()
 

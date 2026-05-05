@@ -1,7 +1,7 @@
 #!/bin/bash
 # Monitor workers for category-title update
 declare -A WINDOW_MAP=(["w1-ru-clean"]="W1-RU" ["w2-uk-clean"]="W2-UK" ["w3-uk-skill"]="W3-SKILL")
-LOGS_DIR="/home/user/projects/seo-ultimate/logs"
+LOGS_DIR="/home/user/projects/llm-keywords-pipeline/logs"
 
 while true; do
   all_complete=true

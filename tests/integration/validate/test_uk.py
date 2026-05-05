@@ -1,4 +1,4 @@
-"""Integration tests for seo_ultimate.validate.uk module."""
+"""Integration tests for llm_keywords_pipeline.validate.uk module."""
 
 
 class TestValidateUkCategory:
@@ -6,7 +6,7 @@ class TestValidateUkCategory:
 
     def test_nonexistent_category_fails(self, capsys):
         """Non-existent category should return failure exit code."""
-        from seo_ultimate.validate.uk import validate_uk_category
+        from llm_keywords_pipeline.validate.uk import validate_uk_category
 
         # Returns int exit code (2 = fail)
         result = validate_uk_category("nonexistent-category-12345")
@@ -16,7 +16,7 @@ class TestValidateUkCategory:
 
     def test_returns_exit_code(self, capsys):
         """Function should return an exit code integer."""
-        from seo_ultimate.validate.uk import validate_uk_category
+        from llm_keywords_pipeline.validate.uk import validate_uk_category
 
         result = validate_uk_category("test-slug-that-does-not-exist")
 

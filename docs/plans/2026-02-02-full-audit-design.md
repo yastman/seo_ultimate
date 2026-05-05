@@ -147,7 +147,7 @@ W{N}: UK Content Audit — категорії {first}...{last}.
 
 uk-content-reviewer {slug}
 
-Після кожної категорії логуй результат в /home/user/projects/seo-ultimate/data/generated/audit-logs/W{N}_uk_audit.md:
+Після кожної категорії логуй результат в /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W{N}_uk_audit.md:
 
 ## {slug}
 **Verdict:** PASS / WARNING / FIXED
@@ -175,7 +175,7 @@ W{N}: RU Content Audit — категорії {first}...{last}.
 
 content-reviewer {path}
 
-Після кожної категорії логуй результат в /home/user/projects/seo-ultimate/data/generated/audit-logs/W{N}_ru_audit.md:
+Після кожної категорії логуй результат в /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W{N}_ru_audit.md:
 
 ## {slug}
 **Verdict:** PASS / WARNING / FIXED
@@ -205,10 +205,10 @@ content-reviewer {path}
 echo $TMUX
 
 # Create logs directory
-mkdir -p /home/user/projects/seo-ultimate/data/generated/audit-logs
+mkdir -p /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs
 
 # Clean old logs (optional)
-rm -f /home/user/projects/seo-ultimate/data/generated/audit-logs/W*_audit.md
+rm -f /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W*_audit.md
 ```
 
 ### Step 2: Create tmux Windows
@@ -230,13 +230,13 @@ tmux new-window -n "W6-RU"
 
 ```bash
 # Watch all logs
-tail -f /home/user/projects/seo-ultimate/data/generated/audit-logs/W*_audit.md
+tail -f /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W*_audit.md
 
 # Check completion
-grep -l "\[COMPLETE\]" /home/user/projects/seo-ultimate/data/generated/audit-logs/*.md
+grep -l "\[COMPLETE\]" /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/*.md
 
 # Count processed categories
-grep -c "^## " /home/user/projects/seo-ultimate/data/generated/audit-logs/*.md
+grep -c "^## " /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/*.md
 ```
 
 ### Step 5: After All Complete

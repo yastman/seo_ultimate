@@ -1,6 +1,6 @@
 """Tests for audit/meta.py"""
 
-from seo_ultimate.audit.meta import (
+from llm_keywords_pipeline.audit.meta import (
     CRITICAL,
     WARNING,
     audit_all,

@@ -33,7 +33,7 @@ git status              # Clean working tree
 **Step 1: Init uv**
 
 ```bash
-uv init --no-readme --name seo-ultimate
+uv init --no-readme --name llm-keywords-pipeline
 ```
 
 **Step 2: Set Python version**
@@ -45,7 +45,7 @@ echo "3.12" > .python-version
 **Step 3: Verify**
 
 Run: `cat pyproject.toml`
-Expected: `[project]` section with `name = "seo-ultimate"`
+Expected: `[project]` section with `name = "llm-keywords-pipeline"`
 
 ---
 
@@ -58,7 +58,7 @@ Expected: `[project]` section with `name = "seo-ultimate"`
 
 ```toml
 [project]
-name = "seo-ultimate"
+name = "llm-keywords-pipeline"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
@@ -110,7 +110,7 @@ warn_return_any = true
 warn_unused_configs = true
 
 [tool.coverage.run]
-source = ["src/seo_ultimate"]
+source = ["src/llm_keywords_pipeline"]
 branch = true
 
 [tool.coverage.report]
@@ -132,25 +132,25 @@ Expected: `OK`
 ### Task 1.3: Create src layout
 
 **Files:**
-- Create: `src/seo_ultimate/__init__.py`
-- Create: `src/seo_ultimate/core/__init__.py`
-- Create: `src/seo_ultimate/validate/__init__.py`
-- Create: `src/seo_ultimate/audit/__init__.py`
-- Create: `src/seo_ultimate/py.typed`
+- Create: `src/llm_keywords_pipeline/__init__.py`
+- Create: `src/llm_keywords_pipeline/core/__init__.py`
+- Create: `src/llm_keywords_pipeline/validate/__init__.py`
+- Create: `src/llm_keywords_pipeline/audit/__init__.py`
+- Create: `src/llm_keywords_pipeline/py.typed`
 
 **Step 1: Create directories**
 
 ```bash
-mkdir -p src/seo_ultimate/{core,validate,audit,analyze,extract,generate,fix,sync,compare,batch,tools}
+mkdir -p src/llm_keywords_pipeline/{core,validate,audit,analyze,extract,generate,fix,sync,compare,batch,tools}
 ```
 
 **Step 2: Create init files**
 
 ```bash
-touch src/seo_ultimate/__init__.py
-touch src/seo_ultimate/py.typed
+touch src/llm_keywords_pipeline/__init__.py
+touch src/llm_keywords_pipeline/py.typed
 for d in core validate audit analyze extract generate fix sync compare batch tools; do
-  touch src/seo_ultimate/$d/__init__.py
+  touch src/llm_keywords_pipeline/$d/__init__.py
 done
 ```
 
@@ -164,7 +164,7 @@ where = ["src"]
 
 **Step 4: Verify import**
 
-Run: `uv run python -c "import seo_ultimate; print('OK')"`
+Run: `uv run python -c "import llm_keywords_pipeline; print('OK')"`
 Expected: `OK`
 
 **Step 5: Commit infra**
@@ -179,53 +179,53 @@ git commit -m "feat: init uv + src layout for scripts modernization"
 ### Task 1.4: Migrate core modules
 
 **Files:**
-- Move: `scripts/config.py` → `src/seo_ultimate/core/config.py`
-- Move: `scripts/keyword_utils.py` → `src/seo_ultimate/core/keywords.py`
-- Move: `scripts/text_utils.py` → `src/seo_ultimate/core/text.py`
-- Move: `scripts/seo_utils.py` → `src/seo_ultimate/core/seo.py`
-- Move: `scripts/coverage_matcher.py` → `src/seo_ultimate/core/coverage.py`
-- Move: `scripts/synonym_tools.py` → `src/seo_ultimate/core/synonyms.py`
-- Modify: `src/seo_ultimate/core/__init__.py`
+- Move: `scripts/config.py` → `src/llm_keywords_pipeline/core/config.py`
+- Move: `scripts/keyword_utils.py` → `src/llm_keywords_pipeline/core/keywords.py`
+- Move: `scripts/text_utils.py` → `src/llm_keywords_pipeline/core/text.py`
+- Move: `scripts/seo_utils.py` → `src/llm_keywords_pipeline/core/seo.py`
+- Move: `scripts/coverage_matcher.py` → `src/llm_keywords_pipeline/core/coverage.py`
+- Move: `scripts/synonym_tools.py` → `src/llm_keywords_pipeline/core/synonyms.py`
+- Modify: `src/llm_keywords_pipeline/core/__init__.py`
 
 **Step 1: Copy files (keep originals for now)**
 
 ```bash
-cp scripts/config.py src/seo_ultimate/core/config.py
-cp scripts/keyword_utils.py src/seo_ultimate/core/keywords.py
-cp scripts/text_utils.py src/seo_ultimate/core/text.py
-cp scripts/seo_utils.py src/seo_ultimate/core/seo.py
-cp scripts/coverage_matcher.py src/seo_ultimate/core/coverage.py
-cp scripts/synonym_tools.py src/seo_ultimate/core/synonyms.py
+cp scripts/config.py src/llm_keywords_pipeline/core/config.py
+cp scripts/keyword_utils.py src/llm_keywords_pipeline/core/keywords.py
+cp scripts/text_utils.py src/llm_keywords_pipeline/core/text.py
+cp scripts/seo_utils.py src/llm_keywords_pipeline/core/seo.py
+cp scripts/coverage_matcher.py src/llm_keywords_pipeline/core/coverage.py
+cp scripts/synonym_tools.py src/llm_keywords_pipeline/core/synonyms.py
 ```
 
 **Step 2: Fix imports in core modules**
 
-Replace in all `src/seo_ultimate/core/*.py`:
-- `from scripts.config` → `from seo_ultimate.core.config`
-- `from scripts.keyword_utils` → `from seo_ultimate.core.keywords`
-- `from scripts.text_utils` → `from seo_ultimate.core.text`
+Replace in all `src/llm_keywords_pipeline/core/*.py`:
+- `from scripts.config` → `from llm_keywords_pipeline.core.config`
+- `from scripts.keyword_utils` → `from llm_keywords_pipeline.core.keywords`
+- `from scripts.text_utils` → `from llm_keywords_pipeline.core.text`
 
 **Step 3: Export public API**
 
-`src/seo_ultimate/core/__init__.py`:
+`src/llm_keywords_pipeline/core/__init__.py`:
 ```python
 """Core utilities for SEO Ultimate."""
-from seo_ultimate.core.config import *
-from seo_ultimate.core.keywords import KeywordMatcher, CoverageChecker
-from seo_ultimate.core.text import get_stopwords, clean_markdown, count_words
-from seo_ultimate.core.seo import extract_frontmatter, count_keyword_occurrences
-from seo_ultimate.core.coverage import CoverageMatcher
+from llm_keywords_pipeline.core.config import *
+from llm_keywords_pipeline.core.keywords import KeywordMatcher, CoverageChecker
+from llm_keywords_pipeline.core.text import get_stopwords, clean_markdown, count_words
+from llm_keywords_pipeline.core.seo import extract_frontmatter, count_keyword_occurrences
+from llm_keywords_pipeline.core.coverage import CoverageMatcher
 ```
 
 **Step 4: Verify imports**
 
-Run: `uv run python -c "from seo_ultimate.core import KeywordMatcher; print('OK')"`
+Run: `uv run python -c "from llm_keywords_pipeline.core import KeywordMatcher; print('OK')"`
 Expected: `OK`
 
 **Step 5: Commit core**
 
 ```bash
-git add src/seo_ultimate/core/
+git add src/llm_keywords_pipeline/core/
 git commit -m "feat(core): migrate utils to src layout"
 ```
 
@@ -263,7 +263,7 @@ tmux send-keys -t "W-VAL" "claude --dangerously-skip-permissions 'W-VAL: Migrate
 ЗАДАЧИ: Worker W-VAL section
 
 ⚠️ BEST PRACTICES 2026:
-1. Используй существующие core модули: from seo_ultimate.core import ...
+1. Используй существующие core модули: from llm_keywords_pipeline.core import ...
 2. ТЕСТЫ — только свои: uv run pytest tests/integration/validate/ -v
    НЕ запускай все тесты.
 3. Target coverage: 80% для validate/
@@ -279,19 +279,19 @@ tmux send-keys -t "W-VAL" "claude --dangerously-skip-permissions 'W-VAL: Migrate
 ### Task W-VAL.1: Migrate validate_meta.py
 
 **Files:**
-- Move: `scripts/validate_meta.py` → `src/seo_ultimate/validate/meta.py`
+- Move: `scripts/validate_meta.py` → `src/llm_keywords_pipeline/validate/meta.py`
 - Create: `tests/integration/validate/test_meta.py`
 
 **Step 1: Copy and fix imports**
 
 ```bash
-cp scripts/validate_meta.py src/seo_ultimate/validate/meta.py
+cp scripts/validate_meta.py src/llm_keywords_pipeline/validate/meta.py
 ```
 
 Fix imports:
 ```python
-from seo_ultimate.core.config import QUALITY_THRESHOLDS, PROJECT_ROOT
-from seo_ultimate.core.keywords import KeywordMatcher
+from llm_keywords_pipeline.core.config import QUALITY_THRESHOLDS, PROJECT_ROOT
+from llm_keywords_pipeline.core.keywords import KeywordMatcher
 ```
 
 **Step 2: Write integration test**
@@ -306,7 +306,7 @@ def test_validate_meta_valid_file(tmp_path):
     meta = tmp_path / "test_meta.json"
     meta.write_text('{"slug": "test", "language": "ru", "meta": {"title": "Test", "description": "Desc"}, "h1": "Test H1"}')
 
-    from seo_ultimate.validate.meta import validate_meta_file
+    from llm_keywords_pipeline.validate.meta import validate_meta_file
     result = validate_meta_file(meta)
     assert result.is_valid
 
@@ -315,7 +315,7 @@ def test_validate_meta_missing_h1(tmp_path):
     meta = tmp_path / "test_meta.json"
     meta.write_text('{"slug": "test", "language": "ru", "meta": {"title": "Test"}}')
 
-    from seo_ultimate.validate.meta import validate_meta_file
+    from llm_keywords_pipeline.validate.meta import validate_meta_file
     result = validate_meta_file(meta)
     assert not result.is_valid
     assert "h1" in str(result.errors).lower()
@@ -364,7 +364,7 @@ tmux send-keys -t "W-AUD" "claude --dangerously-skip-permissions 'W-AUD: Migrate
 ЗАДАЧИ: Worker W-AUD section
 
 ⚠️ BEST PRACTICES 2026:
-1. Используй существующие core модули: from seo_ultimate.core import ...
+1. Используй существующие core модули: from llm_keywords_pipeline.core import ...
 2. ТЕСТЫ — только свои: uv run pytest tests/integration/audit/ -v
 3. Target coverage: 80% для audit/
 
@@ -379,13 +379,13 @@ tmux send-keys -t "W-AUD" "claude --dangerously-skip-permissions 'W-AUD: Migrate
 ### Task W-AUD.1: Migrate audit_coverage.py
 
 **Files:**
-- Move: `scripts/audit_coverage.py` → `src/seo_ultimate/audit/coverage.py`
+- Move: `scripts/audit_coverage.py` → `src/llm_keywords_pipeline/audit/coverage.py`
 - Create: `tests/integration/audit/test_coverage.py`
 
 **Step 1: Copy and fix imports**
 
 ```bash
-cp scripts/audit_coverage.py src/seo_ultimate/audit/coverage.py
+cp scripts/audit_coverage.py src/llm_keywords_pipeline/audit/coverage.py
 ```
 
 **Step 2: Write integration test**
@@ -396,7 +396,7 @@ import pytest
 
 def test_audit_coverage_returns_report():
     """Audit should return coverage report dict."""
-    from seo_ultimate.audit.coverage import audit_category_coverage
+    from llm_keywords_pipeline.audit.coverage import audit_category_coverage
     # Use existing test fixture
     result = audit_category_coverage("aktivnaya-pena", lang="ru")
     assert "coverage_percent" in result
@@ -457,14 +457,14 @@ tmux send-keys -t "W-MOD" "claude --dangerously-skip-permissions 'W-MOD: Migrate
 ### Task W-MOD.1: analyze/ (5 files)
 
 ```bash
-cp scripts/analyze_category.py src/seo_ultimate/analyze/category.py
-cp scripts/analyze_keyword_duplicates.py src/seo_ultimate/analyze/duplicates.py
-cp scripts/analyze_keywords_order.py src/seo_ultimate/analyze/order.py
-cp scripts/analyze_keywords_synonyms.py src/seo_ultimate/analyze/synonyms.py
-cp scripts/analyze_meta_keywords.py src/seo_ultimate/analyze/meta.py
+cp scripts/analyze_category.py src/llm_keywords_pipeline/analyze/category.py
+cp scripts/analyze_keyword_duplicates.py src/llm_keywords_pipeline/analyze/duplicates.py
+cp scripts/analyze_keywords_order.py src/llm_keywords_pipeline/analyze/order.py
+cp scripts/analyze_keywords_synonyms.py src/llm_keywords_pipeline/analyze/synonyms.py
+cp scripts/analyze_meta_keywords.py src/llm_keywords_pipeline/analyze/meta.py
 ```
 
-Fix imports, verify: `uv run python -c "from seo_ultimate.analyze import category"`
+Fix imports, verify: `uv run python -c "from llm_keywords_pipeline.analyze import category"`
 
 ### Task W-MOD.2: extract/ (8 files)
 
@@ -543,7 +543,7 @@ git worktree remove .worktrees/modules
 ### Task 3.2: Coverage report
 
 ```bash
-uv run pytest --cov=src/seo_ultimate --cov-report=term-missing --cov-report=html
+uv run pytest --cov=src/llm_keywords_pipeline --cov-report=term-missing --cov-report=html
 ```
 
 Expected: `TOTAL ... 80%+`
@@ -551,7 +551,7 @@ Expected: `TOTAL ... 80%+`
 ### Task 3.3: Update CLAUDE.md
 
 Replace script paths:
-- `python3 scripts/validate_meta.py` → `uv run python -m seo_ultimate.validate.meta`
+- `python3 scripts/validate_meta.py` → `uv run python -m llm_keywords_pipeline.validate.meta`
 
 ### Task 3.4: Final commit
 
@@ -559,7 +559,7 @@ Replace script paths:
 git add .
 git commit -m "feat: complete scripts modernization to uv + src layout
 
-- Migrated 65 scripts to src/seo_ultimate/
+- Migrated 65 scripts to src/llm_keywords_pipeline/
 - Added uv for dependency management
 - All 569 tests passing
 - Updated CLAUDE.md with new paths"
@@ -576,6 +576,6 @@ git commit -m "feat: complete scripts modernization to uv + src layout
 
 **Nice-to-have (future work):**
 - [ ] `uv run pytest --cov` — ≥80% (currently ~26%, requires new tests)
-- [ ] `uv run mypy src/seo_ultimate/core/` — no errors (currently 29, requires type annotations)
+- [ ] `uv run mypy src/llm_keywords_pipeline/core/` — no errors (currently 29, requires type annotations)
 
 **Note:** Coverage 80% was unrealistic for Phase 2 which focused on migration (copy + fix imports), not writing new tests. Type annotations for legacy code are a separate task.

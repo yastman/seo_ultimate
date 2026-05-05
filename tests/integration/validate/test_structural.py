@@ -1,4 +1,4 @@
-"""Integration tests for seo_ultimate.validate.structural module."""
+"""Integration tests for llm_keywords_pipeline.validate.structural module."""
 
 
 class TestCheckCategory:
@@ -6,7 +6,7 @@ class TestCheckCategory:
 
     def test_nonexistent_category(self):
         """Non-existent category should report missing status."""
-        from seo_ultimate.validate.structural import check_category
+        from llm_keywords_pipeline.validate.structural import check_category
 
         result = check_category("nonexistent-slug-12345")
 
@@ -16,7 +16,7 @@ class TestCheckCategory:
 
     def test_returns_dict(self):
         """Function should return a dict."""
-        from seo_ultimate.validate.structural import check_category
+        from llm_keywords_pipeline.validate.structural import check_category
 
         result = check_category("test-slug")
 
