@@ -45,7 +45,7 @@ def extract_keywords_with_volume(filepath: Path) -> list[dict]:
     """Extract keywords with volume from _clean.json file."""
     keywords = []
     try:
-        with open(filepath, "r", encoding="utf-8") as f:
+        with open(filepath, encoding="utf-8") as f:
             data = json.load(f)
 
         # Extract from keywords (list or dict)
@@ -101,7 +101,7 @@ def main():
             continue
 
         # Read original to get name
-        with open(filepath, "r", encoding="utf-8") as f:
+        with open(filepath, encoding="utf-8") as f:
             ru_data = json.load(f)
 
         ru_name = ru_data.get("name", slug)

@@ -198,7 +198,7 @@ def process_category(slug: str, ru_meta_path: str) -> dict:
     uk_dir = base / "uk" / "categories" / slug
 
     # Read RU meta
-    with open(ru_meta, "r", encoding="utf-8") as f:
+    with open(ru_meta, encoding="utf-8") as f:
         meta_ru = json.load(f)
 
     # Get category names

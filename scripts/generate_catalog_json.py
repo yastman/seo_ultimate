@@ -1,7 +1,6 @@
 import json
 import os
 import re
-from typing import Dict, List, Optional
 
 # Constants
 SOURCE_FILE = "tasks/reports/STRUCTURE_TREE.md"
@@ -67,21 +66,21 @@ def sluggify(text: str) -> str:
     return slug
 
 
-def parse_structure_tree(file_path: str) -> List[Dict]:
+def parse_structure_tree(file_path: str) -> list[dict]:
     """
     Parses STRUCTURE_TREE.md and returns a flat list of category objects.
     """
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Source file not found: {file_path}")
 
-    with open(file_path, "r", encoding="utf-8") as f:
+    with open(file_path, encoding="utf-8") as f:
         lines = f.readlines()
 
     catalog = []
 
     # Context trackers
-    current_l1: Optional[Dict] = None
-    current_l2: Optional[Dict] = None
+    current_l1: dict | None = None
+    current_l2: dict | None = None
 
     # Regex patterns
     l1_pattern = re.compile(r"^L1:\s+(.+)$")

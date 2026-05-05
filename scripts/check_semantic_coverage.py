@@ -16,7 +16,7 @@ def scan_json_keywords():
             if file.endswith("_clean.json"):
                 path = os.path.join(root, file)
                 try:
-                    with open(path, "r", encoding="utf-8") as f:
+                    with open(path, encoding="utf-8") as f:
                         data = json.load(f)
                     slug = data.get("id") or data.get("slug")
 
@@ -48,7 +48,7 @@ def parse_structure_md_keywords():
     # Exclude header row matches
     table_row_re = re.compile(r"^\|\s*(.+?)\s*\|\s*(\d+)\s*\|")
 
-    with open(STRUCTURE_MD_PATH, "r", encoding="utf-8") as f:
+    with open(STRUCTURE_MD_PATH, encoding="utf-8") as f:
         for line in f:
             line = line.strip()
 
@@ -160,7 +160,7 @@ def load_uk_keywords() -> dict[str, str]:
         print(f"ERROR: UK keywords file not found: {uk_keywords_path}")
         return {}
 
-    with open(uk_keywords_path, "r", encoding="utf-8") as f:
+    with open(uk_keywords_path, encoding="utf-8") as f:
         data = json.load(f)
 
     kw_map = {}
@@ -181,7 +181,7 @@ def scan_uk_json_keywords() -> dict[str, str]:
             if file.endswith("_clean.json"):
                 path = os.path.join(root, file)
                 try:
-                    with open(path, "r", encoding="utf-8") as f:
+                    with open(path, encoding="utf-8") as f:
                         data = json.load(f)
                     slug = data.get("id") or data.get("slug")
 

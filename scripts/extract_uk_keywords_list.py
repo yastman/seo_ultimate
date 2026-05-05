@@ -97,7 +97,7 @@ def main():
 
     print()
     print("=" * 60)
-    print(f"✅ Готово!")
+    print("✅ Готово!")
     print(f"   Файлов обработано: {files_processed}")
     print(f"   Уникальных ключей: {len(sorted_keywords)}")
     print(f"   Результат: {output_file.relative_to(project_root)}")

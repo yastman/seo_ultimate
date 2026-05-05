@@ -64,7 +64,13 @@ def load_category_data(slug: str, lang: str) -> tuple[list, list, str] | None:
     with open(clean_file, encoding="utf-8") as f:
         data = json.load(f)
 
-    keywords = data.get("keywords", [])
+    raw_keywords = data.get("keywords", [])
+    if isinstance(raw_keywords, dict):
+        keywords = []
+        for group in ("primary", "secondary", "supporting", "commercial"):
+            keywords.extend(raw_keywords.get(group, []))
+    else:
+        keywords = raw_keywords
     synonyms = data.get("synonyms", [])
 
     content = content_file.read_text(encoding="utf-8")

@@ -13,7 +13,7 @@ def extract_ru_keywords():
     mapping = {}
 
     for clean_file in categories_dir.rglob("*_clean.json"):
-        with open(clean_file, "r", encoding="utf-8") as f:
+        with open(clean_file, encoding="utf-8") as f:
             data = json.load(f)
 
         slug = data.get("id") or data.get("slug")

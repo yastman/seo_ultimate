@@ -2,9 +2,9 @@
 """Integration tests for full validation pipeline."""
 
 import json
-import pytest
 from pathlib import Path
 
+import pytest
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 

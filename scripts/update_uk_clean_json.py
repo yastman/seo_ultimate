@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 def load_uk_keywords():
-    with open("uk/data/uk_keywords.json", "r", encoding="utf-8") as f:
+    with open("uk/data/uk_keywords.json", encoding="utf-8") as f:
         return json.load(f)
 
 

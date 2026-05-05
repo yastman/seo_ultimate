@@ -10,6 +10,7 @@ dependencies = [
     "pandas>=2.2",
     "markdown>=3.8",
     "openpyxl>=3.1",
+    "setuptools<71",
 ]
 
 [dependency-groups]
@@ -27,6 +28,7 @@ nlp = [
 dev = [
     "ruff>=0.14",
     "mypy>=1.18",
+    "mysql-connector-python>=9.0",
 ]
 test = [
     "pytest>=9.0",

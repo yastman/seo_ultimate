@@ -17,7 +17,7 @@ REPORTS_DIR = ROOT / "reports"
 def load_csv_keywords() -> dict[str, int]:
     """Загружает ключи из CSV, возвращает {keyword: volume}."""
     keywords = {}
-    with open(CSV_FILE, "r", encoding="utf-8-sig") as f:
+    with open(CSV_FILE, encoding="utf-8-sig") as f:
         reader = csv.reader(f)
         next(reader)  # skip header
         for row in reader:
@@ -43,7 +43,7 @@ def load_used_keywords() -> set[str]:
     used = set()
     for filepath in CATEGORIES_DIR.rglob("*_clean.json"):
         try:
-            with open(filepath, "r", encoding="utf-8") as f:
+            with open(filepath, encoding="utf-8") as f:
                 data = json.load(f)
                 for kw in data.get("keywords", []):
                     if isinstance(kw, dict):

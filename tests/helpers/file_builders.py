@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any
 
 import yaml  # type: ignore
 
@@ -20,15 +20,15 @@ class CategoryBuilder:
     def __init__(self):
         self._slug = "test-category"
         self._lang = "ru"
-        self._meta: Dict[str, Any] = {
+        self._meta: dict[str, Any] = {
             "title": "Default Title | Brand",
             "description": "Default description.",
             "h1": "Default H1",
         }
         self._keywords: Any = {"primary": [{"keyword": "main keyword", "volume": 100}]}
-        self._content: Optional[str] = None
-        self._research: Optional[str] = None
-        self._clean_json_extra: Dict[str, Any] = {}
+        self._content: str | None = None
+        self._research: str | None = None
+        self._clean_json_extra: dict[str, Any] = {}
 
     def with_slug(self, slug: str) -> "CategoryBuilder":
         self._slug = slug

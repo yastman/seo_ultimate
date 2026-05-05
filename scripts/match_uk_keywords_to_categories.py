@@ -11,12 +11,12 @@ from pathlib import Path
 
 
 def load_ru_mapping() -> dict:
-    with open("data/generated/ru_keywords_mapping.json", "r", encoding="utf-8") as f:
+    with open("data/generated/ru_keywords_mapping.json", encoding="utf-8") as f:
         return json.load(f)
 
 
 def load_current_uk_keywords() -> dict:
-    with open("uk/data/uk_keywords.json", "r", encoding="utf-8") as f:
+    with open("uk/data/uk_keywords.json", encoding="utf-8") as f:
         return json.load(f)
 
 

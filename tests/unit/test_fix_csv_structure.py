@@ -71,7 +71,7 @@ class TestFixCsvStructure:
             fix_csv()
 
         # 3. Verify Output
-        with open(test_csv, "r", encoding="utf-8", newline="") as f:
+        with open(test_csv, encoding="utf-8", newline="") as f:
             reader = csv.reader(f)
             output_rows = list(reader)
 
@@ -100,7 +100,7 @@ class TestFixCsvStructure:
         assert backup_csv.exists()
 
         # Backup should be a copy of the ORIGINAL input
-        with open(backup_csv, "r", encoding="utf-8", newline="") as f:
+        with open(backup_csv, encoding="utf-8", newline="") as f:
             backup_rows = list(csv.reader(f))
         assert backup_rows == input_rows
 
@@ -124,7 +124,7 @@ class TestFixCsvStructure:
                 fix_csv()
 
         # Verify file unchanged
-        with open(test_csv, "r", encoding="utf-8", newline="") as f:
+        with open(test_csv, encoding="utf-8", newline="") as f:
             assert list(csv.reader(f)) == input_rows
 
         # Verify no backup created (script logic: if changes: backup)

@@ -10,7 +10,7 @@ DUMP_FILE = ROOT / "sql_cats_dump.txt"
 
 def load_sql_cats():
     cats = {}
-    with open(DUMP_FILE, "r", encoding="utf-8") as f:
+    with open(DUMP_FILE, encoding="utf-8") as f:
         for line in f:
             if ": " not in line:
                 continue

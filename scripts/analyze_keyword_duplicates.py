@@ -49,7 +49,7 @@ def find_duplicates_in_keywords(keywords: list) -> list:
 
 def analyze_category(json_path: Path) -> dict | None:
     """Анализирует одну категорию на дубли."""
-    with open(json_path, "r", encoding="utf-8") as f:
+    with open(json_path, encoding="utf-8") as f:
         data = json.load(f)
 
     keywords = data.get("keywords", [])
