@@ -39,7 +39,11 @@ if sys.platform == "win32":
 
 # Core imports from llm_keywords_pipeline
 from llm_keywords_pipeline.core.config import CONTENT_STANDARDS, QUALITY_THRESHOLDS
-from llm_keywords_pipeline.core.keywords import CoverageChecker, KeywordMatcher, keyword_matches_text
+from llm_keywords_pipeline.core.keywords import (
+    CoverageChecker,
+    KeywordMatcher,
+    keyword_matches_text,
+)
 from llm_keywords_pipeline.core.seo import get_adaptive_requirements
 from llm_keywords_pipeline.core.text import (
     clean_markdown,

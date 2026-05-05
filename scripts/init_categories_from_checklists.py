@@ -33,7 +33,7 @@ def load_catalog():
         print(f"Error: Catalog file not found at {CATALOG_PATH}")
         return []
 
-    with open(CATALOG_PATH, "r", encoding="utf-8") as f:
+    with open(CATALOG_PATH, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -45,7 +45,7 @@ def parse_keywords_from_md(checklist_path):
     if not os.path.exists(checklist_path):
         return []
 
-    with open(checklist_path, "r", encoding="utf-8") as f:
+    with open(checklist_path, encoding="utf-8") as f:
         lines = f.readlines()
 
     for line in lines:
@@ -96,7 +96,7 @@ def load_structure_md():
         _structure_cache = {}
         return _structure_cache
 
-    with open(STRUCTURE_MD_PATH, "r", encoding="utf-8") as f:
+    with open(STRUCTURE_MD_PATH, encoding="utf-8") as f:
         content = f.read()
 
     # Normalize line endings
@@ -275,7 +275,7 @@ def generate_all_keywords_json(catalog):
         if not os.path.exists(clean_path):
             continue
 
-        with open(clean_path, "r", encoding="utf-8") as f:
+        with open(clean_path, encoding="utf-8") as f:
             data = json.load(f)
 
         keywords = data.get("keywords", [])
@@ -333,7 +333,7 @@ def main():
         # Check if keywords were found
         clean_path = os.path.join(CATEGORIES_DIR, slug, "data", f"{slug}_clean.json")
         if os.path.exists(clean_path):
-            with open(clean_path, "r", encoding="utf-8") as f:
+            with open(clean_path, encoding="utf-8") as f:
                 data = json.load(f)
                 if data.get("keywords"):
                     with_keywords += 1

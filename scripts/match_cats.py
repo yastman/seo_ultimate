@@ -10,7 +10,7 @@ DUMP_FILE = ROOT / "sql_cats_dump.txt"
 
 def load_dump():
     mapping = {}
-    with open(DUMP_FILE, "r", encoding="utf-8") as f:
+    with open(DUMP_FILE, encoding="utf-8") as f:
         for line in f:
             if ": " in line:
                 cid, name = line.strip().split(": ", 1)

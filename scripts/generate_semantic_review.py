@@ -15,7 +15,7 @@ def collect_keywords():
             if file.endswith("_clean.json"):
                 path = os.path.join(root, file)
                 try:
-                    with open(path, "r", encoding="utf-8") as f:
+                    with open(path, encoding="utf-8") as f:
                         data = json.load(f)
 
                     slug = data.get("id") or data.get("slug")

@@ -27,7 +27,7 @@ def get_keywords_from_structure(target_cluster_name):
     table_row_re = re.compile(r"^\|\s*(.+?)\s*\|\s*(\d+)\s*\|")
 
     found = False
-    with open(STRUCTURE_MD_PATH, "r", encoding="utf-8") as f:
+    with open(STRUCTURE_MD_PATH, encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if line.startswith("#"):
@@ -57,7 +57,7 @@ def update_json_file(slug, structure_kws):
         print(f"File not found: {json_path}")
         return
 
-    with open(json_path, "r", encoding="utf-8") as f:
+    with open(json_path, encoding="utf-8") as f:
         data = json.load(f)
 
     # Existing kws

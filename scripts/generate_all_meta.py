@@ -24,7 +24,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 def load_json(filepath: Path, silent: bool = False) -> dict | None:
     """Load JSON file safely."""
     try:
-        with open(filepath, "r", encoding="utf-8") as f:
+        with open(filepath, encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
         if not silent:

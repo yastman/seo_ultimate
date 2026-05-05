@@ -10,7 +10,7 @@ SQL_FILE = ROOT / "data/dumps/ultimate_net_ua_backup.sql"
 
 
 def load_sql():
-    with open(SQL_FILE, "r", encoding="utf-8", errors="ignore") as f:
+    with open(SQL_FILE, encoding="utf-8", errors="ignore") as f:
         return f.read()
 
 

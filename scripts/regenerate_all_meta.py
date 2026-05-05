@@ -6,22 +6,22 @@
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
 
 
-def load_json(file_path: Path) -> Dict[str, Any]:
+def load_json(file_path: Path) -> dict[str, Any]:
     """Загрузить JSON файл"""
-    with open(file_path, "r", encoding="utf-8") as f:
+    with open(file_path, encoding="utf-8") as f:
         return json.load(f)
 
 
-def save_json(file_path: Path, data: Dict[str, Any]) -> None:
+def save_json(file_path: Path, data: dict[str, Any]) -> None:
     """Сохранить JSON файл"""
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def extract_product_info(slug: str) -> Dict[str, List[str]]:
+def extract_product_info(slug: str) -> dict[str, list[str]]:
     """
     Извлечь типы/формы/объёмы товаров из PRODUCTS_LIST.md
 
@@ -31,7 +31,7 @@ def extract_product_info(slug: str) -> Dict[str, List[str]]:
     if not products_file.exists():
         return {"types": [], "forms": [], "volumes": []}
 
-    with open(products_file, "r", encoding="utf-8") as f:
+    with open(products_file, encoding="utf-8") as f:
         f.read()
 
     # Маппинг slug -> типы товаров

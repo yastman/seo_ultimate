@@ -103,7 +103,7 @@ class MorphAnalyzer:
     Uses pymorphy3 if available, otherwise pymorphy2, then Snowball fallback.
     """
 
-    _instances: dict[str, "MorphAnalyzer"] = {}
+    _instances: dict[str, MorphAnalyzer] = {}
 
     def __new__(cls, lang: Literal["ru", "uk"] = "ru"):
         if lang not in cls._instances:

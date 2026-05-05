@@ -12,7 +12,7 @@ sql_file = Path(
 
 categories = {}
 
-with open(sql_file, "r", encoding="utf-8", errors="ignore") as f:
+with open(sql_file, encoding="utf-8", errors="ignore") as f:
     in_insert = False
     for line in f:
         if "INSERT INTO `oc_category_description` VALUES" in line:

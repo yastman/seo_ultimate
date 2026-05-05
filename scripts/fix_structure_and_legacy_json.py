@@ -14,7 +14,7 @@ MANUAL_SHAMPOO_PATH = os.path.join(
 
 def update_catalog_structure():
     print(f"Reading {CATALOG_STRUCTURE_PATH}...")
-    with open(CATALOG_STRUCTURE_PATH, "r", encoding="utf-8") as f:
+    with open(CATALOG_STRUCTURE_PATH, encoding="utf-8") as f:
         data = json.load(f)
 
     # 1. Remove 'oborudovanie-l2'
@@ -46,7 +46,7 @@ def update_catalog_structure():
 
 def convert_shampoo_legacy():
     print(f"Reading {MANUAL_SHAMPOO_PATH}...")
-    with open(MANUAL_SHAMPOO_PATH, "r", encoding="utf-8") as f:
+    with open(MANUAL_SHAMPOO_PATH, encoding="utf-8") as f:
         legacy_data = json.load(f)
 
     # Extract keywords from all groups
