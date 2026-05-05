@@ -12,7 +12,7 @@ def main():
         print("SQL not found")
         return
 
-    with open(SQL_FILE, "r", encoding="utf-8", errors="ignore") as f:
+    with open(SQL_FILE, encoding="utf-8", errors="ignore") as f:
         content = f.read()
 
     # Pattern: (ID, 1, 'Name'...)

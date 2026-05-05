@@ -9,7 +9,12 @@ from llm_keywords_pipeline.core.config import (
     QUALITY_THRESHOLDS,
     SLUG_TO_L3,
 )
-from llm_keywords_pipeline.core.coverage import MatchResult, PreparedText, audit_category, check_keyword
+from llm_keywords_pipeline.core.coverage import (
+    MatchResult,
+    PreparedText,
+    audit_category,
+    check_keyword,
+)
 from llm_keywords_pipeline.core.keywords import (
     CoverageChecker,
     KeywordMatcher,

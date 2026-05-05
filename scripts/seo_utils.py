@@ -266,7 +266,7 @@ def load_json(path: Path | str) -> dict[str, Any]:
         FileNotFoundError: if strict=True (not implied here, but good to know)
     """
     try:
-        with open(path, "r", encoding="utf-8") as f:
+        with open(path, encoding="utf-8") as f:
             return json.load(f)
     except Exception as e:
         print(f"Error loading JSON {path}: {e}", file=sys.stderr)

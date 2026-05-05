@@ -75,7 +75,7 @@ def process_file_content(filepath, old_slug, new_slug):
     try:
         # Check if text file
         if filepath.endswith((".json", ".md", ".txt")):
-            with open(filepath, "r", encoding="utf-8") as f:
+            with open(filepath, encoding="utf-8") as f:
                 content = f.read()
 
             if old_slug in content:
