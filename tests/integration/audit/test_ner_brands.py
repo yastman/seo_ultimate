@@ -1,6 +1,6 @@
 """Tests for audit/ner_brands.py"""
 
-from seo_ultimate.audit.ner_brands import (
+from llm_keywords_pipeline.audit.ner_brands import (
     check_blacklist,
     is_false_positive_location,
 )

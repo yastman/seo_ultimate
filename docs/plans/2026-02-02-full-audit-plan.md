@@ -26,7 +26,7 @@ Expected: Non-empty output (e.g., `/tmp/tmux-1000/default,12345,0`)
 **Step 2: Create logs directory**
 
 ```bash
-mkdir -p /home/user/projects/seo-ultimate/data/generated/audit-logs
+mkdir -p /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs
 ```
 
 Expected: Directory created
@@ -34,7 +34,7 @@ Expected: Directory created
 **Step 3: Clean old audit logs**
 
 ```bash
-rm -f /home/user/projects/seo-ultimate/data/generated/audit-logs/W*_audit.md
+rm -f /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W*_audit.md
 ```
 
 Expected: Old logs removed
@@ -42,7 +42,7 @@ Expected: Old logs removed
 **Step 4: Verify clean state**
 
 ```bash
-ls -la /home/user/projects/seo-ultimate/data/generated/audit-logs/
+ls -la /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/
 ```
 
 Expected: Empty directory (only . and ..)
@@ -54,37 +54,37 @@ Expected: Empty directory (only . and ..)
 **Step 1: Create W1-UK window**
 
 ```bash
-tmux new-window -n "W1-UK" -c /home/user/projects/seo-ultimate
+tmux new-window -n "W1-UK" -c /home/user/projects/llm-keywords-pipeline
 ```
 
 **Step 2: Create W2-UK window**
 
 ```bash
-tmux new-window -n "W2-UK" -c /home/user/projects/seo-ultimate
+tmux new-window -n "W2-UK" -c /home/user/projects/llm-keywords-pipeline
 ```
 
 **Step 3: Create W3-UK window**
 
 ```bash
-tmux new-window -n "W3-UK" -c /home/user/projects/seo-ultimate
+tmux new-window -n "W3-UK" -c /home/user/projects/llm-keywords-pipeline
 ```
 
 **Step 4: Create W4-UK window**
 
 ```bash
-tmux new-window -n "W4-UK" -c /home/user/projects/seo-ultimate
+tmux new-window -n "W4-UK" -c /home/user/projects/llm-keywords-pipeline
 ```
 
 **Step 5: Create W5-RU window**
 
 ```bash
-tmux new-window -n "W5-RU" -c /home/user/projects/seo-ultimate
+tmux new-window -n "W5-RU" -c /home/user/projects/llm-keywords-pipeline
 ```
 
 **Step 6: Create W6-RU window**
 
 ```bash
-tmux new-window -n "W6-RU" -c /home/user/projects/seo-ultimate
+tmux new-window -n "W6-RU" -c /home/user/projects/llm-keywords-pipeline
 ```
 
 **Step 7: Verify windows created**
@@ -107,7 +107,7 @@ tmux send-keys -t "W1-UK" "claude --dangerously-skip-permissions 'W1: UK Content
 Для КОЖНОЇ категорії зі списку виконай скілл:
 uk-content-reviewer {slug}
 
-Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/seo-ultimate/data/generated/audit-logs/W1_uk_audit.md:
+Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W1_uk_audit.md:
 
 ## {slug}
 **Verdict:** PASS / WARNING / FIXED
@@ -152,7 +152,7 @@ tmux send-keys -t "W2-UK" "claude --dangerously-skip-permissions 'W2: UK Content
 Для КОЖНОЇ категорії зі списку виконай скілл:
 uk-content-reviewer {slug}
 
-Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/seo-ultimate/data/generated/audit-logs/W2_uk_audit.md:
+Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W2_uk_audit.md:
 
 ## {slug}
 **Verdict:** PASS / WARNING / FIXED
@@ -197,7 +197,7 @@ tmux send-keys -t "W3-UK" "claude --dangerously-skip-permissions 'W3: UK Content
 Для КОЖНОЇ категорії зі списку виконай скілл:
 uk-content-reviewer {slug}
 
-Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/seo-ultimate/data/generated/audit-logs/W3_uk_audit.md:
+Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W3_uk_audit.md:
 
 ## {slug}
 **Verdict:** PASS / WARNING / FIXED
@@ -242,7 +242,7 @@ tmux send-keys -t "W4-UK" "claude --dangerously-skip-permissions 'W4: UK Content
 Для КОЖНОЇ категорії зі списку виконай скілл:
 uk-content-reviewer {slug}
 
-Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/seo-ultimate/data/generated/audit-logs/W4_uk_audit.md:
+Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W4_uk_audit.md:
 
 ## {slug}
 **Verdict:** PASS / WARNING / FIXED
@@ -287,7 +287,7 @@ tmux send-keys -t "W5-RU" "claude --dangerously-skip-permissions 'W5: RU Content
 Для КОЖНОЇ категорії зі списку виконай скілл:
 content-reviewer {path}
 
-Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/seo-ultimate/data/generated/audit-logs/W5_ru_audit.md:
+Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W5_ru_audit.md:
 
 ## {slug}
 **Verdict:** PASS / WARNING / FIXED
@@ -344,7 +344,7 @@ tmux send-keys -t "W6-RU" "claude --dangerously-skip-permissions 'W6: RU Content
 Для КОЖНОЇ категорії зі списку виконай скілл:
 content-reviewer {path}
 
-Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/seo-ultimate/data/generated/audit-logs/W6_ru_audit.md:
+Після кожної категорії ОБОВЯЗКОВО логуй результат в /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W6_ru_audit.md:
 
 ## {slug}
 **Verdict:** PASS / WARNING / FIXED
@@ -396,7 +396,7 @@ Expected: Claude starts in W6-RU window
 **Step 1: Watch logs in real-time**
 
 ```bash
-watch -n 30 'for f in /home/user/projects/seo-ultimate/data/generated/audit-logs/W*_audit.md; do echo "=== $(basename $f) ==="; grep -c "^## " "$f" 2>/dev/null || echo "0"; done'
+watch -n 30 'for f in /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W*_audit.md; do echo "=== $(basename $f) ==="; grep -c "^## " "$f" 2>/dev/null || echo "0"; done'
 ```
 
 Expected: Numbers incrementing as categories are processed
@@ -404,7 +404,7 @@ Expected: Numbers incrementing as categories are processed
 **Step 2: Check for completion**
 
 ```bash
-grep -l "\[COMPLETE\]" /home/user/projects/seo-ultimate/data/generated/audit-logs/*.md 2>/dev/null | wc -l
+grep -l "\[COMPLETE\]" /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/*.md 2>/dev/null | wc -l
 ```
 
 Expected: 6 when all workers complete
@@ -423,7 +423,7 @@ tmux select-window -t "W1-UK"
 **Step 1: Run coverage audit for UK**
 
 ```bash
-python3 /home/user/projects/seo-ultimate/scripts/audit_coverage.py --lang uk 2>/dev/null | tee /home/user/projects/seo-ultimate/reports/post_audit_coverage_uk.txt
+python3 /home/user/projects/llm-keywords-pipeline/scripts/audit_coverage.py --lang uk 2>/dev/null | tee /home/user/projects/llm-keywords-pipeline/reports/post_audit_coverage_uk.txt
 ```
 
 Expected: All categories show improved coverage
@@ -431,7 +431,7 @@ Expected: All categories show improved coverage
 **Step 2: Run coverage audit for RU**
 
 ```bash
-python3 /home/user/projects/seo-ultimate/scripts/audit_coverage.py --lang ru 2>/dev/null | tee /home/user/projects/seo-ultimate/reports/post_audit_coverage_ru.txt
+python3 /home/user/projects/llm-keywords-pipeline/scripts/audit_coverage.py --lang ru 2>/dev/null | tee /home/user/projects/llm-keywords-pipeline/reports/post_audit_coverage_ru.txt
 ```
 
 Expected: All categories show improved coverage
@@ -439,8 +439,8 @@ Expected: All categories show improved coverage
 **Step 3: Check for remaining blockers**
 
 ```bash
-echo "=== UK <70% ===" && awk -F',' 'NR>1 && $6<70 {print $1, $6"%"}' /home/user/projects/seo-ultimate/reports/coverage_summary_uk_*.csv | tail -1
-echo "=== RU <70% ===" && awk -F',' 'NR>1 && $6<70 {print $1, $6"%"}' /home/user/projects/seo-ultimate/reports/coverage_summary_ru_*.csv | tail -1
+echo "=== UK <70% ===" && awk -F',' 'NR>1 && $6<70 {print $1, $6"%"}' /home/user/projects/llm-keywords-pipeline/reports/coverage_summary_uk_*.csv | tail -1
+echo "=== RU <70% ===" && awk -F',' 'NR>1 && $6<70 {print $1, $6"%"}' /home/user/projects/llm-keywords-pipeline/reports/coverage_summary_ru_*.csv | tail -1
 ```
 
 Expected: Empty output (no categories below 70%)
@@ -452,7 +452,7 @@ Expected: Empty output (no categories below 70%)
 **Step 1: Check git status**
 
 ```bash
-cd /home/user/projects/seo-ultimate && git status --short | head -50
+cd /home/user/projects/llm-keywords-pipeline && git status --short | head -50
 ```
 
 Expected: List of modified content files
@@ -460,7 +460,7 @@ Expected: List of modified content files
 **Step 2: Review diff statistics**
 
 ```bash
-cd /home/user/projects/seo-ultimate && git diff --stat | tail -20
+cd /home/user/projects/llm-keywords-pipeline && git diff --stat | tail -20
 ```
 
 Expected: Changes in content/*.md files
@@ -468,13 +468,13 @@ Expected: Changes in content/*.md files
 **Step 3: Stage all changes**
 
 ```bash
-cd /home/user/projects/seo-ultimate && git add -A
+cd /home/user/projects/llm-keywords-pipeline && git add -A
 ```
 
 **Step 4: Commit with summary**
 
 ```bash
-cd /home/user/projects/seo-ultimate && git commit -m "$(cat <<'EOF'
+cd /home/user/projects/llm-keywords-pipeline && git commit -m "$(cat <<'EOF'
 audit: full category review RU+UK via content-reviewer skills
 
 - Reviewed 50 RU + 52 UK categories
@@ -509,15 +509,15 @@ Expected: All worker windows closed
 **Step 2: Generate summary report**
 
 ```bash
-echo "# Audit Summary $(date +%Y-%m-%d)" > /home/user/projects/seo-ultimate/data/generated/audit-logs/SUMMARY.md
-echo "" >> /home/user/projects/seo-ultimate/data/generated/audit-logs/SUMMARY.md
-echo "## Statistics" >> /home/user/projects/seo-ultimate/data/generated/audit-logs/SUMMARY.md
-echo "" >> /home/user/projects/seo-ultimate/data/generated/audit-logs/SUMMARY.md
-for f in /home/user/projects/seo-ultimate/data/generated/audit-logs/W*_audit.md; do
+echo "# Audit Summary $(date +%Y-%m-%d)" > /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/SUMMARY.md
+echo "" >> /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/SUMMARY.md
+echo "## Statistics" >> /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/SUMMARY.md
+echo "" >> /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/SUMMARY.md
+for f in /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/W*_audit.md; do
   name=$(basename $f .md)
   total=$(grep -c "^## " "$f" 2>/dev/null || echo 0)
   fixed=$(grep -c "FIXED" "$f" 2>/dev/null || echo 0)
-  echo "- $name: $total categories, $fixed fixed" >> /home/user/projects/seo-ultimate/data/generated/audit-logs/SUMMARY.md
+  echo "- $name: $total categories, $fixed fixed" >> /home/user/projects/llm-keywords-pipeline/data/generated/audit-logs/SUMMARY.md
 done
 ```
 
@@ -543,7 +543,7 @@ If something goes wrong:
 
 ```bash
 # Discard all uncommitted changes
-cd /home/user/projects/seo-ultimate && git checkout -- .
+cd /home/user/projects/llm-keywords-pipeline && git checkout -- .
 
 # Or restore specific file
 git checkout -- uk/categories/aktivnaya-pena/content/aktivnaya-pena_uk.md

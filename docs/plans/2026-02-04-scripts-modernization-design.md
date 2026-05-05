@@ -8,10 +8,10 @@
 ## Итоговая структура
 
 ```
-seo-ultimate/
+llm-keywords-pipeline/
 ├── pyproject.toml
 ├── uv.lock
-├── src/seo_ultimate/
+├── src/llm_keywords_pipeline/
 │   ├── core/           # config, keyword_utils, text_utils, seo_utils, coverage_matcher
 │   ├── validate/       # validate_*, verify_*
 │   ├── audit/          # audit_*, check_*
@@ -37,7 +37,7 @@ seo-ultimate/
 ### Фаза 1: Инфраструктура
 - [ ] Создать pyproject.toml с uv
 - [ ] Настроить dependency-groups: dev, test, nlp
-- [ ] Создать src/seo_ultimate/ структуру
+- [ ] Создать src/llm_keywords_pipeline/ структуру
 - [ ] Настроить ruff, pytest, mypy в pyproject.toml
 
 ### Фаза 2: Core модуль
@@ -65,9 +65,9 @@ seo-ultimate/
 
 | Worker | Задача | Файлы |
 |--------|--------|-------|
-| W1 | Инфраструктура + Core | pyproject.toml, src/seo_ultimate/core/ |
-| W2 | Validate модуль + тесты | src/seo_ultimate/validate/, tests/unit/validate/ |
-| W3 | Audit модуль + тесты | src/seo_ultimate/audit/, tests/integration/audit/ |
+| W1 | Инфраструктура + Core | pyproject.toml, src/llm_keywords_pipeline/core/ |
+| W2 | Validate модуль + тесты | src/llm_keywords_pipeline/validate/, tests/unit/validate/ |
+| W3 | Audit модуль + тесты | src/llm_keywords_pipeline/audit/, tests/integration/audit/ |
 | W4 | Остальные модули | analyze/, extract/, generate/, fix/, sync/ |
 
 **Правило:** каждый воркер работает с изолированным набором файлов, без пересечений.
@@ -90,7 +90,7 @@ seo-ultimate/
 
 ```toml
 [project]
-name = "seo-ultimate"
+name = "llm-keywords-pipeline"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
@@ -115,6 +115,6 @@ dev-dependencies = ["ruff", "mypy", "pytest", "pytest-cov"]
 - [ ] `uv sync` работает
 - [ ] `uv run pytest` проходит
 - [ ] Coverage ≥80%
-- [ ] Все скрипты импортируются из src/seo_ultimate/
+- [ ] Все скрипты импортируются из src/llm_keywords_pipeline/
 - [ ] ruff check проходит без ошибок
 - [ ] mypy --strict на core/ проходит

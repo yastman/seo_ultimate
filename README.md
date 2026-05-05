@@ -27,7 +27,7 @@ CSV → /category-init → /generate-meta → /seo-research → /content-generat
 /
 ├── CLAUDE.md               # Инструкции для Claude
 ├── pyproject.toml          # uv project config
-├── src/seo_ultimate/       # Python пакет (core, validate, audit, etc.)
+├── src/llm_keywords_pipeline/       # Python пакет (core, validate, audit, etc.)
 │
 ├── categories/             # Данные категорий (RU)
 ├── uk/                     # Локализация (UK)
@@ -51,10 +51,10 @@ uv sync
 uv run pytest
 
 # Валидация мета-тегов
-uv run python -m seo_ultimate.validate.meta categories/avtoshampuni/meta/avtoshampuni_meta.json
+uv run python -m llm_keywords_pipeline.validate.meta categories/avtoshampuni/meta/avtoshampuni_meta.json
 
 # Валидация контента
-uv run python -m seo_ultimate.validate.content categories/avtoshampuni/content/avtoshampuni_ru.md
+uv run python -m llm_keywords_pipeline.validate.content categories/avtoshampuni/content/avtoshampuni_ru.md
 ```
 
 ### Skills (Slash Commands)
@@ -78,12 +78,12 @@ uv run python -m seo_ultimate.validate.content categories/avtoshampuni/content/a
 **Метрики:**
 
 -   **Всего категорий:** 53 RU + 53 UK
--   **Модулей:** 65 (src/seo_ultimate/)
+-   **Модулей:** 65 (src/llm_keywords_pipeline/)
 -   **Тестов:** 569
 
 ---
 
-## 🛠 Модули `src/seo_ultimate/`
+## 🛠 Модули `src/llm_keywords_pipeline/`
 
 | Пакет | Назначение |
 |-------|------------|

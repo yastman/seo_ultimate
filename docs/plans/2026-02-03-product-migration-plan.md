@@ -320,7 +320,7 @@ WORKFLOW:
 3. Створи маппинг TSV: product_id<TAB>name<TAB>old<TAB>new<TAB>reason
 4. Збережи в data/generated/mapping_W1.tsv
 
-ЛОГ: /home/user/projects/seo-ultimate/logs/W1-migration.log
+ЛОГ: /home/user/projects/llm-keywords-pipeline/logs/W1-migration.log
 Формат: [START/ANALYZE/COMPLETE] timestamp message
 
 НЕ делай git commit. НЕ генеруй SQL — тільки маппинг.'" Enter
@@ -347,7 +347,7 @@ WORKFLOW:
 3. Створи маппинг TSV
 4. Збережи в data/generated/mapping_W2.tsv
 
-ЛОГ: /home/user/projects/seo-ultimate/logs/W2-migration.log
+ЛОГ: /home/user/projects/llm-keywords-pipeline/logs/W2-migration.log
 
 НЕ делай git commit. НЕ генеруй SQL — тільки маппинг.'" Enter
 
@@ -372,7 +372,7 @@ WORKFLOW:
 - 468 (Мийка) → 469/470/471/472
 - 425 (Інтер\\'єр) → 427/428/429/431/434
 
-ЛОГ: /home/user/projects/seo-ultimate/logs/W3-migration.log
+ЛОГ: /home/user/projects/llm-keywords-pipeline/logs/W3-migration.log
 
 НЕ делай git commit. НЕ генеруй SQL — тільки маппинг.'" Enter
 ```

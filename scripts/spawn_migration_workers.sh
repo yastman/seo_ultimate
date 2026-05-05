@@ -26,7 +26,7 @@ WORKFLOW:
 3. Створи маппинг TSV: product_id	name	old	new	reason
 4. Збережи в data/generated/mapping_W1.tsv
 
-ЛОГ: /home/user/projects/seo-ultimate/logs/W1-migration.log
+ЛОГ: /home/user/projects/llm-keywords-pipeline/logs/W1-migration.log
 
 НЕ делай git commit. НЕ генеруй SQL.'
 PROMPT1
@@ -55,7 +55,7 @@ WORKFLOW:
 3. Створи маппинг TSV
 4. Збережи в data/generated/mapping_W2.tsv
 
-ЛОГ: /home/user/projects/seo-ultimate/logs/W2-migration.log
+ЛОГ: /home/user/projects/llm-keywords-pipeline/logs/W2-migration.log
 
 НЕ делай git commit. НЕ генеруй SQL.'
 PROMPT2
@@ -83,7 +83,7 @@ WORKFLOW:
 - 468 (Мийка) листові: 469/470/471/472
 - 425 (Інтерєр) листові: 427/428/429/431/434
 
-ЛОГ: /home/user/projects/seo-ultimate/logs/W3-migration.log
+ЛОГ: /home/user/projects/llm-keywords-pipeline/logs/W3-migration.log
 
 НЕ делай git commit. НЕ генеруй SQL.'
 PROMPT3

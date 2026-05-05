@@ -2,7 +2,7 @@
 
 import pytest
 
-from seo_ultimate.audit.coverage import (
+from llm_keywords_pipeline.audit.coverage import (
     audit_category_coverage,
     find_category_path,
     get_all_slugs,
