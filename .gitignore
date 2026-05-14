@@ -3,11 +3,11 @@
 
 # Logs & Temp
 *.log
-*.txt
-!requirements.txt
-!requirements-dev.txt
 temp/
 *.tmp
+tmp/
+*.bak
+*.orig
 
 # SQL Dumps & Backups
 data/dumps/*.sql
@@ -18,7 +18,10 @@ data/backups/
 # Generated artifacts (worker logs, audit reports)
 data/generated/audit-logs/
 reports/
-*.bak
+logs/
+artifacts/
+.signals/
+.codex/
 
 # Python
 __pycache__/
@@ -100,7 +103,6 @@ nul
 
 # Coverage
 coverage.json
-artifacts/
 qdrant_storage/
 
 # AI Tool configs (personal)

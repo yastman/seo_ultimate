@@ -1,6 +1,15 @@
 # PREPARE Prompt — Category Initialization
 
-**Sub-agent:** `general-purpose` (haiku)
+> Public reference template. This file documents the category-initialization stage of an
+> external LLM workflow. It is not directly executable from a fresh clone because it
+> requires project category data and an LLM orchestrator.
+
+**Purpose:** create the folder/data scaffold for one SEO category.
+**Inputs:** `slug`, category `name`, and priority `tier`.
+**Outputs:** category folders plus task/keyword JSON artifacts.
+**Required infrastructure:** compatible project data layout and external orchestration.
+
+**Suggested agent profile:** `general-purpose`
 **Этап:** 1/3 (PREPARE)
 **Задача:** Подготовить структуру и данные для категории
 
@@ -56,11 +65,14 @@ categories/{slug}/
 
 ### Step 3: Generate Keywords JSON
 
-Запустить скрипт парсинга:
+Запустить скрипт парсинга. В текущей структуре пакета используйте модули из
+`llm_keywords_pipeline`:
 
 ```bash
-source venv/bin/activate
-PYTHONPATH=. python3 scripts/parse_semantics_to_json.py {slug} {tier}
+uv run python -c "
+from llm_keywords_pipeline.extract.ru_keywords_list import ...
+# адаптируйте под нужный модуль пайплайна
+"
 ```
 
 **Output:** `categories/{slug}/data/{slug}.json`
@@ -87,8 +99,8 @@ PYTHONPATH=. python3 scripts/parse_semantics_to_json.py {slug} {tier}
 
 Кластеризация 52 ключей → 12 уникальных:
 
-```bash
-# Используйте seo-clean skill
+```
+# Используйте внутренние модули package для кластеризации
 # Input: {slug}.json (52 kw)
 # Output: {slug}_clean.json (12 kw)
 ```
@@ -100,16 +112,6 @@ PYTHONPATH=. python3 scripts/parse_semantics_to_json.py {slug} {tier}
 - 100% coverage вместо ~40%
 - Оптимальная density ~4%
 - Без дубликатов ключей
-
-### Step 5: Extract URLs (Optional)
-
-Если нужен анализ конкурентов:
-
-```bash
-python3 scripts/extract_competitor_urls_v2.py {slug}
-```
-
-**Output:** `categories/{slug}/data/{slug}_urls.txt`
 
 ---
 
@@ -130,10 +132,6 @@ Keywords Stats:
 - Total keywords: {count}
 - Total volume: {total_volume}
 
-URLs (optional):
-- Extracted: {url_count} URLs
-- File: categories/{slug}/data/{slug}_urls.txt
-
 Статус: stage=prepare completed
 Следующий этап: PRODUCE
 ```
@@ -146,15 +144,8 @@ URLs (optional):
 
 ```
 ❌ ERROR: CSV file not found
-Path: data/Структура Ultimate финал - Лист2.csv
+Path: data/keywords.csv
 Action: Check file path or download CSV
-```
-
-### Если venv не активирован
-
-```
-❌ ERROR: venv not activated
-Action: Run "source venv/bin/activate"
 ```
 
 ---
@@ -170,8 +161,6 @@ Action: Run "source venv/bin/activate"
 
 ---
 
-**Version:** 5.1
-**Spec:** SEO_MASTER.md v7.3
-**D+E Pattern:** Includes CLEAN step for_clean.json
+**Version:** 6.0 — public packaging update
+**D+E Pattern:** Includes CLEAN step for _clean.json
 **Model:** haiku (fast init)
-**Updated:** 2025-12-12

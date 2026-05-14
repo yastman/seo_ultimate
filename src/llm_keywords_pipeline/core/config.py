@@ -2,7 +2,7 @@
 """
 config.py — Unified Configuration (SSOT)
 
-Единый источник конфигурации для всех скриптов проекта.
+Единый источник конфигурации для модулей проекта.
 Заменяет разбросанные "магические числа" и дублирующиеся константы.
 
 Version: v8.5 (Google 2025 Approach)
@@ -15,14 +15,14 @@ from pathlib import Path
 # Project Paths
 # =============================================================================
 
-# Support both src layout and direct scripts/ execution
+# Support installed src layout and direct module execution.
 _FILE_DIR = Path(__file__).parent.resolve()
 if _FILE_DIR.name == "core" and _FILE_DIR.parent.name == "llm_keywords_pipeline":
     # src/llm_keywords_pipeline/core/ → go up 3 levels to project root
     # core → llm_keywords_pipeline → src → llm-keywords-pipeline (project root)
     PROJECT_ROOT = _FILE_DIR.parent.parent.parent
 else:
-    # scripts/ → go up 1 level
+    # Fallback for legacy direct execution.
     PROJECT_ROOT = _FILE_DIR.parent
 SCRIPT_DIR = PROJECT_ROOT / "scripts"  # Keep for compatibility
 CATEGORIES_DIR = PROJECT_ROOT / "categories"

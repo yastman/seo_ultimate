@@ -8,11 +8,7 @@ import json
 import sys
 from pathlib import Path
 
-# Import translation map from export script
-sys.path.insert(
-    0, str(Path(__file__).resolve().parents[1] / ".claude/skills/uk-keywords-export/scripts")
-)
-from export_uk_keywords import translate_keyword
+from llm_keywords_pipeline.extract.uk_keywords import translate_keyword
 
 
 def extract_from_list_or_dict(data_field) -> list[dict]:

@@ -5,8 +5,8 @@ from collections import OrderedDict
 from pathlib import Path
 
 # Paths
-BASE_DIR = Path("c:/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт")
-REGISTRY_FILE = BASE_DIR / "tasks/reports/KEYWORD_MIGRATION_REGISTRY.md"
+BASE_DIR = Path(__file__).resolve().parents[3]
+REGISTRY_FILE = BASE_DIR / "data/reports/KEYWORD_MIGRATION_REGISTRY.md"
 CSV_FILE = BASE_DIR / "Структура _Ultimate.csv"
 BACKUP_CSV = BASE_DIR / "Структура _Ultimate_backup.csv"
 

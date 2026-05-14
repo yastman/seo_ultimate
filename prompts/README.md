@@ -1,88 +1,42 @@
 # Prompts — Sub-agent Templates
 
-**[← Назад в корень](../README.md)**
+Prompt templates for the 3-stage LLM-driven content workflow. Most templates are in
+Russian because the primary target content is in Russian.
 
-**Sub-agents Architecture v5.0**
+**Note:** These prompts depend on external infrastructure (an LLM orchestrator, seed
+data sources, and a `categories/` data directory). They are preserved as public
+reference templates and are not directly runnable from a fresh clone.
 
-Prompt templates для 3-этапного workflow.
+These files are included to show the orchestration design behind the pipeline. They are
+not required for running the public test suite.
 
----
+## Structure
 
-## Структура
-
-| Файл | Этап | Sub-agent | Модель | Описание |
-|------|------|-----------|--------|----------|
-| **[prepare.md](prepare.md)** | PREPARE | `general-purpose` | haiku | Init + Data + URLs |
-| **[produce.md](produce.md)** | PRODUCE | `seo-content-writer` | sonnet | Content RU + Meta |
-| **[deliver.md](deliver.md)** | DELIVER | `seo-content-auditor` | sonnet | Validate + Package |
-
----
+| File                          | Stage     | Description                         |
+| ----------------------------- | --------- | ----------------------------------- |
+| **[prepare.md](prepare.md)**   | PREPARE   | Category init: folders, keywords     |
+| **[produce.md](produce.md)**   | PRODUCE   | Content generation (RU) + meta       |
+| **[deliver.md](deliver.md)**   | DELIVER   | Validation + packaging               |
 
 ## Workflow
 
 ```
 Orchestrator
-    ↓
-    ├─→ PREPARE (haiku) ────→ Folders + JSON
-    │
-    ├─→ PRODUCE (sonnet) ───→ Content + Meta
-    │
-    └─→ DELIVER (sonnet) ───→ Validation + Deliverables
+    ├──→ PREPARE  → Folders + JSON
+    ├──→ PRODUCE  → Content + Meta
+    └──→ DELIVER  → Validation + Deliverables
 ```
 
----
+## Parameters
 
-## Использование
+Each template accepts slug, category name, and tier as input placeholders (e.g.
+`{slug}`, `{tier}`). Replace them with actual values before dispatching the prompt
+to an LLM sub-agent.
 
-### Из Orchestrator (CLAUDE.md)
+## Limitations
 
-```python
-# Команда: "полный dlya-ruchnoy-moyki tier A"
-
-Task(
-  subagent_type="general-purpose",
-  model="haiku",
-  prompt=read("prompts/prepare.md").format(slug="dlya-ruchnoy-moyki", tier="A")
-)
-
-Task(
-  subagent_type="seo-content-writer",
-  model="sonnet",
-  prompt=read("prompts/produce.md").format(slug="dlya-ruchnoy-moyki", tier="A")
-)
-
-Task(
-  subagent_type="seo-content-auditor",
-  model="sonnet",
-  prompt=read("prompts/deliver.md").format(slug="dlya-ruchnoy-moyki", tier="A")
-)
-```
-
----
-
-## Спецификация
-
-Все промпты следуют **SEO_MASTER.md v7.3**:
-
-- Tier Targets (Chars, H2, FAQ, Density, Water, Nausea)
-- Commercial Markers (купить, цена, доставка)
-- Synonym Rotation (макс 2 повтора/параграф)
-- Anti-Fluff (запрещённые клише)
-- Tone: Expert & Direct
-
----
-
-## Преимущества Sub-agents
-
-| Преимущество | Эффект |
-|--------------|--------|
-| Изолированный контекст | ~70% экономия токенов |
-| Параллельное выполнение | Можно запускать stages независимо |
-| Специализация | Каждый агент — свой SSOT |
-| Модульность | Легко обновить один prompt |
-
----
-
-**Version:** 5.0
-**Updated:** 2025-12-11
-**Spec:** SEO_MASTER.md v7.3
+- The templates reference pipeline modules (e.g. `validate.content`) that live in
+  `src/llm_keywords_pipeline/`. In the current package layout, these are importable
+  Python modules, not standalone command files.
+- Some template references to `CONTENT_GUIDE.md` and spec versions are historical
+  and have no corresponding files in this repository. Adapt as needed.

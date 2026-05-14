@@ -1,4 +1,4 @@
-"""Unit tests for scripts/keyword_utils.py"""
+"""Unit tests for llm_keywords_pipeline.core.keywords module."""
 
 import pytest
 

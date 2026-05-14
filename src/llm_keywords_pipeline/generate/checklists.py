@@ -2,7 +2,7 @@
 """
 generate_checklists.py
 
-Generates tasks/categories/*.md tasks from data/STRUCTURE.md.
+Generates data/tasks/categories/*.md task files from data/STRUCTURE.md.
 Dynamically parses the structure and keywords.
 
 Modes:
@@ -11,7 +11,7 @@ Modes:
            (Note: Currently --sync logic re-generates MASTER and PIPELINE stats, but for task files,
             it respects existing [x] if we implemented parsing, but for now specific instruction is:
             # Только обновить статусы (проверить реальные файлы) -> update MASTER/PIPELINE, maybe leave tasks alone or update status table header?
-            For simplicity and based on "Aktualizatsiya tasks", --reset is the primary "rebuild" mode.
+            For simplicity, --reset is the primary "rebuild" mode.
             I will implement --sync to mostly update MASTER/PIPELINE and console output).
 """
 
@@ -85,9 +85,9 @@ def slugify(text):
 # ============================================================================
 BASE_DIR = Path(__file__).resolve().parent.parent
 STRUCTURE_FILE = BASE_DIR / "data/STRUCTURE.md"
-TASKS_DIR = BASE_DIR / "tasks/categories"
-MASTER_CHECKLIST_FILE = BASE_DIR / "tasks/MASTER_CHECKLIST.md"
-PIPELINE_STATUS_FILE = BASE_DIR / "tasks/PIPELINE_STATUS.md"
+TASKS_DIR = BASE_DIR / "data/tasks/categories"
+MASTER_CHECKLIST_FILE = BASE_DIR / "data/tasks/MASTER_CHECKLIST.md"
+PIPELINE_STATUS_FILE = BASE_DIR / "data/tasks/PIPELINE_STATUS.md"
 
 
 # ============================================================================
@@ -359,7 +359,7 @@ python3 -c "import json; json.load(open('categories/{slug}/data/{slug}_clean.jso
 
 ### Meta Validation
 ```bash
-python3 scripts/validate_meta.py categories/{slug}/meta/{slug}_meta.json
+uv run python -m llm_keywords_pipeline.validate.meta categories/{slug}/meta/{slug}_meta.json
 ```
 
 ---
@@ -406,7 +406,7 @@ grep -c "^## Block" categories/{slug}/research/RESEARCH_DATA.md
 
 ### Content Validation
 ```bash
-python3 scripts/validate_content.py categories/{slug}/content/{slug}_ru.md "{{keyword}}" --mode seo
+uv run python -m llm_keywords_pipeline.validate.content categories/{slug}/content/{slug}_ru.md "{{keyword}}" --mode seo
 ```
 
 ---

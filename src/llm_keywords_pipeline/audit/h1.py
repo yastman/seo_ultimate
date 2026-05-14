@@ -8,7 +8,7 @@ Usage:
     uv run python -m llm_keywords_pipeline.audit.h1 --lang uk
     uv run python -m llm_keywords_pipeline.audit.h1 --lang ru
     uv run python -m llm_keywords_pipeline.audit.h1 --lang uk --json
-    uv run python -m llm_keywords_pipeline.audit.h1 --lang uk --csv > reports/h1_audit_uk.csv
+    uv run python -m llm_keywords_pipeline.audit.h1 --lang uk --csv > artifacts/h1_audit_uk.csv
     uv run python -m llm_keywords_pipeline.audit.h1 --lang uk --slug aktivnaya-pena
 """
 

@@ -1,14 +1,12 @@
-# Development dependencies
-# Install: pip install -r requirements-dev.txt
+# Compatibility snapshot for pip-based development environments.
+# The canonical dependency source is pyproject.toml + uv.lock.
 
-# Testing
+-r requirements.txt
+
 pytest>=9.0
 pytest-cov>=7.0
-pytest-xdist[psutil]>=3.5  # parallel test execution
-
-# Code quality
-ruff>=0.8.0
-mypy>=1.0
-
-# Pre-commit hooks
+pytest-xdist>=3.5
+ruff>=0.14
+mypy>=1.18
+mysql-connector-python>=9.0
 pre-commit>=4.0

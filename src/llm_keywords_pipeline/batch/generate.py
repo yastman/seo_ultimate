@@ -17,12 +17,12 @@ Workflow per category:
 4. If FAIL → retry with fixes
 
 Usage:
-    python3 scripts/batch_generate.py --list              # Show all categories
-    python3 scripts/batch_generate.py --analyze-all       # Analyze all pending
-    python3 scripts/batch_generate.py <slug>              # Process single category
-    python3 scripts/batch_generate.py --all               # Process all categories
-    python3 scripts/batch_generate.py --pending           # Process only pending
-    python3 scripts/batch_generate.py --resume            # Resume from last failure
+    uv run python -m llm_keywords_pipeline.batch.generate --list
+    uv run python -m llm_keywords_pipeline.batch.generate --analyze-all
+    uv run python -m llm_keywords_pipeline.batch.generate <slug>
+    uv run python -m llm_keywords_pipeline.batch.generate --all
+    uv run python -m llm_keywords_pipeline.batch.generate --pending
+    uv run python -m llm_keywords_pipeline.batch.generate --resume
 """
 
 import json
@@ -42,16 +42,12 @@ TASKS_DIR = PROJECT_ROOT / "data" / "tasks"
 BATCH_LOG = TASKS_DIR / "batch_log.json"
 SEMANTICS_CSV = PROJECT_ROOT / "data" / "Структура  Ultimate финал - Лист2.csv"
 
-# Import from seo_utils (SSOT)
 try:
-    from scripts.seo_utils import L3_TO_SLUG, SLUG_TO_L3, slugify
+    from llm_keywords_pipeline.core.seo import L3_TO_SLUG, SLUG_TO_L3, slugify
 except ImportError:
-    try:
-        from llm_keywords_pipeline.core.seo import L3_TO_SLUG, SLUG_TO_L3, slugify
-    except ImportError:
-        print("Warning: seo_utils not found, using fallback")
-        L3_TO_SLUG = {}
-        SLUG_TO_L3 = {}
+    print("Warning: SEO utilities not found, using fallback")
+    L3_TO_SLUG = {}
+    SLUG_TO_L3 = {}
 
 # =============================================================================
 # Batch Log Management
@@ -305,11 +301,7 @@ def extract_issues_from_validation(validation: dict) -> list[str]:
         water = quality.get("water", {})
         nausea = quality.get("nausea_classic", {})
 
-        # Water/Nausea thresholds (SSOT)
-        try:
-            from scripts.config import QUALITY_THRESHOLDS
-        except ImportError:
-            from llm_keywords_pipeline.core.config import QUALITY_THRESHOLDS
+        from llm_keywords_pipeline.core.config import QUALITY_THRESHOLDS
 
         water_value = water.get("value")
         if water_value is not None and water_value > QUALITY_THRESHOLDS["water_target_max"]:

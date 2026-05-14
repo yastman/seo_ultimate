@@ -14,11 +14,11 @@ validate_meta.py — Meta Tags Validation (v17.0)
 - Description містить "опт"
 
 Usage:
-    python3 scripts/validate_meta.py <meta.json>
-    python3 scripts/validate_meta.py <meta.json> --keywords <keywords.json>
-    python3 scripts/validate_meta.py --all                    # Validate all categories
-    python3 scripts/validate_meta.py --all --fix              # Auto-fix issues
-    python3 scripts/validate_meta.py <meta.json> --json       # JSON output
+    uv run python -m llm_keywords_pipeline.validate.meta <meta.json>
+    uv run python -m llm_keywords_pipeline.validate.meta <meta.json> --keywords <keywords.json>
+    uv run python -m llm_keywords_pipeline.validate.meta --all
+    uv run python -m llm_keywords_pipeline.validate.meta --all --fix
+    uv run python -m llm_keywords_pipeline.validate.meta <meta.json> --json
 
 Exit codes:
     0 = PASS

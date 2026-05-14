@@ -1,5 +1,6 @@
 [run]
-source = scripts
+source = src/llm_keywords_pipeline
+branch = True
 data_file = artifacts/pytest/.coverage
 omit =
     */tests/*

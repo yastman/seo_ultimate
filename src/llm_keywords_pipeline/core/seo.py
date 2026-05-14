@@ -48,15 +48,14 @@ from llm_keywords_pipeline.core.keywords import (
     get_stoplist_phrases,
 )
 
-# URL utilities - re-export for backwards compatibility
-# TODO: migrate scripts/utils/url.py to llm_keywords_pipeline.core.url
-try:
-    from scripts.utils.url import is_blacklisted_domain  # noqa: F401
-except ImportError:
-    # Fallback if scripts not in path
-    def is_blacklisted_domain(url: str) -> bool:  # type: ignore
-        """Stub for URL blacklist check."""
-        return False
+
+def is_blacklisted_domain(url: str) -> bool:
+    """Return whether a URL is blocked by domain policy.
+
+    The public package does not ship a domain blacklist. Keep this compatibility hook
+    deterministic and conservative until a first-class URL policy module is added.
+    """
+    return False
 
 
 def get_adaptive_coverage_target(keywords_count: int) -> int:
@@ -68,14 +67,14 @@ def get_adaptive_coverage_target(keywords_count: int) -> int:
 # SEO Quality Thresholds (SSOT - Imported from config.py)
 # ============================================================================
 
-# QUALITY_THRESHOLDS is imported from scripts.config
+# QUALITY_THRESHOLDS is imported from llm_keywords_pipeline.core.config.
 
 
 # ============================================================================
 # L3 Category Mapping (SSOT - avoid duplication)
 # ============================================================================
 
-# RU mappings are imported from scripts.config as L3_TO_SLUG and SLUG_TO_L3
+# RU mappings are imported from llm_keywords_pipeline.core.config.
 
 # UK mappings
 L3_TO_SLUG_UK = {
@@ -93,7 +92,7 @@ L3_TO_SLUG_UK = {
 SLUG_TO_L3_UK = {v: k for k, v in L3_TO_SLUG_UK.items()}
 
 # Commercial modifiers by language
-# RU modifiers are imported from scripts.config as COMMERCIAL_MODIFIERS
+# RU modifiers are imported from llm_keywords_pipeline.core.config.
 
 COMMERCIAL_MODIFIERS_UK = [
     "купити",
@@ -344,10 +343,10 @@ def rebuild_document(yaml_text: str, body_text: str) -> str:
 
 
 # ============================================================================
-# Text Normalization & Counting (SSOT from scripts/text_utils.py)
+# Text Normalization & Counting
 # ============================================================================
 # clean_markdown, normalize_text, count_words, count_chars_no_spaces
-# are imported from scripts.text_utils at the top of this file.
+# are implemented in package modules and imported at the top of this file.
 
 
 # ============================================================================

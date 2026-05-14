@@ -1,60 +1,29 @@
 # Test Suite
 
-**[← Назад в корень](../README.md)**
+Automated tests for `llm-keywords-pipeline` use `pytest`.
 
-Автоматические тесты для проверки скриптов пайплайна.
-Используется `pytest`.
+The source of truth for test strategy and commands is [../docs/testing.md](../docs/testing.md).
 
-## 📂 Структура
+Default checks:
 
+```bash
+uv sync
+uv run ruff check src tests
+uv run pytest
 ```
+
+Test layout:
+
+```text
 tests/
-├── unit/          # Юнит-тесты (изолированные функции)
-├── integration/   # Интеграционные (файлы, базы данных)
-├── e2e/           # End-to-End (полные сценарии)
-├── fixtures/      # Тестовые данные (CSV, JSON, MD)
-├── helpers/       # Вспомогательные утилиты для тестов
-└── conftest.py    # Глобальные фикстуры
+├── unit/          # isolated function tests
+├── integration/   # file and pipeline interactions
+├── e2e/           # end-to-end scenarios when available
+├── smoke/         # broad sanity checks
+├── fixtures/      # public synthetic test data
+├── helpers/       # test utilities
+└── conftest.py    # shared fixtures
 ```
 
-## 🚀 Запуск тестов
-
-### 1. Запуск всех тестов
-
-```bash
-python -m pytest
-```
-
-### 2. Запуск по типам
-
-```bash
-python -m pytest tests/unit          # Только быстрые unit-тесты
-python -m pytest tests/integration   # Интеграционные
-python -m pytest -m "not slow"       # Пропустить медленные тесты
-```
-
-### 3. Проверка покрытия (Coverage)
-
-```bash
-python -m pytest --cov=scripts --cov-report=html
-# Отчет будет в artifacts/pytest/htmlcov/index.html
-```
-
-## 🛠️ Разработка тестов
-
-При написании новых тестов придерживайтесь гайдов в `tasks/TZ_TEST_COVERAGE.md`.
-
-**Основные принципы:**
-
--   **Unit:** Тестируйте одну функцию в изоляции. Мокайте внешние зависимости.
--   **Integration:** Проверяйте взаимодействие скрипта с файловой системой. Используйте `tmp_path` фикстуру.
--   **E2E:** Проверяйте полный цикл (от CSV до генерации контента).
-
-## 🧩 Фикстуры
-
-Общие фикстуры находятся в `conftest.py`.
-Тестовые данные:
-
--   `fixtures/csv/` - образцы структуры
--   `fixtures/json/` - образцы метаданных
--   `fixtures/md/` - образцы контента
+Some tests are data-required and may skip when private category/content datasets are not
+available. Public tests should prefer fixtures and `tmp_path`.

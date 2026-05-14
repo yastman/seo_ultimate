@@ -3,7 +3,7 @@ import os
 import re
 
 # Constants
-SOURCE_FILE = "tasks/reports/STRUCTURE_TREE.md"
+SOURCE_FILE = "data/reports/STRUCTURE_TREE.md"
 OUTPUT_FILE = "data/catalog_structure.json"
 UK_OUTPUT_FILE = "uk/data/catalog_structure.json"
 

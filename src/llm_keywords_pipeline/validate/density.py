@@ -11,10 +11,10 @@ check_keyword_density.py — Keyword Density & Spam Checker
 - Stem-based анализ (аккумулятор* = аккумулятор, аккумуляторная, аккумуляторный, ...)
 
 Usage:
-    python3 scripts/check_keyword_density.py <file.md>
-    python3 scripts/check_keyword_density.py <file.md> --with-keywords <slug>
-    python3 scripts/check_keyword_density.py <file.md> --top 20
-    python3 scripts/check_keyword_density.py <file.md> --json
+    uv run python -m llm_keywords_pipeline.validate.density <file.md>
+    uv run python -m llm_keywords_pipeline.validate.density <file.md> --with-keywords <slug>
+    uv run python -m llm_keywords_pipeline.validate.density <file.md> --top 20
+    uv run python -m llm_keywords_pipeline.validate.density <file.md> --json
 
 Exit codes:
     0 = OK (no spam detected)

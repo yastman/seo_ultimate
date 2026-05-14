@@ -1,7 +1,30 @@
 [project]
 name = "llm-keywords-pipeline"
 version = "0.1.0"
+description = "Python toolkit for automating SEO keyword, content, and metadata validation workflows."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "yastman" },
+]
 requires-python = ">=3.12"
+keywords = [
+    "seo",
+    "content-automation",
+    "keywords",
+    "llm",
+    "nlp",
+    "pytest",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Software Development :: Quality Assurance",
+]
 dependencies = [
     "pyyaml>=6.0",
     "tqdm>=4.67",
@@ -36,6 +59,11 @@ test = [
     "pytest-xdist>=3.5",
 ]
 
+[project.urls]
+Homepage = "https://github.com/yastman/llm-keywords-pipeline"
+Repository = "https://github.com/yastman/llm-keywords-pipeline"
+Issues = "https://github.com/yastman/llm-keywords-pipeline/issues"
+
 [tool.uv]
 default-groups = ["nlp", "dev", "test"]
 
@@ -44,7 +72,6 @@ line-length = 100
 target-version = "py312"
 extend-exclude = [
     ".github_repos",
-    ".claude",
     "archive",
 ]
 
@@ -54,16 +81,11 @@ ignore = ["E501"]
 
 [tool.ruff.lint.per-file-ignores]
 "archive/*" = ["E402", "E722", "E741", "E721", "F401", "F811", "F841", "B007", "B905"]
-".claude/examples-anthropic/*" = ["E402", "E722", "E741", "E721", "B007", "B905"]
 ".github_repos/*" = ["E402", "E722", "E741", "E721", "F401", "F811", "F841", "B007", "B905"]
 "tests/*" = ["E402"]
 
 [tool.ruff.format]
 quote-style = "double"
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-v --tb=short"
 
 [tool.mypy]
 python_version = "3.12"
@@ -83,13 +105,6 @@ strict_equality = true
 [[tool.mypy.overrides]]
 module = ["natasha.*", "pymorphy2.*", "pandas.*", "mysql.connector.*", "markdown.*"]
 ignore_missing_imports = true
-
-[tool.coverage.run]
-source = ["src/llm_keywords_pipeline"]
-branch = true
-
-[tool.coverage.report]
-exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:"]
 
 [build-system]
 requires = ["hatchling"]

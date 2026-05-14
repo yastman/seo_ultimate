@@ -21,9 +21,9 @@ Output:
 - LLM решает длину контента на основе семантической глубины
 
 Usage:
-    python3 scripts/analyze_category.py <slug>
-    python3 scripts/analyze_category.py <slug> --json
-    python3 scripts/analyze_category.py --list
+    uv run python -m llm_keywords_pipeline.analyze.category <slug>
+    uv run python -m llm_keywords_pipeline.analyze.category <slug> --json
+    uv run python -m llm_keywords_pipeline.analyze.category --list
 """
 
 import csv
@@ -138,17 +138,17 @@ def load_keywords_for_slug(slug: str, lang: str = "ru") -> tuple[list[dict], str
     return keywords, "csv", None
 
 
-# L3 name to slug mapping - imported from seo_utils.py (SSOT)
+# L3 name to slug mapping from package config.
 try:
-    from scripts.seo_utils import L3_TO_SLUG, SLUG_TO_L3, get_commercial_modifiers, get_l3_slug
+    from llm_keywords_pipeline.core.seo import (
+        L3_TO_SLUG,
+        SLUG_TO_L3,
+        get_commercial_modifiers,
+        get_l3_slug,
+    )
 except ImportError:
     try:
-        from llm_keywords_pipeline.core.seo import (
-            L3_TO_SLUG,
-            SLUG_TO_L3,
-            get_commercial_modifiers,
-            get_l3_slug,
-        )
+        from llm_keywords_pipeline.core.config import L3_TO_SLUG, SLUG_TO_L3
     except ImportError:
         # Fallback for standalone execution
         L3_TO_SLUG = {
@@ -217,9 +217,10 @@ COMMERCIAL_MODIFIERS_UK = get_commercial_modifiers("uk")
 
 # Coverage targets (SSOT)
 try:
-    from scripts.config import get_guidelines_coverage_target
-except ImportError:
     from llm_keywords_pipeline.core.config import get_guidelines_coverage_target
+except ImportError:
+    def get_guidelines_coverage_target(keywords_count: int) -> int:
+        return 70 if keywords_count <= 5 else 60 if keywords_count <= 15 else 50
 
 
 # =============================================================================
@@ -497,9 +498,9 @@ def analyze_category(slug: str, lang: str = "ru") -> dict:
     """
     # Get L3 name for display (use correct mapping for lang)
     try:
-        from scripts.seo_utils import get_mappings_for_lang
-    except ImportError:
         from llm_keywords_pipeline.core.seo import get_mappings_for_lang
+    except ImportError:
+        return None
     _, slug_to_l3 = get_mappings_for_lang(lang)
     l3_name = slug_to_l3.get(slug, slug)
 
@@ -630,15 +631,15 @@ def list_all_categories():
 def main():
     if len(sys.argv) < 2:
         print("Usage:")
-        print("  python3 scripts/analyze_category.py <slug>")
-        print("  python3 scripts/analyze_category.py <slug> --json")
-        print("  python3 scripts/analyze_category.py <slug> --lang uk")
-        print("  python3 scripts/analyze_category.py --list")
+        print("  uv run python -m llm_keywords_pipeline.analyze.category <slug>")
+        print("  uv run python -m llm_keywords_pipeline.analyze.category <slug> --json")
+        print("  uv run python -m llm_keywords_pipeline.analyze.category <slug> --lang uk")
+        print("  uv run python -m llm_keywords_pipeline.analyze.category --list")
         print()
         print("Example:")
-        print("  python3 scripts/analyze_category.py antibitum")
-        print("  python3 scripts/analyze_category.py aktivnaya-pena --json")
-        print("  python3 scripts/analyze_category.py aktivnaya-pena --lang uk --json")
+        print("  uv run python -m llm_keywords_pipeline.analyze.category antibitum")
+        print("  uv run python -m llm_keywords_pipeline.analyze.category aktivnaya-pena --json")
+        print("  uv run python -m llm_keywords_pipeline.analyze.category aktivnaya-pena --lang uk --json")
         sys.exit(1)
 
     if sys.argv[1] == "--list":

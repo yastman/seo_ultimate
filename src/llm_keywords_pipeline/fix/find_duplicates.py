@@ -7,9 +7,9 @@
 3. Ключи в неправильных категориях (по паттернам)
 
 Использование:
-    python scripts/find_duplicates.py
-    python scripts/find_duplicates.py --verbose
-    python scripts/find_duplicates.py --category aktivnaya-pena
+    uv run python -m llm_keywords_pipeline.fix.find_duplicates
+    uv run python -m llm_keywords_pipeline.fix.find_duplicates --verbose
+    uv run python -m llm_keywords_pipeline.fix.find_duplicates --category aktivnaya-pena
 """
 
 import argparse

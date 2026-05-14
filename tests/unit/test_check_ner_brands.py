@@ -1,10 +1,7 @@
-import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
-
-# Add scripts directory to path
-sys.path.append(str(Path(__file__).parent.parent / "scripts"))
 
 from llm_keywords_pipeline.audit.ner_brands import (
     analyze_file,
@@ -96,31 +93,24 @@ Frontmatter
         self.assertIn("Bold text", cleaned)
 
     def test_analyze_file_safe_pass(self):
-        # Create a clean temporary file
-        temp_file = Path("temp_safe_test.md")
-        temp_file.write_text("Хороший текст про полировку автомобиля. Без брендов.", encoding="utf-8")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            temp_file = Path(tmpdir) / "safe.md"
+            temp_file.write_text("Хороший текст про полировку автомобиля. Без брендов.", encoding="utf-8")
 
-        try:
-            # Mock print to suppress output
             with patch("builtins.print"):
                 exit_code = analyze_file(str(temp_file))
-            self.assertEqual(exit_code, 0)
-        finally:
-            if temp_file.exists():
-                temp_file.unlink()
+
+        self.assertEqual(exit_code, 0)
 
     def test_analyze_file_warning(self):
-        # Create a file with forbidden content
-        temp_file = Path("temp_bad_test.md")
-        temp_file.write_text("Мы продаем Karcher в Киеве. В заключение...", encoding="utf-8")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            temp_file = Path(tmpdir) / "warning.md"
+            temp_file.write_text("Мы продаем Karcher в Киеве. В заключение...", encoding="utf-8")
 
-        try:
             with patch("builtins.print"):
                 exit_code = analyze_file(str(temp_file))
-            self.assertEqual(exit_code, 1)  # Expect warning
-        finally:
-            if temp_file.exists():
-                temp_file.unlink()
+
+        self.assertEqual(exit_code, 1)
 
 
 if __name__ == "__main__":

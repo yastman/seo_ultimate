@@ -4,7 +4,7 @@ Batch generate meta tags for all categories.
 Formula: {ВЧ Ключ} — купить, цены | Ultimate
 
 Usage:
-    python scripts/generate_all_meta.py [--dry-run] [--force] [--lang ru|uk]
+    uv run python -m llm_keywords_pipeline.generate.all_meta [--dry-run] [--force] [--lang ru|uk]
 
 Options:
     --dry-run   Show what would be generated without writing files

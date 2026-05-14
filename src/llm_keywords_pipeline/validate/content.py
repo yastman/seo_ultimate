@@ -12,11 +12,11 @@ validate_content.py — Content Validation (Google 2025 Approach)
 - Primary keyword обязателен в H1 + intro
 
 Usage:
-    python3 scripts/validate_content.py <file.md> "<primary_keyword>"
-    python3 scripts/validate_content.py <file.md> "<primary_keyword>" --json
-    python3 scripts/validate_content.py <file.md> --with-analysis <slug>
-    python3 scripts/validate_content.py <file.md> "<keyword>" --no-semantic  # exact match only
-    python3 scripts/validate_content.py <file.md> "<keyword>" --mode seo     # simplified SEO mode
+    uv run python -m llm_keywords_pipeline.validate.content <file.md> "<primary_keyword>"
+    uv run python -m llm_keywords_pipeline.validate.content <file.md> "<primary_keyword>" --json
+    uv run python -m llm_keywords_pipeline.validate.content <file.md> --with-analysis <slug>
+    uv run python -m llm_keywords_pipeline.validate.content <file.md> "<keyword>" --no-semantic
+    uv run python -m llm_keywords_pipeline.validate.content <file.md> "<keyword>" --mode seo
 
 Exit codes:
     0 = PASS (all checks passed)
@@ -54,16 +54,16 @@ from llm_keywords_pipeline.core.text import (
     extract_intro,
 )
 
-# Audit modules (not yet migrated - fallback to scripts/)
+# Optional audit modules.
 try:
-    from scripts.check_water_natasha import (
+    from llm_keywords_pipeline.audit.water import (
         calculate_metrics_from_text as calculate_water_and_nausea,
     )
 except ImportError:
     calculate_water_and_nausea = None
 
 try:
-    from scripts.check_ner_brands import check_blacklist
+    from llm_keywords_pipeline.audit.ner_brands import check_blacklist
 except ImportError:
     check_blacklist = None
 
@@ -1295,7 +1295,7 @@ def main():
         if idx + 1 < len(sys.argv):
             slug = sys.argv[idx + 1]
             try:
-                from scripts.analyze_category import analyze_category
+                from llm_keywords_pipeline.analyze.category import analyze_category
 
                 try:
                     analysis = analyze_category(slug, lang=lang)

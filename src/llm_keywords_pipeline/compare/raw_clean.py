@@ -6,9 +6,9 @@ compare_raw_clean.py — Сравнение CSV семантики с _clean.jso
 Показывает расхождения: добавленные/удалённые ключи, изменённые volumes.
 
 Usage:
-    python3 scripts/compare_raw_clean.py              # Показать все расхождения
-    python3 scripts/compare_raw_clean.py --fix        # Автоматически исправить
-    python3 scripts/compare_raw_clean.py aktivnaya-pena  # Проверить одну категорию
+    uv run python -m llm_keywords_pipeline.compare.raw_clean
+    uv run python -m llm_keywords_pipeline.compare.raw_clean --fix
+    uv run python -m llm_keywords_pipeline.compare.raw_clean aktivnaya-pena
 """
 
 import csv

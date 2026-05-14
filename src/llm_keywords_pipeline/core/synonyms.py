@@ -8,8 +8,8 @@ Combines functionality of:
 - propose_synonyms.py (Proposal)
 
 Usage:
-    python scripts/synonym_tools.py analyze [--fix]
-    python scripts/synonym_tools.py report
+    uv run python -m llm_keywords_pipeline.core.synonyms analyze [--fix]
+    uv run python -m llm_keywords_pipeline.core.synonyms report
 """
 
 import argparse

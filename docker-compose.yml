@@ -1,28 +1,25 @@
-version: '3.8'
-
 services:
   db:
     image: mariadb:10.11
-    container_name: ultimate_db
+    container_name: demo_db
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: yastman_test
-      MYSQL_USER: ultimate
-      MYSQL_PASSWORD: ultimate123
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-demo_root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-demo_db}
+      MYSQL_USER: ${MYSQL_USER:-demo_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-demo_pass}
     ports:
-      - "3306:3306"
+      - "${DB_BIND:-127.0.0.1}:${DB_PORT:-3306}:3306"
     volumes:
-      - ./ultimate_net_ua_backup.sql:/docker-entrypoint-initdb.d/backup.sql
       - db_data:/var/lib/mysql
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
   adminer:
-    image: adminer:latest
-    container_name: ultimate_adminer
+    image: adminer:5.3.0
+    container_name: demo_adminer
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "${ADMINER_BIND:-127.0.0.1}:${ADMINER_PORT:-8080}:8080"
     depends_on:
       - db
 

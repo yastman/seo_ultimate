@@ -4,15 +4,17 @@ import sys
 
 def check_structure():
     required_paths = [
+        "src/llm_keywords_pipeline",
         "tests/unit",
         "tests/integration",
         "tests/e2e",
+        "tests/smoke",
         "tests/fixtures",
         "tests/helpers",
         "tests/conftest.py",
+        "docs/testing.md",
         "pytest.ini",
-        "tasks/TZ_TEST_COVERAGE.md",
-        "tasks/TEST_COVERAGE_MATRIX.md",
+        ".coveragerc",
     ]
 
     missing = []
@@ -21,10 +23,10 @@ def check_structure():
             missing.append(path)
 
     if missing:
-        print(f"❌ Missing paths: {missing}")
+        print(f"Missing paths: {missing}")
         return False
 
-    print("✅ Directory structure is correct")
+    print("Directory structure is correct")
     return True
 
 
@@ -32,10 +34,10 @@ def check_imports():
     try:
         import pytest
 
-        print(f"✅ Pytest available: {pytest.__version__}")
+        print(f"Pytest available: {pytest.__version__}")
         return True
     except ImportError:
-        print("⚠️ Pytest not installed in current environment")
+        print("Pytest not installed in current environment")
         return False
 
 

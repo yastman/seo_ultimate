@@ -10,7 +10,7 @@ extract_uk_keywords_list.py — Извлечение всех UK ключей и
 Сохраняет уникальные ключи в data/generated/UK_KEYWORDS.md
 
 Usage:
-    python3 scripts/extract_uk_keywords_list.py
+    uv run python -m llm_keywords_pipeline.extract.uk_keywords_list
 """
 
 import json

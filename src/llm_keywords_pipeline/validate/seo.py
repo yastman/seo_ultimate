@@ -8,7 +8,7 @@ SEO Structure Check — проверка структурных SEO-требов
 3. Main keyword frequency (3-5 раз по тексту, не больше - антиспам)
 
 Usage:
-    python3 scripts/check_seo_structure.py <file.md> "<main_keyword>"
+    uv run python -m llm_keywords_pipeline.validate.seo <file.md> "<main_keyword>"
 
 Exit codes:
     0 - PASS

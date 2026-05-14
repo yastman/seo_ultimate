@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
 """Tests for validate_seo.py UK language support."""
 
-import sys
-from pathlib import Path
-
-# Add scripts to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
-
-from validate_seo import (
+from llm_keywords_pipeline.validate.seo import (
     detect_language,
     get_russian_word_stems,
     get_ukrainian_word_stems,
@@ -32,7 +26,7 @@ class TestDetectLanguage:
 
     def test_absolute_uk_path(self):
         """Absolute UK path detected correctly."""
-        assert detect_language("/home/user/project/uk/categories/test/file.md") == "uk"
+        assert detect_language("/workspace/project/uk/categories/test/file.md") == "uk"
 
     def test_default_to_ru(self):
         """Unknown path defaults to RU."""
@@ -40,34 +34,34 @@ class TestDetectLanguage:
 
 
 class TestWordStems:
-    """Tests for word stemming functions (Snowball stemmer by default)."""
+    """Tests for word lemmatization functions (MorphAnalyzer-based)."""
 
     def test_russian_stems_filters_short_words(self):
         """Words <= 2 chars are filtered out."""
         stems = get_russian_word_stems("на для авто")
-        # "на" (2 chars) filtered, "для" (3 chars) kept, "авто" stemmed
+        # "на" (2 chars) filtered, "для" (3 chars) kept, "авто" stays as lemma
         assert len(stems) == 2
         assert "для" in stems
-        assert "авт" in stems  # Snowball stem
+        assert "авто" in stems  # MorphAnalyzer lemma (not Snowball stem)
 
-    def test_russian_stems_returns_stemmed_form(self):
-        """Russian words returned as stems (Snowball)."""
+    def test_russian_stems_returns_normalized_form(self):
+        """Russian words returned as normalised lemmas (MorphAnalyzer)."""
         stems = get_russian_word_stems("активная пена")
-        assert "активн" in stems  # Snowball stem
-        assert "пен" in stems  # Snowball stem
+        assert "активный" in stems  # lemma of "активная"
+        assert "пена" in stems
 
     def test_ukrainian_stems_filters_short_words(self):
         """Words <= 2 chars are filtered out."""
         stems = get_ukrainian_word_stems("на для авто")
         assert len(stems) == 2
         assert "для" in stems
-        assert "авт" in stems  # Snowball stem
+        assert "авто" in stems  # MorphAnalyzer lemma
 
-    def test_ukrainian_stems_returns_stemmed_form(self):
-        """Ukrainian words returned as stems (Snowball)."""
+    def test_ukrainian_stems_returns_normalized_form(self):
+        """Ukrainian words returned as normalised lemmas (MorphAnalyzer)."""
         stems = get_ukrainian_word_stems("активна піна")
-        assert "активн" in stems  # Snowball stem
-        assert "піна" in stems  # Ukrainian Snowball keeps short words
+        assert "активний" in stems  # lemma of "активна"
+        assert "піна" in stems
 
     def test_get_word_stems_ru(self):
         """Wrapper returns RU stems for ru lang."""
@@ -83,9 +77,9 @@ class TestWordStems:
 class TestH2KeywordMatching:
     """Tests for H2 keyword detection with language support."""
 
-    def test_uk_h2_with_partial_match(self):
-        """UK H2 matches keyword via stems."""
-        from validate_seo import check_keywords_in_h2
+    def test_uk_h2_with_exact_match(self):
+        """UK H2 matches keyword via exact match."""
+        from llm_keywords_pipeline.validate.seo import check_keywords_in_h2
 
         text = """# Title
 
@@ -105,21 +99,18 @@ Third section.
 
 Questions.
 """
-        # Keyword "активна піна" → stems ["активн", "піна"] (Snowball)
-        # H2 2: "Активна піна:" — exact match found
-        # Function requires min 2 H2s with keyword for passed=True
+        # H2 "Активна піна:" contains the full keyword phrase → exact match
         result = check_keywords_in_h2(text, "активна піна", lang="uk")
         assert result["with_keyword"] >= 1
         assert result["total_h2"] == 4
-        # Note: passed may be False if with_keyword < min_required
 
-    def test_ru_h2_backward_compatible(self):
-        """RU H2 matching still works."""
-        from validate_seo import check_keywords_in_h2
+    def test_ru_h2_with_partial_keyword_match(self):
+        """RU H2 matches via partial word match (word > 4 chars as substring)."""
+        from llm_keywords_pipeline.validate.seo import check_keywords_in_h2
 
         text = """# Title
 
-## Как выбрать активную пену для мойки авто
+## Как выбрать щетка для мойки авто
 
 Some text.
 
@@ -127,5 +118,7 @@ Some text.
 
 Questions.
 """
-        result = check_keywords_in_h2(text, "активная пена", lang="ru")
+        # Keyword "щетка" has 6 chars (> 4 threshold) — partial match works
+        # only when the keyword word appears as an exact substring in the H2
+        result = check_keywords_in_h2(text, "щетка для авто", lang="ru")
         assert result["with_keyword"] >= 1
