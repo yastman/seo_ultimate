@@ -73,17 +73,22 @@ raw JSON, потом CSV fallback.
 Утилиты synonym cleanup нормализуют близкие варианты, выбирают лучший ключ по
 частотности и качеству фразы, а слабые дубли убирают.
 
-### 3. Учет SERP и конкурентов
+### 3. Подготовка research по категории
 
 В исходном workflow также поддерживается отдельный файл SERP TOP-10: ключи можно
 проверять по пересечению URL в выдаче Google. Если у двух запросов достаточно общих URL
 в TOP-10, они могут попасть в один кластер или synonym group; если выдача заметно
 отличается, ключ считается отдельным поисковым intent.
 
-Если для категории есть `research/RESEARCH_DATA.md` или competitor metadata, prompt
-workflow использует это как дополнительный контекст: структура, intent, gaps,
-обязательные блоки и риски. В публичной версии приватные SERP-данные и старые extraction
-outputs не публикуются, но сам research-artifact workflow сохранен.
+После кластеризации primary keyword и группы семантики используются, чтобы сформировать
+research prompt для внешнего web-research инструмента, например Perplexity или LLM agent
+с web search. Результат сохраняется в `categories/{slug}/research/RESEARCH_DATA.md`.
+
+Этот файл не просто прикладывается к категории. Он становится brief для следующего
+этапа: факты о продукте, структура конкурентов, intent пользователя, content gaps,
+обязательные блоки, идеи для FAQ и риски, которые нужно учесть при написании SEO-текста.
+В публичной версии приватные SERP-данные и старые extraction outputs не публикуются, но
+сам research-artifact workflow сохранен.
 
 ### 4. Написание SEO-текста
 
@@ -131,7 +136,7 @@ lemmatization и morphology-aware matching, а не только exact string ma
 | Keyword clustering | Строит clean keyword groups из raw/CSV/category data и разделяет intent roles. |
 | SERP TOP-10 overlap | Использует пересечение URL в поисковой выдаче, чтобы понять: ключи в один кластер или это разные intents. |
 | Synonym cleanup | Находит near-duplicates и нормализует конкурирующие варианты ключей. |
-| SERP research workflow | Использует optional research и competitor artifacts как контекст для prompts и checklist stages. |
+| Research prompt workflow | Превращает кластеризованные ключи в web-research prompt, сохраняет `RESEARCH_DATA.md` и использует его как brief для генерации текста. |
 | Content validation | Проверяет H1, intro, headings, keyword coverage, meta sync и языковые правила. |
 | Density and spam | Ищет exact, partial, stem и substring overuse с warning/spam thresholds. |
 | Water and nausea | Считает воду, классическую тошноту, академическую тошноту и повтор лемм. |

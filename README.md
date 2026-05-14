@@ -72,17 +72,22 @@ Keywords are grouped into practical SEO roles:
 Duplicate and synonym cleanup tools normalize close variants, choose stronger winners by
 volume and phrase quality, and remove weaker duplicates.
 
-### 3. Add SERP or competitor research
+### 3. Generate category research
 
 The original workflow also supports a separate SERP TOP-10 file: keywords can be checked
 by URL intersection in Google results. If two queries share enough TOP-10 URLs, they can
 belong to the same cluster or synonym group; if their TOP-10 results differ, the keyword
 is treated as a separate search intent.
 
-When a category has `research/RESEARCH_DATA.md` or competitor metadata, the prompt
-workflow can use it as extra context for structure, intent, and content gaps. The public
-repo keeps this as a documented research-artifact workflow rather than shipping private
-SERP datasets and old extraction outputs.
+After clustering, the primary keyword and semantic groups are used to form a research
+prompt for an external web-research tool, for example Perplexity or an LLM agent with web
+search. The result is saved into `categories/{slug}/research/RESEARCH_DATA.md`.
+
+That research file is not just an attachment. It becomes the category brief for the
+next stage: product facts, competitor structure, user intent, content gaps, required
+blocks, FAQ ideas, and risks that should shape the final SEO text. The public repo keeps
+this as a documented research-artifact workflow rather than shipping private SERP
+datasets and old extraction outputs.
 
 ### 4. Produce SEO briefs and content
 
@@ -129,7 +134,7 @@ stopwords, stemming, lemmatization, and morphology-aware keyword matching.
 | Keyword clustering | Builds clean keyword groups from raw/CSV/category data and separates intent roles. |
 | SERP TOP-10 overlap | Uses search-result URL intersections to decide whether keywords belong in one cluster or represent different intents. |
 | Synonym cleanup | Detects near-duplicates and normalizes competing keyword variants. |
-| SERP research workflow | Uses optional research and competitor artifacts as context for prompts and checklist stages. |
+| Research prompt workflow | Turns clustered keywords into a web-research prompt, stores `RESEARCH_DATA.md`, then uses it as the brief for content generation. |
 | Content validation | Checks H1, intro, headings, keyword coverage, meta sync, and language-specific rules. |
 | Density and spam | Finds exact, partial, stem, and substring overuse with warning/spam thresholds. |
 | Water and nausea | Calculates Advego-like water, classic nausea, academic nausea, and lemma repetition. |
