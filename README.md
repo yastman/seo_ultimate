@@ -2,53 +2,70 @@
 
 [![CI](https://github.com/yastman/llm-keywords-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/yastman/llm-keywords-pipeline/actions/workflows/ci.yml)
 
-Python toolkit for automating SEO content operations in e-commerce: keyword semantics,
-meta tags, content validation, audits, extraction, and repair workflows.
+A Python pipeline for turning messy SEO keyword operations into repeatable validation,
+audit, and generation workflows.
 
-This repository is a sanitized public portfolio version of a production-style internal
-pipeline. It is structured to show the engineering approach, test strategy, and quality
-gates without publishing private datasets or external orchestration.
+Solves the quality-control problem that appears when SEO content and LLM drafts scale
+beyond manual review.
 
-## Problem
+```bash
+uv sync
+uv run ruff check src tests
+uv run pytest
+```
 
-SEO content operations for large catalogs do not scale well when handled manually.
-Teams need to prepare keyword semantics, generate meta tags, validate H1/H2 usage,
-control keyword density, detect low-quality LLM phrasing, and keep multilingual content
-consistent across many categories.
+Works with Python 3.12+ and `uv`.
 
-Without automation, these checks become slow, repetitive, and easy to miss. The main
-risk is not just bad copy; it is silent regression across hundreds of generated or
-edited pages.
+---
 
-## Solution
+## Why I Built This
 
-`llm-keywords-pipeline` collects the repeatable parts of this workflow into a tested
-Python package:
+SEO content for e-commerce catalogs is repetitive until it suddenly is not.
 
-- validate meta tags, page content, keyword density, structure, and language-specific
-  SEO rules;
-- audit generated content for coverage, H1 consistency, wateriness, brand mentions,
-  semantic gaps, and cannibalization risks;
-- extract, compare, and synchronize keyword data across source files;
-- generate supporting artifacts such as SQL dumps, meta files, checklists, and semantic
-  review outputs;
-- keep LLM prompt templates for prepare/produce/deliver stages as public reference
-  material.
+One category is easy to review by hand. Hundreds of categories are different: keyword
+semantics drift, generated meta tags miss primary terms, H1/H2 structure regresses,
+LLM drafts repeat generic phrases, and multilingual variants stop matching the source
+intent.
 
-The public repo does not include private category datasets or production orchestration.
-Tests use fixtures and synthetic examples.
+The hard part is not generating text. The hard part is making generated or edited
+content reviewable.
 
-## What This Demonstrates
+This project packages that review layer: deterministic checks, NLP-aware keyword
+matching, audit utilities, repair helpers, and prompt templates around a practical
+content pipeline.
 
-This project is useful as an engineering portfolio because it shows:
+---
 
-- package organization with a `src/` layout and typed package marker;
-- data-pipeline thinking around ingestion, validation, audit, repair, and sync stages;
-- practical NLP usage for Russian and Ukrainian SEO content checks;
-- defensive validation of LLM-generated content;
-- pytest coverage across unit, integration, smoke, and fixture-driven scenarios;
-- modern Python tooling with `uv`, `ruff`, `mypy` configuration, coverage, and CI;
-- public-repo cleanup discipline: private data is omitted and limitations are explicit.
+## How It Works
+
+The pipeline follows a simple loop.
+
+### 1. Extract
+
+Read category and keyword data from structured files, normalize it, and prepare it for
+validation or generation.
+
+### 2. Generate
+
+Create supporting artifacts: meta JSON, SQL exports, semantic review files, catalogs,
+checklists, and LLM workflow outputs.
+
+### 3. Validate
+
+Run deterministic quality gates for meta tags, content structure, keyword density,
+headings, language-specific rules, and master keyword data.
+
+### 4. Audit
+
+Inspect higher-level content quality: semantic coverage, H1 synchronization, wateriness,
+brand/city mentions, unused terms, and cannibalization risks.
+
+### 5. Repair and Sync
+
+Use focused utilities to clean up duplicates, missing keywords, ordering issues,
+migration artifacts, and master-data drift.
+
+---
 
 ## Core Capabilities
 
@@ -58,50 +75,39 @@ This project is useful as an engineering portfolio because it shows:
 | Audits | Reviews coverage, H1 sync, brand/city mentions, wateriness, semantic quality, unused terms, and cannibalization risks. |
 | Generation | Produces meta artifacts, SQL exports, semantic review files, catalog JSON, and checklists. |
 | Extraction | Extracts category and keyword data from project files for downstream validation and comparison. |
-| Repair and sync | Provides utilities for cleanup, migration, keyword ordering, volume updates, and master-data merges. |
-| Prompt workflow | Documents reference LLM templates for preparing briefs, producing drafts, and delivery checks. |
+| Repair and sync | Provides cleanup, migration, keyword ordering, volume update, and master-data merge utilities. |
+| Prompt workflow | Documents prepare/produce/deliver templates for an LLM-assisted content workflow. |
 
-## Architecture
+---
 
-The package is organized by workflow responsibility:
+## Why It Works
 
-| Package | Responsibility |
-| --- | --- |
-| `core` | Shared config, text processing, keyword utilities, coverage helpers, and SEO primitives. |
-| `validate` | Quality gates for content, meta files, density, master data, SEO structure, and Ukrainian content. |
-| `audit` | Higher-level audits for content quality, coverage, H1 sync, NER brand checks, semantic gaps, and wateriness. |
-| `generate` | Artifact generators for meta files, SQL, checklists, semantic review, and catalog JSON. |
-| `extract` | Keyword/category extraction helpers. |
-| `fix` | Repair utilities for duplicates, misplaced files, missing keywords, and legacy structures. |
-| `sync` | Sync and migration helpers for keyword and semantic data. |
-| `analyze` | Category, duplicate, synonym, order, and meta analysis tools. |
-| `compare` | Comparison helpers for raw/clean keyword data and master data. |
-| `batch` | Batch-oriented orchestration helpers. |
+### Deterministic checks around probabilistic output
 
-See [docs/architecture.md](docs/architecture.md) for the public architecture boundary and
-legacy/internal notes.
+LLMs can draft content quickly, but their output still needs stable quality gates. This
+project treats generated text as input to validate, not as something to trust blindly.
 
-## Quality and Verification
+### NLP-aware SEO validation
 
-The repository uses a small but explicit quality stack:
+Keyword checks need to handle Russian and Ukrainian morphology, not only exact string
+matches. The package includes language-aware text utilities, stemming/lemmatization
+helpers, stopword handling, and semantic coverage checks.
 
-- `pytest` for unit, integration, smoke, and fixture-based checks;
-- `pytest-cov` with coverage settings in `.coveragerc`;
-- `ruff` for linting and import hygiene;
-- `mypy` configuration for stricter typing policy;
-- GitHub Actions CI for repeatable lint/test validation.
+### Testable pipeline pieces
 
-Default local and CI checks:
+The code is split into package modules for `core`, `validate`, `audit`, `generate`,
+`extract`, `fix`, `sync`, `analyze`, `compare`, and `batch`. Tests cover isolated
+utilities, fixture-backed validation, integration flows, and smoke checks.
 
-```bash
-uv sync
-uv run ruff check src tests
-uv run pytest
-```
+### Honest public boundary
 
-More detail is in [docs/testing.md](docs/testing.md).
+The public repository keeps the engineering structure and fixtures, but excludes private
+category datasets, generated reports, deployment automation, and external orchestration.
+That makes the project inspectable without pretending to be a plug-and-play SaaS.
 
-## Quick Start
+---
+
+## Getting Started
 
 Prerequisites: Python 3.12+ and [uv](https://docs.astral.sh/uv/).
 
@@ -127,29 +133,34 @@ cp .env.example .env
 docker compose up
 ```
 
-The Compose stack is local-only demo infrastructure for MariaDB/Adminer. It is not a
+The Compose stack starts MariaDB and Adminer on localhost. It is a local demo, not a
 production deployment recipe.
 
-## Public Version Notes
+---
 
-This repository intentionally excludes:
+## Commands
 
-- production category datasets and private SEO content;
-- external LLM orchestration used around the prompt templates;
-- generated reports, local logs, agent signals, and runtime artifacts;
-- private deployment automation.
+Main verification path:
 
-The `prompts/` directory is kept as reference material because it shows the intended
-LLM-assisted workflow. The templates are not standalone commands.
+| Command | Purpose |
+| --- | --- |
+| `uv sync` | Install the locked Python environment. |
+| `uv run ruff check src tests` | Run lint and import checks. |
+| `uv run pytest` | Run the default test suite. |
+| `uv run pytest --collect-only -q` | Inspect collected tests. |
 
-See [docs/public-version.md](docs/public-version.md) for details.
+Most pipeline modules can also be explored with `uv run python -m
+llm_keywords_pipeline.<package>.<module>`, but some generation and migration utilities
+expect the private data layout that is intentionally omitted from this public version.
 
-## Repository Map
+---
+
+## Project Structure
 
 ```text
 src/llm_keywords_pipeline/   Python package
-tests/                       pytest suite and fixtures
-prompts/                     LLM workflow templates
+tests/                       pytest suite and public fixtures
+prompts/                     LLM workflow reference templates
 docs/                        architecture, testing, and public-version notes
 .github/workflows/ci.yml     CI lint/test workflow
 pyproject.toml               package metadata and tool configuration
@@ -158,6 +169,33 @@ pytest.ini                   pytest configuration
 docker-compose.yml           optional local database demo
 ```
 
+---
+
+## Documentation
+
+| Doc | What's in it |
+| --- | --- |
+| [Architecture](docs/architecture.md) | Package map, workflow boundaries, stable vs legacy surface. |
+| [Testing](docs/testing.md) | Test tiers, default commands, CI parity, data-required skips. |
+| [Public Version](docs/public-version.md) | What is included, what is omitted, and why prompts remain public. |
+| [Prompt Templates](prompts/README.md) | Prepare/produce/deliver LLM workflow templates. |
+
+---
+
+## Public Version
+
+This repository intentionally excludes production datasets and external LLM
+orchestration. The included tests use fixtures and synthetic examples.
+
+The `prompts/` directory is preserved as reference material: it shows how the surrounding
+LLM-assisted workflow was structured, but the templates are not standalone commands.
+
+---
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+---
+
+LLM output is easy to generate. This project makes it reviewable.
