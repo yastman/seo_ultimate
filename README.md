@@ -1,48 +1,33 @@
 # LLM Keywords Pipeline
 
-**Automated SEO content generation pipeline for e-commerce, powered by Claude LLM.**
+**Python toolkit for automated SEO content generation and validation for e-commerce.**
 
-Generates production-ready meta tags, buyer guides, and OpenCart SQL for 100+ product categories (RU + UK) using a skills-based pipeline architecture.
-
----
-
-## Problem
-
-Manual SEO content creation for 50+ product categories requires days of repetitive work per cycle. Keyword research, competitor analysis, meta tag generation, content writing, and deployment — each step is labor-intensive and error-prone when done manually. This pipeline automates the entire workflow, ensuring consistent quality and SEO best practices across all categories.
+A modular Python pipeline that validates, generates, and audits SEO content — meta tags, buyer guides, keyword semantics — with NLP-based quality gates.
 
 ---
 
 ## Key Features
 
-- **Skills-based pipeline** — 15+ Claude slash commands orchestrate the full SEO workflow
-- **Bilingual (RU + UK)** — Parallel pipelines: 30 RU + 54 UK product categories
-- **Production quality** — 348 tests, linting, coverage metrics, and quality gates at every stage
-- **Automated deployment** — Generates SQL dumps ready for OpenCart import
-- **Validation suite** — Meta tag validation, keyword density checks, academic nausea analysis, water/stem detection
-
----
-
-## Architecture
-
-```
-CSV → Init → Meta → Research → Content → Review → QA → Deploy
-              ↓ (parallel)
-        UK content pipeline
-```
-
-**Pipeline stages:** Category initialization → meta tag generation → SEO competitor research → content generation (buyer guides) → content review/auto-fix → quality gate validation → OpenCart SQL deployment.
+- **SEO validation suite** — Meta tag validation, keyword density checks, academic nausea analysis, water/stem detection, H1 sync verification
+- **Content generation** — Meta tag generation, SQL dump generation, semantic review, checklist generation
+- **Audit tools** — Keyword consistency, NER brand detection, semantic coverage, cannibalization, H1 audit
+- **Analysis & extraction** — Category analysis, keyword extraction, duplicate detection, synonym analysis
+- **Data repair utilities** — CSV structure fixes, missing keyword detection, orphan cleanup, migration tools
+- **Production quality** — 348 tests, linting, coverage metrics
 
 ---
 
 ## Tech Stack
 
-**LLM Orchestration:** Claude (Anthropic), Skills-based commands
-**Backend:** Python 3.12+, uv package manager
-**NLP:** pymorphy3, natasha, spacy, razdel
-**Validation:** Custom SEO analyzers (keyword density, nausea, water, H1 sync, coverage)
-**Testing:** pytest (578 tests), pytest-cov, pytest-xdist
-**Linting:** ruff, mypy
-**Infrastructure:** Docker, docker-compose
+| Category | Tools |
+|----------|-------|
+| Language | Python 3.12+ |
+| Package manager | uv |
+| NLP | pymorphy3, natasha, spacy, razdel |
+| Validation | Custom SEO analyzers |
+| Testing | pytest (348 tests), pytest-cov, pytest-xdist |
+| Linting | ruff, mypy |
+| Infrastructure | Docker, docker-compose |
 
 ---
 
@@ -55,12 +40,6 @@ uv sync
 # Run tests
 uv run pytest
 
-# Validate meta tags for a category
-uv run python -m llm_keywords_pipeline.validate.meta categories/avtoshampuni/meta/avtoshampuni_meta.json
-
-# Validate content quality
-uv run python -m llm_keywords_pipeline.validate.content categories/avtoshampuni/content/avtoshampuni_ru.md "active foam"
-
 # Run linting
 uv run ruff check src/
 ```
@@ -70,32 +49,22 @@ uv run ruff check src/
 ## Project Structure
 
 ```
-├── src/llm_keywords_pipeline/   # Python package
+├── src/llm_keywords_pipeline/   # Python package (65 modules)
 │   ├── core/                    # Config, keywords, text, SEO utilities
 │   ├── validate/                # Meta, content, density validators
-│   ├── audit/                   # Coverage, H1, keyword consistency
+│   ├── audit/                   # Coverage, H1, keyword consistency, water
 │   ├── generate/                # SQL, meta, checklist generators
-│   ├── analyze/                 # Category analysis, duplicates
+│   ├── analyze/                 # Category analysis, duplicates, synonyms
 │   ├── extract/                 # Keyword extraction tools
-│   ├── fix/                     # Data repair utilities
-│   └── sync/                    # Migration and sync tools
-├── categories/                  # Category data (RU)
-├── uk/                          # Category data (UK)
-├── tests/                       # pytest test suite
-├── docs/                        # Documentation
-├── data/                        # Raw and generated data
+│   ├── fix/                     # Data repair and migration utilities
+│   ├── sync/                    # Sync helpers
+│   ├── compare/                 # Diff and comparison tools
+│   ├── batch/                   # Batch processing
+│   └── tools/                   # Misc utilities
+├── tests/                       # pytest test suite (37 test files)
 ├── pyproject.toml               # Project config and dependencies
 └── docker-compose.yml           # Docker deployment
 ```
-
----
-
-## Metrics
-
-- **Categories:** 30 RU + 54 UK (84 L3 category slugs)
-- **Modules:** 65 Python modules
-- **Tests:** 348 passing
-- **Quality thresholds:** stem density ≤2.5%, classic nausea ≤3.5, water 40-65%
 
 ---
 
