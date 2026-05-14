@@ -1,1 +1,0 @@
-../generate-meta/REFERENCE.md

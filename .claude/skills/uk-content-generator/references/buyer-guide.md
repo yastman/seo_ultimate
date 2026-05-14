@@ -1,1 +1,0 @@
-../../content-generator/references/buyer-guide.md

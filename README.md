@@ -15,8 +15,8 @@ Manual SEO content creation for 50+ product categories requires days of repetiti
 ## Key Features
 
 - **Skills-based pipeline** — 15+ Claude slash commands orchestrate the full SEO workflow
-- **Bilingual (RU + UK)** — Parallel pipelines for Russian and Ukrainian content
-- **Production quality** — 578 tests, linting, coverage metrics, and quality gates at every stage
+- **Bilingual (RU + UK)** — Parallel pipelines: 30 RU + 54 UK product categories
+- **Production quality** — 348 tests, linting, coverage metrics, and quality gates at every stage
 - **Automated deployment** — Generates SQL dumps ready for OpenCart import
 - **Validation suite** — Meta tag validation, keyword density checks, academic nausea analysis, water/stem detection
 
@@ -25,21 +25,12 @@ Manual SEO content creation for 50+ product categories requires days of repetiti
 ## Architecture
 
 ```
-CSV → /category-init → /generate-meta → /seo-research → /content-generator → /quality-gate → /deploy-to-opencart
-                                                                      ↓
-                                                          /uk-content-init (parallel)
+CSV → Init → Meta → Research → Content → Review → QA → Deploy
+              ↓ (parallel)
+        UK content pipeline
 ```
 
-**Pipeline stages:**
-| Stage | RU Command | UK Command | Output |
-|-------|-----------|------------|--------|
-| Init | `/category-init {slug}` | `/uk-content-init {slug}` | Folder structure |
-| Meta | `/generate-meta {slug}` | `/uk-generate-meta {slug}` | JSON meta tags |
-| Research | `/seo-research {slug}` | `/uk-seo-research {slug}` | Competitor analysis |
-| Content | `/content-generator {slug}` | `/uk-content-generator {slug}` | Buyer guide (Markdown) |
-| Review | `content-reviewer {path}` | `uk-content-reviewer {slug}` | Auto-fixed content |
-| QA | `/quality-gate {slug}` | `/uk-quality-gate {slug}` | Validation report |
-| Deploy | `/deploy-to-opencart {slug}` | `/uk-deploy {slug}` | SQL dump |
+**Pipeline stages:** Category initialization → meta tag generation → SEO competitor research → content generation (buyer guides) → content review/auto-fix → quality gate validation → OpenCart SQL deployment.
 
 ---
 
@@ -93,7 +84,6 @@ uv run ruff check src/
 ├── tests/                       # pytest test suite
 ├── docs/                        # Documentation
 ├── data/                        # Raw and generated data
-├── .claude/                     # Claude skills (slash commands)
 ├── pyproject.toml               # Project config and dependencies
 └── docker-compose.yml           # Docker deployment
 ```
@@ -102,9 +92,9 @@ uv run ruff check src/
 
 ## Metrics
 
-- **Categories:** 53 RU + 53 UK
-- **Modules:** 65 (across 11 packages)
-- **Tests:** 578 passing
+- **Categories:** 30 RU + 54 UK (84 L3 category slugs)
+- **Modules:** 65 Python modules
+- **Tests:** 348 passing
 - **Quality thresholds:** stem density ≤2.5%, classic nausea ≤3.5, water 40-65%
 
 ---
