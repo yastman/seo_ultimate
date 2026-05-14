@@ -2,15 +2,10 @@ import json
 import os
 from pathlib import Path
 
-# Paths
-ROOT = Path("C:/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт")
-CAT_DIR = ROOT / "categories"
-DUMP_FILE = ROOT / "sql_cats_dump.txt"
 
-
-def load_dump():
+def load_dump(dump_file: Path) -> dict[str, int]:
     mapping = {}
-    with open(DUMP_FILE, encoding="utf-8") as f:
+    with dump_file.open(encoding="utf-8") as f:
         for line in f:
             if ": " in line:
                 cid, name = line.strip().split(": ", 1)
@@ -21,13 +16,17 @@ def load_dump():
     return mapping
 
 
-def main():
-    if not DUMP_FILE.exists():
-        print("Dump not found")
+def main() -> None:
+    root = Path(os.environ.get("LLM_KEYWORDS_PROJECT_ROOT", ".")).resolve()
+    cat_dir = root / "categories"
+    dump_file = root / "sql_cats_dump.txt"
+
+    if not dump_file.exists():
+        print(f"Dump not found: {dump_file}")
         return
 
-    sql_map = load_dump()
-    cats = [d for d in os.listdir(CAT_DIR) if (CAT_DIR / d).is_dir()]
+    sql_map = load_dump(dump_file)
+    cats = [d for d in os.listdir(cat_dir) if (cat_dir / d).is_dir()]
 
     found_count = 0
     missing = []
@@ -38,7 +37,7 @@ def main():
         # clean_slug = slug.replace("-", " ")
 
         # Load name from json
-        json_path = CAT_DIR / slug / "data" / f"{slug}_clean.json"
+        json_path = cat_dir / slug / "data" / f"{slug}_clean.json"
 
         candidates = [slug]
 

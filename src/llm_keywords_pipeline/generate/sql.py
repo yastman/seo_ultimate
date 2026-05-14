@@ -248,7 +248,7 @@ def _header_sql() -> str:
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
     return "\n".join(
         [
-            "-- Ultimate.net.ua — SEO Content Updates",
+            "-- SEO Content Updates",
             f"-- Сгенерировано: {now}",
             f"-- Категорий: {len(CATEGORY_MAP)}",
             "",

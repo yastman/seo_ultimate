@@ -1,10 +1,11 @@
 import json
 import os
 import re
+from pathlib import Path
 
-PROJECT_ROOT = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт"
-STRUCTURE_MD_PATH = os.path.join(PROJECT_ROOT, "data", "generated", "STRUCTURE.md")
-CATEGORIES_DIR = os.path.join(PROJECT_ROOT, "categories")
+PROJECT_ROOT = Path(os.environ.get("LLM_KEYWORDS_PROJECT_ROOT", ".")).resolve()
+STRUCTURE_MD_PATH = PROJECT_ROOT / "data" / "generated" / "STRUCTURE.md"
+CATEGORIES_DIR = PROJECT_ROOT / "categories"
 
 # Exact header texts (minus hashes and volume info) mapped to slugs
 CLUSTER_TO_SLUG = {
@@ -27,7 +28,7 @@ def get_keywords_from_structure(target_cluster_name):
     table_row_re = re.compile(r"^\|\s*(.+?)\s*\|\s*(\d+)\s*\|")
 
     found = False
-    with open(STRUCTURE_MD_PATH, encoding="utf-8") as f:
+    with STRUCTURE_MD_PATH.open(encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if line.startswith("#"):
@@ -52,12 +53,12 @@ def get_keywords_from_structure(target_cluster_name):
 
 
 def update_json_file(slug, structure_kws):
-    json_path = os.path.join(CATEGORIES_DIR, slug, "data", f"{slug}_clean.json")
-    if not os.path.exists(json_path):
+    json_path = CATEGORIES_DIR / slug / "data" / f"{slug}_clean.json"
+    if not json_path.exists():
         print(f"File not found: {json_path}")
         return
 
-    with open(json_path, encoding="utf-8") as f:
+    with json_path.open(encoding="utf-8") as f:
         data = json.load(f)
 
     # Existing kws
@@ -94,7 +95,7 @@ def update_json_file(slug, structure_kws):
                 added_count += 1
 
     if added_count > 0:
-        with open(json_path, "w", encoding="utf-8") as f:
+        with json_path.open("w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
         print(f"✅ [{slug}] Added {added_count} keywords.")
     else:

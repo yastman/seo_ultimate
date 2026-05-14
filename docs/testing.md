@@ -8,9 +8,11 @@ default options. Coverage settings live in `.coveragerc`.
 These are the commands used by the README and CI:
 
 ```bash
-uv sync
+uv sync --frozen
 uv run ruff check src tests
+uv run mypy
 uv run pytest
+uv build
 ```
 
 To inspect collection:
@@ -49,9 +51,11 @@ documented. They should not hide failures in the default fixture-backed suite.
 GitHub Actions runs the same default quality path documented above:
 
 ```bash
-uv sync
+uv sync --frozen
 uv run ruff check src tests
-uv run pytest
+uv run mypy
+uv run pytest --cov-fail-under=24
+uv build
 ```
 
 If local commands change, update README, this file, `tests/README.md`, and

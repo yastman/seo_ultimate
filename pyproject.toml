@@ -64,6 +64,12 @@ Homepage = "https://github.com/yastman/llm-keywords-pipeline"
 Repository = "https://github.com/yastman/llm-keywords-pipeline"
 Issues = "https://github.com/yastman/llm-keywords-pipeline/issues"
 
+[project.scripts]
+llm-keywords-check-seo = "llm_keywords_pipeline.validate.seo:main"
+llm-keywords-density = "llm_keywords_pipeline.validate.density:main"
+llm-keywords-audit-brands = "llm_keywords_pipeline.audit.ner_brands:main"
+llm-keywords-audit-water = "llm_keywords_pipeline.audit.water:main"
+
 [tool.uv]
 default-groups = ["nlp", "dev", "test"]
 
@@ -88,6 +94,7 @@ ignore = ["E501"]
 quote-style = "double"
 
 [tool.mypy]
+files = ["src/llm_keywords_pipeline/core/text.py"]
 python_version = "3.12"
 warn_return_any = true
 warn_unused_configs = true
@@ -101,10 +108,6 @@ warn_redundant_casts = true
 warn_unused_ignores = true
 warn_no_return = true
 strict_equality = true
-
-[[tool.mypy.overrides]]
-module = ["natasha.*", "pymorphy2.*", "pandas.*", "mysql.connector.*", "markdown.*"]
-ignore_missing_imports = true
 
 [build-system]
 requires = ["hatchling"]

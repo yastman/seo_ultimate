@@ -1,20 +1,21 @@
 import json
 import os
+from pathlib import Path
 
-PROJECT_ROOT = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт"
-CATALOG_STRUCTURE_PATH = os.path.join(PROJECT_ROOT, "data", "catalog_structure.json")
-MANUAL_SHAMPOO_PATH = os.path.join(
-    PROJECT_ROOT,
-    "categories",
-    "shampuni-dlya-ruchnoy-moyki",
-    "data",
-    "shampuni-dlya-ruchnoy-moyki_clean.json",
+PROJECT_ROOT = Path(os.environ.get("LLM_KEYWORDS_PROJECT_ROOT", ".")).resolve()
+CATALOG_STRUCTURE_PATH = PROJECT_ROOT / "data" / "catalog_structure.json"
+MANUAL_SHAMPOO_PATH = (
+    PROJECT_ROOT
+    / "categories"
+    / "shampuni-dlya-ruchnoy-moyki"
+    / "data"
+    / "shampuni-dlya-ruchnoy-moyki_clean.json"
 )
 
 
 def update_catalog_structure():
     print(f"Reading {CATALOG_STRUCTURE_PATH}...")
-    with open(CATALOG_STRUCTURE_PATH, encoding="utf-8") as f:
+    with CATALOG_STRUCTURE_PATH.open(encoding="utf-8") as f:
         data = json.load(f)
 
     # 1. Remove 'oborudovanie-l2'
@@ -41,14 +42,14 @@ def update_catalog_structure():
     if not oborudovanie_exists:
         print("WARNING: oborudovanie (L1) not found!")
 
-    with open(CATALOG_STRUCTURE_PATH, "w", encoding="utf-8") as f:
+    with CATALOG_STRUCTURE_PATH.open("w", encoding="utf-8") as f:
         json.dump(new_data, f, indent=2, ensure_ascii=False)
     print("Catalog structure updated.")
 
 
 def convert_shampoo_legacy():
     print(f"Reading {MANUAL_SHAMPOO_PATH}...")
-    with open(MANUAL_SHAMPOO_PATH, encoding="utf-8") as f:
+    with MANUAL_SHAMPOO_PATH.open(encoding="utf-8") as f:
         legacy_data = json.load(f)
 
     # Extract keywords from all groups
@@ -75,7 +76,7 @@ def convert_shampoo_legacy():
         "source": "migrated_from_legacy",
     }
 
-    with open(MANUAL_SHAMPOO_PATH, "w", encoding="utf-8") as f:
+    with MANUAL_SHAMPOO_PATH.open("w", encoding="utf-8") as f:
         json.dump(new_data, f, indent=2, ensure_ascii=False)
     print("Shampoo file converted to V2 format.")
 

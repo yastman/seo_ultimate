@@ -499,7 +499,7 @@ def generate_task_file(node, status):
 # Master Checklist
 # ============================================================================
 def update_master_checklist(nodes, statuses):
-    header = """# Master Checklist — Ultimate.net.ua
+    header = """# Master Checklist — SEO Pipeline
 
 | # | Slug | Name | Type | Parent | Vol | Keys | Init | Meta | Research | Content | UK | Quality | Deploy |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -539,7 +539,7 @@ def update_pipeline_status(nodes, statuses):
     c_quality = sum(1 for s in statuses.values() if s["quality"])
     c_deploy = sum(1 for s in statuses.values() if s["deploy"])
 
-    content = f"""# Pipeline Status — Ultimate.net.ua SEO
+    content = f"""# Pipeline Status — SEO Pipeline
 
 **Total Categories:** {total}
 **Updated:** 2026-01-02

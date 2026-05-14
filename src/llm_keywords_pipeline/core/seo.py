@@ -802,6 +802,6 @@ def is_in_protected_zone(pos: int, zones: dict[str, list[tuple[int, int]]]) -> b
 # ============================================================================
 
 __version__ = "4.0.0"
-__author__ = "Ultimate.net.ua SEO Team"
+__author__ = "llm-keywords-pipeline contributors"
 __updated__ = "2025-12-13"
 __seo_standard__ = "v8.0 (Google 2025 — Adaptive Approach, Depth over Length)"

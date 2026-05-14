@@ -7,9 +7,11 @@ The source of truth for test strategy and commands is [../docs/testing.md](../do
 Default checks:
 
 ```bash
-uv sync
+uv sync --frozen
 uv run ruff check src tests
+uv run mypy
 uv run pytest
+uv build
 ```
 
 Test layout:

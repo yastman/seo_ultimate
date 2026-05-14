@@ -1,53 +1,46 @@
+import argparse
 import json
-import os
-
-PROJECT_ROOT = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт"
-CATEGORIES_DIR = os.path.join(PROJECT_ROOT, "categories")
-OUTPUT_JSON = os.path.join(PROJECT_ROOT, "data", "all_keywords.json")
-OUTPUT_MD = os.path.join(PROJECT_ROOT, "tasks", "reports", "SEMANTIC_REVIEW.md")
+from pathlib import Path
 
 
-def collect_keywords():
+def collect_keywords(categories_dir: Path) -> list[dict]:
     all_data = []
 
-    for root, _dirs, files in os.walk(CATEGORIES_DIR):
-        for file in files:
-            if file.endswith("_clean.json"):
-                path = os.path.join(root, file)
-                try:
-                    with open(path, encoding="utf-8") as f:
-                        data = json.load(f)
+    for path in categories_dir.rglob("*_clean.json"):
+        try:
+            with path.open(encoding="utf-8") as f:
+                data = json.load(f)
 
-                    slug = data.get("id") or data.get("slug")
-                    name = data.get("name", slug)
+            slug = data.get("id") or data.get("slug")
+            name = data.get("name", slug)
 
-                    kws = []
-                    if isinstance(data.get("keywords"), list):
-                        kws = data["keywords"]
-                    elif isinstance(data.get("keywords"), dict):
-                        for group in data["keywords"].values():
-                            kws.extend(group)
+            kws = []
+            if isinstance(data.get("keywords"), list):
+                kws = data["keywords"]
+            elif isinstance(data.get("keywords"), dict):
+                for group in data["keywords"].values():
+                    kws.extend(group)
 
-                    # Sort by volume
-                    kws.sort(key=lambda x: x.get("volume", 0), reverse=True)
+            # Sort by volume
+            kws.sort(key=lambda x: x.get("volume", 0), reverse=True)
 
-                    all_data.append(
-                        {
-                            "slug": slug,
-                            "name": name,
-                            "keywords": kws,
-                            "total_vol": sum(k.get("volume", 0) for k in kws),
-                        }
-                    )
-                except Exception as e:
-                    print(f"Error reading {file}: {e}")
+            all_data.append(
+                {
+                    "slug": slug,
+                    "name": name,
+                    "keywords": kws,
+                    "total_vol": sum(k.get("volume", 0) for k in kws),
+                }
+            )
+        except (OSError, json.JSONDecodeError, AttributeError) as e:
+            print(f"Error reading {path}: {e}")
 
     # Sort categories by ID for stability
     all_data.sort(key=lambda x: x["slug"])
     return all_data
 
 
-def generate_report(data):
+def generate_report(data: list[dict], output_json: Path, output_md: Path) -> None:
     lines = []
     lines.append("# 🧬 Семантический Ревизор (Semantic Review)")
     lines.append(f"**Total Categories:** {len(data)}")
@@ -83,16 +76,33 @@ def generate_report(data):
         lines.append("---")
         lines.append("")
 
-    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
+    output_json.parent.mkdir(parents=True, exist_ok=True)
+    output_md.parent.mkdir(parents=True, exist_ok=True)
+
+    with output_json.open("w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
-    with open(OUTPUT_MD, "w", encoding="utf-8") as f:
+    with output_md.open("w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
-    print(f"Generated {OUTPUT_JSON}")
-    print(f"Generated {OUTPUT_MD}")
+    print(f"Generated {output_json}")
+    print(f"Generated {output_md}")
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Generate a semantic review report from clean JSON files.")
+    parser.add_argument("--categories-dir", type=Path, default=Path("categories"))
+    parser.add_argument("--output-json", type=Path, default=Path("data/all_keywords.json"))
+    parser.add_argument("--output-md", type=Path, default=Path("tasks/reports/SEMANTIC_REVIEW.md"))
+    args = parser.parse_args(argv)
+
+    if not args.categories_dir.exists():
+        parser.error(f"categories directory not found: {args.categories_dir}")
+
+    data = collect_keywords(args.categories_dir)
+    generate_report(data, args.output_json, args.output_md)
+    return 0
 
 
 if __name__ == "__main__":
-    data = collect_keywords()
-    generate_report(data)
+    raise SystemExit(main())

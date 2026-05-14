@@ -202,7 +202,7 @@ def translate_h1(h1_ru: str, slug: str) -> str:
 
 def process_category(slug: str, ru_meta_path: str) -> dict:
     """Process single category: read RU, create UK files."""
-    base = Path("/mnt/c/Users/user/Documents/Сайты/Ultimate.net.ua/сео_для_категорий_ультимейт")
+    base = Path.cwd()
     ru_meta = base / ru_meta_path
     uk_dir = base / "uk" / "categories" / slug
 

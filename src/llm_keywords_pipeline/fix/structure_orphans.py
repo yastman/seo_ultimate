@@ -1,12 +1,10 @@
 import logging
 import os
 import shutil
+from pathlib import Path
 
-# Setup logging
-logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-
-PROJECT_ROOT = r"c:\Users\user\Documents\Сайты\Ultimate.net.ua\сео_для_категорий_ультимейт"
-CATEGORIES_DIR = os.path.join(PROJECT_ROOT, "categories")
+PROJECT_ROOT = Path(os.environ.get("LLM_KEYWORDS_PROJECT_ROOT", ".")).resolve()
+CATEGORIES_DIR = PROJECT_ROOT / "categories"
 
 MIGRATIONS = [
     {
@@ -27,16 +25,16 @@ DIRS_TO_DELETE = [
 
 
 def migrate_folder(source_slug, target_slug):
-    source_path = os.path.join(CATEGORIES_DIR, source_slug)
-    target_path = os.path.join(CATEGORIES_DIR, target_slug)
+    source_path = CATEGORIES_DIR / source_slug
+    target_path = CATEGORIES_DIR / target_slug
 
-    if not os.path.exists(source_path):
+    if not source_path.exists():
         logging.warning(f"Source {source_slug} not found. Skipping.")
         return
 
-    if not os.path.exists(target_path):
+    if not target_path.exists():
         logging.warning(f"Target {target_slug} not found. Creating it.")
-        os.makedirs(target_path)
+        target_path.mkdir(parents=True)
 
     logging.info(f"Migrating {source_slug} -> {target_slug}...")
 
@@ -44,18 +42,18 @@ def migrate_folder(source_slug, target_slug):
     for root, _dirs, files in os.walk(source_path):
         # Create corresponding subdirs in target
         rel_path = os.path.relpath(root, source_path)
-        target_root = os.path.join(target_path, rel_path)
+        target_root = target_path / rel_path
 
-        if not os.path.exists(target_root):
-            os.makedirs(target_root)
+        if not target_root.exists():
+            target_root.mkdir(parents=True)
 
         for filename in files:
-            source_file = os.path.join(root, filename)
+            source_file = Path(root) / filename
 
             # Allow overwriting target files because Source is "Truth" (contains data)
             # rename filename if it contains source_slug
             new_filename = filename.replace(source_slug, target_slug)
-            target_file = os.path.join(target_root, new_filename)
+            target_file = target_root / new_filename
 
             logging.info(f"  Copying {filename} -> {new_filename}")
             shutil.copy2(source_file, target_file)
@@ -74,23 +72,24 @@ def process_file_content(filepath, old_slug, new_slug):
     """Replace old_slug with new_slug in file content."""
     try:
         # Check if text file
-        if filepath.endswith((".json", ".md", ".txt")):
-            with open(filepath, encoding="utf-8") as f:
+        path = Path(filepath)
+        if path.suffix in {".json", ".md", ".txt"}:
+            with path.open(encoding="utf-8") as f:
                 content = f.read()
 
             if old_slug in content:
                 new_content = content.replace(old_slug, new_slug)
-                with open(filepath, "w", encoding="utf-8") as f:
+                with path.open("w", encoding="utf-8") as f:
                     f.write(new_content)
-                logging.info(f"    Updated content in {os.path.basename(filepath)}")
+                logging.info(f"    Updated content in {path.name}")
     except Exception as e:
         logging.error(f"    Error processing {filepath}: {e}")
 
 
 def delete_dirs(slugs):
     for slug in slugs:
-        path = os.path.join(CATEGORIES_DIR, slug)
-        if os.path.exists(path):
+        path = CATEGORIES_DIR / slug
+        if path.exists():
             try:
                 # Only delete if empty or we are sure?
                 # For filters like 'kislotnyy', we decided to delete to match structure.
@@ -101,6 +100,7 @@ def delete_dirs(slugs):
 
 
 def main():
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     print("Starting Fix Structure Orphans...")
 
     # 1. Run Migrations
@@ -116,8 +116,8 @@ def main():
     # ACTUALLY: Let's delete the source folders clearly here.
 
     for task in MIGRATIONS:
-        src = os.path.join(CATEGORIES_DIR, task["source_slug"])
-        if os.path.exists(src):
+        src = CATEGORIES_DIR / task["source_slug"]
+        if src.exists():
             logging.info(f"Removing source: {task['source_slug']}")
             shutil.rmtree(src)
 

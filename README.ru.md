@@ -23,9 +23,11 @@
 </div>
 
 ```bash
-uv sync
+uv sync --frozen
 uv run ruff check src tests
+uv run mypy
 uv run pytest
+uv build
 ```
 
 ---
@@ -188,9 +190,16 @@ docs/           architecture, testing и public-version notes
 git clone https://github.com/yastman/llm-keywords-pipeline.git
 cd llm-keywords-pipeline
 
-uv sync
+uv sync --frozen
 uv run ruff check src tests
+uv run mypy
 uv run pytest
+```
+
+Запуск публичного fixture через packaged CLI:
+
+```bash
+uv run llm-keywords-audit-brands tests/fixtures/valid_content.md --json
 ```
 
 Coverage:

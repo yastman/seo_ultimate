@@ -23,9 +23,11 @@
 </div>
 
 ```bash
-uv sync
+uv sync --frozen
 uv run ruff check src tests
+uv run mypy
 uv run pytest
+uv build
 ```
 
 ---
@@ -185,9 +187,16 @@ Prerequisites: Python 3.12+ and [uv](https://docs.astral.sh/uv/).
 git clone https://github.com/yastman/llm-keywords-pipeline.git
 cd llm-keywords-pipeline
 
-uv sync
+uv sync --frozen
 uv run ruff check src tests
+uv run mypy
 uv run pytest
+```
+
+Run a public fixture through one of the packaged CLI tools:
+
+```bash
+uv run llm-keywords-audit-brands tests/fixtures/valid_content.md --json
 ```
 
 Coverage:

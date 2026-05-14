@@ -24,11 +24,26 @@ jobs:
       - name: Install Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
 
+      - name: Check lockfile
+        run: uv lock --check
+
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --frozen
 
       - name: Lint with ruff
         run: uv run ruff check src tests
 
+      - name: Type check maintained typed surface
+        run: uv run mypy
+
       - name: Run tests
-        run: uv run pytest
+        run: uv run pytest --cov-fail-under=24
+
+      - name: Build package
+        run: uv build
+
+      - name: Smoke test built wheel
+        run: |
+          uv venv /tmp/llm-keywords-wheel-smoke
+          uv pip install --python /tmp/llm-keywords-wheel-smoke/bin/python dist/*.whl
+          /tmp/llm-keywords-wheel-smoke/bin/python -c "import llm_keywords_pipeline; print(llm_keywords_pipeline.__version__)"
