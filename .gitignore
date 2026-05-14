@@ -9,9 +9,16 @@
 temp/
 *.tmp
 
-# SQL Dumps (Heavy)
+# SQL Dumps & Backups
 data/dumps/*.sql
 data/sql_output/*.sql
+data/backups/
+*.sql.gz
+
+# Generated artifacts (worker logs, audit reports)
+data/generated/audit-logs/
+reports/
+*.bak
 
 # Python
 __pycache__/
@@ -95,3 +102,11 @@ nul
 coverage.json
 artifacts/
 qdrant_storage/
+
+# AI Tool configs (personal)
+.gemini/
+.agent/
+.github_repos/
+
+# Server info
+data/server_recon*.md

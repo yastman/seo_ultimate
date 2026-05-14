@@ -1,108 +1,114 @@
-# Ultimate.net.ua — SEO Content Pipeline
+# LLM Keywords Pipeline
 
-Автоматизированная система генерации SEO-контента для категорий интернет-магазина автохимии.
+**Automated SEO content generation pipeline for e-commerce, powered by Claude LLM.**
 
-**Архитектура:** Skills-based Pipeline
-**SSOT (контент):** `docs/CONTENT_GUIDE.md`
-**Оркестратор:** `CLAUDE.md`
-**Задачи:** `tasks/PIPELINE_STATUS.md`
-**Язык:** RU + UK
-**Version:** 9.0 (Refactored)
+Generates production-ready meta tags, buyer guides, and OpenCart SQL for 100+ product categories (RU + UK) using a skills-based pipeline architecture.
 
 ---
 
-## Pipeline
+## Problem
+
+Manual SEO content creation for 50+ product categories requires days of repetitive work per cycle. Keyword research, competitor analysis, meta tag generation, content writing, and deployment — each step is labor-intensive and error-prone when done manually. This pipeline automates the entire workflow, ensuring consistent quality and SEO best practices across all categories.
+
+---
+
+## Key Features
+
+- **Skills-based pipeline** — 15+ Claude slash commands orchestrate the full SEO workflow
+- **Bilingual (RU + UK)** — Parallel pipelines for Russian and Ukrainian content
+- **Production quality** — 578 tests, linting, coverage metrics, and quality gates at every stage
+- **Automated deployment** — Generates SQL dumps ready for OpenCart import
+- **Validation suite** — Meta tag validation, keyword density checks, academic nausea analysis, water/stem detection
+
+---
+
+## Architecture
 
 ```
 CSV → /category-init → /generate-meta → /seo-research → /content-generator → /quality-gate → /deploy-to-opencart
-                                                                ↓
-                                                    /uk-content-init (parallel)
+                                                                      ↓
+                                                          /uk-content-init (parallel)
 ```
+
+**Pipeline stages:**
+| Stage | RU Command | UK Command | Output |
+|-------|-----------|------------|--------|
+| Init | `/category-init {slug}` | `/uk-content-init {slug}` | Folder structure |
+| Meta | `/generate-meta {slug}` | `/uk-generate-meta {slug}` | JSON meta tags |
+| Research | `/seo-research {slug}` | `/uk-seo-research {slug}` | Competitor analysis |
+| Content | `/content-generator {slug}` | `/uk-content-generator {slug}` | Buyer guide (Markdown) |
+| Review | `content-reviewer {path}` | `uk-content-reviewer {slug}` | Auto-fixed content |
+| QA | `/quality-gate {slug}` | `/uk-quality-gate {slug}` | Validation report |
+| Deploy | `/deploy-to-opencart {slug}` | `/uk-deploy {slug}` | SQL dump |
 
 ---
 
-## 📂 Структура проекта
+## Tech Stack
 
-```
-/
-├── CLAUDE.md               # Инструкции для Claude
-├── pyproject.toml          # uv project config
-├── src/llm_keywords_pipeline/       # Python пакет (core, validate, audit, etc.)
-│
-├── categories/             # Данные категорий (RU)
-├── uk/                     # Локализация (UK)
-├── scripts/                # Legacy утилиты (миграция в src/)
-├── tests/                  # Pytest тесты
-├── docs/                   # Документация
-└── data/                   # Данные (Raw, Generated)
-```
+**LLM Orchestration:** Claude (Anthropic), Skills-based commands
+**Backend:** Python 3.12+, uv package manager
+**NLP:** pymorphy3, natasha, spacy, razdel
+**Validation:** Custom SEO analyzers (keyword density, nausea, water, H1 sync, coverage)
+**Testing:** pytest (578 tests), pytest-cov, pytest-xdist
+**Linting:** ruff, mypy
+**Infrastructure:** Docker, docker-compose
 
 ---
 
-## 🚀 Быстрый старт
-
-### Основные команды
+## Quick Start
 
 ```bash
-# Установка зависимостей
+# Install dependencies
 uv sync
 
-# Тесты
+# Run tests
 uv run pytest
 
-# Валидация мета-тегов
+# Validate meta tags for a category
 uv run python -m llm_keywords_pipeline.validate.meta categories/avtoshampuni/meta/avtoshampuni_meta.json
 
-# Валидация контента
-uv run python -m llm_keywords_pipeline.validate.content categories/avtoshampuni/content/avtoshampuni_ru.md
-```
+# Validate content quality
+uv run python -m llm_keywords_pipeline.validate.content categories/avtoshampuni/content/avtoshampuni_ru.md "active foam"
 
-### Skills (Slash Commands)
-
-```
-/category-init {slug}      → Создать структуру папок
-/generate-meta {slug}      → Сгенерировать JSON мета-тегов
-/seo-research {slug}       → Провести анализ конкурентов
-/content-generator {slug}  → Написать контент (RU)
-/uk-content-init {slug}    → Создать UK версию
-/quality-gate {slug}       → Полная проверка
-/deploy-to-opencart {slug} → SQL дамп
+# Run linting
+uv run ruff check src/
 ```
 
 ---
 
-## 📋 Статус проекта
+## Project Structure
 
-Актуальный статус всех работ находится в **[`tasks/PIPELINE_STATUS.md`](tasks/PIPELINE_STATUS.md)**.
-
-**Метрики:**
-
--   **Всего категорий:** 53 RU + 53 UK
--   **Модулей:** 65 (src/llm_keywords_pipeline/)
--   **Тестов:** 569
-
----
-
-## 🛠 Модули `src/llm_keywords_pipeline/`
-
-| Пакет | Назначение |
-|-------|------------|
-| **core/** | Config, keywords, text, SEO utilities |
-| **validate/** | Meta, content, density, SEO validators |
-| **audit/** | Coverage, H1, keywords consistency |
-| **generate/** | SQL, meta, checklists |
-| **analyze/** | Category analysis, duplicates |
-
----
-
-## 📝 Основные правила (2025/2026)
-
-1. **Title:** 50-60 знаков, "Купить" + Бренд в конце.
-2. **Desc:** 130-150 знаков, без эмодзи.
-3. **Content:** Полезный, без воды, с таблицами и списками.
-4. **Git:** Commit often, Atomic commits.
+```
+├── src/llm_keywords_pipeline/   # Python package
+│   ├── core/                    # Config, keywords, text, SEO utilities
+│   ├── validate/                # Meta, content, density validators
+│   ├── audit/                   # Coverage, H1, keyword consistency
+│   ├── generate/                # SQL, meta, checklist generators
+│   ├── analyze/                 # Category analysis, duplicates
+│   ├── extract/                 # Keyword extraction tools
+│   ├── fix/                     # Data repair utilities
+│   └── sync/                    # Migration and sync tools
+├── categories/                  # Category data (RU)
+├── uk/                          # Category data (UK)
+├── tests/                       # pytest test suite
+├── docs/                        # Documentation
+├── data/                        # Raw and generated data
+├── .claude/                     # Claude skills (slash commands)
+├── pyproject.toml               # Project config and dependencies
+└── docker-compose.yml           # Docker deployment
+```
 
 ---
 
-**Updated:** 2026-02-04
-**Version:** 10.0 (uv + src layout)
+## Metrics
+
+- **Categories:** 53 RU + 53 UK
+- **Modules:** 65 (across 11 packages)
+- **Tests:** 578 passing
+- **Quality thresholds:** stem density ≤2.5%, classic nausea ≤3.5, water 40-65%
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE)
