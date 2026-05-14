@@ -52,11 +52,21 @@ This repository is that workflow packaged as a Python project.
 
 ## Core Workflow
 
-### 1. Import keyword data
+### 1. Adapt keyword exports into JSON
 
-The pipeline works with structured category data, `_clean.json` files, raw JSON exports,
-and CSV-based semantic sources. The D+E fallback pattern prefers clustered clean data
-first, then raw parsed data, then CSV fallback.
+The workflow starts from a keyword export, usually CSV or a structured keyword list.
+That raw input is adapted into category JSON files so the rest of the pipeline can work
+with one contract instead of spreadsheets.
+
+The project keeps several paths for that handoff:
+
+- raw category JSON, such as `categories/{slug}/data/{slug}.json`;
+- clustered clean JSON, such as `categories/{slug}/data/{slug}_clean.json`;
+- master CSV sync into `_clean.json`;
+- CSV restore/compare utilities for drift, missing keywords, and changed volumes.
+
+The D+E fallback pattern prefers `_clean.json` first, then raw parsed JSON, then CSV
+fallback. In practice, `_clean.json` is the main working artifact for the next stages.
 
 ### 2. Cluster semantics
 
@@ -79,15 +89,19 @@ by URL intersection in Google results. If two queries share enough TOP-10 URLs, 
 belong to the same cluster or synonym group; if their TOP-10 results differ, the keyword
 is treated as a separate search intent.
 
-After clustering, the primary keyword and semantic groups are used to form a research
-prompt for an external web-research tool, for example Perplexity or an LLM agent with web
-search. The result is saved into `categories/{slug}/research/RESEARCH_DATA.md`.
+In the original orchestrated workflow, after clustering, the primary keyword, semantic
+groups, entities, micro-intents, and product insights were used to generate a
+`categories/{slug}/research/RESEARCH_PROMPT.md` file for an external web-research tool,
+for example Perplexity Deep Research or an LLM agent with web search. The research
+result was then saved into `categories/{slug}/research/RESEARCH_DATA.md`.
 
 That research file is not just an attachment. It becomes the category brief for the
 next stage: product facts, competitor structure, user intent, content gaps, required
-blocks, FAQ ideas, and risks that should shape the final SEO text. The public repo keeps
-this as a documented research-artifact workflow rather than shipping private SERP
-datasets and old extraction outputs.
+blocks, FAQ ideas, and risks that should shape the final SEO text.
+
+The public package does not ship the old Perplexity runner or private research outputs.
+It keeps the research stage as prompt/checklist/reference material and as a pipeline
+artifact checked by task generation.
 
 ### 4. Produce SEO briefs and content
 
@@ -131,10 +145,11 @@ stopwords, stemming, lemmatization, and morphology-aware keyword matching.
 
 | Area | What it does |
 | --- | --- |
+| Keyword JSON adaptation | Converts CSV/master/raw keyword data into category JSON and `_clean.json` artifacts used by the pipeline. |
 | Keyword clustering | Builds clean keyword groups from raw/CSV/category data and separates intent roles. |
 | SERP TOP-10 overlap | Uses search-result URL intersections to decide whether keywords belong in one cluster or represent different intents. |
 | Synonym cleanup | Detects near-duplicates and normalizes competing keyword variants. |
-| Research prompt workflow | Turns clustered keywords into a web-research prompt, stores `RESEARCH_DATA.md`, then uses it as the brief for content generation. |
+| Research prompt workflow | Turns clustered keywords/entities/product insights into a research prompt contract; public docs preserve `RESEARCH_PROMPT.md` → `RESEARCH_DATA.md` as the brief workflow. |
 | Content validation | Checks H1, intro, headings, keyword coverage, meta sync, and language-specific rules. |
 | Density and spam | Finds exact, partial, stem, and substring overuse with warning/spam thresholds. |
 | Water and nausea | Calculates Advego-like water, classic nausea, academic nausea, and lemma repetition. |
@@ -199,6 +214,7 @@ production deployment recipe.
 | --- | --- |
 | [Architecture](docs/architecture.md) | Package map, workflow boundaries, stable vs legacy surface. |
 | [Testing](docs/testing.md) | Test tiers, default commands, CI parity, data-required skips. |
+| [Research Workflow](docs/research-workflow.md) | How clustered keywords became `RESEARCH_PROMPT.md`, `RESEARCH_DATA.md`, and a content brief. |
 | [Public Version](docs/public-version.md) | What is included, what is omitted, and why prompts remain public. |
 | [Prompt Templates](prompts/README.md) | Prepare/produce/deliver LLM workflow templates. |
 

@@ -9,6 +9,7 @@ private operational data.
 - Python package code under `src/llm_keywords_pipeline/`.
 - Public pytest fixtures and tests.
 - LLM prompt templates under `prompts/` as reference material.
+- Public research workflow documentation under `docs/research-workflow.md`.
 - Local-only Docker Compose demo for MariaDB/Adminer.
 - GitHub Actions CI for linting and tests.
 
@@ -16,6 +17,7 @@ private operational data.
 
 - Production category datasets.
 - Private SEO content and generated reports.
+- Private `RESEARCH_PROMPT.md` / `RESEARCH_DATA.md` outputs and SERP exports.
 - External LLM orchestration and worker logs.
 - Local agent prompts, signal files, and session logs.
 - Deployment scripts and environment-specific infrastructure.

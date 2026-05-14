@@ -53,11 +53,22 @@ SEO-специалист часто начинает с грязной выгр�
 
 ## Основной workflow
 
-### 1. Импорт семантики
+### 1. Адаптация списка ключей в JSON
 
-Пайплайн работает со структурированными category data, `_clean.json`, raw JSON exports и
-CSV-семантикой. D+E fallback pattern сначала берет кластеризованный clean-файл, потом
-raw JSON, потом CSV fallback.
+Workflow начинается с выгрузки ключей: CSV или структурированного списка семантики.
+Этот сырой вход адаптируется в category JSON files, чтобы весь дальнейший pipeline
+работал не с таблицами, а с одним понятным контрактом данных.
+
+В проекте есть несколько путей такого handoff:
+
+- raw category JSON, например `categories/{slug}/data/{slug}.json`;
+- кластеризованный clean JSON, например `categories/{slug}/data/{slug}_clean.json`;
+- синхронизация master CSV в `_clean.json`;
+- CSV restore/compare utilities для drift, missing keywords и изменившихся volumes.
+
+D+E fallback pattern сначала берет `_clean.json`, потом raw parsed JSON, потом CSV
+fallback. На практике `_clean.json` становится главным рабочим артефактом для следующих
+этапов.
 
 ### 2. Кластеризация ключей
 
@@ -80,15 +91,19 @@ raw JSON, потом CSV fallback.
 в TOP-10, они могут попасть в один кластер или synonym group; если выдача заметно
 отличается, ключ считается отдельным поисковым intent.
 
-После кластеризации primary keyword и группы семантики используются, чтобы сформировать
-research prompt для внешнего web-research инструмента, например Perplexity или LLM agent
-с web search. Результат сохраняется в `categories/{slug}/research/RESEARCH_DATA.md`.
+В исходном orchestrated workflow после кластеризации primary keyword, semantic groups,
+entities, micro-intents и product insights использовались для генерации
+`categories/{slug}/research/RESEARCH_PROMPT.md` под внешний web-research инструмент,
+например Perplexity Deep Research или LLM agent с web search. Результат исследования
+затем сохранялся в `categories/{slug}/research/RESEARCH_DATA.md`.
 
 Этот файл не просто прикладывается к категории. Он становится brief для следующего
 этапа: факты о продукте, структура конкурентов, intent пользователя, content gaps,
 обязательные блоки, идеи для FAQ и риски, которые нужно учесть при написании SEO-текста.
-В публичной версии приватные SERP-данные и старые extraction outputs не публикуются, но
-сам research-artifact workflow сохранен.
+
+Public package не включает старый Perplexity runner и приватные research outputs. В нём
+сохранены prompt/checklist/reference материалы research stage и сам `RESEARCH_DATA.md`
+как артефакт, который проверяется task generation.
 
 ### 4. Написание SEO-текста
 
@@ -133,10 +148,11 @@ lemmatization и morphology-aware matching, а не только exact string ma
 
 | Блок | Что делает |
 | --- | --- |
+| Keyword JSON adaptation | Превращает CSV/master/raw keyword data в category JSON и `_clean.json`, с которыми работает весь pipeline. |
 | Keyword clustering | Строит clean keyword groups из raw/CSV/category data и разделяет intent roles. |
 | SERP TOP-10 overlap | Использует пересечение URL в поисковой выдаче, чтобы понять: ключи в один кластер или это разные intents. |
 | Synonym cleanup | Находит near-duplicates и нормализует конкурирующие варианты ключей. |
-| Research prompt workflow | Превращает кластеризованные ключи в web-research prompt, сохраняет `RESEARCH_DATA.md` и использует его как brief для генерации текста. |
+| Research prompt workflow | Превращает clustered keywords/entities/product insights в research prompt contract; public docs сохраняют workflow `RESEARCH_PROMPT.md` → `RESEARCH_DATA.md` → brief. |
 | Content validation | Проверяет H1, intro, headings, keyword coverage, meta sync и языковые правила. |
 | Density and spam | Ищет exact, partial, stem и substring overuse с warning/spam thresholds. |
 | Water and nausea | Считает воду, классическую тошноту, академическую тошноту и повтор лемм. |
@@ -201,6 +217,7 @@ deployment recipe.
 | --- | --- |
 | [Architecture](docs/architecture.md) | Package map, workflow boundaries, stable vs legacy surface. |
 | [Testing](docs/testing.md) | Test tiers, default commands, CI parity, data-required skips. |
+| [Research Workflow](docs/research-workflow.md) | Как clustered keywords превращались в `RESEARCH_PROMPT.md`, `RESEARCH_DATA.md` и content brief. |
 | [Public Version](docs/public-version.md) | Что включено, что исключено и зачем оставлены prompts. |
 | [Prompt Templates](prompts/README.md) | Prepare/produce/deliver LLM workflow templates. |
 
