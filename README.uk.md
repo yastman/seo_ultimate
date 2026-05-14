@@ -42,7 +42,7 @@ SEO-спеціаліст часто починає з брудного експ�
 - завантажити або імпортувати список ключів;
 - згрупувати ключі у зрозумілі SEO-кластери;
 - відокремити primary, secondary, supporting і commercial keywords;
-- використати SERP/competitor research, якщо такий файл підготовлений;
+- використати TOP-10 SERP overlap і competitor research, якщо такий файл підготовлений;
 - написати або згенерувати текст за кластеризованим brief;
 - перевірити готовий текст на покриття ключів;
 - знайти переспам, зайву воду та нудоту до публікації.
@@ -75,10 +75,15 @@ raw JSON, потім CSV fallback.
 
 ### 3. Урахування SERP і конкурентів
 
+В оригінальному workflow також підтримується окремий файл SERP TOP-10: ключі можна
+перевіряти за перетином URL у видачі Google. Якщо два запити мають достатньо спільних
+URL у TOP-10, вони можуть потрапити в один кластер або synonym group; якщо видача
+помітно відрізняється, ключ вважається окремим пошуковим intent.
+
 Якщо для категорії є `research/RESEARCH_DATA.md` або competitor metadata, prompt
 workflow використовує це як додатковий контекст: структура, intent, gaps, обов'язкові
-блоки та ризики. У публічній версії приватні SERP-дані не публікуються, але сам
-research-artifact workflow збережений.
+блоки та ризики. У публічній версії приватні SERP-дані та старі extraction outputs не
+публікуються, але сам research-artifact workflow збережений.
 
 ### 4. Написання SEO-тексту
 
@@ -124,6 +129,7 @@ lemmatization і morphology-aware matching, а не лише exact string match.
 | Блок | Що робить |
 | --- | --- |
 | Keyword clustering | Будує clean keyword groups із raw/CSV/category data і розділяє intent roles. |
+| SERP TOP-10 overlap | Використовує перетин URL у пошуковій видачі, щоб зрозуміти: ключі в один кластер чи це різні intents. |
 | Synonym cleanup | Знаходить near-duplicates і нормалізує конкуруючі варіанти ключів. |
 | SERP research workflow | Використовує optional research і competitor artifacts як контекст для prompts і checklist stages. |
 | Content validation | Перевіряє H1, intro, headings, keyword coverage, meta sync і мовні правила. |
@@ -198,9 +204,9 @@ deployment recipe.
 ## Публічна межа
 
 Репозиторій зберігає інженерну структуру, тести, fixtures і prompt workflow, але не
-публікує приватні production datasets, generated reports і external LLM orchestration.
-Частина утиліт очікує оригінальний private data layout і залишена, щоб показати
-реальну архітектуру проєкту.
+публікує приватні production datasets, generated reports, старі SERP TOP-10 exports і
+external LLM orchestration. Частина утиліт і docs очікує оригінальний private data
+layout і залишена, щоб показати реальну архітектуру проєкту.
 
 ---
 

@@ -41,7 +41,7 @@ hard part is turning keyword research into a repeatable workflow:
 
 - group raw keywords into usable clusters;
 - separate primary, secondary, supporting, and commercial keywords;
-- use SERP or competitor research artifacts when they exist;
+- use TOP-10 SERP overlap and competitor research artifacts when they exist;
 - write or generate content from the clustered brief;
 - check the finished text against the expected keyword set;
 - catch over-optimization before the page is shipped.
@@ -74,10 +74,15 @@ volume and phrase quality, and remove weaker duplicates.
 
 ### 3. Add SERP or competitor research
 
+The original workflow also supports a separate SERP TOP-10 file: keywords can be checked
+by URL intersection in Google results. If two queries share enough TOP-10 URLs, they can
+belong to the same cluster or synonym group; if their TOP-10 results differ, the keyword
+is treated as a separate search intent.
+
 When a category has `research/RESEARCH_DATA.md` or competitor metadata, the prompt
 workflow can use it as extra context for structure, intent, and content gaps. The public
 repo keeps this as a documented research-artifact workflow rather than shipping private
-SERP datasets.
+SERP datasets and old extraction outputs.
 
 ### 4. Produce SEO briefs and content
 
@@ -122,6 +127,7 @@ stopwords, stemming, lemmatization, and morphology-aware keyword matching.
 | Area | What it does |
 | --- | --- |
 | Keyword clustering | Builds clean keyword groups from raw/CSV/category data and separates intent roles. |
+| SERP TOP-10 overlap | Uses search-result URL intersections to decide whether keywords belong in one cluster or represent different intents. |
 | Synonym cleanup | Detects near-duplicates and normalizes competing keyword variants. |
 | SERP research workflow | Uses optional research and competitor artifacts as context for prompts and checklist stages. |
 | Content validation | Checks H1, intro, headings, keyword coverage, meta sync, and language-specific rules. |
@@ -196,9 +202,9 @@ production deployment recipe.
 ## Public Boundary
 
 This public repository keeps the engineering structure, tests, fixtures, and prompt
-workflow, but excludes private production datasets, generated reports, and external LLM
-orchestration. Some utilities expect the original private data layout and are preserved
-to show the real project architecture.
+workflow, but excludes private production datasets, generated reports, old SERP TOP-10
+exports, and external LLM orchestration. Some utilities and docs reference the original
+private data layout and are preserved to show the real project architecture.
 
 ---
 
