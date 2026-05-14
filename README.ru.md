@@ -93,7 +93,7 @@ fallback. На практике `_clean.json` становится главны�
 в TOP-10, они могут попасть в один кластер или synonym group; если выдача заметно
 отличается, ключ считается отдельным поисковым intent.
 
-В исходном orchestrated workflow после кластеризации primary keyword, semantic groups,
+В полном workflow после кластеризации primary keyword, semantic groups,
 entities, micro-intents и product insights использовались для генерации
 `categories/{slug}/research/RESEARCH_PROMPT.md` под внешний web-research инструмент,
 например Perplexity Deep Research или LLM agent с web search. Результат исследования
@@ -103,9 +103,9 @@ entities, micro-intents и product insights использовались для 
 этапа: факты о продукте, структура конкурентов, intent пользователя, content gaps,
 обязательные блоки, идеи для FAQ и риски, которые нужно учесть при написании SEO-текста.
 
-Public package не включает старый Perplexity runner и приватные research outputs. В нём
-сохранены prompt/checklist/reference материалы research stage и сам `RESEARCH_DATA.md`
-как артефакт, который проверяется task generation.
+Public package сохраняет этот stage как prompt/checklist/reference material и pipeline
+artifact, который проверяется task generation. Внешние research runners и generated
+research outputs намеренно вынесены за пределы репозитория.
 
 ### 4. Написание SEO-текста
 
@@ -224,7 +224,7 @@ deployment recipe.
 
 | Документ | Что внутри |
 | --- | --- |
-| [Architecture](docs/architecture.md) | Package map, workflow boundaries, stable vs legacy surface. |
+| [Architecture](docs/architecture.md) | Package map, workflow boundaries и supported public surface. |
 | [Testing](docs/testing.md) | Test tiers, default commands, CI parity, data-required skips. |
 | [Research Workflow](docs/research-workflow.md) | Как clustered keywords превращались в `RESEARCH_PROMPT.md`, `RESEARCH_DATA.md` и content brief. |
 | [Public Version](docs/public-version.md) | Что включено, что исключено и зачем оставлены prompts. |
@@ -234,10 +234,10 @@ deployment recipe.
 
 ## Публичная граница
 
-Репозиторий сохраняет инженерную структуру, тесты, fixtures и prompt workflow, но не
-публикует приватные production datasets, generated reports, старые SERP TOP-10 exports и
-external LLM orchestration. Часть утилит и docs ожидает оригинальный private data layout
-и оставлена, чтобы показать реальную архитектуру проекта.
+Репозиторий сохраняет инженерную структуру, тесты, fixtures и prompt workflow.
+Production datasets, generated reports, SERP TOP-10 exports и external LLM orchestration
+намеренно исключены; data-layout dependent modules оставлены как reference
+implementations для совместимых SEO-проектов.
 
 ---
 

@@ -10,7 +10,6 @@
 **Required infrastructure:** compatible category data layout, validation modules, and
 external orchestration.
 
-**Suggested agent profile:** `seo-content-auditor`
 **Этап:** 3/3 (DELIVER)
 **Задача:** Валидировать контент и упаковать deliverables
 

@@ -1,8 +1,8 @@
 # Public Version Notes
 
-This repository is a sanitized portfolio version of an internal SEO automation pipeline.
-It is intended to show engineering approach and project structure without exposing
-private operational data.
+This repository is a public portfolio version of an SEO automation pipeline. It is
+intended to show engineering approach and project structure without exposing production
+operational data.
 
 ## Included
 

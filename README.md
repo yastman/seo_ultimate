@@ -91,7 +91,7 @@ by URL intersection in Google results. If two queries share enough TOP-10 URLs, 
 belong to the same cluster or synonym group; if their TOP-10 results differ, the keyword
 is treated as a separate search intent.
 
-In the original orchestrated workflow, after clustering, the primary keyword, semantic
+In the full workflow, after clustering, the primary keyword, semantic
 groups, entities, micro-intents, and product insights were used to generate a
 `categories/{slug}/research/RESEARCH_PROMPT.md` file for an external web-research tool,
 for example Perplexity Deep Research or an LLM agent with web search. The research
@@ -101,9 +101,9 @@ That research file is not just an attachment. It becomes the category brief for 
 next stage: product facts, competitor structure, user intent, content gaps, required
 blocks, FAQ ideas, and risks that should shape the final SEO text.
 
-The public package does not ship the old Perplexity runner or private research outputs.
-It keeps the research stage as prompt/checklist/reference material and as a pipeline
-artifact checked by task generation.
+The public package keeps this stage as prompt/checklist/reference material and as a
+pipeline artifact checked by task generation. External research runners and generated
+research outputs are intentionally outside this repository.
 
 ### 4. Produce SEO briefs and content
 
@@ -221,7 +221,7 @@ production deployment recipe.
 
 | Doc | What's in it |
 | --- | --- |
-| [Architecture](docs/architecture.md) | Package map, workflow boundaries, stable vs legacy surface. |
+| [Architecture](docs/architecture.md) | Package map, workflow boundaries, and supported public surface. |
 | [Testing](docs/testing.md) | Test tiers, default commands, CI parity, data-required skips. |
 | [Research Workflow](docs/research-workflow.md) | How clustered keywords became `RESEARCH_PROMPT.md`, `RESEARCH_DATA.md`, and a content brief. |
 | [Public Version](docs/public-version.md) | What is included, what is omitted, and why prompts remain public. |
@@ -232,9 +232,9 @@ production deployment recipe.
 ## Public Boundary
 
 This public repository keeps the engineering structure, tests, fixtures, and prompt
-workflow, but excludes private production datasets, generated reports, old SERP TOP-10
-exports, and external LLM orchestration. Some utilities and docs reference the original
-private data layout and are preserved to show the real project architecture.
+workflow. Production datasets, generated reports, SERP TOP-10 exports, and external LLM
+orchestration are intentionally excluded; data-layout dependent modules remain as
+reference implementations for compatible SEO projects.
 
 ---
 

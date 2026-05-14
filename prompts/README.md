@@ -1,4 +1,4 @@
-# Prompts — Sub-agent Templates
+# Prompts — Workflow Templates
 
 Prompt templates for the 3-stage LLM-driven content workflow. Most templates are in
 Russian because the primary target content is in Russian.
@@ -7,8 +7,8 @@ Russian because the primary target content is in Russian.
 data sources, and a `categories/` data directory). They are preserved as public
 reference templates and are not directly runnable from a fresh clone.
 
-These files are included to show the orchestration design behind the pipeline. They are
-not required for running the public test suite.
+These files are included to show the staged content workflow behind the pipeline. They
+are not required for running the public test suite.
 
 ## Structure
 
@@ -29,9 +29,9 @@ Orchestrator
 
 ## Parameters
 
-Each template accepts slug, category name, and tier as input placeholders (e.g.
-`{slug}`, `{tier}`). Replace them with actual values before dispatching the prompt
-to an LLM sub-agent.
+Each template accepts slug, category name, and tier as input placeholders, for example
+`{slug}` and `{tier}`. Replace them with actual values before using the template in an
+LLM-assisted workflow.
 
 ## Limitations
 

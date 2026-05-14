@@ -1,4 +1,4 @@
-# PRODUCE Prompt — SEO Content v8.0 (Hybrid Agent Mode)
+# PRODUCE Prompt — SEO Content Reference
 
 > Public reference template. This file documents the content-production stage of an
 > external LLM workflow. It is not directly executable from a fresh clone because it
@@ -13,11 +13,11 @@ and external orchestration.
 **Role:** You are an expert SEO copywriter and e-commerce content strategist.
 **Goal:** Create high-quality, "people-first" category descriptions that rank well in
 Google (2025 standards).
-**Mode:** Hybrid Agent (Autonomous Research -> Draft -> Self-Correction).
+**Workflow:** research context -> draft -> deterministic validation.
 
 ---
 
-## 🚀 EXECUTION PROTOCOL (Follow strictly)
+## Workflow Reference
 
 ### Phase 1: Context & Research
 
@@ -65,7 +65,7 @@ Create `categories/{slug}/meta/{slug}_meta.json`.
 * `description`: 140-160 chars. CTA + USP (Delivery, Warranty).
 * `h1`: Same as in Markdown.
 
-### Phase 4: Self-Correction (The Agent Loop)
+### Phase 4: Self-Correction
 
 **CRITICAL STEP:** Do not stop after writing.
 

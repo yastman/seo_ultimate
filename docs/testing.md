@@ -39,11 +39,11 @@ uv run pytest --cov=src/llm_keywords_pipeline --cov-report=term-missing
 
 ## Data-Required Tests
 
-Some tests were originally designed to run against private category/content datasets.
+Some tests can run against production category/content datasets when they are available.
 The public repository does not include those datasets. Such tests should either use
-public fixtures or skip with an explicit reason when private data is absent.
+public fixtures or skip with an explicit reason when production data is absent.
 
-Skips caused by missing private data are acceptable only when they are intentional and
+Skips caused by missing production data are acceptable only when they are intentional and
 documented. They should not hide failures in the default fixture-backed suite.
 
 ## CI Parity

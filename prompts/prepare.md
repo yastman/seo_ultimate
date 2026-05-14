@@ -9,7 +9,6 @@
 **Outputs:** category folders plus task/keyword JSON artifacts.
 **Required infrastructure:** compatible project data layout and external orchestration.
 
-**Suggested agent profile:** `general-purpose`
 **Этап:** 1/3 (PREPARE)
 **Задача:** Подготовить структуру и данные для категории
 
@@ -100,7 +99,7 @@ from llm_keywords_pipeline.extract.ru_keywords_list import ...
 Кластеризация 52 ключей → 12 уникальных:
 
 ```
-# Используйте внутренние модули package для кластеризации
+# Используйте модули package для кластеризации
 # Input: {slug}.json (52 kw)
 # Output: {slug}_clean.json (12 kw)
 ```
@@ -117,7 +116,7 @@ from llm_keywords_pipeline.extract.ru_keywords_list import ...
 
 ## Output Report
 
-Вернуть Orchestrator:
+Вернуть краткий отчёт:
 
 ```
 ✅ PREPARE завершён для {slug}

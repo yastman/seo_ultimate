@@ -1,8 +1,8 @@
 # Research Workflow
 
-This document preserves the public, non-private description of the original SEO research
-stage. The production category data, generated research outputs, and old local agent
-skills are intentionally not included in this repository.
+This document describes the public contract for the SEO research stage. Production
+category data, generated research outputs, and local automation files are intentionally
+not included in this repository.
 
 ## Purpose
 
@@ -12,7 +12,7 @@ patterns, and source-backed research instead of generic LLM filler.
 
 ## Inputs
 
-The original orchestrated workflow used these inputs:
+The full workflow used these inputs:
 
 | Input | Purpose |
 | --- | --- |
@@ -22,11 +22,11 @@ The original orchestrated workflow used these inputs:
 | Category mapping data | Connects a category slug to the relevant product/catalog section. |
 
 In the public package, the runnable code keeps the keyword JSON, checklist, validation,
-and prompt-template pieces. Private exports and local orchestration files are omitted.
+and prompt-template pieces. Production exports and local orchestration files are omitted.
 
 ## Stage Output
 
-The original workflow produced two files under the category folder:
+The full workflow produced two files under the category folder:
 
 ```text
 categories/{slug}/research/
@@ -77,7 +77,7 @@ category research folder is used for competitor and content-structure context.
 
 ## Public Boundary
 
-This repository does not currently ship a runnable Perplexity runner or private
+This repository does not currently ship a runnable external research runner or production
 `RESEARCH_PROMPT.md` / `RESEARCH_DATA.md` category outputs. It keeps the public contract,
 reference prompts, checklist stage, and validation code so the architecture remains
 inspectable without exposing operational data.
