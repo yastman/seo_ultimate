@@ -1,12 +1,26 @@
+<div align="center">
+
 # LLM Keywords Pipeline
 
-[![CI](https://github.com/yastman/llm-keywords-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/yastman/llm-keywords-pipeline/actions/workflows/ci.yml)
+**English · [Русский](README.ru.md) · [Українська](README.uk.md)**
 
-A Python pipeline for turning messy SEO keyword operations into repeatable validation,
-audit, and generation workflows.
+**Keyword clustering and SEO content QA pipeline for Russian and Ukrainian e-commerce pages.**
 
-Solves the quality-control problem that appears when SEO content and LLM drafts scale
-beyond manual review.
+**Turns a raw keyword list into clustered SEO groups, LLM-ready briefs, and measurable content checks: coverage, density, spam, wateriness, and nausea.**
+
+<p>
+  <a href="https://github.com/yastman/llm-keywords-pipeline/actions/workflows/ci.yml">
+    <img alt="CI" src="https://img.shields.io/github/actions/workflow/status/yastman/llm-keywords-pipeline/ci.yml?branch=main&label=tests&style=for-the-badge">
+  </a>
+  <img alt="Python" src="https://img.shields.io/badge/python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img alt="uv" src="https://img.shields.io/badge/package%20manager-uv-6E56CF?style=for-the-badge">
+  <img alt="Ruff" src="https://img.shields.io/badge/lint-ruff-46A758?style=for-the-badge">
+  <img alt="Pytest" src="https://img.shields.io/badge/tests-pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white">
+  <img alt="NLP" src="https://img.shields.io/badge/NLP-RU%20%2F%20UK-0E9F6E?style=for-the-badge">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-111111?style=for-the-badge">
+</p>
+
+</div>
 
 ```bash
 uv sync
@@ -14,96 +28,126 @@ uv run ruff check src tests
 uv run pytest
 ```
 
-Works with Python 3.12+ and `uv`.
+---
+
+## What Problem It Solves
+
+SEO specialists often start with a messy keyword export: duplicates, synonyms, mixed
+commercial and informational intent, raw search volumes, competitor notes, and a text
+that may or may not cover the required semantics.
+
+Doing that by hand does not scale. The hard part is not writing one category text. The
+hard part is turning keyword research into a repeatable workflow:
+
+- group raw keywords into usable clusters;
+- separate primary, secondary, supporting, and commercial keywords;
+- use SERP or competitor research artifacts when they exist;
+- write or generate content from the clustered brief;
+- check the finished text against the expected keyword set;
+- catch over-optimization before the page is shipped.
+
+This repository is that workflow packaged as a Python project.
 
 ---
 
-## Why I Built This
+## Core Workflow
 
-SEO content for e-commerce catalogs is repetitive until it suddenly is not.
+### 1. Import keyword data
 
-One category is easy to review by hand. Hundreds of categories are different: keyword
-semantics drift, generated meta tags miss primary terms, H1/H2 structure regresses,
-LLM drafts repeat generic phrases, and multilingual variants stop matching the source
-intent.
+The pipeline works with structured category data, `_clean.json` files, raw JSON exports,
+and CSV-based semantic sources. The D+E fallback pattern prefers clustered clean data
+first, then raw parsed data, then CSV fallback.
 
-The hard part is not generating text. The hard part is making generated or edited
-content reviewable.
+### 2. Cluster semantics
 
-This project packages that review layer: deterministic checks, NLP-aware keyword
-matching, audit utilities, repair helpers, and prompt templates around a practical
-content pipeline.
+Keywords are grouped into practical SEO roles:
+
+| Group | Purpose |
+| --- | --- |
+| `primary` | Main target terms for H1, intro, and core page intent. |
+| `secondary` | Related terms that expand the page without changing intent. |
+| `supporting` | Long-tail and contextual phrases for semantic depth. |
+| `commercial` | Buy/price/order modifiers, often used for meta or commercial signals. |
+
+Duplicate and synonym cleanup tools normalize close variants, choose stronger winners by
+volume and phrase quality, and remove weaker duplicates.
+
+### 3. Add SERP or competitor research
+
+When a category has `research/RESEARCH_DATA.md` or competitor metadata, the prompt
+workflow can use it as extra context for structure, intent, and content gaps. The public
+repo keeps this as a documented research-artifact workflow rather than shipping private
+SERP datasets.
+
+### 4. Produce SEO briefs and content
+
+The `prompts/` directory documents a prepare/produce/deliver flow for LLM-assisted
+writing. It reads clustered keywords, primary terms, entity dictionaries, content rules,
+and optional research context before drafting or reviewing category content.
+
+### 5. Validate the written text
+
+The validators check whether the final markdown actually satisfies the brief:
+
+- primary keyword in H1 and intro;
+- morphology-aware keyword coverage for Russian and Ukrainian;
+- split coverage for core and commercial keywords;
+- keyword density and stem-based over-spam detection;
+- water percentage, classic nausea, academic nausea, and lemma repetition;
+- H1/H2 structure, intro quality, blacklist terms, brand/city mentions, and meta sync.
 
 ---
 
-## How It Works
+## Why It Is Useful
 
-The pipeline follows a simple loop.
+### For an SEO specialist
 
-### 1. Extract
+It converts keyword research into a controlled checklist: what to target, what to keep
+out of the body, what to include in meta, and what to fix after the text is written.
 
-Read category and keyword data from structured files, normalize it, and prepare it for
-validation or generation.
+### For LLM-assisted content
 
-### 2. Generate
+It treats LLM output as a draft that must pass deterministic checks. The model can write,
+but the pipeline verifies coverage, structure, and over-optimization.
 
-Create supporting artifacts: meta JSON, SQL exports, semantic review files, catalogs,
-checklists, and LLM workflow outputs.
+### For multilingual catalogs
 
-### 3. Validate
-
-Run deterministic quality gates for meta tags, content structure, keyword density,
-headings, language-specific rules, and master keyword data.
-
-### 4. Audit
-
-Inspect higher-level content quality: semantic coverage, H1 synchronization, wateriness,
-brand/city mentions, unused terms, and cannibalization risks.
-
-### 5. Repair and Sync
-
-Use focused utilities to clean up duplicates, missing keywords, ordering issues,
-migration artifacts, and master-data drift.
+The code handles Russian and Ukrainian text with language-aware tokenization,
+stopwords, stemming, lemmatization, and morphology-aware keyword matching.
 
 ---
 
-## Core Capabilities
+## Capabilities
 
 | Area | What it does |
 | --- | --- |
-| Validation | Checks meta JSON, content structure, keyword density, SEO headings, language rules, and master keyword data. |
-| Audits | Reviews coverage, H1 sync, brand/city mentions, wateriness, semantic quality, unused terms, and cannibalization risks. |
+| Keyword clustering | Builds clean keyword groups from raw/CSV/category data and separates intent roles. |
+| Synonym cleanup | Detects near-duplicates and normalizes competing keyword variants. |
+| SERP research workflow | Uses optional research and competitor artifacts as context for prompts and checklist stages. |
+| Content validation | Checks H1, intro, headings, keyword coverage, meta sync, and language-specific rules. |
+| Density and spam | Finds exact, partial, stem, and substring overuse with warning/spam thresholds. |
+| Water and nausea | Calculates Advego-like water, classic nausea, academic nausea, and lemma repetition. |
 | Generation | Produces meta artifacts, SQL exports, semantic review files, catalog JSON, and checklists. |
-| Extraction | Extracts category and keyword data from project files for downstream validation and comparison. |
-| Repair and sync | Provides cleanup, migration, keyword ordering, volume update, and master-data merge utilities. |
-| Prompt workflow | Documents prepare/produce/deliver templates for an LLM-assisted content workflow. |
+| Repair and sync | Updates volumes, restores clean JSON from CSV, merges master keyword data, and fixes ordering or misplaced terms. |
 
 ---
 
-## Why It Works
+## Project Structure
 
-### Deterministic checks around probabilistic output
-
-LLMs can draft content quickly, but their output still needs stable quality gates. This
-project treats generated text as input to validate, not as something to trust blindly.
-
-### NLP-aware SEO validation
-
-Keyword checks need to handle Russian and Ukrainian morphology, not only exact string
-matches. The package includes language-aware text utilities, stemming/lemmatization
-helpers, stopword handling, and semantic coverage checks.
-
-### Testable pipeline pieces
-
-The code is split into package modules for `core`, `validate`, `audit`, `generate`,
-`extract`, `fix`, `sync`, `analyze`, `compare`, and `batch`. Tests cover isolated
-utilities, fixture-backed validation, integration flows, and smoke checks.
-
-### Honest public boundary
-
-The public repository keeps the engineering structure and fixtures, but excludes private
-category datasets, generated reports, deployment automation, and external orchestration.
-That makes the project inspectable without pretending to be a plug-and-play SaaS.
+```text
+src/llm_keywords_pipeline/
+  analyze/      category and metadata analysis for LLM briefs
+  audit/        water, nausea, coverage, blacklist, H1, and quality audits
+  core/         keyword matching, morphology, SEO rules, text utilities
+  generate/     meta, checklist, semantic review, catalog, and export tools
+  validate/     content, meta, heading, density, language, and data validators
+  sync/         CSV/master-data synchronization and _clean.json repair
+  fix/          focused cleanup utilities
+  compare/      keyword distribution and dataset comparison helpers
+tests/          pytest suite and public fixtures
+prompts/        prepare/produce/deliver LLM workflow templates
+docs/           architecture, testing, and public-version notes
+```
 
 ---
 
@@ -138,39 +182,6 @@ production deployment recipe.
 
 ---
 
-## Commands
-
-Main verification path:
-
-| Command | Purpose |
-| --- | --- |
-| `uv sync` | Install the locked Python environment. |
-| `uv run ruff check src tests` | Run lint and import checks. |
-| `uv run pytest` | Run the default test suite. |
-| `uv run pytest --collect-only -q` | Inspect collected tests. |
-
-Most pipeline modules can also be explored with `uv run python -m
-llm_keywords_pipeline.<package>.<module>`, but some generation and migration utilities
-expect the private data layout that is intentionally omitted from this public version.
-
----
-
-## Project Structure
-
-```text
-src/llm_keywords_pipeline/   Python package
-tests/                       pytest suite and public fixtures
-prompts/                     LLM workflow reference templates
-docs/                        architecture, testing, and public-version notes
-.github/workflows/ci.yml     CI lint/test workflow
-pyproject.toml               package metadata and tool configuration
-pytest.ini                   pytest configuration
-.coveragerc                  coverage configuration
-docker-compose.yml           optional local database demo
-```
-
----
-
 ## Documentation
 
 | Doc | What's in it |
@@ -182,13 +193,12 @@ docker-compose.yml           optional local database demo
 
 ---
 
-## Public Version
+## Public Boundary
 
-This repository intentionally excludes production datasets and external LLM
-orchestration. The included tests use fixtures and synthetic examples.
-
-The `prompts/` directory is preserved as reference material: it shows how the surrounding
-LLM-assisted workflow was structured, but the templates are not standalone commands.
+This public repository keeps the engineering structure, tests, fixtures, and prompt
+workflow, but excludes private production datasets, generated reports, and external LLM
+orchestration. Some utilities expect the original private data layout and are preserved
+to show the real project architecture.
 
 ---
 
@@ -198,4 +208,5 @@ MIT. See [LICENSE](LICENSE).
 
 ---
 
-LLM output is easy to generate. This project makes it reviewable.
+Raw keywords are easy to export. This project turns them into clustered SEO work that
+can be written, checked, and improved.
