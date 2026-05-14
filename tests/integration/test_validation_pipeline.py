@@ -74,13 +74,13 @@ class TestFullValidationPipeline:
             primary_keyword = "активная пена"
 
         # 2. Validate meta
-        from scripts.validate_meta import validate_meta_file
+        from llm_keywords_pipeline.validate.meta import validate_meta_file
         meta_result = validate_meta_file(str(meta_path), lang="ru")
         assert meta_result is not None
         assert "overall" in meta_result
 
         # 3. Validate content
-        from scripts.validate_content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
         content_result = validate_content(
             str(content_path),
             primary_keyword=primary_keyword,
@@ -91,7 +91,7 @@ class TestFullValidationPipeline:
         assert "overall" in content_result["summary"]
 
         # 4. Check density
-        from scripts.validate_density import analyze_text
+        from llm_keywords_pipeline.validate.density import analyze_text
         text = content_path.read_text(encoding="utf-8")
         density_result = analyze_text(text, lang="ru")
         assert density_result["total_words"] > 0
@@ -121,13 +121,13 @@ class TestFullValidationPipeline:
             primary_keyword = "активна піна"
 
         # 2. Validate meta
-        from scripts.validate_meta import validate_meta_file
+        from llm_keywords_pipeline.validate.meta import validate_meta_file
         meta_result = validate_meta_file(str(meta_path), lang="uk")
         assert meta_result is not None
         assert "overall" in meta_result
 
         # 3. Validate content
-        from scripts.validate_content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
         content_result = validate_content(
             str(content_path),
             primary_keyword=primary_keyword,
@@ -160,7 +160,7 @@ class TestCrossValidation:
         meta_h1 = meta_data.get("h1", "")
 
         # Extract content H1
-        from scripts.text_utils import extract_h1
+        from llm_keywords_pipeline.core.text import extract_h1
         content_text = content_path.read_text(encoding="utf-8")
         content_h1 = extract_h1(content_text)
 
@@ -223,7 +223,7 @@ class TestValidationModes:
         if content_path is None:
             pytest.skip("Content not available")
 
-        from scripts.validate_content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         result = validate_content(
             str(content_path),
@@ -246,7 +246,7 @@ class TestValidationModes:
         if content_path is None:
             pytest.skip("Content not available")
 
-        from scripts.validate_content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         result = validate_content(
             str(content_path),
@@ -270,7 +270,7 @@ class TestLanguageSupport:
         if uk_meta_path is None:
             pytest.skip("UK meta not available")
 
-        from scripts.validate_meta import validate_meta_file
+        from llm_keywords_pipeline.validate.meta import validate_meta_file
 
         result = validate_meta_file(str(uk_meta_path), lang="uk")
 
@@ -284,7 +284,7 @@ class TestLanguageSupport:
         if uk_content_path is None:
             pytest.skip("UK content not available")
 
-        from scripts.validate_content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         result = validate_content(
             str(uk_content_path),

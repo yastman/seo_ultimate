@@ -1,6 +1,6 @@
 """Tests for verify_test_infra.py"""
 
-from scripts.verify_test_infra import check_imports, check_structure
+from llm_keywords_pipeline.validate.test_infra import check_imports, check_structure
 
 
 class TestCheckStructure:

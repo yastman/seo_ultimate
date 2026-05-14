@@ -43,7 +43,7 @@ class TestTextUtilsSmoke:
 
     def test_clean_markdown_on_real_ru_content(self, real_ru_content):
         """clean_markdown works on real RU content."""
-        from scripts.text_utils import clean_markdown
+        from llm_keywords_pipeline.core.text import clean_markdown
 
         result = clean_markdown(real_ru_content)
 
@@ -57,7 +57,7 @@ class TestTextUtilsSmoke:
 
     def test_clean_markdown_on_real_uk_content(self, real_uk_content):
         """clean_markdown works on real UK content."""
-        from scripts.text_utils import clean_markdown
+        from llm_keywords_pipeline.core.text import clean_markdown
 
         result = clean_markdown(real_uk_content)
 
@@ -67,7 +67,7 @@ class TestTextUtilsSmoke:
 
     def test_extract_h1_on_real_content(self, real_ru_content):
         """extract_h1 finds H1 in real content."""
-        from scripts.text_utils import extract_h1
+        from llm_keywords_pipeline.core.text import extract_h1
 
         h1 = extract_h1(real_ru_content)
 
@@ -78,7 +78,7 @@ class TestTextUtilsSmoke:
 
     def test_extract_h2s_on_real_content(self, real_ru_content):
         """extract_h2s finds H2s in real content."""
-        from scripts.text_utils import extract_h2s
+        from llm_keywords_pipeline.core.text import extract_h2s
 
         h2s = extract_h2s(real_ru_content)
 
@@ -90,7 +90,7 @@ class TestTextUtilsSmoke:
 
     def test_extract_intro_on_real_content(self, real_ru_content):
         """extract_intro finds intro in real content."""
-        from scripts.text_utils import extract_intro
+        from llm_keywords_pipeline.core.text import extract_intro
 
         intro = extract_intro(real_ru_content)
 
@@ -100,7 +100,7 @@ class TestTextUtilsSmoke:
 
     def test_tokenize_ru_on_real_content(self, real_ru_content):
         """tokenize produces tokens from real RU content."""
-        from scripts.text_utils import clean_markdown, tokenize
+        from llm_keywords_pipeline.core.text import clean_markdown, tokenize
 
         clean = clean_markdown(real_ru_content)
         tokens = tokenize(clean, lang="ru", remove_stopwords=True)
@@ -115,7 +115,7 @@ class TestTextUtilsSmoke:
 
     def test_tokenize_uk_on_real_content(self, real_uk_content):
         """tokenize produces tokens from real UK content."""
-        from scripts.text_utils import clean_markdown, tokenize
+        from llm_keywords_pipeline.core.text import clean_markdown, tokenize
 
         clean = clean_markdown(real_uk_content)
         tokens = tokenize(clean, lang="uk", remove_stopwords=True)
@@ -127,7 +127,7 @@ class TestTextUtilsSmoke:
 
     def test_count_words_on_real_content(self, real_ru_content):
         """count_words returns reasonable count for real content."""
-        from scripts.text_utils import clean_markdown, count_words
+        from llm_keywords_pipeline.core.text import clean_markdown, count_words
 
         clean = clean_markdown(real_ru_content)
         words = count_words(clean)
@@ -138,7 +138,7 @@ class TestTextUtilsSmoke:
 
     def test_stopwords_ru_coverage(self):
         """RU stopwords set has adequate coverage."""
-        from scripts.text_utils import get_stopwords
+        from llm_keywords_pipeline.core.text import get_stopwords
 
         stopwords = get_stopwords("ru")
         assert len(stopwords) >= 50
@@ -149,7 +149,7 @@ class TestTextUtilsSmoke:
 
     def test_stopwords_uk_coverage(self):
         """UK stopwords set has adequate coverage."""
-        from scripts.text_utils import get_stopwords
+        from llm_keywords_pipeline.core.text import get_stopwords
 
         stopwords = get_stopwords("uk")
         assert len(stopwords) >= 50

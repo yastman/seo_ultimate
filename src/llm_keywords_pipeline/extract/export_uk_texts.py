@@ -35,7 +35,7 @@ def _slugify_l3(l3_name: str) -> str:
     try:
         from scripts.seo_utils import L3_TO_SLUG, slugify  # type: ignore
     except Exception:  # pragma: no cover
-        from seo_utils import L3_TO_SLUG, slugify  # type: ignore
+        from llm_keywords_pipeline.core.seo import L3_TO_SLUG, slugify  # type: ignore
 
     return L3_TO_SLUG.get(l3_name) or slugify(l3_name)
 

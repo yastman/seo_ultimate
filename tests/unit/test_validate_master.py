@@ -3,7 +3,7 @@
 
 import pytest
 
-from scripts.validate_master import (
+from llm_keywords_pipeline.validate.master import (
     load_master_csv,
     validate_categories_exist,
     validate_columns,

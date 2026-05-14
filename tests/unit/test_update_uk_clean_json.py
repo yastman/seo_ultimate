@@ -1,6 +1,6 @@
 """Tests for update_uk_clean_json.py"""
 
-from scripts.update_uk_clean_json import group_keywords, update_clean_json
+from llm_keywords_pipeline.sync.update_uk_clean import group_keywords, update_clean_json
 
 
 class TestGroupKeywords:

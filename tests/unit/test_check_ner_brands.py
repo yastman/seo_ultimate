@@ -6,7 +6,7 @@ from unittest.mock import patch
 # Add scripts directory to path
 sys.path.append(str(Path(__file__).parent.parent / "scripts"))
 
-from scripts.check_ner_brands import (
+from llm_keywords_pipeline.audit.ner_brands import (
     analyze_file,
     check_blacklist,
     clean_markdown,

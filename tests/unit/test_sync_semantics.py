@@ -3,7 +3,7 @@
 
 import json
 
-from scripts.sync_semantics import (
+from llm_keywords_pipeline.sync.semantics import (
     build_keywords_list,
     build_synonyms_list,
     find_clean_json_path,

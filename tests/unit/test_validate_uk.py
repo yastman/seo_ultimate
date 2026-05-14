@@ -2,7 +2,7 @@
 
 import json
 
-from scripts.archive.validate_uk import validate_uk_category
+from llm_keywords_pipeline.validate.uk import validate_uk_category
 
 
 class TestValidateUkCategory:

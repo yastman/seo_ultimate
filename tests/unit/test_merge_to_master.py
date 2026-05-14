@@ -3,7 +3,7 @@
 
 import json
 
-from scripts.merge_to_master import (
+from llm_keywords_pipeline.sync.merge_master import (
     collect_from_clean_json,
     find_clean_json_files,
     load_excel_keywords,

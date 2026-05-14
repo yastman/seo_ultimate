@@ -8,7 +8,7 @@ class TestAuditH1Primary:
 
     def test_audit_single_category_ok(self, tmp_path):
         """Category with matching H1 returns OK status."""
-        from scripts.audit_h1_primary import audit_category
+        from llm_keywords_pipeline.audit.h1 import audit_category
 
         # Create category structure (for UK: uk/categories/)
         cat_dir = tmp_path / "uk" / "categories" / "test-slug"
@@ -30,7 +30,7 @@ class TestAuditH1Primary:
 
     def test_audit_single_category_mismatch(self, tmp_path):
         """Category with non-matching H1 returns MISMATCH status."""
-        from scripts.audit_h1_primary import audit_category
+        from llm_keywords_pipeline.audit.h1 import audit_category
 
         # Create category structure (for UK: uk/categories/)
         cat_dir = tmp_path / "uk" / "categories" / "test-slug"
@@ -52,7 +52,7 @@ class TestAuditH1Primary:
 
     def test_audit_category_missing_data(self, tmp_path):
         """Category with missing files returns MISSING_DATA status."""
-        from scripts.audit_h1_primary import audit_category
+        from llm_keywords_pipeline.audit.h1 import audit_category
 
         # Create empty category dir (for UK: uk/categories/)
         cat_dir = tmp_path / "uk" / "categories" / "test-slug"
@@ -64,7 +64,7 @@ class TestAuditH1Primary:
 
     def test_audit_all_returns_list(self, tmp_path):
         """audit_all returns list of results for all categories."""
-        from scripts.audit_h1_primary import audit_all
+        from llm_keywords_pipeline.audit.h1 import audit_all
 
         # Create two categories
         for slug in ["cat1", "cat2"]:

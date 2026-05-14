@@ -1,6 +1,6 @@
 """Tests for generate_sql.py"""
 
-from scripts.generate_sql import (
+from llm_keywords_pipeline.generate.sql import (
     build_html_table,
     convert_lists,
     convert_tables,

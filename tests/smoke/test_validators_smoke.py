@@ -59,7 +59,7 @@ class TestValidateMetaSmoke:
         if meta_path is None:
             pytest.skip(f"Meta file not found for: {slug}")
 
-        from scripts.validate_meta import validate_meta_file
+        from llm_keywords_pipeline.validate.meta import validate_meta_file
 
         result = validate_meta_file(str(meta_path), lang="ru")
 
@@ -76,7 +76,7 @@ class TestValidateMetaSmoke:
         if meta_path is None:
             pytest.skip("UK meta file not found for aktivnaya-pena")
 
-        from scripts.validate_meta import validate_meta_file
+        from llm_keywords_pipeline.validate.meta import validate_meta_file
 
         result = validate_meta_file(str(meta_path), lang="uk")
 
@@ -94,7 +94,7 @@ class TestValidateContentSmoke:
         if content_path is None:
             pytest.skip("Content file not found for aktivnaya-pena")
 
-        from scripts.validate_content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         result = validate_content(
             str(content_path),
@@ -116,7 +116,7 @@ class TestValidateContentSmoke:
         if content_path is None:
             pytest.skip("UK content file not found for aktivnaya-pena")
 
-        from scripts.validate_content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         result = validate_content(
             str(content_path),
@@ -135,7 +135,7 @@ class TestValidateContentSmoke:
         if content_path is None:
             pytest.skip("Content file not found")
 
-        from scripts.validate_content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         result = validate_content(
             str(content_path),
@@ -162,7 +162,7 @@ class TestValidateDensitySmoke:
         if content_path is None:
             pytest.skip("Content file not found")
 
-        from scripts.validate_density import analyze_text
+        from llm_keywords_pipeline.validate.density import analyze_text
 
         text = content_path.read_text(encoding="utf-8")
         result = analyze_text(text, top_n=20, lang="ru")
@@ -181,7 +181,7 @@ class TestValidateDensitySmoke:
         if content_path is None:
             pytest.skip("UK content file not found")
 
-        from scripts.validate_density import analyze_text
+        from llm_keywords_pipeline.validate.density import analyze_text
 
         text = content_path.read_text(encoding="utf-8")
         result = analyze_text(text, top_n=20, lang="uk")
@@ -197,7 +197,7 @@ class TestValidateDensitySmoke:
         if content_path is None:
             pytest.skip("Content file not found")
 
-        from scripts.validate_density import check_keyword_density
+        from llm_keywords_pipeline.validate.density import check_keyword_density
 
         text = content_path.read_text(encoding="utf-8")
         result = check_keyword_density(text, "пена", lang="ru")
@@ -227,7 +227,7 @@ class TestMultipleCategoriesSmoke:
         }
         primary_keyword = keyword_map.get(slug, slug.replace("-", " "))
 
-        from scripts.validate_content import validate_content
+        from llm_keywords_pipeline.validate.content import validate_content
 
         result = validate_content(
             str(content_path),

@@ -47,7 +47,7 @@ try:
     from scripts.seo_utils import L3_TO_SLUG, SLUG_TO_L3, slugify
 except ImportError:
     try:
-        from seo_utils import L3_TO_SLUG, SLUG_TO_L3, slugify
+        from llm_keywords_pipeline.core.seo import L3_TO_SLUG, SLUG_TO_L3, slugify
     except ImportError:
         print("Warning: seo_utils not found, using fallback")
         L3_TO_SLUG = {}
@@ -309,7 +309,7 @@ def extract_issues_from_validation(validation: dict) -> list[str]:
         try:
             from scripts.config import QUALITY_THRESHOLDS
         except ImportError:
-            from config import QUALITY_THRESHOLDS
+            from llm_keywords_pipeline.core.config import QUALITY_THRESHOLDS
 
         water_value = water.get("value")
         if water_value is not None and water_value > QUALITY_THRESHOLDS["water_target_max"]:

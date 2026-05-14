@@ -2,7 +2,7 @@
 
 import pytest
 
-from scripts.keyword_utils import (
+from llm_keywords_pipeline.core.keywords import (
     MorphAnalyzer,
     get_commercial_markers,
     get_stoplist_phrases,
@@ -149,7 +149,7 @@ class TestMorphAnalyzerUK:
         assert lemma == "засіб", f"Expected 'засіб', got '{lemma}' (possible Snowball fallback)"
 
 
-from scripts.keyword_utils import KeywordMatcher
+from llm_keywords_pipeline.core.keywords import KeywordMatcher
 
 
 class TestKeywordMatcherUK:
@@ -252,7 +252,7 @@ class TestKeywordMatcher:
         assert found is True
 
 
-from scripts.keyword_utils import (
+from llm_keywords_pipeline.core.keywords import (
     CoverageChecker,
     find_keyword_form,
     get_adaptive_coverage_target,

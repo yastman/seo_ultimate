@@ -1,6 +1,6 @@
 import json
 
-from scripts.validate_meta import (
+from llm_keywords_pipeline.validate.meta import (
     get_primary_keywords,
     get_word_stem,
     keyword_matches,
@@ -248,7 +248,7 @@ class TestValidateH1:
 
     def test_h1_contains_primary_keyword_exact(self):
         """H1 contains primary keyword exactly."""
-        from scripts.validate_meta import validate_h1
+        from llm_keywords_pipeline.validate.meta import validate_h1
 
         result = validate_h1(h1="Активна піна", primary_keyword="активна піна", lang="uk")
         assert result["passed"] is True
@@ -256,7 +256,7 @@ class TestValidateH1:
 
     def test_h1_contains_primary_keyword_plural(self):
         """H1 contains plural form of primary keyword."""
-        from scripts.validate_meta import validate_h1
+        from llm_keywords_pipeline.validate.meta import validate_h1
 
         result = validate_h1(h1="Активні піни", primary_keyword="активна піна", lang="uk")
         assert result["passed"] is True
@@ -264,7 +264,7 @@ class TestValidateH1:
 
     def test_h1_contains_primary_keyword_in_phrase(self):
         """H1 phrase contains primary keyword."""
-        from scripts.validate_meta import validate_h1
+        from llm_keywords_pipeline.validate.meta import validate_h1
 
         # "Кераміка та рідке скло" contains "рідке скло" → should pass
         result = validate_h1(h1="Кераміка та рідке скло", primary_keyword="рідке скло", lang="uk")
@@ -272,7 +272,7 @@ class TestValidateH1:
 
     def test_h1_completely_different(self):
         """H1 is completely different from primary keyword."""
-        from scripts.validate_meta import validate_h1
+        from llm_keywords_pipeline.validate.meta import validate_h1
 
         result = validate_h1(h1="Засоби для полірування", primary_keyword="рідке скло", lang="uk")
         assert result["passed"] is False
@@ -280,7 +280,7 @@ class TestValidateH1:
 
     def test_h1_empty_inputs(self):
         """Empty H1 or primary_keyword fails gracefully."""
-        from scripts.validate_meta import validate_h1
+        from llm_keywords_pipeline.validate.meta import validate_h1
 
         result = validate_h1(h1="", primary_keyword="test", lang="uk")
         assert result["passed"] is False
@@ -380,7 +380,7 @@ class TestFindAllMetaFiles:
 
     def test_finds_nested_ru_categories(self, tmp_path):
         """Should find meta files in nested RU category structure."""
-        from scripts.validate_meta import find_all_meta_files
+        from llm_keywords_pipeline.validate.meta import find_all_meta_files
 
         # Create nested structure: categories/parent/child/meta/child_meta.json
         parent = tmp_path / "categories" / "moyka-i-eksterer"
@@ -404,7 +404,7 @@ class TestFindAllMetaFiles:
 
     def test_finds_uk_categories(self, tmp_path):
         """Should find meta files in uk/categories/."""
-        from scripts.validate_meta import find_all_meta_files
+        from llm_keywords_pipeline.validate.meta import find_all_meta_files
 
         # Create UK structure
         uk = tmp_path / "uk" / "categories" / "antibitum" / "meta"

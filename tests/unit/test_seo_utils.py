@@ -1,12 +1,12 @@
 import pytest
 
-from scripts.seo_utils import (
+from llm_keywords_pipeline.core.seo import (
     get_commercial_modifiers,
     parse_front_matter,
     rebuild_document,
     slugify,
 )
-from scripts.text_utils import (
+from llm_keywords_pipeline.core.text import (
     clean_markdown,
     count_words,
     normalize_text,
@@ -154,7 +154,7 @@ class TestJsonUtils:
     """Tests for JSON load/save utilities."""
 
     def test_save_and_load_json(self, tmp_path):
-        from scripts.seo_utils import load_json, save_json
+        from llm_keywords_pipeline.core.seo import load_json, save_json
 
         data = {"key": "value", "list": [1, 2, 3]}
         file_path = tmp_path / "test.json"
@@ -168,7 +168,7 @@ class TestJsonUtils:
         assert loaded == data
 
     def test_load_nonexistent_json(self, tmp_path):
-        from scripts.seo_utils import load_json
+        from llm_keywords_pipeline.core.seo import load_json
 
         # Should return empty dict and print error (suppressed here)
         result = load_json(tmp_path / "nonexistent.json")

@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from scripts import config
+from llm_keywords_pipeline.core import config
 
 
 def test_critical_constants():

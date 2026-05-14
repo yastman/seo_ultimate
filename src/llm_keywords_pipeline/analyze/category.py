@@ -143,7 +143,12 @@ try:
     from scripts.seo_utils import L3_TO_SLUG, SLUG_TO_L3, get_commercial_modifiers, get_l3_slug
 except ImportError:
     try:
-        from seo_utils import L3_TO_SLUG, SLUG_TO_L3, get_commercial_modifiers, get_l3_slug
+        from llm_keywords_pipeline.core.seo import (
+            L3_TO_SLUG,
+            SLUG_TO_L3,
+            get_commercial_modifiers,
+            get_l3_slug,
+        )
     except ImportError:
         # Fallback for standalone execution
         L3_TO_SLUG = {
@@ -214,7 +219,7 @@ COMMERCIAL_MODIFIERS_UK = get_commercial_modifiers("uk")
 try:
     from scripts.config import get_guidelines_coverage_target
 except ImportError:
-    from config import get_guidelines_coverage_target
+    from llm_keywords_pipeline.core.config import get_guidelines_coverage_target
 
 
 # =============================================================================
@@ -494,7 +499,7 @@ def analyze_category(slug: str, lang: str = "ru") -> dict:
     try:
         from scripts.seo_utils import get_mappings_for_lang
     except ImportError:
-        from seo_utils import get_mappings_for_lang
+        from llm_keywords_pipeline.core.seo import get_mappings_for_lang
     _, slug_to_l3 = get_mappings_for_lang(lang)
     l3_name = slug_to_l3.get(slug, slug)
 

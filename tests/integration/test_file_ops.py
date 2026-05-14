@@ -1,4 +1,4 @@
-from scripts.seo_utils import load_json
+from llm_keywords_pipeline.core.seo import load_json
 from tests.helpers.file_builders import CategoryBuilder
 
 

@@ -1,6 +1,6 @@
 import json
 
-from scripts.synonym_tools import analyze_category, is_commercial, normalize_keyword
+from llm_keywords_pipeline.core.synonyms import analyze_category, is_commercial, normalize_keyword
 
 
 class TestNormalizeKeyword:

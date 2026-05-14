@@ -1,12 +1,12 @@
 """Tests for validate_density.py UK support."""
 
-from scripts.text_utils import (
+from llm_keywords_pipeline.core.text import (
     STOPWORDS_RU,
     STOPWORDS_UK,
     get_stopwords,
     tokenize,
 )
-from scripts.validate_density import (
+from llm_keywords_pipeline.validate.density import (
     get_stemmer,
 )
 

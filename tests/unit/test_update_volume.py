@@ -2,7 +2,7 @@
 
 import json
 
-from scripts.update_volume import update_category
+from llm_keywords_pipeline.sync.update_volume import update_category
 
 
 class TestUpdateCategory:
