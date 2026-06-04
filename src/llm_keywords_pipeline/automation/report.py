@@ -82,13 +82,13 @@ class ValidationReport(BaseModel):
             )
         checks = []
         water = metrics.get("water_percent", 0)
-        water_ok = 40 <= water <= 65
+        water_ok = 40 <= water <= 60
         checks.append(CheckResult(
             id="water_percent",
             status=CheckStatus.pass_ if water_ok else CheckStatus.warn,
             severity="medium",
             message=f"Water: {water:.1f}%",
-            expected="40–65%",
+            expected="40–60%",
             actual=round(water, 2),
         ))
         nausea = metrics.get("classic_nausea", 0)
