@@ -5,6 +5,7 @@ causing ValueError when --lang appears right after the filename.
 Fix: use argparse (as done in validate/density.py).
 """
 import pytest
+
 from llm_keywords_pipeline.audit.water import main
 
 
@@ -46,7 +47,6 @@ class TestWaterMainLangFlag:
 
     def test_no_args_returns_1(self):
         """No arguments must exit with non-zero code (argparse exits with 2)."""
-        import pytest
         with pytest.raises(SystemExit) as exc_info:
             main([])
         assert exc_info.value.code != 0
