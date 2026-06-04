@@ -33,6 +33,7 @@ from pathlib import Path
 from typing import Any
 
 # Import from core
+from llm_keywords_pipeline.core.config import get_data_path
 from llm_keywords_pipeline.core.text import clean_markdown, get_stopwords, tokenize
 
 # Snowball Stemmer для группировки словоформ по корню
@@ -350,10 +351,10 @@ def analyze_text(
 
 def load_keywords_from_json(slug: str) -> list[str]:
     """Load keywords from category _clean.json file."""
-    base_dir = Path(__file__).parent.parent / "categories" / slug / "data"
-    json_file = base_dir / f"{slug}_clean.json"
+    json_file = get_data_path(slug, clean=True)
 
     if not json_file.exists():
+        print(f"⚠️  Файл ключей не найден: {json_file}", file=sys.stderr)
         return []
 
     data = json.loads(json_file.read_text(encoding="utf-8"))
