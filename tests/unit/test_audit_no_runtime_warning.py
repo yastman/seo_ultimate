@@ -6,7 +6,6 @@ in CI, while known third-party warnings (pymorphy2, runpy) stay suppressed.
 """
 from pathlib import Path
 
-
 PYTEST_INI = Path(__file__).parents[2] / "pytest.ini"
 
 
