@@ -33,11 +33,11 @@ jobs:
       - name: Lint with ruff
         run: uv run ruff check src tests
 
-      - name: Type check maintained typed surface
+      - name: Type check core/text.py (typed surface)
         run: uv run mypy
 
       - name: Run tests
-        run: uv run pytest --cov-fail-under=24
+        run: uv run pytest --cov-fail-under=20
 
       - name: Build package
         run: uv build

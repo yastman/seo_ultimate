@@ -578,7 +578,7 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2" },
     { name = "pyyaml", specifier = ">=6.0" },
     { name = "requests", specifier = ">=2.32" },
-    { name = "setuptools", specifier = "<71" },
+    { name = "setuptools", specifier = ">=70" },
     { name = "toml", specifier = ">=0.10" },
     { name = "tqdm", specifier = ">=4.67" },
 ]

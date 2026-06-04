@@ -272,8 +272,13 @@ def audit_category(
 
     results = []
     for kw_data in keywords:
-        kw = kw_data["keyword"]
-        volume = kw_data.get("volume", 0)
+        # Normalize: accept both str and {"keyword": str, "volume": int}
+        if isinstance(kw_data, str):
+            kw = kw_data
+            volume = 0
+        else:
+            kw = kw_data["keyword"]
+            volume = kw_data.get("volume", 0)
 
         match = check_keyword(kw, prepared, synonyms)
 
