@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import math
 import re
-import sys
 from collections import Counter
 from pathlib import Path
 
@@ -321,24 +320,24 @@ def check_water(
 
 
 def main(argv: list[str] | None = None) -> int:
-    argv = sys.argv[1:] if argv is None else argv
+    import argparse
 
-    if len(argv) < 1:
-        print(
-            "Usage: python -m llm_keywords_pipeline.audit.water <file.md> [target_min] [target_max] [--lang ru|uk]"
-        )
+    parser = argparse.ArgumentParser(
+        prog="python -m llm_keywords_pipeline.audit.water",
+        description="Аудит водности и тошноты текста.",
+    )
+    parser.add_argument("file_path", help="Путь к .md файлу")
+    parser.add_argument("target_min", nargs="?", type=int, default=40, help="Мин. % воды (default: 40)")
+    parser.add_argument("target_max", nargs="?", type=int, default=60, help="Макс. % воды (default: 60)")
+    parser.add_argument("--lang", choices=["ru", "uk"], default="ru", help="Язык (default: ru)")
+
+    args = parser.parse_args(argv)
+
+    if not Path(args.file_path).exists():
+        print(f"❌ Файл не найден: {args.file_path}")
         return 1
 
-    file_path = argv[0]
-    target_min = int(argv[1]) if len(argv) > 1 else 40
-    target_max = int(argv[2]) if len(argv) > 2 else 60
-    lang = "uk" if "--lang" in argv and "uk" in argv else "ru"
-
-    if not Path(file_path).exists():
-        print(f"❌ Файл не найден: {file_path}")
-        return 1
-
-    return check_water(file_path, target_min, target_max, lang)
+    return check_water(args.file_path, args.target_min, args.target_max, args.lang)
 
 
 if __name__ == "__main__":
