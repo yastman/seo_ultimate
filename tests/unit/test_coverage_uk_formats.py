@@ -9,7 +9,6 @@ import pytest
 
 from llm_keywords_pipeline.core.coverage import audit_category
 
-
 SAMPLE_TEXT = "Привіт, це тестовий текст для перевірки покриття ключових слів у контенті."
 
 
